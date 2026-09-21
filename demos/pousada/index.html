@@ -1,0 +1,805 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#2b2118">
+<meta name="robots" content="noindex, nofollow">
+<title>Pousada Aroá · Lagoa Seca (demonstração)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="https://images.unsplash.com/photo-1543372195-1d3915d8c0f6?auto=format&fit=crop&w=1800&q=70">
+<style>
+  :root {
+    --bg: #f3ece0;
+    --surface: #fbf8f2;
+    --ink: #2b2118;
+    --ink-soft: #4a3d31;
+    --muted: #6f5f4e;
+    --line: #e2d6c3;
+    --accent: #b0502a;
+    --accent-deep: #8f3f1f;
+    --accent-ink: #fff7ef;
+    --dark: #2e2c20;
+    --dark-soft: #3b3929;
+    --dark-line: rgba(243, 236, 224, 0.16);
+    --on-dark: #f3ece0;
+    --on-dark-muted: #c2bba5;
+    --veil-strong: rgba(30, 22, 14, 0.62);
+    --veil-soft: rgba(30, 22, 14, 0.3);
+    --shade: rgba(30, 22, 14, 0.82);
+    --shade-clear: rgba(30, 22, 14, 0);
+    --glass: rgba(251, 248, 242, 0.18);
+    --glass-line: rgba(251, 248, 242, 0.34);
+    --field: rgba(251, 248, 242, 0.94);
+    --backdrop: rgba(24, 18, 12, 0.9);
+    --shadow: 0 22px 44px -22px rgba(43, 33, 24, 0.45);
+    --radius-xl: 32px;
+    --radius-lg: 22px;
+    --radius-md: 14px;
+    --radius-pill: 999px;
+    --gutter: clamp(16px, 4vw, 40px);
+    --max: 1240px;
+    --space-section: clamp(72px, 11vw, 136px);
+    --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+    --font-body: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-padding-top: 24px; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 16px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+  img { display: block; max-width: 100%; }
+  a { color: inherit; text-decoration: none; }
+  button, input, select { font: inherit; }
+  button { cursor: pointer; }
+  .wrap { max-width: var(--max); margin: 0 auto; padding-inline: var(--gutter); }
+  .serif { font-family: var(--font-display); font-optical-sizing: auto; }
+  .ico { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; display: block; flex: none; }
+
+  .notice { background: var(--ink); color: var(--on-dark); font-size: 13px; text-align: center; padding: 8px var(--gutter); }
+  .notice strong { color: var(--accent-ink); background: var(--accent); padding: 1px 8px; border-radius: var(--radius-pill); margin-right: 4px; }
+
+  .topbar { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 18px; }
+  .logo { font-family: var(--font-display); font-style: italic; font-weight: 500; font-size: 30px; letter-spacing: -0.02em; line-height: 1; }
+  .logo small { font-family: var(--font-body); font-style: normal; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); margin-left: 8px; vertical-align: middle; }
+  .nav { display: flex; gap: 28px; font-weight: 500; font-size: 15px; color: var(--ink-soft); }
+  .nav a:hover { color: var(--accent); }
+
+  .pill-btn { display: inline-flex; align-items: center; gap: 12px; padding: 6px 6px 6px 22px; border-radius: var(--radius-pill); border: 0; background: var(--ink); color: var(--on-dark); font-weight: 600; font-size: 15px; transition: translate .2s ease, background-color .2s ease; }
+  .pill-btn:hover { translate: 0 -2px; }
+  .pill-btn .dot { width: 38px; height: 38px; border-radius: 50%; background: var(--on-dark); color: var(--ink); display: grid; place-items: center; flex: none; }
+  .pill-btn .dot .ico { width: 18px; height: 18px; stroke-width: 2.2; }
+  .pill-btn.accent { background: var(--accent); color: var(--accent-ink); }
+  .pill-btn.accent:hover { background: var(--accent-deep); }
+  .pill-btn.accent .dot { background: var(--accent-ink); color: var(--accent); }
+
+  /* Hero: photo card with the booking request floating on glass */
+  .hero { position: relative; border-radius: var(--radius-xl); overflow: hidden; min-height: min(84vh, 760px); color: var(--on-dark); display: flex; }
+  .hero-media { position: absolute; inset: -12% 0 0 0; }
+  .hero-media img { width: 100%; height: 100%; object-fit: cover; object-position: 40% 60%; }
+  .hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(110deg, var(--veil-strong) 0%, var(--veil-soft) 55%, var(--veil-strong) 100%); }
+  .hero-body { position: relative; z-index: 1; width: 100%; padding: clamp(24px, 4.5vw, 56px); display: grid; grid-template-columns: 1fr minmax(300px, 380px); gap: 32px; align-items: stretch; }
+  .hero-copy { display: flex; flex-direction: column; justify-content: space-between; gap: 32px; }
+  .eyebrow { font-size: 14px; font-weight: 500; letter-spacing: .02em; margin: 0 0 18px; display: inline-flex; align-items: center; gap: 8px; }
+  .eyebrow .ico { width: 16px; height: 16px; }
+  .hero h1 { font-family: var(--font-display); font-weight: 400; font-size: clamp(44px, 7vw, 104px); line-height: .92; letter-spacing: -0.035em; margin: 0; }
+  .hero h1 .line { display: block; overflow: hidden; padding-bottom: .08em; }
+  .hero h1 .line > span { display: inline-block; }
+  .hero h1 em { font-style: italic; font-weight: 400; }
+  .hero-lead { max-width: 40ch; margin: 22px 0 0; font-size: 17px; opacity: .92; }
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; font-size: 13px; }
+  .tag { padding: 7px 14px; border-radius: var(--radius-pill); background: var(--glass); border: 1px solid var(--glass-line); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+
+  .booking { align-self: end; padding: 22px; border-radius: var(--radius-lg); background: var(--glass); border: 1px solid var(--glass-line); backdrop-filter: blur(18px) saturate(1.2); -webkit-backdrop-filter: blur(18px) saturate(1.2); }
+  .booking h2 { font-family: var(--font-display); font-weight: 500; font-size: 26px; letter-spacing: -0.02em; line-height: 1.1; margin: 0 0 4px; }
+  .booking > p { margin: 0 0 16px; font-size: 13px; opacity: .88; }
+  .fields { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .field { display: flex; flex-direction: column; gap: 4px; background: var(--field); color: var(--ink); border-radius: var(--radius-md); padding: 8px 12px; min-width: 0; }
+  .field.full { grid-column: 1 / -1; }
+  .field label, .field .label { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+  .field input, .field select { border: 0; background: transparent; color: var(--ink); padding: 0; font-size: 15px; font-weight: 600; width: 100%; min-width: 0; min-height: 26px; }
+  .field input:focus-visible, .field select:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 4px; }
+  .stepper { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+  .stepper output { font-weight: 700; font-size: 15px; }
+  .step { width: 32px; height: 32px; border-radius: 50%; border: 1px solid var(--line); background: var(--surface); color: var(--ink); padding: 0; display: grid; place-items: center; transition: background-color .2s ease; }
+  .step:hover { background: var(--bg); }
+  .step:disabled { opacity: .4; cursor: not-allowed; }
+  .step .ico { width: 16px; height: 16px; stroke-width: 2.2; }
+  .booking-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 14px; flex-wrap: wrap; }
+  .nights { font-size: 13px; opacity: .92; }
+  .booking .pill-btn { width: 100%; justify-content: space-between; margin-top: 14px; }
+  .form-error { margin: 10px 0 0; font-size: 13px; font-weight: 600; background: var(--accent); color: var(--accent-ink); border-radius: var(--radius-md); padding: 8px 12px; }
+
+  /* Asymmetric intro */
+  .intro { display: grid; grid-template-columns: 1.25fr 1fr; gap: clamp(24px, 5vw, 72px); align-items: start; margin-top: var(--space-section); }
+  .intro h2, .section-head h2 { font-family: var(--font-display); font-weight: 400; font-size: clamp(36px, 5.2vw, 68px); letter-spacing: -0.03em; line-height: 1; margin: 0; }
+  .intro h2 em, .section-head h2 em, .cta h2 em { font-style: italic; color: var(--accent); }
+  .intro-text p { margin: 0 0 16px; color: var(--ink-soft); font-size: 17px; }
+  .facts { display: flex; flex-wrap: wrap; gap: 28px; margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--line); }
+  .facts div { display: flex; flex-direction: column; }
+  .facts b { font-family: var(--font-display); font-weight: 500; font-size: 36px; letter-spacing: -0.03em; line-height: 1; }
+  .facts span { font-size: 13px; color: var(--muted); margin-top: 6px; }
+
+  .section { margin-top: var(--space-section); }
+  .section-head { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: end; margin-bottom: 36px; }
+  .section-head p { margin: 0; color: var(--muted); max-width: 44ch; justify-self: end; }
+
+  /* Rooms */
+  .rooms { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .room { position: relative; display: flex; flex-direction: column; justify-content: flex-end; min-height: 560px; border-radius: var(--radius-lg); overflow: hidden; color: var(--on-dark); isolation: isolate; transition: translate .3s ease, box-shadow .3s ease; }
+  .room:hover { translate: 0 -6px; box-shadow: var(--shadow); }
+  .room figure { position: absolute; inset: 0; margin: 0; z-index: -2; }
+  .room figure img { width: 100%; height: 100%; object-fit: cover; transition: scale .6s ease; }
+  .room:hover figure img { scale: 1.04; }
+  .room::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(0deg, var(--shade) 0%, var(--shade) 30%, var(--shade-clear) 72%); }
+  .room-body { padding: 24px; display: flex; flex-direction: column; gap: 12px; }
+  .room .cap { align-self: flex-start; font-size: 12px; font-weight: 600; padding: 5px 12px; border-radius: var(--radius-pill); background: var(--glass); border: 1px solid var(--glass-line); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+  .room h3 { font-family: var(--font-display); font-weight: 500; font-size: 30px; letter-spacing: -0.02em; line-height: 1.05; margin: 0; }
+  .room ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 14px; color: var(--on-dark-muted); }
+  .room li { display: inline-flex; align-items: center; gap: 6px; }
+  .room li .ico { width: 15px; height: 15px; color: var(--on-dark); }
+  .room-foot { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; padding-top: 14px; border-top: 1px solid var(--dark-line); }
+  .price small { display: block; font-size: 12px; color: var(--on-dark-muted); }
+  .price b { font-family: var(--font-display); font-weight: 500; font-size: 30px; letter-spacing: -0.02em; line-height: 1; }
+  .price b span { font-family: var(--font-body); font-size: 13px; font-weight: 500; color: var(--on-dark-muted); letter-spacing: 0; }
+  .room .pill-btn { background: var(--on-dark); color: var(--ink); font-size: 14px; padding-left: 16px; }
+  .room .pill-btn .dot { background: var(--accent); color: var(--accent-ink); width: 34px; height: 34px; }
+
+  /* Included */
+  .included { display: grid; grid-template-columns: 1fr 1.1fr; gap: 20px; }
+  .included-photo { border-radius: var(--radius-xl); overflow: hidden; min-height: 460px; }
+  .included-photo img { width: 100%; height: 100%; object-fit: cover; }
+  .perks { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .perk { background: var(--surface); border-radius: var(--radius-lg); padding: 24px; display: flex; flex-direction: column; gap: 10px; border: 1px solid var(--line); }
+  .perk-icon { width: 52px; height: 52px; border-radius: 50%; background: var(--bg); color: var(--accent); display: grid; place-items: center; }
+  .perk-icon .ico { width: 26px; height: 26px; stroke-width: 1.6; }
+  .perk h3 { margin: 6px 0 0; font-size: 19px; letter-spacing: -0.01em; }
+  .perk p { margin: 0; color: var(--muted); font-size: 14px; }
+
+  /* Nearby: dark section with a distance ruler */
+  .nearby { background: var(--dark); color: var(--on-dark); border-radius: var(--radius-xl); padding: clamp(36px, 6vw, 80px) clamp(22px, 5vw, 64px); }
+  .nearby .section-head p { color: var(--on-dark-muted); }
+  .ruler { position: relative; margin: 12px 0 48px; padding-top: 64px; }
+  .ruler-track { height: 2px; background: var(--dark-line); position: relative; }
+  .ruler-fill { position: absolute; inset: 0; background: var(--accent); transform-origin: left center; }
+  .ruler-mark { position: absolute; bottom: -6px; left: var(--at); translate: -50% 0; display: flex; flex-direction: column; align-items: center; gap: 8px; font-size: 12px; color: var(--on-dark-muted); white-space: nowrap; }
+  .ruler-mark b { font-family: var(--font-display); font-weight: 500; font-size: 22px; color: var(--on-dark); line-height: 1; }
+  .ruler-mark i { width: 14px; height: 14px; border-radius: 50%; background: var(--dark); border: 2px solid var(--accent); margin-top: 6px; }
+  .ruler-mark.home i { background: var(--accent); }
+  .ruler-mark.start { translate: 0 0; align-items: flex-start; }
+  .ruler-mark.start i { margin-left: -6px; }
+  .ruler-mark.end { translate: -100% 0; align-items: flex-end; }
+  .ruler-mark.end i { margin-right: -6px; }
+  .ruler-note { font-size: 12px; color: var(--on-dark-muted); margin: 18px 0 0; }
+  .spots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .spot { background: var(--dark-soft); border-radius: var(--radius-lg); padding: 26px; display: flex; flex-direction: column; gap: 10px; }
+  .spot .km { font-size: 13px; color: var(--accent-ink); background: var(--accent); align-self: flex-start; padding: 4px 12px; border-radius: var(--radius-pill); font-weight: 600; }
+  .spot h3 { font-family: var(--font-display); font-weight: 500; font-size: 26px; letter-spacing: -0.02em; line-height: 1.1; margin: 4px 0 0; }
+  .spot p { margin: 0; color: var(--on-dark-muted); font-size: 15px; }
+
+  /* Gallery mosaic */
+  .mosaic { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 190px; grid-auto-flow: dense; gap: 12px; }
+  .g-item { position: relative; border: 0; padding: 0; margin: 0; border-radius: var(--radius-md); overflow: hidden; background: var(--line); cursor: zoom-in; }
+  .g-item img { width: 100%; height: 100%; object-fit: cover; transition: scale .5s ease; }
+  .g-item:hover img, .g-item:focus-visible img { scale: 1.05; }
+  .g-item:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+  .g-item.big { grid-column: span 2; grid-row: span 2; }
+  .g-item.wide { grid-column: span 2; }
+  .g-item.tall { grid-row: span 2; }
+
+  .lightbox { border: 0; padding: 0; margin: auto; background: transparent; width: min(1100px, calc(100vw - 32px)); max-height: calc(100vh - 32px); overflow: visible; color: var(--on-dark); }
+  .lightbox::backdrop { background: var(--backdrop); }
+  .lightbox figure { margin: 0; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+  .lightbox img { max-height: calc(100vh - 140px); width: auto; border-radius: var(--radius-md); }
+  .lightbox figcaption { font-size: 14px; color: var(--on-dark-muted); text-align: center; }
+  .lb-bar { display: flex; justify-content: center; gap: 10px; margin-top: 12px; }
+  .lb-btn { width: 48px; height: 48px; border-radius: 50%; border: 1px solid var(--glass-line); background: var(--glass); color: var(--on-dark); padding: 0; display: grid; place-items: center; }
+  .lb-btn:hover { background: var(--accent); border-color: var(--accent); }
+  .lb-btn:focus-visible { outline: 2px solid var(--on-dark); outline-offset: 2px; }
+
+  /* Testimonials */
+  .quotes { display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 16px; }
+  .quote { margin: 0; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 28px; display: flex; flex-direction: column; gap: 18px; }
+  .quote:first-child { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+  .quote blockquote { margin: 0; font-family: var(--font-display); font-size: 21px; line-height: 1.35; letter-spacing: -0.01em; flex: 1; }
+  .quote:first-child blockquote { font-size: 26px; }
+  .quote figcaption { font-size: 14px; font-weight: 600; }
+  .quote figcaption span { display: block; font-weight: 400; opacity: .75; }
+  .fake-label { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; color: var(--muted); border: 1px dashed var(--muted); padding: 4px 12px; border-radius: var(--radius-pill); margin-bottom: 16px; }
+
+  /* Directions and FAQ */
+  .visit { display: grid; grid-template-columns: 1fr 1.25fr; gap: clamp(24px, 5vw, 64px); }
+  .route { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-xl); padding: clamp(24px, 4vw, 40px); display: flex; flex-direction: column; gap: 18px; }
+  .route h2, .faq h2 { font-family: var(--font-display); font-weight: 400; font-size: clamp(32px, 4vw, 48px); letter-spacing: -0.03em; line-height: 1; margin: 0; }
+  .route p { margin: 0; color: var(--ink-soft); }
+  .route address { font-style: normal; font-weight: 600; display: flex; gap: 10px; align-items: flex-start; }
+  .route address .ico { color: var(--accent); margin-top: 2px; }
+  .route .pill-btn { align-self: flex-start; }
+  details { border-bottom: 1px solid var(--line); padding-block: 20px; }
+  details:first-of-type { border-top: 1px solid var(--line); margin-top: 24px; }
+  summary { list-style: none; cursor: pointer; font-weight: 600; font-size: 18px; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+  summary::-webkit-details-marker { display: none; }
+  summary .ico { color: var(--accent); transition: rotate .2s ease; }
+  details[open] summary .ico { rotate: 45deg; }
+  details p { color: var(--muted); margin: 12px 0 0; max-width: 60ch; }
+
+  .cta { margin-top: var(--space-section); position: relative; border-radius: var(--radius-xl); overflow: hidden; color: var(--on-dark); padding: clamp(36px, 6vw, 72px); display: flex; flex-wrap: wrap; gap: 24px; align-items: center; justify-content: space-between; background: var(--dark); }
+  .cta h2 { font-family: var(--font-display); font-weight: 400; font-size: clamp(32px, 4.6vw, 58px); letter-spacing: -0.03em; line-height: 1; margin: 0; max-width: 18ch; }
+
+  footer { margin-top: var(--space-section); padding-bottom: 72px; overflow: hidden; }
+  .foot-row { display: flex; flex-wrap: wrap; gap: 16px; justify-content: space-between; color: var(--muted); font-size: 13px; border-top: 1px solid var(--line); padding-top: 24px; }
+  .wordmark { font-family: var(--font-display); font-style: italic; font-weight: 400; font-size: clamp(120px, 30vw, 420px); letter-spacing: -0.05em; line-height: .8; margin-top: 28px; white-space: nowrap; color: var(--ink); }
+  .wordmark span { color: var(--accent); }
+  .credito-autor { margin: 28px 0 0; font-size: 14px; color: var(--muted); }
+  .credito-autor a { color: var(--ink); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--accent); }
+  .credito-autor a:hover { color: var(--accent); }
+  .credito-autor a.back-link { display: inline-flex; align-items: center; gap: 6px; }
+  .credito-autor .ico { width: 16px; height: 16px; }
+
+  @media (max-width: 980px) {
+    .nav { display: none; }
+    .hero-body { grid-template-columns: 1fr; }
+    .booking { align-self: stretch; }
+    .intro, .section-head, .included, .visit { grid-template-columns: 1fr; }
+    .section-head p { justify-self: start; }
+    .rooms { grid-template-columns: 1fr 1fr; }
+    .quotes { grid-template-columns: 1fr 1fr; }
+    .quote:first-child { grid-column: 1 / -1; }
+    .spots { grid-template-columns: 1fr; }
+    .included-photo { min-height: 320px; }
+  }
+  @media (max-width: 640px) {
+    .hero { min-height: 0; }
+    .hero-media { inset: 0; }
+    .hero::after { background: linear-gradient(180deg, var(--veil-strong) 0%, var(--veil-soft) 45%, var(--veil-strong) 100%); }
+    .rooms, .quotes, .perks { grid-template-columns: 1fr; }
+    .room { min-height: 500px; }
+    .mosaic { grid-template-columns: 1fr 1fr; grid-auto-rows: 150px; }
+    .ruler-mark { font-size: 11px; }
+    .ruler-mark b { font-size: 18px; }
+    .ruler-mark .name { display: none; }
+    .ruler-mark.start b { visibility: hidden; }
+    .logo small { display: none; }
+    .field { padding: 8px 10px; }
+    .field input { font-size: 14px; }
+  }
+</style>
+</head>
+<body>
+  <div class="notice" data-aviso="proposta"><strong>Demonstração.</strong> Empresa, preços e avaliações são fictícios. Fotos: Unsplash.</div>
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-back" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-minus" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+    <symbol id="i-left" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></symbol>
+    <symbol id="i-right" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></symbol>
+    <symbol id="i-bed" viewBox="0 0 24 24"><path d="M3 18V7M3 14h18v4M21 14v-2a3 3 0 0 0-3-3h-7v5"/><circle cx="7" cy="11" r="2"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M3 19c.6-3.3 3-5 6-5s5.4 1.7 6 5"/><path d="M16 5.2a3 3 0 0 1 0 5.6M18 14.3c1.7.6 2.7 2.2 3 4.7"/></symbol>
+    <symbol id="i-hammock" viewBox="0 0 24 24"><path d="M3 5v14M21 5v14M3 8c3 7 15 7 18 0"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></symbol>
+    <symbol id="i-coffee" viewBox="0 0 24 24"><path d="M4 9h13v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V9z"/><path d="M17 11h1.5a2.5 2.5 0 0 1 0 5H16.5"/><path d="M8 3.5c-.8 1 .8 2 0 3M12 3.5c-.8 1 .8 2 0 3"/></symbol>
+    <symbol id="i-pool" viewBox="0 0 24 24"><path d="M2 17c1.7 0 1.7 1.2 3.3 1.2S7 17 8.7 17s1.6 1.2 3.3 1.2S13.7 17 15.3 17s1.7 1.2 3.4 1.2S20.3 17 22 17"/><path d="M8 14V5.5a2 2 0 0 1 4 0M16 14V5.5a2 2 0 0 0-4 0"/><path d="M8 8.5h8M8 11.5h8"/></symbol>
+    <symbol id="i-car" viewBox="0 0 24 24"><path d="M5 16V11.5L7 6.5h10l2 5V16"/><path d="M3.5 16h17v2.5h-17z"/><circle cx="7.5" cy="13.5" r="1"/><circle cx="16.5" cy="13.5" r="1"/></symbol>
+    <symbol id="i-wifi" viewBox="0 0 24 24"><path d="M2.5 9a14 14 0 0 1 19 0M5.5 12.3a9.5 9.5 0 0 1 13 0M8.6 15.5a5 5 0 0 1 6.8 0"/><circle cx="12" cy="19" r="1"/></symbol>
+    <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M5 19c0-8 5-13 15-14-1 10-6 15-14 15"/><path d="M5 19l7-7"/></symbol>
+  </svg>
+
+  <div class="wrap">
+    <header class="topbar">
+      <a class="logo" href="#">aroá<small>pousada</small></a>
+      <nav class="nav" aria-label="Principal">
+        <a href="#quartos">Quartos</a>
+        <a href="#perto">Passeios</a>
+        <a href="#fotos">Fotos</a>
+        <a href="#chegar">Como chegar</a>
+      </nav>
+      <a class="pill-btn accent" href="#reserva">Reservar <span class="dot"><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
+    </header>
+
+    <section class="hero" aria-label="Apresentação">
+      <div class="hero-media">
+        <img src="https://images.unsplash.com/photo-1543372195-1d3915d8c0f6?auto=format&fit=crop&w=1800&q=70" alt="Varanda de madeira com banco rústico, janela com venezianas e uma planta em vaso" width="1800" height="1200" fetchpriority="high">
+      </div>
+      <div class="hero-body">
+        <div class="hero-copy">
+          <div>
+            <p class="eyebrow"><svg class="ico" aria-hidden="true"><use href="#i-pin"/></svg>Lagoa Seca, a 8 km de Campina Grande</p>
+            <h1><span class="line"><span>Noite fresca,</span></span><span class="line"><span><em>café de sítio.</em></span></span></h1>
+            <p class="hero-lead">Doze quartos num sítio a 640 metros de altitude, no alto da Borborema, com cuscuz e queijo coalho no café e piscina para a tarde. À noite, o vento frio pede coberta.</p>
+          </div>
+          <div class="tags"><span class="tag">Café regional incluso</span><span class="tag">Piscina</span><span class="tag">Aceita pet pequeno</span></div>
+        </div>
+
+        <form class="booking" id="reserva" novalidate aria-labelledby="booking-title">
+          <h2 id="booking-title">Peça sua reserva</h2>
+          <p>Escolha as datas e a gente responde no WhatsApp com o valor final.</p>
+          <div class="fields">
+            <div class="field">
+              <label for="checkin">Entrada</label>
+              <input type="date" id="checkin" name="checkin" required>
+            </div>
+            <div class="field">
+              <label for="checkout">Saída</label>
+              <input type="date" id="checkout" name="checkout" required>
+            </div>
+            <div class="field">
+              <span class="label" id="guests-label">Hóspedes</span>
+              <div class="stepper" role="group" aria-labelledby="guests-label">
+                <button type="button" class="step" id="guests-less" aria-label="Menos um hóspede"><svg class="ico" aria-hidden="true"><use href="#i-minus"/></svg></button>
+                <output id="guests" aria-live="polite">2</output>
+                <button type="button" class="step" id="guests-more" aria-label="Mais um hóspede"><svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></button>
+              </div>
+            </div>
+            <div class="field">
+              <label for="room">Quarto</label>
+              <select id="room" name="room">
+                <option value="">Tanto faz</option>
+                <option>Suíte Varanda</option>
+                <option>Suíte Serra</option>
+                <option>Quarto Família</option>
+              </select>
+            </div>
+          </div>
+          <p class="nights" id="nights" aria-live="polite">Escolha a entrada e a saída.</p>
+          <p class="form-error" id="form-error" role="alert" hidden></p>
+          <button class="pill-btn accent" type="submit">Pedir no WhatsApp <span class="dot"><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span></button>
+        </form>
+      </div>
+    </section>
+  </div>
+
+  <main class="wrap">
+    <section class="intro" aria-labelledby="intro-title">
+      <h2 id="intro-title">Um sítio de família que virou <em>pousada</em> sem perder o jeito de casa.</h2>
+      <div class="intro-text">
+        <p>Seu Zé plantou os pés de caju. Dona Rita ainda faz o bolo de milho do café. Os quartos ficaram onde era o curral e a casa de farinha, com telha antiga e piso de cimento queimado.</p>
+        <p>Quem vem para o São João dorme longe do barulho e chega ao Parque do Povo em 20 minutos. Quem vem para descansar nem precisa sair.</p>
+        <div class="facts">
+          <div><b>12</b><span>quartos</span></div>
+          <div><b>640 m</b><span>de altitude</span></div>
+          <div><b>4,9</b><span>no Google, 186 avaliações</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="quartos" aria-labelledby="rooms-title">
+      <div class="section-head">
+        <h2 id="rooms-title">Três jeitos de <em>dormir bem</em></h2>
+        <p>Todos com banheiro próprio, enxoval de algodão e cobertor extra no armário. Preço por diária, para duas pessoas, com café.</p>
+      </div>
+      <div class="rooms">
+        <article class="room">
+          <figure><img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=800&q=70" alt="Quarto de casal com cama king, abajures acesos e cabeceira de madeira" loading="lazy" width="800" height="1000"></figure>
+          <div class="room-body">
+            <span class="cap">Até 2 pessoas</span>
+            <h3>Suíte Varanda</h3>
+            <ul>
+              <li><svg class="ico" aria-hidden="true"><use href="#i-bed"/></svg>Cama king</li>
+              <li><svg class="ico" aria-hidden="true"><use href="#i-hammock"/></svg>Rede na varanda</li>
+              <li><svg class="ico" aria-hidden="true"><use href="#i-leaf"/></svg>Vista do pomar</li>
+            </ul>
+            <div class="room-foot">
+              <p class="price"><small>a partir de</small><b>R$ 320 <span>/noite</span></b></p>
+              <button class="pill-btn" type="button" data-room="Suíte Varanda">Quero esta <span class="dot"><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span></button>
+            </div>
+          </div>
+        </article>
+        <article class="room">
+          <figure><img src="https://images.unsplash.com/photo-1629140727571-9b5c6f6267b4?auto=format&fit=crop&w=800&q=70" alt="Quarto com cama baixa de madeira, cortina de linho e luz amarela suave" loading="lazy" width="800" height="1000"></figure>
+          <div class="room-body">
+            <span class="cap">Até 2 pessoas</span>
+            <h3>Suíte Serra</h3>
+            <ul>
+              <li><svg class="ico" aria-hidden="true"><use href="#i-bed"/></svg>Cama queen</li>
+              <li><svg class="ico" aria-hidden="true"><use href="#i-moon"/></svg>Cortina blackout</li>
+              <li><svg class="ico" aria-hidden="true"><use href="#i-leaf"/></svg>Térreo, aceita pet</li>
+            </ul>
+            <div class="room-foot">
+              <p class="price"><small>a partir de</small><b>R$ 280 <span>/noite</span></b></p>
+              <button class="pill-btn" type="button" data-room="Suíte Serra">Quero esta <span class="dot"><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span></button>
+            </div>
+          </div>
+        </article>
+        <article class="room">
+          <figure><img src="https://images.unsplash.com/photo-1667125095636-dce94dcbdd96?auto=format&fit=crop&w=800&q=70" alt="Quarto amplo com teto em abóbada, duas camas, tapete estampado e janela de madeira" loading="lazy" width="800" height="1000"></figure>
+          <div class="room-body">
+            <span class="cap">Até 4 pessoas</span>
+            <h3>Quarto Família</h3>
+            <ul>
+              <li><svg class="ico" aria-hidden="true"><use href="#i-bed"/></svg>Duas camas de casal</li>
+              <li><svg class="ico" aria-hidden="true"><use href="#i-users"/></svg>Sala com sofá</li>
+              <li><svg class="ico" aria-hidden="true"><use href="#i-leaf"/></svg>Janela para o jardim</li>
+            </ul>
+            <div class="room-foot">
+              <p class="price"><small>a partir de</small><b>R$ 420 <span>/noite</span></b></p>
+              <button class="pill-btn" type="button" data-room="Quarto Família">Quero este <span class="dot"><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span></button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="included-title">
+      <div class="section-head">
+        <h2 id="included-title">Já vem <em>na diária</em></h2>
+        <p>Tudo o que está aqui entra no preço da diária, sem cobrança à parte no check-out.</p>
+      </div>
+      <div class="included">
+        <div class="included-photo"><img src="https://images.unsplash.com/photo-1464306208223-e0b4495a5553?auto=format&fit=crop&w=1000&q=70" alt="Mesa de madeira com frutas, suco de laranja e torradas no café da manhã" loading="lazy" width="1000" height="800"></div>
+        <div class="perks">
+          <div class="perk">
+            <span class="perk-icon"><svg class="ico" aria-hidden="true"><use href="#i-coffee"/></svg></span>
+            <h3>Café da manhã regional</h3>
+            <p>Cuscuz, tapioca, bolo de milho, queijo coalho e fruta do pomar. Das 7h às 10h, na varanda.</p>
+          </div>
+          <div class="perk">
+            <span class="perk-icon"><svg class="ico" aria-hidden="true"><use href="#i-pool"/></svg></span>
+            <h3>Piscina</h3>
+            <p>Aberta das 8h às 20h, com espreguiçadeira e sombra de cajueiro.</p>
+          </div>
+          <div class="perk">
+            <span class="perk-icon"><svg class="ico" aria-hidden="true"><use href="#i-car"/></svg></span>
+            <h3>Estacionamento</h3>
+            <p>Coberto e dentro do sítio, com portão fechado à noite.</p>
+          </div>
+          <div class="perk">
+            <span class="perk-icon"><svg class="ico" aria-hidden="true"><use href="#i-wifi"/></svg></span>
+            <h3>Wi-fi</h3>
+            <p>Em todos os quartos e na varanda. Dá para trabalhar de lá, se precisar.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section nearby" id="perto" aria-labelledby="nearby-title">
+      <div class="section-head">
+        <h2 id="nearby-title">Para quando der vontade de <em>sair</em></h2>
+        <p>Distâncias aproximadas pela estrada, contadas a partir do centro de Campina Grande.</p>
+      </div>
+      <div class="ruler" aria-hidden="true">
+        <div class="ruler-track"><span class="ruler-fill"></span></div>
+        <div class="ruler-mark start" style="--at: 0%"><b>0 km</b><span class="name">Campina</span><i></i></div>
+        <div class="ruler-mark home" style="--at: 12.3%"><b><span data-count="8">8</span> km</b><span class="name">Aroá</span><i></i></div>
+        <div class="ruler-mark" style="--at: 61.5%"><b><span data-count="40">40</span> km</b><span class="name">Fagundes</span><i></i></div>
+        <div class="ruler-mark end" style="--at: 100%"><b><span data-count="65">65</span> km</b><span class="name">Cabaceiras</span><i></i></div>
+      </div>
+      <div class="spots">
+        <article class="spot">
+          <span class="km">Em Campina Grande</span>
+          <h3>São João de Campina Grande</h3>
+          <p>Forró no Parque do Povo durante os festejos de junho. A gente abre a agenda de junho cedo, porque enche.</p>
+        </article>
+        <article class="spot">
+          <span class="km">Cerca de 40 km</span>
+          <h3>Pedra de Santo Antônio</h3>
+          <p>Na Serra do Bodopitá, em Fagundes, perto de 950 metros de altitude. Diz a tradição que quem passa por baixo da pedra casa no ano seguinte.</p>
+        </article>
+        <article class="spot">
+          <span class="km">Cerca de 65 km</span>
+          <h3>Lajedo de Pai Mateus</h3>
+          <p>Em Cabaceiras, no Cariri: um lajedo enorme coberto de pedras redondas. A visita é só com guia da fazenda, e o fim da estrada é de terra.</p>
+        </article>
+      </div>
+      <p class="ruler-note">Para passeio fora de Campina, a gente indica guia e prepara lanche para levar, se pedir na véspera.</p>
+    </section>
+
+    <section class="section" id="fotos" aria-labelledby="gallery-title">
+      <div class="section-head">
+        <h2 id="gallery-title">Dá uma <em>olhada</em></h2>
+        <p>Toque numa foto para ampliar. Use as setas para passar e Esc para fechar.</p>
+      </div>
+      <div class="mosaic">
+        <button class="g-item big" type="button" data-full="https://images.unsplash.com/photo-1543372195-1d3915d8c0f6?auto=format&fit=crop&w=1600&q=75"><img src="https://images.unsplash.com/photo-1543372195-1d3915d8c0f6?auto=format&fit=crop&w=900&q=70" alt="Varanda com banco de madeira e janela de venezianas" loading="lazy" width="900" height="600"></button>
+        <button class="g-item tall" type="button" data-full="https://images.unsplash.com/photo-1629140727571-9b5c6f6267b4?auto=format&fit=crop&w=1200&q=75"><img src="https://images.unsplash.com/photo-1629140727571-9b5c6f6267b4?auto=format&fit=crop&w=500&q=70" alt="Suíte Serra com cama de madeira e luz baixa" loading="lazy" width="500" height="900"></button>
+        <button class="g-item wide" type="button" data-full="https://images.unsplash.com/photo-1540304453527-62f979142a17?auto=format&fit=crop&w=1600&q=75"><img src="https://images.unsplash.com/photo-1540304453527-62f979142a17?auto=format&fit=crop&w=600&q=70" alt="Mesa do café com xícaras, suco e frutas" loading="lazy" width="600" height="400"></button>
+        <button class="g-item wide" type="button" data-full="https://images.unsplash.com/photo-1645447556616-e9d1c52e8037?auto=format&fit=crop&w=1600&q=75"><img src="https://images.unsplash.com/photo-1645447556616-e9d1c52e8037?auto=format&fit=crop&w=900&q=70" alt="Piscina com coqueiro inclinado sobre a água" loading="lazy" width="900" height="450"></button>
+        <button class="g-item tall" type="button" data-full="https://images.unsplash.com/photo-1603122747359-ec6e6bd89c7c?auto=format&fit=crop&w=1200&q=75"><img src="https://images.unsplash.com/photo-1603122747359-ec6e6bd89c7c?auto=format&fit=crop&w=500&q=70" alt="Salão à noite com velas na mesa e espelho antigo" loading="lazy" width="500" height="900"></button>
+        <button class="g-item" type="button" data-full="https://images.unsplash.com/photo-1776763018821-8feeaeeee0a5?auto=format&fit=crop&w=1600&q=75"><img src="https://images.unsplash.com/photo-1776763018821-8feeaeeee0a5?auto=format&fit=crop&w=600&q=70" alt="Sala de leitura com poltronas e luminárias de pé" loading="lazy" width="600" height="400"></button>
+        <button class="g-item wide" type="button" data-full="https://images.unsplash.com/photo-1535567465397-7523840f2ae9?auto=format&fit=crop&w=1600&q=75"><img src="https://images.unsplash.com/photo-1535567465397-7523840f2ae9?auto=format&fit=crop&w=900&q=70" alt="Pratos do café vistos de cima sobre mesa de madeira" loading="lazy" width="900" height="450"></button>
+        <button class="g-item" type="button" data-full="https://images.unsplash.com/photo-1667125095636-dce94dcbdd96?auto=format&fit=crop&w=1400&q=75"><img src="https://images.unsplash.com/photo-1667125095636-dce94dcbdd96?auto=format&fit=crop&w=600&q=70" alt="Quarto Família com tapete estampado e duas camas" loading="lazy" width="600" height="400"></button>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="quotes-title">
+      <div class="section-head">
+        <h2 id="quotes-title">Quem já <em>dormiu aqui</em></h2>
+        <div>
+          <span class="fake-label">Depoimentos fictícios, para demonstração</span>
+          <p>O que a gente mais escuta na hora do check-out.</p>
+        </div>
+      </div>
+      <div class="quotes">
+        <figure class="quote">
+          <blockquote>Viemos para o São João e passamos o dia na piscina antes de cada noite de forró. Voltar para o sítio de madrugada, com aquele friozinho, foi o melhor da viagem.</blockquote>
+          <figcaption>Mariana e Pedro<span>de Recife, junho</span></figcaption>
+        </figure>
+        <figure class="quote">
+          <blockquote>O cuscuz de dona Rita vale a diária.</blockquote>
+          <figcaption>Seu Raimundo<span>de João Pessoa</span></figcaption>
+        </figure>
+        <figure class="quote">
+          <blockquote>Trouxe a Pipoca e ela foi recebida melhor do que eu. Quarto limpo e silêncio de verdade.</blockquote>
+          <figcaption>Thiago<span>de Natal</span></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section visit" id="chegar">
+      <div class="route">
+        <h2>Como chegar</h2>
+        <address><svg class="ico" aria-hidden="true"><use href="#i-pin"/></svg>Rua fictícia, 40, zona rural de Lagoa Seca (PB)</address>
+        <p>Saindo de Campina Grande, siga em direção a Lagoa Seca. A entrada do sítio tem placa de madeira e fica antes do centro da cidade. Estrada toda asfaltada.</p>
+        <p>Check-in das 14h às 21h. Chegando mais tarde, avise no WhatsApp que alguém espera no portão.</p>
+        <a class="pill-btn" href="https://www.google.com/maps/search/?api=1&query=Lagoa%20Seca%2C%20Para%C3%ADba" target="_blank" rel="noopener">Abrir no mapa <span class="dot"><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
+      </div>
+      <div class="faq">
+        <h2>Perguntas de quem vai reservar</h2>
+        <details><summary>Qual o horário de check-in e check-out?<svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Entrada a partir das 14h e saída até as 12h. Se o quarto estiver livre, dá para ficar até as 15h pagando meia diária.</p></details>
+        <details><summary>Posso levar meu cachorro?<svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Pode, se for de pequeno porte. Ele fica na Suíte Serra ou em outro quarto do térreo, com taxa de R$ 40 por diária. Avise na hora de reservar.</p></details>
+        <details><summary>Como funciona o cancelamento?<svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>A reserva fica garantida com 30% de sinal no Pix. Cancelando até 7 dias antes da entrada, devolvemos tudo. Depois disso, o sinal vira crédito para usar em até 6 meses.</p></details>
+        <details><summary>Criança paga?<svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Até 5 anos, no quarto dos pais, não paga. De 6 a 12 anos, a diária extra é de R$ 60 com café.</p></details>
+      </div>
+    </section>
+
+    <section class="cta">
+      <h2>Separa as datas que a gente <em>prepara o quarto</em>.</h2>
+      <a class="pill-btn accent" href="#reserva">Pedir reserva <span class="dot"><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <div class="foot-row">
+      <span>Pousada Aroá · empresa fictícia para demonstração</span>
+      <span>Fotos: Unsplash (licença Unsplash)</span>
+    </div>
+    <div class="wordmark" aria-hidden="true">aroá<span>.</span></div>
+    <p class="credito-autor"><a class="back-link" href="/"><svg class="ico" aria-hidden="true"><use href="#i-back"/></svg>Ver outros modelos</a> · Site feito por <a href="https://tarciodiniz.com" rel="author">Tarcio Diniz</a>, desenvolvedor</p>
+  </footer>
+
+  <dialog class="lightbox" id="lightbox" aria-label="Foto ampliada">
+    <figure>
+      <img id="lightbox-img" src="" alt="">
+      <figcaption id="lightbox-caption"></figcaption>
+    </figure>
+    <div class="lb-bar">
+      <button class="lb-btn" type="button" id="lightbox-prev" aria-label="Foto anterior"><svg class="ico" aria-hidden="true"><use href="#i-left"/></svg></button>
+      <button class="lb-btn" type="button" id="lightbox-close" autofocus aria-label="Fechar foto"><svg class="ico" aria-hidden="true"><use href="#i-close"/></svg></button>
+      <button class="lb-btn" type="button" id="lightbox-next" aria-label="Próxima foto"><svg class="ico" aria-hidden="true"><use href="#i-right"/></svg></button>
+    </div>
+  </dialog>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
+<script>
+  const MIN_GUESTS = 1;
+  const MAX_GUESTS = 6;
+  const DAY_MS = 24 * 60 * 60 * 1000;
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+  const form = document.getElementById("reserva");
+  const checkin = document.getElementById("checkin");
+  const checkout = document.getElementById("checkout");
+  const guestsOut = document.getElementById("guests");
+  const roomSelect = document.getElementById("room");
+  const nightsText = document.getElementById("nights");
+  const formError = document.getElementById("form-error");
+  let guests = Number(guestsOut.textContent);
+
+  // Date inputs speak ISO (yyyy-mm-dd); building it from local parts avoids the UTC shift of toISOString.
+  function toIsoDate(date) {
+    const pad = (n) => String(n).padStart(2, "0");
+    return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
+  }
+
+  function parseIsoDate(value) {
+    const [year, month, day] = value.split("-").map(Number);
+    return new Date(year, month - 1, day);
+  }
+
+  function toBrDate(value) {
+    return parseIsoDate(value).toLocaleDateString("pt-BR");
+  }
+
+  function countNights() {
+    if (!checkin.value || !checkout.value) return 0;
+    return Math.round((parseIsoDate(checkout.value) - parseIsoDate(checkin.value)) / DAY_MS);
+  }
+
+  function addDays(value, days) {
+    const date = parseIsoDate(value);
+    date.setDate(date.getDate() + days);
+    return toIsoDate(date);
+  }
+
+  function updateNights() {
+    const nights = countNights();
+    nightsText.textContent = nights > 0 ? `${nights} ${nights === 1 ? "noite" : "noites"}, ${guests} ${guests === 1 ? "hóspede" : "hóspedes"}` : "Escolha a entrada e a saída.";
+  }
+
+  function syncCheckout() {
+    if (!checkin.value) return;
+    const earliest = addDays(checkin.value, 1);
+    checkout.min = earliest;
+    if (!checkout.value || checkout.value < earliest) checkout.value = earliest;
+  }
+
+  function setGuests(value) {
+    guests = Math.min(MAX_GUESTS, Math.max(MIN_GUESTS, value));
+    guestsOut.textContent = guests;
+    document.getElementById("guests-less").disabled = guests === MIN_GUESTS;
+    document.getElementById("guests-more").disabled = guests === MAX_GUESTS;
+    updateNights();
+  }
+
+  function validationMessage() {
+    if (!checkin.value || !checkout.value) return "Escolha a data de entrada e a de saída.";
+    if (checkin.value < checkin.min) return "A entrada não pode ser antes de hoje.";
+    if (countNights() < 1) return "A saída precisa ser depois da entrada.";
+    return "";
+  }
+
+  function bookingMessage() {
+    const nights = countNights();
+    const lines = [
+      "Olá! Quero pedir uma reserva na Pousada Aroá.",
+      `Entrada: ${toBrDate(checkin.value)}`,
+      `Saída: ${toBrDate(checkout.value)} (${nights} ${nights === 1 ? "noite" : "noites"})`,
+      `Hóspedes: ${guests}`,
+    ];
+    if (roomSelect.value) lines.push(`Quarto: ${roomSelect.value}`);
+    return lines.join("\n");
+  }
+
+  checkin.min = toIsoDate(new Date());
+  checkout.min = addDays(checkin.min, 1);
+  checkin.addEventListener("change", () => { syncCheckout(); updateNights(); });
+  checkout.addEventListener("change", updateNights);
+  document.getElementById("guests-less").addEventListener("click", () => setGuests(guests - 1));
+  document.getElementById("guests-more").addEventListener("click", () => setGuests(guests + 1));
+  setGuests(guests);
+
+  // Demo has no real number: wa.me without a phone lets the viewer pick the chat.
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const problem = validationMessage();
+    formError.textContent = problem;
+    formError.hidden = !problem;
+    if (problem) return;
+    window.open(`https://wa.me/?text=${encodeURIComponent(bookingMessage())}`, "_blank", "noopener");
+  });
+
+  function scrollToTarget(target) {
+    target.scrollIntoView({ behavior: reduceMotion.matches ? "auto" : "smooth", block: "start" });
+  }
+
+  document.querySelectorAll("[data-room]").forEach((button) => {
+    button.addEventListener("click", () => {
+      roomSelect.value = button.dataset.room;
+      scrollToTarget(form);
+      checkin.focus({ preventScroll: true });
+    });
+  });
+
+  // Smooth only on in-page link clicks; a global smooth scroll-behavior also animates the browser's scroll restoration on reload.
+  document.querySelectorAll('a[href^="#"]').forEach((link) => {
+    link.addEventListener("click", (event) => {
+      const target = link.hash && document.querySelector(link.hash);
+      if (!target) return;
+      event.preventDefault();
+      scrollToTarget(target);
+      history.replaceState(null, "", link.hash);
+    });
+  });
+
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightbox-img");
+  const lightboxCaption = document.getElementById("lightbox-caption");
+  const galleryItems = [...document.querySelectorAll(".g-item")];
+  let galleryIndex = 0;
+
+  function showPhoto(index) {
+    galleryIndex = (index + galleryItems.length) % galleryItems.length;
+    const item = galleryItems[galleryIndex];
+    const thumb = item.querySelector("img");
+    lightboxImg.src = item.dataset.full;
+    lightboxImg.alt = thumb.alt;
+    lightboxCaption.textContent = `${thumb.alt} (${galleryIndex + 1} de ${galleryItems.length})`;
+  }
+
+  galleryItems.forEach((item, index) => {
+    item.setAttribute("aria-label", `Ampliar foto: ${item.querySelector("img").alt}`);
+    item.addEventListener("click", () => {
+      showPhoto(index);
+      lightbox.showModal();
+    });
+  });
+  document.getElementById("lightbox-prev").addEventListener("click", () => showPhoto(galleryIndex - 1));
+  document.getElementById("lightbox-next").addEventListener("click", () => showPhoto(galleryIndex + 1));
+  document.getElementById("lightbox-close").addEventListener("click", () => lightbox.close());
+  // Esc is handled by <dialog> itself; arrows are ours.
+  lightbox.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowLeft") showPhoto(galleryIndex - 1);
+    if (event.key === "ArrowRight") showPhoto(galleryIndex + 1);
+  });
+  // A click that lands on the dialog box itself (not its children) is a click on the backdrop.
+  lightbox.addEventListener("click", (event) => { if (event.target === lightbox) lightbox.close(); });
+  lightbox.addEventListener("close", () => galleryItems[galleryIndex].focus());
+
+  if (window.gsap && window.ScrollTrigger) {
+    gsap.registerPlugin(ScrollTrigger);
+    const motion = gsap.matchMedia();
+    motion.add("(prefers-reduced-motion: no-preference)", () => {
+      gsap.from(".hero h1 .line > span", { yPercent: 105, duration: 0.9, ease: "power4.out", stagger: 0.1 });
+      gsap.from(".hero-media img", { scale: 1.08, duration: 1.8, ease: "power2.out" });
+      gsap.from(".booking", { y: 32, autoAlpha: 0, duration: 0.9, delay: 0.3, ease: "power3.out" });
+      gsap.from(".hero .tag", { y: 12, autoAlpha: 0, duration: 0.5, delay: 0.5, stagger: 0.06 });
+      gsap.to(".hero-media", { yPercent: 10, ease: "none", scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true } });
+
+      gsap.utils.toArray(".section-head h2, .intro h2").forEach((title) => {
+        gsap.from(title, { y: 28, autoAlpha: 0, duration: 0.8, ease: "power3.out", scrollTrigger: { trigger: title, start: "top 86%", once: true } });
+      });
+      ScrollTrigger.batch(".room, .perk, .spot, .quote, .g-item", {
+        start: "top 90%",
+        once: true,
+        onEnter: (batch) => gsap.from(batch, { y: 36, autoAlpha: 0, duration: 0.7, ease: "power3.out", stagger: 0.08 }),
+      });
+
+      const rulerTrigger = { trigger: ".ruler", start: "top 80%", once: true };
+      gsap.from(".ruler-fill", { scaleX: 0, duration: 1.6, ease: "power2.inOut", scrollTrigger: rulerTrigger });
+      gsap.from(".ruler-mark", { y: 14, autoAlpha: 0, duration: 0.5, ease: "power2.out", stagger: 0.35, scrollTrigger: rulerTrigger });
+      document.querySelectorAll("[data-count]").forEach((el) => {
+        const state = { value: 0 };
+        gsap.to(state, {
+          value: Number(el.dataset.count), duration: 1.6, ease: "power2.inOut", snap: { value: 1 },
+          scrollTrigger: rulerTrigger,
+          onUpdate: () => { el.textContent = state.value; },
+        });
+      });
+
+      gsap.from(".wordmark", { yPercent: 40, autoAlpha: 0, duration: 1, ease: "power3.out", scrollTrigger: { trigger: "footer", start: "top 90%", once: true } });
+    });
+  }
+</script>
+<script>
+  // Keeps the browser chrome (Safari, Arc, Chrome on Android) the same color as whatever sits under the top edge.
+  (() => {
+    const meta = document.querySelector('meta[name="theme-color"]');
+    if (!meta) return;
+    // A 1x1 canvas normalizes any CSS color (rgb, rgba, color-mix, color(srgb ...)) into plain bytes.
+    const pixel = document.createElement("canvas").getContext("2d", { willReadFrequently: true });
+    const rgba = (color) => { pixel.clearRect(0, 0, 1, 1); pixel.fillStyle = "#000"; pixel.fillStyle = color; pixel.fillRect(0, 0, 1, 1); return pixel.getImageData(0, 0, 1, 1).data; };
+    const toHex = (color) => "#" + [...rgba(color).slice(0, 3)].map((n) => n.toString(16).padStart(2, "0")).join("");
+    const opaque = (color) => color !== "transparent" && rgba(color)[3] > 127;
+    // Every layer under the point, top first: the first opaque background is the color the eye sees.
+    const colorAtTop = () => {
+      for (const el of document.elementsFromPoint(window.innerWidth / 2, 1)) {
+        const color = getComputedStyle(el).backgroundColor;
+        if (opaque(color)) return toHex(color);
+      }
+      return toHex(getComputedStyle(document.documentElement).backgroundColor);
+    };
+    let queued = false;
+    const sync = () => {
+      queued = false;
+      const color = colorAtTop();
+      if (meta.content !== color) meta.content = color;
+    };
+    let settle = 0;
+    // A second read after scrolling stops catches headers that fade their background in.
+    const request = () => {
+      if (!queued) { queued = true; requestAnimationFrame(sync); }
+      clearTimeout(settle);
+      settle = setTimeout(() => requestAnimationFrame(sync), 450);
+    };
+    window.addEventListener("scroll", request, { passive: true });
+    window.addEventListener("resize", request);
+    window.addEventListener("load", request);
+    request();
+  })();
+</script>
+</body>
+</html>

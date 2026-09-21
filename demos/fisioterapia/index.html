@@ -1,0 +1,633 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#14302e">
+<meta name="robots" content="noindex, nofollow">
+<title>Sálvia Fisioterapia · Campina Grande (demonstração)</title>
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&w=1200&q=70">
+<style>
+  :root {
+    --bg: #f1f2ed;
+    --surface: #fbfbf8;
+    --ink: #14302e;
+    --ink-soft: #34504c;
+    --muted: #5f716a;
+    --line: #dbe1d8;
+    --accent: #4f7a5e;
+    --accent-ink: #ffffff;
+    --accent-soft: #dde8de;
+    --dark: #12302f;
+    --dark-soft: #1c3f3d;
+    --on-dark: #eef2eb;
+    --on-dark-muted: #a9bdb4;
+    --shade: rgba(10, 30, 28, 0.86);
+    --shade-clear: rgba(10, 30, 28, 0);
+    --frost: rgba(251, 251, 248, 0.78);
+    --frost-line: rgba(255, 255, 255, 0.7);
+    --header-fill: rgba(241, 242, 237, 0.9);
+    --shadow: 0 22px 44px -24px rgba(20, 48, 46, 0.45);
+    --radius-xl: 28px;
+    --radius-lg: 20px;
+    --radius-md: 14px;
+    --radius-pill: 999px;
+    --gutter: clamp(16px, 4vw, 40px);
+    --max: 1240px;
+    --section-gap: clamp(72px, 10vw, 128px);
+    --font-title: "Fraunces", Georgia, "Times New Roman", serif;
+    --font: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-padding-top: 96px; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font); font-size: 16px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+  img { display: block; max-width: 100%; }
+  a { color: inherit; text-decoration: none; }
+  button, input, textarea { font: inherit; color: inherit; }
+  .wrap { max-width: var(--max); margin: 0 auto; padding-inline: var(--gutter); }
+  .ico { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; display: block; flex: none; }
+
+  .notice { background: var(--ink); color: var(--on-dark); font-size: 13px; text-align: center; padding: 8px var(--gutter); }
+  .notice strong { color: var(--accent-soft); }
+
+  .header { position: sticky; top: 0; z-index: 30; transition: background-color .25s ease, box-shadow .25s ease; }
+  .header.is-compact { background: var(--header-fill); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); box-shadow: 0 1px 0 var(--line); }
+  .topbar { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 14px; }
+  .logo { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-title); font-weight: 500; font-size: 28px; letter-spacing: -0.03em; }
+  .logo .ico { width: 26px; height: 26px; color: var(--accent); stroke-width: 1.8; }
+  .nav { display: flex; gap: 28px; font-weight: 500; font-size: 15px; color: var(--ink-soft); }
+  .nav a:hover { color: var(--accent); }
+
+  .btn { display: inline-flex; align-items: center; gap: 12px; padding: 6px 6px 6px 20px; border-radius: var(--radius-pill); border: 0; background: var(--ink); color: var(--on-dark); font-weight: 600; font-size: 15px; cursor: pointer; transition: translate .2s ease, background-color .2s ease; }
+  .btn:hover { translate: 0 -2px; }
+  .btn .dot { width: 38px; height: 38px; border-radius: 50%; background: var(--accent); color: var(--accent-ink); display: grid; place-items: center; flex: none; }
+  .btn.light { background: var(--surface); color: var(--ink); }
+  .btn.light .dot { background: var(--ink); color: var(--on-dark); }
+  .btn.quiet { background: transparent; color: var(--ink); border: 1px solid var(--line); padding: 12px 20px; }
+  .btn.quiet:hover { border-color: var(--ink); }
+
+  .hero { display: grid; grid-template-columns: 1fr 1.08fr; gap: clamp(28px, 4vw, 56px); align-items: stretch; padding-block: clamp(16px, 3vw, 32px) 0; }
+  .hero-copy { display: flex; flex-direction: column; justify-content: center; padding-block: clamp(8px, 3vw, 40px); }
+  .eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; color: var(--accent); margin: 0 0 20px; }
+  .eyebrow::before { content: ""; width: 28px; height: 1px; background: currentColor; }
+  .hero h1 { font-family: var(--font-title); font-weight: 400; font-size: clamp(42px, 5vw, 76px); line-height: 1.02; letter-spacing: -0.03em; margin: 0 0 24px; }
+  .hero h1 .line { display: block; overflow: hidden; padding-bottom: .08em; }
+  .hero h1 .line > span { display: block; }
+  .hero h1 em { font-style: italic; color: var(--accent); }
+  .lead { color: var(--muted); font-size: 18px; margin: 0 0 32px; max-width: 44ch; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 32px; font-size: 13px; }
+  .tag { display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: var(--radius-pill); background: var(--accent-soft); color: var(--ink-soft); font-weight: 500; }
+  .tag .ico { width: 14px; height: 14px; color: var(--accent); }
+
+  .hero-photo { position: relative; border-radius: 240px 240px var(--radius-xl) var(--radius-xl); overflow: hidden; min-height: min(76vh, 680px); background: var(--line); }
+  .hero-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 40%; }
+  .proof { position: absolute; left: clamp(16px, 3vw, 28px); bottom: clamp(16px, 3vw, 28px); z-index: 1; display: flex; align-items: center; gap: 16px; padding: 16px 20px; border-radius: var(--radius-lg); background: var(--frost); border: 1px solid var(--frost-line); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); box-shadow: var(--shadow); }
+  .proof b { font-family: var(--font-title); font-weight: 500; font-size: 48px; line-height: 1; letter-spacing: -0.03em; }
+  .proof .stars { display: flex; gap: 2px; color: var(--accent); margin-bottom: 4px; }
+  .proof .stars .ico { width: 15px; height: 15px; fill: currentColor; stroke: none; }
+  .proof p { margin: 0; font-size: 13px; color: var(--ink-soft); line-height: 1.35; }
+
+  .section { margin-top: var(--section-gap); }
+  .section-head { display: grid; grid-template-columns: 1.1fr 1fr; gap: 24px 48px; align-items: start; margin-bottom: 40px; }
+  .kicker { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: .12em; color: var(--accent); margin: 0 0 12px; }
+  .section-head h2, .title { font-family: var(--font-title); font-weight: 400; font-size: clamp(34px, 4.6vw, 60px); line-height: 1.02; letter-spacing: -0.03em; margin: 0; }
+  .section-head > p { margin: 30px 0 0; color: var(--muted); max-width: 46ch; }
+
+  .specialties { display: grid; grid-template-columns: repeat(3, 1fr); grid-auto-rows: 1fr; gap: 20px; list-style: none; margin: 0; padding: 0; }
+  .specialties > li { display: flex; }
+  .spec { flex: 1; position: relative; display: flex; flex-direction: column; justify-content: flex-end; min-height: 420px; border-radius: var(--radius-lg); overflow: hidden; color: var(--on-dark); background: var(--dark); transition: translate .3s ease, box-shadow .3s ease; }
+  .spec:hover { translate: 0 -6px; box-shadow: var(--shadow); }
+  .spec img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: scale .6s ease; }
+  .spec:hover img { scale: 1.05; }
+  .spec::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, var(--shade) 0%, var(--shade) 18%, var(--shade-clear) 66%); }
+  .spec-body { position: relative; z-index: 1; padding: 22px; display: flex; align-items: flex-end; gap: 16px; }
+  .spec-body > div { flex: 1; }
+  .spec h3 { font-family: var(--font-title); font-weight: 500; font-size: 26px; letter-spacing: -0.02em; line-height: 1.1; margin: 0 0 6px; }
+  .spec p { margin: 0; font-size: 14px; color: var(--on-dark-muted); }
+  .spec .dot { width: 44px; height: 44px; border-radius: 50%; background: var(--surface); color: var(--ink); display: grid; place-items: center; flex: none; transition: background-color .2s ease, color .2s ease; }
+  .spec:hover .dot { background: var(--accent); color: var(--accent-ink); }
+
+  .steps-wrap { background: var(--surface); border-radius: var(--radius-xl); padding: clamp(28px, 5vw, 64px); }
+  .steps-track { position: relative; }
+  .steps { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; list-style: none; margin: 0; padding: 0; counter-reset: step; }
+  .steps-line { position: absolute; z-index: 0; top: 27px; left: 28px; right: 28px; height: 1px; background: var(--line); }
+  .steps-line span { display: block; height: 100%; background: var(--accent); transform-origin: left center; }
+  .step { position: relative; }
+  .step-num { position: relative; z-index: 1; width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center; background: var(--accent-soft); color: var(--accent); font-family: var(--font-title); font-size: 24px; margin-bottom: 22px; box-shadow: 0 0 0 8px var(--surface); }
+  .step h3 { font-size: 19px; margin: 0 0 8px; letter-spacing: -0.01em; }
+  .step p { margin: 0; color: var(--muted); font-size: 15px; }
+  .step small { display: inline-block; margin-top: 12px; font-size: 13px; font-weight: 600; color: var(--accent); }
+
+  .dark { background: var(--dark); color: var(--on-dark); border-radius: var(--radius-xl); padding: clamp(40px, 7vw, 88px) clamp(24px, 5vw, 64px); display: grid; grid-template-columns: 1.25fr 1fr; gap: 48px; align-items: center; overflow: hidden; }
+  .dark .title { color: var(--on-dark); margin-bottom: 18px; }
+  .dark-copy > p { color: var(--on-dark-muted); margin: 0 0 40px; max-width: 46ch; }
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .stat { background: var(--dark-soft); border-radius: var(--radius-lg); padding: 22px 20px; }
+  .stat b { display: block; font-family: var(--font-title); font-weight: 400; font-size: clamp(36px, 4vw, 52px); letter-spacing: -0.03em; line-height: 1; margin-bottom: 10px; }
+  .stat span { font-size: 13px; color: var(--on-dark-muted); }
+  .arch { justify-self: center; width: min(380px, 100%); aspect-ratio: 4 / 5; border-radius: 200px 200px var(--radius-lg) var(--radius-lg); overflow: hidden; box-shadow: 0 0 0 12px var(--dark-soft); }
+  .arch img { width: 100%; height: 100%; object-fit: cover; }
+
+  .team { display: grid; grid-template-columns: 1fr 1.2fr; gap: clamp(24px, 4vw, 56px); align-items: stretch; }
+  .team-photo { border-radius: var(--radius-xl); overflow: hidden; min-height: 460px; background: var(--line); }
+  .team-photo img { width: 100%; height: 100%; object-fit: cover; }
+  .team-list { list-style: none; margin: 28px 0 0; padding: 0; }
+  .member { display: flex; gap: 20px; align-items: flex-start; padding-block: 22px; border-top: 1px solid var(--line); }
+  .monogram { width: 64px; height: 64px; border-radius: 50%; display: grid; place-items: center; flex: none; background: var(--accent-soft); color: var(--accent); font-family: var(--font-title); font-size: 24px; }
+  .member h3 { margin: 0; font-size: 19px; letter-spacing: -0.01em; }
+  .member .role { margin: 2px 0 8px; font-size: 14px; font-weight: 600; color: var(--accent); }
+  .member p { margin: 0; color: var(--muted); font-size: 15px; }
+
+  .pay { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px 40px; padding: clamp(24px, 4vw, 40px); border-radius: var(--radius-xl); border: 1px solid var(--line); }
+  .pay h2 { font-family: var(--font-title); font-weight: 400; font-size: clamp(26px, 3vw, 36px); letter-spacing: -0.02em; line-height: 1.1; margin: 0 0 6px; }
+  .pay p { margin: 0; color: var(--muted); font-size: 15px; max-width: 48ch; }
+  .pills { display: flex; flex-wrap: wrap; gap: 10px; }
+  .pill { display: inline-flex; align-items: center; gap: 8px; padding: 12px 18px; border-radius: var(--radius-pill); background: var(--surface); border: 1px solid var(--line); font-weight: 600; font-size: 15px; }
+  .pill .ico { color: var(--accent); }
+  .pill.muted { background: transparent; color: var(--ink-soft); font-weight: 500; }
+
+  .quotes { display: grid; grid-template-columns: repeat(3, 1fr); grid-auto-rows: 1fr; gap: 20px; list-style: none; margin: 0; padding: 0; }
+  .quote { display: flex; flex-direction: column; background: var(--surface); border-radius: var(--radius-lg); padding: 28px; transition: translate .3s ease, box-shadow .3s ease; }
+  .quote:hover { translate: 0 -4px; box-shadow: var(--shadow); }
+  .quote .ico { width: 30px; height: 30px; color: var(--accent); fill: currentColor; stroke: none; margin-bottom: 16px; }
+  .quote blockquote { margin: 0 0 24px; font-family: var(--font-title); font-size: 20px; line-height: 1.4; flex: 1; }
+  .quote footer { font-size: 14px; color: var(--muted); }
+  .quote footer b { color: var(--ink); display: block; }
+  .fictional { display: inline-flex; align-items: center; gap: 6px; margin-top: 16px; padding: 6px 12px; border-radius: var(--radius-pill); background: var(--accent-soft); color: var(--ink-soft); font-size: 13px; font-weight: 600; }
+
+  .visit { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .visit-card { background: var(--surface); border-radius: var(--radius-xl); padding: clamp(24px, 4vw, 40px); display: flex; flex-direction: column; gap: 20px; }
+  .open-now { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; }
+  .open-now::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+  .open-now.is-closed::before { background: var(--muted); }
+  .hours { width: 100%; border-collapse: collapse; font-size: 15px; }
+  .hours td { padding: 12px 0; border-bottom: 1px solid var(--line); }
+  .hours td:last-child { text-align: right; font-weight: 600; }
+  .address { display: flex; gap: 12px; align-items: flex-start; margin: 0; color: var(--ink-soft); }
+  .address .ico { margin-top: 3px; color: var(--accent); }
+  .visit-card .btn { align-self: flex-start; }
+  .visit-card .note { margin: 0; color: var(--muted); font-size: 15px; }
+
+  .faq { display: grid; grid-template-columns: 1fr 1.4fr; gap: 40px; }
+  details { border-bottom: 1px solid var(--line); padding-block: 20px; }
+  summary { list-style: none; cursor: pointer; font-weight: 600; font-size: 18px; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+  summary::-webkit-details-marker { display: none; }
+  summary .toggle { width: 32px; height: 32px; border-radius: 50%; background: var(--accent-soft); color: var(--accent); display: grid; place-items: center; flex: none; transition: rotate .25s ease; }
+  summary .toggle .ico { width: 16px; height: 16px; }
+  details[open] summary .toggle { rotate: 45deg; }
+  details p { color: var(--muted); margin: 12px 0 0; max-width: 60ch; }
+
+  .booking { background: var(--accent); color: var(--accent-ink); border-radius: var(--radius-xl); padding: clamp(28px, 6vw, 64px); display: grid; grid-template-columns: 1fr 1.1fr; gap: 40px; align-items: start; }
+  .booking .title { color: var(--accent-ink); margin-bottom: 16px; }
+  .booking-copy p { margin: 0; opacity: .9; max-width: 40ch; }
+  .form { display: grid; gap: 16px; background: var(--surface); color: var(--ink); border-radius: var(--radius-lg); padding: clamp(20px, 3vw, 32px); }
+  .field { display: grid; gap: 6px; }
+  .field label, .field legend { font-size: 14px; font-weight: 600; }
+  .field input, .field textarea { width: 100%; padding: 14px 16px; border-radius: var(--radius-md); border: 1px solid var(--line); background: var(--bg); font-size: 16px; }
+  .field textarea { resize: vertical; min-height: 96px; }
+  .field input:focus, .field textarea:focus { outline: 2px solid var(--accent); outline-offset: 1px; border-color: transparent; }
+  fieldset.field { border: 0; margin: 0; padding: 0; }
+  .choices { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
+  .choice { position: relative; }
+  .choice input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; pointer-events: none; }
+  .choice span { display: inline-block; padding: 10px 16px; border-radius: var(--radius-pill); border: 1px solid var(--line); font-size: 15px; cursor: pointer; transition: background-color .2s ease, color .2s ease, border-color .2s ease; }
+  .choice input:checked + span { background: var(--ink); color: var(--on-dark); border-color: var(--ink); }
+  .choice input:focus-visible + span { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .form .btn { justify-self: start; }
+  .form-hint { margin: 0; font-size: 13px; color: var(--muted); }
+
+  .site-footer { margin-top: var(--section-gap); padding-bottom: 72px; overflow: hidden; }
+  .foot-row { display: flex; flex-wrap: wrap; gap: 16px; justify-content: space-between; color: var(--muted); font-size: 13px; border-top: 1px solid var(--line); padding-top: 24px; }
+  .wordmark { font-family: var(--font-title); font-weight: 400; font-size: clamp(96px, 22vw, 320px); letter-spacing: -0.05em; line-height: .85; margin-top: 32px; white-space: nowrap; color: var(--ink); }
+  .wordmark span { color: var(--accent); }
+  .back-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 32px; font-weight: 600; font-size: 15px; color: var(--ink); }
+  .back-link:hover { color: var(--accent); }
+  .credito-autor { margin: 16px 0 0; font-size: 14px; color: var(--muted); }
+  .credito-autor a { color: var(--ink); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--accent); }
+  .credito-autor a:hover { color: var(--accent); }
+
+  @media (max-width: 960px) {
+    .nav { display: none; }
+    .hero, .section-head, .dark, .team, .visit, .faq, .booking { grid-template-columns: 1fr; }
+    .section-head > p { margin-top: 0; }
+    .hero-photo { min-height: 460px; border-radius: 180px 180px var(--radius-xl) var(--radius-xl); }
+    .specialties, .quotes { grid-template-columns: repeat(2, 1fr); }
+    .steps { grid-template-columns: repeat(2, 1fr); }
+    .steps-line { display: none; }
+    .team-photo { min-height: 320px; }
+  }
+  @media (max-width: 640px) {
+    .header .btn .label-long { display: none; }
+    /* Native swipe instead of a pinned horizontal scroll: vertical gestures stay vertical on touch. */
+    .specialties { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 14px; margin-inline: calc(var(--gutter) * -1); padding-inline: var(--gutter); scroll-padding-inline: var(--gutter); scrollbar-width: none; }
+    .specialties::-webkit-scrollbar { display: none; }
+    .specialties > li { flex: 0 0 84%; scroll-snap-align: start; }
+    .spec { min-height: 400px; }
+    .quotes, .steps, .stats { grid-template-columns: 1fr; }
+    .hero-photo { min-height: 400px; border-radius: 150px 150px var(--radius-xl) var(--radius-xl); }
+    .proof b { font-size: 40px; }
+  }
+</style>
+</head>
+<body>
+  <div class="notice" data-aviso="proposta"><strong>Demonstração.</strong> Empresa, preços e avaliações são fictícios. Fotos: Unsplash.</div>
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-back" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M20 11.5a8 8 0 0 1-11.6 7.1L4 20l1.4-4.2A8 8 0 1 1 20 11.5z"/></symbol>
+    <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M5 19c0-8 5-13 14-14 0 9-5 14-13 14"/><path d="M5 19c3-4 6-7 10-9"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-quote" viewBox="0 0 24 24"><path d="M4 18v-5.5C4 8.4 6.2 6 10 5.5v2.7c-1.9.5-2.9 1.7-3 3.8H10V18H4zm10 0v-5.5c0-4.1 2.2-6.5 6-7v2.7c-1.9.5-2.9 1.7-3 3.8h3V18h-6z"/></symbol>
+  </svg>
+
+  <header class="header" id="header">
+    <div class="wrap topbar">
+      <a class="logo" href="#inicio" aria-label="Sálvia Fisioterapia, início"><svg class="ico" aria-hidden="true"><use href="#i-leaf"/></svg>sálvia</a>
+      <nav class="nav" aria-label="Principal">
+        <a href="#especialidades">Especialidades</a>
+        <a href="#primeira-consulta">Primeira consulta</a>
+        <a href="#equipe">Equipe</a>
+        <a href="#onde">Onde estamos</a>
+        <a href="#duvidas">Dúvidas</a>
+      </nav>
+      <a class="btn" href="#agendar"><span>Agendar<span class="label-long"> avaliação</span></span><span class="dot"><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
+    </div>
+  </header>
+
+  <main class="wrap" id="inicio">
+    <section class="hero" aria-label="Apresentação">
+      <div class="hero-copy">
+        <p class="eyebrow">Fisioterapia no Alto Branco, Campina Grande</p>
+        <h1><span class="line"><span>Volte a se mexer</span></span><span class="line"><span><em>sem medo</em> da dor.</span></span></h1>
+        <p class="lead">Uma hora por sessão, com o mesmo fisioterapeuta do começo ao fim e ninguém dividindo a sua maca. Você sai da primeira consulta sabendo o que tem e quantas semanas o tratamento deve levar.</p>
+        <div class="hero-actions">
+          <a class="btn" href="https://wa.me/?text=Ol%C3%A1!%20Quero%20agendar%20uma%20avalia%C3%A7%C3%A3o%20na%20S%C3%A1lvia." target="_blank" rel="noopener">Agendar avaliação <span class="dot"><svg class="ico" aria-hidden="true"><use href="#i-chat"/></svg></span></a>
+          <a class="btn quiet" href="#especialidades">Ver especialidades</a>
+        </div>
+        <ul class="tags" aria-label="Diferenciais" style="list-style:none;padding:0;margin-bottom:0">
+          <li class="tag"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Atendimento individual</li>
+          <li class="tag"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Sessões de 60 minutos</li>
+          <li class="tag"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Recibo para reembolso</li>
+        </ul>
+      </div>
+      <div class="hero-photo">
+        <img src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&w=1200&q=70" alt="Mãos de fisioterapeuta tratando a lombar de um paciente deitado" width="1200" height="1500" fetchpriority="high">
+        <aside class="proof" aria-label="Avaliação no Google">
+          <b>4,9</b>
+          <div>
+            <div class="stars" aria-hidden="true"><svg class="ico"><use href="#i-star"/></svg><svg class="ico"><use href="#i-star"/></svg><svg class="ico"><use href="#i-star"/></svg><svg class="ico"><use href="#i-star"/></svg><svg class="ico"><use href="#i-star"/></svg></div>
+            <p>Nota no Google<br>com 214 avaliações</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="especialidades">
+      <div class="section-head">
+        <div>
+          <p class="kicker">Especialidades</p>
+          <h2>O que a gente trata aqui.</h2>
+        </div>
+        <p>Você não precisa saber qual é a sua. Conte o que sente na avaliação e a gente indica o tratamento. Toque num cartão para perguntar direto pelo WhatsApp.</p>
+      </div>
+      <ul class="specialties">
+        <li><a class="spec" href="https://wa.me/?text=Ol%C3%A1!%20Quero%20saber%20sobre%20fisioterapia%20ortop%C3%A9dica." target="_blank" rel="noopener">
+          <img src="https://images.unsplash.com/photo-1649751361457-01d3a696c7e6?auto=format&fit=crop&w=800&q=70" alt="Fisioterapeuta avaliando o joelho de um paciente" loading="lazy" width="800" height="1000">
+          <div class="spec-body"><div><h3>Ortopédica</h3><p>Joelho, ombro, tornozelo, entorse e tendinite.</p></div><span class="dot"><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span></div>
+        </a></li>
+        <li><a class="spec" href="https://wa.me/?text=Ol%C3%A1!%20Quero%20saber%20sobre%20pilates%20cl%C3%ADnico." target="_blank" rel="noopener">
+          <img src="https://images.unsplash.com/photo-1715780463401-b9ef0567943e?auto=format&fit=crop&w=800&q=70" alt="Aluna usando o arco de pilates sobre o aparelho" loading="lazy" width="800" height="1000">
+          <div class="spec-body"><div><h3>Pilates clínico</h3><p>Turmas de até três pessoas, com fisioterapeuta.</p></div><span class="dot"><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span></div>
+        </a></li>
+        <li><a class="spec" href="https://wa.me/?text=Ol%C3%A1!%20Quero%20saber%20sobre%20RPG." target="_blank" rel="noopener">
+          <img src="https://images.unsplash.com/photo-1764314138160-5f04f4a50dae?auto=format&fit=crop&w=800&q=70" alt="Fisioterapeuta conferindo a postura de uma paciente em pé" loading="lazy" width="800" height="1000">
+          <div class="spec-body"><div><h3>RPG</h3><p>Postura, ombro caído e dor de quem passa o dia sentado.</p></div><span class="dot"><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span></div>
+        </a></li>
+        <li><a class="spec" href="https://wa.me/?text=Ol%C3%A1!%20Quero%20saber%20sobre%20fisioterapia%20esportiva." target="_blank" rel="noopener">
+          <img src="https://images.unsplash.com/photo-1645005513713-9e2b92a687d3?auto=format&fit=crop&w=800&q=70" alt="Fisioterapeuta orientando exercício com halteres" loading="lazy" width="800" height="1000">
+          <div class="spec-body"><div><h3>Esportiva</h3><p>Corrida, futebol e academia. Volta ao treino com prazo.</p></div><span class="dot"><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span></div>
+        </a></li>
+        <li><a class="spec" href="https://wa.me/?text=Ol%C3%A1!%20Quero%20saber%20sobre%20fisioterapia%20no%20p%C3%B3s-operat%C3%B3rio." target="_blank" rel="noopener">
+          <img src="https://images.unsplash.com/photo-1706353399656-210cca727a33?auto=format&fit=crop&w=800&q=70" alt="Fisioterapeuta mobilizando o ombro de uma paciente deitada" loading="lazy" width="800" height="1000">
+          <div class="spec-body"><div><h3>Pós-operatório</h3><p>Joelho, ombro e coluna, seguindo o que o cirurgião pediu.</p></div><span class="dot"><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span></div>
+        </a></li>
+        <li><a class="spec" href="https://wa.me/?text=Ol%C3%A1!%20Quero%20saber%20sobre%20tratamento%20para%20dor%20na%20coluna." target="_blank" rel="noopener">
+          <img src="https://images.unsplash.com/photo-1745327883508-b6cd32e5dde5?auto=format&fit=crop&w=800&q=70" alt="Mãos de fisioterapeuta sobre as costas de um paciente" loading="lazy" width="800" height="1000">
+          <div class="spec-body"><div><h3>Dor na coluna</h3><p>Lombar, cervical, hérnia de disco e ciático.</p></div><span class="dot"><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span></div>
+        </a></li>
+      </ul>
+    </section>
+
+    <section class="section" id="primeira-consulta">
+      <div class="section-head">
+        <div>
+          <p class="kicker">Primeira consulta</p>
+          <h2>O que acontece na sua primeira vez aqui.</h2>
+        </div>
+        <p>A avaliação dura uma hora. Traga exames e laudos que tiver, e venha com roupa que deixe mexer o corpo.</p>
+      </div>
+      <div class="steps-wrap">
+        <div class="steps-track">
+        <div class="steps-line" aria-hidden="true"><span></span></div>
+        <ol class="steps">
+          <li class="step"><span class="step-num">1</span><h3>A gente conversa</h3><p>Onde dói, desde quando, o que piora e o que você quer voltar a fazer.</p><small>15 minutos</small></li>
+          <li class="step"><span class="step-num">2</span><h3>Avaliação física</h3><p>Testes de força, amplitude e postura. Olhamos também os seus exames.</p><small>25 minutos</small></li>
+          <li class="step"><span class="step-num">3</span><h3>Plano por escrito</h3><p>Você leva o diagnóstico funcional, a meta e o número de sessões previsto.</p><small>10 minutos</small></li>
+          <li class="step"><span class="step-num">4</span><h3>Primeiro alívio</h3><p>Já no fim da consulta começamos o tratamento e passamos exercícios para casa.</p><small>10 minutos</small></li>
+        </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dark" aria-label="Números da clínica">
+      <div class="dark-copy">
+        <h2 class="title">Nove anos cuidando de Campina, um paciente por vez.</h2>
+        <p>A clínica começou numa sala só, com uma maca. Hoje são três salas e a mesma regra: quem começa com você, termina com você.</p>
+        <div class="stats">
+          <div class="stat"><b data-count="9">9</b><span>anos de clínica</span></div>
+          <div class="stat"><b data-count="4800">4.800</b><span>pacientes atendidos</span></div>
+          <div class="stat"><b data-count="6">6</b><span>especialidades</span></div>
+        </div>
+      </div>
+      <div class="arch"><img src="https://images.unsplash.com/photo-1645005512942-a17817fb7c11?auto=format&fit=crop&w=800&q=70" alt="Fisioterapeuta ajudando uma paciente a fazer exercício com faixa elástica" loading="lazy" width="800" height="1000"></div>
+    </section>
+
+    <section class="section team" id="equipe">
+      <div class="team-photo"><img src="https://images.unsplash.com/photo-1741522509438-a120c0bb5e88?auto=format&fit=crop&w=900&q=70" alt="Fisioterapeuta fazendo liberação manual nas costas de uma paciente" loading="lazy" width="900" height="1200"></div>
+      <div>
+        <p class="kicker">Equipe</p>
+        <h2 class="title">Três fisioterapeutas, cada um no que faz melhor.</h2>
+        <ul class="team-list">
+          <li class="member"><span class="monogram" aria-hidden="true">HA</span><div><h3>Helena Araújo</h3><p class="role">Ortopedia e pós-operatório</p><p>Fundou a Sálvia. Especialista em fisioterapia traumato-ortopédica, cuida de quem acabou de sair da cirurgia.</p></div></li>
+          <li class="member"><span class="monogram" aria-hidden="true">RN</span><div><h3>Rafael Nóbrega</h3><p class="role">Fisioterapia esportiva</p><p>Corredor de rua. Atende atleta amador e quem quer voltar ao futebol de fim de semana sem se machucar de novo.</p></div></li>
+          <li class="member"><span class="monogram" aria-hidden="true">CT</span><div><h3>Camila Tavares</h3><p class="role">Pilates clínico e RPG</p><p>Cuida da postura e da dor na coluna. Dá as turmas de pilates de manhã cedo e no fim da tarde.</p></div></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section pay" aria-labelledby="pay-title">
+      <div>
+        <h2 id="pay-title">Como pagar</h2>
+        <p>Emitimos recibo com os dados do fisioterapeuta para você pedir reembolso ao seu plano. Pix ou cartão.</p>
+      </div>
+      <div class="pills">
+        <span class="pill"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Particular com recibo para reembolso</span>
+        <span class="pill muted"><svg class="ico" aria-hidden="true"><use href="#i-chat"/></svg>Convênios: consulte pelo WhatsApp</span>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="quotes-title">
+      <div class="section-head">
+        <div>
+          <p class="kicker">Quem passou por aqui</p>
+          <h2 id="quotes-title">Voltar a fazer o que fazia antes.</h2>
+        </div>
+        <div>
+          <p style="margin:30px 0 0;color:var(--muted);max-width:46ch">O que os pacientes contam depois da alta.</p>
+          <span class="fictional">Depoimentos fictícios, escritos para esta demonstração</span>
+        </div>
+      </div>
+      <ul class="quotes">
+        <li class="quote"><svg class="ico" aria-hidden="true"><use href="#i-quote"/></svg><blockquote>Operei o joelho em março e achei que ia mancar pra sempre. Em dez semanas eu já subia a ladeira de casa sem corrimão.</blockquote><footer><b>Marta, 58 anos</b>Pós-operatório de joelho</footer></li>
+        <li class="quote"><svg class="ico" aria-hidden="true"><use href="#i-quote"/></svg><blockquote>Trabalho oito horas sentado e a lombar travava toda sexta. Faz quatro meses que não sei o que é isso.</blockquote><footer><b>Diego, 34 anos</b>Dor na coluna</footer></li>
+        <li class="quote"><svg class="ico" aria-hidden="true"><use href="#i-quote"/></svg><blockquote>Torci o tornozelo antes da meia maratona. O Rafael montou o plano com data da prova e eu corri.</blockquote><footer><b>Juliana, 29 anos</b>Fisioterapia esportiva</footer></li>
+      </ul>
+    </section>
+
+    <section class="section visit" id="onde">
+      <div class="visit-card">
+        <p class="kicker" style="margin:0">Horários</p>
+        <h2 class="title">Antes ou depois do trabalho.</h2>
+        <span class="open-now" id="open-now">Aberto de segunda a sexta, das 7h às 20h</span>
+        <table class="hours">
+          <tr><td>Segunda a sexta</td><td>7h às 20h</td></tr>
+          <tr><td>Sábado</td><td>8h às 12h</td></tr>
+          <tr><td>Domingo e feriado</td><td>Fechado</td></tr>
+        </table>
+      </div>
+      <div class="visit-card">
+        <p class="kicker" style="margin:0">Onde estamos</p>
+        <h2 class="title">No Alto Branco, com estacionamento.</h2>
+        <p class="address"><svg class="ico" aria-hidden="true"><use href="#i-pin"/></svg>Rua fictícia, 250, sala 3, Alto Branco, Campina Grande (PB)</p>
+        <p class="note">Térreo, sem escada. Duas vagas na frente reservadas para pacientes.</p>
+        <a class="btn" href="https://www.google.com/maps/search/?api=1&query=Alto%20Branco%2C%20Campina%20Grande%20PB" target="_blank" rel="noopener">Abrir no mapa <span class="dot"><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
+      </div>
+    </section>
+
+    <section class="section faq" id="duvidas">
+      <div>
+        <p class="kicker">Dúvidas</p>
+        <h2 class="title">Antes de marcar, muita gente pergunta.</h2>
+      </div>
+      <div>
+        <details><summary>Preciso de pedido médico?<span class="toggle" aria-hidden="true"><svg class="ico"><use href="#i-plus"/></svg></span></summary><p>Não. O fisioterapeuta pode avaliar você sem encaminhamento. Se tiver pedido, exame ou laudo, traga, que ajuda na avaliação.</p></details>
+        <details><summary>Quanto tempo dura o tratamento?<span class="toggle" aria-hidden="true"><svg class="ico"><use href="#i-plus"/></svg></span></summary><p>Depende do caso. Você sai da primeira consulta com o número de sessões previsto, e a gente revisa o plano a cada dez sessões.</p></details>
+        <details><summary>Vocês atendem plano de saúde?<span class="toggle" aria-hidden="true"><svg class="ico"><use href="#i-plus"/></svg></span></summary><p>O atendimento é particular, com recibo para reembolso. Muitos planos devolvem parte do valor. Para saber sobre um convênio específico, pergunte pelo WhatsApp.</p></details>
+        <details><summary>Que roupa eu levo?<span class="toggle" aria-hidden="true"><svg class="ico"><use href="#i-plus"/></svg></span></summary><p>Roupa de ginástica ou bermuda e camiseta. Para joelho, bermuda. Para ombro, regata ou top.</p></details>
+        <details><summary>E se eu precisar desmarcar?<span class="toggle" aria-hidden="true"><svg class="ico"><use href="#i-plus"/></svg></span></summary><p>Avise com 12 horas de antecedência pelo WhatsApp e a gente remarca sem custo.</p></details>
+      </div>
+    </section>
+
+    <section class="section booking" id="agendar">
+      <div class="booking-copy">
+        <h2 class="title">Conte o que está sentindo.</h2>
+        <p>Preencha três campos e a mensagem sai pronta no WhatsApp. A gente responde no mesmo dia com os horários livres.</p>
+      </div>
+      <form class="form" id="booking-form" novalidate>
+        <div class="field">
+          <label for="f-name">Seu nome</label>
+          <input id="f-name" name="name" autocomplete="given-name" required>
+        </div>
+        <div class="field">
+          <label for="f-complaint">Queixa principal</label>
+          <textarea id="f-complaint" name="complaint" required placeholder="Ex.: dor no joelho direito quando subo escada"></textarea>
+        </div>
+        <fieldset class="field">
+          <legend>Melhor horário</legend>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="slot" value="manhã" checked><span>Manhã</span></label>
+            <label class="choice"><input type="radio" name="slot" value="tarde"><span>Tarde</span></label>
+            <label class="choice"><input type="radio" name="slot" value="noite, até 20h"><span>Noite, até 20h</span></label>
+            <label class="choice"><input type="radio" name="slot" value="sábado de manhã"><span>Sábado</span></label>
+          </div>
+        </fieldset>
+        <button class="btn" type="submit">Agendar avaliação <span class="dot"><svg class="ico" aria-hidden="true"><use href="#i-chat"/></svg></span></button>
+        <p class="form-hint" id="form-hint" aria-live="polite">Nada é salvo aqui. O texto vai direto para o WhatsApp.</p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="wrap site-footer">
+    <div class="foot-row">
+      <span>Sálvia Fisioterapia · empresa fictícia para demonstração</span>
+      <span>Fotos: Unsplash (licença Unsplash)</span>
+    </div>
+    <div class="wordmark" aria-hidden="true">sálvia<span>.</span></div>
+    <a class="back-link" href="/"><svg class="ico" aria-hidden="true"><use href="#i-back"/></svg>Ver outros modelos</a>
+    <p class="credito-autor">Site feito por <a href="https://tarciodiniz.com" rel="author">Tarcio Diniz</a>, desenvolvedor</p>
+  </footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
+<script>
+  // Demo has no real number: wa.me without a phone lets the viewer pick the chat.
+  function whatsappUrl(message) {
+    return `https://wa.me/?text=${encodeURIComponent(message)}`;
+  }
+
+  function bookingMessage(form) {
+    const data = new FormData(form);
+    const name = String(data.get("name")).trim();
+    const complaint = String(data.get("complaint")).trim();
+    return `Olá! Meu nome é ${name} e quero agendar uma avaliação na Sálvia.\nQueixa principal: ${complaint}\nMelhor horário: ${data.get("slot")}`;
+  }
+
+  function firstMissingField(form) {
+    return [...form.querySelectorAll("[required]")].find((field) => !field.value.trim());
+  }
+
+  function setupBookingForm() {
+    const form = document.getElementById("booking-form");
+    const hint = document.getElementById("form-hint");
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const missing = firstMissingField(form);
+      if (missing) {
+        hint.textContent = `Falta preencher: ${missing.labels[0].textContent.toLowerCase()}.`;
+        missing.focus();
+        return;
+      }
+      hint.textContent = "Abrindo o WhatsApp com a mensagem pronta.";
+      window.open(whatsappUrl(bookingMessage(form)), "_blank", "noopener");
+    });
+  }
+
+  const OPENING_HOURS = { 1: [7, 20], 2: [7, 20], 3: [7, 20], 4: [7, 20], 5: [7, 20], 6: [8, 12] };
+
+  function renderOpenNow() {
+    const badge = document.getElementById("open-now");
+    const now = new Date();
+    const hours = OPENING_HOURS[now.getDay()];
+    const isOpen = Boolean(hours) && now.getHours() >= hours[0] && now.getHours() < hours[1];
+    badge.textContent = isOpen ? `Aberto agora, até as ${hours[1]}h` : "Fechado agora. Mande mensagem que a gente responde cedo.";
+    badge.classList.toggle("is-closed", !isOpen);
+  }
+
+  function setupCompactHeader() {
+    const header = document.getElementById("header");
+    const sentinel = document.querySelector(".hero");
+    new IntersectionObserver(([entry]) => {
+      header.classList.toggle("is-compact", entry.boundingClientRect.top < 0);
+    }, { threshold: [0, 0.9, 1] }).observe(sentinel);
+  }
+
+  // Smooth only on in-page link clicks; a global smooth scroll-behavior also animates the browser's scroll restoration on reload.
+  function setupInPageLinks() {
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    document.querySelectorAll('a[href^="#"]').forEach((link) => {
+      link.addEventListener("click", (event) => {
+        const target = link.hash && document.querySelector(link.hash);
+        if (!target) return;
+        event.preventDefault();
+        target.scrollIntoView({ behavior: reduceMotion.matches ? "auto" : "smooth", block: "start" });
+        history.replaceState(null, "", link.hash);
+      });
+    });
+  }
+
+  function animateCounters() {
+    document.querySelectorAll("[data-count]").forEach((el) => {
+      const state = { value: 0 };
+      gsap.to(state, {
+        value: Number(el.dataset.count), duration: 1.6, ease: "power2.out", snap: { value: 1 },
+        scrollTrigger: { trigger: el, start: "top 88%", once: true },
+        onUpdate: () => { el.textContent = state.value.toLocaleString("pt-BR"); },
+      });
+    });
+  }
+
+  function revealOnScroll(selector, fromVars) {
+    ScrollTrigger.batch(selector, {
+      start: "top 88%",
+      once: true,
+      onEnter: (batch) => gsap.from(batch, { y: 32, autoAlpha: 0, duration: 0.7, ease: "power3.out", stagger: 0.08, ...fromVars }),
+    });
+  }
+
+  function setupMotion() {
+    if (!window.gsap || !window.ScrollTrigger) return;
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.matchMedia().add("(prefers-reduced-motion: no-preference)", () => {
+      gsap.from(".hero h1 .line > span", { yPercent: 105, duration: 0.9, ease: "power4.out", stagger: 0.1 });
+      gsap.from(".hero-photo img", { scale: 1.06, duration: 1.6, ease: "power2.out" });
+      gsap.from(".proof", { y: 28, autoAlpha: 0, duration: 0.8, delay: 0.4, ease: "power3.out" });
+      gsap.from(".tags > *", { y: 10, autoAlpha: 0, duration: 0.5, delay: 0.5, stagger: 0.06 });
+
+      gsap.utils.toArray(".section-head h2, .section .title").forEach((title) => {
+        gsap.from(title, { y: 24, autoAlpha: 0, duration: 0.8, ease: "power3.out", scrollTrigger: { trigger: title, start: "top 88%", once: true } });
+      });
+      revealOnScroll(".specialties > li");
+      revealOnScroll(".step");
+      revealOnScroll(".member", { x: 24, y: 0 });
+      revealOnScroll(".quote");
+      gsap.from(".steps-line span", { scaleX: 0, ease: "none", scrollTrigger: { trigger: ".steps", start: "top 80%", end: "bottom 60%", scrub: 0.5 } });
+      gsap.to(".arch img", { yPercent: -8, scale: 1.1, ease: "none", scrollTrigger: { trigger: ".dark", start: "top bottom", end: "bottom top", scrub: true } });
+      animateCounters();
+      gsap.from(".wordmark", { yPercent: 40, autoAlpha: 0, duration: 1, ease: "power3.out", scrollTrigger: { trigger: ".site-footer", start: "top 90%", once: true } });
+    });
+  }
+
+  setupBookingForm();
+  renderOpenNow();
+  setupCompactHeader();
+  setupInPageLinks();
+  setupMotion();
+</script>
+<script>
+  // Keeps the browser chrome (Safari, Arc, Chrome on Android) the same color as whatever sits under the top edge.
+  (() => {
+    const meta = document.querySelector('meta[name="theme-color"]');
+    if (!meta) return;
+    // A 1x1 canvas normalizes any CSS color (rgb, rgba, color-mix, color(srgb ...)) into plain bytes.
+    const pixel = document.createElement("canvas").getContext("2d", { willReadFrequently: true });
+    const rgba = (color) => { pixel.clearRect(0, 0, 1, 1); pixel.fillStyle = "#000"; pixel.fillStyle = color; pixel.fillRect(0, 0, 1, 1); return pixel.getImageData(0, 0, 1, 1).data; };
+    const toHex = (color) => "#" + [...rgba(color).slice(0, 3)].map((n) => n.toString(16).padStart(2, "0")).join("");
+    const opaque = (color) => color !== "transparent" && rgba(color)[3] > 127;
+    // Every layer under the point, top first: the first opaque background is the color the eye sees.
+    const colorAtTop = () => {
+      for (const el of document.elementsFromPoint(window.innerWidth / 2, 1)) {
+        const color = getComputedStyle(el).backgroundColor;
+        if (opaque(color)) return toHex(color);
+      }
+      return toHex(getComputedStyle(document.documentElement).backgroundColor);
+    };
+    let queued = false;
+    const sync = () => {
+      queued = false;
+      const color = colorAtTop();
+      if (meta.content !== color) meta.content = color;
+    };
+    let settle = 0;
+    // A second read after scrolling stops catches headers that fade their background in.
+    const request = () => {
+      if (!queued) { queued = true; requestAnimationFrame(sync); }
+      clearTimeout(settle);
+      settle = setTimeout(() => requestAnimationFrame(sync), 450);
+    };
+    window.addEventListener("scroll", request, { passive: true });
+    window.addEventListener("resize", request);
+    window.addEventListener("load", request);
+    request();
+  })();
+</script>
+</body>
+</html>

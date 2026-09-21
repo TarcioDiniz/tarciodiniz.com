@@ -1,0 +1,618 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0c1c2b">
+<meta name="robots" content="noindex, nofollow">
+<title>Vigília Veterinária 24h · Campina Grande (demonstração)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="https://images.unsplash.com/photo-1654895716780-b4664497420d?auto=format&fit=crop&w=1000&q=70">
+<style>
+  :root {
+    --bg: #f4f2ec;
+    --surface: #ffffff;
+    --tint: #e6eef3;
+    --ink: #0c1c2b;
+    --ink-soft: #2f4356;
+    --muted: #5f6d7b;
+    --line: #dfddd5;
+    --brand: #0b3a5b;
+    --brand-deep: #06263d;
+    --brand-soft: #124a72;
+    --accent: #ffb23e;
+    --accent-strong: #f59e1b;
+    --accent-ink: #0c1c2b;
+    --on-dark: #f4f2ec;
+    --on-dark-muted: #a9bccc;
+    --glass: rgba(255, 255, 255, 0.16);
+    --glass-line: rgba(255, 255, 255, 0.3);
+    --veil: rgba(6, 38, 61, 0.7);
+    --pulse: rgba(255, 178, 62, 0.55);
+    --pulse-off: rgba(255, 178, 62, 0);
+    --shadow: 0 20px 44px -20px rgba(6, 38, 61, 0.45);
+    --radius-xl: 28px;
+    --radius-lg: 20px;
+    --radius-md: 14px;
+    --radius-pill: 999px;
+    --gutter: clamp(16px, 4vw, 40px);
+    --max: 1240px;
+    --header-h: 76px;
+    --sos-h: 76px;
+    --font-display: "Bricolage Grotesque", "Arial Narrow", system-ui, sans-serif;
+    --font: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-padding-top: calc(var(--header-h) + 12px); }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font); font-size: 16px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+  img { display: block; max-width: 100%; }
+  a { color: inherit; text-decoration: none; }
+  h1, h2, h3 { font-family: var(--font-display); font-weight: 800; letter-spacing: -0.035em; }
+  .wrap { max-width: var(--max); margin: 0 auto; padding-inline: var(--gutter); }
+  .ico { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; display: block; flex: none; }
+
+  .notice { background: var(--ink); color: var(--on-dark); font-size: 13px; text-align: center; padding: 8px var(--gutter); }
+  .notice strong { color: var(--accent); }
+
+  .header { position: sticky; top: 0; z-index: 40; background: var(--bg); border-bottom: 1px solid transparent; transition: background-color .25s ease, border-color .25s ease; }
+  .header.is-compact { background: var(--surface); border-color: var(--line); }
+  .topbar { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: var(--header-h); }
+  .logo { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 800; font-size: 26px; letter-spacing: -0.04em; color: var(--brand); }
+  .logo .live { width: 10px; height: 10px; }
+  .nav { display: flex; gap: 26px; font-weight: 500; font-size: 15px; color: var(--ink-soft); }
+  .nav a:hover { color: var(--brand); }
+
+  .live { position: relative; display: inline-block; width: 12px; height: 12px; border-radius: 50%; background: var(--accent); flex: none; }
+
+  .btn { display: inline-flex; align-items: center; gap: 12px; padding: 6px 6px 6px 22px; min-height: 52px; border-radius: var(--radius-pill); border: 0; font-weight: 700; font-size: 16px; transition: translate .2s ease, background-color .2s ease; }
+  .btn:hover { translate: 0 -2px; }
+  .btn .dot { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; flex: none; }
+  .btn-sos { background: var(--accent); color: var(--accent-ink); }
+  .btn-sos:hover { background: var(--accent-strong); }
+  .btn-sos .dot { background: var(--accent-ink); color: var(--accent); }
+  .btn-light { background: var(--surface); color: var(--brand); }
+  .btn-light .dot { background: var(--brand); color: var(--surface); }
+  .btn-brand { background: var(--brand); color: var(--on-dark); }
+  .btn-brand .dot { background: var(--on-dark); color: var(--brand); }
+  .btn-small { min-height: 44px; font-size: 14px; padding-left: 16px; gap: 10px; }
+  .btn-small .dot { width: 32px; height: 32px; }
+  .btn-small .ico { width: 16px; height: 16px; }
+
+  .hero { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); gap: 16px; padding-top: 8px; }
+  .hero .hero-panel { margin-top: 0; }
+  .hero-panel { background: var(--brand); color: var(--on-dark); border-radius: var(--radius-xl); padding: clamp(28px, 5vw, 60px); display: flex; flex-direction: column; justify-content: space-between; gap: 40px; min-height: min(80vh, 680px); overflow: hidden; }
+  .open-badge { display: inline-flex; align-items: center; gap: 14px; align-self: flex-start; padding: 12px 22px 12px 16px; border-radius: var(--radius-pill); background: var(--brand-deep); border: 1px solid var(--glass-line); font-family: var(--font-display); font-weight: 800; font-size: clamp(20px, 2.4vw, 28px); letter-spacing: -0.02em; color: var(--accent); }
+  .eyebrow { margin: 0 0 16px; font-size: 14px; font-weight: 500; color: var(--on-dark-muted); }
+  .hero h1 { font-size: clamp(34px, 4.7vw, 68px); line-height: .92; margin: 0 0 22px; text-transform: uppercase; }
+  .hero h1 .line { display: block; overflow: hidden; padding-bottom: .05em; white-space: nowrap; }
+  .hero h1 .line > span { display: inline-block; }
+  .hero h1 .hl { color: var(--accent); }
+  .hero-lead { margin: 0 0 28px; max-width: 46ch; color: var(--on-dark-muted); font-size: 17px; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn-ghost { background: transparent; color: var(--on-dark); border: 1px solid var(--glass-line); }
+  .btn-ghost .dot { background: var(--glass); color: var(--on-dark); }
+
+  .hero-photo { position: relative; border-radius: var(--radius-xl); overflow: hidden; min-height: 420px; background: var(--tint); }
+  .hero-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 60%; }
+  .hero-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, var(--veil) 0%, rgba(6, 38, 61, 0) 45%); }
+  .glass { position: absolute; z-index: 1; color: var(--on-dark); background: var(--glass); border: 1px solid var(--glass-line); border-radius: var(--radius-lg); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
+  .glass-score { left: 20px; right: 20px; bottom: 20px; padding: 18px 20px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .glass-score b { font-family: var(--font-display); font-size: 48px; line-height: 1; letter-spacing: -0.04em; }
+  .glass-score p { margin: 0; font-size: 13px; }
+  .stars { display: flex; gap: 2px; color: var(--accent); margin-bottom: 4px; }
+  .stars .ico { width: 16px; height: 16px; fill: currentColor; stroke: none; }
+  .glass-duty { top: 20px; left: 20px; padding: 12px 16px; display: flex; align-items: center; gap: 12px; font-size: 13px; }
+  .glass-duty strong { display: block; font-size: 15px; }
+
+  section { margin-top: clamp(72px, 10vw, 128px); }
+  .section-head { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 24px 48px; align-items: start; margin-bottom: 36px; }
+  .section-head h2 { font-size: clamp(36px, 5.2vw, 68px); line-height: .95; margin: 0; }
+  .section-head p { margin: 0; color: var(--muted); max-width: 44ch; padding-top: 10px; }
+  .kicker { display: inline-block; margin-bottom: 14px; padding: 6px 14px; border-radius: var(--radius-pill); background: var(--tint); color: var(--brand); font-size: 13px; font-weight: 700; }
+
+  .services { display: grid; grid-template-columns: repeat(3, 1fr); grid-auto-rows: 1fr; gap: 16px; }
+  .service { background: var(--surface); border-radius: var(--radius-lg); padding: 26px; display: flex; flex-direction: column; gap: 14px; border: 1px solid var(--line); transition: translate .25s ease, box-shadow .25s ease; }
+  .service:hover { translate: 0 -4px; box-shadow: var(--shadow); }
+  .service-top { display: flex; align-items: center; justify-content: space-between; }
+  .service-icon { width: 52px; height: 52px; border-radius: var(--radius-md); background: var(--tint); color: var(--brand); display: grid; place-items: center; }
+  .service-icon .ico { width: 26px; height: 26px; }
+  .service-num { font-family: var(--font-display); font-weight: 600; font-size: 14px; color: var(--muted); }
+  .service h3 { margin: 6px 0 0; font-size: 24px; line-height: 1.1; }
+  .service p { margin: 0; color: var(--muted); font-size: 15px; flex: 1; }
+  .service .when { font-size: 13px; font-weight: 700; color: var(--brand-soft); }
+  .service.is-night { background: var(--brand); color: var(--on-dark); border-color: var(--brand); }
+  .service.is-night p { color: var(--on-dark-muted); }
+  .service.is-night .service-icon { background: var(--brand-deep); color: var(--accent); }
+  .service.is-night .service-num, .service.is-night .when { color: var(--accent); }
+
+  .sos { background: var(--brand-deep); color: var(--on-dark); border-radius: var(--radius-xl); padding: clamp(36px, 6vw, 80px) clamp(22px, 5vw, 64px); overflow: hidden; }
+  .sos .section-head p { color: var(--on-dark-muted); }
+  .sos .kicker { background: var(--brand-soft); color: var(--accent); }
+  .steps-wrap { position: relative; }
+  .steps { position: relative; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; list-style: none; margin: 0; padding: 0; }
+  .steps-line { position: absolute; z-index: 1; left: 0; top: 46px; width: 100%; height: 24px; color: var(--accent); pointer-events: none; }
+  .steps-line path { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
+  .step { position: relative; background: var(--brand); border-radius: var(--radius-lg); padding: 26px; display: flex; flex-direction: column; gap: 10px; }
+  .step-num { width: 64px; height: 64px; border-radius: 50%; background: var(--accent); color: var(--accent-ink); display: grid; place-items: center; font-family: var(--font-display); font-weight: 800; font-size: 30px; margin-bottom: 8px; }
+  .step h3 { margin: 0; font-size: 24px; line-height: 1.1; }
+  .step p { margin: 0; color: var(--on-dark-muted); font-size: 15px; }
+  .step ul { margin: 0; padding-left: 18px; color: var(--on-dark-muted); font-size: 15px; }
+  .sos-foot { display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: end; margin-top: 48px; padding-top: 36px; border-top: 1px solid var(--glass-line); }
+  .stats { display: grid; grid-template-columns: repeat(3, auto); gap: 16px 48px; justify-content: start; }
+  .stat b { display: block; font-family: var(--font-display); font-size: clamp(40px, 5vw, 64px); line-height: 1; letter-spacing: -0.04em; color: var(--accent); }
+  .stat span { font-size: 14px; color: var(--on-dark-muted); }
+
+  .team { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .team-photo { position: relative; border-radius: var(--radius-xl); overflow: hidden; min-height: 460px; }
+  .team-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .team-photo .glass { left: 20px; bottom: 20px; right: 20px; padding: 16px 18px; font-size: 14px; }
+  .team-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, var(--veil) 0%, rgba(6, 38, 61, 0) 50%); }
+  .people { display: grid; grid-template-columns: 1fr 1fr; grid-auto-rows: 1fr; gap: 16px; }
+  .person { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 22px; display: flex; flex-direction: column; gap: 6px; }
+  .monogram { width: 56px; height: 56px; border-radius: 50%; background: var(--tint); color: var(--brand); display: grid; place-items: center; font-family: var(--font-display); font-weight: 800; font-size: 20px; margin-bottom: 10px; }
+  .person h3 { margin: 0; font-size: 20px; letter-spacing: -0.02em; }
+  .person .role { margin: 0; font-weight: 600; color: var(--brand-soft); font-size: 14px; }
+  .person p { margin: 0; color: var(--muted); font-size: 14px; flex: 1; }
+  .person p.role { flex: none; }
+  .person .shift { margin-top: 8px; display: inline-flex; align-self: flex-start; padding: 5px 12px; border-radius: var(--radius-pill); background: var(--tint); color: var(--brand); font-size: 12px; font-weight: 700; flex: none; }
+
+  .quotes { display: grid; grid-template-columns: 1.3fr 1fr 1fr; grid-auto-rows: 1fr; gap: 16px; }
+  .quote { margin: 0; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 26px; display: flex; flex-direction: column; gap: 22px; }
+  .quote blockquote { margin: 0; font-size: 17px; flex: 1; color: var(--ink-soft); }
+  .quote:first-child { background: var(--accent); border-color: var(--accent); }
+  .quote:first-child blockquote { font-family: var(--font-display); font-weight: 600; font-size: clamp(20px, 2vw, 26px); line-height: 1.25; letter-spacing: -0.02em; color: var(--accent-ink); }
+  .quote figcaption { display: flex; align-items: center; gap: 12px; font-size: 14px; }
+  .quote figcaption img { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; flex: none; }
+  .quote figcaption span { display: block; color: var(--muted); font-size: 13px; }
+  .quote:first-child figcaption span { color: var(--ink-soft); }
+  .fake-tag { font-size: 13px; color: var(--muted); margin: 14px 0 0; }
+
+  .visit { display: grid; grid-template-columns: 1fr 1.1fr; gap: 16px; }
+  .visit-photo { position: relative; border-radius: var(--radius-xl); overflow: hidden; min-height: 440px; }
+  .visit-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .visit-info { background: var(--surface); border-radius: var(--radius-xl); border: 1px solid var(--line); padding: clamp(24px, 4vw, 44px); display: flex; flex-direction: column; gap: 22px; }
+  .visit-info h2 { font-size: clamp(32px, 4.2vw, 52px); line-height: 1; margin: 0; }
+  .always { display: flex; align-items: center; gap: 12px; padding: 14px 18px; border-radius: var(--radius-md); background: var(--brand); color: var(--on-dark); font-weight: 600; }
+  .always b { color: var(--accent); }
+  .hours { width: 100%; border-collapse: collapse; font-size: 15px; }
+  .hours td { padding: 11px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .hours td:last-child { text-align: right; font-weight: 700; padding-left: 16px; }
+  .address { display: flex; gap: 10px; align-items: flex-start; margin: 0; color: var(--ink-soft); }
+  .address .ico { margin-top: 2px; color: var(--brand); }
+  .visit-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+
+  .faq { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 40px; }
+  .faq h2 { font-size: clamp(36px, 5vw, 64px); line-height: .95; margin: 0; }
+  details { border-bottom: 1px solid var(--line); padding-block: 20px; }
+  summary { list-style: none; cursor: pointer; font-weight: 700; font-size: 18px; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+  summary::-webkit-details-marker { display: none; }
+  summary .toggle { width: 32px; height: 32px; border-radius: 50%; background: var(--tint); color: var(--brand); display: grid; place-items: center; flex: none; transition: rotate .2s ease; }
+  summary .toggle .ico { width: 16px; height: 16px; }
+  details[open] summary .toggle { rotate: 45deg; }
+  details p { color: var(--muted); margin: 12px 0 0; max-width: 60ch; }
+
+  .cta { background: var(--accent); color: var(--accent-ink); border-radius: var(--radius-xl); padding: clamp(32px, 6vw, 64px); display: flex; flex-wrap: wrap; gap: 24px; align-items: center; justify-content: space-between; }
+  .cta h2 { font-size: clamp(30px, 4.4vw, 56px); line-height: 1; margin: 0; max-width: 18ch; }
+
+  footer.wrap { margin-top: clamp(72px, 10vw, 128px); padding-bottom: 48px; overflow: hidden; }
+  .foot-row { display: flex; flex-wrap: wrap; gap: 16px; justify-content: space-between; color: var(--muted); font-size: 13px; border-top: 1px solid var(--line); padding-top: 24px; }
+  .wordmark { font-family: var(--font-display); font-weight: 800; font-size: clamp(88px, 21vw, 300px); letter-spacing: -0.045em; line-height: 1; margin-top: 32px; white-space: nowrap; color: var(--brand); }
+  .wordmark span { color: var(--accent); }
+  .back { display: inline-flex; align-items: center; gap: 8px; margin-top: 32px; font-weight: 700; color: var(--brand); }
+  .back .ico { width: 18px; height: 18px; }
+  .credito-autor { margin: 16px 0 0; font-size: 14px; color: var(--muted); }
+  .credito-autor a { color: var(--ink); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--accent); }
+  .credito-autor a:hover { color: var(--brand); }
+
+  .sos-bar { display: none; }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .live::after { content: ""; position: absolute; inset: 0; border-radius: 50%; box-shadow: 0 0 0 0 var(--pulse); animation: pulse 2.2s ease-out infinite; }
+    @keyframes pulse { to { box-shadow: 0 0 0 12px var(--pulse-off); } }
+  }
+
+  @media (max-width: 960px) {
+    .nav { display: none; }
+    .hero, .section-head, .team, .visit, .faq, .sos-foot { grid-template-columns: minmax(0, 1fr); }
+    .hero-panel { min-height: 0; }
+    .hero-photo { min-height: 380px; }
+    .services, .quotes { grid-template-columns: repeat(2, 1fr); }
+    .quote:first-child { grid-column: span 2; }
+    .steps { grid-template-columns: 1fr; }
+    .steps-line { display: none; }
+  }
+  @media (max-width: 800px) {
+    :root { --header-h: 64px; }
+    .topbar .btn { display: none; }
+    body { padding-bottom: calc(var(--sos-h) + env(safe-area-inset-bottom, 0px)); }
+    .sos-bar { display: flex; align-items: center; gap: 12px; position: fixed; left: 0; right: 0; bottom: 0; z-index: 50; padding: 12px var(--gutter) calc(12px + env(safe-area-inset-bottom, 0px)); background: var(--brand-deep); color: var(--on-dark); box-shadow: var(--shadow); }
+    .sos-bar-text { flex: 1; font-size: 13px; line-height: 1.3; }
+    .sos-bar-text strong { display: block; font-size: 15px; color: var(--accent); }
+  }
+  @media (max-width: 600px) {
+    .hero h1 .line { white-space: normal; }
+    .services, .quotes, .people { grid-template-columns: 1fr; }
+    .quote:first-child { grid-column: span 1; }
+    .stats { grid-template-columns: 1fr 1fr; }
+    .hero-actions .btn { width: 100%; justify-content: space-between; }
+    .team-photo { min-height: 320px; }
+    .visit-photo { min-height: 300px; }
+  }
+</style>
+</head>
+<body>
+  <div class="notice" data-aviso="proposta"><strong>Demonstração.</strong> Empresa, preços e avaliações são fictícios. Fotos: Unsplash.</div>
+
+  <header class="header" id="header">
+    <div class="wrap topbar">
+      <a class="logo" href="#topo"><span class="live" aria-hidden="true"></span>vigília</a>
+      <nav class="nav" aria-label="Principal">
+        <a href="#servicos">Serviços</a>
+        <a href="#emergencia">Emergência</a>
+        <a href="#equipe">Equipe</a>
+        <a href="#horarios">Horários</a>
+        <a href="#duvidas">Dúvidas</a>
+      </nav>
+      <a class="btn btn-sos btn-small" href="https://wa.me/?text=Emerg%C3%AAncia%21%20Estou%20indo%20para%20a%20Vig%C3%ADlia%20agora%20com%20meu%20animal.%20O%20que%20aconteceu%3A" target="_blank" rel="noopener">Emergência <span class="dot"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.8 7L4 20l1.1-4.8A8 8 0 1 1 21 12z"/></svg></span></a>
+    </div>
+  </header>
+
+  <main class="wrap" id="topo">
+    <div class="hero">
+      <section class="hero-panel" aria-label="Apresentação">
+        <p class="open-badge"><span class="live" aria-hidden="true"></span>Aberto 24 horas</p>
+        <div>
+          <p class="eyebrow">Clínica veterinária · Mirante, Campina Grande (PB)</p>
+          <h1><span class="line"><span>Qualquer hora,</span></span><span class="line"><span class="hl">porta aberta.</span></span></h1>
+          <p class="hero-lead">Veterinário de plantão a noite inteira, internação e laboratório no mesmo prédio. Numa emergência, mande mensagem do caminho e a sala fica pronta antes de você chegar.</p>
+          <div class="hero-actions">
+            <a class="btn btn-sos" href="https://wa.me/?text=Emerg%C3%AAncia%21%20Estou%20indo%20para%20a%20Vig%C3%ADlia%20agora%20com%20meu%20animal.%20O%20que%20aconteceu%3A" target="_blank" rel="noopener">Emergência agora <span class="dot"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.8 7L4 20l1.1-4.8A8 8 0 1 1 21 12z"/></svg></span></a>
+            <a class="btn btn-ghost" href="https://wa.me/?text=Ol%C3%A1%21%20Quero%20agendar%20uma%20consulta%20na%20Vig%C3%ADlia.%20Nome%20e%20esp%C3%A9cie%20do%20animal%3A" target="_blank" rel="noopener">Agendar consulta <span class="dot"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg></span></a>
+          </div>
+        </div>
+      </section>
+      <div class="hero-photo">
+        <img src="https://images.unsplash.com/photo-1654895716780-b4664497420d?auto=format&fit=crop&w=1000&q=70" alt="Cachorro pequeno em pé na mesa de exame, amparado pela mão da veterinária" width="1000" height="1500" fetchpriority="high">
+        <div class="glass glass-duty"><span class="live" aria-hidden="true"></span><span><strong>Dra. Helena no plantão</strong>até as 7h de amanhã</span></div>
+        <div class="glass glass-score">
+          <div>
+            <div class="stars" aria-hidden="true">
+              <svg class="ico" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg>
+              <svg class="ico" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg>
+              <svg class="ico" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg>
+              <svg class="ico" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg>
+              <svg class="ico" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg>
+            </div>
+            <p>486 avaliações no Google</p>
+          </div>
+          <b>4,9</b>
+        </div>
+      </div>
+    </div>
+
+    <section id="servicos">
+      <div class="section-head">
+        <div><span class="kicker">Serviços</span><h2>Da vacina à cirurgia, no mesmo endereço.</h2></div>
+        <p>Cães e gatos atendidos todos os dias. O exame sai do nosso laboratório, então o diagnóstico da madrugada não espera o dia clarear.</p>
+      </div>
+      <div class="services">
+        <article class="service">
+          <div class="service-top"><span class="service-icon"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3v6a4 4 0 0 0 8 0V3M10 13v2a5 5 0 0 0 10 0v-1"/><circle cx="20" cy="12" r="2"/></svg></span><span class="service-num">01</span></div>
+          <h3>Clínica geral</h3>
+          <p>Consulta com exame completo e receita explicada linha por linha.</p>
+          <span class="when">Com hora marcada ou por ordem de chegada</span>
+        </article>
+        <article class="service">
+          <div class="service-top"><span class="service-icon"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 2l4 4M20 4l-4 4M15 5l4 4-9 9H6v-4zM11 9l3 3M6 18l-4 4"/></svg></span><span class="service-num">02</span></div>
+          <h3>Vacinas</h3>
+          <p>V8, V10, antirrábica e as vacinas de gato. A carteirinha fica registrada e avisamos pelo WhatsApp quando chegar o reforço.</p>
+          <span class="when">Segunda a sábado</span>
+        </article>
+        <article class="service">
+          <div class="service-top"><span class="service-icon"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3h6M10 3v6l-5.2 8.8A2 2 0 0 0 6.5 21h11a2 2 0 0 0 1.7-3.2L14 9V3M7.6 15h8.8"/></svg></span><span class="service-num">03</span></div>
+          <h3>Exames e laboratório</h3>
+          <p>Hemograma, bioquímico, raio-X e ultrassom. Resultado de urgência em cerca de uma hora.</p>
+          <span class="when">Coleta a qualquer hora</span>
+        </article>
+        <article class="service is-night">
+          <div class="service-top"><span class="service-icon"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h4l2-5 4 10 2-5h6"/></svg></span><span class="service-num">04</span></div>
+          <h3>Cirurgia</h3>
+          <p>Castração, retirada de corpo estranho, fratura e cesárea. Anestesia monitorada do começo ao fim.</p>
+          <span class="when">Centro cirúrgico pronto 24 horas</span>
+        </article>
+        <article class="service is-night">
+          <div class="service-top"><span class="service-icon"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6v14M3 16h18v4M21 16v-3a3 3 0 0 0-3-3h-8v6"/><circle cx="6.5" cy="12.5" r="1.5"/></svg></span><span class="service-num">05</span></div>
+          <h3>Internação</h3>
+          <p>Doze leitos com gente acordada ao lado a noite toda. Boletim com foto no WhatsApp todo fim de tarde.</p>
+          <span class="when">Visitas às 10h e às 17h</span>
+        </article>
+        <article class="service">
+          <div class="service-top"><span class="service-icon"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M8.2 8.2L20 20M8.2 15.8L20 4"/></svg></span><span class="service-num">06</span></div>
+          <h3>Banho e tosa</h3>
+          <p>Banho com produto hipoalergênico, tosa higiênica ou na tesoura, corte de unha e limpeza de ouvido.</p>
+          <span class="when"><a href="https://wa.me/?text=Ol%C3%A1%21%20Quero%20agendar%20o%20banho%20e%20tosa%20na%20Vig%C3%ADlia.%20Porte%20do%20animal%3A" target="_blank" rel="noopener">Agendar pelo WhatsApp</a></span>
+        </article>
+      </div>
+    </section>
+
+    <section class="sos" id="emergencia">
+      <div class="section-head">
+        <div><span class="kicker">Emergência</span><h2>Enquanto você vem para cá.</h2></div>
+        <p>Veneno, atropelamento, falta de ar, parto que não evolui. O que fazer até vocês chegarem.</p>
+      </div>
+      <div class="steps-wrap">
+      <svg class="steps-line" viewBox="0 0 1000 24" preserveAspectRatio="none" aria-hidden="true"><path d="M56 12 C 160 -2, 300 26, 400 12 S 640 -2, 736 12"/></svg>
+      <ol class="steps">
+        <li class="step">
+          <span class="step-num">1</span>
+          <h3>Mande mensagem do caminho</h3>
+          <p>Diga o que aconteceu, a espécie e o peso aproximado. A equipe já separa a sala e o material.</p>
+        </li>
+        <li class="step">
+          <span class="step-num">2</span>
+          <h3>Transporte com cuidado</h3>
+          <ul>
+            <li>Enrole numa toalha ou use a caixa de transporte.</li>
+            <li>Não dê remédio de gente, leite ou comida.</li>
+            <li>Sangramento: pano limpo e pressão firme.</li>
+          </ul>
+        </li>
+        <li class="step">
+          <span class="step-num">3</span>
+          <h3>Traga o que ele engoliu</h3>
+          <p>A embalagem do veneno, do remédio ou um pedaço do que foi comido diz ao veterinário qual antídoto usar.</p>
+        </li>
+      </ol>
+      </div>
+      <div class="sos-foot">
+        <div class="stats">
+          <div class="stat"><b data-count="2">2</b><span>veterinários por plantão</span></div>
+          <div class="stat"><b data-count="12">12</b><span>leitos de internação</span></div>
+          <div class="stat"><b data-count="9" data-suffix=" anos">9 anos</b><span>sem fechar a porta</span></div>
+        </div>
+        <a class="btn btn-sos" href="https://wa.me/?text=Emerg%C3%AAncia%21%20Estou%20indo%20para%20a%20Vig%C3%ADlia%20agora%20com%20meu%20animal.%20O%20que%20aconteceu%3A" target="_blank" rel="noopener">Avisar que estou a caminho <span class="dot"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.8 7L4 20l1.1-4.8A8 8 0 1 1 21 12z"/></svg></span></a>
+      </div>
+    </section>
+
+    <section id="equipe">
+      <div class="section-head">
+        <div><span class="kicker">Equipe fictícia</span><h2>Quem cuida dele de madrugada.</h2></div>
+        <p>A escala é fixa: seu animal volta a ver as mesmas pessoas na consulta de retorno.</p>
+      </div>
+      <div class="team">
+        <div class="team-photo">
+          <img src="https://images.unsplash.com/photo-1700665537604-412e89a285c3?auto=format&fit=crop&crop=focalpoint&fp-x=0.6&fp-y=0.7&fp-z=1.9&w=900&h=1000&q=70" alt="Mãos da equipe segurando um cachorro caramelo na mesa enquanto colhem sangue da pata" loading="lazy" width="900" height="1000">
+          <p class="glass">Coleta a quatro mãos: um segura com calma, o outro faz o exame.</p>
+        </div>
+        <div class="people">
+          <article class="person">
+            <span class="monogram" aria-hidden="true">HB</span>
+            <h3>Dra. Helena Brito</h3>
+            <p class="role">Clínica geral e emergência</p>
+            <p>Chefia o plantão noturno. Quinze anos atendendo madrugada em Campina.</p>
+            <span class="shift">Noites de seg a qui</span>
+          </article>
+          <article class="person">
+            <span class="monogram" aria-hidden="true">CM</span>
+            <h3>Dr. Caio Menezes</h3>
+            <p class="role">Cirurgia e ortopedia</p>
+            <p>Opera fratura, corpo estranho e cesárea. Explica a cirurgia com desenho no papel.</p>
+            <span class="shift">Dias e sobreaviso</span>
+          </article>
+          <article class="person">
+            <span class="monogram" aria-hidden="true">LA</span>
+            <h3>Dra. Lívia Araújo</h3>
+            <p class="role">Felinos e internação</p>
+            <p>Cuida da ala de gatos, separada dos cães e com menos barulho.</p>
+            <span class="shift">Noites de sex a dom</span>
+          </article>
+          <article class="person">
+            <span class="monogram" aria-hidden="true">RN</span>
+            <h3>Rafael Nóbrega</h3>
+            <p class="role">Banho e tosa</p>
+            <p>Tosador há oito anos. Tem paciência com cachorro que treme no secador.</p>
+            <span class="shift">Ter a sáb, de dia</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="depoimentos">
+      <div class="section-head">
+        <div><span class="kicker">Depoimentos fictícios</span><h2>Quem já passou a noite aqui.</h2></div>
+        <p>Textos escritos para esta demonstração, para mostrar como os depoimentos aparecem no site.</p>
+      </div>
+      <div class="quotes">
+        <figure class="quote">
+          <blockquote>Paçoca engoliu uma meia às duas da manhã. Mandei mensagem do carro e, quando cheguei, a sala já estava pronta.</blockquote>
+          <figcaption><img src="https://images.unsplash.com/photo-1537204696486-967f1b7198c8?auto=format&fit=crop&w=120&h=120&q=60" alt="" loading="lazy" width="48" height="48"><div><strong>Joana</strong><span>tutora do Paçoca, Bodocongó</span></div></figcaption>
+        </figure>
+        <figure class="quote">
+          <blockquote>Mel é arisca e odeia a caixa de transporte. A Dra. Lívia esperou ela se acalmar antes de examinar.</blockquote>
+          <figcaption><img src="https://images.unsplash.com/photo-1536589961747-e239b2abbec2?auto=format&fit=crop&w=120&h=120&q=60" alt="" loading="lazy" width="48" height="48"><div><strong>Marcos</strong><span>tutor da Mel, Catolé</span></div></figcaption>
+        </figure>
+        <figure class="quote">
+          <blockquote>Bidu ficou três dias internado. Todo fim de tarde chegava foto e boletim no WhatsApp.</blockquote>
+          <figcaption><img src="https://images.unsplash.com/photo-1503256207526-0d5d80fa2f47?auto=format&fit=crop&w=120&h=120&q=60" alt="" loading="lazy" width="48" height="48"><div><strong>Ana</strong><span>tutora do Bidu, Alto Branco</span></div></figcaption>
+        </figure>
+      </div>
+      <p class="fake-tag">Nomes, animais e relatos fictícios.</p>
+    </section>
+
+    <section class="visit" id="horarios">
+      <div class="visit-photo"><img src="https://images.unsplash.com/photo-1624956578877-4948166c5dcb?auto=format&fit=crop&w=900&q=70" alt="Cachorro de pelo caramelo sentado na grama, de boca aberta" loading="lazy" width="900" height="1200"></div>
+      <div class="visit-info">
+        <h2>Horários e endereço</h2>
+        <p class="always"><span class="live" aria-hidden="true"></span><span>Pronto-socorro <b>aberto 24 horas</b>, feriado inclusive.</span></p>
+        <table class="hours">
+          <tr><td>Consultas agendadas</td><td>Seg a sáb, 8h às 20h</td></tr>
+          <tr><td>Vacinas</td><td>Seg a sáb, 8h às 18h</td></tr>
+          <tr><td>Banho e tosa</td><td>Ter a sáb, 8h às 17h</td></tr>
+          <tr><td>Visita à internação</td><td>Todo dia, 10h e 17h</td></tr>
+        </table>
+        <p class="address"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span>Rua fictícia, 240, Mirante, Campina Grande (PB). Estacionamento na frente, com vaga reservada para emergência.</span></p>
+        <div class="visit-actions">
+          <a class="btn btn-brand" href="https://www.google.com/maps/search/?api=1&query=Mirante%2C%20Campina%20Grande%20PB" target="_blank" rel="noopener">Abrir no mapa <span class="dot"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq" id="duvidas">
+      <h2>Perguntas de quem chega aflito.</h2>
+      <div>
+        <details><summary>Preciso marcar hora para emergência?<span class="toggle" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span></summary><p>Não. Venha direto. Se der, mande mensagem no caminho para a equipe preparar o atendimento.</p></details>
+        <details><summary>A consulta de madrugada custa mais?<span class="toggle" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span></summary><p>Entre 22h e 6h a consulta tem valor de plantão. A recepção informa o valor antes de começar, e nenhum exame é feito sem você autorizar.</p></details>
+        <details><summary>Vocês atendem outros animais além de cão e gato?<span class="toggle" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span></summary><p>Coelhos, porquinhos-da-índia e aves pequenas, com hora marcada. Na emergência, mande mensagem antes para confirmar quem está de plantão.</p></details>
+        <details><summary>Posso ficar com meu animal internado?<span class="toggle" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span></summary><p>A visita é todo dia às 10h e às 17h. Fora desse horário, o boletim com foto chega pelo WhatsApp.</p></details>
+        <details><summary>Quais formas de pagamento?<span class="toggle" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span></summary><p>Pix, débito e crédito em até 6 vezes. Cirurgia e internação podem ser parceladas em mais vezes, é só conversar na recepção.</p></details>
+      </div>
+    </section>
+
+    <section class="cta">
+      <h2>Consulta de rotina também é aqui, de dia e sem susto.</h2>
+      <a class="btn btn-brand" href="https://wa.me/?text=Ol%C3%A1%21%20Quero%20agendar%20uma%20consulta%20na%20Vig%C3%ADlia.%20Nome%20e%20esp%C3%A9cie%20do%20animal%3A" target="_blank" rel="noopener">Agendar consulta <span class="dot"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg></span></a>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <div class="foot-row">
+      <span>Vigília Veterinária 24h · empresa fictícia para demonstração</span>
+      <span>Fotos: Unsplash (licença Unsplash)</span>
+    </div>
+    <div class="wordmark" aria-hidden="true">vigília<span>.</span></div>
+    <a class="back" href="/"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>Ver outros modelos</a>
+    <p class="credito-autor">Site feito por <a href="https://tarciodiniz.com" rel="author">Tarcio Diniz</a>, desenvolvedor</p>
+  </footer>
+
+  <div class="sos-bar" role="region" aria-label="Emergência">
+    <span class="live" aria-hidden="true"></span>
+    <span class="sos-bar-text"><strong>Aberto agora</strong>Plantão 24 horas</span>
+    <a class="btn btn-sos btn-small" href="https://wa.me/?text=Emerg%C3%AAncia%21%20Estou%20indo%20para%20a%20Vig%C3%ADlia%20agora%20com%20meu%20animal.%20O%20que%20aconteceu%3A" target="_blank" rel="noopener">Emergência agora <span class="dot"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.8 7L4 20l1.1-4.8A8 8 0 1 1 21 12z"/></svg></span></a>
+  </div>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
+<script>
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+  // Smooth only on in-page link clicks; a global smooth scroll-behavior also animates scroll restoration on reload.
+  function enableSmoothAnchors() {
+    document.querySelectorAll('a[href^="#"]').forEach((link) => {
+      link.addEventListener("click", (event) => {
+        const target = link.hash && document.querySelector(link.hash);
+        if (!target) return;
+        event.preventDefault();
+        target.scrollIntoView({ behavior: reduceMotion.matches ? "auto" : "smooth", block: "start" });
+        history.replaceState(null, "", link.hash);
+      });
+    });
+  }
+
+  function watchHeader() {
+    const header = document.getElementById("header");
+    const update = () => header.classList.toggle("is-compact", window.scrollY > 40);
+    window.addEventListener("scroll", update, { passive: true });
+    update();
+  }
+
+  function formatCount(value, suffix) {
+    return Math.round(value).toLocaleString("pt-BR") + suffix;
+  }
+
+  function animateCounters() {
+    document.querySelectorAll("[data-count]").forEach((el) => {
+      const suffix = el.dataset.suffix ?? "";
+      const state = { value: 0 };
+      gsap.to(state, {
+        value: Number(el.dataset.count), duration: 1.4, ease: "power2.out",
+        scrollTrigger: { trigger: el, start: "top 90%", once: true },
+        onUpdate: () => { el.textContent = formatCount(state.value, suffix); },
+      });
+    });
+  }
+
+  function animateHero() {
+    gsap.from(".hero h1 .line > span", { yPercent: 105, duration: 0.9, ease: "power4.out", stagger: 0.09 });
+    gsap.from(".hero-photo img", { scale: 1.08, duration: 1.4, ease: "power2.out" });
+    gsap.from(".hero-photo .glass", { y: 24, autoAlpha: 0, duration: 0.7, delay: 0.3, ease: "power3.out", stagger: 0.12 });
+  }
+
+  function revealOnScroll(selector) {
+    ScrollTrigger.batch(selector, {
+      start: "top 88%",
+      once: true,
+      onEnter: (batch) => gsap.from(batch, { y: 32, autoAlpha: 0, duration: 0.6, ease: "power3.out", stagger: 0.08 }),
+    });
+  }
+
+  function drawStepsLine() {
+    const path = document.querySelector(".steps-line path");
+    const length = path.getTotalLength();
+    gsap.fromTo(path, { strokeDasharray: length, strokeDashoffset: length }, {
+      strokeDashoffset: 0, ease: "none",
+      scrollTrigger: { trigger: ".steps-wrap", start: "top 80%", end: "bottom 60%", scrub: 0.6 },
+    });
+  }
+
+  enableSmoothAnchors();
+  watchHeader();
+
+  if (window.gsap && window.ScrollTrigger) {
+    gsap.registerPlugin(ScrollTrigger);
+    const motion = gsap.matchMedia();
+    motion.add("(prefers-reduced-motion: no-preference)", () => {
+      animateHero();
+      revealOnScroll(".service");
+      revealOnScroll(".step");
+      revealOnScroll(".person");
+      revealOnScroll(".quote");
+      animateCounters();
+      gsap.from(".wordmark", { yPercent: 40, autoAlpha: 0, duration: 1, ease: "power3.out", scrollTrigger: { trigger: "footer", start: "top 90%", once: true } });
+    });
+    motion.add("(prefers-reduced-motion: no-preference) and (min-width: 961px)", () => {
+      drawStepsLine();
+      gsap.to(".team-photo img", { yPercent: -6, scale: 1.08, ease: "none", scrollTrigger: { trigger: ".team-photo", start: "top bottom", end: "bottom top", scrub: true } });
+    });
+  }
+</script>
+<script>
+  // Keeps the browser chrome (Safari, Arc, Chrome on Android) the same color as whatever sits under the top edge.
+  (() => {
+    const meta = document.querySelector('meta[name="theme-color"]');
+    if (!meta) return;
+    // A 1x1 canvas normalizes any CSS color (rgb, rgba, color-mix, color(srgb ...)) into plain bytes.
+    const pixel = document.createElement("canvas").getContext("2d", { willReadFrequently: true });
+    const rgba = (color) => { pixel.clearRect(0, 0, 1, 1); pixel.fillStyle = "#000"; pixel.fillStyle = color; pixel.fillRect(0, 0, 1, 1); return pixel.getImageData(0, 0, 1, 1).data; };
+    const toHex = (color) => "#" + [...rgba(color).slice(0, 3)].map((n) => n.toString(16).padStart(2, "0")).join("");
+    const opaque = (color) => color !== "transparent" && rgba(color)[3] > 127;
+    // Every layer under the point, top first: the first opaque background is the color the eye sees.
+    const colorAtTop = () => {
+      for (const el of document.elementsFromPoint(window.innerWidth / 2, 1)) {
+        const color = getComputedStyle(el).backgroundColor;
+        if (opaque(color)) return toHex(color);
+      }
+      return toHex(getComputedStyle(document.documentElement).backgroundColor);
+    };
+    let queued = false;
+    const sync = () => {
+      queued = false;
+      const color = colorAtTop();
+      if (meta.content !== color) meta.content = color;
+    };
+    let settle = 0;
+    // A second read after scrolling stops catches headers that fade their background in.
+    const request = () => {
+      if (!queued) { queued = true; requestAnimationFrame(sync); }
+      clearTimeout(settle);
+      settle = setTimeout(() => requestAnimationFrame(sync), 450);
+    };
+    window.addEventListener("scroll", request, { passive: true });
+    window.addEventListener("resize", request);
+    window.addEventListener("load", request);
+    request();
+  })();
+</script>
+</body>
+</html>

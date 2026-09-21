@@ -1,0 +1,903 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tarcio Diniz · Sites para negócios de Campina Grande</title>
+<meta name="description" content="Sou Tarcio Diniz, desenvolvedor em Campina Grande (PB). Faço sites rápidos no celular, fáceis de achar no Google e com o WhatsApp a um toque, prontos em até 3 dias úteis depois da conversa.">
+<link rel="canonical" href="https://tarciodiniz.com/">
+<meta name="theme-color" content="#121110">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:url" content="https://tarciodiniz.com/">
+<meta property="og:title" content="Tarcio Diniz · Sites para negócios de Campina Grande">
+<meta property="og:description" content="Sites rápidos no celular, fáceis de achar no Google e com o WhatsApp a um toque.">
+<meta property="og:image" content="https://tarciodiniz.com/assets/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="/assets/img/tarcio-recorte.webp" type="image/webp">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://tarciodiniz.com/#tarcio",
+      "name": "Tarcio Diniz",
+      "jobTitle": "Desenvolvedor web",
+      "url": "https://tarciodiniz.com/",
+      "image": "https://tarciodiniz.com/assets/img/tarcio-retrato.webp",
+      "address": { "@type": "PostalAddress", "addressLocality": "Campina Grande", "addressRegion": "PB", "addressCountry": "BR" },
+      "alumniOf": { "@type": "CollegeOrUniversity", "name": "Universidade Estadual da Paraíba" },
+      "knowsAbout": ["Desenvolvimento web", "SEO local", "Angular", "React", "TypeScript", "Laravel", ".NET", "Python"],
+      "sameAs": ["https://www.instagram.com/eusoutarcio/", "https://www.linkedin.com/in/tarciodiniz", "https://github.com/TarcioDiniz"]
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://tarciodiniz.com/#servico",
+      "name": "Tarcio Diniz · Criação de sites",
+      "url": "https://tarciodiniz.com/",
+      "image": "https://tarciodiniz.com/assets/og.jpg",
+      "description": "Criação de sites para negócios locais: rápidos no celular, com SEO local e botão de WhatsApp.",
+      "founder": { "@id": "https://tarciodiniz.com/#tarcio" },
+      "areaServed": [{ "@type": "City", "name": "Campina Grande" }, { "@type": "State", "name": "Paraíba" }],
+      "address": { "@type": "PostalAddress", "addressLocality": "Campina Grande", "addressRegion": "PB", "addressCountry": "BR" },
+      "sameAs": ["https://www.instagram.com/eusoutarcio/"]
+    }
+  ]
+}
+</script>
+<script>if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) document.documentElement.classList.add("motion");</script>
+<style>
+  :root {
+    --paper: #efebe3;
+    --paper-2: #e6e1d6;
+    --ink: #121110;
+    --ink-2: #2b2825;
+    --muted: #6d675f;
+    --line: rgba(18, 17, 16, 0.16);
+    --accent: #e6a92e;
+    --accent-deep: #c98d17;
+    --accent-ink: #121110;
+    --dark: #121110;
+    --dark-2: #1c1a18;
+    --on-dark: #efebe3;
+    --on-dark-muted: #9c958b;
+    --line-dark: rgba(239, 235, 227, 0.14);
+    --display: "Anton", "Arial Narrow", Impact, sans-serif;
+    --body: "Inter Tight", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --gutter: clamp(16px, 4vw, 48px);
+    --max: 1320px;
+    --radius: 999px;
+    --portrait-w: min(32vw, 51svh, 480px);
+    --portrait-m: min(64vw, 400px, 46svh);
+  }
+  * { box-sizing: border-box; }
+  /* Dark root: the overscroll bounce above the hero and below the footer shows dark, never the cream body. */
+  html { scroll-padding-top: 68px; background: var(--dark); }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--body); font-size: 17px; line-height: 1.55; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  img { display: block; max-width: 100%; }
+  a { color: inherit; text-decoration: none; }
+  button { font: inherit; cursor: pointer; }
+  .wrap { max-width: var(--max); margin: 0 auto; padding-inline: var(--gutter); position: relative; }
+  .ico { width: 18px; height: 18px; fill: currentColor; display: block; flex: none; }
+  .ico-lg { width: 20px; height: 20px; }
+  .label { font-size: 13px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+  .display { font-family: var(--display); font-weight: 400; text-transform: uppercase; letter-spacing: -0.005em; line-height: .86; margin: 0; }
+  .skip { position: absolute; left: -999px; top: 8px; background: var(--accent); color: var(--accent-ink); padding: 8px 14px; z-index: 100; }
+  .skip:focus { left: 8px; }
+
+  /* Thin frame lines, as in the editorial references: they sit behind every section. */
+  .frame { position: fixed; inset: 0 0 0 0; pointer-events: none; z-index: 0; }
+  .frame .wrap { height: 100%; }
+  .frame span { position: absolute; top: 0; bottom: 0; width: 1px; background: var(--line); }
+  .frame span:nth-child(1) { left: var(--gutter); }
+  .frame span:nth-child(2) { right: var(--gutter); }
+
+  .btn { display: inline-flex; align-items: center; gap: 12px; white-space: nowrap; padding: 16px 22px; border-radius: var(--radius); font-weight: 600; font-size: 16px; border: 1px solid transparent; transition: background-color .2s ease, color .2s ease, border-color .2s ease; }
+  .btn-accent { background: var(--accent); color: var(--accent-ink); }
+  .btn-accent:hover { background: var(--on-dark); }
+  .btn-line { border-color: var(--line-dark); color: var(--on-dark); }
+  .btn-line:hover { border-color: var(--on-dark); }
+  .btn-ink { background: var(--ink); color: var(--paper); }
+  .btn-ink:hover { background: var(--ink-2); }
+
+  /* Header */
+  .top { position: fixed; top: 0; left: 0; right: 0; z-index: 30; padding-top: env(safe-area-inset-top, 0px); color: var(--on-dark); transition: background-color .3s ease, color .3s ease; }
+  .top.is-solid { background: color-mix(in srgb, var(--dark) 92%, transparent); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+  .top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 68px; }
+  .logo { font-family: var(--display); font-size: 26px; letter-spacing: .01em; min-height: 44px; min-width: 44px; display: inline-flex; align-items: center; }
+  .logo span { color: var(--accent); }
+  .nav { display: flex; gap: 28px; font-size: 15px; font-weight: 500; color: var(--on-dark-muted); }
+  .nav a { padding-block: 11px; }
+  .nav a:hover { color: var(--on-dark); }
+  .top-cta { display: inline-flex; align-items: center; gap: 10px; font-weight: 600; font-size: 15px; min-height: 44px; }
+  .top-cta .ico { color: var(--accent); }
+  .top-cta:hover { color: var(--accent); }
+
+  /* Hero */
+  .hero { position: relative; z-index: 1; background: var(--dark); color: var(--on-dark); overflow: hidden; padding-top: calc(68px + env(safe-area-inset-top, 0px)); }
+  .hero-stage { position: relative; height: max(640px, min(100svh - 68px, 900px)); display: grid; grid-template-rows: auto 1fr auto; }
+  .hero-meta { display: flex; justify-content: space-between; gap: 16px; padding-block: 22px 0; color: var(--on-dark-muted); font-size: 14px; }
+  .hero-name { position: relative; display: grid; place-items: center; }
+  .hero-name .display { font-size: clamp(96px, min(20vw, 28svh), 320px); color: var(--on-dark); text-align: center; width: 100%; white-space: nowrap; }
+  .hero-name .word { display: block; overflow: hidden; }
+  .hero-name .word > span { display: inline-block; }
+  .hero-name .word { position: relative; z-index: 1; }
+  .hero-name .word-2 { color: var(--accent); z-index: 1; }
+  .hero-meta { grid-row: 1; }
+  .hero-name { grid-row: 2; grid-column: 1; }
+  .hero-foot { grid-row: 3; }
+  /* Outline copy of the name, in front of the portrait: the face shows through the second word. */
+  .hero-ghost { z-index: 3; pointer-events: none; }
+  .hero-ghost .word:first-child { visibility: hidden; }
+  .hero-ghost .word-2 { color: transparent; -webkit-text-stroke: 2px var(--accent); }
+  .hero-portrait { position: absolute; left: 50%; bottom: 0; width: var(--portrait-w); transform: translateX(-50%); z-index: 2; }
+  .hero-portrait img { width: 100%; height: auto; filter: grayscale(1) contrast(1.06) brightness(.98); }
+  .hero-foot { position: relative; z-index: 3; display: grid; grid-template-columns: minmax(0, 1fr) var(--portrait-w) minmax(0, 1fr); column-gap: 32px; align-items: end; padding-bottom: clamp(24px, 4vw, 44px); }
+  .hero-role { font-size: 15px; line-height: 1.45; color: var(--on-dark-muted); max-width: 22ch; }
+  .hero-role strong { color: var(--on-dark); font-weight: 600; display: block; }
+  .hero-pitch { justify-self: end; max-width: 400px; display: grid; gap: 18px; }
+  .hero-pitch p { margin: 0; font-size: 17px; color: var(--on-dark); }
+  .hero-pitch .hero-headline { font-family: var(--display); font-size: clamp(30px, 2.6vw, 40px); line-height: 1; text-transform: uppercase; }
+  .hero-pitch .hero-text { color: var(--on-dark-muted); font-size: 16px; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+
+  .ticker { position: relative; z-index: 3; background: var(--accent); color: var(--accent-ink); overflow: hidden; border-block: 1px solid var(--accent-deep); }
+  .ticker-track { display: flex; width: max-content; animation: ticker 38s linear infinite; }
+  .ticker-track span { font-family: var(--display); font-size: clamp(22px, 2.6vw, 32px); text-transform: uppercase; padding: 12px 0; white-space: nowrap; display: inline-flex; align-items: center; }
+  .ticker-track span::after { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--accent-ink); margin-inline: 22px; }
+  @keyframes ticker { to { transform: translateX(-50%); } }
+
+  /* Statement */
+  .statement { position: relative; z-index: 1; padding-block: clamp(80px, 12vw, 160px); }
+  .statement .wrap { display: grid; grid-template-columns: 1fr 2.4fr; gap: 32px; }
+  .statement h2 { font-family: var(--display); font-weight: 400; font-size: clamp(38px, 5.4vw, 80px); line-height: .98; text-transform: none; margin: 0; letter-spacing: 0; }
+  .statement h2 mark { background: none; color: var(--accent-deep); }
+  .facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin-top: clamp(40px, 6vw, 72px); border-top: 1px solid var(--line); }
+  .fact { padding: 22px 22px 0 0; }
+  .fact + .fact { padding-left: 22px; border-left: 1px solid var(--line); }
+  .fact b { font-family: var(--display); font-weight: 400; font-size: clamp(44px, 5vw, 68px); line-height: 1; display: block; }
+  .fact span { color: var(--muted); font-size: 15px; }
+
+  /* Models */
+  .models { position: relative; z-index: 1; background: var(--dark); color: var(--on-dark); padding-block: clamp(80px, 11vw, 150px); }
+  .section-title { display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; margin-bottom: clamp(32px, 5vw, 64px); }
+  .section-title .display { font-size: clamp(72px, 13vw, 200px); }
+  .section-title .count { font-family: var(--display); font-size: clamp(22px, 2.4vw, 32px); color: var(--accent); }
+  .section-title p { max-width: 36ch; color: var(--on-dark-muted); margin: 12px 0 0; }
+  .model-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line-dark); }
+  .model { border-bottom: 1px solid var(--line-dark); }
+  .model a { display: grid; grid-template-columns: 70px 1.3fr 1fr auto; gap: 20px; align-items: center; padding-block: clamp(20px, 2.6vw, 30px); transition: color .25s ease; }
+  .model .num { font-family: var(--display); font-size: 22px; color: var(--on-dark-muted); }
+  .model .name { font-family: var(--display); font-size: clamp(36px, 5vw, 72px); text-transform: uppercase; line-height: .9; }
+  .model .what { color: var(--on-dark-muted); font-size: 15px; }
+  .model .go { width: 54px; height: 54px; border-radius: 50%; border: 1px solid var(--line-dark); display: grid; place-items: center; transition: background-color .25s ease, color .25s ease, border-color .25s ease; }
+  .model .thumb { display: none; }
+  .model a:hover .name, .model a:focus-visible .name { color: var(--accent); }
+  .model a:hover .go, .model a:focus-visible .go { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+  .models-note { margin-top: 20px; font-size: 14px; color: var(--on-dark-muted); }
+  .inline-cta { margin-top: clamp(28px, 4vw, 44px); display: flex; }
+  .preview { position: fixed; left: 0; top: 0; width: 340px; aspect-ratio: 16 / 10; border-radius: 14px; overflow: hidden; pointer-events: none; z-index: 40; opacity: 0; visibility: hidden; box-shadow: 0 30px 60px -20px rgba(0,0,0,.6); }
+  .preview img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+
+  /* What you get */
+  .gets { position: relative; z-index: 1; padding-block: clamp(80px, 11vw, 150px); }
+  .gets .section-title .display { color: var(--ink); }
+  .gets .section-title p { color: var(--muted); }
+  .gets-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); }
+  .get { padding: 28px 28px 36px 0; border-bottom: 1px solid var(--line); }
+  .get:not(:nth-child(3n + 1)) { padding-left: 28px; border-left: 1px solid var(--line); }
+  .get .n { font-family: var(--display); color: var(--accent-deep); font-size: 20px; }
+  .get h3 { font-size: 22px; line-height: 1.2; margin: 14px 0 10px; letter-spacing: -0.01em; }
+  .get p { margin: 0; color: var(--muted); font-size: 16px; }
+
+  /* Steps */
+  .steps { position: relative; z-index: 1; background: var(--accent); color: var(--accent-ink); padding-block: clamp(80px, 11vw, 150px); }
+  .steps .section-title .display { font-size: clamp(64px, 11vw, 170px); }
+  .steps .section-title p { color: var(--ink-2); }
+  .step-row { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 2px solid var(--accent-ink); }
+  .step { padding: 22px 22px 0 0; }
+  .step + .step { padding-left: 22px; border-left: 1px solid rgba(18,17,16,.3); }
+  .step b { font-family: var(--display); font-weight: 400; font-size: clamp(80px, 9vw, 132px); line-height: .85; display: block; }
+  .step h3 { font-size: 21px; margin: 18px 0 8px; }
+  .step p { margin: 0; color: var(--ink-2); font-size: 16px; }
+
+  /* Story */
+  .story { position: relative; z-index: 1; background: var(--dark); color: var(--on-dark); padding-block: clamp(80px, 11vw, 150px); }
+  .story .section-title p { color: var(--on-dark-muted); }
+  .chapter { display: grid; grid-template-columns: 1fr 1.1fr; gap: clamp(28px, 5vw, 80px); align-items: center; padding-block: clamp(40px, 6vw, 80px); border-top: 1px solid var(--line-dark); }
+  .chapter:nth-of-type(even) .chapter-media { order: 2; }
+  .swipe-hint { display: none; }
+  .chapter-media { position: relative; border-radius: 24px; overflow: hidden; aspect-ratio: 4 / 5; background: var(--dark-2); }
+  .chapter-media img { width: 100%; height: 118%; object-fit: cover; }
+  .chapter-media.is-type { display: grid; place-items: center; aspect-ratio: 4 / 5; background: var(--accent); color: var(--accent-ink); }
+  .chapter-media.is-type span { font-family: var(--display); font-size: clamp(64px, 9vw, 130px); line-height: .9; text-align: center; text-transform: uppercase; }
+  .chapter-when { font-family: var(--display); color: var(--accent); font-size: clamp(22px, 2.4vw, 30px); }
+  .chapter h3 { font-family: var(--display); font-weight: 400; font-size: clamp(40px, 5vw, 72px); line-height: .95; text-transform: uppercase; margin: 12px 0 20px; }
+  .chapter p { margin: 0; color: var(--on-dark-muted); font-size: 18px; max-width: 46ch; }
+  .why { border-top: 1px solid var(--line-dark); padding-top: clamp(48px, 7vw, 96px); display: grid; grid-template-columns: 1fr 2.4fr; gap: 32px; }
+  .why p:not(.label) { font-family: var(--display); font-size: clamp(34px, 4.4vw, 64px); line-height: 1; margin: 0; }
+  .why .label { color: var(--on-dark-muted); margin: 0; }
+  .why p mark { background: none; color: var(--accent); }
+
+  /* Recruiters */
+  .hire { position: relative; z-index: 1; padding-block: clamp(80px, 11vw, 140px); }
+  .hire .wrap { display: grid; grid-template-columns: 1fr 2.4fr; gap: 32px; }
+  .hire h2 { font-size: clamp(30px, 3.4vw, 46px); line-height: 1.1; margin: 0 0 22px; letter-spacing: -0.02em; }
+  .stack { font-family: var(--display); font-size: clamp(34px, 5.2vw, 76px); line-height: 1; text-transform: uppercase; margin: 0 0 28px; color: var(--ink); }
+  .stack i { font-style: normal; color: var(--accent-deep); }
+  .links { display: flex; flex-wrap: wrap; gap: 10px; }
+  .link-pill { display: inline-flex; align-items: center; gap: 10px; padding: 12px 18px; border-radius: var(--radius); border: 1px solid var(--line); font-weight: 600; font-size: 15px; transition: background-color .2s ease, color .2s ease; }
+  .link-pill:hover { background: var(--ink); color: var(--paper); }
+
+  /* FAQ */
+  .faq { position: relative; z-index: 1; padding-block: 0 clamp(80px, 11vw, 140px); }
+  .faq .wrap { display: grid; grid-template-columns: 1fr 2.4fr; gap: 32px; border-top: 1px solid var(--line); padding-top: clamp(48px, 7vw, 90px); }
+  .faq h2 { font-family: var(--display); font-weight: 400; text-transform: uppercase; font-size: clamp(48px, 6vw, 90px); line-height: .9; margin: 0; }
+  details { border-bottom: 1px solid var(--line); }
+  details:first-child { border-top: 1px solid var(--line); }
+  summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-block: 24px; font-size: clamp(19px, 1.7vw, 23px); font-weight: 600; letter-spacing: -0.01em; }
+  summary::-webkit-details-marker { display: none; }
+  summary .plus { width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--line); display: grid; place-items: center; flex: none; transition: background-color .2s ease, transform .25s ease; }
+  details[open] summary .plus { transform: rotate(45deg); background: var(--accent); border-color: var(--accent); }
+  details p { margin: 0 0 24px; color: var(--muted); max-width: 60ch; }
+
+  /* Final */
+  .final { position: relative; z-index: 1; background: var(--dark); color: var(--on-dark); padding-top: clamp(80px, 11vw, 150px); overflow: hidden; }
+  .final .display { font-size: clamp(48px, 14.5vw, 240px); }
+  .final .display span { color: var(--accent); }
+  .final-row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 24px; align-items: end; margin-top: clamp(28px, 4vw, 48px); }
+  .final-row p { margin: 0; max-width: 38ch; color: var(--on-dark-muted); }
+  .final-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+  .foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; margin-top: clamp(64px, 9vw, 120px); padding-block: 24px calc(24px + env(safe-area-inset-bottom, 0px)); border-top: 1px solid var(--line-dark); font-size: 14px; color: var(--on-dark-muted); }
+  .foot nav { display: flex; flex-wrap: wrap; gap: 20px; }
+  .foot-link { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; }
+  .foot a:hover { color: var(--on-dark); }
+
+
+  /* Premium motion layer. Everything here is inert without the .motion class (reduced motion or no JS). */
+  html.lenis, html.lenis body { height: auto; }
+  .lenis.lenis-smooth { scroll-behavior: auto !important; }
+  .curtain { position: fixed; inset: 0; z-index: 80; background: var(--accent); display: none; place-items: center; }
+  .motion .curtain { display: grid; animation: curtain-safety .6s ease 3s forwards; }
+  .curtain span { font-family: var(--display); font-size: clamp(48px, 8vw, 110px); color: var(--accent-ink); text-transform: uppercase; overflow: hidden; display: block; line-height: 1; }
+  .curtain span i { display: block; font-style: normal; }
+  @keyframes curtain-safety { to { transform: translateY(-100%); visibility: hidden; } }
+  .cursor { position: fixed; left: 0; top: 0; width: 14px; height: 14px; margin: -7px 0 0 -7px; border-radius: 50%; background: var(--on-dark); mix-blend-mode: difference; pointer-events: none; z-index: 90; display: none; }
+  .cursor-label { position: absolute; inset: 0; display: grid; place-items: center; font-size: 12px; font-weight: 700; color: var(--ink); opacity: 0; text-transform: uppercase; letter-spacing: .06em; }
+  @media (hover: hover) and (pointer: fine) { .motion .cursor { display: block; } }
+  .step-progress { height: 4px; background: rgba(18,17,16,.18); margin-bottom: -2px; position: relative; z-index: 1; }
+  .step-progress span { display: block; height: 100%; width: 100%; background: var(--accent-ink); transform-origin: left; }
+  .steps.is-sequenced .step b, .steps.is-sequenced .step h3, .steps.is-sequenced .step p { opacity: .28; transition: opacity .35s ease; }
+  .steps.is-sequenced .step.is-on b, .steps.is-sequenced .step.is-on h3, .steps.is-sequenced .step.is-on p { opacity: 1; }
+  .split-line { overflow: hidden; padding-bottom: .04em; }
+  .statement .word-dim { opacity: .16; }
+  .chapter-media { will-change: clip-path; }
+
+  .dock { position: fixed; left: 12px; right: 12px; bottom: calc(12px + env(safe-area-inset-bottom, 0px)); z-index: 60; display: none; align-items: center; gap: 10px; padding: 14px 18px; border-radius: 18px; background: var(--ink); color: var(--on-dark); border: 1px solid var(--accent); font-weight: 700; font-size: 16px; box-shadow: 0 16px 40px -12px rgba(0,0,0,.55); transform: translateY(calc(100% + 24px)); transition: transform .4s cubic-bezier(.2,.8,.2,1); }
+  .dock span { white-space: nowrap; }
+  .dock .ico { color: var(--accent); }
+  .dock small { margin-left: auto; font-size: 13px; font-weight: 500; opacity: .75; white-space: nowrap; }
+  @media (max-width: 400px) { .dock { justify-content: center; } .dock small { display: none; } }
+  .dock.is-visible { transform: none; }
+
+  @media (max-width: 960px) {
+    .nav { display: none; }
+    /* On narrow screens the hero stacks: name, portrait tucked under it, then the pitch. */
+    .hero-stage { height: auto; display: flex; flex-direction: column; }
+    .hero-ghost { display: none; }
+    .hero-name { padding-top: 8px; }
+    .hero-portrait { position: relative; left: auto; bottom: auto; transform: none; width: var(--portrait-m); margin: -6vw auto 0; }
+    .hero-portrait img { -webkit-mask-image: linear-gradient(to bottom, #000 52%, transparent 92%); mask-image: linear-gradient(to bottom, #000 52%, transparent 92%); }
+    /* The offer rides over the faded lower half of the portrait, so promise and button fit the first screen. */
+    .hero-foot { grid-template-columns: 1fr; margin-top: calc(var(--portrait-m) * -0.52); }
+    .hero-pitch { gap: 14px; max-width: 560px; }
+    .hero-pitch .hero-headline { max-width: 16ch; }
+    .hero-pitch .hero-headline { order: 1; font-size: clamp(26px, 8vw, 40px); }
+    .hero-actions { order: 2; }
+    .hero-pitch .hero-text { order: 3; }
+    .hero-role { display: none; }
+    .hero-foot > span { display: none; }
+    .hero-pitch { justify-self: stretch; max-width: none; }
+    .statement .wrap, .why, .hire .wrap, .faq .wrap { grid-template-columns: 1fr; }
+    .gets-grid { grid-template-columns: 1fr 1fr; }
+    .get:not(:nth-child(3n + 1)) { padding-left: 0; border-left: 0; }
+    .get:nth-child(even) { padding-left: 24px; border-left: 1px solid var(--line); }
+    .step-row { grid-template-columns: 1fr 1fr; }
+    .step:nth-child(3) { padding-left: 0; border-left: 0; }
+    .chapter:nth-of-type(even) .chapter-media { order: 0; }
+    .chapter-media, .chapter-media.is-type { aspect-ratio: 4 / 3; }
+    /* Phones and tablets: the frame lines would touch the text. */
+    .frame { display: none; }
+    .story .wrap { padding-inline: 0; }
+    .story .section-title, .story .why, .story .swipe-hint { padding-inline: var(--gutter); }
+    /* The story becomes a swipe row: five chapters fit in one screen instead of five. */
+    .chapters { display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 4px var(--gutter) 8px; scrollbar-width: none; }
+    .chapters::-webkit-scrollbar { display: none; }
+    .chapter { flex: 0 0 min(82vw, 380px); scroll-snap-align: start; display: flex; flex-direction: column; align-items: stretch; gap: 18px; padding: 0; border-top: 0; }
+    .chapter h3 { font-size: 34px; margin: 8px 0 12px; }
+    .chapter p { font-size: 16px; }
+    .swipe-hint { display: flex; align-items: center; gap: 8px; color: var(--on-dark-muted); font-size: 14px; margin: 14px 0 0; }
+    .why { margin-top: 48px; }
+    .dock { display: flex; }
+
+    .model a { grid-template-columns: 1fr auto; row-gap: 12px; }
+    .model .num { display: none; }
+    .model .what { grid-column: 1 / -1; grid-row: 2; }
+    .model .thumb { display: block; grid-column: 1 / -1; grid-row: 3; border-radius: 12px; overflow: hidden; aspect-ratio: 16 / 10; }
+    .model .thumb img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+    .preview { display: none; }
+  }
+  /* Short phones (iPhone SE size): drop the meta line so the promise and the button fit the first screen. */
+  @media (max-width: 960px) and (max-height: 620px) { .hero-meta { display: none; } }
+  @media (max-width: 600px) {
+    body { font-size: 16px; }
+    .hero-meta span:last-child { display: none; }
+    .hero-name .display { font-size: 26vw; }
+    .facts { grid-template-columns: 1fr; }
+    .fact + .fact { padding-left: 0; border-left: 0; border-top: 1px solid var(--line); }
+    .gets-grid, .step-row { grid-template-columns: 1fr; }
+    .get:nth-child(even) { padding-left: 0; border-left: 0; }
+    .step + .step { padding-left: 0; border-left: 0; border-top: 1px solid rgba(18,17,16,.3); margin-top: 22px; }
+    .section-title { flex-direction: column; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ticker-track { animation: none; }
+  }
+
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  /* Desktop: the secondary action becomes a round arrow next to WhatsApp, so both fit one row. */
+  @media (min-width: 961px) {
+    .hero-actions { flex-wrap: wrap; }
+    .btn-models { width: 58px; height: 58px; padding: 0; justify-content: center; flex: none; }
+    .btn-models .btn-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  }
+  /* Big monitors: the layout grows with the screen instead of floating small in the middle. */
+  @media (min-width: 1800px) {
+    :root { --max: 1600px; --portrait-w: min(30vw, 56svh, 600px); }
+    body { font-size: 18px; }
+    .hero-name .display { font-size: clamp(96px, min(20vw, 30svh), 400px); }
+    .hero-stage { height: max(640px, min(100svh - 68px, 1100px)); }
+    .hero-pitch { max-width: 460px; }
+  }
+  /* Short desktop screens: the supporting line gives way so the button stays on the first screen. */
+  @media (min-width: 961px) and (max-height: 780px) {
+    .hero-pitch .hero-text { display: none; }
+  }
+  /* Phones on their side: two columns, name and offer on the left, portrait on the right. */
+  @media (max-width: 960px) and (orientation: landscape) and (max-height: 540px) {
+    .hero-stage { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); grid-template-rows: auto auto 1fr; height: calc(100svh - 68px); min-height: 300px; }
+    .hero-meta { grid-column: 1 / -1; display: flex; padding-block: 8px 0; }
+    .hero-meta span:last-child { display: none; }
+    .hero-name { grid-row: 2; grid-column: 1; place-items: start; padding-top: 4px; }
+    .hero-name .display { font-size: min(11vw, 17svh); text-align: left; }
+    .hero-portrait { position: absolute; left: auto; right: 0; bottom: 0; transform: none; margin: 0; width: min(34vw, 60svh); }
+    .hero-foot { grid-row: 3; grid-column: 1; margin-top: 0; align-self: end; padding-bottom: 14px; }
+    .hero-pitch { gap: 10px; }
+    .hero-pitch .hero-headline { font-size: min(4.2vw, 30px); max-width: none; }
+    .hero-pitch .hero-text { display: none; }
+    .hero-actions { flex-wrap: nowrap; }
+    .btn-models { width: 58px; height: 58px; padding: 0; justify-content: center; flex: none; }
+    .btn-models .btn-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  }
+</style>
+</head>
+<body>
+  <!-- Icons: brands from Simple Icons (CC0), interface from Phosphor (MIT), inlined as one sprite. -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-whatsapp" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></symbol>
+    <symbol id="i-instagram" viewBox="0 0 24 24"><path d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/></symbol>
+    <symbol id="i-github" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></symbol>
+    <symbol id="i-linkedin" viewBox="0 0 256 256"><path d="M216,24H40A16,16,0,0,0,24,40V216a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V40A16,16,0,0,0,216,24ZM96,176a8,8,0,0,1-16,0V112a8,8,0,0,1,16,0ZM88,96a12,12,0,1,1,12-12A12,12,0,0,1,88,96Zm96,80a8,8,0,0,1-16,0V140a20,20,0,0,0-40,0v36a8,8,0,0,1-16,0V112a8,8,0,0,1,15.79-1.78A36,36,0,0,1,184,140Z"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 256 256"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></symbol>
+    <symbol id="i-arrow-up" viewBox="0 0 256 256"><path d="M200,64V168a8,8,0,0,1-16,0V83.31L69.66,197.66a8,8,0,0,1-11.32-11.32L172.69,72H88a8,8,0,0,1,0-16H192A8,8,0,0,1,200,64Z"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 256 256"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></symbol>
+    <symbol id="i-arrow-down" viewBox="0 0 256 256"><path d="M205.66,149.66l-72,72a8,8,0,0,1-11.32,0l-72-72a8,8,0,0,1,11.32-11.32L120,196.69V40a8,8,0,0,1,16,0V196.69l58.34-58.35a8,8,0,0,1,11.32,11.32Z"/></symbol>
+  </svg>
+  <a class="skip" href="#conteudo">Pular para o conteúdo</a>
+  <div id="top-sentinel" aria-hidden="true" style="position:absolute;top:0;left:0;width:1px;height:24px;pointer-events:none"></div>
+  <div class="curtain" aria-hidden="true"><span><i>Tarcio Diniz</i></span></div>
+  <div class="cursor" aria-hidden="true"><span class="cursor-label">Ver</span></div>
+  <a class="dock" data-whatsapp="Oi, Tarcio! Vim pelo seu site e quero conversar sobre um site para o meu negócio." href="#contato" aria-label="Conversar com o Tarcio no WhatsApp"><svg class="ico ico-lg" aria-hidden="true"><use href="#i-whatsapp"/></svg><span>Conversar no WhatsApp</span><small>fala direto comigo</small></a>
+  <div class="frame" aria-hidden="true"><div class="wrap"><span></span><span></span></div></div>
+
+  <header class="top" id="top">
+    <div class="wrap">
+      <a class="logo" href="#conteudo" aria-label="Tarcio Diniz, início">TD<span>.</span></a>
+      <nav class="nav" aria-label="Principal">
+        <a href="#modelos">Modelos</a>
+        <a href="#como">Como funciona</a>
+        <a href="#historia">Sobre mim</a>
+        <a href="#duvidas">Dúvidas</a>
+      </nav>
+      <a class="top-cta" data-whatsapp="Oi, Tarcio! Vim pelo seu site e quero conversar sobre um site para o meu negócio." href="#contato"><svg class="ico ico-lg" aria-hidden="true"><use href="#i-whatsapp"/></svg><span class="top-cta-text">Chamar no WhatsApp</span></a>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <section class="hero" aria-label="Apresentação">
+      <div class="wrap hero-stage">
+        <div class="hero-meta"><span>Desenvolvedor web</span><span>Campina Grande, PB</span></div>
+        <div class="hero-name">
+          <h1 class="display"><span class="word"><span>Tarcio</span></span><span class="word word-2"><span>Diniz</span></span></h1>
+        </div>
+        <div class="hero-name hero-ghost" aria-hidden="true">
+          <p class="display"><span class="word"><span>Tarcio</span></span><span class="word word-2"><span>Diniz</span></span></p>
+        </div>
+        <div class="hero-portrait">
+          <img src="/assets/img/tarcio-recorte.webp" alt="Tarcio Diniz sorrindo, de camiseta preta" width="1023" height="1400" fetchpriority="high">
+        </div>
+        <div class="hero-foot">
+          <p class="hero-role"><strong>Sites para negócios locais</strong>Clínicas, restaurantes, pousadas, salões e lojas.</p>
+          <span></span>
+          <div class="hero-pitch">
+            <p class="hero-headline">Sites que trazem cliente para o seu negócio.</p>
+            <p class="hero-text">Seu cliente te acha no Google e te chama no WhatsApp com um toque. Você vê o seu site pronto em até 3 dias úteis depois da nossa conversa.</p>
+            <div class="hero-actions">
+              <a class="btn btn-accent" data-whatsapp="Oi, Tarcio! Vim pelo seu site e quero conversar sobre um site para o meu negócio." href="#contato"><svg class="ico ico-lg" aria-hidden="true"><use href="#i-whatsapp"/></svg>Conversar no WhatsApp</a>
+              <a class="btn btn-line btn-models" href="#modelos"><span class="btn-label">Ver modelos</span><svg class="ico" aria-hidden="true"><use href="#i-arrow-down"/></svg></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ticker" aria-hidden="true">
+        <div class="ticker-track">
+          <span>Clínicas</span><span>Restaurantes</span><span>Pousadas</span><span>Barbearias</span><span>Veterinárias</span><span>Lojas</span><span>Salões</span>
+          <span>Clínicas</span><span>Restaurantes</span><span>Pousadas</span><span>Barbearias</span><span>Veterinárias</span><span>Lojas</span><span>Salões</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="statement" aria-labelledby="statement-title">
+      <div class="wrap">
+        <p class="label">O trabalho</p>
+        <div>
+          <h2 id="statement-title">Seu cliente pesquisa no celular antes de sair de casa. <mark>Eu faço o site que aparece nessa hora</mark> e leva ele direto para a sua conversa no WhatsApp.</h2>
+          <div class="facts">
+            <div class="fact"><b>3 dias</b><span>úteis para ver o seu site, depois da conversa</span></div>
+            <div class="fact"><b>+3 anos</b><span>programando sistemas que rodam todo dia</span></div>
+            <div class="fact"><b>100%</b><span>pensado primeiro para a tela do celular</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="models" id="modelos" aria-labelledby="modelos-title">
+      <div class="wrap">
+        <div class="section-title">
+          <div>
+            <h2 class="display" id="modelos-title">Modelos</h2>
+            <p>Abra no celular e mexa à vontade: monte um pedido, marque um horário, simule uma reserva. É assim que o seu pode funcionar.</p>
+          </div>
+          <span class="count">(05)</span>
+        </div>
+        <ol class="model-list">
+          <li class="model"><a href="/demos/cardapio/" data-preview="/assets/demos/cardapio.webp"><span class="num">01</span><span class="name">Brasa Smash</span><span class="what">Hamburgueria. Cardápio com sacola que vira pedido no WhatsApp.</span><span class="go"><svg class="ico" aria-hidden="true"><use href="#i-arrow-up"/></svg></span><span class="thumb"><img src="/assets/demos/cardapio.webp" alt="" loading="lazy" width="1440" height="900"></span></a></li>
+          <li class="model"><a href="/demos/fisioterapia/" data-preview="/assets/demos/fisioterapia.webp"><span class="num">02</span><span class="name">Sálvia Fisio</span><span class="what">Clínica de fisioterapia. Avaliação marcada por formulário que abre o WhatsApp.</span><span class="go"><svg class="ico" aria-hidden="true"><use href="#i-arrow-up"/></svg></span><span class="thumb"><img src="/assets/demos/fisioterapia.webp" alt="" loading="lazy" width="1440" height="900"></span></a></li>
+          <li class="model"><a href="/demos/veterinaria/" data-preview="/assets/demos/veterinaria.webp"><span class="num">03</span><span class="name">Vigília Vet</span><span class="what">Veterinária 24h. Botão de emergência sempre à vista no celular.</span><span class="go"><svg class="ico" aria-hidden="true"><use href="#i-arrow-up"/></svg></span><span class="thumb"><img src="/assets/demos/veterinaria.webp" alt="" loading="lazy" width="1440" height="900"></span></a></li>
+          <li class="model"><a href="/demos/pousada/" data-preview="/assets/demos/pousada.webp"><span class="num">04</span><span class="name">Pousada Aroá</span><span class="what">Pousada. Pedido de reserva com datas, hóspedes e quarto.</span><span class="go"><svg class="ico" aria-hidden="true"><use href="#i-arrow-up"/></svg></span><span class="thumb"><img src="/assets/demos/pousada.webp" alt="" loading="lazy" width="1440" height="900"></span></a></li>
+          <li class="model"><a href="/demos/barbearia/" data-preview="/assets/demos/barbearia.webp"><span class="num">05</span><span class="name">Sisal Barbearia</span><span class="what">Barbearia. Agendamento em três escolhas: serviço, barbeiro e horário.</span><span class="go"><svg class="ico" aria-hidden="true"><use href="#i-arrow-up"/></svg></span><span class="thumb"><img src="/assets/demos/barbearia.webp" alt="" loading="lazy" width="1440" height="900"></span></a></li>
+        </ol>
+        <p class="models-note">As empresas dos modelos são fictícias, assim como os preços e as avaliações. Fotos do Unsplash.</p>
+        <div class="inline-cta"><a class="btn btn-accent" data-whatsapp="Oi, Tarcio! Vi os modelos no seu site e quero um site assim para o meu negócio." href="#contato"><svg class="ico ico-lg" aria-hidden="true"><use href="#i-whatsapp"/></svg>Quero um site assim</a></div>
+      </div>
+      <div class="preview" aria-hidden="true"><img src="/assets/demos/cardapio.webp" alt=""></div>
+    </section>
+
+    <section class="gets" aria-labelledby="gets-title">
+      <div class="wrap">
+        <div class="section-title">
+          <h2 class="display" id="gets-title">O que vem</h2>
+          <p>Cada parte do site tem uma função: fazer quem procura o seu negócio chegar até você.</p>
+        </div>
+        <div class="gets-grid">
+          <div class="get"><span class="n">01</span><h3>Feito para o celular</h3><p>É no celular que o seu cliente abre o site. Eu monto primeiro para a tela pequena, leve para abrir rápido até no 4G.</p></div>
+          <div class="get"><span class="n">02</span><h3>Fácil de achar no Google</h3><p>Preparo o site para o Google entender o que você vende e onde fica. Serve também para quem pergunta a uma IA, como o ChatGPT.</p></div>
+          <div class="get"><span class="n">03</span><h3>WhatsApp a um toque</h3><p>O cliente toca no botão e a conversa abre com a mensagem já escrita. Ele só aperta enviar.</p></div>
+          <div class="get"><span class="n">04</span><h3>Cardápio, agenda ou reserva</h3><p>Depende do seu ramo. Restaurante ganha cardápio com pedido, clínica e salão ganham horário para marcar, pousada ganha pedido de reserva.</p></div>
+          <div class="get"><span class="n">05</span><h3>Endereço no seu nome</h3><p>O seunegocio.com.br fica registrado em seu nome. O site é seu.</p></div>
+          <div class="get"><span class="n">06</span><h3>Você atualiza o dia a dia</h3><p>Dá para combinar de cardápio, preços e promoções ficarem numa planilha que você edita no celular. O resto eu faço para você.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="steps" id="como" aria-labelledby="como-title">
+      <div class="wrap">
+        <div class="section-title">
+          <h2 class="display" id="como-title">Como funciona</h2>
+          <p>Sem reunião longa e sem formulário gigante. A gente conversa, eu mostro, você aprova.</p>
+        </div>
+        <div class="step-progress" aria-hidden="true"><span></span></div>
+        <div class="step-row">
+          <div class="step"><b>1</b><h3>A gente conversa</h3><p>Uns 15 minutos para eu entender o seu negócio, quem é o seu cliente e o que ele precisa achar.</p></div>
+          <div class="step"><b>2</b><h3>Eu mostro o site</h3><p>Em até 3 dias úteis você vê o seu site funcionando, com a sua cara.</p></div>
+          <div class="step"><b>3</b><h3>Ajustamos juntos</h3><p>Você aponta o que quer mudar e eu ajusto até ficar do seu jeito.</p></div>
+          <div class="step"><b>4</b><h3>Vai para o ar</h3><p>Publico no seu endereço e deixo tudo pronto para o Google encontrar.</p></div>
+        </div>
+        <div class="inline-cta"><a class="btn btn-ink" data-whatsapp="Oi, Tarcio! Quero começar pela conversa sobre o site do meu negócio." href="#contato"><svg class="ico ico-lg" aria-hidden="true"><use href="#i-whatsapp"/></svg>Começar pela conversa</a></div>
+      </div>
+    </section>
+
+    <section class="story" id="historia" aria-labelledby="historia-title">
+      <div class="wrap">
+        <div class="section-title">
+          <h2 class="display" id="historia-title">Quem faz</h2>
+          <p>Sou o Tarcio, tenho 24 anos e moro em Campina Grande. Essa é a história por trás de cada site que eu entrego.</p>
+        </div>
+
+        <div class="chapters">
+        <article class="chapter">
+          <div class="chapter-media is-type" aria-hidden="true"><span>Realidade<br>virtual</span></div>
+          <div>
+            <span class="chapter-when">2022</span>
+            <h3>Comecei na universidade</h3>
+            <p>Estudo Ciência da Computação na UEPB. Meu primeiro trabalho foi num laboratório de pesquisa da universidade, criando experiências em realidade virtual. Foi ali que peguei gosto por construir coisas que as pessoas usam de verdade.</p>
+          </div>
+        </article>
+
+        <article class="chapter">
+          <div class="chapter-media"><img src="/assets/img/tarcio-sentado.webp" alt="Tarcio sentado, de polo azul, sorrindo" loading="lazy" width="933" height="1400"></div>
+          <div>
+            <span class="chapter-when">2023 até hoje</span>
+            <h3>Três anos de sistema no ar</h3>
+            <p>Desde então trabalho como desenvolvedor, no frontend e no backend: sistemas que rodam todo dia, integrações e automação com inteligência artificial. É desse trabalho que vem o meu cuidado com site rápido e que não quebra.</p>
+          </div>
+        </article>
+
+        <article class="chapter">
+          <div class="chapter-media"><img src="/assets/img/tarcio-corrida.webp" alt="Tarcio com a camisa e a medalha de uma corrida de 2025" loading="lazy" width="1050" height="1400"></div>
+          <div>
+            <span class="chapter-when">2025</span>
+            <h3>Constância se treina</h3>
+            <p>Corro de manhã cedo. Mais do que a medalha, o que eu levo da corrida é aparecer todo dia, e é assim que eu toco cada projeto.</p>
+          </div>
+        </article>
+
+        <article class="chapter">
+          <div class="chapter-media"><img src="/assets/img/tarcio-summit.webp" alt="Tarcio no Summit Paraíba, evento de gestão e posicionamento" loading="lazy" width="1050" height="1400"></div>
+          <div>
+            <span class="chapter-when">Agosto de 2026</span>
+            <h3>Aprendendo o lado do negócio</h3>
+            <p>Fui ao Summit Paraíba aprender gestão e posicionamento. Site bonito sem cliente chegando não resolve nada, então eu estudo também como o seu negócio vende.</p>
+          </div>
+        </article>
+
+        <article class="chapter">
+          <div class="chapter-media"><img src="/assets/img/tarcio-em-casa.webp" alt="Tarcio em casa, à mesa, com o cachorro no colo" loading="lazy" width="1050" height="1400"></div>
+          <div>
+            <span class="chapter-when">Hoje</span>
+            <h3>E em casa, quem manda é ele</h3>
+            <p>Quando o computador desliga, é aqui que eu estou.</p>
+          </div>
+        </article>
+
+        </div>
+        <p class="swipe-hint" aria-hidden="true">Arraste para o lado <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></p>
+
+        <div class="why">
+          <p class="label">Por que site para negócio local</p>
+          <p>Tem muita empresa boa em Campina que ninguém acha na internet. <mark>Quero mudar isso, uma de cada vez.</mark></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="hire" aria-labelledby="hire-title">
+      <div class="wrap">
+        <p class="label">Para recrutadores</p>
+        <div>
+          <h2 id="hire-title">Também sou desenvolvedor frontend e fullstack, com mais de 3 anos em sistemas de produção e automação com IA.</h2>
+          <p class="stack">Angular&nbsp;<i>/</i> React&nbsp;<i>/</i> TypeScript&nbsp;<i>/</i> Laravel&nbsp;<i>/</i> .NET&nbsp;<i>/</i> Python&nbsp;<i>/</i> Node</p>
+          <div class="links">
+            <a class="link-pill" href="https://www.linkedin.com/in/tarciodiniz" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-linkedin"/></svg>LinkedIn</a>
+            <a class="link-pill" href="https://github.com/TarcioDiniz" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-github"/></svg>GitHub</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq" id="duvidas" aria-labelledby="duvidas-title">
+      <div class="wrap">
+        <h2 id="duvidas-title">Dúvidas</h2>
+        <div>
+          <details><summary>Quanto custa um site?<span class="plus"><svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></span></summary><p>Depende do que o seu negócio precisa. Numa conversa de 15 minutos eu entendo e já te passo o valor, sem compromisso.</p></details>
+          <details><summary>Em quanto tempo fica pronto?<span class="plus"><svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></span></summary><p>Em até 3 dias úteis depois da nossa conversa você já vê o seu site. Depois a gente ajusta junto até ficar do seu jeito.</p></details>
+          <details><summary>O endereço do site fica no meu nome?<span class="plus"><svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></span></summary><p>Fica. O seunegocio.com.br é registrado no seu nome, e o site é seu.</p></details>
+          <details><summary>Consigo mudar preço e cardápio sozinho?<span class="plus"><svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></span></summary><p>Dá para combinar. Cardápio, preços e promoções podem ficar numa planilha que você edita no celular. Fotos novas, páginas novas e mudança de layout eu faço para você.</p></details>
+          <details><summary>Você atende fora de Campina Grande?<span class="plus"><svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></span></summary><p>Atendo. A conversa pode ser por chamada de vídeo, e o site funciona para qualquer cidade.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="final" id="contato" aria-labelledby="contato-title">
+      <div class="wrap">
+        <h2 class="display" id="contato-title">Bora<br>conversar<span>?</span></h2>
+        <div class="final-row">
+          <p>Me conta o que o seu negócio faz e eu te mostro como o site pode trazer mais cliente. A primeira conversa é por minha conta.</p>
+          <div class="final-actions">
+            <a class="btn btn-accent" data-whatsapp="Oi, Tarcio! Vim pelo seu site e quero conversar sobre um site para o meu negócio." href="#contato"><svg class="ico ico-lg" aria-hidden="true"><use href="#i-whatsapp"/></svg>Chamar no WhatsApp</a>
+            <a class="btn btn-line" href="https://www.instagram.com/eusoutarcio/" target="_blank" rel="noopener"><svg class="ico ico-lg" aria-hidden="true"><use href="#i-instagram"/></svg>@eusoutarcio</a>
+          </div>
+        </div>
+        <footer class="foot">
+          <span>Tarcio Diniz · Campina Grande, PB · 2026</span>
+          <nav aria-label="Redes">
+            <a href="https://www.instagram.com/eusoutarcio/" target="_blank" rel="noopener" class="foot-link"><svg class="ico" aria-hidden="true"><use href="#i-instagram"/></svg>Instagram</a>
+            <a href="https://www.linkedin.com/in/tarciodiniz" target="_blank" rel="noopener" class="foot-link"><svg class="ico" aria-hidden="true"><use href="#i-linkedin"/></svg>LinkedIn</a>
+            <a href="https://github.com/TarcioDiniz" target="_blank" rel="noopener" class="foot-link"><svg class="ico" aria-hidden="true"><use href="#i-github"/></svg>GitHub</a>
+          </nav>
+        </footer>
+      </div>
+    </section>
+  </main>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/SplitText.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js"></script>
+<script>
+  // WhatsApp pessoal do Tarcio, só dígitos com DDI e DDD.
+  const WHATSAPP_NUMBER = "5583991931035";
+
+  function whatsappLink(message) {
+    const text = encodeURIComponent(message);
+    return WHATSAPP_NUMBER ? `https://wa.me/${WHATSAPP_NUMBER}?text=${text}` : `https://wa.me/?text=${text}`;
+  }
+
+  document.querySelectorAll("[data-whatsapp]").forEach((link) => {
+    link.href = whatsappLink(link.dataset.whatsapp);
+    link.target = "_blank";
+    link.rel = "noopener";
+  });
+
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  let lenis = null;
+
+  // In-page links: Lenis scrolls when it is running, the native scroll otherwise.
+  document.querySelectorAll('a[href^="#"]').forEach((link) => {
+    link.addEventListener("click", (event) => {
+      const target = link.hash && document.querySelector(link.hash);
+      if (!target) return;
+      event.preventDefault();
+      if (lenis) lenis.scrollTo(target, { offset: -68, duration: 1.2 });
+      else target.scrollIntoView({ behavior: reduceMotion.matches ? "auto" : "smooth", block: "start" });
+    });
+  });
+
+  // Phones get a WhatsApp bar once the hero is gone, and lose it again at the final call to action.
+  const dock = document.querySelector(".dock");
+  const dockState = { pastHero: false, atFinal: false };
+  const syncDock = () => dock.classList.toggle("is-visible", dockState.pastHero && !dockState.atFinal);
+  new IntersectionObserver(([entry]) => { dockState.pastHero = !entry.isIntersecting; syncDock(); }).observe(document.querySelector(".hero-actions"));
+  new IntersectionObserver(([entry]) => { dockState.atFinal = entry.isIntersecting; syncDock(); }).observe(document.querySelector(".final"));
+
+  // The header turns solid as soon as the page leaves the very top, so it never sits bare over the ticker or a light section.
+  const header = document.getElementById("top");
+  new IntersectionObserver(([entry]) => header.classList.toggle("is-solid", !entry.isIntersecting)).observe(document.getElementById("top-sentinel"));
+
+  function startSmoothScroll() {
+    lenis = new Lenis({ lerp: 0.1, smoothWheel: true });
+    lenis.on("scroll", ScrollTrigger.update);
+    const tick = (time) => lenis.raf(time * 1000);
+    gsap.ticker.add(tick);
+    gsap.ticker.lagSmoothing(0);
+    return () => { gsap.ticker.remove(tick); lenis.destroy(); lenis = null; };
+  }
+
+  function playIntro() {
+    const nameChars = SplitText.create(".hero-name:not(.hero-ghost) .word > span", { type: "chars" }).chars;
+    const intro = gsap.timeline({ defaults: { ease: "power4.out" } });
+    intro
+      .from(".curtain span i", { yPercent: 110, duration: 0.5 })
+      .to(".curtain span i", { yPercent: -110, duration: 0.35, ease: "power3.in" }, "+=0.1")
+      .to(".curtain", { yPercent: -100, duration: 0.7, ease: "expo.inOut" }, "-=0.15")
+      .set(".curtain", { display: "none" })
+      .from(nameChars, { yPercent: 110, rotate: 6, duration: 1.1, stagger: 0.035 }, "-=0.55")
+      .from(".hero-portrait img", { clipPath: "inset(100% 0 0 0)", scale: 1.12, duration: 1.3, ease: "expo.out" }, "<0.15")
+      .from(".hero-ghost .word-2", { clipPath: "inset(0 100% 0 0)", duration: 1.1, ease: "power2.inOut" }, "<0.5")
+      .from(".hero-meta > *, .hero-foot > *, .top .wrap > *", { y: 24, autoAlpha: 0, duration: 0.7, stagger: 0.05 }, "<-0.2");
+    return intro;
+  }
+
+  function heroOnScroll() {
+    const trigger = { trigger: ".hero", start: "top top", end: "bottom top", scrub: true };
+    gsap.to(".hero-name .display", { scale: 0.86, yPercent: 14, transformOrigin: "50% 0%", ease: "none", scrollTrigger: trigger });
+    gsap.to(".hero-portrait", { yPercent: -8, ease: "none", scrollTrigger: trigger });
+    gsap.to(".hero-foot", { autoAlpha: 0, y: -40, ease: "none", scrollTrigger: { ...trigger, end: "40% top" } });
+  }
+
+  function tickerOnVelocity() {
+    const track = document.querySelector(".ticker-track");
+    const skew = gsap.quickTo(track, "skewX", { duration: 0.4, ease: "power3.out" });
+    ScrollTrigger.create({
+      onUpdate: (self) => skew(gsap.utils.clamp(-12, 12, self.getVelocity() / -250)),
+    });
+  }
+
+  function revealTitles() {
+    gsap.utils.toArray(".section-title .display, .final .display").forEach((title) => {
+      const split = SplitText.create(title, { type: "lines, chars", linesClass: "split-line" });
+      gsap.from(split.chars, { yPercent: 115, duration: 1, ease: "power4.out", stagger: 0.025, scrollTrigger: { trigger: title, start: "top 85%", once: true } });
+    });
+  }
+
+  function lightUpStatement() {
+    const split = SplitText.create(".statement h2", { type: "words" });
+    gsap.fromTo(split.words, { opacity: 0.16 }, { opacity: 1, stagger: 0.1, ease: "none", scrollTrigger: { trigger: ".statement h2", start: "top 80%", end: "bottom 45%", scrub: true } });
+    gsap.utils.toArray(".fact b").forEach((fact) => {
+      gsap.from(fact, { yPercent: 60, autoAlpha: 0, duration: 0.8, ease: "power3.out", scrollTrigger: { trigger: fact, start: "top 90%", once: true } });
+    });
+  }
+
+  function enterLists() {
+    ScrollTrigger.batch(".model, .get", {
+      start: "top 90%",
+      once: true,
+      onEnter: (batch) => gsap.from(batch, { y: 40, autoAlpha: 0, duration: 0.8, ease: "power3.out", stagger: 0.07 }),
+    });
+    gsap.from(".stack", { y: 40, autoAlpha: 0, duration: 1, ease: "power3.out", scrollTrigger: { trigger: ".stack", start: "top 88%", once: true } });
+    gsap.from(".why p:not(.label)", { y: 40, autoAlpha: 0, duration: 1, ease: "power3.out", scrollTrigger: { trigger: ".why", start: "top 80%", once: true } });
+  }
+
+  function revealChapters() {
+    gsap.utils.toArray(".chapter").forEach((chapter) => {
+      const media = chapter.querySelector(".chapter-media");
+      const img = media.querySelector("img");
+      gsap.from(media, { clipPath: "inset(100% 0% 0% 0% round 24px)", duration: 1.3, ease: "expo.out", scrollTrigger: { trigger: chapter, start: "top 75%", once: true } });
+      if (img) gsap.fromTo(img, { yPercent: -10, scale: 1.08 }, { yPercent: 0, scale: 1, ease: "none", scrollTrigger: { trigger: media, start: "top bottom", end: "bottom top", scrub: true } });
+      gsap.from(chapter.querySelectorAll(".chapter-when, h3, p"), { y: 30, autoAlpha: 0, duration: 0.9, ease: "power3.out", stagger: 0.1, scrollTrigger: { trigger: chapter, start: "top 70%", once: true } });
+    });
+  }
+
+  // Desktop only: the steps pin while one bar fills and lights them up in order.
+  function sequenceSteps() {
+    const section = document.querySelector(".steps");
+    const steps = gsap.utils.toArray(".step");
+    section.classList.add("is-sequenced");
+    const light = (progress) => steps.forEach((step, index) => step.classList.toggle("is-on", progress >= index / steps.length));
+    gsap.fromTo(".step-progress span", { scaleX: 0 }, {
+      scaleX: 1,
+      ease: "none",
+      scrollTrigger: { trigger: section, start: "top top", end: "+=1400", pin: true, scrub: 0.6, onUpdate: (self) => light(self.progress) },
+    });
+    light(0);
+    return () => { section.classList.remove("is-sequenced"); steps.forEach((step) => step.classList.remove("is-on")); };
+  }
+
+  function cursorAndMagnets() {
+    const cursor = document.querySelector(".cursor");
+    const label = cursor.querySelector(".cursor-label");
+    const x = gsap.quickTo(cursor, "x", { duration: 0.25, ease: "power3.out" });
+    const y = gsap.quickTo(cursor, "y", { duration: 0.25, ease: "power3.out" });
+    // Hidden until the pointer first moves, so it never sits in the corner at 0,0.
+    gsap.set(cursor, { autoAlpha: 0 });
+    let seen = false;
+    const onMove = (event) => {
+      if (!seen) { seen = true; gsap.set(cursor, { x: event.clientX, y: event.clientY }); gsap.to(cursor, { autoAlpha: 1, duration: 0.3 }); }
+      x(event.clientX); y(event.clientY);
+    };
+    window.addEventListener("pointermove", onMove);
+
+    const grow = (event) => {
+      const isModel = event.currentTarget.closest(".model");
+      gsap.to(cursor, { scale: isModel ? 5.5 : 3, duration: 0.3, ease: "power3.out" });
+      gsap.to(label, { opacity: isModel ? 1 : 0, duration: 0.2 });
+    };
+    const shrink = () => { gsap.to(cursor, { scale: 1, duration: 0.3, ease: "power3.out" }); gsap.to(label, { opacity: 0, duration: 0.2 }); };
+    const targets = document.querySelectorAll("a, button, summary");
+    targets.forEach((el) => { el.addEventListener("pointerenter", grow); el.addEventListener("pointerleave", shrink); });
+
+    // Buttons lean toward the pointer a little, then settle back.
+    const magnets = document.querySelectorAll(".btn, .model .go, .top-cta");
+    const pull = (event) => {
+      const el = event.currentTarget;
+      const box = el.getBoundingClientRect();
+      gsap.to(el, { x: (event.clientX - box.left - box.width / 2) * 0.3, y: (event.clientY - box.top - box.height / 2) * 0.3, duration: 0.4, ease: "power3.out" });
+    };
+    const release = (event) => gsap.to(event.currentTarget, { x: 0, y: 0, duration: 0.7, ease: "elastic.out(1, 0.4)" });
+    magnets.forEach((el) => { el.addEventListener("pointermove", pull); el.addEventListener("pointerleave", release); });
+
+    return () => {
+      window.removeEventListener("pointermove", onMove);
+      targets.forEach((el) => { el.removeEventListener("pointerenter", grow); el.removeEventListener("pointerleave", shrink); });
+      magnets.forEach((el) => { el.removeEventListener("pointermove", pull); el.removeEventListener("pointerleave", release); gsap.set(el, { x: 0, y: 0 }); });
+    };
+  }
+
+  function modelPreview() {
+    const preview = document.querySelector(".preview");
+    const previewImg = preview.querySelector("img");
+    const moveX = gsap.quickTo(preview, "x", { duration: 0.5, ease: "power3.out" });
+    const moveY = gsap.quickTo(preview, "y", { duration: 0.5, ease: "power3.out" });
+    const rotate = gsap.quickTo(preview, "rotate", { duration: 0.6, ease: "power3.out" });
+    const list = document.querySelector(".model-list");
+    let lastX = 0;
+    const onMove = (event) => { moveX(event.clientX + 28); moveY(event.clientY - 110); rotate(gsap.utils.clamp(-8, 8, (event.clientX - lastX) * 0.6)); lastX = event.clientX; };
+    const show = (event) => {
+      previewImg.src = event.currentTarget.dataset.preview;
+      gsap.to(preview, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "power2.out" });
+    };
+    const hide = () => gsap.to(preview, { autoAlpha: 0, scale: 0.85, duration: 0.25, ease: "power2.in" });
+    gsap.set(preview, { scale: 0.85 });
+    list.addEventListener("pointermove", onMove);
+    list.addEventListener("pointerleave", hide);
+    const links = list.querySelectorAll("a");
+    links.forEach((link) => link.addEventListener("pointerenter", show));
+    return () => {
+      list.removeEventListener("pointermove", onMove);
+      list.removeEventListener("pointerleave", hide);
+      links.forEach((link) => link.removeEventListener("pointerenter", show));
+    };
+  }
+
+  if (window.gsap && window.ScrollTrigger && window.SplitText) {
+    gsap.registerPlugin(ScrollTrigger, SplitText);
+    const motion = gsap.matchMedia();
+
+    motion.add("(prefers-reduced-motion: no-preference)", () => {
+      const stopScroll = window.Lenis ? startSmoothScroll() : null;
+      playIntro();
+      heroOnScroll();
+      tickerOnVelocity();
+      revealTitles();
+      lightUpStatement();
+      enterLists();
+      revealChapters();
+      return () => { if (stopScroll) stopScroll(); };
+    });
+
+    motion.add("(min-width: 961px) and (prefers-reduced-motion: no-preference)", () => sequenceSteps());
+    motion.add("(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)", () => {
+      const stopCursor = cursorAndMagnets();
+      const stopPreview = modelPreview();
+      return () => { stopCursor(); stopPreview(); };
+    });
+
+    document.fonts.ready.then(() => ScrollTrigger.refresh());
+  } else {
+    // Libraries failed to load: never leave the curtain over the page.
+    document.documentElement.classList.remove("motion");
+  }
+</script>
+<script>
+  // Keeps the browser chrome (Safari, Arc, Chrome on Android) the same color as whatever sits under the top edge.
+  (() => {
+    const meta = document.querySelector('meta[name="theme-color"]');
+    if (!meta) return;
+    // A 1x1 canvas normalizes any CSS color (rgb, rgba, color-mix, color(srgb ...)) into plain bytes.
+    const pixel = document.createElement("canvas").getContext("2d", { willReadFrequently: true });
+    const rgba = (color) => { pixel.clearRect(0, 0, 1, 1); pixel.fillStyle = "#000"; pixel.fillStyle = color; pixel.fillRect(0, 0, 1, 1); return pixel.getImageData(0, 0, 1, 1).data; };
+    const toHex = (color) => "#" + [...rgba(color).slice(0, 3)].map((n) => n.toString(16).padStart(2, "0")).join("");
+    const opaque = (color) => color !== "transparent" && rgba(color)[3] > 127;
+    // Every layer under the point, top first: the first opaque background is the color the eye sees.
+    const colorAtTop = () => {
+      for (const el of document.elementsFromPoint(window.innerWidth / 2, 1)) {
+        const color = getComputedStyle(el).backgroundColor;
+        if (opaque(color)) return toHex(color);
+      }
+      return toHex(getComputedStyle(document.documentElement).backgroundColor);
+    };
+    let queued = false;
+    const sync = () => {
+      queued = false;
+      const color = colorAtTop();
+      if (meta.content !== color) meta.content = color;
+    };
+    let settle = 0;
+    // A second read after scrolling stops catches headers that fade their background in.
+    const request = () => {
+      if (!queued) { queued = true; requestAnimationFrame(sync); }
+      clearTimeout(settle);
+      settle = setTimeout(() => requestAnimationFrame(sync), 450);
+    };
+    window.addEventListener("scroll", request, { passive: true });
+    window.addEventListener("resize", request);
+    window.addEventListener("load", request);
+    request();
+  })();
+</script>
+</body>
+</html>
