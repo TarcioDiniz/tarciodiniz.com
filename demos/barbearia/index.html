@@ -3,297 +3,386 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#efe6d4">
+<meta name="theme-color" content="#ede6d6">
 <meta name="robots" content="noindex, nofollow">
 <title>Sisal Barbearia · Campina Grande (demonstração)</title>
-<meta name="description" content="Demonstração de site para barbearia: serviços com preço, pedido de horário pelo WhatsApp em três passos, equipe e endereço.">
+<meta name="description" content="Demonstração de site para barbearia: tabela de preços, pedido de horário pelo WhatsApp em três passos, equipe, cortes e endereço.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Gloock&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1600&q=70" imagesrcset="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=900&q=70 900w, https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1600&q=70 1600w" imagesizes="100vw">
+<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" crossorigin>
+<link rel="preload" as="image" href="https://images.unsplash.com/photo-1647140655214-e4a2d914971f?auto=format&fit=crop&w=1200&q=70" imagesrcset="https://images.unsplash.com/photo-1647140655214-e4a2d914971f?auto=format&fit=crop&w=700&q=70 700w, https://images.unsplash.com/photo-1647140655214-e4a2d914971f?auto=format&fit=crop&w=1200&q=70 1200w" imagesizes="(min-width: 900px) 55vw, 100vw">
 <style>
   :root {
-    --bg: #0e0d0b;
-    --surface: #171512;
-    --surface-2: #211e1a;
-    --cream: #efe6d4;
-    --cream-2: #e4d9c3;
-    --on-dark: #efe6d4;
-    --on-dark-muted: #a79d8c;
-    --ink: #141210;
-    --ink-soft: #3b362f;
-    --ink-muted: #6f675b;
-    --line-dark: rgba(239, 230, 212, 0.14);
-    --line-light: rgba(20, 18, 16, 0.16);
-    --accent: #c57b46;
-    --accent-hover: #d98f58;
-    --accent-ink: #120f0c;
-    --accent-soft: rgba(197, 123, 70, 0.16);
-    --veil-strong: rgba(10, 9, 8, 0.86);
-    --veil-mid: rgba(10, 9, 8, 0.45);
-    --veil-clear: rgba(10, 9, 8, 0);
-    --glass: rgba(239, 230, 212, 0.1);
-    --glass-line: rgba(239, 230, 212, 0.24);
-    --shadow: 0 24px 48px -24px rgba(0, 0, 0, 0.7);
-    --radius-xl: 26px;
-    --radius-lg: 18px;
-    --radius-md: 12px;
-    --radius-pill: 999px;
-    --gutter: clamp(16px, 4vw, 40px);
-    --max: 1240px;
-    --header-h: 76px;
-    --font-display: "Gloock", "Georgia", "Times New Roman", serif;
-    --font: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --black: #0b0b0b;
+    --black-2: #141414;
+    --black-3: #1d1d1c;
+    --paper: #ede6d6;
+    --paper-2: #e2d9c5;
+    --red: #b3261e;
+    --red-hover: #c8342b;
+    --whatsapp: #25d366;
+    --gray-100: #d6d0c3;
+    --gray-300: #aaa498;
+    --gray-400: #827e75;
+    --gray-500: #77736b;
+    --gray-700: #3a3835;
+    --ink-muted: #56514a;
+    --line-dark: rgba(237, 230, 214, 0.16);
+    --line-dark-strong: rgba(237, 230, 214, 0.38);
+    --line-paper: rgba(11, 11, 11, 0.2);
+    --line-paper-strong: rgba(11, 11, 11, 0.55);
+    --sprocket: rgba(237, 230, 214, 0.2);
+    --photo-filter: grayscale(1) contrast(1.18) brightness(0.9);
+    --map-filter: grayscale(1) contrast(1.05) brightness(0.96);
+    --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    --gutter: clamp(16px, 4.2vw, 48px);
+    --max: 1360px;
+    --header-h: 64px;
+    /* Alfa Slab One is the heavy slab of hand-painted shop signs; Plex carries everything else. */
+    --font-display: "Alfa Slab One", "Rockwell", "Roboto Slab", "Georgia", serif;
+    --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+    --font: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
   }
   * { box-sizing: border-box; }
-  html { scroll-padding-top: calc(var(--header-h) + 12px); }
-  body { margin: 0; background: var(--bg); color: var(--on-dark); font-family: var(--font); font-size: 16px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+  h1, h2, h3 { text-wrap: balance; }
+  p, li, dd, blockquote { text-wrap: pretty; }
+  html { scroll-padding-top: calc(var(--header-h) + 8px); background: var(--black); }
+  body { margin: 0; background: var(--black); color: var(--paper); font-family: var(--font); font-size: 16px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+  /* Static film grain over the whole page; fixed, so it never repaints while scrolling. */
+  body::after { content: ""; position: fixed; inset: 0; z-index: 900; pointer-events: none; background-image: var(--grain); opacity: 0.06; }
   img { display: block; max-width: 100%; }
+  /* Lets the hero photo bleed to the screen edge without a sideways scroll; clip keeps sticky elements working. */
+  main { overflow-x: clip; }
   a { color: inherit; text-decoration: none; }
   button { font: inherit; cursor: pointer; color: inherit; }
   .wrap { max-width: var(--max); margin: 0 auto; padding-inline: var(--gutter); }
-  .ico { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; display: block; flex: none; }
-  .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .ico { width: 20px; height: 20px; fill: currentColor; display: block; flex: none; }
+  .mono { font-family: var(--font-mono); }
 
-  .notice { background: var(--cream); color: var(--ink); font-size: 13px; text-align: center; padding: 8px var(--gutter); }
-  .notice strong { color: var(--ink); }
+  .notice { background: var(--paper); color: var(--black); font-size: 13px; text-align: center; padding: 8px var(--gutter); }
+
+  /* Black-and-white photo with grain on top */
+  .bw { position: relative; overflow: hidden; background: var(--black-2); margin: 0; }
+  .bw img { width: 100%; height: 100%; object-fit: cover; filter: var(--photo-filter); }
+  .bw::after { content: ""; position: absolute; inset: 0; pointer-events: none; background-image: var(--grain); opacity: 0.22; mix-blend-mode: overlay; }
 
   /* Header */
-  .site-header { position: sticky; top: 0; z-index: 40; background: var(--bg); border-bottom: 1px solid transparent; transition: border-color .25s ease; }
+  .site-header { position: sticky; top: 0; z-index: 1000; background: var(--black); border-bottom: 1px solid transparent; transition: border-color .25s ease; }
   .site-header.is-compact { border-bottom-color: var(--line-dark); }
   .site-header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: var(--header-h); }
-  .logo { display: inline-flex; align-items: baseline; gap: 10px; }
-  .logo b { font-family: var(--font-display); font-weight: 400; font-size: 30px; letter-spacing: -0.02em; line-height: 1; }
-  .logo small { font-size: 11px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: var(--accent); }
-  .nav { display: flex; gap: 28px; font-weight: 600; font-size: 14px; color: var(--on-dark-muted); }
-  .nav a:hover { color: var(--on-dark); }
+  .logo { display: inline-flex; align-items: baseline; gap: 10px; min-height: 44px; padding-top: 8px; }
+  .logo b { font-family: var(--font-display); font-weight: 400; font-size: 26px; line-height: 1; letter-spacing: .01em; }
+  .logo small { font-family: var(--font-mono); font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--gray-300); }
+  .nav { display: none; gap: 4px; font-size: 15px; font-weight: 500; }
+  .nav a { display: inline-flex; align-items: center; min-height: 44px; padding-inline: 12px; color: var(--gray-300); transition: color .2s ease; }
+  .nav a:hover { color: var(--paper); }
 
-  .pill-btn { display: inline-flex; align-items: center; gap: 12px; padding: 6px 6px 6px 20px; border-radius: var(--radius-pill); border: 0; background: var(--cream); color: var(--ink); font-weight: 700; font-size: 15px; line-height: 1.2; transition: translate .2s ease, background-color .2s ease; }
-  .pill-btn:hover { translate: 0 -2px; }
-  .pill-btn .dot { width: 38px; height: 38px; border-radius: 50%; background: var(--ink); color: var(--cream); display: grid; place-items: center; flex: none; }
-  .pill-btn.accent { background: var(--accent); color: var(--accent-ink); }
-  .pill-btn.accent:hover { background: var(--accent-hover); }
-  .pill-btn.accent .dot { background: var(--accent-ink); color: var(--accent); }
-  .pill-btn.ghost { background: transparent; color: var(--on-dark); border: 1px solid var(--glass-line); padding: 12px 20px; }
-  .pill-btn.dark { background: var(--ink); color: var(--cream); }
-  .pill-btn.dark .dot { background: var(--accent); color: var(--accent-ink); }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; padding: 12px 22px; border: 0; border-radius: 2px; font-family: var(--font); font-weight: 600; font-size: 16px; letter-spacing: .01em; line-height: 1.2; transition: translate .2s ease, background-color .2s ease, color .2s ease; }
+  .btn:hover { translate: 0 -2px; }
+  .btn-red { background: var(--red); color: var(--paper); }
+  .btn-red:hover { background: var(--red-hover); }
+  .btn-paper { background: var(--paper); color: var(--black); }
+  .btn-outline { background: transparent; color: var(--paper); box-shadow: inset 0 0 0 1.5px var(--line-dark-strong); }
+  .btn-outline:hover { box-shadow: inset 0 0 0 1.5px var(--paper); }
+  .btn-small { min-height: 44px; padding: 10px 16px; font-size: 15px; }
+  .text-link { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-size: 16px; font-weight: 500; text-decoration: underline; text-underline-offset: 5px; text-decoration-thickness: 1px; }
+  .text-link:hover { text-decoration-color: var(--red); }
+  .text-link .ico { width: 18px; height: 18px; }
 
-  /* Hero */
-  .hero { position: relative; border-radius: var(--radius-xl); overflow: hidden; min-height: min(80vh, 740px); display: flex; align-items: flex-end; isolation: isolate; }
-  .hero-media { position: absolute; inset: 0 0 -14% 0; z-index: -2; }
-  .hero-media img { width: 100%; height: 100%; object-fit: cover; object-position: 60% 30%; }
-  .hero::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(0deg, var(--veil-strong) 0%, var(--veil-mid) 45%, var(--veil-clear) 100%), linear-gradient(90deg, var(--veil-mid) 0%, var(--veil-clear) 70%); }
-  .hero-body { padding: clamp(24px, 5vw, 64px); width: 100%; display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: end; }
-  .eyebrow { font-size: 13px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--accent); margin: 0 0 18px; }
-  .hero h1 { font-family: var(--font-display); font-weight: 400; font-size: clamp(44px, 7.4vw, 108px); line-height: .92; letter-spacing: -0.03em; margin: 0 0 22px; }
-  .hero h1 .line { display: block; overflow: hidden; padding-bottom: .08em; white-space: nowrap; }
-  .hero h1 .line > span { display: inline-block; }
-  .hero h1 em { font-style: normal; color: var(--accent); }
-  .hero-lead { max-width: 44ch; color: var(--on-dark-muted); margin: 0 0 28px; font-size: 17px; }
-  .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
-  .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 26px; font-size: 13px; }
-  .tag { padding: 7px 14px; border-radius: var(--radius-pill); background: var(--glass); border: 1px solid var(--glass-line); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
-  .glass-card { width: 250px; padding: 20px; border-radius: var(--radius-lg); background: var(--glass); border: 1px solid var(--glass-line); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
-  .glass-card p { margin: 0; font-size: 13px; color: var(--on-dark-muted); }
-  .glass-card .score { display: flex; align-items: center; gap: 10px; margin: 6px 0 12px; }
-  .glass-card .score b { font-family: var(--font-display); font-weight: 400; font-size: 54px; line-height: 1; }
-  .stars { display: flex; gap: 2px; color: var(--accent); }
-  .stars svg { width: 16px; height: 16px; fill: currentColor; }
-  .glass-card .open-now { display: flex; align-items: center; gap: 8px; padding-top: 12px; border-top: 1px solid var(--glass-line); font-size: 13px; font-weight: 700; color: var(--on-dark); }
-  .open-now::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); flex: none; }
+  /* Hero: title card over a black-and-white portrait */
+  .hero { position: relative; display: grid; padding-bottom: clamp(28px, 5vw, 64px); }
+  .hero-photo { position: relative; margin-inline: calc(var(--gutter) * -1); height: clamp(180px, 33svh, 380px); -webkit-mask-image: linear-gradient(to bottom, var(--black) 55%, transparent); mask-image: linear-gradient(to bottom, var(--black) 55%, transparent); }
+  .hero-photo img { object-position: 50% 32%; }
+  .scene { position: absolute; left: 0; top: 14px; z-index: 1; margin: 0; padding: 4px 8px; background: var(--black); font-family: var(--font-mono); font-size: 13px; letter-spacing: .06em; color: var(--gray-100); }
+  .hero-copy { position: relative; z-index: 2; }
+  /* The slab is about a third wider than a display serif, so the phone size is tuned to "na régua." fitting 320 px. */
+  .hero h1 { font-family: var(--font-display); font-weight: 400; font-size: clamp(34px, 12vw, 62px); line-height: .98; letter-spacing: 0; margin: -0.55em 0 0; }
+  .hero h1 .line { display: block; }
+  .hero h1 .indent { padding-left: .7em; }
+  .razor { display: block; width: min(62%, 420px); height: 4px; margin: 14px 0 0 .7em; background: var(--red); transform-origin: left; }
+  .hero-lead { max-width: 40ch; margin: 18px 0 0; color: var(--gray-100); font-size: 16px; }
+  .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 20px; margin-top: 20px; }
+  .hero-caption { display: none; }
 
-  /* Ruler: the barber's "régua" is the page's signature divider */
-  .ruler { display: flex; align-items: flex-end; justify-content: space-between; height: 22px; margin-block: clamp(40px, 6vw, 72px) 0; color: var(--line-dark); }
-  .ruler i { width: 1px; height: 8px; background: currentColor; transform-origin: bottom; }
-  .ruler i:nth-child(5n + 1) { height: 14px; }
-  .ruler i:nth-child(10n + 1) { height: 22px; background: var(--accent); }
+  /* Credits strip */
+  /* On a phone the third caption is the longest, so it gets the widest column. */
+  .credits { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.25fr); border-block: 1px solid var(--line-dark); }
+  .credit { padding: 18px 8px 18px 0; margin: 0; }
+  .credit + .credit { padding-left: 14px; border-left: 1px solid var(--line-dark); }
+  .credit b { display: block; font-family: var(--font-display); font-weight: 400; font-size: clamp(28px, 4.4vw, 54px); line-height: 1; }
+  .credit span { display: flex; align-items: flex-start; gap: 5px; margin-top: 8px; font-family: var(--font-mono); font-size: 13px; line-height: 1.35; color: var(--gray-300); }
+  .credit .ico { width: 14px; height: 14px; margin-top: 2px; color: var(--red); }
 
-  /* Section heads */
-  .section { padding-block: clamp(64px, 9vw, 112px); }
-  .section-head { display: grid; grid-template-columns: 1.1fr 1fr; gap: 24px 48px; align-items: end; margin-bottom: clamp(32px, 5vw, 56px); }
-  .section-head h2, .h2 { font-family: var(--font-display); font-weight: 400; font-size: clamp(38px, 5.6vw, 76px); letter-spacing: -0.03em; line-height: .96; margin: 0; }
-  .section-head p { margin: 0; color: var(--on-dark-muted); max-width: 44ch; justify-self: end; }
-  .kicker { display: block; font-family: var(--font); font-size: 13px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
+  /* Section scaffolding */
+  .section { padding-block: clamp(64px, 10vw, 128px); }
+  .kicker { display: block; margin: 0 0 14px; font-family: var(--font-mono); font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--gray-300); }
+  .h2 { font-family: var(--font-display); font-weight: 400; font-size: clamp(32px, 6vw, 80px); line-height: 1.02; letter-spacing: 0; margin: 0; }
+  .lede { margin: 18px 0 0; max-width: 42ch; color: var(--gray-100); }
 
-  /* Services: light section, typographic list */
-  .services { background: var(--cream); color: var(--ink); border-radius: var(--radius-xl); padding: clamp(32px, 6vw, 72px) clamp(20px, 5vw, 64px); margin-top: clamp(56px, 8vw, 96px); }
-  .services .section-head p { color: var(--ink-muted); }
-  .service-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line-light); counter-reset: svc; }
-  .service { display: grid; grid-template-columns: 56px minmax(0, 1fr) auto auto; gap: 8px 24px; align-items: center; padding-block: 22px; border-bottom: 1px solid var(--line-light); counter-increment: svc; }
-  .service::before { content: counter(svc, decimal-leading-zero); font-size: 13px; font-weight: 700; color: var(--ink-muted); letter-spacing: .08em; }
-  .service h3 { font-family: var(--font-display); font-weight: 400; font-size: clamp(24px, 2.6vw, 34px); letter-spacing: -0.02em; line-height: 1.05; margin: 0 0 4px; }
-  .service p { margin: 0; color: var(--ink-muted); font-size: 14px; max-width: 52ch; }
-  .service .meta { display: flex; align-items: baseline; gap: 18px; white-space: nowrap; }
-  .service .time { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; color: var(--ink-muted); }
-  .service .time .ico { width: 15px; height: 15px; }
-  .service .price { font-family: var(--font-display); font-size: clamp(24px, 2.4vw, 30px); letter-spacing: -0.02em; min-width: 4.4ch; text-align: right; }
-  .pick { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line-light); background: transparent; color: var(--ink); padding: 0; display: grid; place-items: center; flex: none; transition: background-color .2s ease, color .2s ease, border-color .2s ease; }
-  .pick:hover { background: var(--ink); color: var(--cream); border-color: var(--ink); }
-  .service.featured { background: var(--ink); color: var(--cream); border-radius: var(--radius-lg); padding-inline: 20px; margin-block: 14px 6px; border-bottom: 0; }
-  .service.featured::before { color: var(--accent); }
-  .service.featured p, .service.featured .time { color: var(--on-dark-muted); }
-  .service.featured .pick { border-color: var(--accent); background: var(--accent); color: var(--accent-ink); }
-  .service.featured .pick:hover { background: var(--accent-hover); }
-  .badge { display: inline-block; margin-left: 10px; vertical-align: middle; padding: 4px 10px; border-radius: var(--radius-pill); background: var(--accent); color: var(--accent-ink); font-family: var(--font); font-size: 11px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
-  .services-note { margin: 20px 0 0; font-size: 14px; color: var(--ink-muted); }
+  /* Price board, like the one painted on an old barbershop wall */
+  .prices { display: grid; gap: clamp(32px, 5vw, 72px); align-items: start; }
+  .prices-aside .bw { display: none; }
+  .board { position: relative; background: var(--black-2); border: 1px solid var(--line-dark-strong); outline: 1px solid var(--line-dark); outline-offset: -8px; padding: clamp(22px, 4vw, 44px) clamp(18px, 4vw, 44px); font-family: var(--font-mono); overflow: hidden; }
+  .board::after { content: ""; position: absolute; inset: 0; pointer-events: none; background-image: var(--grain); opacity: 0.14; mix-blend-mode: overlay; }
+  .board-head { display: flex; justify-content: space-between; gap: 12px; margin: 0 0 14px; padding-bottom: 14px; border-bottom: 1px solid var(--line-dark-strong); font-size: 13px; letter-spacing: .16em; text-transform: uppercase; color: var(--gray-300); }
+  .board-head span { display: inline-flex; align-items: center; gap: 8px; }
+  .board-head .ico { width: 18px; height: 18px; color: var(--red); }
+  .board-list { list-style: none; margin: 0; padding: 0; }
+  .board-row { display: block; width: 100%; min-height: 44px; padding: 14px 0; border: 0; border-bottom: 1px dashed var(--line-dark); background: transparent; color: var(--paper); text-align: left; font-family: var(--font-mono); transition: background-color .2s ease; }
+  .board-row:hover { background: var(--black-3); }
+  .board-row:focus-visible { outline: 2px solid var(--paper); outline-offset: 2px; }
+  .row-main { display: flex; align-items: flex-end; gap: 10px; font-size: clamp(16px, 2vw, 21px); font-weight: 500; line-height: 1.25; }
+  .row-name { min-width: 0; overflow-wrap: anywhere; }
+  .row-dots { flex: 1 1 auto; min-width: 20px; margin-bottom: .32em; border-bottom: 2px dotted var(--gray-500); }
+  .row-price { flex: none; white-space: nowrap; font-weight: 600; }
+  .row-sub { display: block; margin-top: 4px; font-size: 13px; color: var(--gray-300); }
+  .row-tag { display: inline-block; margin-left: 8px; padding: 1px 7px; background: var(--red); color: var(--paper); font-size: 13px; font-weight: 500; letter-spacing: .04em; vertical-align: 2px; }
+  .board-foot { margin: 18px 0 0; font-size: 15px; color: var(--gray-300); }
+  .pay { display: flex; flex-wrap: wrap; gap: 8px 18px; margin: 14px 0 0; padding-top: 14px; border-top: 1px solid var(--line-dark); font-size: 13px; color: var(--gray-100); }
+  .pay span { display: inline-flex; align-items: center; gap: 7px; }
+  .pay .ico { width: 18px; height: 18px; }
 
-  /* Booking */
-  .booking { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: clamp(20px, 3vw, 32px); align-items: start; }
-  .steps { display: grid; gap: 14px; }
-  .step { margin: 0; border: 1px solid var(--line-dark); border-radius: var(--radius-lg); padding: 22px clamp(18px, 3vw, 28px) 24px; background: var(--surface); min-width: 0; }
-  .step legend { float: left; width: 100%; display: flex; align-items: center; gap: 14px; margin-bottom: 18px; font-weight: 700; font-size: 17px; }
+  /* Booking: a paper ticket */
+  .booking-sec { background: var(--paper); color: var(--black); }
+  .booking-sec .kicker, .reviews-sec .kicker { color: var(--ink-muted); }
+  .booking-sec .lede { color: var(--ink-muted); }
+  .booking-head { margin-bottom: clamp(32px, 5vw, 56px); }
+  .booking { display: grid; gap: 28px; align-items: start; }
+  .step { position: relative; margin: 0; padding: 26px 0; border: 0; border-top: 1.5px dashed var(--line-paper-strong); min-width: 0; }
+  .step legend { float: left; width: 100%; display: flex; align-items: flex-end; gap: 14px; padding: 0; margin: 0 0 18px; }
   .step legend + * { clear: both; }
-  .step-num { width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--glass-line); display: grid; place-items: center; font-size: 14px; font-weight: 800; flex: none; transition: background-color .2s ease, color .2s ease, border-color .2s ease; }
-  .step.is-done .step-num { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
-  .step-num .ico { width: 16px; height: 16px; }
-  .step-num .ico, .step.is-done .step-num span { display: none; }
-  .step.is-done .step-num .ico { display: block; }
+  .step-num { font-family: var(--font-display); font-size: 60px; line-height: .8; color: var(--red); }
+  .step-title { display: flex; align-items: center; gap: 10px; margin-top: 4px; font-family: var(--font-display); font-size: clamp(24px, 3vw, 32px); line-height: 1.08; }
+  .step-title .ok { display: none; width: 26px; height: 26px; border-radius: 50%; background: var(--black); color: var(--paper); place-items: center; }
+  .step-title .ok .ico { width: 14px; height: 14px; }
+  .step.is-done .step-title .ok { display: inline-grid; }
   .choices { display: flex; flex-wrap: wrap; gap: 8px; }
   .choice { position: relative; }
   .choice input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
-  .choice span { display: flex; flex-direction: column; justify-content: center; min-height: 48px; padding: 10px 16px; border-radius: var(--radius-md); border: 1px solid var(--line-dark); background: var(--surface-2); font-size: 14px; font-weight: 600; line-height: 1.25; transition: background-color .2s ease, border-color .2s ease, color .2s ease; }
-  .choice small { font-weight: 500; font-size: 12px; color: var(--on-dark-muted); }
-  .choice:hover span { border-color: var(--glass-line); }
-  .choice input:checked + span { background: var(--accent-soft); border-color: var(--accent); }
-  .choice input:focus-visible + span { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .choice span { display: flex; flex-direction: column; justify-content: center; min-height: 48px; padding: 9px 14px; border: 1.5px solid var(--black); border-radius: 2px; background: transparent; font-size: 16px; font-weight: 600; line-height: 1.25; transition: background-color .2s ease, color .2s ease; }
+  .choice small { font-family: var(--font-mono); font-size: 13px; font-weight: 400; color: var(--ink-muted); transition: color .2s ease; }
+  .choice:hover span { background: var(--paper-2); }
+  .choice input:checked + span { background: var(--black); color: var(--paper); }
+  .choice input:checked + span small { color: var(--gray-100); }
+  .choice input:focus-visible + span { outline: 2px solid var(--red); outline-offset: 2px; }
   .choice input:disabled + span { opacity: .35; text-decoration: line-through; }
   .choice input:disabled { cursor: not-allowed; }
-  .sub-label { margin: 20px 0 10px; font-size: 13px; font-weight: 700; color: var(--on-dark-muted); letter-spacing: .06em; text-transform: uppercase; }
+  .sub-label { margin: 18px 0 10px; font-family: var(--font-mono); font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-muted); }
+  .sub-label:first-of-type { margin-top: 0; }
   .days { display: flex; flex-wrap: wrap; gap: 8px; }
-  .days .choice span { align-items: center; min-width: 64px; }
-  .days .choice b { font-size: 18px; }
-  .name-field { display: grid; gap: 8px; margin-top: 20px; font-size: 13px; font-weight: 700; color: var(--on-dark-muted); letter-spacing: .06em; text-transform: uppercase; }
-  .name-field input { font: inherit; font-size: 15px; letter-spacing: normal; text-transform: none; font-weight: 500; color: var(--on-dark); background: var(--surface-2); border: 1px solid var(--line-dark); border-radius: var(--radius-md); padding: 12px 14px; }
-  .name-field input:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+  .days .choice span { align-items: center; min-width: 60px; }
+  .days .choice b { font-family: var(--font-display); font-weight: 400; font-size: 22px; line-height: 1.05; }
+  .name-field { display: grid; gap: 8px; margin-top: 20px; font-family: var(--font-mono); font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-muted); }
+  .name-field input { min-height: 48px; font: inherit; font-family: var(--font); font-size: 16px; letter-spacing: normal; text-transform: none; color: var(--black); background: transparent; border: 0; border-bottom: 1.5px solid var(--black); border-radius: 0; padding: 10px 2px; }
+  .name-field input::placeholder { color: var(--gray-500); }
+  .name-field input:focus { outline: 2px solid var(--red); outline-offset: 2px; }
 
-  .summary { position: sticky; top: calc(var(--header-h) + 16px); background: var(--cream); color: var(--ink); border-radius: var(--radius-xl); padding: clamp(22px, 3vw, 32px); }
-  .summary h3 { font-family: var(--font-display); font-weight: 400; font-size: 30px; letter-spacing: -0.02em; margin: 0 0 18px; line-height: 1; }
-  .summary dl { margin: 0 0 22px; display: grid; }
-  .summary dl div { display: flex; justify-content: space-between; gap: 16px; padding-block: 11px; border-bottom: 1px solid var(--line-light); font-size: 15px; }
-  .summary dt { color: var(--ink-muted); }
-  .summary dd { margin: 0; font-weight: 700; text-align: right; }
-  .summary dd.is-empty { color: var(--ink-muted); font-weight: 500; }
-  .wa-btn { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; min-height: 56px; padding: 12px 20px; border-radius: var(--radius-pill); background: var(--ink); color: var(--cream); font-weight: 800; font-size: 16px; transition: background-color .2s ease, color .2s ease; }
-  .wa-btn .ico { width: 20px; height: 20px; }
-  .wa-btn[aria-disabled="true"] { background: var(--cream-2); color: var(--ink-muted); cursor: not-allowed; }
-  .summary .hint { margin: 12px 0 0; font-size: 14px; color: var(--ink-soft); min-height: 1.5em; }
-  .summary .honest { display: flex; gap: 10px; margin: 18px 0 0; padding-top: 16px; border-top: 1px solid var(--line-light); font-size: 13px; color: var(--ink-muted); }
-  .summary .honest .ico { width: 16px; height: 16px; margin-top: 2px; color: var(--accent); }
+  .ticket { position: relative; background: var(--black); color: var(--paper); padding: clamp(22px, 3vw, 32px); border-radius: 2px; }
+  .ticket::before { content: ""; position: absolute; left: 0; right: 0; top: -7px; height: 14px; background: radial-gradient(circle at 7px 7px, var(--paper) 5px, transparent 5.5px) 0 0 / 18px 14px repeat-x; }
+  .ticket-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin: 6px 0 16px; }
+  .ticket-head h3 { margin: 0; font-family: var(--font-display); font-weight: 400; font-size: 26px; line-height: 1.05; }
+  .ticket-head span { font-family: var(--font-mono); font-size: 13px; color: var(--gray-300); }
+  .ticket dl { margin: 0 0 20px; font-size: 15px; }
+  .ticket dl div { display: flex; justify-content: space-between; gap: 16px; padding-block: 10px; border-bottom: 1px dashed var(--line-dark-strong); }
+  .ticket dt { font-family: var(--font-mono); font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--gray-300); padding-top: 2px; }
+  .ticket dd { margin: 0; text-align: right; font-weight: 500; }
+  .ticket dd.is-empty { color: var(--gray-400); font-weight: 400; }
+  .wa-btn { width: 100%; min-height: 56px; font-size: 17px; }
+  .wa-btn .ico { width: 22px; height: 22px; }
+  .wa-btn[aria-disabled="true"] { background: var(--black-3); color: var(--gray-300); cursor: not-allowed; translate: none; }
+  .ticket .hint { margin: 12px 0 0; min-height: 1.5em; font-size: 14px; color: var(--gray-100); }
+  .ticket .honest { display: flex; gap: 10px; margin: 16px 0 0; padding-top: 14px; border-top: 1px solid var(--line-dark); font-size: 15px; color: var(--gray-300); }
+  .ticket .honest .ico { width: 18px; height: 18px; margin-top: 1px; }
 
-  /* Team */
-  .team { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-  .barber { display: flex; flex-direction: column; background: var(--surface); border: 1px solid var(--line-dark); border-radius: var(--radius-xl); padding: 28px; transition: translate .25s ease, border-color .25s ease; }
-  .barber:hover { translate: 0 -4px; border-color: var(--glass-line); }
-  .monogram { width: 92px; height: 92px; border-radius: 50%; display: grid; place-items: center; font-family: var(--font-display); font-size: 40px; color: var(--accent); background: var(--surface-2); box-shadow: 0 0 0 1px var(--accent), 0 0 0 8px var(--surface), 0 0 0 9px var(--line-dark); margin-bottom: 26px; }
-  .barber h3 { font-family: var(--font-display); font-weight: 400; font-size: 30px; letter-spacing: -0.02em; margin: 0 0 4px; line-height: 1.05; }
-  .barber .role { margin: 0 0 16px; font-size: 13px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); }
-  .barber p { margin: 0 0 22px; color: var(--on-dark-muted); font-size: 15px; flex: 1; }
-  .barber .days-off { font-size: 13px; color: var(--on-dark-muted); margin: 0 0 18px; flex: 0; padding-top: 14px; border-top: 1px solid var(--line-dark); }
-  .barber .pill-btn { align-self: flex-start; }
+  /* Team: the chairs, and the three hands behind them */
+  .team-sec { display: grid; gap: clamp(32px, 5vw, 64px); }
+  .team-photo { aspect-ratio: 16 / 11; width: 100%; }
+  .team-photo img { object-position: 45% 60%; }
+  .barbers { list-style: none; margin: 32px 0 0; padding: 0; }
+  .barber { display: grid; grid-template-columns: 84px minmax(0, 1fr); gap: 4px 20px; padding-block: 26px; border-top: 1px solid var(--line-dark); }
+  .barber:last-child { border-bottom: 1px solid var(--line-dark); }
+  .stamp { grid-row: 1 / span 4; width: 84px; height: 84px; border-radius: 50%; display: grid; place-items: center; background: var(--red); color: var(--paper); box-shadow: inset 0 0 0 4px var(--red), inset 0 0 0 5.5px var(--paper), inset 0 0 0 10px var(--red), inset 0 0 0 11px var(--paper); font-family: var(--font-display); font-size: 34px; line-height: 1; rotate: -8deg; }
+  .barber:nth-child(2) .stamp { rotate: 6deg; }
+  .barber:nth-child(3) .stamp { rotate: -3deg; }
+  .barber h3 { margin: 0; font-family: var(--font-display); font-weight: 400; font-size: clamp(26px, 3vw, 34px); line-height: 1.05; }
+  .barber .role { margin: 6px 0 8px; font-family: var(--font-mono); font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--gray-300); }
+  .barber p { margin: 0; color: var(--gray-100); font-size: 16px; max-width: 52ch; }
+  .barber .foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 4px 16px; margin-top: 10px; }
+  .barber .days-off { font-family: var(--font-mono); font-size: 13px; color: var(--gray-300); }
 
-  /* Gallery: broken grid of photos and type */
-  .gallery { display: grid; grid-template-columns: 1.3fr 1fr 1fr; grid-template-rows: repeat(2, minmax(240px, 1fr)); gap: 14px; }
-  .tile { position: relative; border-radius: var(--radius-lg); overflow: hidden; background: var(--surface); border: 1px solid var(--line-dark); display: flex; flex-direction: column; justify-content: flex-end; padding: 22px; min-height: 240px; }
-  .tile.photo { padding: 0; border: 0; margin: 0; }
-  .section[data-tight] { padding-top: 0; }
-  .h2-small { font-size: clamp(34px, 4vw, 52px); }
-  .tile.photo img { position: absolute; inset: -8% 0; width: 100%; height: 116%; object-fit: cover; }
-  .tile.photo figcaption { position: relative; padding: 60px 20px 18px; background: linear-gradient(0deg, var(--veil-strong), var(--veil-clear)); font-size: 14px; font-weight: 600; }
-  .tile.tall { grid-row: span 2; }
-  .tile h3 { font-family: var(--font-display); font-weight: 400; font-size: clamp(26px, 2.6vw, 36px); line-height: 1; letter-spacing: -0.02em; margin: 0 0 10px; }
-  .tile p { margin: 0; color: var(--on-dark-muted); font-size: 14px; }
-  .tile .num { position: absolute; top: 18px; left: 22px; font-size: 13px; font-weight: 700; color: var(--accent); letter-spacing: .08em; }
-  .tile.copper { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
-  .tile.copper p, .tile.copper .num { color: var(--accent-ink); }
-  .gallery-note { margin: 16px 0 0; font-size: 13px; color: var(--on-dark-muted); }
+  /* Gallery: a strip of film */
+  .strip-sec { padding-block: clamp(56px, 8vw, 104px); }
+  .strip-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 16px 32px; margin-bottom: 28px; }
+  .strip-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 20px; }
+  .strip-nav { display: flex; gap: 8px; }
+  .strip-nav button { width: 48px; height: 48px; display: grid; place-items: center; border: 1px solid var(--line-dark-strong); border-radius: 2px; background: transparent; transition: background-color .2s ease; }
+  .strip-nav button:hover { background: var(--black-3); }
+  .film { position: relative; background: var(--black-2); padding-block: 30px; }
+  .film::before, .film::after { content: ""; position: absolute; left: 0; right: 0; height: 12px; background: linear-gradient(90deg, var(--sprocket) 0 12px, transparent 12px) 6px 0 / 26px 12px repeat-x; pointer-events: none; }
+  .film::before { top: 9px; }
+  .film::after { bottom: 9px; }
+  .film-track { display: flex; gap: 10px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; padding-inline: calc(var(--gutter) + max(0px, (100% - var(--max)) / 2)); scroll-padding-inline: calc(var(--gutter) + max(0px, (100% - var(--max)) / 2)); overscroll-behavior-x: contain; }
+  .film-track::-webkit-scrollbar { display: none; }
+  .frame { flex: 0 0 min(74vw, 340px); scroll-snap-align: start; margin: 0; }
+  .frame .bw { aspect-ratio: 4 / 5; }
+  .frame figcaption { display: flex; gap: 12px; margin-top: 10px; font-size: 14px; color: var(--gray-100); }
+  .frame figcaption b { font-family: var(--font-mono); font-weight: 500; color: var(--gray-400); }
+  .strip-note { margin: 18px auto 0; font-size: 15px; color: var(--gray-300); }
 
-  /* Numbers + testimonials */
-  .proof { display: grid; grid-template-columns: 1fr 1.3fr; gap: clamp(28px, 5vw, 64px); align-items: start; }
-  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 32px; }
-  .stat { background: var(--surface); border: 1px solid var(--line-dark); border-radius: var(--radius-lg); padding: 20px; }
-  .stat b { display: block; font-family: var(--font-display); font-weight: 400; font-size: clamp(36px, 4vw, 52px); letter-spacing: -0.03em; line-height: 1; margin-bottom: 8px; color: var(--cream); }
-  .stat span { font-size: 13px; color: var(--on-dark-muted); }
-  .quotes { display: grid; gap: 14px; }
-  .quote { margin: 0; background: var(--surface); border: 1px solid var(--line-dark); border-radius: var(--radius-lg); padding: 24px 26px; }
-  .quote blockquote { margin: 0 0 14px; font-size: 16px; color: var(--on-dark); }
-  .quote.big { background: var(--cream); color: var(--ink); border-color: var(--cream); }
-  .quote.big blockquote { font-family: var(--font-display); font-size: clamp(24px, 2.6vw, 32px); line-height: 1.15; letter-spacing: -0.01em; color: var(--ink); }
-  .quote figcaption { font-size: 14px; color: var(--on-dark-muted); display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
-  .quote.big figcaption { color: var(--ink-muted); }
-  .quote figcaption b { color: inherit; font-weight: 700; }
-  .fict { font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); }
-  .quote.big .fict { color: var(--ink-soft); }
-  .quotes-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  /* Reviews, printed like clippings */
+  .reviews-sec { background: var(--paper); color: var(--black); }
+  .reviews { display: grid; gap: 36px; }
+  .review { margin: 0; }
+  .review blockquote { margin: 0; font-size: clamp(18px, 1.8vw, 21px); font-weight: 500; line-height: 1.45; }
+  .review.lead blockquote { font-family: var(--font-display); font-weight: 400; font-size: clamp(26px, 4vw, 52px); line-height: 1.1; }
+  .review figcaption { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; margin-top: 14px; font-size: 14px; color: var(--ink-muted); }
+  .review figcaption b { color: var(--black); font-weight: 600; }
+  .stars { display: inline-flex; gap: 2px; color: var(--red); }
+  .stars .ico { width: 15px; height: 15px; }
+  .fict { padding: 1px 7px; border: 1px solid var(--red); color: var(--red); font-family: var(--font-mono); font-size: 13px; letter-spacing: .06em; text-transform: uppercase; }
 
   /* Place */
-  .place { display: grid; grid-template-columns: 1.25fr 1fr; gap: 16px; }
-  .place-photo { position: relative; border-radius: var(--radius-xl); overflow: hidden; min-height: 460px; }
-  /* Wider than the frame so the side walls, with their beer signs, stay out of view. */
-  .place-photo img { position: absolute; top: 0; left: -24%; width: 148%; max-width: none; height: 100%; object-fit: cover; }
-  .place-info { background: var(--surface); border: 1px solid var(--line-dark); border-radius: var(--radius-xl); padding: clamp(24px, 4vw, 40px); display: flex; flex-direction: column; gap: 20px; }
-  .place-info .open-now { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 700; }
-  .hours { width: 100%; border-collapse: collapse; font-size: 15px; }
-  .hours td { padding: 11px 0; border-bottom: 1px solid var(--line-dark); }
-  .hours td:last-child { text-align: right; font-weight: 700; }
-  .hours tr.is-today td { color: var(--accent); }
-  .address { display: flex; gap: 10px; margin: 0; color: var(--on-dark-muted); }
-  .address .ico { color: var(--accent); margin-top: 3px; }
-  .place-info .pill-btn { align-self: flex-start; }
+  .place { display: grid; gap: clamp(28px, 4vw, 56px); }
+  .open-now { display: inline-flex; align-items: center; gap: 10px; margin: 18px 0 0; font-size: 16px; font-weight: 600; }
+  .open-now::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: var(--red); flex: none; }
+  .hours { width: 100%; margin-top: 24px; border-collapse: collapse; font-family: var(--font-mono); font-size: 15px; }
+  .hours td { padding: 12px 10px; border-bottom: 1px dashed var(--line-dark-strong); }
+  .hours td:last-child { text-align: right; }
+  .hours tr.is-today td { background: var(--red); color: var(--paper); border-bottom-color: var(--red); }
+  .hours tr.is-today td:first-child::after { content: " · hoje"; }
+  .hours tr.is-holiday td { color: var(--gray-300); }
+  .hours-note { margin: 10px 0 0; font-size: 15px; color: var(--gray-300); }
+  .address { display: flex; gap: 10px; margin: 22px 0 16px; color: var(--gray-100); }
+  .address .ico { margin-top: 2px; color: var(--red); }
+  .place-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+  .place-actions .ico-wa { color: var(--whatsapp); }
+  .map-figure { margin: 0; min-width: 0; }
+  .map { position: relative; isolation: isolate; height: 320px; border: 1px solid var(--line-dark-strong); background: var(--black-2); }
+  .map-figure figcaption { margin-top: 10px; font-size: 14px; color: var(--gray-300); }
+  .map-fallback { position: absolute; inset: 0; display: grid; place-items: center; padding: 24px; margin: 0; text-align: center; font-size: 14px; color: var(--gray-300); }
+  .map.is-ready .map-fallback { display: none; }
+  /* Leaflet: black-and-white streets, finger-sized zoom and a readable credit line */
+  .map.leaflet-container { background: var(--black-2); font-family: var(--font); }
+  .map .leaflet-tile-pane { filter: var(--map-filter); }
+  .map .leaflet-bar { border: 0; border-radius: 2px; box-shadow: none; }
+  .map .leaflet-bar a { width: 44px; height: 44px; line-height: 44px; font-size: 22px; background: var(--black); color: var(--paper); border-bottom-color: var(--line-dark-strong); }
+  .map .leaflet-bar a:hover { background: var(--black-3); color: var(--paper); }
+  .map .leaflet-control-attribution { font-size: 13px; line-height: 1.4; padding: 0 8px; background: rgba(237, 230, 214, 0.9); color: var(--black); }
+  .map .leaflet-control-attribution a { display: inline-block; padding-block: 12px; color: var(--black); text-decoration: underline; }
+  .map .map-label { width: 170px; padding: 6px 10px; border: 0; border-radius: 2px; background: var(--black); color: var(--paper); font-family: var(--font-mono); font-size: 13px; line-height: 1.35; text-align: center; box-shadow: none; white-space: normal; }
+  .map .map-ref { padding: 3px 8px; border: 1px solid var(--black); border-radius: 2px; background: var(--paper); color: var(--black); font-size: 13px; font-weight: 600; box-shadow: none; }
+  .map .map-label::before, .map .map-ref::before { display: none; }
+
+  /* Practical notes: what a regular would tell you before your first visit */
+  .practical { list-style: none; margin: 0; padding: 0; display: grid; grid-column: 1 / -1; border-top: 1px solid var(--line-dark); }
+  .practical li { display: grid; align-content: start; grid-template-columns: 28px minmax(0, 1fr); gap: 4px 14px; padding-block: 18px; border-bottom: 1px dashed var(--line-dark-strong); }
+  .practical .ico { width: 24px; height: 24px; margin-top: 2px; color: var(--red); }
+  .practical .ico-brand { color: var(--paper); }
+  .practical h3 { margin: 0; font-family: var(--font-mono); font-size: 13px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: var(--gray-300); }
+  .practical p { grid-column: 2; margin: 0; color: var(--gray-100); }
 
   /* FAQ */
-  .faq { display: grid; grid-template-columns: 1fr 1.4fr; gap: 40px; }
-  details { border-bottom: 1px solid var(--line-dark); padding-block: 20px; }
+  .faq { display: grid; gap: 32px; }
+  details { border-bottom: 1px solid var(--line-dark); }
   details:first-child { border-top: 1px solid var(--line-dark); }
-  summary { list-style: none; cursor: pointer; font-weight: 700; font-size: 18px; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+  summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 44px; padding-block: 18px; font-size: 17px; font-weight: 600; }
   summary::-webkit-details-marker { display: none; }
-  summary .ico { transition: rotate .2s ease; color: var(--accent); }
+  summary .ico { transition: rotate .2s ease; }
   details[open] summary .ico { rotate: 45deg; }
-  details p { color: var(--on-dark-muted); margin: 12px 0 0; max-width: 60ch; }
+  details p { margin: 0 0 20px; max-width: 60ch; color: var(--gray-100); }
 
-  /* CTA */
-  .cta { background: var(--accent); color: var(--accent-ink); border-radius: var(--radius-xl); padding: clamp(32px, 6vw, 64px); display: flex; flex-wrap: wrap; gap: 24px; align-items: center; justify-content: space-between; }
-  .cta h2 { font-family: var(--font-display); font-weight: 400; font-size: clamp(32px, 4.6vw, 60px); letter-spacing: -0.03em; line-height: 1; margin: 0; max-width: 15ch; }
+  /* End card and footer credits */
+  .endcard { border-top: 1px solid var(--line-dark); padding-block: clamp(64px, 10vw, 128px) 0; }
+  .endcard h2 { max-width: 13ch; }
+  .endcard .btn { margin-top: 28px; justify-self: start; }
+  .roll { list-style: none; margin: clamp(56px, 8vw, 96px) 0 0; padding: 0; max-width: 560px; font-family: var(--font-mono); font-size: 14px; }
+  .roll li { display: flex; align-items: flex-end; gap: 10px; padding-block: 6px; color: var(--gray-300); }
+  .roll li b { font-weight: 500; color: var(--paper); text-align: right; }
+  .roll .row-dots { border-bottom-color: var(--gray-700); }
+  .wordmark { margin: 48px 0 0; font-family: var(--font-display); font-size: clamp(88px, 24vw, 360px); line-height: .9; color: var(--black-3); white-space: nowrap; overflow: hidden; }
+  .wordmark span { color: var(--red); }
+  footer { padding-bottom: 40px; }
+  .foot-row { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; align-items: center; padding-top: 20px; border-top: 1px solid var(--line-dark); font-size: 13px; color: var(--gray-300); }
+  .foot-links { display: flex; flex-wrap: wrap; gap: 0 20px; }
+  .back-link { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-size: 14px; font-weight: 500; color: var(--paper); }
+  .back-link:hover { text-decoration: underline; text-underline-offset: 4px; }
+  .back-link .ico { width: 18px; height: 18px; }
+  .credito-autor { margin: 8px 0 0; font-size: 14px; color: var(--gray-300); }
+  .credito-autor a { display: inline-flex; align-items: center; min-height: 44px; color: var(--paper); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--red); }
 
-  /* Footer */
-  footer { padding-block: clamp(64px, 9vw, 112px) 48px; overflow: hidden; }
-  .foot-row { display: flex; flex-wrap: wrap; gap: 16px; justify-content: space-between; align-items: center; color: var(--on-dark-muted); font-size: 13px; border-top: 1px solid var(--line-dark); padding-top: 24px; }
-  .back-link { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; color: var(--on-dark); }
-  .back-link:hover { color: var(--accent); }
-  .back-link .ico { width: 16px; height: 16px; }
-  .wordmark { font-family: var(--font-display); font-size: clamp(110px, 27vw, 400px); letter-spacing: -0.04em; line-height: .78; margin: 40px 0 0; white-space: nowrap; color: var(--surface-2); }
-  .wordmark span { color: var(--accent); }
-  .credito-autor { margin: 28px 0 0; font-size: 14px; color: var(--on-dark-muted); }
-  .credito-autor a { color: var(--on-dark); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--accent); }
-  .credito-autor a:hover { color: var(--accent); }
-
-  @media (max-width: 960px) {
-    .nav { display: none; }
-    .hero-body, .section-head, .booking, .proof, .place, .faq { grid-template-columns: minmax(0, 1fr); }
-    .section-head p { justify-self: start; }
-    .summary { position: static; }
-    .team { grid-template-columns: minmax(0, 1fr); }
-    .gallery { grid-template-columns: 1fr 1fr; grid-template-rows: none; grid-auto-rows: 260px; }
-    .tile.tall { grid-row: span 2; }
+  @media (min-width: 600px) {
+    .credits { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .hero h1 { font-size: clamp(56px, 9.4vw, 84px); }
+    .reviews { grid-template-columns: 1fr 1fr; gap: 40px 56px; }
+    .step { padding-left: 96px; }
+    .step legend { display: block; }
+    .step-num { position: absolute; left: 0; top: 22px; font-size: 76px; }
+    .review.lead { grid-column: 1 / -1; }
+    .practical { grid-template-columns: 1fr 1fr; column-gap: 40px; }
   }
-  @media (max-width: 640px) {
-    .site-header .pill-btn { padding-left: 16px; font-size: 14px; }
-    .site-header .pill-btn .dot { width: 34px; height: 34px; }
-    .logo small { display: none; }
-    .hero { min-height: 700px; }
-    .hero h1 .line { white-space: normal; }
-    .hero h1 { font-size: clamp(34px, 10vw, 44px); }
-    .glass-card { width: 100%; }
-    .service { grid-template-columns: minmax(0, 1fr) auto; }
-    .service::before { grid-column: 1 / -1; }
-    .service .meta { grid-column: 1; gap: 14px; }
-    .service .pick { grid-column: 2; grid-row: 2 / span 2; }
-    .service.featured { padding-inline: 16px; }
-    .gallery { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; gap: 12px; margin-inline: calc(var(--gutter) * -1); padding-inline: var(--gutter); }
-    .tile { flex: 0 0 78%; scroll-snap-align: start; min-height: 360px; }
-    .stats { grid-template-columns: 1fr 1fr 1fr; }
-    .stat { padding: 16px 12px; }
-    .quotes-row { grid-template-columns: 1fr; }
-    .place-photo { min-height: 280px; }
+
+  @media (min-width: 900px) {
+    :root { --header-h: 76px; }
+    .nav { display: flex; }
+    .hero { grid-template-columns: repeat(12, minmax(0, 1fr)); grid-template-rows: 1fr auto; min-height: min(calc(100svh - var(--header-h) - 36px), 980px); padding-block: 8px clamp(32px, 4vw, 56px); }
+    .hero-photo { grid-column: 6 / 13; grid-row: 1 / 3; height: auto; min-height: 560px; margin-inline: 0 calc(var(--gutter) * -1); -webkit-mask-image: linear-gradient(to right, transparent 0%, var(--black) 30%); mask-image: linear-gradient(to right, transparent 0%, var(--black) 30%); }
+    .hero-photo { margin-right: calc(-1 * (var(--gutter) + max(0px, (100vw - var(--max)) / 2))); }
+    .hero-photo img { position: absolute; inset: 0; object-position: 40% 30%; }
+    .scene { left: auto; right: 0; top: auto; bottom: clamp(32px, 4vw, 56px); }
+    .hero-copy { grid-column: 1 / 11; grid-row: 1; align-self: center; }
+    .hero h1 { font-size: clamp(66px, min(7.6vw, 12.4svh), 136px); margin: 0; }
+    .razor { margin-top: 26px; }
+    .hero-lead { font-size: 18px; }
+    .hero-caption { display: block; grid-column: 1 / 6; grid-row: 2; align-self: end; margin: 0; font-family: var(--font-mono); font-size: 13px; color: var(--gray-300); }
+    .prices { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
+    .prices-aside { position: sticky; top: calc(var(--header-h) + 24px); }
+    .prices-aside .bw { display: block; margin-top: 36px; aspect-ratio: 16 / 10; }
+    .booking { grid-template-columns: minmax(0, 1.6fr) minmax(300px, 1fr); gap: 56px; }
+    .ticket { position: sticky; top: calc(var(--header-h) + 28px); margin-top: 26px; }
+    .step { padding-left: 124px; }
+    .step-num { font-size: 104px; }
+    .team-sec { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); align-items: start; }
+    .team-photo { position: sticky; top: calc(var(--header-h) + 24px); aspect-ratio: 4 / 5; }
+    .barber { grid-template-columns: 104px minmax(0, 1fr); }
+    .stamp { width: 96px; height: 96px; font-size: 40px; }
+    .reviews { grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr); gap: 48px 72px; align-items: start; }
+    .review.lead { grid-column: 1; grid-row: 1 / span 2; }
+    .endcard { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 0 64px; align-items: end; }
+    .endcard .roll { grid-column: 2; grid-row: 1 / span 2; align-self: end; margin: 0; }
+    .place { grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); align-items: center; }
+    .map { height: 440px; }
+    .practical { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .practical li { grid-template-columns: 1fr; gap: 10px; padding: 22px 20px 22px 0; border-bottom: 0; }
+    .practical li + li { padding-left: 20px; border-left: 1px dashed var(--line-dark-strong); }
+    .practical p { grid-column: 1; }
+    .faq { grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr); gap: 56px; }
+  }
+
+  @media (min-width: 1600px) {
+    :root { --max: 1600px; }
+    .frame { flex-basis: 380px; }
+  }
+
+  /* Short screens (phone on its side): title and action share the first screen with the photo */
+  @media (max-height: 600px) and (min-width: 560px) {
+    .hero { grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); gap: 0 28px; align-items: center; min-height: 0; padding-block: 8px 28px; }
+    .hero-photo { grid-column: 1; grid-row: 1; height: calc(100svh - var(--header-h) - 60px); min-height: 240px; margin-inline: calc(var(--gutter) * -1) 0; -webkit-mask-image: linear-gradient(to right, var(--black) 70%, transparent); mask-image: linear-gradient(to right, var(--black) 70%, transparent); }
+    .scene { display: none; }
+    .hero-copy { grid-column: 2; grid-row: 1; align-self: center; }
+    .hero h1 { font-size: clamp(30px, 9svh, 52px); margin: 0; }
+    .razor { margin-top: 10px; }
+    .hero-lead { font-size: 15px; margin-top: 12px; }
+    .hero-actions { margin-top: 14px; }
+    .hero-caption { display: none; }
+  }
+  @media (max-height: 420px) and (min-width: 560px) {
+    .hero-lead { display: none; }
+  }
+  /* Short portrait phones: the lead gives way so the button stays in the first screen */
+  @media (max-height: 640px) and (max-width: 559px) {
+    .hero-photo { height: 30svh; }
+    .hero-lead { display: none; }
   }
 </style>
 </head>
@@ -301,282 +390,313 @@
   <div class="notice" data-aviso="proposta"><strong>Demonstração.</strong> Empresa, preços e avaliações são fictícios. Fotos: Unsplash.</div>
 
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
-    <symbol id="i-back" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></symbol>
-    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
-    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
-    <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
-    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0114 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></symbol>
-    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 20l1.4-4.2A8 8 0 1112 20a8 8 0 01-3.9-1L4 20z"/><path d="M9 10.5c.3 1.8 2 3.5 4 4"/></symbol>
-    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></symbol>
-    <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8L3.5 9.7l5.9-.9z"/></symbol>
+  <!-- Icons: brands from Simple Icons (CC0), interface from Phosphor (MIT). -->
+  <symbol id="i-whatsapp" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></symbol>
+  <symbol id="i-instagram" viewBox="0 0 24 24"><path d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/></symbol>
+  <symbol id="i-googlemaps" viewBox="0 0 24 24"><path d="M19.527 4.799c1.212 2.608.937 5.678-.405 8.173-1.101 2.047-2.744 3.74-4.098 5.614-.619.858-1.244 1.75-1.669 2.727-.141.325-.263.658-.383.992-.121.333-.224.673-.34 1.008-.109.314-.236.684-.627.687h-.007c-.466-.001-.579-.53-.695-.887-.284-.874-.581-1.713-1.019-2.525-.51-.944-1.145-1.817-1.79-2.671L19.527 4.799zM8.545 7.705l-3.959 4.707c.724 1.54 1.821 2.863 2.871 4.18.247.31.494.622.737.936l4.984-5.925-.029.01c-1.741.601-3.691-.291-4.392-1.987a3.377 3.377 0 0 1-.209-.716c-.063-.437-.077-.761-.004-1.198l.001-.007zM5.492 3.149l-.003.004c-1.947 2.466-2.281 5.88-1.117 8.77l4.785-5.689-.058-.05-3.607-3.035zM14.661.436l-3.838 4.563a.295.295 0 0 1 .027-.01c1.6-.551 3.403.15 4.22 1.626.176.319.323.683.377 1.045.068.446.085.773.012 1.22l-.003.016 3.836-4.561A8.382 8.382 0 0 0 14.67.439l-.009-.003zM9.466 5.868L14.162.285l-.047-.012A8.31 8.31 0 0 0 11.986 0a8.439 8.439 0 0 0-6.169 2.766l-.016.018 3.665 3.084z"/></symbol>
+  <symbol id="i-pix" viewBox="0 0 24 24"><path d="M5.283 18.36a3.505 3.505 0 0 0 2.493-1.032l3.6-3.6a.684.684 0 0 1 .946 0l3.613 3.613a3.504 3.504 0 0 0 2.493 1.032h.71l-4.56 4.56a3.647 3.647 0 0 1-5.156 0L4.85 18.36ZM18.428 5.627a3.505 3.505 0 0 0-2.493 1.032l-3.613 3.614a.67.67 0 0 1-.946 0l-3.6-3.6A3.505 3.505 0 0 0 5.283 5.64h-.434l4.573-4.572a3.646 3.646 0 0 1 5.156 0l4.559 4.559ZM1.068 9.422 3.79 6.699h1.492a2.483 2.483 0 0 1 1.744.722l3.6 3.6a1.73 1.73 0 0 0 2.443 0l3.614-3.613a2.482 2.482 0 0 1 1.744-.723h1.767l2.737 2.737a3.646 3.646 0 0 1 0 5.156l-2.736 2.736h-1.768a2.482 2.482 0 0 1-1.744-.722l-3.613-3.613a1.77 1.77 0 0 0-2.444 0l-3.6 3.6a2.483 2.483 0 0 1-1.744.722H3.791l-2.723-2.723a3.646 3.646 0 0 1 0-5.156"/></symbol>
+  <symbol id="i-arrow-right" viewBox="0 0 256 256"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></symbol>
+  <symbol id="i-arrow-left" viewBox="0 0 256 256"><path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 256 256"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></symbol>
+  <symbol id="i-check" viewBox="0 0 256 256"><path d="M232.49,80.49l-128,128a12,12,0,0,1-17,0l-56-56a12,12,0,1,1,17-17L96,183,215.51,63.51a12,12,0,0,1,17,17Z"/></symbol>
+  <symbol id="i-map-pin" viewBox="0 0 256 256"><path d="M128,64a40,40,0,1,0,40,40A40,40,0,0,0,128,64Zm0,64a24,24,0,1,1,24-24A24,24,0,0,1,128,128Zm0-112a88.1,88.1,0,0,0-88,88c0,31.4,14.51,64.68,42,96.25a254.19,254.19,0,0,0,41.45,38.3,8,8,0,0,0,9.18,0A254.19,254.19,0,0,0,174,200.25c27.45-31.57,42-64.85,42-96.25A88.1,88.1,0,0,0,128,16Zm0,206c-16.53-13-72-60.75-72-118a72,72,0,0,1,144,0C200,161.23,144.53,209,128,222Z"/></symbol>
+  <symbol id="i-info" viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm16-40a8,8,0,0,1-8,8,16,16,0,0,1-16-16V128a8,8,0,0,1,0-16,16,16,0,0,1,16,16v40A8,8,0,0,1,144,176ZM112,84a12,12,0,1,1,12,12A12,12,0,0,1,112,84Z"/></symbol>
+  <symbol id="i-caret-left" viewBox="0 0 256 256"><path d="M165.66,202.34a8,8,0,0,1-11.32,11.32l-80-80a8,8,0,0,1,0-11.32l80-80a8,8,0,0,1,11.32,11.32L91.31,128Z"/></symbol>
+  <symbol id="i-caret-right" viewBox="0 0 256 256"><path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"/></symbol>
+  <symbol id="i-scissors" viewBox="0 0 256 256"><path d="M157.73,113.13A8,8,0,0,1,159.82,102L227.48,55.7a8,8,0,0,1,9,13.21l-67.67,46.3a7.92,7.92,0,0,1-4.51,1.4A8,8,0,0,1,157.73,113.13Zm80.87,85.09a8,8,0,0,1-11.12,2.08L136,137.7,93.49,166.78a36,36,0,1,1-9-13.19L121.83,128,84.44,102.41a35.86,35.86,0,1,1,9-13.19l143,97.87A8,8,0,0,1,238.6,198.22ZM80,180a20,20,0,1,0-5.86,14.14A19.85,19.85,0,0,0,80,180ZM74.14,90.13a20,20,0,1,0-28.28,0A19.85,19.85,0,0,0,74.14,90.13Z"/></symbol>
+  <symbol id="i-star" viewBox="0 0 256 256"><path d="M234.29,114.85l-45,38.83L203,211.75a16.4,16.4,0,0,1-24.5,17.82L128,198.49,77.47,229.57A16.4,16.4,0,0,1,53,211.75l13.76-58.07-45-38.83A16.46,16.46,0,0,1,31.08,86l59-4.76,22.76-55.08a16.36,16.36,0,0,1,30.27,0l22.75,55.08,59,4.76a16.46,16.46,0,0,1,9.37,28.86Z"/></symbol>
+  <symbol id="i-credit-card" viewBox="0 0 256 256"><path d="M224,48H32A16,16,0,0,0,16,64V192a16,16,0,0,0,16,16H224a16,16,0,0,0,16-16V64A16,16,0,0,0,224,48Zm0,16V88H32V64Zm0,128H32V104H224v88Zm-16-24a8,8,0,0,1-8,8H168a8,8,0,0,1,0-16h32A8,8,0,0,1,208,168Zm-64,0a8,8,0,0,1-8,8H120a8,8,0,0,1,0-16h16A8,8,0,0,1,144,168Z"/></symbol>
+  <symbol id="i-money" viewBox="0 0 256 256"><path d="M128,88a40,40,0,1,0,40,40A40,40,0,0,0,128,88Zm0,64a24,24,0,1,1,24-24A24,24,0,0,1,128,152ZM240,56H16a8,8,0,0,0-8,8V192a8,8,0,0,0,8,8H240a8,8,0,0,0,8-8V64A8,8,0,0,0,240,56ZM193.65,184H62.35A56.78,56.78,0,0,0,24,145.65v-35.3A56.78,56.78,0,0,0,62.35,72h131.3A56.78,56.78,0,0,0,232,110.35v35.3A56.78,56.78,0,0,0,193.65,184ZM232,93.37A40.81,40.81,0,0,1,210.63,72H232ZM45.37,72A40.81,40.81,0,0,1,24,93.37V72ZM24,162.63A40.81,40.81,0,0,1,45.37,184H24ZM210.63,184A40.81,40.81,0,0,1,232,162.63V184Z"/></symbol>
+  <symbol id="i-hourglass-medium" viewBox="0 0 256 256"><path d="M200,75.64V40a16,16,0,0,0-16-16H72A16,16,0,0,0,56,40V76a16.07,16.07,0,0,0,6.4,12.8L114.67,128,62.4,167.2A16.07,16.07,0,0,0,56,180v36a16,16,0,0,0,16,16H184a16,16,0,0,0,16-16V180.36a16.09,16.09,0,0,0-6.35-12.77L141.27,128l52.38-39.6A16.05,16.05,0,0,0,200,75.64ZM72,40H184V75.64L178.23,80H77.33L72,76Zm56,78L98.67,96h58.4Zm56,98H72V180l48-36v24a8,8,0,0,0,16,0V144.08l48,36.28Z"/></symbol>
+  <symbol id="i-coffee" viewBox="0 0 256 256"><path d="M80,56V24a8,8,0,0,1,16,0V56a8,8,0,0,1-16,0Zm40,8a8,8,0,0,0,8-8V24a8,8,0,0,0-16,0V56A8,8,0,0,0,120,64Zm32,0a8,8,0,0,0,8-8V24a8,8,0,0,0-16,0V56A8,8,0,0,0,152,64Zm96,56v8a40,40,0,0,1-37.51,39.91,96.59,96.59,0,0,1-27,40.09H208a8,8,0,0,1,0,16H32a8,8,0,0,1,0-16H56.54A96.3,96.3,0,0,1,24,136V88a8,8,0,0,1,8-8H208A40,40,0,0,1,248,120ZM200,96H40v40a80.27,80.27,0,0,0,45.12,72h69.76A80.27,80.27,0,0,0,200,136Zm32,24a24,24,0,0,0-16-22.62V136a95.78,95.78,0,0,1-1.2,15A24,24,0,0,0,232,128Z"/></symbol>
+  <symbol id="i-car" viewBox="0 0 256 256"><path d="M240,104H229.2L201.42,41.5A16,16,0,0,0,186.8,32H69.2a16,16,0,0,0-14.62,9.5L26.8,104H16a8,8,0,0,0,0,16h8v80a16,16,0,0,0,16,16H64a16,16,0,0,0,16-16V184h96v16a16,16,0,0,0,16,16h24a16,16,0,0,0,16-16V120h8a8,8,0,0,0,0-16ZM69.2,48H186.8l24.89,56H44.31ZM64,200H40V184H64Zm128,0V184h24v16Zm24-32H40V120H216ZM56,144a8,8,0,0,1,8-8H80a8,8,0,0,1,0,16H64A8,8,0,0,1,56,144Zm112,0a8,8,0,0,1,8-8h16a8,8,0,0,1,0,16H176A8,8,0,0,1,168,144Z"/></symbol>
   </svg>
 
   <header class="site-header" id="topo">
     <div class="wrap">
-      <a class="logo" href="#topo" aria-label="Sisal Barbearia, início"><b>sisal</b><small>barbearia</small></a>
+      <a class="logo" href="#topo" aria-label="Sisal Barbearia, início"><b>Sisal</b><small>barbearia</small></a>
       <nav class="nav" aria-label="Principal">
-        <a href="#servicos">Serviços</a>
+        <a href="#precos">Preços</a>
         <a href="#equipe">Equipe</a>
         <a href="#cortes">Cortes</a>
         <a href="#onde">Onde fica</a>
       </nav>
-      <a class="pill-btn accent" href="#agendar">Agendar horário <span class="dot"><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
+      <a class="btn btn-red btn-small" href="#agendar">Agendar</a>
     </div>
   </header>
 
-  <div class="wrap">
-    <section class="hero" aria-label="Apresentação">
-      <div class="hero-media">
-        <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1600&q=70" srcset="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=900&q=70 900w, https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1600&q=70 1600w" sizes="100vw" alt="Barbeiro aparando a barba de um cliente com tesoura, em luz baixa" width="1600" height="1067" fetchpriority="high">
-      </div>
-      <div class="hero-body">
-        <div>
-          <p class="eyebrow">Barbearia no Prata · Campina Grande</p>
-          <h1><span class="line"><span>Cabelo na régua,</span></span><span class="line"><span>barba no <em>ponto.</em></span></span></h1>
-          <p class="hero-lead">Três cadeiras, café passado na hora e barbeiro que lembra como você gosta. Escolha o serviço, o profissional e o turno, e a gente confirma o horário no WhatsApp.</p>
+  <main>
+    <div class="wrap">
+      <section class="hero" aria-label="Apresentação">
+        <figure class="hero-photo bw">
+          <img src="https://images.unsplash.com/photo-1647140655214-e4a2d914971f?auto=format&fit=crop&w=1200&q=70" srcset="https://images.unsplash.com/photo-1647140655214-e4a2d914971f?auto=format&fit=crop&w=700&q=70 700w, https://images.unsplash.com/photo-1647140655214-e4a2d914971f?auto=format&fit=crop&w=1200&q=70 1200w" sizes="(min-width: 900px) 55vw, 100vw" alt="Barbeiro acertando o topo do cabelo de um cliente com pente e tesoura, em preto e branco" width="1200" height="1500" fetchpriority="high">
+        </figure>
+        <p class="scene">Barbearia no Prata, Campina Grande</p>
+        <div class="hero-copy">
+          <h1><span class="line">Cabelo</span><span class="line indent">na régua.</span><span class="line">Barba</span><span class="line indent">no ponto.</span></h1>
+          <span class="razor" aria-hidden="true"></span>
+          <p class="hero-lead">Três cadeiras, café coado na hora e barbeiro que lembra como você gosta.</p>
           <div class="hero-actions">
-            <a class="pill-btn accent" href="#agendar">Agendar horário <span class="dot"><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
-            <a class="pill-btn ghost" href="#servicos">Ver preços</a>
+            <a class="btn btn-red" href="#agendar">Agendar horário <svg class="ico" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+            <a class="text-link" href="#precos">Ver a tabela</a>
           </div>
-          <div class="tags"><span class="tag">Toalha quente na barba</span><span class="tag">Aberto sábado cedo</span><span class="tag">Pix e cartão</span></div>
         </div>
-        <aside class="glass-card" aria-label="Avaliação e horário">
-          <p>Nota no Google, 186 avaliações</p>
-          <div class="score"><b>4,9</b><span class="stars" aria-label="5 estrelas"><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg></span></div>
-          <span class="open-now" data-open-now>Terça a sábado, a partir das 9h</span>
-        </aside>
-      </div>
-    </section>
+        <p class="hero-caption">Cena 01. Degradê com topo na tesoura, cadeira dois.</p>
+      </section>
 
-    <div class="ruler" aria-hidden="true" data-ruler></div>
-
-    <section class="services" id="servicos" aria-labelledby="servicos-titulo">
-      <div class="section-head">
-        <h2 id="servicos-titulo"><span class="kicker">Serviços</span>O que a cadeira faz, e quanto custa.</h2>
-        <p>O preço da lista é o que você paga no caixa. O tempo é o que a gente reserva na agenda para você, com folga para conversar.</p>
-      </div>
-      <ul class="service-list">
-        <li class="service" data-service="corte">
-          <div><h3>Corte</h3><p>Tesoura ou máquina, degradê ou social. Lavagem e finalização inclusas.</p></div>
-          <div class="meta"><span class="time"><svg class="ico" aria-hidden="true"><use href="#i-clock"/></svg>40 min</span><span class="price">R$ 45</span></div>
-          <button class="pick" type="button" aria-label="Agendar corte"><svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></button>
-        </li>
-        <li class="service" data-service="barba">
-          <div><h3>Barba</h3><p>Toalha quente, navalha e óleo. Desenho alinhado ao formato do rosto.</p></div>
-          <div class="meta"><span class="time"><svg class="ico" aria-hidden="true"><use href="#i-clock"/></svg>30 min</span><span class="price">R$ 35</span></div>
-          <button class="pick" type="button" aria-label="Agendar barba"><svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></button>
-        </li>
-        <li class="service" data-service="corte-barba">
-          <div><h3>Corte e barba</h3><p>Os dois na mesma cadeira, com R$ 10 a menos do que separado.</p></div>
-          <div class="meta"><span class="time"><svg class="ico" aria-hidden="true"><use href="#i-clock"/></svg>70 min</span><span class="price">R$ 70</span></div>
-          <button class="pick" type="button" aria-label="Agendar corte e barba"><svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></button>
-        </li>
-        <li class="service" data-service="sobrancelha">
-          <div><h3>Sobrancelha</h3><p>Na pinça ou na navalha, só limpando. Nada de sobrancelha desenhada demais.</p></div>
-          <div class="meta"><span class="time"><svg class="ico" aria-hidden="true"><use href="#i-clock"/></svg>15 min</span><span class="price">R$ 15</span></div>
-          <button class="pick" type="button" aria-label="Agendar sobrancelha"><svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></button>
-        </li>
-        <li class="service" data-service="pigmentacao">
-          <div><h3>Pigmentação</h3><p>Preenche falha na barba ou no degradê. Dura de 3 a 5 dias.</p></div>
-          <div class="meta"><span class="time"><svg class="ico" aria-hidden="true"><use href="#i-clock"/></svg>30 min</span><span class="price">R$ 30</span></div>
-          <button class="pick" type="button" aria-label="Agendar pigmentação"><svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></button>
-        </li>
-        <li class="service featured" data-service="noivo">
-          <div><h3>Pacote do noivo <span class="badge">Casamento</span></h3><p>Corte de teste uma semana antes, e no dia: corte, barba, sobrancelha e limpeza de pele. Café e cadeira só sua.</p></div>
-          <div class="meta"><span class="time"><svg class="ico" aria-hidden="true"><use href="#i-clock"/></svg>2h30</span><span class="price">R$ 220</span></div>
-          <button class="pick" type="button" aria-label="Agendar pacote do noivo"><svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></button>
-        </li>
-      </ul>
-      <p class="services-note">Padrinhos que vêm junto com o noivo pagam o corte com 15% de desconto.</p>
-    </section>
-
-    <section class="section" id="agendar" aria-labelledby="agendar-titulo">
-      <div class="section-head">
-        <h2 id="agendar-titulo"><span class="kicker">Agendamento</span>Três escolhas e a mensagem sai pronta.</h2>
-        <p>Você escolhe o que quer, com quem e quando. O botão abre o WhatsApp com tudo escrito, e a gente responde com o horário livre mais perto do que você pediu.</p>
+      <div class="credits" aria-label="A casa em números">
+        <p class="credit"><b>2014</b><span>abriu no Prata</span></p>
+        <p class="credit"><b data-count="3">3</b><span>cadeiras</span></p>
+        <p class="credit"><b data-count="4.8" data-decimals="1">4,8</b><span><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg>213 notas no Google</span></p>
       </div>
 
-      <form class="booking" id="booking" novalidate>
-        <div class="steps">
-          <fieldset class="step" data-step="service">
-            <legend><span class="step-num"><span>1</span><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg></span>Qual serviço?</legend>
-            <div class="choices">
-              <label class="choice"><input type="radio" name="service" value="corte" data-label="Corte" data-detail="R$ 45, 40 min"><span>Corte<small>R$ 45 · 40 min</small></span></label>
-              <label class="choice"><input type="radio" name="service" value="barba" data-label="Barba" data-detail="R$ 35, 30 min"><span>Barba<small>R$ 35 · 30 min</small></span></label>
-              <label class="choice"><input type="radio" name="service" value="corte-barba" data-label="Corte e barba" data-detail="R$ 70, 70 min"><span>Corte e barba<small>R$ 70 · 70 min</small></span></label>
-              <label class="choice"><input type="radio" name="service" value="sobrancelha" data-label="Sobrancelha" data-detail="R$ 15, 15 min"><span>Sobrancelha<small>R$ 15 · 15 min</small></span></label>
-              <label class="choice"><input type="radio" name="service" value="pigmentacao" data-label="Pigmentação" data-detail="R$ 30, 30 min"><span>Pigmentação<small>R$ 30 · 30 min</small></span></label>
-              <label class="choice"><input type="radio" name="service" value="noivo" data-label="Pacote do noivo" data-detail="R$ 220, 2h30"><span>Pacote do noivo<small>R$ 220 · 2h30</small></span></label>
-            </div>
-          </fieldset>
-
-          <fieldset class="step" data-step="barber">
-            <legend><span class="step-num"><span>2</span><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg></span>Com quem?</legend>
-            <div class="choices">
-              <label class="choice"><input type="radio" name="barber" value="Damião" data-label="Seu Damião" data-off="1"><span>Seu Damião<small>barba e navalha</small></span></label>
-              <label class="choice"><input type="radio" name="barber" value="Rafa" data-label="Rafa" data-off=""><span>Rafa<small>degradê e desenho</small></span></label>
-              <label class="choice"><input type="radio" name="barber" value="Lara" data-label="Lara" data-off="6"><span>Lara<small>tesoura e cacheado</small></span></label>
-              <label class="choice"><input type="radio" name="barber" value="Tanto faz" data-label="Tanto faz" data-off=""><span>Tanto faz<small>o primeiro livre</small></span></label>
-            </div>
-          </fieldset>
-
-          <fieldset class="step" data-step="when">
-            <legend><span class="step-num"><span>3</span><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg></span>Que dia e turno?</legend>
-            <p class="sub-label" id="dia-label">Dia</p>
-            <div class="days" id="days" role="radiogroup" aria-labelledby="dia-label">
-              <label class="choice"><input type="radio" name="day" value="segunda" data-weekday="1" data-label="segunda"><span><b>Seg</b></span></label>
-              <label class="choice"><input type="radio" name="day" value="terça" data-weekday="2" data-label="terça"><span><b>Ter</b></span></label>
-              <label class="choice"><input type="radio" name="day" value="quarta" data-weekday="3" data-label="quarta"><span><b>Qua</b></span></label>
-              <label class="choice"><input type="radio" name="day" value="quinta" data-weekday="4" data-label="quinta"><span><b>Qui</b></span></label>
-              <label class="choice"><input type="radio" name="day" value="sexta" data-weekday="5" data-label="sexta"><span><b>Sex</b></span></label>
-              <label class="choice"><input type="radio" name="day" value="sábado" data-weekday="6" data-label="sábado"><span><b>Sáb</b></span></label>
-            </div>
-            <p class="sub-label" id="turno-label">Turno</p>
-            <div class="choices" role="radiogroup" aria-labelledby="turno-label">
-              <label class="choice"><input type="radio" name="shift" value="manha" data-label="manhã (9h às 12h)"><span>Manhã<small>9h às 12h</small></span></label>
-              <label class="choice"><input type="radio" name="shift" value="tarde" data-label="tarde (13h às 18h)"><span>Tarde<small>13h às 18h</small></span></label>
-              <label class="choice"><input type="radio" name="shift" value="noite" data-label="noite (18h às 20h)"><span>Noite<small>18h às 20h</small></span></label>
-            </div>
-            <label class="name-field">Seu nome (opcional)<input type="text" name="name" autocomplete="given-name" maxlength="40" placeholder="Para a gente saber quem é"></label>
-          </fieldset>
-        </div>
-
-        <aside class="summary" aria-live="polite">
-          <h3>Seu pedido</h3>
-          <dl>
-            <div><dt>Serviço</dt><dd data-out="service" class="is-empty">a escolher</dd></div>
-            <div><dt>Profissional</dt><dd data-out="barber" class="is-empty">a escolher</dd></div>
-            <div><dt>Dia</dt><dd data-out="day" class="is-empty">a escolher</dd></div>
-            <div><dt>Turno</dt><dd data-out="shift" class="is-empty">a escolher</dd></div>
-          </dl>
-          <a class="wa-btn" id="wa-btn" href="https://wa.me/?text=Ol%C3%A1%2C%20Sisal.%20Quero%20pedir%20um%20hor%C3%A1rio." target="_blank" rel="noopener" aria-disabled="true"><svg class="ico" aria-hidden="true"><use href="#i-chat"/></svg><span>Pedir horário no WhatsApp</span></a>
-          <p class="hint" id="hint">Falta escolher o serviço, o profissional, o dia e o turno.</p>
-          <p class="honest"><svg class="ico" aria-hidden="true"><use href="#i-info"/></svg><span>Este botão não reserva a cadeira sozinho. Ele manda o pedido, e o horário só fica marcado quando a gente responder confirmando.</span></p>
-        </aside>
-      </form>
-    </section>
-
-    <section class="section" id="equipe" aria-labelledby="equipe-titulo" data-tight>
-      <div class="section-head">
-        <h2 id="equipe-titulo"><span class="kicker">Equipe</span>Três cadeiras, três mãos diferentes.</h2>
-        <p>Cada um tem o corte em que é melhor. Se não souber com quem marcar, escolha "tanto faz" e a gente indica.</p>
-      </div>
-      <div class="team">
-        <article class="barber">
-          <div class="monogram" aria-hidden="true">D</div>
-          <h3>Seu Damião</h3>
-          <p class="role">Fundador · 24 anos de navalha</p>
-          <p>Aprendeu com o pai, numa cadeira da Feira Central. É quem você procura para barba clássica, navalha e corte social que aguenta um mês.</p>
-          <p class="days-off">Não atende às segundas.</p>
-          <a class="pill-btn" href="#agendar" data-barber="Damião">Marcar com ele <span class="dot"><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
-        </article>
-        <article class="barber">
-          <div class="monogram" aria-hidden="true">R</div>
-          <h3>Rafa</h3>
-          <p class="role">Degradê · 8 anos de casa</p>
-          <p>Degradê navalhado, risco e desenho. Traga a foto de referência que ele diz na hora se dá certo no seu cabelo.</p>
-          <p class="days-off">Atende todos os dias de funcionamento.</p>
-          <a class="pill-btn" href="#agendar" data-barber="Rafa">Marcar com ele <span class="dot"><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
-        </article>
-        <article class="barber">
-          <div class="monogram" aria-hidden="true">L</div>
-          <h3>Lara</h3>
-          <p class="role">Tesoura · 5 anos de casa</p>
-          <p>Corte na tesoura, cabelo cacheado e crespo, e o primeiro corte de criança, com paciência para quem não para quieto.</p>
-          <p class="days-off">Não atende aos sábados.</p>
-          <a class="pill-btn" href="#agendar" data-barber="Lara">Marcar com ela <span class="dot"><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
-        </article>
-      </div>
-    </section>
-
-    <section class="section" id="cortes" aria-labelledby="cortes-titulo" data-tight>
-      <div class="section-head">
-        <h2 id="cortes-titulo"><span class="kicker">Cortes</span>O que mais sai daqui.</h2>
-        <p>Não sabe o nome do corte que quer? Mostre uma destas ou mande foto no WhatsApp junto com o pedido.</p>
-      </div>
-      <div class="gallery">
-        <figure class="tile photo tall">
-          <img src="https://images.unsplash.com/photo-1647140655214-e4a2d914971f?auto=format&fit=crop&w=900&q=70" alt="Barbeiro acertando o topo do cabelo de um cliente com pente e tesoura" loading="lazy" width="900" height="1125">
-          <figcaption>Degradê com topo na tesoura</figcaption>
-        </figure>
-        <div class="tile"><span class="num">01</span><h3>Degradê navalhado</h3><p>Pele na lateral, transição curta e acabamento na navalha.</p></div>
-        <div class="tile copper"><span class="num">02</span><h3>Social na tesoura</h3><p>Para quem trabalha de camisa e não quer pensar no cabelo por quatro semanas.</p></div>
-        <figure class="tile photo">
-          <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=800&q=70" alt="Barba sendo aparada na tesoura" loading="lazy" width="800" height="600">
-          <figcaption>Barba desenhada</figcaption>
-        </figure>
-        <div class="tile"><span class="num">03</span><h3>Risco e desenho</h3><p>Uma linha só ou o desenho que você trouxer, feito com máquina e navalha.</p></div>
-      </div>
-      <p class="gallery-note">Fotos ilustrativas. No site de uma barbearia de verdade, entram os cortes feitos na casa.</p>
-    </section>
-
-    <section class="section proof" aria-labelledby="casa-titulo" data-tight>
-      <div>
-        <h2 class="h2" id="casa-titulo"><span class="kicker">Desde 2014</span>A mesma esquina do Prata há doze anos.</h2>
-        <div class="stats">
-          <div class="stat"><b data-count="12">12</b><span>anos abertos</span></div>
-          <div class="stat"><b data-count="3">3</b><span>cadeiras</span></div>
-          <div class="stat"><b data-count="4.9" data-decimals="1">4,9</b><span>no Google</span></div>
-        </div>
-      </div>
-      <div class="quotes">
-        <figure class="quote big">
-          <blockquote>Corto com Seu Damião desde os quinze. Mudei de bairro duas vezes e continuo vindo ao Prata.</blockquote>
-          <figcaption><b>Everton, cliente</b><span class="fict">Depoimento fictício</span></figcaption>
-        </figure>
-        <div class="quotes-row">
-          <figure class="quote">
-            <blockquote>Mandei a foto do degradê no WhatsApp, o Rafa respondeu em dez minutos com o horário.</blockquote>
-            <figcaption><b>Igor, cliente</b><span class="fict">Fictício</span></figcaption>
+      <section class="section prices" id="precos" aria-labelledby="precos-titulo">
+        <div class="prices-aside">
+          <span class="kicker">Tabela</span>
+          <h2 class="h2" id="precos-titulo">Preço na parede. Sem surpresa no caixa.</h2>
+          <p class="lede">O valor do quadro é o que você paga. O tempo embaixo é o que a gente reserva na agenda, com folga para conversar. Toque num serviço para já deixar ele marcado no pedido.</p>
+          <figure class="bw">
+            <img src="https://images.unsplash.com/photo-1549271568-e87e07c5406b?auto=format&fit=crop&w=900&q=70" alt="Pentes, tesouras e navalha arrumados sobre uma toalha branca" loading="lazy" width="900" height="600">
           </figure>
-          <figure class="quote">
-            <blockquote>Levei meu filho para o primeiro corte com a Lara. Ele saiu sem chorar e ainda quis voltar.</blockquote>
-            <figcaption><b>Priscila, mãe do Davi</b><span class="fict">Fictício</span></figcaption>
+        </div>
+        <div class="board">
+          <p class="board-head"><span><svg class="ico" aria-hidden="true"><use href="#i-scissors"/></svg>Serviço</span><span>Valor</span></p>
+          <ol class="board-list">
+            <li><button class="board-row" type="button" data-service="corte" aria-label="Corte, R$ 45, 40 minutos. Escolher para agendar"><span class="row-main"><span class="row-name">Corte</span><span class="row-dots"></span><span class="row-price">R$ 45</span></span><span class="row-sub">40 min · tesoura ou máquina, lavagem inclusa</span></button></li>
+            <li><button class="board-row" type="button" data-service="barba" aria-label="Barba, R$ 35, 30 minutos. Escolher para agendar"><span class="row-main"><span class="row-name">Barba</span><span class="row-dots"></span><span class="row-price">R$ 35</span></span><span class="row-sub">30 min · toalha quente, navalha e óleo</span></button></li>
+            <li><button class="board-row" type="button" data-service="corte-barba" aria-label="Corte e barba, R$ 70, 70 minutos. Escolher para agendar"><span class="row-main"><span class="row-name">Corte e barba</span><span class="row-dots"></span><span class="row-price">R$ 70</span></span><span class="row-sub">70 min · R$ 10 a menos do que separado</span></button></li>
+            <li><button class="board-row" type="button" data-service="sobrancelha" aria-label="Sobrancelha, R$ 15, 15 minutos. Escolher para agendar"><span class="row-main"><span class="row-name">Sobrancelha</span><span class="row-dots"></span><span class="row-price">R$ 15</span></span><span class="row-sub">15 min · pinça ou navalha, só limpando</span></button></li>
+            <li><button class="board-row" type="button" data-service="pigmentacao" aria-label="Pigmentação, R$ 30, 30 minutos. Escolher para agendar"><span class="row-main"><span class="row-name">Pigmentação</span><span class="row-dots"></span><span class="row-price">R$ 30</span></span><span class="row-sub">30 min · cobre falha na barba, dura de 3 a 5 dias</span></button></li>
+            <li><button class="board-row" type="button" data-service="noivo" aria-label="Pacote do noivo, R$ 220, 2 horas e meia. Escolher para agendar"><span class="row-main"><span class="row-name">Pacote do noivo</span><span class="row-dots"></span><span class="row-price">R$ 220</span></span><span class="row-sub">2h30 · corte de teste, e no dia corte, barba, sobrancelha e pele <span class="row-tag">casamento</span></span></button></li>
+          </ol>
+          <p class="board-foot">Padrinhos que vêm com o noivo pagam o corte com 15% de desconto. Criança até 10 anos paga R$ 35.</p>
+          <p class="pay" aria-label="Formas de pagamento"><span><svg class="ico" aria-hidden="true"><use href="#i-pix"/></svg>Pix</span><span><svg class="ico" aria-hidden="true"><use href="#i-credit-card"/></svg>Débito e crédito</span><span><svg class="ico" aria-hidden="true"><use href="#i-money"/></svg>Dinheiro</span></p>
+        </div>
+      </section>
+    </div>
+
+    <section class="section booking-sec" id="agendar" aria-labelledby="agendar-titulo">
+      <div class="wrap">
+        <div class="booking-head">
+          <span class="kicker">Ficha de agendamento</span>
+          <h2 class="h2" id="agendar-titulo">Três escolhas. A&nbsp;mensagem sai pronta.</h2>
+          <p class="lede">O botão abre o WhatsApp com tudo escrito, e a gente responde com o horário livre mais perto do que você pediu.</p>
+        </div>
+
+        <form class="booking" id="booking" novalidate>
+          <div class="steps">
+            <fieldset class="step" data-step="service">
+              <legend><span class="step-num" aria-hidden="true">1</span><span class="step-title">Qual serviço?<span class="ok"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg></span></span></legend>
+              <div class="choices">
+                <label class="choice"><input type="radio" name="service" value="corte" data-label="Corte" data-detail="R$ 45, 40 min"><span>Corte<small>R$ 45 · 40 min</small></span></label>
+                <label class="choice"><input type="radio" name="service" value="barba" data-label="Barba" data-detail="R$ 35, 30 min"><span>Barba<small>R$ 35 · 30 min</small></span></label>
+                <label class="choice"><input type="radio" name="service" value="corte-barba" data-label="Corte e barba" data-detail="R$ 70, 70 min"><span>Corte e barba<small>R$ 70 · 70 min</small></span></label>
+                <label class="choice"><input type="radio" name="service" value="sobrancelha" data-label="Sobrancelha" data-detail="R$ 15, 15 min"><span>Sobrancelha<small>R$ 15 · 15 min</small></span></label>
+                <label class="choice"><input type="radio" name="service" value="pigmentacao" data-label="Pigmentação" data-detail="R$ 30, 30 min"><span>Pigmentação<small>R$ 30 · 30 min</small></span></label>
+                <label class="choice"><input type="radio" name="service" value="noivo" data-label="Pacote do noivo" data-detail="R$ 220, 2h30"><span>Pacote do noivo<small>R$ 220 · 2h30</small></span></label>
+              </div>
+            </fieldset>
+
+            <fieldset class="step" data-step="barber">
+              <legend><span class="step-num" aria-hidden="true">2</span><span class="step-title">Com quem?<span class="ok"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg></span></span></legend>
+              <div class="choices">
+                <label class="choice"><input type="radio" name="barber" value="Damião" data-label="Seu Damião" data-off="1"><span>Seu Damião<small>barba e navalha</small></span></label>
+                <label class="choice"><input type="radio" name="barber" value="Rafa" data-label="Rafa" data-off=""><span>Rafa<small>degradê e desenho</small></span></label>
+                <label class="choice"><input type="radio" name="barber" value="Lara" data-label="Lara" data-off="6"><span>Lara<small>tesoura e cacheado</small></span></label>
+                <label class="choice"><input type="radio" name="barber" value="Tanto faz" data-label="Tanto faz" data-off=""><span>Tanto faz<small>o primeiro livre</small></span></label>
+              </div>
+            </fieldset>
+
+            <fieldset class="step" data-step="when">
+              <legend><span class="step-num" aria-hidden="true">3</span><span class="step-title">Que dia e turno?<span class="ok"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg></span></span></legend>
+              <div>
+                <p class="sub-label" id="dia-label">Dia</p>
+                <div class="days" id="days" role="radiogroup" aria-labelledby="dia-label">
+                  <label class="choice"><input type="radio" name="day" value="segunda" data-weekday="1" data-label="segunda"><span><b>Seg</b></span></label>
+                  <label class="choice"><input type="radio" name="day" value="terça" data-weekday="2" data-label="terça"><span><b>Ter</b></span></label>
+                  <label class="choice"><input type="radio" name="day" value="quarta" data-weekday="3" data-label="quarta"><span><b>Qua</b></span></label>
+                  <label class="choice"><input type="radio" name="day" value="quinta" data-weekday="4" data-label="quinta"><span><b>Qui</b></span></label>
+                  <label class="choice"><input type="radio" name="day" value="sexta" data-weekday="5" data-label="sexta"><span><b>Sex</b></span></label>
+                  <label class="choice"><input type="radio" name="day" value="sábado" data-weekday="6" data-label="sábado"><span><b>Sáb</b></span></label>
+                </div>
+                <p class="sub-label" id="turno-label">Turno</p>
+                <div class="choices" role="radiogroup" aria-labelledby="turno-label">
+                  <label class="choice"><input type="radio" name="shift" value="manha" data-label="manhã (9h às 12h)"><span>Manhã<small>9h às 12h</small></span></label>
+                  <label class="choice"><input type="radio" name="shift" value="tarde" data-label="tarde (13h às 18h)"><span>Tarde<small>13h às 18h</small></span></label>
+                  <label class="choice"><input type="radio" name="shift" value="noite" data-label="noite (18h às 20h)"><span>Noite<small>18h às 20h</small></span></label>
+                </div>
+                <label class="name-field">Seu nome (opcional)<input type="text" name="name" autocomplete="given-name" maxlength="40" placeholder="Para a gente saber quem é"></label>
+              </div>
+            </fieldset>
+          </div>
+
+          <aside class="ticket" aria-live="polite">
+            <div class="ticket-head"><h3>Seu pedido</h3><span>Sisal · Prata</span></div>
+            <dl>
+              <div><dt>Serviço</dt><dd data-out="service" class="is-empty">a escolher</dd></div>
+              <div><dt>Barbeiro</dt><dd data-out="barber" class="is-empty">a escolher</dd></div>
+              <div><dt>Dia</dt><dd data-out="day" class="is-empty">a escolher</dd></div>
+              <div><dt>Turno</dt><dd data-out="shift" class="is-empty">a escolher</dd></div>
+            </dl>
+            <a class="btn btn-red wa-btn" id="wa-btn" href="https://wa.me/?text=Ol%C3%A1%2C%20Sisal.%20Quero%20pedir%20um%20hor%C3%A1rio." target="_blank" rel="noopener" aria-disabled="true"><svg class="ico" aria-hidden="true"><use href="#i-whatsapp"/></svg><span>Pedir horário no WhatsApp</span></a>
+            <p class="hint" id="hint">Falta escolher o serviço, o barbeiro, o dia e o turno.</p>
+            <p class="honest"><svg class="ico" aria-hidden="true"><use href="#i-info"/></svg><span>O botão não reserva a cadeira sozinho. Ele manda o pedido, e o horário só fica marcado quando a gente responder confirmando. Depois de marcado, seguramos a cadeira por 15 minutos.</span></p>
+          </aside>
+        </form>
+      </div>
+    </section>
+
+    <div class="wrap">
+      <section class="section team-sec" id="equipe" aria-labelledby="equipe-titulo">
+        <figure class="team-photo bw">
+          <img src="https://images.unsplash.com/photo-1621645582931-d1d3e6564943?auto=format&fit=crop&w=1000&q=70" alt="Fileira de cadeiras de barbeiro antigas, de couro e metal, num salão escuro" loading="lazy" width="1000" height="1250">
+        </figure>
+        <div>
+          <span class="kicker">Elenco</span>
+          <h2 class="h2" id="equipe-titulo">Três cadeiras, três&nbsp;jeitos de cortar.</h2>
+          <p class="lede">Cada um tem o corte em que é melhor. Se não souber com quem marcar, escolha "tanto faz" e a gente indica.</p>
+          <ol class="barbers">
+            <li class="barber">
+              <span class="stamp" aria-hidden="true">D</span>
+              <h3>Seu Damião</h3>
+              <p class="role">Fundador · 24 anos de navalha</p>
+              <p>Aprendeu com o pai, numa cadeira da Feira Central. É quem você procura para barba clássica, navalha e corte social que aguenta um mês.</p>
+              <div class="foot"><span class="days-off">Não atende às segundas</span><a class="text-link" href="#agendar" data-barber="Damião">Marcar com ele <svg class="ico" aria-hidden="true"><use href="#i-arrow-right"/></svg></a></div>
+            </li>
+            <li class="barber">
+              <span class="stamp" aria-hidden="true">R</span>
+              <h3>Rafa</h3>
+              <p class="role">Degradê · 8 anos de casa</p>
+              <p>Degradê navalhado, risco e desenho. Traga a foto de referência que ele diz na hora se dá certo no seu cabelo.</p>
+              <div class="foot"><span class="days-off">Atende todos os dias abertos</span><a class="text-link" href="#agendar" data-barber="Rafa">Marcar com ele <svg class="ico" aria-hidden="true"><use href="#i-arrow-right"/></svg></a></div>
+            </li>
+            <li class="barber">
+              <span class="stamp" aria-hidden="true">L</span>
+              <h3>Lara</h3>
+              <p class="role">Tesoura · 5 anos de casa</p>
+              <p>Corte na tesoura, cabelo cacheado e crespo, e o primeiro corte de criança, com paciência para quem não para quieto.</p>
+              <div class="foot"><span class="days-off">Não atende aos sábados</span><a class="text-link" href="#agendar" data-barber="Lara">Marcar com ela <svg class="ico" aria-hidden="true"><use href="#i-arrow-right"/></svg></a></div>
+            </li>
+          </ol>
+        </div>
+      </section>
+    </div>
+
+    <section class="strip-sec" id="cortes" aria-labelledby="cortes-titulo">
+      <div class="wrap strip-head">
+        <div>
+          <span class="kicker">Rolo de cortes</span>
+          <h2 class="h2" id="cortes-titulo">O que mais sai daqui.</h2>
+        </div>
+        <div class="strip-tools">
+          <a class="text-link" href="https://www.instagram.com/" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-instagram"/></svg>@sisal.prata.demo</a>
+          <div class="strip-nav">
+            <button type="button" data-strip="-1" aria-label="Fotos anteriores"><svg class="ico" aria-hidden="true"><use href="#i-caret-left"/></svg></button>
+            <button type="button" data-strip="1" aria-label="Próximas fotos"><svg class="ico" aria-hidden="true"><use href="#i-caret-right"/></svg></button>
+          </div>
+        </div>
+      </div>
+      <div class="film">
+        <div class="film-track" id="film-track" tabindex="0" aria-label="Fotos de cortes, role para o lado">
+          <figure class="frame"><div class="bw"><img src="https://images.unsplash.com/photo-1593702275687-f8b402bf1fb5?auto=format&fit=crop&w=700&h=875&q=70" alt="Máquina fazendo o degradê na lateral da cabeça de um cliente" loading="lazy" width="700" height="875"></div><figcaption><b>01</b>Degradê navalhado</figcaption></figure>
+          <figure class="frame"><div class="bw"><img src="https://images.unsplash.com/photo-1517832606299-7ae9b720a186?auto=format&fit=crop&w=700&h=875&q=70" alt="Barba sendo aparada na tesoura com o cliente reclinado" loading="lazy" width="700" height="875"></div><figcaption><b>02</b>Barba desenhada</figcaption></figure>
+          <figure class="frame"><div class="bw"><img src="https://images.unsplash.com/photo-1493256338651-d82f7acb2b38?auto=format&fit=crop&w=700&h=875&q=70" alt="Barbeiro acertando a nuca de um cliente com a máquina" loading="lazy" width="700" height="875"></div><figcaption><b>03</b>Nuca no pente zero</figcaption></figure>
+          <figure class="frame"><div class="bw"><img src="https://images.unsplash.com/photo-1648221122279-5246dd0cf86c?auto=format&fit=crop&w=700&h=875&q=70" alt="Cliente com toalha quente no rosto enquanto o barbeiro acerta a barba" loading="lazy" width="700" height="875"></div><figcaption><b>04</b>Toalha quente</figcaption></figure>
+          <figure class="frame"><div class="bw"><img src="https://images.unsplash.com/photo-1635273051839-003bf06a8751?auto=format&fit=crop&w=700&h=875&q=70" alt="Mãos do barbeiro passando a máquina no cabelo de um cliente" loading="lazy" width="700" height="875"></div><figcaption><b>05</b>Social na máquina</figcaption></figure>
+          <figure class="frame"><div class="bw"><img src="https://images.unsplash.com/photo-1599011176306-4a96f1516d4d?auto=format&fit=crop&w=700&h=875&q=70" alt="Barba cheia sendo acertada na tesoura, de perfil" loading="lazy" width="700" height="875"></div><figcaption><b>06</b>Barba cheia na tesoura</figcaption></figure>
+        </div>
+      </div>
+      <p class="wrap strip-note">Fotos ilustrativas. No site de uma barbearia de verdade, entram os cortes feitos na casa, os mesmos que saem no Instagram.</p>
+    </section>
+
+    <section class="section reviews-sec" aria-labelledby="clientes-titulo">
+      <div class="wrap">
+        <span class="kicker" id="clientes-titulo">O que dizem na cadeira</span>
+        <div class="reviews">
+          <figure class="review lead">
+            <blockquote>“Corto com Seu Damião desde os quinze. Me mudei pro Malvinas e continuo atravessando a cidade todo mês. A navalha dele eu não troco.”</blockquote>
+            <figcaption><span class="stars" aria-label="5 de 5 estrelas"><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg></span><b>Everton, cliente desde 2014</b><span class="fict">Depoimento fictício</span></figcaption>
+          </figure>
+          <figure class="review">
+            <blockquote>“Mandei a foto do degradê numa sexta às 10 da manhã e o Rafa me encaixou às 18h40. Esperei uns 15 minutos porque o cliente de antes atrasou, mas saiu igual à foto.”</blockquote>
+            <figcaption><span class="stars" aria-label="4 de 5 estrelas"><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg></span><b>Igor, de Bodocongó</b><span class="fict">Fictício</span></figcaption>
+          </figure>
+          <figure class="review">
+            <blockquote>“Levei Davi, de 3 anos, pro primeiro corte com a Lara. Chorou nos dois primeiros minutos, depois ficou brincando com o borrifador. Ela ainda guardou uma mecha num saquinho pra mim.”</blockquote>
+            <figcaption><span class="stars" aria-label="5 de 5 estrelas"><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg></span><b>Priscila, mãe do Davi</b><span class="fict">Fictício</span></figcaption>
           </figure>
         </div>
       </div>
     </section>
 
-    <section class="place" id="onde" aria-labelledby="onde-titulo">
-      <div class="place-photo"><img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=1200&q=70" alt="Salão de barbearia com três cadeiras pretas, espelhos e parede de tijolo" loading="lazy" width="1200" height="800"></div>
-      <div class="place-info">
-        <h2 class="h2 h2-small" id="onde-titulo">Onde fica.</h2>
-        <span class="open-now" data-open-now>Terça a sábado, a partir das 9h</span>
-        <table class="hours">
-          <tr data-days="1"><td>Segunda</td><td>13h às 20h</td></tr>
-          <tr data-days="2 3 4 5"><td>Terça a sexta</td><td>9h às 20h</td></tr>
-          <tr data-days="6"><td>Sábado</td><td>8h às 18h</td></tr>
-          <tr data-days="0"><td>Domingo</td><td>Fechado</td></tr>
-        </table>
-        <p class="address"><svg class="ico" aria-hidden="true"><use href="#i-pin"/></svg><span>Rua fictícia, 214, Prata, Campina Grande (PB). Dá para estacionar na rua.</span></p>
-        <a class="pill-btn" href="https://www.google.com/maps/search/?api=1&query=Prata%2C%20Campina%20Grande%20PB" target="_blank" rel="noopener">Abrir no mapa <span class="dot"><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
-      </div>
-    </section>
+    <div class="wrap">
+      <section class="section place" id="onde" aria-labelledby="onde-titulo">
+        <div>
+          <span class="kicker">Onde fica</span>
+          <h2 class="h2" id="onde-titulo">Na esquina do Prata.</h2>
+          <p class="open-now" data-open-now>Terça a sábado, a partir das 9h</p>
+          <table class="hours">
+            <tr data-days="1"><td>Segunda</td><td>13h às 20h</td></tr>
+            <tr data-days="2 3 4 5"><td>Terça a sexta</td><td>9h às 20h</td></tr>
+            <tr data-days="6"><td>Sábado</td><td>8h às 18h</td></tr>
+            <tr data-days="0"><td>Domingo</td><td>Fechado</td></tr>
+            <tr data-days="" class="is-holiday"><td>Feriado</td><td>8h às 12h</td></tr>
+          </table>
+          <p class="hours-note">No São João, fechamos só no dia 24. No resto de junho a casa abre normal, e a agenda enche.</p>
+          <p class="address"><svg class="ico" aria-hidden="true"><use href="#i-map-pin"/></svg><span>Rua fictícia, 214, Prata, Campina Grande (PB). Uns 5 minutos de carro da Feira Central e do Açude Velho.</span></p>
+          <div class="place-actions">
+            <a class="btn btn-paper" href="https://www.google.com/maps/search/?api=1&query=Prata%2C%20Campina%20Grande%20PB" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-googlemaps"/></svg>Abrir no mapa</a>
+            <a class="btn btn-outline" href="https://wa.me/?text=Ol%C3%A1%2C%20Sisal.%20Como%20est%C3%A1%20a%20fila%20agora%3F%20Queria%20passar%20a%C3%AD%20sem%20hora%20marcada." target="_blank" rel="noopener"><svg class="ico ico-wa" aria-hidden="true"><use href="#i-whatsapp"/></svg>Perguntar a fila</a>
+          </div>
+        </div>
+        <figure class="map-figure">
+          <div class="map" id="map" role="region" aria-label="Mapa do bairro do Prata, em Campina Grande, com a área aproximada da barbearia">
+            <p class="map-fallback">Mapa do Prata, em Campina Grande. Carrega quando esta parte da página aparece.</p>
+          </div>
+          <figcaption>Área aproximada no Prata, com a Feira Central e o Açude Velho de referência. O endereço é fictício.</figcaption>
+        </figure>
 
-    <section class="section faq" id="duvidas" aria-labelledby="duvidas-titulo">
-      <h2 class="h2" id="duvidas-titulo"><span class="kicker">Dúvidas</span>Antes de sentar na cadeira.</h2>
-      <div>
-        <details><summary>Precisa agendar ou dá para chegar?<svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Dá para chegar, mas quem agendou passa na frente. No sábado de manhã a agenda costuma encher, então vale mandar o pedido um ou dois dias antes.</p></details>
-        <details><summary>E se eu me atrasar?<svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Seguramos a cadeira por 15 minutos. Passou disso, a gente encaixa no próximo horário livre do mesmo dia, se tiver.</p></details>
-        <details><summary>Preciso desmarcar. Como faço?<svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Responda na mesma conversa do WhatsApp, de preferência com duas horas de antecedência. Não cobramos taxa.</p></details>
-        <details><summary>Quais formas de pagamento?<svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Pix, cartão de débito e crédito e dinheiro. O pacote do noivo pode ser dividido em duas vezes no cartão.</p></details>
-        <details><summary>Vocês cortam cabelo de criança?<svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Cortamos, a partir de 2 anos, com a Lara. O preço é o mesmo do corte, e um adulto fica junto o tempo todo.</p></details>
-      </div>
-    </section>
+        <ul class="practical" aria-label="Antes de vir">
+          <li><svg class="ico" aria-hidden="true"><use href="#i-hourglass-medium"/></svg><h3>Sem hora marcada</h3><p>Terça a sexta, a espera fica entre 20 e 40 minutos. Sábado de manhã passa de uma hora. Quem agendou passa na frente.</p></li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-coffee"/></svg><h3>Por conta da casa</h3><p>Café coado o dia todo. Sábado depois das 14h, quem faz corte e barba ganha uma long neck do freezer.</p></li>
+          <li><svg class="ico ico-brand" aria-hidden="true"><use href="#i-pix"/></svg><h3>Pagamento</h3><p>Pix na chave do balcão, débito, crédito e dinheiro. O pacote do noivo divide em 2 vezes no cartão.</p></li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-car"/></svg><h3>Onde parar</h3><p>Na própria rua, sem zona azul. No sábado de manhã, chegue 10 minutos antes para achar vaga.</p></li>
+        </ul>
+      </section>
 
-    <section class="cta" aria-label="Chamada para agendar">
-      <h2>Sábado de manhã enche. Peça seu horário antes.</h2>
-      <a class="pill-btn dark" href="#agendar">Agendar horário <span class="dot"><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
-    </section>
-  </div>
+      <section class="section faq" id="duvidas" aria-labelledby="duvidas-titulo">
+        <div>
+          <span class="kicker">Dúvidas</span>
+          <h2 class="h2" id="duvidas-titulo">Antes de sentar na cadeira.</h2>
+        </div>
+        <div>
+          <details><summary>E se eu me atrasar?<svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Seguramos a cadeira por 15 minutos. Passou disso, a gente encaixa no próximo horário livre do mesmo dia, se tiver. Avisando no WhatsApp, fica mais fácil segurar.</p></details>
+          <details><summary>Preciso desmarcar. Como faço?<svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Responda na mesma conversa do WhatsApp, de preferência com duas horas de antecedência. Não cobramos taxa.</p></details>
+          <details><summary>Vocês cortam cabelo de criança?<svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Cortamos, a partir de 2 anos, com a Lara. Até 10 anos o corte sai por R$ 35, e um adulto fica junto o tempo todo.</p></details>
+          <details><summary>Abre em feriado?<svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Abre das 8h às 12h, só com quem chegar ou marcar até a véspera. A exceção é o São João: no dia 24 a casa fica fechada.</p></details>
+          <details><summary>Como funciona o pacote do noivo?<svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Um corte de teste umas duas semanas antes, para acertar o comprimento, e no dia do casamento corte, barba, sobrancelha e limpeza de pele. Se o casamento for cedo, abrimos antes do horário.</p></details>
+        </div>
+      </section>
+
+      <section class="endcard" aria-labelledby="fim-titulo">
+        <h2 class="h2" id="fim-titulo">Sábado de manhã enche. Peça seu horário antes.</h2>
+        <a class="btn btn-red" href="#agendar">Agendar horário <svg class="ico" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+        <ul class="roll" aria-label="Créditos da casa">
+          <li><span>Navalha</span><span class="row-dots"></span><b>Seu Damião</b></li>
+          <li><span>Degradê</span><span class="row-dots"></span><b>Rafa</b></li>
+          <li><span>Tesoura</span><span class="row-dots"></span><b>Lara</b></li>
+          <li><span>Café</span><span class="row-dots"></span><b>por conta da casa</b></li>
+        </ul>
+      </section>
+    </div>
+  </main>
 
   <footer class="wrap">
+    <div class="wordmark" aria-hidden="true">Sisal<span>.</span></div>
     <div class="foot-row">
-      <span>Sisal Barbearia · empresa fictícia para demonstração · Fotos: Unsplash (licença Unsplash)</span>
-      <a class="back-link" href="/"><svg class="ico" aria-hidden="true"><use href="#i-back"/></svg>Ver outros modelos</a>
+      <span>Sisal Barbearia · empresa fictícia para demonstração · Fotos: Unsplash (licença Unsplash) · Mapa: OpenStreetMap</span>
+      <a class="back-link" href="/"><svg class="ico" aria-hidden="true"><use href="#i-arrow-left"/></svg>Ver outros modelos</a>
     </div>
-    <div class="wordmark" aria-hidden="true">sisal<span>.</span></div>
     <p class="credito-autor">Site feito por <a href="https://tarciodiniz.com" rel="author">Tarcio Diniz</a>, desenvolvedor</p>
   </footer>
 
@@ -589,14 +709,36 @@
   const WEEKDAY_LONG = ["domingo", "segunda", "terça", "quarta", "quinta", "sexta", "sábado"];
   const OPEN_DAYS_SHOWN = 8;
   const SHIFT_END_HOUR = { manha: 12, tarde: 18, noite: 20 };
-  const MISSING_NAMES = { service: "o serviço", barber: "o profissional", day: "o dia", shift: "o turno" };
+  const MISSING_NAMES = { service: "o serviço", barber: "o barbeiro", day: "o dia", shift: "o turno" };
+  const GREETING = "Olá, Sisal. Quero pedir um horário.";
+
+  const LEAFLET_URL = "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js";
+  const TILE_URL = "https://tile.openstreetmap.org/{z}/{x}/{y}.png";
+  const TILE_ATTRIBUTION = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>';
+  // Prata, checked on OpenStreetMap on 21/09/2026. The address is fictional, so the map shows the neighbourhood, never a door.
+  const MAP_CENTER = [-7.2201, -35.894];
+  const MAP_AREA_RADIUS_M = 400;
+  const MAP_START_ZOOM = 15;
+  const METERS_PER_DEGREE_LAT = 111320;
+  const MAP_LANDMARKS = [
+    { name: "Feira Central", at: [-7.2194, -35.8783], direction: "top" },
+    { name: "Açude Velho", at: [-7.2254, -35.8796], direction: "bottom" },
+  ];
+  const MAP_PADDING_PX = 28;
+  const MAP_LOAD_MARGIN = "300px";
 
   const form = document.getElementById("booking");
   const waButton = document.getElementById("wa-btn");
   const hint = document.getElementById("hint");
+  const filmTrack = document.getElementById("film-track");
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
   function pad(value) { return String(value).padStart(2, "0"); }
+
+  function openShiftsToday(weekday) {
+    const hour = new Date().getHours();
+    return (SHIFTS_BY_WEEKDAY[weekday] ?? []).filter((shift) => SHIFT_END_HOUR[shift] - 1 > hour);
+  }
 
   function buildDayOptions() {
     const container = document.getElementById("days");
@@ -617,11 +759,6 @@
       if (offset === 0) input.dataset.today = "true";
       container.append(label);
     }
-  }
-
-  function openShiftsToday(weekday) {
-    const hour = new Date().getHours();
-    return (SHIFTS_BY_WEEKDAY[weekday] ?? []).filter((shift) => SHIFT_END_HOUR[shift] - 1 > hour);
   }
 
   function selected(name) { return form.querySelector(`input[name="${name}"]:checked`); }
@@ -653,15 +790,19 @@
   function whatsappMessage(choices) {
     const name = form.elements.name.value.trim();
     const lines = [
-      "Olá, Sisal. Quero pedir um horário.",
+      GREETING,
       `Serviço: ${choices.service}`,
-      `Profissional: ${choices.barber}`,
+      `Barbeiro: ${choices.barber}`,
       `Dia: ${choices.day}`,
       `Turno: ${choices.shift}`,
     ];
     if (name) lines.push(`Nome: ${name}`);
     lines.push("Qual horário está livre?");
     return lines.join("\n");
+  }
+
+  function joinList(items) {
+    return items.length < 2 ? items.join("") : `${items.slice(0, -1).join(", ")} e ${items.at(-1)}`;
   }
 
   function renderSummary() {
@@ -680,12 +821,8 @@
     form.querySelector('[data-step="when"]').classList.toggle("is-done", Boolean(choices.day && choices.shift));
     const ready = missing.length === 0;
     waButton.setAttribute("aria-disabled", String(!ready));
-    waButton.href = `https://wa.me/?text=${encodeURIComponent(ready ? whatsappMessage(choices) : "Olá, Sisal. Quero pedir um horário.")}`;
+    waButton.href = `https://wa.me/?text=${encodeURIComponent(ready ? whatsappMessage(choices) : GREETING)}`;
     hint.textContent = ready ? "Tudo certo. A mensagem abre pronta, é só enviar." : `Falta escolher ${joinList(missing)}.`;
-  }
-
-  function joinList(items) {
-    return items.length < 2 ? items.join("") : `${items.slice(0, -1).join(", ")} e ${items.at(-1)}`;
   }
 
   function scrollToTarget(target) {
@@ -704,25 +841,74 @@
     const weekday = now.getDay();
     const hours = OPEN_HOURS[weekday];
     const hour = now.getHours() + now.getMinutes() / 60;
+    const tomorrow = OPEN_HOURS[(weekday + 1) % 7];
     let text;
     if (hours && hour < hours[0]) text = `Abre hoje às ${hours[0]}h`;
     else if (hours && hour < hours[1]) text = `Aberto agora, até as ${hours[1]}h`;
-    else if (OPEN_HOURS[(weekday + 1) % 7]) text = `Fechado agora. Amanhã a partir das ${OPEN_HOURS[(weekday + 1) % 7][0]}h`;
+    else if (tomorrow) text = `Fechado agora. Amanhã a partir das ${tomorrow[0]}h`;
     else text = "Fechado agora. Volta na segunda, às 13h";
     document.querySelectorAll("[data-open-now]").forEach((el) => { el.textContent = text; });
     document.querySelectorAll(".hours tr").forEach((row) => row.classList.toggle("is-today", row.dataset.days.split(" ").includes(String(weekday))));
   }
 
-  function buildRuler() {
-    const ruler = document.querySelector("[data-ruler]");
-    const ticks = window.innerWidth < 640 ? 41 : 81;
-    ruler.innerHTML = "<i></i>".repeat(ticks);
+  // Moves the strip by one frame; scrollBy on the track only, so the page itself never jumps sideways.
+  function stepFilm(direction) {
+    const frame = filmTrack.querySelector(".frame");
+    const gap = parseFloat(getComputedStyle(filmTrack).columnGap) || 0;
+    filmTrack.scrollBy({ left: direction * (frame.getBoundingClientRect().width + gap), behavior: reduceMotion.matches ? "auto" : "smooth" });
+  }
+
+  function loadScript(src) {
+    return new Promise((resolve, reject) => {
+      const script = document.createElement("script");
+      script.src = src;
+      script.onload = resolve;
+      script.onerror = reject;
+      document.head.append(script);
+    });
+  }
+
+  function cssToken(name) { return getComputedStyle(document.documentElement).getPropertyValue(name).trim(); }
+
+  function drawMap(container) {
+    const accent = cssToken("--red");
+    // Dragging off on touch screens so a finger on the map still scrolls the page.
+    const map = L.map(container, { scrollWheelZoom: false, dragging: !L.Browser.mobile, tap: false }).setView(MAP_CENTER, MAP_START_ZOOM);
+    L.tileLayer(TILE_URL, { maxZoom: 19, attribution: TILE_ATTRIBUTION }).addTo(map);
+    const area = L.circle(MAP_CENTER, { radius: MAP_AREA_RADIUS_M, color: accent, weight: 2, fillColor: accent, fillOpacity: 0.22 }).addTo(map);
+    // The label hangs from the circle's south edge, so it never hides the area and stays put at any zoom.
+    const southEdge = [MAP_CENTER[0] - MAP_AREA_RADIUS_M / METERS_PER_DEGREE_LAT, MAP_CENTER[1]];
+    L.circleMarker(southEdge, { radius: 0, stroke: false, fill: false, interactive: false })
+      .bindTooltip("Endereço fictício, no bairro Prata", { permanent: true, direction: "bottom", offset: [0, 4], className: "map-label" })
+      .addTo(map);
+    const bounds = area.getBounds();
+    MAP_LANDMARKS.forEach(({ name, at, direction }) => {
+      L.circleMarker(at, { radius: 6, color: cssToken("--black"), weight: 2, fillColor: cssToken("--paper"), fillOpacity: 1 })
+        .bindTooltip(name, { permanent: true, direction, offset: [0, direction === "top" ? -6 : 6], className: "map-ref" })
+        .addTo(map);
+      bounds.extend(at);
+    });
+    map.fitBounds(bounds, { padding: [MAP_PADDING_PX, MAP_PADDING_PX] });
+    container.classList.add("is-ready");
+  }
+
+  // Leaflet and the tiles only load when the map section is close, so the first screen stays light.
+  function watchMap() {
+    const container = document.getElementById("map");
+    const observer = new IntersectionObserver((entries) => {
+      if (!entries.some((entry) => entry.isIntersecting)) return;
+      observer.disconnect();
+      loadScript(LEAFLET_URL).then(() => drawMap(container)).catch(() => {
+        container.querySelector(".map-fallback").textContent = "O mapa não carregou. Use o botão Abrir no mapa.";
+      });
+    }, { rootMargin: MAP_LOAD_MARGIN });
+    observer.observe(container);
   }
 
   buildDayOptions();
-  buildRuler();
   markOpenNow();
   renderSummary();
+  watchMap();
   form.addEventListener("change", renderSummary);
   form.elements.name.addEventListener("input", renderSummary);
   form.addEventListener("submit", (event) => event.preventDefault());
@@ -734,14 +920,17 @@
     if (firstMissing) scrollToTarget(firstMissing);
   });
 
-  document.querySelectorAll(".service .pick").forEach((button) => {
-    button.addEventListener("click", () => {
-      preselect("service", button.closest(".service").dataset.service);
+  document.querySelectorAll(".board-row").forEach((row) => {
+    row.addEventListener("click", () => {
+      preselect("service", row.dataset.service);
       scrollToTarget(document.getElementById("agendar"));
     });
   });
   document.querySelectorAll("[data-barber]").forEach((link) => {
     link.addEventListener("click", () => preselect("barber", link.dataset.barber));
+  });
+  document.querySelectorAll("[data-strip]").forEach((button) => {
+    button.addEventListener("click", () => stepFilm(Number(button.dataset.strip)));
   });
 
   // Smooth only on in-page link clicks; a global smooth scroll-behavior also animates the browser's scroll restoration on reload.
@@ -761,26 +950,27 @@
 
     const motion = gsap.matchMedia();
     motion.add("(prefers-reduced-motion: no-preference)", () => {
-      gsap.from(".hero h1 .line > span", { yPercent: 105, duration: 0.9, ease: "power4.out", stagger: 0.09 });
-      gsap.from(".hero-media img", { scale: 1.08, duration: 1.6, ease: "power2.out" });
-      gsap.from(".glass-card", { y: 32, autoAlpha: 0, duration: 0.8, delay: 0.3, ease: "power3.out" });
-      gsap.from(".tags > *", { y: 12, autoAlpha: 0, duration: 0.5, delay: 0.45, stagger: 0.06 });
-      gsap.to(".hero-media", { yPercent: 10, ease: "none", scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true } });
+      // Opening credits: the photo fades up from black and the title comes in one line at a time.
+      const intro = gsap.timeline({ defaults: { ease: "power2.out" } });
+      intro.from(".hero-photo img", { autoAlpha: 0, scale: 1.04, duration: 1.2 }, 0)
+        .from(".hero h1 .line", { autoAlpha: 0, y: 14, duration: 0.55, stagger: 0.18 }, 0.1)
+        .from(".razor", { scaleX: 0, duration: 0.5, ease: "power3.inOut" }, 0.75)
+        .from(".hero-lead, .hero-actions, .scene", { autoAlpha: 0, duration: 0.5, stagger: 0.08 }, 0.85);
 
-      gsap.from("[data-ruler] i", { scaleY: 0, duration: 0.5, ease: "power2.out", stagger: { each: 0.008, from: "start" }, scrollTrigger: { trigger: "[data-ruler]", start: "top 92%", once: true } });
-
-      ScrollTrigger.batch(".service", {
+      // Opacity only, never visibility: a hidden fieldset drops the focus of a field the visitor is typing in.
+      ScrollTrigger.batch(".board-row", {
+        start: "top 92%",
+        once: true,
+        onEnter: (batch) => gsap.from(batch, { opacity: 0, x: -12, duration: 0.5, ease: "power2.out", stagger: 0.06 }),
+      });
+      ScrollTrigger.batch(".step, .review, .frame, .practical li", {
         start: "top 90%",
         once: true,
-        onEnter: (batch) => gsap.from(batch, { y: 24, autoAlpha: 0, duration: 0.6, ease: "power3.out", stagger: 0.07 }),
+        onEnter: (batch) => gsap.from(batch, { opacity: 0, y: 24, duration: 0.6, ease: "power3.out", stagger: 0.08 }),
       });
-      ScrollTrigger.batch(".barber, .tile, .quote", {
-        start: "top 88%",
-        once: true,
-        onEnter: (batch) => gsap.from(batch, { y: 32, autoAlpha: 0, duration: 0.7, ease: "power3.out", stagger: 0.08 }),
-      });
-      gsap.utils.toArray(".tile.photo img").forEach((image) => {
-        gsap.to(image, { yPercent: 6, ease: "none", scrollTrigger: { trigger: image.parentElement, start: "top bottom", end: "bottom top", scrub: true } });
+      // The initials land like a rubber stamp hitting paper.
+      gsap.utils.toArray(".stamp").forEach((stamp) => {
+        gsap.from(stamp, { scale: 1.6, autoAlpha: 0, duration: 0.45, ease: "power4.in", scrollTrigger: { trigger: stamp, start: "top 88%", once: true } });
       });
 
       document.querySelectorAll("[data-count]").forEach((el) => {
@@ -788,14 +978,12 @@
         const decimals = Number(el.dataset.decimals ?? 0);
         const state = { value: 0 };
         gsap.to(state, {
-          value: target, duration: 1.4, ease: "power2.out",
-          scrollTrigger: { trigger: el, start: "top 88%", once: true },
+          value: target, duration: 1.2, ease: "power2.out",
+          scrollTrigger: { trigger: el, start: "top 95%", once: true },
           onUpdate: () => { el.textContent = state.value.toLocaleString("pt-BR", { minimumFractionDigits: decimals, maximumFractionDigits: decimals }); },
         });
       });
-      gsap.from(".wordmark", { yPercent: 40, autoAlpha: 0, duration: 1, ease: "power3.out", scrollTrigger: { trigger: "footer", start: "top 90%", once: true } });
-
-      form.addEventListener("change", () => gsap.fromTo(".summary dl", { scale: 0.985 }, { scale: 1, duration: 0.35, ease: "back.out(3)" }));
+      gsap.from(".wordmark", { yPercent: 30, autoAlpha: 0, duration: 1, ease: "power3.out", scrollTrigger: { trigger: "footer", start: "top 92%", once: true } });
     });
   }
 </script>

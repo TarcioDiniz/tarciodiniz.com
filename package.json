@@ -1,0 +1,11 @@
+{
+  "name": "tarciodiniz.com",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "mobile": "node scripts/mobile-battery.mjs"
+  },
+  "devDependencies": {
+    "puppeteer-core": "24.22.0"
+  }
+}

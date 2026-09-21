@@ -3,234 +3,432 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#14302e">
+<meta name="theme-color" content="#121212">
 <meta name="robots" content="noindex, nofollow">
 <title>Sálvia Fisioterapia · Campina Grande (demonstração)</title>
 <link rel="icon" href="data:,">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&w=1200&q=70">
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500;700;800;900&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" crossorigin="anonymous">
+<link rel="preload" as="image" href="https://images.unsplash.com/photo-1749131871347-6d211039ac3e?auto=format&rect=0,560,7200,5440&w=1400&q=70">
 <style>
   :root {
-    --bg: #f1f2ed;
-    --surface: #fbfbf8;
-    --ink: #14302e;
-    --ink-soft: #34504c;
-    --muted: #5f716a;
-    --line: #dbe1d8;
-    --accent: #4f7a5e;
-    --accent-ink: #ffffff;
-    --accent-soft: #dde8de;
-    --dark: #12302f;
-    --dark-soft: #1c3f3d;
-    --on-dark: #eef2eb;
-    --on-dark-muted: #a9bdb4;
-    --shade: rgba(10, 30, 28, 0.86);
-    --shade-clear: rgba(10, 30, 28, 0);
-    --frost: rgba(251, 251, 248, 0.78);
-    --frost-line: rgba(255, 255, 255, 0.7);
-    --header-fill: rgba(241, 242, 237, 0.9);
-    --shadow: 0 22px 44px -24px rgba(20, 48, 46, 0.45);
-    --radius-xl: 28px;
-    --radius-lg: 20px;
+    --bone: #f1ede6;
+    --paper: #f8f6f1;
+    --sand: #e3dcd1;
+    --ink: #121212;
+    --ink-soft: #3b3834;
+    --muted: #6b645b;
+    --line: #d6cec2;
+    --cobalt: #2b4cff;
+    --cobalt-deep: #1d38d8;
+    --cobalt-tint: #e2e6ff;
+    --on-cobalt: #ffffff;
+    --on-ink: #f1ede6;
+    --on-ink-muted: #aaa399;
+    --ink-line: #34312d;
+    --header-fill: rgba(241, 237, 230, 0.94);
+    --shadow: 0 30px 60px -30px rgba(18, 18, 18, 0.5);
+    --radius-lg: 22px;
     --radius-md: 14px;
     --radius-pill: 999px;
     --gutter: clamp(16px, 4vw, 40px);
-    --max: 1240px;
-    --section-gap: clamp(72px, 10vw, 128px);
-    --font-title: "Fraunces", Georgia, "Times New Roman", serif;
-    --font: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --max: 1320px;
+    --section-gap: clamp(88px, 11vw, 160px);
+    --whatsapp: #25d366;
+    --stroke: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 16' preserveAspectRatio='none'%3E%3Cpath d='M3 11C40 4 92 3 136 6s46 3 61 1' fill='none' stroke='black' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E");;
+    --font-title: "Schibsted Grotesk", "Arial Black", "Helvetica Neue", Arial, sans-serif;
+    --font: "Source Sans 3", "Segoe UI", system-ui, -apple-system, sans-serif;
   }
   * { box-sizing: border-box; }
-  html { scroll-padding-top: 96px; }
-  body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font); font-size: 16px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+  html { scroll-padding-top: 88px; }
+  body { margin: 0; background: var(--bone); color: var(--ink); font-family: var(--font); font-size: 18px; line-height: 1.55; -webkit-font-smoothing: antialiased; overflow-x: clip; }
   img { display: block; max-width: 100%; }
   a { color: inherit; text-decoration: none; }
   button, input, textarea { font: inherit; color: inherit; }
   .wrap { max-width: var(--max); margin: 0 auto; padding-inline: var(--gutter); }
-  .ico { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; display: block; flex: none; }
+  h1, h2, h3 { text-wrap: balance; }
+  p, dd, blockquote { text-wrap: pretty; }
+  .ico { width: 20px; height: 20px; fill: currentColor; display: block; flex: none; }
+  .ico.wa { color: var(--whatsapp); }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  :focus-visible { outline: 2px solid var(--cobalt); outline-offset: 3px; }
 
-  .notice { background: var(--ink); color: var(--on-dark); font-size: 13px; text-align: center; padding: 8px var(--gutter); }
-  .notice strong { color: var(--accent-soft); }
+  .notice { background: var(--ink); color: var(--on-ink); font-size: 13px; text-align: center; padding: 8px var(--gutter); }
+  .notice strong { color: var(--cobalt-tint); }
 
-  .header { position: sticky; top: 0; z-index: 30; transition: background-color .25s ease, box-shadow .25s ease; }
-  .header.is-compact { background: var(--header-fill); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); box-shadow: 0 1px 0 var(--line); }
-  .topbar { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 14px; }
-  .logo { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-title); font-weight: 500; font-size: 28px; letter-spacing: -0.03em; }
-  .logo .ico { width: 26px; height: 26px; color: var(--accent); stroke-width: 1.8; }
-  .nav { display: flex; gap: 28px; font-weight: 500; font-size: 15px; color: var(--ink-soft); }
-  .nav a:hover { color: var(--accent); }
+  /* Header */
+  .header { position: sticky; top: 0; z-index: 30; background: var(--bone); transition: box-shadow .25s ease; }
+  .header.is-scrolled { box-shadow: 0 1px 0 var(--line); }
+  .topbar { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 64px; }
+  .logo { display: inline-flex; align-items: center; gap: 1px; min-height: 44px; font-family: var(--font-title); font-weight: 800; font-size: 27px; line-height: 1; letter-spacing: -0.04em; }
+  .logo .dot { color: var(--cobalt); }
+  .logo small { font-family: var(--font); font-weight: 600; font-size: 14px; letter-spacing: .01em; color: var(--muted); margin-left: 8px; }
+  .nav { display: flex; gap: 4px; font-size: 16px; font-weight: 600; }
+  .nav a { display: inline-flex; align-items: center; min-height: 44px; padding-inline: 12px; border-radius: var(--radius-pill); color: var(--ink-soft); transition: color .2s ease; }
+  .nav a:hover { color: var(--cobalt); }
 
-  .btn { display: inline-flex; align-items: center; gap: 12px; padding: 6px 6px 6px 20px; border-radius: var(--radius-pill); border: 0; background: var(--ink); color: var(--on-dark); font-weight: 600; font-size: 15px; cursor: pointer; transition: translate .2s ease, background-color .2s ease; }
-  .btn:hover { translate: 0 -2px; }
-  .btn .dot { width: 38px; height: 38px; border-radius: 50%; background: var(--accent); color: var(--accent-ink); display: grid; place-items: center; flex: none; }
-  .btn.light { background: var(--surface); color: var(--ink); }
-  .btn.light .dot { background: var(--ink); color: var(--on-dark); }
-  .btn.quiet { background: transparent; color: var(--ink); border: 1px solid var(--line); padding: 12px 20px; }
-  .btn.quiet:hover { border-color: var(--ink); }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; padding: 12px 22px; border: 0; border-radius: var(--radius-pill); background: var(--cobalt); color: var(--on-cobalt); font-weight: 600; font-size: 16px; text-wrap: balance; cursor: pointer; transition: background-color .2s ease, translate .2s ease; }
+  .btn:hover { background: var(--cobalt-deep); translate: 0 -2px; }
+  .btn.ink { background: var(--ink); color: var(--on-ink); }
+  .btn.ink:hover { background: var(--ink-soft); }
+  .btn.small { min-height: 44px; padding: 10px 18px; font-size: 15px; }
+  .link-arrow { display: inline-flex; align-items: center; gap: 8px; min-height: 48px; font-weight: 600; font-size: 16px; border-bottom: 1px solid currentColor; }
+  .link-arrow:hover { color: var(--cobalt); }
 
-  .hero { display: grid; grid-template-columns: 1fr 1.08fr; gap: clamp(28px, 4vw, 56px); align-items: stretch; padding-block: clamp(16px, 3vw, 32px) 0; }
-  .hero-copy { display: flex; flex-direction: column; justify-content: center; padding-block: clamp(8px, 3vw, 40px); }
-  .eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; color: var(--accent); margin: 0 0 20px; }
-  .eyebrow::before { content: ""; width: 28px; height: 1px; background: currentColor; }
-  .hero h1 { font-family: var(--font-title); font-weight: 400; font-size: clamp(42px, 5vw, 76px); line-height: 1.02; letter-spacing: -0.03em; margin: 0 0 24px; }
-  .hero h1 .line { display: block; overflow: hidden; padding-bottom: .08em; }
-  .hero h1 .line > span { display: block; }
-  .hero h1 em { font-style: italic; color: var(--accent); }
-  .lead { color: var(--muted); font-size: 18px; margin: 0 0 32px; max-width: 44ch; }
-  .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
-  .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 32px; font-size: 13px; }
-  .tag { display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: var(--radius-pill); background: var(--accent-soft); color: var(--ink-soft); font-weight: 500; }
-  .tag .ico { width: 14px; height: 14px; color: var(--accent); }
+  /* Hero: copy on one side, photo bleeding off the other edge */
+  .hero { display: grid; grid-template-columns: auto minmax(0, 1fr); grid-template-areas: "top top" "body body" "verbs photo"; column-gap: 20px; padding-left: var(--gutter); padding-top: clamp(20px, 4vw, 40px); }
+  .hero-top { grid-area: top; padding-right: var(--gutter); }
+  .hero-body { grid-area: body; padding-right: var(--gutter); }
+  .verbs { grid-area: verbs; align-self: end; list-style: none; margin: 0; padding: 0 0 8px; font-family: var(--font-title); font-weight: 700; font-size: 22px; line-height: 1.18; letter-spacing: -0.02em; color: var(--ink-soft); }
+  .verbs li:last-child { color: var(--cobalt); font-weight: 900; }
+  .hero-photo { grid-area: photo; position: relative; margin: 0; margin-top: 32px; height: clamp(300px, 62vw, 520px); overflow: hidden; border-radius: var(--radius-lg) 0 0 var(--radius-lg); background: var(--sand); }
+  .hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 22% 70%; }
+  .eyebrow { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin: 0 0 18px; font-size: 15px; font-weight: 600; color: var(--muted); }
+  .eyebrow b { color: var(--ink); font-weight: 700; }
+  .hero-title { font-family: var(--font-title); font-weight: 800; font-size: clamp(38px, 11vw, 58px); line-height: .98; letter-spacing: -0.04em; margin: 0 0 20px; }
+  .hero-title .line { display: block; overflow: hidden; padding-bottom: .14em; padding-right: .04em; }
+  .hero-title .line > span { display: block; }
+  /* Emphasis is a hand-drawn stroke under the words, never italics. */
+  .scribble { position: relative; display: inline-block; color: var(--cobalt); font-weight: 900; }
+  .scribble::after { content: ""; position: absolute; left: -.02em; right: -.02em; bottom: -.1em; height: .16em; background: var(--cobalt); -webkit-mask: var(--stroke) center / 100% 100% no-repeat; mask: var(--stroke) center / 100% 100% no-repeat; }
+  .hl { color: var(--cobalt); }
+  .lead { margin: 0 0 24px; max-width: 42ch; color: var(--ink-soft); }
+  .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; }
+  .rating { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 20px 0 0; font-size: 15px; color: var(--muted); }
+  .rating .stars { display: flex; gap: 1px; color: var(--cobalt); }
+  .rating .stars .ico { width: 16px; height: 16px; }
+  .rating b { color: var(--ink); font-weight: 700; }
 
-  .hero-photo { position: relative; border-radius: 240px 240px var(--radius-xl) var(--radius-xl); overflow: hidden; min-height: min(76vh, 680px); background: var(--line); }
-  .hero-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 40%; }
-  .proof { position: absolute; left: clamp(16px, 3vw, 28px); bottom: clamp(16px, 3vw, 28px); z-index: 1; display: flex; align-items: center; gap: 16px; padding: 16px 20px; border-radius: var(--radius-lg); background: var(--frost); border: 1px solid var(--frost-line); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); box-shadow: var(--shadow); }
-  .proof b { font-family: var(--font-title); font-weight: 500; font-size: 48px; line-height: 1; letter-spacing: -0.03em; }
-  .proof .stars { display: flex; gap: 2px; color: var(--accent); margin-bottom: 4px; }
-  .proof .stars .ico { width: 15px; height: 15px; fill: currentColor; stroke: none; }
-  .proof p { margin: 0; font-size: 13px; color: var(--ink-soft); line-height: 1.35; }
+  /* Everyday movements, sliding */
+  .band { position: relative; margin-top: clamp(56px, 8vw, 96px); background: var(--ink); color: var(--on-ink); }
+  .band-wave { display: block; width: 100%; height: 28px; color: var(--ink); }
+  .band-wave.top { margin-bottom: -1px; }
+  .band-wave.bottom { margin-top: -1px; rotate: 180deg; }
+  .band-wave path { fill: currentColor; }
+  .band-inner { background: var(--ink); }
+  .band-title { margin: 0; padding: 18px var(--gutter) 0; font-size: 15px; font-weight: 600; color: var(--on-ink-muted); text-align: center; }
+  .marquee { overflow: hidden; padding-block: 12px 22px; }
+  .marquee-track { display: flex; width: max-content; }
+  .marquee-list { display: flex; align-items: center; list-style: none; margin: 0; padding: 0; font-family: var(--font-title); font-weight: 800; font-size: clamp(30px, 5.4vw, 64px); line-height: 1.15; letter-spacing: -0.03em; white-space: nowrap; }
+  .marquee-list li { display: flex; align-items: center; }
+  .marquee-list li::after { content: ""; width: .22em; height: .22em; margin-inline: .55em; border-radius: 50%; background: var(--cobalt); }
+  .marquee-list li:nth-child(even) { font-weight: 500; color: var(--on-ink-muted); }
+  @media (prefers-reduced-motion: no-preference) {
+    .marquee-track { animation: slide 38s linear infinite; }
+    .marquee:hover .marquee-track { animation-play-state: paused; }
+  }
+  @keyframes slide { to { transform: translateX(-50%); } }
 
   .section { margin-top: var(--section-gap); }
-  .section-head { display: grid; grid-template-columns: 1.1fr 1fr; gap: 24px 48px; align-items: start; margin-bottom: 40px; }
-  .kicker { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: .12em; color: var(--accent); margin: 0 0 12px; }
-  .section-head h2, .title { font-family: var(--font-title); font-weight: 400; font-size: clamp(34px, 4.6vw, 60px); line-height: 1.02; letter-spacing: -0.03em; margin: 0; }
-  .section-head > p { margin: 30px 0 0; color: var(--muted); max-width: 46ch; }
+  .kicker { display: flex; align-items: center; gap: 10px; margin: 0 0 16px; font-size: 15px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--cobalt); }
+  .kicker span { font-family: var(--font-title); font-size: 20px; font-weight: 800; letter-spacing: 0; color: var(--ink); }
+  .title { font-family: var(--font-title); font-weight: 800; font-size: clamp(34px, 5.2vw, 72px); line-height: 1; letter-spacing: -0.04em; margin: 0; text-wrap: balance; }
+  .intro { margin: 18px 0 0; max-width: 46ch; color: var(--ink-soft); }
 
-  .specialties { display: grid; grid-template-columns: repeat(3, 1fr); grid-auto-rows: 1fr; gap: 20px; list-style: none; margin: 0; padding: 0; }
-  .specialties > li { display: flex; }
-  .spec { flex: 1; position: relative; display: flex; flex-direction: column; justify-content: flex-end; min-height: 420px; border-radius: var(--radius-lg); overflow: hidden; color: var(--on-dark); background: var(--dark); transition: translate .3s ease, box-shadow .3s ease; }
-  .spec:hover { translate: 0 -6px; box-shadow: var(--shadow); }
-  .spec img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: scale .6s ease; }
-  .spec:hover img { scale: 1.05; }
-  .spec::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, var(--shade) 0%, var(--shade) 18%, var(--shade-clear) 66%); }
-  .spec-body { position: relative; z-index: 1; padding: 22px; display: flex; align-items: flex-end; gap: 16px; }
-  .spec-body > div { flex: 1; }
-  .spec h3 { font-family: var(--font-title); font-weight: 500; font-size: 26px; letter-spacing: -0.02em; line-height: 1.1; margin: 0 0 6px; }
-  .spec p { margin: 0; font-size: 14px; color: var(--on-dark-muted); }
-  .spec .dot { width: 44px; height: 44px; border-radius: 50%; background: var(--surface); color: var(--ink); display: grid; place-items: center; flex: none; transition: background-color .2s ease, color .2s ease; }
-  .spec:hover .dot { background: var(--accent); color: var(--accent-ink); }
+  /* Where does it hurt */
+  .pain { display: grid; grid-template-columns: minmax(150px, 180px) minmax(0, 1fr); grid-template-areas: "head head" "figure list" "panel panel"; gap: 28px 14px; }
+  .pain-head { grid-area: head; }
+  .body-map { grid-area: figure; position: relative; width: 100%; aspect-ratio: 200 / 440; align-self: start; }
+  .body-map svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .body-shape { fill: var(--sand); }
+  .body-limb { fill: none; stroke: var(--sand); stroke-linecap: round; stroke-linejoin: round; }
+  .body-guide { fill: none; stroke: var(--line); stroke-width: 1.5; stroke-dasharray: 3 5; }
+  .pin { position: absolute; width: 40px; height: 40px; translate: -50% -50%; display: grid; place-items: center; padding: 0; border: 0; border-radius: 50%; background: transparent; cursor: pointer; }
+  .pin::before { content: ""; width: 20px; height: 20px; border-radius: 50%; background: var(--paper); box-shadow: inset 0 0 0 2px var(--cobalt); transition: background-color .2s ease, scale .2s ease; }
+  .pin:hover::before { scale: 1.15; }
+  .pin[aria-pressed="true"]::before { background: var(--cobalt); box-shadow: inset 0 0 0 2px var(--cobalt), 0 0 0 6px var(--cobalt-tint); }
+  @media (prefers-reduced-motion: no-preference) {
+    .pin[aria-pressed="true"]::after { content: ""; position: absolute; inset: 4px; border-radius: 50%; border: 2px solid var(--cobalt); animation: ping 1.8s ease-out infinite; }
+  }
+  @keyframes ping { from { opacity: .7; scale: .6; } to { opacity: 0; scale: 1.3; } }
+  .area-list { grid-area: list; display: grid; gap: 8px; align-content: start; list-style: none; margin: 0; padding: 0; }
+  .area-btn { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 8px; min-height: 48px; padding: 10px 14px; border: 1px solid var(--line); border-radius: var(--radius-md); background: var(--paper); font-size: 17px; font-weight: 600; text-align: left; line-height: 1.2; cursor: pointer; transition: background-color .2s ease, color .2s ease, border-color .2s ease; }
+  .area-btn .ico { width: 16px; height: 16px; opacity: .5; }
+  .area-btn:hover { border-color: var(--ink); }
+  .area-btn[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--on-ink); }
+  .area-btn[aria-pressed="true"] .ico { opacity: 1; color: var(--cobalt-tint); }
+  .pain-panel { grid-area: panel; background: var(--paper); border-radius: var(--radius-lg); padding: clamp(22px, 4vw, 40px); border: 1px solid var(--line); }
+  .pain-panel h3 { font-family: var(--font-title); font-weight: 800; font-size: clamp(30px, 4.2vw, 50px); line-height: 1.02; letter-spacing: -0.035em; margin: 0 0 22px; }
+  .pain-facts { display: grid; gap: 18px; margin: 0 0 26px; }
+  .pain-facts dt { font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+  .pain-facts dd { margin: 0; color: var(--ink-soft); }
+  .pain-facts .span { font-family: var(--font-title); font-weight: 800; font-size: 24px; line-height: 1.1; letter-spacing: -0.02em; color: var(--ink); }
+  .pain-note { margin: 18px 0 0; font-size: 15px; color: var(--muted); }
 
-  .steps-wrap { background: var(--surface); border-radius: var(--radius-xl); padding: clamp(28px, 5vw, 64px); }
-  .steps-track { position: relative; }
-  .steps { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; list-style: none; margin: 0; padding: 0; counter-reset: step; }
-  .steps-line { position: absolute; z-index: 0; top: 27px; left: 28px; right: 28px; height: 1px; background: var(--line); }
-  .steps-line span { display: block; height: 100%; background: var(--accent); transform-origin: left center; }
-  .step { position: relative; }
-  .step-num { position: relative; z-index: 1; width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center; background: var(--accent-soft); color: var(--accent); font-family: var(--font-title); font-size: 24px; margin-bottom: 22px; box-shadow: 0 0 0 8px var(--surface); }
-  .step h3 { font-size: 19px; margin: 0 0 8px; letter-spacing: -0.01em; }
-  .step p { margin: 0; color: var(--muted); font-size: 15px; }
-  .step small { display: inline-block; margin-top: 12px; font-size: 13px; font-weight: 600; color: var(--accent); }
+  /* Specialties as a numbered editorial index */
+  .spec-head { display: grid; gap: 18px 48px; align-items: end; margin-bottom: clamp(28px, 4vw, 48px); }
+  .spec-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--ink); counter-reset: spec; }
+  .spec-list > li { position: relative; border-bottom: 1px solid var(--line); }
+  .spec-row { display: grid; grid-template-columns: 40px minmax(0, 1fr) 72px; align-items: center; gap: 14px; padding-block: 18px; }
+  .spec-num { font-family: var(--font-title); font-weight: 700; font-size: 18px; font-variant-numeric: tabular-nums; color: var(--cobalt); }
+  .spec-row h3 { font-family: var(--font-title); font-weight: 800; font-size: clamp(25px, 4.4vw, 54px); line-height: 1.02; letter-spacing: -0.035em; margin: 0 0 6px; transition: color .2s ease; }
+  .spec-row p { margin: 0; font-size: 16px; color: var(--muted); }
+  .spec-thumb { width: 72px; height: 88px; object-fit: cover; border-radius: 10px; background: var(--sand); }
+  .spec-go { display: none; }
+  .spec-ask { display: inline-flex; align-items: center; gap: 6px; margin-top: 8px; font-size: 15px; font-weight: 700; color: var(--ink-soft); }
+  .spec-ask .ico { width: 18px; height: 18px; }
 
-  .dark { background: var(--dark); color: var(--on-dark); border-radius: var(--radius-xl); padding: clamp(40px, 7vw, 88px) clamp(24px, 5vw, 64px); display: grid; grid-template-columns: 1.25fr 1fr; gap: 48px; align-items: center; overflow: hidden; }
-  .dark .title { color: var(--on-dark); margin-bottom: 18px; }
-  .dark-copy > p { color: var(--on-dark-muted); margin: 0 0 40px; max-width: 46ch; }
-  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-  .stat { background: var(--dark-soft); border-radius: var(--radius-lg); padding: 22px 20px; }
-  .stat b { display: block; font-family: var(--font-title); font-weight: 400; font-size: clamp(36px, 4vw, 52px); letter-spacing: -0.03em; line-height: 1; margin-bottom: 10px; }
-  .stat span { font-size: 13px; color: var(--on-dark-muted); }
-  .arch { justify-self: center; width: min(380px, 100%); aspect-ratio: 4 / 5; border-radius: 200px 200px var(--radius-lg) var(--radius-lg); overflow: hidden; box-shadow: 0 0 0 12px var(--dark-soft); }
-  .arch img { width: 100%; height: 100%; object-fit: cover; }
+  /* Big number */
+  .numbers { background: var(--ink); color: var(--on-ink); margin-top: var(--section-gap); padding-block: clamp(64px, 9vw, 120px); overflow: hidden; }
+  .numbers-grid { display: grid; gap: 32px; }
+  .big-number { display: flex; flex-wrap: wrap; align-items: baseline; column-gap: .14em; font-family: var(--font-title); font-weight: 900; font-size: clamp(88px, 20vw, 300px); line-height: .86; letter-spacing: -0.06em; margin: 0; }
+  .big-unit { color: var(--cobalt); font-family: var(--font); font-weight: 700; font-size: max(20px, .12em); letter-spacing: 0; line-height: 1.15; max-width: 16ch; }
+  .numbers-copy p { margin: 0; max-width: 40ch; color: var(--on-ink-muted); }
+  .numbers-copy p b { color: var(--on-ink); font-weight: 700; }
+  .wave-line { display: block; width: 100%; height: 40px; margin-block: 8px; }
+  .wave-line path { fill: none; stroke: var(--cobalt); stroke-width: 2; }
+  .mini-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--ink-line); }
+  .mini-stats li { padding-top: 18px; }
+  .mini-stats b { display: block; font-family: var(--font-title); font-weight: 800; font-size: clamp(27px, 5.2vw, 64px); white-space: nowrap; line-height: 1; letter-spacing: -0.04em; }
+  .mini-stats li > span { display: block; margin-top: 6px; font-size: 15px; color: var(--on-ink-muted); }
 
-  .team { display: grid; grid-template-columns: 1fr 1.2fr; gap: clamp(24px, 4vw, 56px); align-items: stretch; }
-  .team-photo { border-radius: var(--radius-xl); overflow: hidden; min-height: 460px; background: var(--line); }
+  /* First visit timeline */
+  .visit-first { display: grid; gap: 40px; }
+  .first-photo { margin: 0; border-radius: var(--radius-lg); overflow: hidden; aspect-ratio: 4 / 3; background: var(--sand); }
+  .first-photo img { width: 100%; height: 100%; object-fit: cover; }
+  .timeline { position: relative; list-style: none; margin: 0; padding: 0; }
+  .timeline-line { position: absolute; left: 21px; top: 22px; bottom: 22px; width: 1px; background: var(--line); }
+  .timeline-line span { display: block; width: 100%; height: 100%; background: var(--cobalt); transform-origin: top center; }
+  .tstep { position: relative; display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 18px; padding-bottom: 32px; }
+  .tstep:last-child { padding-bottom: 0; }
+  .tstep-num { position: relative; z-index: 1; width: 44px; height: 44px; display: grid; place-items: center; border-radius: 50%; background: var(--bone); border: 1px solid var(--ink); font-family: var(--font-title); font-weight: 800; font-size: 19px; }
+  .tstep h3 { margin: 8px 0 6px; font-family: var(--font-title); font-size: 20px; font-weight: 700; letter-spacing: -0.02em; }
+  .tstep p { margin: 0; color: var(--ink-soft); }
+  .tstep small { display: inline-block; margin-top: 8px; font-size: 15px; font-weight: 700; color: var(--cobalt); }
+
+  /* Team */
+  .team { display: grid; gap: 40px; }
+  .team-photo { margin: 0; border-radius: var(--radius-lg); overflow: hidden; aspect-ratio: 4 / 5; max-height: 640px; background: var(--sand); }
   .team-photo img { width: 100%; height: 100%; object-fit: cover; }
   .team-list { list-style: none; margin: 28px 0 0; padding: 0; }
-  .member { display: flex; gap: 20px; align-items: flex-start; padding-block: 22px; border-top: 1px solid var(--line); }
-  .monogram { width: 64px; height: 64px; border-radius: 50%; display: grid; place-items: center; flex: none; background: var(--accent-soft); color: var(--accent); font-family: var(--font-title); font-size: 24px; }
-  .member h3 { margin: 0; font-size: 19px; letter-spacing: -0.01em; }
-  .member .role { margin: 2px 0 8px; font-size: 14px; font-weight: 600; color: var(--accent); }
-  .member p { margin: 0; color: var(--muted); font-size: 15px; }
+  .member { display: grid; grid-template-columns: 72px minmax(0, 1fr); gap: 18px; padding-block: 24px; border-top: 1px solid var(--line); }
+  .monogram { width: 72px; height: 72px; display: grid; place-items: center; border-radius: 50%; background: var(--ink); color: var(--on-ink); font-family: var(--font-title); font-weight: 800; font-size: 24px; letter-spacing: -0.03em; }
+  .member:nth-child(2) .monogram { background: var(--cobalt); color: var(--on-cobalt); }
+  .member:nth-child(3) .monogram { background: var(--sand); color: var(--ink); }
+  .member h3 { margin: 0; font-family: var(--font-title); font-size: 21px; font-weight: 700; letter-spacing: -0.02em; }
+  .member .role { margin: 2px 0 8px; font-size: 16px; font-weight: 700; color: var(--cobalt); }
+  .member p { margin: 0; color: var(--ink-soft); font-size: 17px; }
 
-  .pay { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px 40px; padding: clamp(24px, 4vw, 40px); border-radius: var(--radius-xl); border: 1px solid var(--line); }
-  .pay h2 { font-family: var(--font-title); font-weight: 400; font-size: clamp(26px, 3vw, 36px); letter-spacing: -0.02em; line-height: 1.1; margin: 0 0 6px; }
-  .pay p { margin: 0; color: var(--muted); font-size: 15px; max-width: 48ch; }
-  .pills { display: flex; flex-wrap: wrap; gap: 10px; }
-  .pill { display: inline-flex; align-items: center; gap: 8px; padding: 12px 18px; border-radius: var(--radius-pill); background: var(--surface); border: 1px solid var(--line); font-weight: 600; font-size: 15px; }
-  .pill .ico { color: var(--accent); }
-  .pill.muted { background: transparent; color: var(--ink-soft); font-weight: 500; }
+  /* What to bring */
+  .bring { display: grid; gap: 14px; list-style: none; margin: 36px 0 0; padding: 22px 0 0; border-top: 1px solid var(--ink); }
+  .bring-title { margin: 36px 0 0; font-family: var(--font-title); font-size: 20px; font-weight: 700; letter-spacing: -0.02em; }
+  .bring-title + .bring { margin-top: 14px; }
+  .bring li, .facts li { display: grid; grid-template-columns: 24px minmax(0, 1fr); gap: 12px; align-items: start; }
+  .bring .ico, .facts .ico { width: 22px; height: 22px; margin-top: 2px; color: var(--cobalt); }
+  .bring b, .facts b { font-weight: 700; }
+  .bring span, .facts span { color: var(--ink-soft); }
 
-  .quotes { display: grid; grid-template-columns: repeat(3, 1fr); grid-auto-rows: 1fr; gap: 20px; list-style: none; margin: 0; padding: 0; }
-  .quote { display: flex; flex-direction: column; background: var(--surface); border-radius: var(--radius-lg); padding: 28px; transition: translate .3s ease, box-shadow .3s ease; }
-  .quote:hover { translate: 0 -4px; box-shadow: var(--shadow); }
-  .quote .ico { width: 30px; height: 30px; color: var(--accent); fill: currentColor; stroke: none; margin-bottom: 16px; }
-  .quote blockquote { margin: 0 0 24px; font-family: var(--font-title); font-size: 20px; line-height: 1.4; flex: 1; }
-  .quote footer { font-size: 14px; color: var(--muted); }
-  .quote footer b { color: var(--ink); display: block; }
-  .fictional { display: inline-flex; align-items: center; gap: 6px; margin-top: 16px; padding: 6px 12px; border-radius: var(--radius-pill); background: var(--accent-soft); color: var(--ink-soft); font-size: 13px; font-weight: 600; }
+  /* Prices and payment */
+  .pay { display: grid; gap: 28px; padding-block: clamp(28px, 4vw, 44px); border-block: 1px solid var(--ink); }
+  .pay h2 { font-family: var(--font-title); font-weight: 800; font-size: clamp(30px, 3.8vw, 48px); line-height: 1; letter-spacing: -0.04em; margin: 0; }
+  .pay-head p { margin: 14px 0 0; max-width: 36ch; color: var(--ink-soft); }
+  .prices { width: 100%; border-collapse: collapse; }
+  .prices th, .prices td { padding: 14px 0; border-bottom: 1px solid var(--line); text-align: left; vertical-align: baseline; }
+  .prices th { font-weight: 700; }
+  .prices th small { display: block; margin-top: 2px; font-size: 15px; font-weight: 400; color: var(--muted); }
+  .prices td { padding-left: 16px; text-align: right; white-space: nowrap; font-family: var(--font-title); font-weight: 800; font-size: 22px; letter-spacing: -0.02em; }
+  .pay-options { display: grid; gap: 18px; list-style: none; margin: 24px 0 0; padding: 0; }
+  .pay-options li { display: grid; grid-template-columns: 24px minmax(0, 1fr); gap: 12px; }
+  .pay-options .ico { width: 22px; height: 22px; color: var(--cobalt); margin-top: 2px; }
+  .pay-options .ico.pix { color: var(--ink); }
+  .pay-options b { display: block; font-weight: 700; }
+  .pay-options span { color: var(--muted); font-size: 16px; }
+  .pay-options a { color: var(--ink); font-weight: 700; text-decoration: underline; text-decoration-color: var(--cobalt); text-underline-offset: 3px; display: inline-flex; align-items: center; min-height: 44px; }
 
-  .visit { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-  .visit-card { background: var(--surface); border-radius: var(--radius-xl); padding: clamp(24px, 4vw, 40px); display: flex; flex-direction: column; gap: 20px; }
-  .open-now { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; }
-  .open-now::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+  /* Testimonials: one large pull quote, two small */
+  .quotes { display: grid; gap: 40px; }
+  .quote-main blockquote { margin: 0; font-family: var(--font-title); font-weight: 700; font-size: clamp(27px, 4vw, 52px); line-height: 1.1; letter-spacing: -0.035em; }
+  .quote-by { margin: 20px 0 0; font-size: 16px; color: var(--muted); }
+  .quote-by b { color: var(--ink); font-weight: 700; }
+  .quote-side { display: grid; gap: 28px; list-style: none; margin: 0; padding: 0; }
+  .quote-side li { border-top: 1px solid var(--line); padding-top: 20px; }
+  .quote-side blockquote { margin: 0; font-size: 19px; line-height: 1.45; color: var(--ink-soft); }
+  .quote-stars { display: flex; gap: 2px; margin: 0 0 10px; color: var(--cobalt); }
+  .quote-stars .ico { width: 16px; height: 16px; }
+  .quote-stars .ico.off { color: var(--line); }
+  .fictional { display: inline-flex; align-items: center; gap: 8px; margin: 18px 0 0; font-size: 15px; font-weight: 600; color: var(--muted); }
+  .fictional::before { content: ""; width: 8px; height: 8px; border-radius: 50%; border: 1.5px solid var(--muted); }
+
+  /* Hours and address */
+  .where { display: grid; gap: 20px; align-items: start; }
+  .card { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: clamp(22px, 4vw, 40px); display: flex; flex-direction: column; gap: 18px; min-width: 0; }
+  .card h2 { font-family: var(--font-title); font-weight: 800; font-size: clamp(30px, 3.6vw, 46px); line-height: 1; letter-spacing: -0.04em; margin: 0; }
+  .open-now { display: inline-flex; align-items: center; gap: 10px; align-self: flex-start; min-height: 36px; padding: 6px 14px; border-radius: var(--radius-pill); background: var(--cobalt-tint); font-size: 15px; font-weight: 700; color: var(--cobalt-deep); }
+  .open-now::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--cobalt); flex: none; }
+  .open-now.is-closed { background: var(--sand); color: var(--ink-soft); }
   .open-now.is-closed::before { background: var(--muted); }
-  .hours { width: 100%; border-collapse: collapse; font-size: 15px; }
+  .hours { width: 100%; border-collapse: collapse; font-size: 17px; }
   .hours td { padding: 12px 0; border-bottom: 1px solid var(--line); }
-  .hours td:last-child { text-align: right; font-weight: 600; }
-  .address { display: flex; gap: 12px; align-items: flex-start; margin: 0; color: var(--ink-soft); }
-  .address .ico { margin-top: 3px; color: var(--accent); }
-  .visit-card .btn { align-self: flex-start; }
-  .visit-card .note { margin: 0; color: var(--muted); font-size: 15px; }
+  .hours td:last-child { text-align: right; font-weight: 700; }
+  .hours tr.is-today td { color: var(--cobalt); }
+  .facts { display: grid; gap: 14px; list-style: none; margin: 0; padding: 0; font-size: 16px; }
+  .address { margin: 0; font-weight: 600; }
+  .map { position: relative; margin: 0 calc(-1 * clamp(10px, 2vw, 20px)); border-radius: var(--radius-md); overflow: hidden; background: var(--sand); height: 320px; isolation: isolate; }
+  .map-canvas { position: absolute; inset: 0; background: var(--sand); font: inherit; }
+  .map-canvas .leaflet-tile-pane { filter: grayscale(1) sepia(.18) contrast(1.05); }
+  .map-canvas .leaflet-control-zoom a { width: 44px; height: 44px; line-height: 44px; font-size: 22px; color: var(--ink); }
+  .map-canvas .leaflet-control-attribution { font-size: 13px; line-height: 1.5; background: var(--header-fill); color: var(--ink-soft); }
+  .map-canvas .leaflet-control-attribution a { color: var(--ink); display: inline-block; min-height: 0; }
+  .map-canvas .map-label { background: var(--ink); color: var(--on-ink); border: 0; border-radius: var(--radius-pill); box-shadow: none; padding: 6px 12px; font-size: 14px; font-weight: 600; }
+  .map-canvas .map-label { white-space: normal; width: max-content; max-width: 170px; text-align: center; line-height: 1.3; }
+  .map-canvas .map-label::before { display: none; }
+  .map-canvas .map-ref { background: var(--paper); color: var(--ink); border: 1px solid var(--line); border-radius: var(--radius-pill); box-shadow: none; padding: 4px 10px; font-size: 13px; font-weight: 700; }
+  .map-canvas .map-ref::before { display: none; }
+  .map-fallback { position: absolute; inset: 0; display: grid; place-items: center; padding: 16px; text-align: center; font-size: 15px; color: var(--ink-soft); }
+  .map-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+  .btn.line { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1px var(--line); }
+  .btn.line:hover { background: var(--bone); }
+  .btn .ico.maps { color: var(--cobalt-tint); }
+  .card .note { margin: 0; color: var(--muted); font-size: 15px; }
 
-  .faq { display: grid; grid-template-columns: 1fr 1.4fr; gap: 40px; }
-  details { border-bottom: 1px solid var(--line); padding-block: 20px; }
-  summary { list-style: none; cursor: pointer; font-weight: 600; font-size: 18px; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+  /* FAQ */
+  .faq { display: grid; gap: 28px; }
+  details { border-bottom: 1px solid var(--line); }
+  details:first-child { border-top: 1px solid var(--ink); }
+  summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 64px; padding-block: 14px; font-size: 19px; font-weight: 600; }
   summary::-webkit-details-marker { display: none; }
-  summary .toggle { width: 32px; height: 32px; border-radius: 50%; background: var(--accent-soft); color: var(--accent); display: grid; place-items: center; flex: none; transition: rotate .25s ease; }
+  summary .toggle { width: 36px; height: 36px; display: grid; place-items: center; flex: none; border-radius: 50%; border: 1px solid var(--line); transition: rotate .25s ease, background-color .2s ease; }
   summary .toggle .ico { width: 16px; height: 16px; }
-  details[open] summary .toggle { rotate: 45deg; }
-  details p { color: var(--muted); margin: 12px 0 0; max-width: 60ch; }
+  details[open] summary .toggle { rotate: 45deg; background: var(--cobalt); border-color: var(--cobalt); color: var(--on-cobalt); }
+  details p { color: var(--ink-soft); margin: 0 0 22px; max-width: 60ch; }
 
-  .booking { background: var(--accent); color: var(--accent-ink); border-radius: var(--radius-xl); padding: clamp(28px, 6vw, 64px); display: grid; grid-template-columns: 1fr 1.1fr; gap: 40px; align-items: start; }
-  .booking .title { color: var(--accent-ink); margin-bottom: 16px; }
-  .booking-copy p { margin: 0; opacity: .9; max-width: 40ch; }
-  .form { display: grid; gap: 16px; background: var(--surface); color: var(--ink); border-radius: var(--radius-lg); padding: clamp(20px, 3vw, 32px); }
+  /* Booking */
+  .booking { background: var(--cobalt); color: var(--on-cobalt); margin-top: var(--section-gap); padding-block: clamp(56px, 8vw, 104px); }
+  .booking-grid { display: grid; gap: 32px; align-items: start; }
+  .booking .title { color: var(--on-cobalt); }
+  .booking .scribble { color: var(--on-cobalt); }
+  .booking .scribble::after { background: var(--on-cobalt); }
+  .booking-copy p { margin: 18px 0 0; max-width: 40ch; }
+  .form { display: grid; gap: 18px; background: var(--paper); color: var(--ink); border-radius: var(--radius-lg); padding: clamp(20px, 3.4vw, 36px); }
   .field { display: grid; gap: 6px; }
-  .field label, .field legend { font-size: 14px; font-weight: 600; }
-  .field input, .field textarea { width: 100%; padding: 14px 16px; border-radius: var(--radius-md); border: 1px solid var(--line); background: var(--bg); font-size: 16px; }
-  .field textarea { resize: vertical; min-height: 96px; }
-  .field input:focus, .field textarea:focus { outline: 2px solid var(--accent); outline-offset: 1px; border-color: transparent; }
+  .field label, .field legend { font-size: 16px; font-weight: 700; }
+  .field input, .field textarea { width: 100%; min-height: 48px; padding: 12px 16px; border: 1px solid var(--line); border-radius: var(--radius-md); background: var(--bone); font-size: 17px; }
+  .field textarea { resize: vertical; min-height: 104px; }
+  .field input:focus, .field textarea:focus { outline: 2px solid var(--cobalt); outline-offset: 1px; border-color: transparent; }
   fieldset.field { border: 0; margin: 0; padding: 0; }
-  .choices { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
-  .choice { position: relative; }
-  .choice input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; pointer-events: none; }
-  .choice span { display: inline-block; padding: 10px 16px; border-radius: var(--radius-pill); border: 1px solid var(--line); font-size: 15px; cursor: pointer; transition: background-color .2s ease, color .2s ease, border-color .2s ease; }
-  .choice input:checked + span { background: var(--ink); color: var(--on-dark); border-color: var(--ink); }
-  .choice input:focus-visible + span { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .choices { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+  .choice { position: relative; display: inline-flex; }
+  .choice input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: pointer; }
+  .choice span { display: inline-flex; align-items: center; min-height: 44px; padding: 8px 16px; border-radius: var(--radius-pill); border: 1px solid var(--line); font-size: 16px; font-weight: 600; transition: background-color .2s ease, color .2s ease, border-color .2s ease; }
+  .choice input:checked + span { background: var(--ink); color: var(--on-ink); border-color: var(--ink); }
+  .choice input:focus-visible + span { outline: 2px solid var(--cobalt); outline-offset: 2px; }
   .form .btn { justify-self: start; }
-  .form-hint { margin: 0; font-size: 13px; color: var(--muted); }
+  .form-hint { margin: 0; font-size: 15px; color: var(--muted); }
 
-  .site-footer { margin-top: var(--section-gap); padding-bottom: 72px; overflow: hidden; }
-  .foot-row { display: flex; flex-wrap: wrap; gap: 16px; justify-content: space-between; color: var(--muted); font-size: 13px; border-top: 1px solid var(--line); padding-top: 24px; }
-  .wordmark { font-family: var(--font-title); font-weight: 400; font-size: clamp(96px, 22vw, 320px); letter-spacing: -0.05em; line-height: .85; margin-top: 32px; white-space: nowrap; color: var(--ink); }
-  .wordmark span { color: var(--accent); }
-  .back-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 32px; font-weight: 600; font-size: 15px; color: var(--ink); }
-  .back-link:hover { color: var(--accent); }
-  .credito-autor { margin: 16px 0 0; font-size: 14px; color: var(--muted); }
-  .credito-autor a { color: var(--ink); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--accent); }
-  .credito-autor a:hover { color: var(--accent); }
+  /* Footer */
+  .site-footer { padding-block: 40px 56px; overflow: hidden; }
+  .wordmark { font-family: var(--font-title); font-weight: 900; font-size: clamp(88px, 25vw, 360px); letter-spacing: -0.065em; line-height: .82; white-space: nowrap; margin: 0 0 32px; }
+  .wordmark .dot { color: var(--cobalt); }
+  .foot-social { display: flex; flex-wrap: wrap; gap: 8px 24px; margin: 0 0 16px; }
+  .foot-social a { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; font-weight: 700; }
+  .foot-social a:hover { color: var(--cobalt); }
+  .foot-handle { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; font-weight: 700; color: var(--ink-soft); }
+  .foot-row { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; padding-top: 20px; border-top: 1px solid var(--line); font-size: 15px; color: var(--muted); }
+  .back-link { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; margin-top: 16px; font-weight: 700; font-size: 16px; }
+  .back-link:hover { color: var(--cobalt); }
+  .credito-autor { margin: 4px 0 0; font-size: 15px; color: var(--muted); }
+  .credito-autor a { display: inline-flex; align-items: center; min-height: 44px; color: var(--ink); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--cobalt); }
+  .credito-autor a:hover { color: var(--cobalt); }
 
-  @media (max-width: 960px) {
-    .nav { display: none; }
-    .hero, .section-head, .dark, .team, .visit, .faq, .booking { grid-template-columns: 1fr; }
-    .section-head > p { margin-top: 0; }
-    .hero-photo { min-height: 460px; border-radius: 180px 180px var(--radius-xl) var(--radius-xl); }
-    .specialties, .quotes { grid-template-columns: repeat(2, 1fr); }
-    .steps { grid-template-columns: repeat(2, 1fr); }
-    .steps-line { display: none; }
-    .team-photo { min-height: 320px; }
+  @media (max-width: 380px) {
+    .pain { grid-template-columns: 156px minmax(0, 1fr); gap: 24px 10px; }
+    .area-btn { padding-inline: 10px; font-size: 15px; }
+    .area-btn .ico { display: none; }
+    .spec-row { grid-template-columns: 26px minmax(0, 1fr) 56px; gap: 8px; }
+    .spec-num { font-size: 16px; }
+    .spec-thumb { width: 56px; height: 72px; }
+    .spec-ask { white-space: nowrap; }
+    .spec-row h3 { font-size: 23px; }
   }
-  @media (max-width: 640px) {
-    .header .btn .label-long { display: none; }
-    /* Native swipe instead of a pinned horizontal scroll: vertical gestures stay vertical on touch. */
-    .specialties { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 14px; margin-inline: calc(var(--gutter) * -1); padding-inline: var(--gutter); scroll-padding-inline: var(--gutter); scrollbar-width: none; }
-    .specialties::-webkit-scrollbar { display: none; }
-    .specialties > li { flex: 0 0 84%; scroll-snap-align: start; }
-    .spec { min-height: 400px; }
-    .quotes, .steps, .stats { grid-template-columns: 1fr; }
-    .hero-photo { min-height: 400px; border-radius: 150px 150px var(--radius-xl) var(--radius-xl); }
-    .proof b { font-size: 40px; }
+
+  @media (min-width: 640px) {
+    .hero-title { font-size: clamp(52px, 8.4vw, 76px); }
+    .verbs { font-size: 28px; }
+    .pain { grid-template-columns: 220px minmax(0, 1fr); column-gap: 28px; }
+    .area-list { grid-template-columns: 1fr 1fr; }
+    .mini-stats li > span { font-size: 15px; }
+    .pay { grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr); align-items: start; }
+    .quote-side { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (min-width: 760px) {
+    .pain { grid-template-columns: minmax(220px, 280px) minmax(0, 1fr); grid-template-areas: "head head" "figure list" "figure panel"; column-gap: clamp(28px, 5vw, 72px); row-gap: 24px; }
+    .spec-row { grid-template-columns: 64px minmax(0, 1fr) 96px; gap: 24px; padding-block: 24px; }
+    .spec-num { font-size: 20px; }
+    .spec-thumb { width: 96px; height: 116px; }
+    .visit-first { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); align-items: start; gap: clamp(32px, 6vw, 88px); }
+    .first-photo { position: sticky; top: 96px; aspect-ratio: 4 / 5; }
+    .team { grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); align-items: start; gap: clamp(32px, 6vw, 88px); }
+    .booking-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: clamp(32px, 6vw, 88px); }
+    .faq { grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 48px; }
+  }
+
+  /* Fine pointers get the hover preview instead of the side thumbnail. */
+  @media (min-width: 1000px) and (hover: hover) and (pointer: fine) {
+    .spec-row { grid-template-columns: 80px minmax(0, 1fr) 56px; }
+    .spec-row p { font-size: 16px; }
+    .spec-thumb { position: absolute; z-index: 2; right: 16%; top: 50%; width: 240px; height: 300px; margin-top: -150px; border-radius: var(--radius-lg); box-shadow: var(--shadow); opacity: 0; scale: .9; rotate: -3deg; pointer-events: none; transition: opacity .3s ease, scale .35s ease; }
+    .spec-list > li:hover .spec-thumb, .spec-row:focus-visible .spec-thumb { opacity: 1; scale: 1; }
+    .spec-list > li:hover h3, .spec-row:focus-visible h3 { color: var(--cobalt); }
+    .spec-go { display: grid; place-items: center; width: 56px; height: 56px; border-radius: 50%; border: 1px solid var(--line); transition: background-color .2s ease, color .2s ease, border-color .2s ease; }
+    .spec-list > li:hover .spec-go { background: var(--cobalt); border-color: var(--cobalt); color: var(--on-cobalt); }
+    .spec-go { color: var(--whatsapp); }
+    .spec-ask { display: none; }
+  }
+
+  @media (min-width: 900px) {
+    .map { height: 430px; }
+  }
+
+  @media (min-width: 1000px) {
+    .where { grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr); }
+    .pay-options { grid-template-columns: 1fr 1fr; }
+    .spec-head { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); }
+    .spec-head .intro { margin: 0; }
+    .numbers-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); align-items: start; column-gap: 64px; }
+    .numbers-grid .big-number { grid-column: 1 / -1; }
+    .quotes { grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: clamp(40px, 6vw, 96px); align-items: start; }
+    .quote-side { grid-template-columns: 1fr; }
+    .pain { grid-template-columns: minmax(0, .9fr) minmax(240px, 300px) minmax(0, 1.2fr); grid-template-areas: "head figure panel" "list figure panel"; align-items: start; }
+    .area-list { grid-template-columns: 1fr; }
+  }
+
+  /* Wide layout: photo runs from the middle of the page to the right edge. */
+  @media (min-width: 900px) {
+    .hero { grid-template-columns: auto minmax(0, 1fr) minmax(0, 1.25fr); grid-template-areas: "top top photo" "verbs body photo"; grid-template-rows: minmax(0, 1fr) auto; column-gap: clamp(28px, 4vw, 64px); padding-left: max(var(--gutter), calc((100% - var(--max)) / 2 + var(--gutter))); padding-top: 0; min-height: min(calc(100svh - 100px), 880px); }
+    .hero-top { align-self: end; padding-top: clamp(40px, 6vh, 96px); padding-right: 0; }
+    .hero-body { padding-right: 0; padding-bottom: clamp(48px, 13vh, 150px); }
+    .verbs { align-self: start; padding: 6px 0 0; font-size: clamp(24px, 2.2vw, 34px); padding-bottom: clamp(48px, 13vh, 150px); }
+    .hero-photo { margin: 0; height: auto; min-height: 520px; border-radius: 0 0 0 clamp(28px, 4vw, 56px); }
+    .hero-photo img { position: absolute; inset: 0; object-position: 26% 50%; }
+    .hero-title { font-size: clamp(58px, 5.8vw, 108px); }
+    .lead { font-size: 19px; }
+  }
+  @media (max-width: 899px) {
+    .nav { display: none; }
+  }
+
+  /* Short screens (phone on its side, small phones): keep the promise and the action above the fold. */
+  @media (max-height: 600px) {
+    .notice { padding-block: 6px; }
+    .topbar { min-height: 56px; }
+    .hero { padding-top: 12px; }
+    .eyebrow { margin-bottom: 10px; }
+    .hero-title { font-size: clamp(34px, 10vw, 42px); margin-bottom: 14px; }
+    .hero-body .lead { display: none; }
+    .rating { margin-top: 12px; }
+    .site-footer { padding-top: 28px; }
+    .wordmark { font-size: clamp(88px, 16vw, 140px); margin-bottom: 20px; }
+  }
+  @media (max-height: 600px) and (min-width: 900px) {
+    .hero { min-height: 0; }
+    .hero-top { padding-top: 20px; }
+    .hero-title { font-size: clamp(38px, 8.4vh, 52px); }
+    .hero-body { padding-bottom: 24px; }
+    .verbs { font-size: 21px; }
+    .hero-photo { min-height: 320px; }
   }
 </style>
 </head>
@@ -238,241 +436,383 @@
   <div class="notice" data-aviso="proposta"><strong>Demonstração.</strong> Empresa, preços e avaliações são fictícios. Fotos: Unsplash.</div>
 
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
-    <symbol id="i-back" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></symbol>
-    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M20 11.5a8 8 0 0 1-11.6 7.1L4 20l1.4-4.2A8 8 0 1 1 20 11.5z"/></symbol>
-    <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M5 19c0-8 5-13 14-14 0 9-5 14-13 14"/><path d="M5 19c3-4 6-7 10-9"/></symbol>
-    <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
-    <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/></symbol>
-    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></symbol>
-    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
-    <symbol id="i-quote" viewBox="0 0 24 24"><path d="M4 18v-5.5C4 8.4 6.2 6 10 5.5v2.7c-1.9.5-2.9 1.7-3 3.8H10V18H4zm10 0v-5.5c0-4.1 2.2-6.5 6-7v2.7c-1.9.5-2.9 1.7-3 3.8h3V18h-6z"/></symbol>
+    <!-- Icons: brands from Simple Icons (CC0), interface from Phosphor (MIT). -->
+    <symbol id="i-whatsapp" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></symbol>
+    <symbol id="i-instagram" viewBox="0 0 24 24"><path d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/></symbol>
+    <symbol id="i-googlemaps" viewBox="0 0 24 24"><path d="M19.527 4.799c1.212 2.608.937 5.678-.405 8.173-1.101 2.047-2.744 3.74-4.098 5.614-.619.858-1.244 1.75-1.669 2.727-.141.325-.263.658-.383.992-.121.333-.224.673-.34 1.008-.109.314-.236.684-.627.687h-.007c-.466-.001-.579-.53-.695-.887-.284-.874-.581-1.713-1.019-2.525-.51-.944-1.145-1.817-1.79-2.671L19.527 4.799zM8.545 7.705l-3.959 4.707c.724 1.54 1.821 2.863 2.871 4.18.247.31.494.622.737.936l4.984-5.925-.029.01c-1.741.601-3.691-.291-4.392-1.987a3.377 3.377 0 0 1-.209-.716c-.063-.437-.077-.761-.004-1.198l.001-.007zM5.492 3.149l-.003.004c-1.947 2.466-2.281 5.88-1.117 8.77l4.785-5.689-.058-.05-3.607-3.035zM14.661.436l-3.838 4.563a.295.295 0 0 1 .027-.01c1.6-.551 3.403.15 4.22 1.626.176.319.323.683.377 1.045.068.446.085.773.012 1.22l-.003.016 3.836-4.561A8.382 8.382 0 0 0 14.67.439l-.009-.003zM9.466 5.868L14.162.285l-.047-.012A8.31 8.31 0 0 0 11.986 0a8.439 8.439 0 0 0-6.169 2.766l-.016.018 3.665 3.084z"/></symbol>
+    <symbol id="i-pix" viewBox="0 0 24 24"><path d="M5.283 18.36a3.505 3.505 0 0 0 2.493-1.032l3.6-3.6a.684.684 0 0 1 .946 0l3.613 3.613a3.504 3.504 0 0 0 2.493 1.032h.71l-4.56 4.56a3.647 3.647 0 0 1-5.156 0L4.85 18.36ZM18.428 5.627a3.505 3.505 0 0 0-2.493 1.032l-3.613 3.614a.67.67 0 0 1-.946 0l-3.6-3.6A3.505 3.505 0 0 0 5.283 5.64h-.434l4.573-4.572a3.646 3.646 0 0 1 5.156 0l4.559 4.559ZM1.068 9.422 3.79 6.699h1.492a2.483 2.483 0 0 1 1.744.722l3.6 3.6a1.73 1.73 0 0 0 2.443 0l3.614-3.613a2.482 2.482 0 0 1 1.744-.723h1.767l2.737 2.737a3.646 3.646 0 0 1 0 5.156l-2.736 2.736h-1.768a2.482 2.482 0 0 1-1.744-.722l-3.613-3.613a1.77 1.77 0 0 0-2.444 0l-3.6 3.6a2.483 2.483 0 0 1-1.744.722H3.791l-2.723-2.723a3.646 3.646 0 0 1 0-5.156"/></symbol>
+    <symbol id="i-arrow-right" viewBox="0 0 256 256"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></symbol>
+    <symbol id="i-arrow-left" viewBox="0 0 256 256"><path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"/></symbol>
+    <symbol id="i-star" viewBox="0 0 256 256"><path d="M234.29,114.85l-45,38.83L203,211.75a16.4,16.4,0,0,1-24.5,17.82L128,198.49,77.47,229.57A16.4,16.4,0,0,1,53,211.75l13.76-58.07-45-38.83A16.46,16.46,0,0,1,31.08,86l59-4.76,22.76-55.08a16.36,16.36,0,0,1,30.27,0l22.75,55.08,59,4.76a16.46,16.46,0,0,1,9.37,28.86Z"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 256 256"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></symbol>
+    <symbol id="i-receipt" viewBox="0 0 256 256"><path d="M72,104a8,8,0,0,1,8-8h96a8,8,0,0,1,0,16H80A8,8,0,0,1,72,104Zm8,40h96a8,8,0,0,0,0-16H80a8,8,0,0,0,0,16ZM232,56V208a8,8,0,0,1-11.58,7.15L192,200.94l-28.42,14.21a8,8,0,0,1-7.16,0L128,200.94,99.58,215.15a8,8,0,0,1-7.16,0L64,200.94,35.58,215.15A8,8,0,0,1,24,208V56A16,16,0,0,1,40,40H216A16,16,0,0,1,232,56Zm-16,0H40V195.06l20.42-10.22a8,8,0,0,1,7.16,0L96,199.06l28.42-14.22a8,8,0,0,1,7.16,0L160,199.06l28.42-14.22a8,8,0,0,1,7.16,0L216,195.06Z"/></symbol>
+    <symbol id="i-credit-card" viewBox="0 0 256 256"><path d="M224,48H32A16,16,0,0,0,16,64V192a16,16,0,0,0,16,16H224a16,16,0,0,0,16-16V64A16,16,0,0,0,224,48Zm0,16V88H32V64Zm0,128H32V104H224v88Zm-16-24a8,8,0,0,1-8,8H168a8,8,0,0,1,0-16h32A8,8,0,0,1,208,168Zm-64,0a8,8,0,0,1-8,8H120a8,8,0,0,1,0-16h16A8,8,0,0,1,144,168Z"/></symbol>
+    <symbol id="i-car" viewBox="0 0 256 256"><path d="M240,104H229.2L201.42,41.5A16,16,0,0,0,186.8,32H69.2a16,16,0,0,0-14.62,9.5L26.8,104H16a8,8,0,0,0,0,16h8v80a16,16,0,0,0,16,16H64a16,16,0,0,0,16-16V184h96v16a16,16,0,0,0,16,16h24a16,16,0,0,0,16-16V120h8a8,8,0,0,0,0-16ZM69.2,48H186.8l24.89,56H44.31ZM64,200H40V184H64Zm128,0V184h24v16Zm24-32H40V120H216ZM56,144a8,8,0,0,1,8-8H80a8,8,0,0,1,0,16H64A8,8,0,0,1,56,144Zm112,0a8,8,0,0,1,8-8h16a8,8,0,0,1,0,16H176A8,8,0,0,1,168,144Z"/></symbol>
+    <symbol id="i-t-shirt" viewBox="0 0 256 256"><path d="M247.59,61.22,195.83,33A8,8,0,0,0,192,32H160a8,8,0,0,0-8,8,24,24,0,0,1-48,0,8,8,0,0,0-8-8H64a8,8,0,0,0-3.84,1L8.41,61.22A15.76,15.76,0,0,0,1.82,82.48l19.27,36.81A16.37,16.37,0,0,0,35.67,128H56v80a16,16,0,0,0,16,16H184a16,16,0,0,0,16-16V128h20.34a16.37,16.37,0,0,0,14.58-8.71l19.27-36.81A15.76,15.76,0,0,0,247.59,61.22ZM35.67,112a.62.62,0,0,1-.41-.13L16.09,75.26,56,53.48V112ZM184,208H72V48h16.8a40,40,0,0,0,78.38,0H184Zm36.75-96.14a.55.55,0,0,1-.41.14H200V53.48l39.92,21.78Z"/></symbol>
+    <symbol id="i-file-text" viewBox="0 0 256 256"><path d="M213.66,82.34l-56-56A8,8,0,0,0,152,24H56A16,16,0,0,0,40,40V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V88A8,8,0,0,0,213.66,82.34ZM160,51.31,188.69,80H160ZM200,216H56V40h88V88a8,8,0,0,0,8,8h48V216Zm-32-80a8,8,0,0,1-8,8H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,136Zm0,32a8,8,0,0,1-8,8H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,168Z"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm64-88a8,8,0,0,1-8,8H128a8,8,0,0,1-8-8V72a8,8,0,0,1,16,0v48h48A8,8,0,0,1,192,128Z"/></symbol>
+    <symbol id="i-wheelchair" viewBox="0 0 256 256"><path d="M255.59,189.47a8,8,0,0,0-10.12-5.06l-17.42,5.81-28.9-57.8A8,8,0,0,0,192,128H112V104h56a8,8,0,0,0,0-16H112V79a32,32,0,1,0-16,0V89.81A72,72,0,0,0,112,232c33.52,0,63.69-22.71,71.75-54a8,8,0,1,0-15.5-4C162.09,198,137.91,216,112,216A56,56,0,0,1,96,106.34V136a8,8,0,0,0,8,8h83.05l29.79,59.58a8,8,0,0,0,9.69,4l24-8A8,8,0,0,0,255.59,189.47ZM88,48a16,16,0,1,1,16,16A16,16,0,0,1,88,48Z"/></symbol>
+    <symbol id="i-graduation-cap" viewBox="0 0 256 256"><path d="M251.76,88.94l-120-64a8,8,0,0,0-7.52,0l-120,64a8,8,0,0,0,0,14.12L32,117.87v48.42a15.91,15.91,0,0,0,4.06,10.65C49.16,191.53,78.51,216,128,216a130,130,0,0,0,48-8.76V240a8,8,0,0,0,16,0V199.51a115.63,115.63,0,0,0,27.94-22.57A15.91,15.91,0,0,0,224,166.29V117.87l27.76-14.81a8,8,0,0,0,0-14.12ZM128,200c-43.27,0-68.72-21.14-80-33.71V126.4l76.24,40.66a8,8,0,0,0,7.52,0L176,143.47v46.34C163.4,195.69,147.52,200,128,200Zm80-33.75a97.83,97.83,0,0,1-16,14.25V134.93l16-8.53ZM188,118.94l-.22-.13-56-29.87a8,8,0,0,0-7.52,14.12L171,128l-43,22.93L25,96,128,41.07,231,96Z"/></symbol>
   </svg>
 
   <header class="header" id="header">
     <div class="wrap topbar">
-      <a class="logo" href="#inicio" aria-label="Sálvia Fisioterapia, início"><svg class="ico" aria-hidden="true"><use href="#i-leaf"/></svg>sálvia</a>
+      <a class="logo" href="#inicio" aria-label="Sálvia Fisioterapia, início">Sálvia<span class="dot">.</span><small>fisioterapia</small></a>
       <nav class="nav" aria-label="Principal">
+        <a href="#onde-doi">Onde dói?</a>
         <a href="#especialidades">Especialidades</a>
         <a href="#primeira-consulta">Primeira consulta</a>
         <a href="#equipe">Equipe</a>
-        <a href="#onde">Onde estamos</a>
-        <a href="#duvidas">Dúvidas</a>
+        <a href="#onde">Horários</a>
       </nav>
-      <a class="btn" href="#agendar"><span>Agendar<span class="label-long"> avaliação</span></span><span class="dot"><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
+      <a class="btn ink small" href="https://wa.me/?text=Oi!%20Quero%20agendar%20uma%20avalia%C3%A7%C3%A3o%20na%20S%C3%A1lvia." target="_blank" rel="noopener"><svg class="ico wa" aria-hidden="true"><use href="#i-whatsapp"/></svg>Agendar</a>
     </div>
   </header>
 
-  <main class="wrap" id="inicio">
+  <main id="inicio">
     <section class="hero" aria-label="Apresentação">
-      <div class="hero-copy">
-        <p class="eyebrow">Fisioterapia no Alto Branco, Campina Grande</p>
-        <h1><span class="line"><span>Volte a se mexer</span></span><span class="line"><span><em>sem medo</em> da dor.</span></span></h1>
-        <p class="lead">Uma hora por sessão, com o mesmo fisioterapeuta do começo ao fim e ninguém dividindo a sua maca. Você sai da primeira consulta sabendo o que tem e quantas semanas o tratamento deve levar.</p>
+      <div class="hero-top">
+        <p class="eyebrow"><b>Fisioterapia</b> Alto Branco, Campina Grande</p>
+        <h1 class="hero-title"><span class="line"><span>Volte a se mexer</span></span><span class="line"><span><span class="scribble">sem medo</span> da dor.</span></span></h1>
+      </div>
+      <ol class="verbs" aria-label="O que o tratamento faz">
+        <li>Alivia.</li>
+        <li>Fortalece.</li>
+        <li>Devolve.</li>
+      </ol>
+      <div class="hero-body">
+        <p class="lead">Sessão de 50 minutos, um paciente por vez e sempre com o mesmo fisioterapeuta. A avaliação leva uma hora e você sai dela sabendo o que tem e quantas sessões deve precisar.</p>
         <div class="hero-actions">
-          <a class="btn" href="https://wa.me/?text=Ol%C3%A1!%20Quero%20agendar%20uma%20avalia%C3%A7%C3%A3o%20na%20S%C3%A1lvia." target="_blank" rel="noopener">Agendar avaliação <span class="dot"><svg class="ico" aria-hidden="true"><use href="#i-chat"/></svg></span></a>
-          <a class="btn quiet" href="#especialidades">Ver especialidades</a>
+          <a class="btn" href="https://wa.me/?text=Oi!%20Quero%20agendar%20uma%20avalia%C3%A7%C3%A3o%20na%20S%C3%A1lvia." target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-whatsapp"/></svg>Agendar avaliação</a>
+          <a class="link-arrow" href="#onde-doi">Mostrar onde dói<svg class="ico" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
         </div>
-        <ul class="tags" aria-label="Diferenciais" style="list-style:none;padding:0;margin-bottom:0">
-          <li class="tag"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Atendimento individual</li>
-          <li class="tag"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Sessões de 60 minutos</li>
-          <li class="tag"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Recibo para reembolso</li>
+        <p class="rating"><span class="stars" aria-hidden="true"><svg class="ico"><use href="#i-star"/></svg><svg class="ico"><use href="#i-star"/></svg><svg class="ico"><use href="#i-star"/></svg><svg class="ico"><use href="#i-star"/></svg><svg class="ico"><use href="#i-star"/></svg></span><span><b>4,9</b> no Google, 214 avaliações</span></p>
+      </div>
+      <figure class="hero-photo">
+        <img src="https://images.unsplash.com/photo-1749131871347-6d211039ac3e?auto=format&rect=0,560,7200,5440&w=1400&q=70" srcset="https://images.unsplash.com/photo-1749131871347-6d211039ac3e?auto=format&rect=0,560,7200,5440&w=800&q=70 800w, https://images.unsplash.com/photo-1749131871347-6d211039ac3e?auto=format&rect=0,560,7200,5440&w=1400&q=70 1400w, https://images.unsplash.com/photo-1749131871347-6d211039ac3e?auto=format&rect=0,560,7200,5440&w=2000&q=70 2000w" sizes="(min-width: 900px) 56vw, 80vw" alt="Fisioterapeuta segurando a perna de um paciente deitado para alongar a panturrilha" width="1400" height="1058" fetchpriority="high">
+      </figure>
+    </section>
+
+    <section class="band" aria-labelledby="band-title">
+      <svg class="band-wave top" viewBox="0 0 1440 28" preserveAspectRatio="none" aria-hidden="true"><path d="M0 28V14C120 2 240 2 360 14s240 12 360 0 240-12 360 0 240 12 360 0V28z"/></svg>
+      <div class="band-inner">
+        <h2 class="band-title" id="band-title">O que os pacientes voltam a fazer</h2>
+        <div class="marquee">
+          <div class="marquee-track">
+            <ul class="marquee-list">
+              <li>abaixar para pegar o filho</li>
+              <li>subir escada</li>
+              <li>dormir sem dor</li>
+              <li>voltar a correr</li>
+              <li>carregar as compras</li>
+              <li>jogar bola no domingo</li>
+              <li>passar o dia sentado sem travar</li>
+            </ul>
+            <ul class="marquee-list" aria-hidden="true">
+              <li>abaixar para pegar o filho</li>
+              <li>subir escada</li>
+              <li>dormir sem dor</li>
+              <li>voltar a correr</li>
+              <li>carregar as compras</li>
+              <li>jogar bola no domingo</li>
+              <li>passar o dia sentado sem travar</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <svg class="band-wave bottom" viewBox="0 0 1440 28" preserveAspectRatio="none" aria-hidden="true"><path d="M0 28V14C120 2 240 2 360 14s240 12 360 0 240-12 360 0 240 12 360 0V28z"/></svg>
+    </section>
+
+    <section class="section wrap" id="onde-doi" aria-labelledby="pain-title">
+      <div class="pain">
+        <div class="pain-head">
+          <p class="kicker"><span>01</span>Antes de marcar</p>
+          <h2 class="title" id="pain-title">Onde <span class="scribble">dói?</span></h2>
+          <p class="intro">Toque no ponto do corpo. A gente conta o que costuma causar essa dor, como tratamos aqui e já deixa a mensagem pronta para você mandar.</p>
+        </div>
+
+        <div class="body-map" role="group" aria-label="Silhueta do corpo, vista de frente">
+          <svg viewBox="0 0 200 440" aria-hidden="true">
+            <circle class="body-shape" cx="100" cy="36" r="24"/>
+            <rect class="body-shape" x="89" y="54" width="22" height="24" rx="8"/>
+            <path class="body-shape" d="M62 80 Q100 70 138 80 Q150 84 150 100 L140 190 Q136 214 138 232 L62 232 Q64 214 60 190 L50 100 Q50 84 62 80z"/>
+            <path class="body-limb" stroke-width="20" d="M58 92 L42 170 L36 244"/>
+            <path class="body-limb" stroke-width="20" d="M142 92 L158 170 L164 244"/>
+            <path class="body-limb" stroke-width="30" d="M82 228 L80 330 L78 410"/>
+            <path class="body-limb" stroke-width="30" d="M118 228 L120 330 L122 410"/>
+            <ellipse class="body-shape" cx="72" cy="424" rx="18" ry="9"/>
+            <ellipse class="body-shape" cx="128" cy="424" rx="18" ry="9"/>
+            <path class="body-guide" d="M100 84 V226"/>
+          </svg>
+          <button class="pin" type="button" data-area="pescoco" aria-pressed="false" aria-label="Pescoço" style="left:50%;top:12.8%"></button>
+          <button class="pin" type="button" data-area="ombro" aria-pressed="false" aria-label="Ombro" style="left:26%;top:27%"></button>
+          <button class="pin" type="button" data-area="lombar" aria-pressed="false" aria-label="Coluna lombar" style="left:50%;top:41.5%"></button>
+          <button class="pin" type="button" data-area="quadril" aria-pressed="false" aria-label="Quadril" style="left:67%;top:56%"></button>
+          <button class="pin" type="button" data-area="joelho" aria-pressed="true" aria-label="Joelho" style="left:40%;top:75%"></button>
+          <button class="pin" type="button" data-area="tornozelo" aria-pressed="false" aria-label="Tornozelo" style="left:61%;top:92.5%"></button>
+        </div>
+
+        <ul class="area-list" aria-label="Escolha onde dói">
+          <li><button class="area-btn" type="button" data-area="pescoco" aria-pressed="false">Pescoço<svg class="ico" aria-hidden="true"><use href="#i-arrow-right"/></svg></button></li>
+          <li><button class="area-btn" type="button" data-area="ombro" aria-pressed="false">Ombro<svg class="ico" aria-hidden="true"><use href="#i-arrow-right"/></svg></button></li>
+          <li><button class="area-btn" type="button" data-area="lombar" aria-pressed="false">Coluna lombar<svg class="ico" aria-hidden="true"><use href="#i-arrow-right"/></svg></button></li>
+          <li><button class="area-btn" type="button" data-area="quadril" aria-pressed="false">Quadril<svg class="ico" aria-hidden="true"><use href="#i-arrow-right"/></svg></button></li>
+          <li><button class="area-btn" type="button" data-area="joelho" aria-pressed="true">Joelho<svg class="ico" aria-hidden="true"><use href="#i-arrow-right"/></svg></button></li>
+          <li><button class="area-btn" type="button" data-area="tornozelo" aria-pressed="false">Tornozelo<svg class="ico" aria-hidden="true"><use href="#i-arrow-right"/></svg></button></li>
+        </ul>
+
+        <div class="pain-panel" id="pain-panel" aria-live="polite">
+          <h3 id="pain-name">Dor no <span class="hl">joelho</span></h3>
+          <dl class="pain-facts">
+            <div><dt>O que costuma causar</dt><dd id="pain-cause">Desgaste da cartilagem atrás da patela, lesão de menisco ou de ligamento, cirurgia recente. Quase sempre piora ao subir escada ou agachar.</dd></div>
+            <div><dt>Como a gente trata</dt><dd id="pain-care">Fortalecimento do quadríceps e do quadril, controle do movimento do joelho e volta gradual ao que você fazia, seja a escada de casa ou o futebol.</dd></div>
+            <div><dt>Prazo mais comum</dt><dd class="span" id="pain-time">8 a 12 sessões</dd></div>
+          </dl>
+          <a class="btn" id="pain-cta" href="https://wa.me/?text=Oi!%20Sinto%20dor%20no%20joelho%20e%20quero%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-whatsapp"/></svg>Perguntar sobre o joelho</a>
+          <p class="pain-note">Isso não é diagnóstico. Serve para você chegar na avaliação sabendo o que perguntar.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section wrap" id="especialidades" aria-labelledby="spec-title">
+      <div class="spec-head">
+        <div>
+          <p class="kicker"><span>02</span>Especialidades</p>
+          <h2 class="title" id="spec-title">Seis frentes, <span class="hl">uma</span> avaliação.</h2>
+        </div>
+        <p class="intro">Você não precisa saber qual é a sua. Conte o que sente e a gente indica o caminho. Toque numa linha para perguntar pelo WhatsApp.</p>
+      </div>
+      <ol class="spec-list">
+        <li><a class="spec-row" href="https://wa.me/?text=Oi!%20Quero%20saber%20sobre%20o%20tratamento%20para%20dor%20na%20coluna." target="_blank" rel="noopener">
+          <span class="spec-num">01</span>
+          <div><h3>Dor na coluna</h3><p>Lombar, cervical, hérnia de disco e ciático.</p><span class="spec-ask"><svg class="ico wa" aria-hidden="true"><use href="#i-whatsapp"/></svg>Perguntar no WhatsApp</span></div>
+          <img class="spec-thumb" src="https://images.unsplash.com/photo-1745327883508-b6cd32e5dde5?auto=format&fit=crop&w=600&q=70" alt="Mãos de fisioterapeuta sobre as costas de um paciente" loading="lazy" width="600" height="750">
+          <span class="spec-go" aria-hidden="true"><svg class="ico"><use href="#i-whatsapp"/></svg></span>
+        </a></li>
+        <li><a class="spec-row" href="https://wa.me/?text=Oi!%20Quero%20saber%20sobre%20fisioterapia%20ortop%C3%A9dica." target="_blank" rel="noopener">
+          <span class="spec-num">02</span>
+          <div><h3>Ortopédica</h3><p>Joelho, ombro, tornozelo, entorse e tendinite.</p><span class="spec-ask"><svg class="ico wa" aria-hidden="true"><use href="#i-whatsapp"/></svg>Perguntar no WhatsApp</span></div>
+          <img class="spec-thumb" src="https://images.unsplash.com/photo-1649751361457-01d3a696c7e6?auto=format&fit=crop&w=600&q=70" alt="Fisioterapeuta avaliando o joelho dobrado de um paciente deitado" loading="lazy" width="600" height="750">
+          <span class="spec-go" aria-hidden="true"><svg class="ico"><use href="#i-whatsapp"/></svg></span>
+        </a></li>
+        <li><a class="spec-row" href="https://wa.me/?text=Oi!%20Quero%20saber%20sobre%20fisioterapia%20no%20p%C3%B3s-operat%C3%B3rio." target="_blank" rel="noopener">
+          <span class="spec-num">03</span>
+          <div><h3>Pós-operatório</h3><p>Joelho, ombro e coluna, seguindo o que o cirurgião pediu.</p><span class="spec-ask"><svg class="ico wa" aria-hidden="true"><use href="#i-whatsapp"/></svg>Perguntar no WhatsApp</span></div>
+          <img class="spec-thumb" src="https://images.unsplash.com/photo-1746842419697-03234f5ff03e?auto=format&fit=crop&w=600&q=70" alt="Joelho marcado para cirurgia sendo examinado" loading="lazy" width="600" height="750">
+          <span class="spec-go" aria-hidden="true"><svg class="ico"><use href="#i-whatsapp"/></svg></span>
+        </a></li>
+        <li><a class="spec-row" href="https://wa.me/?text=Oi!%20Quero%20saber%20sobre%20fisioterapia%20esportiva." target="_blank" rel="noopener">
+          <span class="spec-num">04</span>
+          <div><h3>Esportiva</h3><p>Corrida, futebol e academia. Volta ao treino com data marcada.</p><span class="spec-ask"><svg class="ico wa" aria-hidden="true"><use href="#i-whatsapp"/></svg>Perguntar no WhatsApp</span></div>
+          <img class="spec-thumb" src="https://images.unsplash.com/photo-1645005513713-9e2b92a687d3?auto=format&fit=crop&w=600&q=70" alt="Fisioterapeuta orientando exercício com halteres" loading="lazy" width="600" height="750">
+          <span class="spec-go" aria-hidden="true"><svg class="ico"><use href="#i-whatsapp"/></svg></span>
+        </a></li>
+        <li><a class="spec-row" href="https://wa.me/?text=Oi!%20Quero%20saber%20sobre%20pilates%20cl%C3%ADnico." target="_blank" rel="noopener">
+          <span class="spec-num">05</span>
+          <div><h3>Pilates clínico</h3><p>Turmas de até três pessoas, sempre com fisioterapeuta.</p><span class="spec-ask"><svg class="ico wa" aria-hidden="true"><use href="#i-whatsapp"/></svg>Perguntar no WhatsApp</span></div>
+          <img class="spec-thumb" src="https://images.unsplash.com/photo-1715780463401-b9ef0567943e?auto=format&fit=crop&w=600&q=70" alt="Aluna usando o arco de pilates sobre o aparelho" loading="lazy" width="600" height="750">
+          <span class="spec-go" aria-hidden="true"><svg class="ico"><use href="#i-whatsapp"/></svg></span>
+        </a></li>
+        <li><a class="spec-row" href="https://wa.me/?text=Oi!%20Quero%20saber%20sobre%20RPG." target="_blank" rel="noopener">
+          <span class="spec-num">06</span>
+          <div><h3>RPG e postura</h3><p>Ombro caído e dor de quem passa o dia sentado.</p><span class="spec-ask"><svg class="ico wa" aria-hidden="true"><use href="#i-whatsapp"/></svg>Perguntar no WhatsApp</span></div>
+          <img class="spec-thumb" src="https://images.unsplash.com/photo-1764314138160-5f04f4a50dae?auto=format&fit=crop&w=600&q=70" alt="Fisioterapeuta conferindo a postura de uma paciente em pé" loading="lazy" width="600" height="750">
+          <span class="spec-go" aria-hidden="true"><svg class="ico"><use href="#i-whatsapp"/></svg></span>
+        </a></li>
+      </ol>
+    </section>
+
+    <section class="numbers" aria-label="A clínica em números">
+      <div class="wrap numbers-grid">
+        <p class="big-number"><span data-count="3412">3.412</span><span class="big-unit">avaliações feitas desde 2017</span></p>
+        <div class="numbers-copy">
+          <svg class="wave-line" viewBox="0 0 400 40" preserveAspectRatio="none" aria-hidden="true"><path d="M0 20 Q25 4 50 20 T100 20 T150 20 T200 20 T250 20 T300 20 T350 20 T400 20"/></svg>
+          <p><b>Desde 2017 numa sala do Alto Branco.</b> Começou com uma maca. Hoje são três salas e a mesma regra: quem começa com você termina com você.</p>
+        </div>
+        <ul class="mini-stats">
+          <li><b><span data-count="9">9</span> anos</b><span>de clínica</span></li>
+          <li><b>50 min</b><span>por sessão, sem dividir a maca</span></li>
+          <li><b>1 só</b><span>fisioterapeuta do começo à alta</span></li>
         </ul>
       </div>
-      <div class="hero-photo">
-        <img src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&w=1200&q=70" alt="Mãos de fisioterapeuta tratando a lombar de um paciente deitado" width="1200" height="1500" fetchpriority="high">
-        <aside class="proof" aria-label="Avaliação no Google">
-          <b>4,9</b>
-          <div>
-            <div class="stars" aria-hidden="true"><svg class="ico"><use href="#i-star"/></svg><svg class="ico"><use href="#i-star"/></svg><svg class="ico"><use href="#i-star"/></svg><svg class="ico"><use href="#i-star"/></svg><svg class="ico"><use href="#i-star"/></svg></div>
-            <p>Nota no Google<br>com 214 avaliações</p>
+    </section>
+
+    <section class="section wrap" id="primeira-consulta" aria-labelledby="first-title">
+      <div class="visit-first">
+        <figure class="first-photo"><img src="https://images.unsplash.com/photo-1617952986600-802f965dcdbc?auto=format&fit=crop&w=900&q=70" alt="Mãos de fisioterapeuta massageando a panturrilha de um paciente sobre uma toalha" loading="lazy" width="900" height="1125"></figure>
+        <div>
+          <p class="kicker"><span>03</span>Primeira consulta</p>
+          <h2 class="title" id="first-title">Uma hora, <span class="hl">quatro</span> momentos.</h2>
+          <p class="intro">Só a avaliação dura uma hora. Da segunda vez em diante, a sessão é de 50 minutos.</p>
+          <div class="timeline" style="margin-top:40px">
+            <div class="timeline-line" aria-hidden="true"><span></span></div>
+            <ol style="list-style:none;margin:0;padding:0">
+              <li class="tstep"><span class="tstep-num">1</span><div><h3>A gente conversa</h3><p>Onde dói, desde quando, o que piora e o que você quer voltar a fazer.</p><small>15 minutos</small></div></li>
+              <li class="tstep"><span class="tstep-num">2</span><div><h3>Avaliação física</h3><p>Testes de força, amplitude e postura. Olhamos também os seus exames.</p><small>25 minutos</small></div></li>
+              <li class="tstep"><span class="tstep-num">3</span><div><h3>Plano por escrito</h3><p>Você leva o diagnóstico funcional, a meta e o número de sessões previsto.</p><small>10 minutos</small></div></li>
+              <li class="tstep"><span class="tstep-num">4</span><div><h3>Primeiro alívio</h3><p>O tratamento começa ali mesmo, e você sai com exercícios para fazer em casa.</p><small>10 minutos</small></div></li>
+            </ol>
           </div>
-        </aside>
+          <h3 class="bring-title">O que levar</h3>
+          <ul class="bring">
+            <li><svg class="ico" aria-hidden="true"><use href="#i-t-shirt"/></svg><div><b>Roupa que deixe mexer.</b> <span>Bermuda e camiseta. Se a dor for no ombro, regata ou top. Tem banheiro para trocar.</span></div></li>
+            <li><svg class="ico" aria-hidden="true"><use href="#i-file-text"/></svg><div><b>Exames e pedido médico, se tiver.</b> <span>Raio-X, ressonância, laudo da cirurgia. Pode ser a foto no celular.</span></div></li>
+            <li><svg class="ico" aria-hidden="true"><use href="#i-clock"/></svg><div><b>Chegue 10 minutos antes.</b> <span>É o tempo da ficha. Se atrasar, a gente segura o horário até 15 minutos.</span></div></li>
+          </ul>
+        </div>
       </div>
     </section>
 
-    <section class="section" id="especialidades">
-      <div class="section-head">
+    <section class="section wrap" id="equipe" aria-labelledby="team-title">
+      <div class="team">
+        <figure class="team-photo" style="margin:0"><img src="https://images.unsplash.com/photo-1768507423533-b87b62769758?auto=format&fit=crop&w=900&q=70" alt="Fisioterapeuta trabalhando a parte alta das costas de um paciente deitado de bruços" loading="lazy" width="900" height="1125"></figure>
         <div>
-          <p class="kicker">Especialidades</p>
-          <h2>O que a gente trata aqui.</h2>
+          <p class="kicker"><span>04</span>Equipe</p>
+          <h2 class="title" id="team-title">Três fisioterapeutas, cada um no que faz <span class="hl">melhor.</span></h2>
+          <ul class="team-list">
+            <li class="member"><span class="monogram" aria-hidden="true">HA</span><div><h3>Helena Araújo</h3><p class="role">Ortopedia e pós-operatório</p><p>Fundou a Sálvia. Especialista em traumato-ortopedia, cuida de quem acabou de sair da cirurgia.</p></div></li>
+            <li class="member"><span class="monogram" aria-hidden="true">RN</span><div><h3>Rafael Nóbrega</h3><p class="role">Fisioterapia esportiva</p><p>Corredor de rua. Atende atleta amador e quem quer voltar ao futebol de fim de semana sem se machucar de novo.</p></div></li>
+            <li class="member"><span class="monogram" aria-hidden="true">CT</span><div><h3>Camila Tavares</h3><p class="role">Pilates clínico e RPG</p><p>Cuida da postura e da dor na coluna. Dá as turmas de pilates de manhã cedo e no fim da tarde.</p></div></li>
+          </ul>
         </div>
-        <p>Você não precisa saber qual é a sua. Conte o que sente na avaliação e a gente indica o tratamento. Toque num cartão para perguntar direto pelo WhatsApp.</p>
       </div>
-      <ul class="specialties">
-        <li><a class="spec" href="https://wa.me/?text=Ol%C3%A1!%20Quero%20saber%20sobre%20fisioterapia%20ortop%C3%A9dica." target="_blank" rel="noopener">
-          <img src="https://images.unsplash.com/photo-1649751361457-01d3a696c7e6?auto=format&fit=crop&w=800&q=70" alt="Fisioterapeuta avaliando o joelho de um paciente" loading="lazy" width="800" height="1000">
-          <div class="spec-body"><div><h3>Ortopédica</h3><p>Joelho, ombro, tornozelo, entorse e tendinite.</p></div><span class="dot"><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span></div>
-        </a></li>
-        <li><a class="spec" href="https://wa.me/?text=Ol%C3%A1!%20Quero%20saber%20sobre%20pilates%20cl%C3%ADnico." target="_blank" rel="noopener">
-          <img src="https://images.unsplash.com/photo-1715780463401-b9ef0567943e?auto=format&fit=crop&w=800&q=70" alt="Aluna usando o arco de pilates sobre o aparelho" loading="lazy" width="800" height="1000">
-          <div class="spec-body"><div><h3>Pilates clínico</h3><p>Turmas de até três pessoas, com fisioterapeuta.</p></div><span class="dot"><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span></div>
-        </a></li>
-        <li><a class="spec" href="https://wa.me/?text=Ol%C3%A1!%20Quero%20saber%20sobre%20RPG." target="_blank" rel="noopener">
-          <img src="https://images.unsplash.com/photo-1764314138160-5f04f4a50dae?auto=format&fit=crop&w=800&q=70" alt="Fisioterapeuta conferindo a postura de uma paciente em pé" loading="lazy" width="800" height="1000">
-          <div class="spec-body"><div><h3>RPG</h3><p>Postura, ombro caído e dor de quem passa o dia sentado.</p></div><span class="dot"><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span></div>
-        </a></li>
-        <li><a class="spec" href="https://wa.me/?text=Ol%C3%A1!%20Quero%20saber%20sobre%20fisioterapia%20esportiva." target="_blank" rel="noopener">
-          <img src="https://images.unsplash.com/photo-1645005513713-9e2b92a687d3?auto=format&fit=crop&w=800&q=70" alt="Fisioterapeuta orientando exercício com halteres" loading="lazy" width="800" height="1000">
-          <div class="spec-body"><div><h3>Esportiva</h3><p>Corrida, futebol e academia. Volta ao treino com prazo.</p></div><span class="dot"><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span></div>
-        </a></li>
-        <li><a class="spec" href="https://wa.me/?text=Ol%C3%A1!%20Quero%20saber%20sobre%20fisioterapia%20no%20p%C3%B3s-operat%C3%B3rio." target="_blank" rel="noopener">
-          <img src="https://images.unsplash.com/photo-1706353399656-210cca727a33?auto=format&fit=crop&w=800&q=70" alt="Fisioterapeuta mobilizando o ombro de uma paciente deitada" loading="lazy" width="800" height="1000">
-          <div class="spec-body"><div><h3>Pós-operatório</h3><p>Joelho, ombro e coluna, seguindo o que o cirurgião pediu.</p></div><span class="dot"><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span></div>
-        </a></li>
-        <li><a class="spec" href="https://wa.me/?text=Ol%C3%A1!%20Quero%20saber%20sobre%20tratamento%20para%20dor%20na%20coluna." target="_blank" rel="noopener">
-          <img src="https://images.unsplash.com/photo-1745327883508-b6cd32e5dde5?auto=format&fit=crop&w=800&q=70" alt="Mãos de fisioterapeuta sobre as costas de um paciente" loading="lazy" width="800" height="1000">
-          <div class="spec-body"><div><h3>Dor na coluna</h3><p>Lombar, cervical, hérnia de disco e ciático.</p></div><span class="dot"><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span></div>
-        </a></li>
-      </ul>
     </section>
 
-    <section class="section" id="primeira-consulta">
-      <div class="section-head">
+    <section class="section wrap" id="precos" aria-labelledby="pay-title">
+      <div class="pay">
+        <div class="pay-head">
+          <h2 id="pay-title">Quanto <span class="hl">custa</span></h2>
+          <p>Preço de 2026. O valor da sessão não muda no meio do tratamento.</p>
+        </div>
         <div>
-          <p class="kicker">Primeira consulta</p>
-          <h2>O que acontece na sua primeira vez aqui.</h2>
-        </div>
-        <p>A avaliação dura uma hora. Traga exames e laudos que tiver, e venha com roupa que deixe mexer o corpo.</p>
-      </div>
-      <div class="steps-wrap">
-        <div class="steps-track">
-        <div class="steps-line" aria-hidden="true"><span></span></div>
-        <ol class="steps">
-          <li class="step"><span class="step-num">1</span><h3>A gente conversa</h3><p>Onde dói, desde quando, o que piora e o que você quer voltar a fazer.</p><small>15 minutos</small></li>
-          <li class="step"><span class="step-num">2</span><h3>Avaliação física</h3><p>Testes de força, amplitude e postura. Olhamos também os seus exames.</p><small>25 minutos</small></li>
-          <li class="step"><span class="step-num">3</span><h3>Plano por escrito</h3><p>Você leva o diagnóstico funcional, a meta e o número de sessões previsto.</p><small>10 minutos</small></li>
-          <li class="step"><span class="step-num">4</span><h3>Primeiro alívio</h3><p>Já no fim da consulta começamos o tratamento e passamos exercícios para casa.</p><small>10 minutos</small></li>
-        </ol>
+          <table class="prices">
+            <tr><th scope="row">Avaliação<small>1 hora, com o plano por escrito</small></th><td>R$ 150</td></tr>
+            <tr><th scope="row">Sessão avulsa<small>50 minutos</small></th><td>R$ 120</td></tr>
+            <tr><th scope="row">Pacote de 10 sessões<small>sai a R$ 108 cada, vale por 60 dias</small></th><td>R$ 1.080</td></tr>
+            <tr><th scope="row">Pilates clínico<small>duas vezes por semana, turma de até 3</small></th><td>R$ 340/mês</td></tr>
+          </table>
+          <ul class="pay-options">
+            <li><svg class="ico pix" aria-hidden="true"><use href="#i-pix"/></svg><div><b>Pix ou dinheiro</b><span>Na recepção, no dia.</span></div></li>
+            <li><svg class="ico" aria-hidden="true"><use href="#i-credit-card"/></svg><div><b>Débito e crédito</b><span>O pacote dá para dividir em 3 vezes sem juros.</span></div></li>
+            <li><svg class="ico" aria-hidden="true"><use href="#i-receipt"/></svg><div><b>Particular, com recibo</b><span>Com o nome e o Crefito do fisioterapeuta, do jeito que o plano pede para reembolso.</span></div></li>
+            <li><svg class="ico wa" aria-hidden="true"><use href="#i-whatsapp"/></svg><div><b>Convênios</b><span>Atendemos alguns. A gente confere o seu antes de marcar.</span><a href="https://wa.me/?text=Oi!%20Voc%C3%AAs%20atendem%20o%20meu%20conv%C3%AAnio%3F%20O%20plano%20%C3%A9%3A%20" target="_blank" rel="noopener">Mandar o nome do plano</a></div></li>
+            <li><svg class="ico" aria-hidden="true"><use href="#i-graduation-cap"/></svg><div><b>Estudante da UEPB ou da UFCG</b><span>10% na sessão avulsa, com a carteirinha.</span></div></li>
+          </ul>
         </div>
       </div>
     </section>
 
-    <section class="section dark" aria-label="Números da clínica">
-      <div class="dark-copy">
-        <h2 class="title">Nove anos cuidando de Campina, um paciente por vez.</h2>
-        <p>A clínica começou numa sala só, com uma maca. Hoje são três salas e a mesma regra: quem começa com você, termina com você.</p>
-        <div class="stats">
-          <div class="stat"><b data-count="9">9</b><span>anos de clínica</span></div>
-          <div class="stat"><b data-count="4800">4.800</b><span>pacientes atendidos</span></div>
-          <div class="stat"><b data-count="6">6</b><span>especialidades</span></div>
-        </div>
-      </div>
-      <div class="arch"><img src="https://images.unsplash.com/photo-1645005512942-a17817fb7c11?auto=format&fit=crop&w=800&q=70" alt="Fisioterapeuta ajudando uma paciente a fazer exercício com faixa elástica" loading="lazy" width="800" height="1000"></div>
-    </section>
-
-    <section class="section team" id="equipe">
-      <div class="team-photo"><img src="https://images.unsplash.com/photo-1741522509438-a120c0bb5e88?auto=format&fit=crop&w=900&q=70" alt="Fisioterapeuta fazendo liberação manual nas costas de uma paciente" loading="lazy" width="900" height="1200"></div>
-      <div>
-        <p class="kicker">Equipe</p>
-        <h2 class="title">Três fisioterapeutas, cada um no que faz melhor.</h2>
-        <ul class="team-list">
-          <li class="member"><span class="monogram" aria-hidden="true">HA</span><div><h3>Helena Araújo</h3><p class="role">Ortopedia e pós-operatório</p><p>Fundou a Sálvia. Especialista em fisioterapia traumato-ortopédica, cuida de quem acabou de sair da cirurgia.</p></div></li>
-          <li class="member"><span class="monogram" aria-hidden="true">RN</span><div><h3>Rafael Nóbrega</h3><p class="role">Fisioterapia esportiva</p><p>Corredor de rua. Atende atleta amador e quem quer voltar ao futebol de fim de semana sem se machucar de novo.</p></div></li>
-          <li class="member"><span class="monogram" aria-hidden="true">CT</span><div><h3>Camila Tavares</h3><p class="role">Pilates clínico e RPG</p><p>Cuida da postura e da dor na coluna. Dá as turmas de pilates de manhã cedo e no fim da tarde.</p></div></li>
+    <section class="section wrap" aria-labelledby="quotes-title">
+      <h2 class="kicker" id="quotes-title"><span>05</span>Quem passou por aqui</h2>
+      <div class="quotes">
+        <figure class="quote-main" style="margin:0">
+          <blockquote>Operei o menisco em março e achava que ia mancar pra sempre. Na décima semana subi a ladeira de casa <span class="hl">sem segurar no corrimão.</span></blockquote>
+          <figcaption class="quote-by"><b>Socorro, 58 anos</b>, pós-operatório de joelho, 22 sessões com a Helena</figcaption>
+          <p class="fictional">Depoimentos fictícios, escritos para esta demonstração</p>
+        </figure>
+        <ul class="quote-side">
+          <li><figure style="margin:0"><p class="quote-stars" role="img" aria-label="5 de 5 estrelas"><svg class="ico"><use href="#i-star"/></svg><svg class="ico"><use href="#i-star"/></svg><svg class="ico"><use href="#i-star"/></svg><svg class="ico"><use href="#i-star"/></svg><svg class="ico"><use href="#i-star"/></svg></p><blockquote>Trabalho oito horas sentado no call center e a lombar travava toda sexta. Faz quatro meses que não travou mais. O Rafael me passou três exercícios que faço no intervalo, na cadeira mesmo.</blockquote><figcaption class="quote-by"><b>Ítalo, 34 anos</b>, dor na lombar</figcaption></figure></li>
+          <li><figure style="margin:0"><p class="quote-stars" role="img" aria-label="4 de 5 estrelas"><svg class="ico"><use href="#i-star"/></svg><svg class="ico"><use href="#i-star"/></svg><svg class="ico"><use href="#i-star"/></svg><svg class="ico"><use href="#i-star"/></svg><svg class="ico off"><use href="#i-star"/></svg></p><blockquote>Torci o tornozelo três semanas antes da meia maratona. O Rafael contou os dias até a prova e montou tudo em cima disso. Corri devagar, mas corri. Só tiro uma estrela porque o horário das 18h vive cheio.</blockquote><figcaption class="quote-by"><b>Juliana, 29 anos</b>, fisioterapia esportiva</figcaption></figure></li>
         </ul>
       </div>
     </section>
 
-    <section class="section pay" aria-labelledby="pay-title">
-      <div>
-        <h2 id="pay-title">Como pagar</h2>
-        <p>Emitimos recibo com os dados do fisioterapeuta para você pedir reembolso ao seu plano. Pix ou cartão.</p>
-      </div>
-      <div class="pills">
-        <span class="pill"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Particular com recibo para reembolso</span>
-        <span class="pill muted"><svg class="ico" aria-hidden="true"><use href="#i-chat"/></svg>Convênios: consulte pelo WhatsApp</span>
-      </div>
-    </section>
-
-    <section class="section" aria-labelledby="quotes-title">
-      <div class="section-head">
-        <div>
-          <p class="kicker">Quem passou por aqui</p>
-          <h2 id="quotes-title">Voltar a fazer o que fazia antes.</h2>
+    <section class="section wrap" id="onde" aria-label="Horários e endereço">
+      <div class="where">
+        <div class="card">
+          <p class="kicker" style="margin:0"><span>06</span>Horários</p>
+          <h2>Antes ou depois do trabalho.</h2>
+          <span class="open-now" id="open-now">Segunda a sexta, das 7h às 20h</span>
+          <table class="hours">
+            <tr data-days="1,2,3,4,5"><td>Segunda a sexta</td><td>7h às 20h</td></tr>
+            <tr data-days="6"><td>Sábado</td><td>8h às 12h</td></tr>
+            <tr data-days="0"><td>Domingo</td><td>Fechado</td></tr>
+          </table>
+          <ul class="facts">
+            <li><svg class="ico" aria-hidden="true"><use href="#i-clock"/></svg><div><b>Feriado:</b> <span>8h às 12h, só com horário marcado.</span></div></li>
+            <li><svg class="ico" aria-hidden="true"><use href="#i-clock"/></svg><div><b>São João:</b> <span>fechado só no dia 24 de junho. No resto do mês, horário normal.</span></div></li>
+          </ul>
+          <p class="note">O horário das 18h às 20h enche primeiro. Se puder vir de manhã, tem mais vaga.</p>
         </div>
-        <div>
-          <p style="margin:30px 0 0;color:var(--muted);max-width:46ch">O que os pacientes contam depois da alta.</p>
-          <span class="fictional">Depoimentos fictícios, escritos para esta demonstração</span>
-        </div>
-      </div>
-      <ul class="quotes">
-        <li class="quote"><svg class="ico" aria-hidden="true"><use href="#i-quote"/></svg><blockquote>Operei o joelho em março e achei que ia mancar pra sempre. Em dez semanas eu já subia a ladeira de casa sem corrimão.</blockquote><footer><b>Marta, 58 anos</b>Pós-operatório de joelho</footer></li>
-        <li class="quote"><svg class="ico" aria-hidden="true"><use href="#i-quote"/></svg><blockquote>Trabalho oito horas sentado e a lombar travava toda sexta. Faz quatro meses que não sei o que é isso.</blockquote><footer><b>Diego, 34 anos</b>Dor na coluna</footer></li>
-        <li class="quote"><svg class="ico" aria-hidden="true"><use href="#i-quote"/></svg><blockquote>Torci o tornozelo antes da meia maratona. O Rafael montou o plano com data da prova e eu corri.</blockquote><footer><b>Juliana, 29 anos</b>Fisioterapia esportiva</footer></li>
-      </ul>
-    </section>
-
-    <section class="section visit" id="onde">
-      <div class="visit-card">
-        <p class="kicker" style="margin:0">Horários</p>
-        <h2 class="title">Antes ou depois do trabalho.</h2>
-        <span class="open-now" id="open-now">Aberto de segunda a sexta, das 7h às 20h</span>
-        <table class="hours">
-          <tr><td>Segunda a sexta</td><td>7h às 20h</td></tr>
-          <tr><td>Sábado</td><td>8h às 12h</td></tr>
-          <tr><td>Domingo e feriado</td><td>Fechado</td></tr>
-        </table>
-      </div>
-      <div class="visit-card">
-        <p class="kicker" style="margin:0">Onde estamos</p>
-        <h2 class="title">No Alto Branco, com estacionamento.</h2>
-        <p class="address"><svg class="ico" aria-hidden="true"><use href="#i-pin"/></svg>Rua fictícia, 250, sala 3, Alto Branco, Campina Grande (PB)</p>
-        <p class="note">Térreo, sem escada. Duas vagas na frente reservadas para pacientes.</p>
-        <a class="btn" href="https://www.google.com/maps/search/?api=1&query=Alto%20Branco%2C%20Campina%20Grande%20PB" target="_blank" rel="noopener">Abrir no mapa <span class="dot"><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
-      </div>
-    </section>
-
-    <section class="section faq" id="duvidas">
-      <div>
-        <p class="kicker">Dúvidas</p>
-        <h2 class="title">Antes de marcar, muita gente pergunta.</h2>
-      </div>
-      <div>
-        <details><summary>Preciso de pedido médico?<span class="toggle" aria-hidden="true"><svg class="ico"><use href="#i-plus"/></svg></span></summary><p>Não. O fisioterapeuta pode avaliar você sem encaminhamento. Se tiver pedido, exame ou laudo, traga, que ajuda na avaliação.</p></details>
-        <details><summary>Quanto tempo dura o tratamento?<span class="toggle" aria-hidden="true"><svg class="ico"><use href="#i-plus"/></svg></span></summary><p>Depende do caso. Você sai da primeira consulta com o número de sessões previsto, e a gente revisa o plano a cada dez sessões.</p></details>
-        <details><summary>Vocês atendem plano de saúde?<span class="toggle" aria-hidden="true"><svg class="ico"><use href="#i-plus"/></svg></span></summary><p>O atendimento é particular, com recibo para reembolso. Muitos planos devolvem parte do valor. Para saber sobre um convênio específico, pergunte pelo WhatsApp.</p></details>
-        <details><summary>Que roupa eu levo?<span class="toggle" aria-hidden="true"><svg class="ico"><use href="#i-plus"/></svg></span></summary><p>Roupa de ginástica ou bermuda e camiseta. Para joelho, bermuda. Para ombro, regata ou top.</p></details>
-        <details><summary>E se eu precisar desmarcar?<span class="toggle" aria-hidden="true"><svg class="ico"><use href="#i-plus"/></svg></span></summary><p>Avise com 12 horas de antecedência pelo WhatsApp e a gente remarca sem custo.</p></details>
-      </div>
-    </section>
-
-    <section class="section booking" id="agendar">
-      <div class="booking-copy">
-        <h2 class="title">Conte o que está sentindo.</h2>
-        <p>Preencha três campos e a mensagem sai pronta no WhatsApp. A gente responde no mesmo dia com os horários livres.</p>
-      </div>
-      <form class="form" id="booking-form" novalidate>
-        <div class="field">
-          <label for="f-name">Seu nome</label>
-          <input id="f-name" name="name" autocomplete="given-name" required>
-        </div>
-        <div class="field">
-          <label for="f-complaint">Queixa principal</label>
-          <textarea id="f-complaint" name="complaint" required placeholder="Ex.: dor no joelho direito quando subo escada"></textarea>
-        </div>
-        <fieldset class="field">
-          <legend>Melhor horário</legend>
-          <div class="choices">
-            <label class="choice"><input type="radio" name="slot" value="manhã" checked><span>Manhã</span></label>
-            <label class="choice"><input type="radio" name="slot" value="tarde"><span>Tarde</span></label>
-            <label class="choice"><input type="radio" name="slot" value="noite, até 20h"><span>Noite, até 20h</span></label>
-            <label class="choice"><input type="radio" name="slot" value="sábado de manhã"><span>Sábado</span></label>
+        <div class="card">
+          <p class="kicker" style="margin:0"><span>07</span>Onde estamos</p>
+          <h2>No Alto Branco, no térreo.</h2>
+          <p class="address">Rua fictícia, 250, sala 3, Alto Branco, Campina Grande (PB)</p>
+          <figure class="map" id="map" aria-label="Mapa do Alto Branco com a área aproximada da clínica">
+            <div class="map-canvas" id="map-canvas"></div>
+            <p class="map-fallback" id="map-fallback">Endereço fictício, no bairro Alto Branco. O mapa aparece quando você chegar aqui.</p>
+          </figure>
+          <ul class="facts">
+            <li><svg class="ico" aria-hidden="true"><use href="#i-car"/></svg><div><b>Estacionamento:</b> <span>duas vagas na frente, só para pacientes. Se estiverem ocupadas, a rua de trás tem vaga fácil antes das 17h.</span></div></li>
+            <li><svg class="ico" aria-hidden="true"><use href="#i-wheelchair"/></svg><div><b>Sem degrau:</b> <span>entrada no nível da calçada e banheiro adaptado.</span></div></li>
+            <li><svg class="ico" aria-hidden="true"><use href="#i-graduation-cap"/></svg><div><b>Vindo da UFCG ou da UEPB:</b> <span>são uns 3 km até aqui, perto de 10 minutos de carro fora do horário de pico.</span></div></li>
+          </ul>
+          <div class="map-actions">
+            <a class="btn ink" href="https://www.google.com/maps/search/?api=1&query=Alto%20Branco%2C%20Campina%20Grande%20PB" target="_blank" rel="noopener"><svg class="ico maps" aria-hidden="true"><use href="#i-googlemaps"/></svg>Abrir no Google Maps</a>
           </div>
-        </fieldset>
-        <button class="btn" type="submit">Agendar avaliação <span class="dot"><svg class="ico" aria-hidden="true"><use href="#i-chat"/></svg></span></button>
-        <p class="form-hint" id="form-hint" aria-live="polite">Nada é salvo aqui. O texto vai direto para o WhatsApp.</p>
-      </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="section wrap" id="duvidas" aria-labelledby="faq-title">
+      <div class="faq">
+        <div>
+          <p class="kicker"><span>08</span>Dúvidas</p>
+          <h2 class="title" id="faq-title">Antes de marcar, <span class="hl">muita gente</span> pergunta.</h2>
+        </div>
+        <div>
+          <details><summary>Preciso de pedido médico?<span class="toggle" aria-hidden="true"><svg class="ico"><use href="#i-plus"/></svg></span></summary><p>Não. O fisioterapeuta pode avaliar você sem encaminhamento. Se tiver pedido, exame ou laudo, traga, que ajuda na avaliação.</p></details>
+          <details><summary>Quanto tempo dura o tratamento?<span class="toggle" aria-hidden="true"><svg class="ico"><use href="#i-plus"/></svg></span></summary><p>Depende do caso. Você sai da primeira consulta com o número de sessões previsto, e a gente revisa o plano a cada dez sessões.</p></details>
+          <details><summary>Vocês atendem plano de saúde?<span class="toggle" aria-hidden="true"><svg class="ico"><use href="#i-plus"/></svg></span></summary><p>Alguns convênios, sim. Mande o nome do plano pelo WhatsApp que a gente confere antes de marcar. Se o seu não estiver na lista, o particular sai com recibo, e muitos planos devolvem parte do valor.</p></details>
+          <details><summary>Quantas vezes por semana?<span class="toggle" aria-hidden="true"><svg class="ico"><use href="#i-plus"/></svg></span></summary><p>Duas, na maioria dos casos. No pós-operatório, as primeiras semanas costumam ser três, até o inchaço baixar.</p></details>
+          <details><summary>Que roupa eu levo?<span class="toggle" aria-hidden="true"><svg class="ico"><use href="#i-plus"/></svg></span></summary><p>Bermuda e camiseta, ou roupa de academia. Para joelho, bermuda. Para ombro, regata ou top. Se vier direto do trabalho, tem banheiro para trocar.</p></details>
+          <details><summary>E se eu precisar desmarcar?<span class="toggle" aria-hidden="true"><svg class="ico"><use href="#i-plus"/></svg></span></summary><p>Avise com 12 horas de antecedência pelo WhatsApp e a gente remarca sem custo.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="booking" id="agendar" aria-labelledby="booking-title">
+      <div class="wrap booking-grid">
+        <div class="booking-copy">
+          <h2 class="title" id="booking-title">Conte o que está <span class="scribble">sentindo.</span></h2>
+          <p>Preencha três campos e a mensagem sai pronta no WhatsApp. Quem responde é a Rita, da recepção, no mesmo dia e com os horários livres. Mensagem depois das 20h fica para as 7h do outro dia.</p>
+        </div>
+        <form class="form" id="booking-form" novalidate>
+          <div class="field">
+            <label for="f-name">Seu nome</label>
+            <input id="f-name" name="name" autocomplete="given-name" required>
+          </div>
+          <div class="field">
+            <label for="f-complaint">Queixa principal</label>
+            <textarea id="f-complaint" name="complaint" required placeholder="Ex.: dor no joelho direito quando subo escada"></textarea>
+          </div>
+          <fieldset class="field">
+            <legend>Melhor horário</legend>
+            <div class="choices">
+              <label class="choice"><input type="radio" name="slot" value="manhã" checked><span>Manhã</span></label>
+              <label class="choice"><input type="radio" name="slot" value="tarde"><span>Tarde</span></label>
+              <label class="choice"><input type="radio" name="slot" value="noite, até 20h"><span>Noite, até 20h</span></label>
+              <label class="choice"><input type="radio" name="slot" value="sábado de manhã"><span>Sábado</span></label>
+            </div>
+          </fieldset>
+          <button class="btn" type="submit"><svg class="ico" aria-hidden="true"><use href="#i-whatsapp"/></svg>Agendar pelo WhatsApp</button>
+          <p class="form-hint" id="form-hint" aria-live="polite">Nada fica salvo aqui. O texto vai direto para o WhatsApp.</p>
+        </form>
+      </div>
     </section>
   </main>
 
   <footer class="wrap site-footer">
+    <p class="wordmark" aria-hidden="true">Sálvia<span class="dot">.</span></p>
+    <div class="foot-social">
+      <a href="https://wa.me/?text=Oi!%20Quero%20agendar%20uma%20avalia%C3%A7%C3%A3o%20na%20S%C3%A1lvia." target="_blank" rel="noopener"><svg class="ico wa" aria-hidden="true"><use href="#i-whatsapp"/></svg>WhatsApp da recepção</a>
+      <span class="foot-handle"><svg class="ico" aria-hidden="true"><use href="#i-instagram"/></svg>@salviafisio.demo, perfil fictício</span>
+    </div>
     <div class="foot-row">
-      <span>Sálvia Fisioterapia · empresa fictícia para demonstração</span>
+      <span>Sálvia Fisioterapia, empresa fictícia para demonstração</span>
       <span>Fotos: Unsplash (licença Unsplash)</span>
     </div>
-    <div class="wordmark" aria-hidden="true">sálvia<span>.</span></div>
-    <a class="back-link" href="/"><svg class="ico" aria-hidden="true"><use href="#i-back"/></svg>Ver outros modelos</a>
+    <a class="back-link" href="/"><svg class="ico" aria-hidden="true"><use href="#i-arrow-left"/></svg>Ver outros modelos</a>
     <p class="credito-autor">Site feito por <a href="https://tarciodiniz.com" rel="author">Tarcio Diniz</a>, desenvolvedor</p>
   </footer>
 
@@ -484,11 +824,94 @@
     return `https://wa.me/?text=${encodeURIComponent(message)}`;
   }
 
+  const PAIN_AREAS = {
+    pescoco: {
+      title: "Dor no", part: "pescoço", place: "no pescoço", topic: "o pescoço",
+      cause: "Horas no celular ou no computador com a cabeça para a frente, travesseiro alto demais, tensão acumulada no trapézio.",
+      care: "Terapia manual para soltar a musculatura, exercícios para os músculos profundos do pescoço e ajuste da altura da tela e da cadeira.",
+      time: "6 a 10 sessões",
+    },
+    ombro: {
+      title: "Dor no", part: "ombro", place: "no ombro", topic: "o ombro",
+      cause: "Tendinite, bursite, ombro que trava ao levantar o braço para pentear o cabelo ou pegar algo no armário.",
+      care: "Fortalecimento com carga que sobe aos poucos, mobilização da articulação e correção do movimento que irrita o tendão.",
+      time: "8 a 12 sessões",
+    },
+    lombar: {
+      title: "Dor na", part: "lombar", place: "na lombar", topic: "a lombar",
+      cause: "Muitas horas sentado, hérnia de disco, esforço ao levantar peso, dor que desce para a perna.",
+      care: "Terapia manual para o alívio das primeiras semanas e exercícios de estabilização para a dor não voltar na próxima sexta.",
+      time: "8 a 12 sessões",
+    },
+    quadril: {
+      title: "Dor no", part: "quadril", place: "no quadril", topic: "o quadril",
+      cause: "Bursite, desgaste da articulação, músculo encurtado de quem corre muito ou passa o dia sentado.",
+      care: "Fortalecimento do glúteo e do abdômen, alongamento orientado e treino da caminhada.",
+      time: "8 a 12 sessões",
+    },
+    joelho: {
+      title: "Dor no", part: "joelho", place: "no joelho", topic: "o joelho",
+      cause: "Desgaste da cartilagem atrás da patela, lesão de menisco ou de ligamento, cirurgia recente. Quase sempre piora ao subir escada ou agachar.",
+      care: "Fortalecimento do quadríceps e do quadril, controle do movimento do joelho e volta gradual ao que você fazia, seja a escada de casa ou o futebol.",
+      time: "8 a 12 sessões",
+    },
+    tornozelo: {
+      title: "Dor no", part: "tornozelo", place: "no tornozelo", topic: "o tornozelo",
+      cause: "Entorse, tendinite no calcanhar, dor na sola do pé ao acordar, pé que torce sempre do mesmo lado.",
+      care: "Controle do inchaço, exercícios de equilíbrio, fortalecimento da panturrilha e volta à corrida com data combinada.",
+      time: "6 a 10 sessões",
+    },
+  };
+
+  function painMessage(area) {
+    return `Oi! Sinto dor ${area.place} e quero agendar uma avaliação.`;
+  }
+
+  // The body part is the accent; built with nodes so no markup lives in the data.
+  function renderPainTitle(area) {
+    const accent = document.createElement("span");
+    accent.className = "hl";
+    accent.textContent = area.part;
+    document.getElementById("pain-name").replaceChildren(`${area.title} `, accent);
+  }
+
+  function renderPainArea(key) {
+    const area = PAIN_AREAS[key];
+    renderPainTitle(area);
+    document.getElementById("pain-cause").textContent = area.cause;
+    document.getElementById("pain-care").textContent = area.care;
+    document.getElementById("pain-time").textContent = area.time;
+    const cta = document.getElementById("pain-cta");
+    cta.href = whatsappUrl(painMessage(area));
+    cta.lastChild.textContent = `Perguntar sobre ${area.topic}`;
+    document.querySelectorAll("[data-area]").forEach((button) => {
+      button.setAttribute("aria-pressed", String(button.dataset.area === key));
+    });
+  }
+
+  // A tap on the figure can leave the answer below the fold on phones; bring it just into view.
+  function revealPanel() {
+    const panel = document.getElementById("pain-panel");
+    const box = panel.getBoundingClientRect();
+    if (box.top >= 0 && box.top < window.innerHeight - 160) return;
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    window.scrollTo({ top: window.scrollY + box.top - 96, behavior: reduceMotion ? "auto" : "smooth" });
+  }
+
+  function setupPainMap() {
+    document.querySelectorAll("[data-area]").forEach((button) => {
+      button.addEventListener("click", () => {
+        renderPainArea(button.dataset.area);
+        if (button.classList.contains("pin")) revealPanel();
+      });
+    });
+  }
+
   function bookingMessage(form) {
     const data = new FormData(form);
     const name = String(data.get("name")).trim();
     const complaint = String(data.get("complaint")).trim();
-    return `Olá! Meu nome é ${name} e quero agendar uma avaliação na Sálvia.\nQueixa principal: ${complaint}\nMelhor horário: ${data.get("slot")}`;
+    return `Oi! Meu nome é ${name} e quero agendar uma avaliação na Sálvia.\nQueixa principal: ${complaint}\nMelhor horário: ${data.get("slot")}`;
   }
 
   function firstMissingField(form) {
@@ -511,23 +934,80 @@
     });
   }
 
+  // The address is fictional, so the map marks the neighborhood, never a door.
+  const MAP_AREA = { center: [-7.2022, -35.8819], radius: 420, label: "Endereço fictício, no bairro Alto Branco" };
+  const MAP_LANDMARK = { position: [-7.2142, -35.9077], label: "UFCG" };
+  const LEAFLET_SRC = "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js";
+  const OSM_TILES = "https://tile.openstreetmap.org/{z}/{x}/{y}.png";
+  const OSM_ATTRIBUTION = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>';
+
+  function cssToken(name) {
+    return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+  }
+
+  function loadScript(src) {
+    return new Promise((resolve, reject) => {
+      const script = document.createElement("script");
+      script.src = src;
+      script.crossOrigin = "anonymous";
+      script.onload = resolve;
+      script.onerror = reject;
+      document.head.append(script);
+    });
+  }
+
+  function drawMap() {
+    // Phones scroll past the map with one finger; zoom stays on the buttons.
+    // Framing is set before any layer so the first tiles requested are the ones kept.
+    const bounds = L.latLng(MAP_AREA.center).toBounds(MAP_AREA.radius * 2).extend(MAP_LANDMARK.position);
+    const map = L.map("map-canvas", { scrollWheelZoom: false, dragging: !L.Browser.mobile, tap: false }).fitBounds(bounds, { paddingTopLeft: [40, 24], paddingBottomRight: [70, 64] });
+    map.attributionControl.setPrefix('<a href="https://leafletjs.com">Leaflet</a>');
+    L.tileLayer(OSM_TILES, { maxZoom: 19, attribution: OSM_ATTRIBUTION }).addTo(map);
+    const accent = cssToken("--cobalt");
+    const area = L.circle(MAP_AREA.center, { radius: MAP_AREA.radius, color: accent, weight: 2, fillColor: accent, fillOpacity: 0.2 }).addTo(map);
+    area.bindTooltip(MAP_AREA.label, { permanent: true, direction: "bottom", offset: [0, 18], className: "map-label" });
+    L.circleMarker(MAP_LANDMARK.position, { radius: 7, color: cssToken("--ink"), weight: 2, fillColor: cssToken("--paper"), fillOpacity: 1 })
+      .addTo(map)
+      .bindTooltip(MAP_LANDMARK.label, { permanent: true, direction: "right", offset: [8, 0], className: "map-ref" });
+    document.getElementById("map-fallback").hidden = true;
+  }
+
+  function showMapError(error) {
+    console.error(error);
+    document.getElementById("map-fallback").textContent = "O mapa não carregou. O botão do Google Maps abaixo leva ao bairro.";
+  }
+
+  // Leaflet and the tiles only download when the visitor is about to reach the address.
+  function setupLazyMap() {
+    const figure = document.getElementById("map");
+    const observer = new IntersectionObserver((entries) => {
+      if (!entries.some((entry) => entry.isIntersecting)) return;
+      observer.disconnect();
+      loadScript(LEAFLET_SRC).then(drawMap).catch(showMapError);
+    }, { rootMargin: "300px" });
+    observer.observe(figure);
+  }
+
   const OPENING_HOURS = { 1: [7, 20], 2: [7, 20], 3: [7, 20], 4: [7, 20], 5: [7, 20], 6: [8, 12] };
 
   function renderOpenNow() {
     const badge = document.getElementById("open-now");
     const now = new Date();
-    const hours = OPENING_HOURS[now.getDay()];
+    const today = now.getDay();
+    const hours = OPENING_HOURS[today];
     const isOpen = Boolean(hours) && now.getHours() >= hours[0] && now.getHours() < hours[1];
     badge.textContent = isOpen ? `Aberto agora, até as ${hours[1]}h` : "Fechado agora. Mande mensagem que a gente responde cedo.";
     badge.classList.toggle("is-closed", !isOpen);
+    document.querySelectorAll(".hours tr").forEach((row) => {
+      row.classList.toggle("is-today", row.dataset.days.split(",").map(Number).includes(today));
+    });
   }
 
-  function setupCompactHeader() {
+  function setupHeaderLine() {
     const header = document.getElementById("header");
-    const sentinel = document.querySelector(".hero");
     new IntersectionObserver(([entry]) => {
-      header.classList.toggle("is-compact", entry.boundingClientRect.top < 0);
-    }, { threshold: [0, 0.9, 1] }).observe(sentinel);
+      header.classList.toggle("is-scrolled", entry.boundingClientRect.top < 0);
+    }).observe(document.querySelector(".hero"));
   }
 
   // Smooth only on in-page link clicks; a global smooth scroll-behavior also animates the browser's scroll restoration on reload.
@@ -548,8 +1028,8 @@
     document.querySelectorAll("[data-count]").forEach((el) => {
       const state = { value: 0 };
       gsap.to(state, {
-        value: Number(el.dataset.count), duration: 1.6, ease: "power2.out", snap: { value: 1 },
-        scrollTrigger: { trigger: el, start: "top 88%", once: true },
+        value: Number(el.dataset.count), duration: 1.8, ease: "power2.out", snap: { value: 1 },
+        scrollTrigger: { trigger: el, start: "top 90%", once: true },
         onUpdate: () => { el.textContent = state.value.toLocaleString("pt-BR"); },
       });
     });
@@ -559,36 +1039,54 @@
     ScrollTrigger.batch(selector, {
       start: "top 88%",
       once: true,
-      onEnter: (batch) => gsap.from(batch, { y: 32, autoAlpha: 0, duration: 0.7, ease: "power3.out", stagger: 0.08, ...fromVars }),
+      onEnter: (batch) => gsap.from(batch, { y: 28, autoAlpha: 0, duration: 0.7, ease: "power3.out", stagger: 0.08, ...fromVars }),
+    });
+  }
+
+  // The hover preview drifts with the cursor so the list feels like turning pages, not flipping cards.
+  function followPointer() {
+    document.querySelectorAll(".spec-list > li").forEach((row) => {
+      const thumb = row.querySelector(".spec-thumb");
+      const moveY = gsap.quickTo(thumb, "y", { duration: 0.5, ease: "power3.out" });
+      row.addEventListener("mousemove", (event) => {
+        const box = row.getBoundingClientRect();
+        moveY((event.clientY - box.top - box.height / 2) * 0.6);
+      });
     });
   }
 
   function setupMotion() {
     if (!window.gsap || !window.ScrollTrigger) return;
     gsap.registerPlugin(ScrollTrigger);
-    gsap.matchMedia().add("(prefers-reduced-motion: no-preference)", () => {
-      gsap.from(".hero h1 .line > span", { yPercent: 105, duration: 0.9, ease: "power4.out", stagger: 0.1 });
-      gsap.from(".hero-photo img", { scale: 1.06, duration: 1.6, ease: "power2.out" });
-      gsap.from(".proof", { y: 28, autoAlpha: 0, duration: 0.8, delay: 0.4, ease: "power3.out" });
-      gsap.from(".tags > *", { y: 10, autoAlpha: 0, duration: 0.5, delay: 0.5, stagger: 0.06 });
+    const motion = gsap.matchMedia();
+    motion.add("(prefers-reduced-motion: no-preference)", () => {
+      gsap.from(".hero-title .line > span", { yPercent: 105, duration: 1, ease: "power4.out", stagger: 0.12 });
+      gsap.from(".verbs li", { x: -16, autoAlpha: 0, duration: 0.6, delay: 0.35, ease: "power3.out", stagger: 0.12 });
+      gsap.from(".hero-photo", { clipPath: "inset(0 0 0 100%)", duration: 1.3, ease: "power4.inOut" });
+      gsap.from(".hero-photo img", { scale: 1.12, duration: 1.8, ease: "power2.out" });
 
-      gsap.utils.toArray(".section-head h2, .section .title").forEach((title) => {
-        gsap.from(title, { y: 24, autoAlpha: 0, duration: 0.8, ease: "power3.out", scrollTrigger: { trigger: title, start: "top 88%", once: true } });
+      gsap.utils.toArray(".section .title, .pay h2, .card h2").forEach((title) => {
+        gsap.from(title, { y: 28, autoAlpha: 0, duration: 0.8, ease: "power3.out", scrollTrigger: { trigger: title, start: "top 90%", once: true } });
       });
-      revealOnScroll(".specialties > li");
-      revealOnScroll(".step");
-      revealOnScroll(".member", { x: 24, y: 0 });
-      revealOnScroll(".quote");
-      gsap.from(".steps-line span", { scaleX: 0, ease: "none", scrollTrigger: { trigger: ".steps", start: "top 80%", end: "bottom 60%", scrub: 0.5 } });
-      gsap.to(".arch img", { yPercent: -8, scale: 1.1, ease: "none", scrollTrigger: { trigger: ".dark", start: "top bottom", end: "bottom top", scrub: true } });
+      gsap.from(".pin", { scale: 0, duration: 0.5, ease: "back.out(2)", stagger: 0.07, scrollTrigger: { trigger: ".body-map", start: "top 80%", once: true } });
+      revealOnScroll(".spec-list > li");
+      revealOnScroll(".tstep", { x: 20, y: 0 });
+      revealOnScroll(".member");
+      gsap.from(".timeline-line span", { scaleY: 0, ease: "none", scrollTrigger: { trigger: ".timeline", start: "top 75%", end: "bottom 60%", scrub: 0.5 } });
+      gsap.fromTo(".wave-line path", { strokeDasharray: 900, strokeDashoffset: 900 }, { strokeDashoffset: 0, duration: 1.6, ease: "power2.out", scrollTrigger: { trigger: ".numbers", start: "top 75%", once: true } });
+      gsap.from(".big-number", { yPercent: 18, autoAlpha: 0, duration: 1, ease: "power3.out", scrollTrigger: { trigger: ".numbers", start: "top 80%", once: true } });
       animateCounters();
-      gsap.from(".wordmark", { yPercent: 40, autoAlpha: 0, duration: 1, ease: "power3.out", scrollTrigger: { trigger: ".site-footer", start: "top 90%", once: true } });
+      gsap.from(".wordmark", { yPercent: 30, autoAlpha: 0, duration: 1, ease: "power3.out", scrollTrigger: { trigger: ".site-footer", start: "top 92%", once: true } });
     });
+    motion.add("(prefers-reduced-motion: no-preference) and (min-width: 1000px) and (hover: hover) and (pointer: fine)", followPointer);
   }
 
+  renderPainArea("joelho");
+  setupPainMap();
   setupBookingForm();
   renderOpenNow();
-  setupCompactHeader();
+  setupLazyMap();
+  setupHeaderLine();
   setupInPageLinks();
   setupMotion();
 </script>

@@ -11,7 +11,7 @@ uma função de verdade:
 | modelo | o que mostra |
 |---|---|
 | [Brasa Smash](https://tarciodiniz.com/demos/cardapio/) | cardápio com sacola que vira pedido no WhatsApp |
-| [Sálvia Fisioterapia](https://tarciodiniz.com/demos/fisioterapia/) | avaliação marcada por formulário que abre o WhatsApp |
+| [Sálvia Fisioterapia](https://tarciodiniz.com/demos/fisioterapia/) | "Onde dói?": a pessoa toca no corpo e já agenda pelo WhatsApp |
 | [Vigília Veterinária](https://tarciodiniz.com/demos/veterinaria/) | botão de emergência sempre à vista no celular |
 | [Pousada Aroá](https://tarciodiniz.com/demos/pousada/) | pedido de reserva com datas, hóspedes e quarto |
 | [Sisal Barbearia](https://tarciodiniz.com/demos/barbearia/) | agendamento em três escolhas |
@@ -37,6 +37,21 @@ python3 -m http.server 8811 --bind 127.0.0.1
 e abrir `http://127.0.0.1:8811/`. As capturas dos modelos usadas na página principal são geradas
 por `scripts/capturas.sh`, com o servidor local no ar.
 
+## Testes
+
+Bateria de celular, dobra por dobra, em 6 tamanhos (320 a 430 px e celular deitado): texto na
+borda, palavra sozinha no fim de título, texto pequeno, toques colados, contraste, foto distorcida,
+ação principal fora da primeira tela, botão cortado pela dobra, vazios, fontes e barra fixa. Gera
+uma folha de revisão com todas as dobras em `test-results/mobile/`.
+
+```sh
+npm install
+npm run mobile                      # todas as páginas
+npm run mobile -- /demos/pousada/   # uma página
+```
+
+Os ícones de cada página saem de `scripts/icon-sprite.py` (Simple Icons e Phosphor, versões fixas).
+
 ## Publicar
 
 Hospedado no Cloudflare Pages, projeto `tarciodiniz`:
@@ -47,7 +62,9 @@ npx wrangler pages deploy <pasta> --project-name tarciodiniz --branch main
 
 ## Créditos
 
-- Fontes do Google Fonts: Anton e Inter Tight no site, outras nos modelos.
+- Fontes do Google Fonts: Anton e Inter Tight no site; nos modelos, Bricolage Grotesque, Schibsted
+  Grotesk, Big Shoulders Display, Rubik, Young Serif, Karla, Alfa Slab One e IBM Plex.
+- Mapas: [Leaflet](https://leafletjs.com) com dados do [OpenStreetMap](https://www.openstreetmap.org/copyright).
 - Ícones: [Simple Icons](https://simpleicons.org) (CC0) para as marcas e
   [Phosphor](https://phosphoricons.com) (MIT) para a interface.
 - Fotos dos modelos: [Unsplash](https://unsplash.com). As fotos em `assets/img/` são minhas.

@@ -3,499 +3,684 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#0c1c2b">
+<meta name="theme-color" content="#3b1f16">
 <meta name="robots" content="noindex, nofollow">
 <title>Vigília Veterinária 24h · Campina Grande (demonstração)</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="https://images.unsplash.com/photo-1654895716780-b4664497420d?auto=format&fit=crop&w=1000&q=70">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css">
+<link rel="preload" as="image" href="img/labrador.webp" type="image/webp">
 <style>
   :root {
-    --bg: #f4f2ec;
-    --surface: #ffffff;
-    --tint: #e6eef3;
-    --ink: #0c1c2b;
-    --ink-soft: #2f4356;
-    --muted: #5f6d7b;
-    --line: #dfddd5;
-    --brand: #0b3a5b;
-    --brand-deep: #06263d;
-    --brand-soft: #124a72;
-    --accent: #ffb23e;
-    --accent-strong: #f59e1b;
-    --accent-ink: #0c1c2b;
-    --on-dark: #f4f2ec;
-    --on-dark-muted: #a9bccc;
-    --glass: rgba(255, 255, 255, 0.16);
-    --glass-line: rgba(255, 255, 255, 0.3);
-    --veil: rgba(6, 38, 61, 0.7);
-    --pulse: rgba(255, 178, 62, 0.55);
-    --pulse-off: rgba(255, 178, 62, 0);
-    --shadow: 0 20px 44px -20px rgba(6, 38, 61, 0.45);
-    --radius-xl: 28px;
-    --radius-lg: 20px;
-    --radius-md: 14px;
+    --butter: #f6d98b;
+    --butter-deep: #ecc56a;
+    --choc: #3b1f16;
+    --choc-soft: #5a3325;
+    --choc-line: #6e4434;
+    --tomato: #e0512b;
+    --tomato-deep: #c8421f;
+    --tomato-dark: #a8371a;
+    --cream: #fff6e6;
+    --pix: #32bcad;
+    --cream-muted: #e9d6bf;
+    --choc-muted: #6b4a3d;
+    --shadow-pop: 5px 5px 0 var(--choc);
+    --shadow-pop-hover: 7px 7px 0 var(--choc);
+    --radius: 18px;
+    --radius-sm: 12px;
     --radius-pill: 999px;
-    --gutter: clamp(16px, 4vw, 40px);
-    --max: 1240px;
-    --header-h: 76px;
-    --sos-h: 76px;
-    --font-display: "Bricolage Grotesque", "Arial Narrow", system-ui, sans-serif;
-    --font: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --gutter: clamp(16px, 4vw, 48px);
+    --max: 1680px;
+    --sos-h: 72px;
+    --font-display: "Big Shoulders Display", "Arial Narrow", Impact, sans-serif;
+    --font: "Rubik", system-ui, -apple-system, "Segoe UI", sans-serif;
   }
   * { box-sizing: border-box; }
-  html { scroll-padding-top: calc(var(--header-h) + 12px); }
-  body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font); font-size: 16px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+  html { scroll-padding-top: 16px; }
+  body { margin: 0; background: var(--choc); color: var(--choc); font-family: var(--font); font-size: 16px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
   img { display: block; max-width: 100%; }
   a { color: inherit; text-decoration: none; }
-  h1, h2, h3 { font-family: var(--font-display); font-weight: 800; letter-spacing: -0.035em; }
+  h1, h2, h3 { font-family: var(--font-display); font-weight: 900; text-transform: uppercase; letter-spacing: 0.005em; text-wrap: balance; }
+  p, li, blockquote { text-wrap: pretty; }
   .wrap { max-width: var(--max); margin: 0 auto; padding-inline: var(--gutter); }
-  .ico { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; display: block; flex: none; }
+  .ico { width: 20px; height: 20px; fill: currentColor; display: block; flex: none; }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 
-  .notice { background: var(--ink); color: var(--on-dark); font-size: 13px; text-align: center; padding: 8px var(--gutter); }
-  .notice strong { color: var(--accent); }
+  .notice { background: var(--choc); color: var(--cream); font-size: 13px; text-align: center; padding: 8px var(--gutter); }
+  .notice strong { color: var(--butter); }
 
-  .header { position: sticky; top: 0; z-index: 40; background: var(--bg); border-bottom: 1px solid transparent; transition: background-color .25s ease, border-color .25s ease; }
-  .header.is-compact { background: var(--surface); border-color: var(--line); }
-  .topbar { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: var(--header-h); }
-  .logo { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 800; font-size: 26px; letter-spacing: -0.04em; color: var(--brand); }
-  .logo .live { width: 10px; height: 10px; }
-  .nav { display: flex; gap: 26px; font-weight: 500; font-size: 15px; color: var(--ink-soft); }
-  .nav a:hover { color: var(--brand); }
+  /* Buttons: flat poster blocks with a hard offset shadow. The emergency red is the deep tomato so cream labels keep 4.5:1. */
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 12px; min-height: 56px; padding: 0 22px; border-radius: var(--radius-sm); border: 2px solid var(--choc); font-weight: 700; font-size: 17px; line-height: 1.2; box-shadow: var(--shadow-pop); transition: translate .18s ease, box-shadow .18s ease, background-color .18s ease; }
+  .btn .ico { width: 22px; height: 22px; }
+  .btn:hover { translate: -2px -2px; box-shadow: var(--shadow-pop-hover); }
+  .btn:active { translate: 3px 3px; box-shadow: 2px 2px 0 var(--choc); }
+  .btn-sos { background: var(--tomato-deep); color: var(--cream); }
+  .btn-sos:hover { background: var(--tomato-dark); }
+  .btn-cream { background: var(--cream); color: var(--choc); }
+  .btn-butter { background: var(--butter); color: var(--choc); }
+  .btn-small { min-height: 44px; font-size: 15px; padding: 0 16px; box-shadow: 3px 3px 0 var(--choc); }
+  .btn-small .ico { width: 20px; height: 20px; }
+  .on-dark .btn { border-color: var(--cream); box-shadow: 5px 5px 0 var(--cream); }
+  .on-dark .btn:hover { box-shadow: 7px 7px 0 var(--cream); }
+  .on-dark .btn:active { box-shadow: 2px 2px 0 var(--cream); }
 
-  .live { position: relative; display: inline-block; width: 12px; height: 12px; border-radius: 50%; background: var(--accent); flex: none; }
+  .live { position: relative; display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: var(--tomato); flex: none; }
 
-  .btn { display: inline-flex; align-items: center; gap: 12px; padding: 6px 6px 6px 22px; min-height: 52px; border-radius: var(--radius-pill); border: 0; font-weight: 700; font-size: 16px; transition: translate .2s ease, background-color .2s ease; }
-  .btn:hover { translate: 0 -2px; }
-  .btn .dot { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; flex: none; }
-  .btn-sos { background: var(--accent); color: var(--accent-ink); }
-  .btn-sos:hover { background: var(--accent-strong); }
-  .btn-sos .dot { background: var(--accent-ink); color: var(--accent); }
-  .btn-light { background: var(--surface); color: var(--brand); }
-  .btn-light .dot { background: var(--brand); color: var(--surface); }
-  .btn-brand { background: var(--brand); color: var(--on-dark); }
-  .btn-brand .dot { background: var(--on-dark); color: var(--brand); }
-  .btn-small { min-height: 44px; font-size: 14px; padding-left: 16px; gap: 10px; }
-  .btn-small .dot { width: 32px; height: 32px; }
-  .btn-small .ico { width: 16px; height: 16px; }
+  /* Header */
+  .header { background: var(--butter); }
+  .topbar { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 64px; }
+  .logo { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; }
+  .logo .ico { width: 26px; height: 26px; color: var(--tomato-deep); }
+  .logo b { font-family: var(--font-display); font-weight: 900; font-size: 32px; line-height: 1; letter-spacing: 0.02em; text-transform: uppercase; }
+  .logo small { font-size: 13px; font-weight: 700; line-height: 1.15; max-width: 9ch; }
+  .nav { display: none; gap: 28px; font-weight: 500; font-size: 15px; }
+  .nav a { display: inline-flex; align-items: center; min-height: 44px; }
+  .nav a:hover { color: var(--tomato-deep); }
+  .top-sos { display: none; }
 
-  .hero { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); gap: 16px; padding-top: 8px; }
-  .hero .hero-panel { margin-top: 0; }
-  .hero-panel { background: var(--brand); color: var(--on-dark); border-radius: var(--radius-xl); padding: clamp(28px, 5vw, 60px); display: flex; flex-direction: column; justify-content: space-between; gap: 40px; min-height: min(80vh, 680px); overflow: hidden; }
-  .open-badge { display: inline-flex; align-items: center; gap: 14px; align-self: flex-start; padding: 12px 22px 12px 16px; border-radius: var(--radius-pill); background: var(--brand-deep); border: 1px solid var(--glass-line); font-family: var(--font-display); font-weight: 800; font-size: clamp(20px, 2.4vw, 28px); letter-spacing: -0.02em; color: var(--accent); }
-  .eyebrow { margin: 0 0 16px; font-size: 14px; font-weight: 500; color: var(--on-dark-muted); }
-  .hero h1 { font-size: clamp(34px, 4.7vw, 68px); line-height: .92; margin: 0 0 22px; text-transform: uppercase; }
-  .hero h1 .line { display: block; overflow: hidden; padding-bottom: .05em; white-space: nowrap; }
-  .hero h1 .line > span { display: inline-block; }
-  .hero h1 .hl { color: var(--accent); }
-  .hero-lead { margin: 0 0 28px; max-width: 46ch; color: var(--on-dark-muted); font-size: 17px; }
-  .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
-  .btn-ghost { background: transparent; color: var(--on-dark); border: 1px solid var(--glass-line); }
-  .btn-ghost .dot { background: var(--glass); color: var(--on-dark); }
+  /* Hero: portrait phones and tablets stack the poster in a grid cell. */
+  .hero { --t-size: clamp(60px, 25vw, 210px); --stage-h: clamp(180px, calc(100svh - 420px), 640px); padding-block: 8px 48px; overflow: hidden; background: var(--butter); }
+  .hero-stage { position: relative; display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: var(--stage-h) auto auto auto; row-gap: 16px; }
+  .hero-title { display: contents; margin: 0; }
+  .t { font-family: var(--font-display); font-weight: 900; text-transform: uppercase; line-height: .82; font-size: var(--t-size); letter-spacing: 0; white-space: nowrap; z-index: 2; pointer-events: none; }
+  .t .ch { display: inline-block; }
+  .t1 { grid-area: 1 / 1; align-self: start; justify-self: start; color: var(--choc); }
+  .t2 { grid-area: 1 / 1; align-self: end; justify-self: end; color: var(--tomato-deep); }
+  .dog { grid-area: 1 / 1; align-self: end; justify-self: center; height: calc(100% - var(--t-size) * 0.6); width: auto; max-width: none; z-index: 1; }
+  .balloon { grid-row: 2; justify-self: start; position: relative; margin: 6px 0 0; background: var(--choc); color: var(--cream); border-radius: 20px; padding: 12px 18px; max-width: 28ch; font-size: 16px; line-height: 1.4; }
+  .balloon p { margin: 0; }
+  .balloon strong { display: block; font-size: 17px; font-weight: 500; }
+  .balloon .sub { display: flex; align-items: center; gap: 8px; margin-top: 4px; font-size: 14px; color: var(--cream-muted); }
+  .balloon::before { content: ""; position: absolute; left: 50%; top: -12px; border: 7px solid transparent; border-bottom: 7px solid var(--choc); border-left: 12px solid var(--choc); }
+  .hero-actions { grid-row: 3; display: flex; flex-direction: column; gap: 14px; padding-right: 6px; }
+  .hero-actions .btn { width: 100%; }
+  .lead { grid-row: 4; margin: 10px 0 0; font-size: 17px; max-width: 42ch; }
+  .lead b { font-weight: 700; text-decoration: underline; text-decoration-color: var(--tomato); text-decoration-thickness: 3px; text-underline-offset: 4px; }
 
-  .hero-photo { position: relative; border-radius: var(--radius-xl); overflow: hidden; min-height: 420px; background: var(--tint); }
-  .hero-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 60%; }
-  .hero-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, var(--veil) 0%, rgba(6, 38, 61, 0) 45%); }
-  .glass { position: absolute; z-index: 1; color: var(--on-dark); background: var(--glass); border: 1px solid var(--glass-line); border-radius: var(--radius-lg); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
-  .glass-score { left: 20px; right: 20px; bottom: 20px; padding: 18px 20px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-  .glass-score b { font-family: var(--font-display); font-size: 48px; line-height: 1; letter-spacing: -0.04em; }
-  .glass-score p { margin: 0; font-size: 13px; }
-  .stars { display: flex; gap: 2px; color: var(--accent); margin-bottom: 4px; }
-  .stars .ico { width: 16px; height: 16px; fill: currentColor; stroke: none; }
-  .glass-duty { top: 20px; left: 20px; padding: 12px 16px; display: flex; align-items: center; gap: 12px; font-size: 13px; }
-  .glass-duty strong { display: block; font-size: 15px; }
+  /* Section scaffolding */
+  .band { padding-block: clamp(64px, 9vw, 128px); }
+  .band-choc { background: var(--choc); color: var(--cream); }
+  .band-tomato { background: var(--tomato); color: var(--cream); }
+  .band-butter { background: var(--butter); color: var(--choc); }
+  .band-cream { background: var(--cream); color: var(--choc); }
+  .big { font-size: clamp(52px, 11vw, 168px); line-height: .86; margin: 0; }
+  .head { display: grid; gap: 18px 48px; margin-bottom: clamp(32px, 5vw, 56px); }
+  .head p { margin: 0; max-width: 44ch; font-size: 17px; }
+  .band-choc .big { color: var(--butter); }
+  .band-choc .head p { color: var(--cream-muted); }
+  /* Cream text on tomato is only 3.7:1, so running text on the red bands sits on a chocolate panel. */
+  .panel { justify-self: start; background: var(--choc); color: var(--cream); border-radius: var(--radius-sm); padding: 16px 20px; font-size: 17px; }
 
-  section { margin-top: clamp(72px, 10vw, 128px); }
-  .section-head { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 24px 48px; align-items: start; margin-bottom: 36px; }
-  .section-head h2 { font-size: clamp(36px, 5.2vw, 68px); line-height: .95; margin: 0; }
-  .section-head p { margin: 0; color: var(--muted); max-width: 44ch; padding-top: 10px; }
-  .kicker { display: inline-block; margin-bottom: 14px; padding: 6px 14px; border-radius: var(--radius-pill); background: var(--tint); color: var(--brand); font-size: 13px; font-weight: 700; }
+  /* Services accordion */
+  .svc-list { display: grid; gap: 10px; }
+  .svc { background: var(--tomato); color: var(--cream); border-radius: var(--radius); }
+  .svc summary { list-style: none; cursor: pointer; display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 14px; min-height: 76px; padding: 10px 14px 10px 14px; }
+  .svc summary::-webkit-details-marker { display: none; }
+  .svc-ico { width: 48px; height: 48px; border-radius: 50%; background: var(--choc); color: var(--butter); display: grid; place-items: center; flex: none; }
+  .svc-ico .ico { width: 26px; height: 26px; }
+  .svc-name { font-family: var(--font-display); font-weight: 900; text-transform: uppercase; font-size: clamp(30px, 6vw, 64px); line-height: .95; text-wrap: balance; }
+  .svc-when { display: none; font-size: 14px; font-weight: 500; background: var(--choc); color: var(--cream); padding: 6px 12px; border-radius: var(--radius-pill); white-space: nowrap; }
+  .toggle { width: 44px; height: 44px; border-radius: 50%; background: var(--choc); color: var(--cream); display: grid; place-items: center; flex: none; transition: rotate .25s ease; }
+  .toggle .ico { width: 18px; height: 18px; }
+  details[open] > summary .toggle { rotate: 45deg; }
+  /* A closed item keeps its button out of layout, so it never sits under the next row. */
+  .svc:not([open]) .svc-body { display: none; }
+  .svc-body { margin: 0 10px 10px; background: var(--cream); color: var(--choc); border-radius: var(--radius-sm); padding: 20px; display: grid; gap: 16px; }
+  .svc-body p { margin: 0; font-size: 17px; max-width: 58ch; }
+  .svc-body .price { margin-top: 12px; font-size: 16px; }
+  .svc-body .price b { font-weight: 700; }
+  .svc-body .when { margin-top: 6px; font-size: 15px; font-weight: 700; color: var(--tomato-deep); }
+  .svc-body .btn { justify-self: start; }
 
-  .services { display: grid; grid-template-columns: repeat(3, 1fr); grid-auto-rows: 1fr; gap: 16px; }
-  .service { background: var(--surface); border-radius: var(--radius-lg); padding: 26px; display: flex; flex-direction: column; gap: 14px; border: 1px solid var(--line); transition: translate .25s ease, box-shadow .25s ease; }
-  .service:hover { translate: 0 -4px; box-shadow: var(--shadow); }
-  .service-top { display: flex; align-items: center; justify-content: space-between; }
-  .service-icon { width: 52px; height: 52px; border-radius: var(--radius-md); background: var(--tint); color: var(--brand); display: grid; place-items: center; }
-  .service-icon .ico { width: 26px; height: 26px; }
-  .service-num { font-family: var(--font-display); font-weight: 600; font-size: 14px; color: var(--muted); }
-  .service h3 { margin: 6px 0 0; font-size: 24px; line-height: 1.1; }
-  .service p { margin: 0; color: var(--muted); font-size: 15px; flex: 1; }
-  .service .when { font-size: 13px; font-weight: 700; color: var(--brand-soft); }
-  .service.is-night { background: var(--brand); color: var(--on-dark); border-color: var(--brand); }
-  .service.is-night p { color: var(--on-dark-muted); }
-  .service.is-night .service-icon { background: var(--brand-deep); color: var(--accent); }
-  .service.is-night .service-num, .service.is-night .when { color: var(--accent); }
+  /* Emergency: tomato band with a chocolate block */
+  .sos-block { background: var(--choc); color: var(--cream); border-radius: calc(var(--radius) + 8px); padding: clamp(24px, 5vw, 64px); }
+  .steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 32px; counter-reset: step; }
+  .step { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 4px 20px; align-items: start; }
+  .step-num { grid-row: span 2; font-family: var(--font-display); font-weight: 900; font-size: clamp(96px, 16vw, 220px); line-height: .8; color: var(--tomato); }
+  .step:nth-child(2) .step-num { color: var(--butter); }
+  .step:nth-child(3) .step-num { color: var(--cream); }
+  .step h3 { margin: 6px 0 0; font-size: clamp(28px, 3.4vw, 44px); line-height: .95; color: var(--butter); }
+  .step p, .step ul { margin: 8px 0 0; font-size: 16px; color: var(--cream-muted); }
+  .step ul { padding-left: 18px; }
+  .step li + li { margin-top: 6px; }
+  .step li b { color: var(--cream); font-weight: 500; }
+  .sos-foot { display: grid; gap: 28px; margin-top: 44px; padding-top: 32px; border-top: 2px solid var(--choc-line); }
+  .stats { display: grid; grid-template-columns: repeat(3, minmax(0, max-content)); gap: 16px clamp(16px, 4vw, 48px); }
+  .stat b { display: block; font-family: var(--font-display); font-weight: 900; font-size: clamp(48px, 6vw, 88px); line-height: .9; color: var(--butter); }
+  .stat span { display: block; max-width: 14ch; font-size: 14px; color: var(--cream-muted); }
+  .sos-foot .btn { justify-self: start; }
 
-  .sos { background: var(--brand-deep); color: var(--on-dark); border-radius: var(--radius-xl); padding: clamp(36px, 6vw, 80px) clamp(22px, 5vw, 64px); overflow: hidden; }
-  .sos .section-head p { color: var(--on-dark-muted); }
-  .sos .kicker { background: var(--brand-soft); color: var(--accent); }
-  .steps-wrap { position: relative; }
-  .steps { position: relative; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; list-style: none; margin: 0; padding: 0; }
-  .steps-line { position: absolute; z-index: 1; left: 0; top: 46px; width: 100%; height: 24px; color: var(--accent); pointer-events: none; }
-  .steps-line path { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
-  .step { position: relative; background: var(--brand); border-radius: var(--radius-lg); padding: 26px; display: flex; flex-direction: column; gap: 10px; }
-  .step-num { width: 64px; height: 64px; border-radius: 50%; background: var(--accent); color: var(--accent-ink); display: grid; place-items: center; font-family: var(--font-display); font-weight: 800; font-size: 30px; margin-bottom: 8px; }
-  .step h3 { margin: 0; font-size: 24px; line-height: 1.1; }
-  .step p { margin: 0; color: var(--on-dark-muted); font-size: 15px; }
-  .step ul { margin: 0; padding-left: 18px; color: var(--on-dark-muted); font-size: 15px; }
-  .sos-foot { display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: end; margin-top: 48px; padding-top: 36px; border-top: 1px solid var(--glass-line); }
-  .stats { display: grid; grid-template-columns: repeat(3, auto); gap: 16px 48px; justify-content: start; }
-  .stat b { display: block; font-family: var(--font-display); font-size: clamp(40px, 5vw, 64px); line-height: 1; letter-spacing: -0.04em; color: var(--accent); }
-  .stat span { font-size: 14px; color: var(--on-dark-muted); }
+  /* What to bring: a checklist, read top to bottom like a note on the fridge. */
+  .bring { display: grid; gap: 28px 64px; }
+  .bring .big { color: var(--choc); }
+  .bring-intro { margin: 20px 0 0; max-width: 36ch; font-size: 17px; color: var(--choc-muted); }
+  .bring-list { list-style: none; margin: 0; padding: 0; border-top: 2px solid var(--choc); }
+  .bring-list li { display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: 16px; align-items: start; padding-block: 18px; border-bottom: 2px solid var(--choc); }
+  .bring-ico { width: 48px; height: 48px; border-radius: 50%; background: var(--butter); border: 2px solid var(--choc); display: grid; place-items: center; }
+  .bring-ico .ico { width: 24px; height: 24px; }
+  .bring-list strong { display: block; font-size: 19px; line-height: 1.3; font-weight: 700; }
+  .bring-list p { margin: 4px 0 0; font-size: 16px; color: var(--choc-muted); }
 
-  .team { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  .team-photo { position: relative; border-radius: var(--radius-xl); overflow: hidden; min-height: 460px; }
-  .team-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-  .team-photo .glass { left: 20px; bottom: 20px; right: 20px; padding: 16px 18px; font-size: 14px; }
-  .team-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, var(--veil) 0%, rgba(6, 38, 61, 0) 50%); }
-  .people { display: grid; grid-template-columns: 1fr 1fr; grid-auto-rows: 1fr; gap: 16px; }
-  .person { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 22px; display: flex; flex-direction: column; gap: 6px; }
-  .monogram { width: 56px; height: 56px; border-radius: 50%; background: var(--tint); color: var(--brand); display: grid; place-items: center; font-family: var(--font-display); font-weight: 800; font-size: 20px; margin-bottom: 10px; }
-  .person h3 { margin: 0; font-size: 20px; letter-spacing: -0.02em; }
-  .person .role { margin: 0; font-weight: 600; color: var(--brand-soft); font-size: 14px; }
-  .person p { margin: 0; color: var(--muted); font-size: 14px; flex: 1; }
-  .person p.role { flex: none; }
-  .person .shift { margin-top: 8px; display: inline-flex; align-self: flex-start; padding: 5px 12px; border-radius: var(--radius-pill); background: var(--tint); color: var(--brand); font-size: 12px; font-weight: 700; flex: none; }
+  /* Team: tall poster cards */
+  .people { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(266px, 76%); gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 4px 8px 14px 4px; margin-inline: calc(var(--gutter) * -1); padding-inline: var(--gutter); scroll-padding-inline: var(--gutter); }
+  .person { scroll-snap-align: start; border-radius: var(--radius); padding: 22px; min-height: 420px; display: flex; flex-direction: column; gap: 6px; border: 2px solid var(--choc); }
+  .person:nth-child(odd) { background: var(--choc); color: var(--cream); }
+  .person:nth-child(even) { background: var(--cream); color: var(--choc); }
+  .initials { font-family: var(--font-display); font-weight: 900; font-size: 132px; line-height: .8; color: var(--tomato); margin-bottom: auto; }
+  .person:nth-child(odd) .initials { color: var(--butter); }
+  .person h3 { margin: 18px 0 0; font-size: 34px; line-height: .95; }
+  /* The title sits on its own line so the surname never ends alone under the first name. */
+  .honorific { display: block; font-size: 22px; line-height: 1.1; }
+  .person .role { margin: 0; font-weight: 700; font-size: 15px; }
+  .person:nth-child(odd) .role { color: var(--butter); }
+  .person:nth-child(even) .role { color: var(--tomato-deep); }
+  .person p { margin: 6px 0 0; font-size: 15px; }
+  .person:nth-child(odd) p:not(.role) { color: var(--cream-muted); }
+  .shift { margin-top: 14px; align-self: flex-start; padding: 6px 12px; border-radius: var(--radius-pill); font-size: 13px; font-weight: 700; background: var(--tomato-deep); color: var(--cream); }
+  .swipe-hint { margin: 4px 0 0; font-size: 14px; font-weight: 500; }
 
-  .quotes { display: grid; grid-template-columns: 1.3fr 1fr 1fr; grid-auto-rows: 1fr; gap: 16px; }
-  .quote { margin: 0; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 26px; display: flex; flex-direction: column; gap: 22px; }
-  .quote blockquote { margin: 0; font-size: 17px; flex: 1; color: var(--ink-soft); }
-  .quote:first-child { background: var(--accent); border-color: var(--accent); }
-  .quote:first-child blockquote { font-family: var(--font-display); font-weight: 600; font-size: clamp(20px, 2vw, 26px); line-height: 1.25; letter-spacing: -0.02em; color: var(--accent-ink); }
-  .quote figcaption { display: flex; align-items: center; gap: 12px; font-size: 14px; }
-  .quote figcaption img { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; flex: none; }
-  .quote figcaption span { display: block; color: var(--muted); font-size: 13px; }
-  .quote:first-child figcaption span { color: var(--ink-soft); }
-  .fake-tag { font-size: 13px; color: var(--muted); margin: 14px 0 0; }
+  /* Testimonials */
+  .fake { display: block; margin: 0 0 32px; font-size: 14px; font-weight: 700; color: var(--butter); }
+  .fake + .big { padding-top: 0.22em; }
+  .rating { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; margin: 14px 0 0; font-size: 15px; color: var(--cream-muted); }
+  .stars { display: inline-flex; gap: 2px; color: var(--butter); }
+  .stars .ico { width: 18px; height: 18px; }
+  .quotes { display: grid; gap: 16px; }
+  .quote { margin: 0; border-radius: var(--radius); padding: 24px; display: flex; flex-direction: column; gap: 20px; background: var(--cream); color: var(--choc); }
+  .quote blockquote { margin: 0; font-size: 18px; line-height: 1.45; }
+  .quote figcaption { display: flex; align-items: center; gap: 14px; font-size: 15px; margin-top: auto; }
+  .quote figcaption img { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; flex: none; border: 2px solid var(--choc); }
+  .quote figcaption span { display: block; font-size: 14px; color: var(--choc-muted); }
+  .quote.hero-quote { background: var(--tomato); color: var(--cream); }
+  .quote.hero-quote blockquote { font-family: var(--font-display); font-weight: 700; text-transform: uppercase; font-size: clamp(30px, 3.6vw, 52px); line-height: 1; }
+  .quote.hero-quote .pet { width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; object-position: 50% 30%; border-radius: 999px 999px var(--radius-sm) var(--radius-sm); border: 2px solid var(--choc); }
+  .quote.hero-quote figcaption { align-self: flex-start; background: var(--choc); border-radius: var(--radius-sm); padding: 12px 16px; }
+  .quote.hero-quote figcaption span { color: var(--cream-muted); }
 
-  .visit { display: grid; grid-template-columns: 1fr 1.1fr; gap: 16px; }
-  .visit-photo { position: relative; border-radius: var(--radius-xl); overflow: hidden; min-height: 440px; }
-  .visit-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-  .visit-info { background: var(--surface); border-radius: var(--radius-xl); border: 1px solid var(--line); padding: clamp(24px, 4vw, 44px); display: flex; flex-direction: column; gap: 22px; }
-  .visit-info h2 { font-size: clamp(32px, 4.2vw, 52px); line-height: 1; margin: 0; }
-  .always { display: flex; align-items: center; gap: 12px; padding: 14px 18px; border-radius: var(--radius-md); background: var(--brand); color: var(--on-dark); font-weight: 600; }
-  .always b { color: var(--accent); }
-  .hours { width: 100%; border-collapse: collapse; font-size: 15px; }
-  .hours td { padding: 11px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
-  .hours td:last-child { text-align: right; font-weight: 700; padding-left: 16px; }
-  .address { display: flex; gap: 10px; align-items: flex-start; margin: 0; color: var(--ink-soft); }
-  .address .ico { margin-top: 2px; color: var(--brand); }
-  .visit-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+  /* Hours, prices and map */
+  .visit { display: grid; gap: 16px; }
+  .visit-card { background: var(--cream); color: var(--choc); border-radius: var(--radius); padding: clamp(20px, 3.5vw, 40px); display: flex; flex-direction: column; gap: 20px; border: 2px solid var(--choc); }
+  .always { display: flex; align-items: center; gap: 12px; margin: 0; padding: 14px 16px; border-radius: var(--radius-sm); background: var(--choc); color: var(--cream); font-weight: 700; }
+  .always .live { background: var(--butter); }
+  .card-label { margin: 8px 0 -8px; font-family: var(--font-display); font-weight: 900; font-size: 28px; line-height: 1; text-transform: uppercase; }
+  .hours { width: 100%; border-collapse: collapse; font-size: 16px; }
+  .hours td { padding: 12px 0; border-bottom: 2px solid var(--cream-muted); vertical-align: top; }
+  .hours td:last-child { text-align: right; font-weight: 700; padding-left: 16px; white-space: nowrap; }
+  .fine { margin: -6px 0 0; font-size: 15px; color: var(--choc-muted); }
+  .pay { display: flex; flex-wrap: wrap; gap: 10px; margin: 0; padding: 0; list-style: none; }
+  .pay li { display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 6px 14px; border-radius: var(--radius-pill); border: 2px solid var(--choc); font-size: 15px; font-weight: 500; }
+  .pay .ico-pix { color: var(--pix); }
+  .info { display: flex; gap: 12px; align-items: flex-start; margin: 0; font-size: 16px; }
+  .info .ico { width: 24px; height: 24px; margin-top: 1px; color: var(--tomato-deep); }
+  .visit-side { display: grid; gap: 16px; align-content: start; }
+  .visit-actions { display: flex; flex-wrap: wrap; gap: 14px; }
+  .map { margin: 0; background: var(--choc); border-radius: var(--radius); border: 2px solid var(--choc); overflow: hidden; display: flex; flex-direction: column; }
+  .map-canvas { height: 320px; background: var(--choc-soft); z-index: 0; }
+  .map figcaption { display: flex; align-items: flex-start; gap: 10px; padding: 14px 18px; font-size: 14px; color: var(--cream-muted); }
+  .map figcaption .ico { width: 18px; height: 18px; margin-top: 1px; color: var(--butter); }
+  .map.map-failed .map-canvas { display: none; }
+  /* Leaflet overrides: warm, quiet tiles so the red area reads first; touch-sized controls. */
+  .map-canvas .leaflet-tile-pane { filter: grayscale(1) sepia(.28) contrast(1.05); }
+  .map-canvas .leaflet-control-zoom a { width: 44px; height: 44px; line-height: 44px; font-size: 22px; color: var(--choc); }
+  .map-canvas .leaflet-control-attribution { font-size: 13px; font-family: var(--font); color: var(--choc); background: var(--cream); }
+  .map-canvas .leaflet-control-attribution a { color: var(--choc); text-decoration: underline; display: inline-block; padding-block: 13px; }
+  .map-canvas .map-label { background: var(--choc); color: var(--cream); border: 0; border-radius: var(--radius-sm); font-family: var(--font); font-size: 13px; font-weight: 500; padding: 6px 10px; box-shadow: 3px 3px 0 var(--tomato-deep); }
+  .map-canvas .map-label::before { display: none; }
 
-  .faq { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 40px; }
-  .faq h2 { font-size: clamp(36px, 5vw, 64px); line-height: .95; margin: 0; }
-  details { border-bottom: 1px solid var(--line); padding-block: 20px; }
-  summary { list-style: none; cursor: pointer; font-weight: 700; font-size: 18px; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
-  summary::-webkit-details-marker { display: none; }
-  summary .toggle { width: 32px; height: 32px; border-radius: 50%; background: var(--tint); color: var(--brand); display: grid; place-items: center; flex: none; transition: rotate .2s ease; }
-  summary .toggle .ico { width: 16px; height: 16px; }
-  details[open] summary .toggle { rotate: 45deg; }
-  details p { color: var(--muted); margin: 12px 0 0; max-width: 60ch; }
+  /* FAQ */
+  .faq { display: grid; gap: 28px 64px; }
+  .faq-list details { border-bottom: 2px solid var(--choc); }
+  .faq-list summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 64px; padding-block: 10px; font-weight: 700; font-size: 18px; line-height: 1.3; }
+  .faq-list summary::-webkit-details-marker { display: none; }
+  .faq-list .toggle { background: var(--tomato-deep); }
+  .faq-list details p { margin: 0 0 20px; max-width: 60ch; font-size: 16px; }
 
-  .cta { background: var(--accent); color: var(--accent-ink); border-radius: var(--radius-xl); padding: clamp(32px, 6vw, 64px); display: flex; flex-wrap: wrap; gap: 24px; align-items: center; justify-content: space-between; }
-  .cta h2 { font-size: clamp(30px, 4.4vw, 56px); line-height: 1; margin: 0; max-width: 18ch; }
-
-  footer.wrap { margin-top: clamp(72px, 10vw, 128px); padding-bottom: 48px; overflow: hidden; }
-  .foot-row { display: flex; flex-wrap: wrap; gap: 16px; justify-content: space-between; color: var(--muted); font-size: 13px; border-top: 1px solid var(--line); padding-top: 24px; }
-  .wordmark { font-family: var(--font-display); font-weight: 800; font-size: clamp(88px, 21vw, 300px); letter-spacing: -0.045em; line-height: 1; margin-top: 32px; white-space: nowrap; color: var(--brand); }
-  .wordmark span { color: var(--accent); }
-  .back { display: inline-flex; align-items: center; gap: 8px; margin-top: 32px; font-weight: 700; color: var(--brand); }
+  /* Footer */
+  .footer { background: var(--choc); color: var(--cream); padding-block: clamp(56px, 8vw, 104px) 40px; overflow: hidden; }
+  .cta { display: grid; gap: 24px; align-items: end; padding-bottom: clamp(40px, 6vw, 72px); border-bottom: 2px solid var(--choc-line); }
+  .cta h2 { margin: 0; font-size: clamp(40px, 6vw, 88px); line-height: .9; color: var(--cream); max-width: 16ch; }
+  .cta h2 span { color: var(--butter); }
+  .cta .btn { justify-self: start; }
+  .foot-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 24px; justify-content: space-between; padding-top: 24px; font-size: 14px; color: var(--cream-muted); }
+  .insta { display: inline-flex; align-items: center; gap: 8px; color: var(--cream); font-weight: 500; }
+  .insta .ico { width: 18px; height: 18px; }
+  .wordmark { font-family: var(--font-display); font-weight: 900; text-transform: uppercase; font-size: clamp(96px, 27vw, 460px); line-height: .8; margin-top: calc(28px + 0.22em); white-space: nowrap; color: var(--butter); }
+  .wordmark span { color: var(--tomato); }
+  .back { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; margin-top: 28px; font-weight: 700; color: var(--butter); }
   .back .ico { width: 18px; height: 18px; }
-  .credito-autor { margin: 16px 0 0; font-size: 14px; color: var(--muted); }
-  .credito-autor a { color: var(--ink); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--accent); }
-  .credito-autor a:hover { color: var(--brand); }
+  .credito-autor { margin: 8px 0 0; font-size: 14px; color: var(--cream-muted); }
+  .credito-autor a { display: inline-flex; align-items: center; min-height: 44px; color: var(--cream); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--tomato); }
+  .credito-autor a:hover { color: var(--butter); }
 
+  /* Emergency strip: phones only, always on screen; the body reserves its height so the footer ends above it. */
   .sos-bar { display: none; }
+  @media (max-width: 899px), (pointer: coarse) and (max-width: 1100px) {
+    body { padding-bottom: calc(var(--sos-h) + env(safe-area-inset-bottom, 0px)); }
+    .sos-bar { display: flex; align-items: center; gap: 12px; position: fixed; left: 0; right: 0; bottom: 0; z-index: 1000; min-height: var(--sos-h); padding: 10px var(--gutter) calc(10px + env(safe-area-inset-bottom, 0px)); background: var(--choc); color: var(--cream); border-top: 3px solid var(--butter); }
+    .sos-bar-text { flex: 1; min-width: 0; font-size: 13px; line-height: 1.25; white-space: nowrap; }
+    .sos-bar-text strong { display: block; font-size: 15px; font-weight: 500; color: var(--butter); }
+    .sos-bar .btn { border-color: var(--cream); box-shadow: 3px 3px 0 var(--cream); }
+  }
+  /* On the narrowest phones the full label would slide over "Aberto agora". */
+  @media (max-width: 359px) { .bar-extra { display: none; } }
 
   @media (prefers-reduced-motion: no-preference) {
-    .live::after { content: ""; position: absolute; inset: 0; border-radius: 50%; box-shadow: 0 0 0 0 var(--pulse); animation: pulse 2.2s ease-out infinite; }
-    @keyframes pulse { to { box-shadow: 0 0 0 12px var(--pulse-off); } }
+    .live::after { content: ""; position: absolute; inset: 0; border-radius: 50%; box-shadow: 0 0 0 0 var(--tomato); animation: pulse 2s ease-out infinite; }
+    @keyframes pulse { to { box-shadow: 0 0 0 10px transparent; } }
   }
 
-  @media (max-width: 960px) {
-    .nav { display: none; }
-    .hero, .section-head, .team, .visit, .faq, .sos-foot { grid-template-columns: minmax(0, 1fr); }
-    .hero-panel { min-height: 0; }
-    .hero-photo { min-height: 380px; }
-    .services, .quotes { grid-template-columns: repeat(2, 1fr); }
-    .quote:first-child { grid-column: span 2; }
-    .steps { grid-template-columns: 1fr; }
-    .steps-line { display: none; }
+  @media (min-width: 600px) {
+    .hero-actions { flex-direction: row; flex-wrap: wrap; }
+    .hero-actions .btn { width: auto; }
+    .svc summary { grid-template-columns: 56px minmax(0, 1fr) auto auto; padding: 12px 16px 12px 20px; min-height: 96px; gap: 20px; }
+    .svc-ico { width: 56px; height: 56px; }
+    .svc-ico .ico { width: 30px; height: 30px; }
+    .svc-when { display: block; }
+    .svc-body { padding: 28px; grid-template-columns: minmax(0, 1fr) auto; align-items: end; }
+    .svc-body .btn { justify-self: end; }
+    .quotes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .quotes .hero-quote { grid-column: span 2; }
+    .people { grid-auto-flow: row; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-columns: auto; overflow: visible; margin-inline: 0; padding: 0; }
+    .swipe-hint { display: none; }
   }
-  @media (max-width: 800px) {
-    :root { --header-h: 64px; }
-    .topbar .btn { display: none; }
-    body { padding-bottom: calc(var(--sos-h) + env(safe-area-inset-bottom, 0px)); }
-    .sos-bar { display: flex; align-items: center; gap: 12px; position: fixed; left: 0; right: 0; bottom: 0; z-index: 50; padding: 12px var(--gutter) calc(12px + env(safe-area-inset-bottom, 0px)); background: var(--brand-deep); color: var(--on-dark); box-shadow: var(--shadow); }
-    .sos-bar-text { flex: 1; font-size: 13px; line-height: 1.3; }
-    .sos-bar-text strong { display: block; font-size: 15px; color: var(--accent); }
+
+  @media (min-width: 1000px) {
+    .nav { display: flex; }
+    .head { grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); align-items: end; }
+    .big { font-size: min(10.5vw, 168px); }
+    .faq .big, .bring .big { font-size: min(8.5vw, 150px); }
+    .top-sos { display: inline-flex; }
+    .steps { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px; }
+    .step { grid-template-columns: minmax(0, 1fr); }
+    .step-num { grid-row: auto; }
+    .sos-foot { grid-template-columns: 1fr auto; align-items: end; }
+    .bring { grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); }
+    .people { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .person { min-height: 500px; }
+    .person:nth-child(even) { margin-top: 64px; }
+    .person:nth-child(odd) { margin-bottom: 64px; }
+    .quotes .hero-quote { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-rows: 1fr auto; gap: 20px 40px; padding: 28px; }
+    .quotes .hero-quote .pet { grid-row: span 2; }
+    .quotes .hero-quote blockquote { align-self: center; }
+    .visit { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); align-items: stretch; }
+    .map-canvas { height: 440px; }
+    .faq { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+    .cta { grid-template-columns: 1fr auto; }
   }
-  @media (max-width: 600px) {
-    .hero h1 .line { white-space: normal; }
-    .services, .quotes, .people { grid-template-columns: 1fr; }
-    .quote:first-child { grid-column: span 1; }
-    .stats { grid-template-columns: 1fr 1fr; }
-    .hero-actions .btn { width: 100%; justify-content: space-between; }
-    .team-photo { min-height: 320px; }
-    .visit-photo { min-height: 300px; }
+
+  /* Desktop poster: title split in opposite corners, dog in the middle. */
+  @media (min-width: 900px) and (orientation: landscape) and (min-height: 601px) {
+    .hero { --t-size: clamp(110px, min(13vw, 25svh), 290px); --stage-h: clamp(560px, calc(100svh - 120px), 1000px); padding-block: 8px 40px; }
+    .hero-stage { display: block; height: var(--stage-h); }
+    .t { position: absolute; }
+    .t1 { top: 0; left: var(--gutter); }
+    .t2 { bottom: 0; right: var(--gutter); }
+    .dog { position: absolute; bottom: 0; left: 0; right: 0; margin-inline: auto; height: calc(100% - var(--t-size) * 0.62); }
+    .balloon { position: absolute; margin: 0; top: 42%; right: calc(50% + var(--stage-h) * 0.17); max-width: 30ch; padding: 16px 22px; z-index: 3; }
+    .balloon p { margin: 0; }
+    .balloon strong { font-size: 20px; }
+    .balloon::before { left: auto; right: -18px; top: 30%; border: 9px solid transparent; border-left: 18px solid var(--choc); border-bottom: 9px solid transparent; }
+    .hero-actions { position: absolute; left: var(--gutter); bottom: 6px; flex-direction: column; align-items: flex-start; z-index: 3; }
+    .lead { position: absolute; top: 12px; right: var(--gutter); margin: 0; max-width: 30ch; }
+  }
+
+  @media (max-height: 640px) { .balloon .sub { display: none; } }
+
+  /* Phone on its side: two columns so the action stays on the first screen. */
+  @media (orientation: landscape) and (max-height: 600px) {
+    .hero { padding-block: 4px 32px; }
+    .hero-stage { grid-template-columns: minmax(0, 1fr) auto; grid-template-rows: auto auto auto auto 1fr; row-gap: 10px; column-gap: 16px; }
+    .hero { --t-size: clamp(40px, 11svh, 80px); }
+    .topbar { min-height: 52px; }
+    .balloon strong { font-size: 15px; }
+    .t1 { grid-area: 1 / 1; }
+    .t2 { grid-area: 2 / 1; justify-self: start; }
+    .dog { grid-column: 2; grid-row: 1 / -1; align-self: start; height: calc(100svh - 170px); min-height: 200px; }
+    .balloon { grid-area: 3 / 1; margin: 0; padding: 8px 14px; }
+    .balloon::before { left: auto; right: -14px; top: 40%; border: 7px solid transparent; border-left: 12px solid var(--choc); }
+    .balloon .sub { display: none; }
+    .hero-actions { grid-area: 4 / 1; flex-direction: row; }
+    .hero-actions .btn { width: auto; min-height: 46px; font-size: 15px; }
+    .lead { grid-area: 5 / 1; }
+    /* A short screen cannot afford a tall empty card or a wordmark taller than half the view. */
+    .person { min-height: 300px; }
+    .wordmark { font-size: min(27vw, 42svh); }
+    .back { margin-top: 20px; }
+    :root { --sos-h: 62px; }
+    .sos-bar { padding-block: 6px; }
   }
 </style>
 </head>
 <body>
   <div class="notice" data-aviso="proposta"><strong>Demonstração.</strong> Empresa, preços e avaliações são fictícios. Fotos: Unsplash.</div>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <!-- Icons: brands from Simple Icons (CC0), interface from Phosphor (MIT). -->
+    <symbol id="i-whatsapp" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></symbol>
+    <symbol id="i-googlemaps" viewBox="0 0 24 24"><path d="M19.527 4.799c1.212 2.608.937 5.678-.405 8.173-1.101 2.047-2.744 3.74-4.098 5.614-.619.858-1.244 1.75-1.669 2.727-.141.325-.263.658-.383.992-.121.333-.224.673-.34 1.008-.109.314-.236.684-.627.687h-.007c-.466-.001-.579-.53-.695-.887-.284-.874-.581-1.713-1.019-2.525-.51-.944-1.145-1.817-1.79-2.671L19.527 4.799zM8.545 7.705l-3.959 4.707c.724 1.54 1.821 2.863 2.871 4.18.247.31.494.622.737.936l4.984-5.925-.029.01c-1.741.601-3.691-.291-4.392-1.987a3.377 3.377 0 0 1-.209-.716c-.063-.437-.077-.761-.004-1.198l.001-.007zM5.492 3.149l-.003.004c-1.947 2.466-2.281 5.88-1.117 8.77l4.785-5.689-.058-.05-3.607-3.035zM14.661.436l-3.838 4.563a.295.295 0 0 1 .027-.01c1.6-.551 3.403.15 4.22 1.626.176.319.323.683.377 1.045.068.446.085.773.012 1.22l-.003.016 3.836-4.561A8.382 8.382 0 0 0 14.67.439l-.009-.003zM9.466 5.868L14.162.285l-.047-.012A8.31 8.31 0 0 0 11.986 0a8.439 8.439 0 0 0-6.169 2.766l-.016.018 3.665 3.084z"/></symbol>
+    <symbol id="i-instagram" viewBox="0 0 24 24"><path d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/></symbol>
+    <symbol id="i-pix" viewBox="0 0 24 24"><path d="M5.283 18.36a3.505 3.505 0 0 0 2.493-1.032l3.6-3.6a.684.684 0 0 1 .946 0l3.613 3.613a3.504 3.504 0 0 0 2.493 1.032h.71l-4.56 4.56a3.647 3.647 0 0 1-5.156 0L4.85 18.36ZM18.428 5.627a3.505 3.505 0 0 0-2.493 1.032l-3.613 3.614a.67.67 0 0 1-.946 0l-3.6-3.6A3.505 3.505 0 0 0 5.283 5.64h-.434l4.573-4.572a3.646 3.646 0 0 1 5.156 0l4.559 4.559ZM1.068 9.422 3.79 6.699h1.492a2.483 2.483 0 0 1 1.744.722l3.6 3.6a1.73 1.73 0 0 0 2.443 0l3.614-3.613a2.482 2.482 0 0 1 1.744-.723h1.767l2.737 2.737a3.646 3.646 0 0 1 0 5.156l-2.736 2.736h-1.768a2.482 2.482 0 0 1-1.744-.722l-3.613-3.613a1.77 1.77 0 0 0-2.444 0l-3.6 3.6a2.483 2.483 0 0 1-1.744.722H3.791l-2.723-2.723a3.646 3.646 0 0 1 0-5.156"/></symbol>
+    <symbol id="i-stethoscope" viewBox="0 0 256 256"><path d="M220,160a12,12,0,1,1-12-12A12,12,0,0,1,220,160Zm-4.55,39.29A48.08,48.08,0,0,1,168,240H144a48.05,48.05,0,0,1-48-48V151.49A64,64,0,0,1,40,88V40a8,8,0,0,1,8-8H72a8,8,0,0,1,0,16H56V88a48,48,0,0,0,48.64,48c26.11-.34,47.36-22.25,47.36-48.83V48H136a8,8,0,0,1,0-16h24a8,8,0,0,1,8,8V87.17c0,32.84-24.53,60.29-56,64.31V192a32,32,0,0,0,32,32h24a32.06,32.06,0,0,0,31.22-25,40,40,0,1,1,16.23.27ZM232,160a24,24,0,1,0-24,24A24,24,0,0,0,232,160Z"/></symbol>
+    <symbol id="i-syringe" viewBox="0 0 256 256"><path d="M237.66,66.34l-48-48a8,8,0,0,0-11.32,11.32L196.69,48,168,76.69,133.66,42.34a8,8,0,0,0-11.32,11.32L128.69,60l-84,84A15.86,15.86,0,0,0,40,155.31v49.38L18.34,226.34a8,8,0,0,0,11.32,11.32L51.31,216h49.38A15.86,15.86,0,0,0,112,211.31l84-84,6.34,6.35a8,8,0,0,0,11.32-11.32L179.31,88,208,59.31l18.34,18.35a8,8,0,0,0,11.32-11.32ZM100.69,200H56V155.31l18-18,20.34,20.35a8,8,0,0,0,11.32-11.32L85.31,126,98,113.31l20.34,20.35a8,8,0,0,0,11.32-11.32L109.31,102,140,71.31,184.69,116Z"/></symbol>
+    <symbol id="i-microscope" viewBox="0 0 256 256"><path d="M224,208H203.94A88.05,88.05,0,0,0,144,64.37V32a16,16,0,0,0-16-16H80A16,16,0,0,0,64,32V136a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V80.46A72,72,0,0,1,181.25,208H32a8,8,0,0,0,0,16H224a8,8,0,0,0,0-16Zm-96-72H80V32h48V136ZM72,184a8,8,0,0,1,0-16h64a8,8,0,0,1,0,16Z"/></symbol>
+    <symbol id="i-first-aid-kit" viewBox="0 0 256 256"><path d="M216,56H176V48a24,24,0,0,0-24-24H104A24,24,0,0,0,80,48v8H40A16,16,0,0,0,24,72V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V72A16,16,0,0,0,216,56ZM96,48a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96ZM216,200H40V72H216V200Zm-56-64a8,8,0,0,1-8,8H136v16a8,8,0,0,1-16,0V144H104a8,8,0,0,1,0-16h16V112a8,8,0,0,1,16,0v16h16A8,8,0,0,1,160,136Z"/></symbol>
+    <symbol id="i-bed" viewBox="0 0 256 256"><path d="M216,72H32V48a8,8,0,0,0-16,0V208a8,8,0,0,0,16,0V176H240v32a8,8,0,0,0,16,0V112A40,40,0,0,0,216,72ZM32,88h72v72H32Zm88,72V88h96a24,24,0,0,1,24,24v48Z"/></symbol>
+    <symbol id="i-bathtub" viewBox="0 0 256 256"><path d="M240,96H208a8,8,0,0,0-8-8H136a8,8,0,0,0-8,8H64V52A12,12,0,0,1,76,40a12.44,12.44,0,0,1,12.16,9.59,8,8,0,0,0,15.68-3.18A28.32,28.32,0,0,0,76,24,28,28,0,0,0,48,52V96H16a8,8,0,0,0-8,8v40a56.06,56.06,0,0,0,56,56v16a8,8,0,0,0,16,0V200h96v16a8,8,0,0,0,16,0V200a56.06,56.06,0,0,0,56-56V104A8,8,0,0,0,240,96Zm-48,8v32H144V104Zm40,40a40,40,0,0,1-40,40H64a40,40,0,0,1-40-40V112H128v32a8,8,0,0,0,8,8h64a8,8,0,0,0,8-8V112h24Z"/></symbol>
+    <symbol id="i-paw-print" viewBox="0 0 256 256"><path d="M212,80a28,28,0,1,0,28,28A28,28,0,0,0,212,80Zm0,40a12,12,0,1,1,12-12A12,12,0,0,1,212,120ZM72,108a28,28,0,1,0-28,28A28,28,0,0,0,72,108ZM44,120a12,12,0,1,1,12-12A12,12,0,0,1,44,120ZM92,88A28,28,0,1,0,64,60,28,28,0,0,0,92,88Zm0-40A12,12,0,1,1,80,60,12,12,0,0,1,92,48Zm72,40a28,28,0,1,0-28-28A28,28,0,0,0,164,88Zm0-40a12,12,0,1,1-12,12A12,12,0,0,1,164,48Zm23.12,100.86a35.3,35.3,0,0,1-16.87-21.14,44,44,0,0,0-84.5,0A35.25,35.25,0,0,1,69,148.82,40,40,0,0,0,88,224a39.48,39.48,0,0,0,15.52-3.13,64.09,64.09,0,0,1,48.87,0,40,40,0,0,0,34.73-72ZM168,208a24,24,0,0,1-9.45-1.93,80.14,80.14,0,0,0-61.19,0,24,24,0,0,1-20.71-43.26,51.22,51.22,0,0,0,24.46-30.67,28,28,0,0,1,53.78,0,51.27,51.27,0,0,0,24.53,30.71A24,24,0,0,1,168,208Z"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 256 256"><path d="M228,128a12,12,0,0,1-12,12H140v76a12,12,0,0,1-24,0V140H40a12,12,0,0,1,0-24h76V40a12,12,0,0,1,24,0v76h76A12,12,0,0,1,228,128Z"/></symbol>
+    <symbol id="i-arrow-left" viewBox="0 0 256 256"><path d="M228,128a12,12,0,0,1-12,12H69l51.52,51.51a12,12,0,0,1-17,17l-72-72a12,12,0,0,1,0-17l72-72a12,12,0,0,1,17,17L69,116H216A12,12,0,0,1,228,128Z"/></symbol>
+    <symbol id="i-map-pin" viewBox="0 0 256 256"><path d="M128,64a40,40,0,1,0,40,40A40,40,0,0,0,128,64Zm0,64a24,24,0,1,1,24-24A24,24,0,0,1,128,128Zm0-112a88.1,88.1,0,0,0-88,88c0,31.4,14.51,64.68,42,96.25a254.19,254.19,0,0,0,41.45,38.3,8,8,0,0,0,9.18,0A254.19,254.19,0,0,0,174,200.25c27.45-31.57,42-64.85,42-96.25A88.1,88.1,0,0,0,128,16Zm0,206c-16.53-13-72-60.75-72-118a72,72,0,0,1,144,0C200,161.23,144.53,209,128,222Z"/></symbol>
+    <symbol id="i-car" viewBox="0 0 256 256"><path d="M240,104H229.2L201.42,41.5A16,16,0,0,0,186.8,32H69.2a16,16,0,0,0-14.62,9.5L26.8,104H16a8,8,0,0,0,0,16h8v80a16,16,0,0,0,16,16H64a16,16,0,0,0,16-16V184h96v16a16,16,0,0,0,16,16h24a16,16,0,0,0,16-16V120h8a8,8,0,0,0,0-16ZM69.2,48H186.8l24.89,56H44.31ZM64,200H40V184H64Zm128,0V184h24v16Zm24-32H40V120H216ZM56,144a8,8,0,0,1,8-8H80a8,8,0,0,1,0,16H64A8,8,0,0,1,56,144Zm112,0a8,8,0,0,1,8-8h16a8,8,0,0,1,0,16H176A8,8,0,0,1,168,144Z"/></symbol>
+    <symbol id="i-credit-card" viewBox="0 0 256 256"><path d="M224,48H32A16,16,0,0,0,16,64V192a16,16,0,0,0,16,16H224a16,16,0,0,0,16-16V64A16,16,0,0,0,224,48Zm0,16V88H32V64Zm0,128H32V104H224v88Zm-16-24a8,8,0,0,1-8,8H168a8,8,0,0,1,0-16h32A8,8,0,0,1,208,168Zm-64,0a8,8,0,0,1-8,8H120a8,8,0,0,1,0-16h16A8,8,0,0,1,144,168Z"/></symbol>
+    <symbol id="i-identification-card" viewBox="0 0 256 256"><path d="M200,112a8,8,0,0,1-8,8H152a8,8,0,0,1,0-16h40A8,8,0,0,1,200,112Zm-8,24H152a8,8,0,0,0,0,16h40a8,8,0,0,0,0-16Zm40-80V200a16,16,0,0,1-16,16H40a16,16,0,0,1-16-16V56A16,16,0,0,1,40,40H216A16,16,0,0,1,232,56ZM216,200V56H40V200H216Zm-80.26-34a8,8,0,1,1-15.5,4c-2.63-10.26-13.06-18-24.25-18s-21.61,7.74-24.25,18a8,8,0,1,1-15.5-4,39.84,39.84,0,0,1,17.19-23.34,32,32,0,1,1,45.12,0A39.76,39.76,0,0,1,135.75,166ZM96,136a16,16,0,1,0-16-16A16,16,0,0,0,96,136Z"/></symbol>
+    <symbol id="i-pill" viewBox="0 0 256 256"><path d="M216.42,39.6a53.26,53.26,0,0,0-75.32,0L39.6,141.09a53.26,53.26,0,0,0,75.32,75.31h0L216.43,114.91A53.31,53.31,0,0,0,216.42,39.6ZM103.61,205.09h0a37.26,37.26,0,0,1-52.7-52.69L96,107.31,148.7,160ZM205.11,103.6,160,148.69,107.32,96l45.1-45.09a37.26,37.26,0,0,1,52.69,52.69ZM189.68,82.34a8,8,0,0,1,0,11.32l-24,24a8,8,0,1,1-11.31-11.32l24-24A8,8,0,0,1,189.68,82.34Z"/></symbol>
+    <symbol id="i-package" viewBox="0 0 256 256"><path d="M223.68,66.15,135.68,18a15.88,15.88,0,0,0-15.36,0l-88,48.17a16,16,0,0,0-8.32,14v95.64a16,16,0,0,0,8.32,14l88,48.17a15.88,15.88,0,0,0,15.36,0l88-48.17a16,16,0,0,0,8.32-14V80.18A16,16,0,0,0,223.68,66.15ZM128,32l80.34,44-29.77,16.3-80.35-44ZM128,120,47.66,76l33.9-18.56,80.34,44ZM40,90l80,43.78v85.79L40,175.82Zm176,85.78h0l-80,43.79V133.82l32-17.51V152a8,8,0,0,0,16,0V107.55L216,90v85.77Z"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm64-88a8,8,0,0,1-8,8H128a8,8,0,0,1-8-8V72a8,8,0,0,1,16,0v48h48A8,8,0,0,1,192,128Z"/></symbol>
+    <symbol id="i-star" viewBox="0 0 256 256"><path d="M234.29,114.85l-45,38.83L203,211.75a16.4,16.4,0,0,1-24.5,17.82L128,198.49,77.47,229.57A16.4,16.4,0,0,1,53,211.75l13.76-58.07-45-38.83A16.46,16.46,0,0,1,31.08,86l59-4.76,22.76-55.08a16.36,16.36,0,0,1,30.27,0l22.75,55.08,59,4.76a16.46,16.46,0,0,1,9.37,28.86Z"/></symbol>
+  </svg>
 
-  <header class="header" id="header">
+  <header class="header">
     <div class="wrap topbar">
-      <a class="logo" href="#topo"><span class="live" aria-hidden="true"></span>vigília</a>
+      <a class="logo" href="#topo" aria-label="Vigília Veterinária 24h, início"><svg class="ico" aria-hidden="true"><use href="#i-paw-print"/></svg><b>Vigília</b><small>veterinária 24 horas</small></a>
       <nav class="nav" aria-label="Principal">
         <a href="#servicos">Serviços</a>
         <a href="#emergencia">Emergência</a>
+        <a href="#antes">O que trazer</a>
         <a href="#equipe">Equipe</a>
-        <a href="#horarios">Horários</a>
+        <a href="#horarios">Horários e preços</a>
         <a href="#duvidas">Dúvidas</a>
       </nav>
-      <a class="btn btn-sos btn-small" href="https://wa.me/?text=Emerg%C3%AAncia%21%20Estou%20indo%20para%20a%20Vig%C3%ADlia%20agora%20com%20meu%20animal.%20O%20que%20aconteceu%3A" target="_blank" rel="noopener">Emergência <span class="dot"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.8 7L4 20l1.1-4.8A8 8 0 1 1 21 12z"/></svg></span></a>
+      <a class="btn btn-sos btn-small top-sos" href="https://wa.me/?text=Emerg%C3%AAncia%21%20Estou%20indo%20para%20a%20Vig%C3%ADlia%20agora%20com%20meu%20animal.%20O%20que%20aconteceu%3A" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-whatsapp"/></svg>Emergência</a>
     </div>
   </header>
 
-  <main class="wrap" id="topo">
-    <div class="hero">
-      <section class="hero-panel" aria-label="Apresentação">
-        <p class="open-badge"><span class="live" aria-hidden="true"></span>Aberto 24 horas</p>
-        <div>
-          <p class="eyebrow">Clínica veterinária · Mirante, Campina Grande (PB)</p>
-          <h1><span class="line"><span>Qualquer hora,</span></span><span class="line"><span class="hl">porta aberta.</span></span></h1>
-          <p class="hero-lead">Veterinário de plantão a noite inteira, internação e laboratório no mesmo prédio. Numa emergência, mande mensagem do caminho e a sala fica pronta antes de você chegar.</p>
-          <div class="hero-actions">
-            <a class="btn btn-sos" href="https://wa.me/?text=Emerg%C3%AAncia%21%20Estou%20indo%20para%20a%20Vig%C3%ADlia%20agora%20com%20meu%20animal.%20O%20que%20aconteceu%3A" target="_blank" rel="noopener">Emergência agora <span class="dot"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.8 7L4 20l1.1-4.8A8 8 0 1 1 21 12z"/></svg></span></a>
-            <a class="btn btn-ghost" href="https://wa.me/?text=Ol%C3%A1%21%20Quero%20agendar%20uma%20consulta%20na%20Vig%C3%ADlia.%20Nome%20e%20esp%C3%A9cie%20do%20animal%3A" target="_blank" rel="noopener">Agendar consulta <span class="dot"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg></span></a>
-          </div>
+  <main id="topo">
+    <section class="hero" aria-label="Apresentação">
+      <div class="wrap hero-stage">
+        <h1 class="hero-title"><span class="sr-only">Vigília Veterinária: cuidado 24 horas em Campina Grande</span><span class="t t1" aria-hidden="true">Cuidado</span><span class="t t2" aria-hidden="true">24 horas</span></h1>
+        <img class="dog" src="img/labrador.webp" alt="Labrador claro sentado, olhando para cima de boca aberta" width="759" height="1100" fetchpriority="high">
+        <div class="balloon" role="note"><p><strong>Aberto agora, de madrugada também.</strong><span class="sub"><span class="live" aria-hidden="true"></span>Dra. Helena no plantão até as 8h</span></p></div>
+        <div class="hero-actions">
+          <a class="btn btn-sos" href="https://wa.me/?text=Emerg%C3%AAncia%21%20Estou%20indo%20para%20a%20Vig%C3%ADlia%20agora%20com%20meu%20animal.%20O%20que%20aconteceu%3A" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-whatsapp"/></svg>Emergência agora</a>
+          <a class="btn btn-cream" href="https://wa.me/?text=Ol%C3%A1%21%20Quero%20agendar%20uma%20consulta%20na%20Vig%C3%ADlia.%20Nome%20e%20esp%C3%A9cie%20do%20animal%3A" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-whatsapp"/></svg>Agendar consulta</a>
         </div>
-      </section>
-      <div class="hero-photo">
-        <img src="https://images.unsplash.com/photo-1654895716780-b4664497420d?auto=format&fit=crop&w=1000&q=70" alt="Cachorro pequeno em pé na mesa de exame, amparado pela mão da veterinária" width="1000" height="1500" fetchpriority="high">
-        <div class="glass glass-duty"><span class="live" aria-hidden="true"></span><span><strong>Dra. Helena no plantão</strong>até as 7h de amanhã</span></div>
-        <div class="glass glass-score">
-          <div>
-            <div class="stars" aria-hidden="true">
-              <svg class="ico" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg>
-              <svg class="ico" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg>
-              <svg class="ico" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg>
-              <svg class="ico" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg>
-              <svg class="ico" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg>
+        <p class="lead">Clínica veterinária no Mirante, a uns cinco minutos do Partage Shopping, aberta sem parar desde 2017. Internação e laboratório no mesmo prédio. <b>Numa emergência, mande mensagem do caminho</b> e a sala fica pronta antes de você chegar.</p>
+      </div>
+    </section>
+
+    <section class="band band-choc on-dark" id="servicos">
+      <div class="wrap">
+        <div class="head">
+          <h2 class="big">Da vacina à cirurgia</h2>
+          <p>Cães e gatos, todos os dias. O exame sai do nosso laboratório, então o diagnóstico da madrugada não espera o dia clarear. Toque num serviço para ver preço e horário.</p>
+        </div>
+        <div class="svc-list">
+          <details class="svc" name="servico">
+            <summary><span class="svc-ico" aria-hidden="true"><svg class="ico"><use href="#i-stethoscope"/></svg></span><span class="svc-name">Clínica geral</span><span class="svc-when">Seg a sáb, 8h às 20h</span><span class="toggle" aria-hidden="true"><svg class="ico"><use href="#i-plus"/></svg></span></summary>
+            <div class="svc-body">
+              <div><p>Consulta com exame completo e receita explicada linha por linha. Com hora marcada ou por ordem de chegada; de madrugada, o plantão atende.</p><p class="price">Consulta <b>R$ 150</b>. Retorno em até 15 dias sem custo.</p><p class="when">Seg a sáb, 8h às 20h</p></div>
+              <a class="btn btn-sos" href="https://wa.me/?text=Ol%C3%A1%21%20Quero%20marcar%20uma%20consulta%20de%20cl%C3%ADnica%20geral%20na%20Vig%C3%ADlia.%20Nome%20e%20esp%C3%A9cie%20do%20animal%3A" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-whatsapp"/></svg>Marcar consulta</a>
             </div>
-            <p>486 avaliações no Google</p>
+          </details>
+          <details class="svc" name="servico">
+            <summary><span class="svc-ico" aria-hidden="true"><svg class="ico"><use href="#i-syringe"/></svg></span><span class="svc-name">Vacinas</span><span class="svc-when">Seg a sáb, 8h às 18h</span><span class="toggle" aria-hidden="true"><svg class="ico"><use href="#i-plus"/></svg></span></summary>
+            <div class="svc-body">
+              <div><p>V10, antirrábica e a quádrupla dos gatos. A carteirinha fica registrada aqui e a gente avisa pelo WhatsApp quando chegar a hora do reforço.</p><p class="price">V10 <b>R$ 95</b> · antirrábica <b>R$ 60</b> · quádrupla felina <b>R$ 125</b></p><p class="when">Seg a sáb, 8h às 18h</p></div>
+              <a class="btn btn-sos" href="https://wa.me/?text=Ol%C3%A1%21%20Quero%20vacinar%20meu%20animal%20na%20Vig%C3%ADlia.%20Esp%C3%A9cie%20e%20idade%3A" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-whatsapp"/></svg>Marcar vacina</a>
+            </div>
+          </details>
+          <details class="svc" name="servico">
+            <summary><span class="svc-ico" aria-hidden="true"><svg class="ico"><use href="#i-microscope"/></svg></span><span class="svc-name">Exames</span><span class="svc-when">Coleta a qualquer hora</span><span class="toggle" aria-hidden="true"><svg class="ico"><use href="#i-plus"/></svg></span></summary>
+            <div class="svc-body">
+              <div><p>Hemograma, bioquímico, raio-X e ultrassom, feitos aqui dentro. Resultado de urgência em cerca de uma hora.</p><p class="price">Hemograma <b>R$ 70</b> · raio-X a partir de <b>R$ 160</b> · ultrassom <b>R$ 190</b></p><p class="when">Coleta a qualquer hora</p></div>
+              <a class="btn btn-sos" href="https://wa.me/?text=Ol%C3%A1%21%20Preciso%20fazer%20exames%20no%20meu%20animal%20na%20Vig%C3%ADlia.%20Qual%20exame%20o%20veterin%C3%A1rio%20pediu%3A" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-whatsapp"/></svg>Perguntar sobre exame</a>
+            </div>
+          </details>
+          <details class="svc" name="servico">
+            <summary><span class="svc-ico" aria-hidden="true"><svg class="ico"><use href="#i-first-aid-kit"/></svg></span><span class="svc-name">Cirurgia</span><span class="svc-when">Centro cirúrgico 24 horas</span><span class="toggle" aria-hidden="true"><svg class="ico"><use href="#i-plus"/></svg></span></summary>
+            <div class="svc-body">
+              <div><p>Castração, retirada de corpo estranho, fratura e cesárea. A anestesia é monitorada do começo ao fim, e você recebe mensagem assim que ele acordar.</p><p class="price">Castração de gata a partir de <b>R$ 480</b>, com avaliação antes. O resto, orçamento na consulta.</p><p class="when">Centro cirúrgico pronto 24 horas</p></div>
+              <a class="btn btn-sos" href="https://wa.me/?text=Ol%C3%A1%21%20Quero%20conversar%20sobre%20uma%20cirurgia%20na%20Vig%C3%ADlia.%20Esp%C3%A9cie%20do%20animal%20e%20qual%20cirurgia%3A" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-whatsapp"/></svg>Conversar sobre cirurgia</a>
+            </div>
+          </details>
+          <details class="svc" name="servico">
+            <summary><span class="svc-ico" aria-hidden="true"><svg class="ico"><use href="#i-bed"/></svg></span><span class="svc-name">Internação</span><span class="svc-when">Visitas às 10h e às 17h</span><span class="toggle" aria-hidden="true"><svg class="ico"><use href="#i-plus"/></svg></span></summary>
+            <div class="svc-body">
+              <div><p>Doze leitos, com gente acordada ao lado a noite toda. Todo fim de tarde chega um boletim com foto no seu WhatsApp.</p><p class="price">Diária a partir de <b>R$ 220</b>, sem contar remédio e exame.</p><p class="when">Visitas às 10h e às 17h</p></div>
+              <a class="btn btn-sos" href="https://wa.me/?text=Ol%C3%A1%21%20Quero%20saber%20como%20funciona%20a%20interna%C3%A7%C3%A3o%20na%20Vig%C3%ADlia.%20Nome%20e%20esp%C3%A9cie%20do%20animal%3A" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-whatsapp"/></svg>Perguntar sobre internação</a>
+            </div>
+          </details>
+          <details class="svc" name="servico">
+            <summary><span class="svc-ico" aria-hidden="true"><svg class="ico"><use href="#i-bathtub"/></svg></span><span class="svc-name">Banho e tosa</span><span class="svc-when">Ter a sáb, 8h às 17h</span><span class="toggle" aria-hidden="true"><svg class="ico"><use href="#i-plus"/></svg></span></summary>
+            <div class="svc-body">
+              <div><p>Banho com produto hipoalergênico, tosa higiênica ou na tesoura, corte de unha e limpeza de ouvido. Cachorro que treme no secador vai no tempo dele.</p><p class="price">Porte pequeno <b>R$ 55</b> · médio <b>R$ 70</b> · grande <b>R$ 90</b></p><p class="when">Ter a sáb, 8h às 17h</p></div>
+              <a class="btn btn-sos" href="https://wa.me/?text=Ol%C3%A1%21%20Quero%20agendar%20o%20banho%20e%20tosa%20na%20Vig%C3%ADlia.%20Porte%20do%20animal%3A" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-whatsapp"/></svg>Agendar banho</a>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="band band-tomato" id="emergencia">
+      <div class="wrap">
+        <div class="head">
+          <h2 class="big">Numa emergência</h2>
+          <p class="panel">Veneno, chumbinho, atropelamento, falta de ar, parto que não evolui. Faça isto enquanto vem para cá.</p>
+        </div>
+        <div class="sos-block on-dark">
+          <ol class="steps">
+            <li class="step">
+              <span class="step-num" aria-hidden="true">1</span>
+              <h3>Mande mensagem do caminho</h3>
+              <p>Diga o que aconteceu, a espécie e o peso aproximado. A equipe separa a sala e o material antes de você chegar.</p>
+            </li>
+            <li class="step">
+              <span class="step-num" aria-hidden="true">2</span>
+              <h3>Transporte com cuidado</h3>
+              <ul>
+                <li><b>Cachorro grande:</b> um lençol ou toalha de banho vira maca, com duas pessoas segurando pelas pontas.</li>
+                <li><b>Gato:</b> na caixa de transporte, com um pano por cima para ele se acalmar no escuro.</li>
+                <li><b>Se pode ser fratura ou coluna:</b> mexa o mínimo e apoie numa tábua ou papelão firme.</li>
+                <li>Com dor, até o mais manso morde. Segure pela nuca e pelo peito, longe do rosto.</li>
+                <li>Não dê remédio de gente, leite nem comida.</li>
+              </ul>
+            </li>
+            <li class="step">
+              <span class="step-num" aria-hidden="true">3</span>
+              <h3>Traga o que ele engoliu</h3>
+              <p>A embalagem do veneno, do remédio ou um pedaço do que ele comeu diz ao veterinário qual antídoto usar.</p>
+            </li>
+          </ol>
+          <div class="sos-foot">
+            <div class="stats">
+              <div class="stat"><b data-count="2">2</b><span>veterinários por plantão</span></div>
+              <div class="stat"><b data-count="12">12</b><span>leitos de internação</span></div>
+              <div class="stat"><b data-count="9">9</b><span>anos sem fechar a porta</span></div>
+            </div>
+            <a class="btn btn-sos" href="https://wa.me/?text=Emerg%C3%AAncia%21%20Estou%20indo%20para%20a%20Vig%C3%ADlia%20agora%20com%20meu%20animal.%20O%20que%20aconteceu%3A" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-whatsapp"/></svg>Estou a caminho</a>
           </div>
-          <b>4,9</b>
         </div>
-      </div>
-    </div>
-
-    <section id="servicos">
-      <div class="section-head">
-        <div><span class="kicker">Serviços</span><h2>Da vacina à cirurgia, no mesmo endereço.</h2></div>
-        <p>Cães e gatos atendidos todos os dias. O exame sai do nosso laboratório, então o diagnóstico da madrugada não espera o dia clarear.</p>
-      </div>
-      <div class="services">
-        <article class="service">
-          <div class="service-top"><span class="service-icon"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3v6a4 4 0 0 0 8 0V3M10 13v2a5 5 0 0 0 10 0v-1"/><circle cx="20" cy="12" r="2"/></svg></span><span class="service-num">01</span></div>
-          <h3>Clínica geral</h3>
-          <p>Consulta com exame completo e receita explicada linha por linha.</p>
-          <span class="when">Com hora marcada ou por ordem de chegada</span>
-        </article>
-        <article class="service">
-          <div class="service-top"><span class="service-icon"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 2l4 4M20 4l-4 4M15 5l4 4-9 9H6v-4zM11 9l3 3M6 18l-4 4"/></svg></span><span class="service-num">02</span></div>
-          <h3>Vacinas</h3>
-          <p>V8, V10, antirrábica e as vacinas de gato. A carteirinha fica registrada e avisamos pelo WhatsApp quando chegar o reforço.</p>
-          <span class="when">Segunda a sábado</span>
-        </article>
-        <article class="service">
-          <div class="service-top"><span class="service-icon"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3h6M10 3v6l-5.2 8.8A2 2 0 0 0 6.5 21h11a2 2 0 0 0 1.7-3.2L14 9V3M7.6 15h8.8"/></svg></span><span class="service-num">03</span></div>
-          <h3>Exames e laboratório</h3>
-          <p>Hemograma, bioquímico, raio-X e ultrassom. Resultado de urgência em cerca de uma hora.</p>
-          <span class="when">Coleta a qualquer hora</span>
-        </article>
-        <article class="service is-night">
-          <div class="service-top"><span class="service-icon"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h4l2-5 4 10 2-5h6"/></svg></span><span class="service-num">04</span></div>
-          <h3>Cirurgia</h3>
-          <p>Castração, retirada de corpo estranho, fratura e cesárea. Anestesia monitorada do começo ao fim.</p>
-          <span class="when">Centro cirúrgico pronto 24 horas</span>
-        </article>
-        <article class="service is-night">
-          <div class="service-top"><span class="service-icon"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6v14M3 16h18v4M21 16v-3a3 3 0 0 0-3-3h-8v6"/><circle cx="6.5" cy="12.5" r="1.5"/></svg></span><span class="service-num">05</span></div>
-          <h3>Internação</h3>
-          <p>Doze leitos com gente acordada ao lado a noite toda. Boletim com foto no WhatsApp todo fim de tarde.</p>
-          <span class="when">Visitas às 10h e às 17h</span>
-        </article>
-        <article class="service">
-          <div class="service-top"><span class="service-icon"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M8.2 8.2L20 20M8.2 15.8L20 4"/></svg></span><span class="service-num">06</span></div>
-          <h3>Banho e tosa</h3>
-          <p>Banho com produto hipoalergênico, tosa higiênica ou na tesoura, corte de unha e limpeza de ouvido.</p>
-          <span class="when"><a href="https://wa.me/?text=Ol%C3%A1%21%20Quero%20agendar%20o%20banho%20e%20tosa%20na%20Vig%C3%ADlia.%20Porte%20do%20animal%3A" target="_blank" rel="noopener">Agendar pelo WhatsApp</a></span>
-        </article>
       </div>
     </section>
 
-    <section class="sos" id="emergencia">
-      <div class="section-head">
-        <div><span class="kicker">Emergência</span><h2>Enquanto você vem para cá.</h2></div>
-        <p>Veneno, atropelamento, falta de ar, parto que não evolui. O que fazer até vocês chegarem.</p>
-      </div>
-      <div class="steps-wrap">
-      <svg class="steps-line" viewBox="0 0 1000 24" preserveAspectRatio="none" aria-hidden="true"><path d="M56 12 C 160 -2, 300 26, 400 12 S 640 -2, 736 12"/></svg>
-      <ol class="steps">
-        <li class="step">
-          <span class="step-num">1</span>
-          <h3>Mande mensagem do caminho</h3>
-          <p>Diga o que aconteceu, a espécie e o peso aproximado. A equipe já separa a sala e o material.</p>
-        </li>
-        <li class="step">
-          <span class="step-num">2</span>
-          <h3>Transporte com cuidado</h3>
-          <ul>
-            <li>Enrole numa toalha ou use a caixa de transporte.</li>
-            <li>Não dê remédio de gente, leite ou comida.</li>
-            <li>Sangramento: pano limpo e pressão firme.</li>
-          </ul>
-        </li>
-        <li class="step">
-          <span class="step-num">3</span>
-          <h3>Traga o que ele engoliu</h3>
-          <p>A embalagem do veneno, do remédio ou um pedaço do que foi comido diz ao veterinário qual antídoto usar.</p>
-        </li>
-      </ol>
-      </div>
-      <div class="sos-foot">
-        <div class="stats">
-          <div class="stat"><b data-count="2">2</b><span>veterinários por plantão</span></div>
-          <div class="stat"><b data-count="12">12</b><span>leitos de internação</span></div>
-          <div class="stat"><b data-count="9" data-suffix=" anos">9 anos</b><span>sem fechar a porta</span></div>
+    <section class="band band-cream" id="antes">
+      <div class="wrap bring">
+        <div>
+          <h2 class="big">Antes de sair de casa</h2>
+          <p class="bring-intro">Na consulta marcada, isto poupa uns bons minutos no balcão. Na emergência, venha do jeito que der.</p>
         </div>
-        <a class="btn btn-sos" href="https://wa.me/?text=Emerg%C3%AAncia%21%20Estou%20indo%20para%20a%20Vig%C3%ADlia%20agora%20com%20meu%20animal.%20O%20que%20aconteceu%3A" target="_blank" rel="noopener">Avisar que estou a caminho <span class="dot"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.8 7L4 20l1.1-4.8A8 8 0 1 1 21 12z"/></svg></span></a>
+        <ul class="bring-list">
+          <li><span class="bring-ico" aria-hidden="true"><svg class="ico"><use href="#i-identification-card"/></svg></span><div><strong>Carteira de vacina</strong><p>Se não achar, venha assim mesmo. Quem já foi atendido aqui tem o histórico no sistema.</p></div></li>
+          <li><span class="bring-ico" aria-hidden="true"><svg class="ico"><use href="#i-pill"/></svg></span><div><strong>Receitas, exames antigos e o remédio que ele toma</strong><p>O remédio na caixa, não só o nome. A dose de gente e a de bicho não batem.</p></div></li>
+          <li><span class="bring-ico" aria-hidden="true"><svg class="ico"><use href="#i-package"/></svg></span><div><strong>A embalagem do que ele comeu</strong><p>Veneno de rato, remédio, produto de limpeza. Uma foto do rótulo já ajuda.</p></div></li>
+          <li><span class="bring-ico" aria-hidden="true"><svg class="ico"><use href="#i-paw-print"/></svg></span><div><strong>Coleira com guia ou caixa de transporte</strong><p>A recepção é uma só para cão e gato. Solto, até o mais calmo se assusta.</p></div></li>
+          <li><span class="bring-ico" aria-hidden="true"><svg class="ico"><use href="#i-clock"/></svg></span><div><strong>Jejum só quando a gente pedir</strong><p>Oito horas sem comida antes de exame de sangue ou cirurgia marcada. Água pode.</p></div></li>
+        </ul>
       </div>
     </section>
 
-    <section id="equipe">
-      <div class="section-head">
-        <div><span class="kicker">Equipe fictícia</span><h2>Quem cuida dele de madrugada.</h2></div>
-        <p>A escala é fixa: seu animal volta a ver as mesmas pessoas na consulta de retorno.</p>
-      </div>
-      <div class="team">
-        <div class="team-photo">
-          <img src="https://images.unsplash.com/photo-1700665537604-412e89a285c3?auto=format&fit=crop&crop=focalpoint&fp-x=0.6&fp-y=0.7&fp-z=1.9&w=900&h=1000&q=70" alt="Mãos da equipe segurando um cachorro caramelo na mesa enquanto colhem sangue da pata" loading="lazy" width="900" height="1000">
-          <p class="glass">Coleta a quatro mãos: um segura com calma, o outro faz o exame.</p>
+    <section class="band band-butter" id="equipe">
+      <div class="wrap">
+        <div class="head">
+          <h2 class="big">Quem fica de plantão</h2>
+          <p>Equipe fictícia. A escala é fixa, então na consulta de retorno seu animal encontra as mesmas pessoas.</p>
         </div>
         <div class="people">
           <article class="person">
-            <span class="monogram" aria-hidden="true">HB</span>
-            <h3>Dra. Helena Brito</h3>
+            <span class="initials" aria-hidden="true">HB</span>
+            <h3><span class="honorific">Dra.</span> Helena Brito</h3>
             <p class="role">Clínica geral e emergência</p>
-            <p>Chefia o plantão noturno. Quinze anos atendendo madrugada em Campina.</p>
+            <p>Chefia o plantão da noite. Quinze anos atendendo madrugada em Campina.</p>
             <span class="shift">Noites de seg a qui</span>
           </article>
           <article class="person">
-            <span class="monogram" aria-hidden="true">CM</span>
-            <h3>Dr. Caio Menezes</h3>
+            <span class="initials" aria-hidden="true">CM</span>
+            <h3><span class="honorific">Dr.</span> Caio Menezes</h3>
             <p class="role">Cirurgia e ortopedia</p>
             <p>Opera fratura, corpo estranho e cesárea. Explica a cirurgia com desenho no papel.</p>
             <span class="shift">Dias e sobreaviso</span>
           </article>
           <article class="person">
-            <span class="monogram" aria-hidden="true">LA</span>
-            <h3>Dra. Lívia Araújo</h3>
+            <span class="initials" aria-hidden="true">LA</span>
+            <h3><span class="honorific">Dra.</span> Lívia Araújo</h3>
             <p class="role">Felinos e internação</p>
-            <p>Cuida da ala de gatos, separada dos cães e com menos barulho.</p>
+            <p>Cuida da ala dos gatos, separada dos cães e com menos barulho.</p>
             <span class="shift">Noites de sex a dom</span>
           </article>
           <article class="person">
-            <span class="monogram" aria-hidden="true">RN</span>
+            <span class="initials" aria-hidden="true">RN</span>
             <h3>Rafael Nóbrega</h3>
             <p class="role">Banho e tosa</p>
-            <p>Tosador há oito anos. Tem paciência com cachorro que treme no secador.</p>
+            <p>Tosador há oito anos. Tem paciência com quem morre de medo do secador.</p>
             <span class="shift">Ter a sáb, de dia</span>
           </article>
         </div>
+        <p class="swipe-hint">Arraste para o lado para ver a equipe toda.</p>
       </div>
     </section>
 
-    <section id="depoimentos">
-      <div class="section-head">
-        <div><span class="kicker">Depoimentos fictícios</span><h2>Quem já passou a noite aqui.</h2></div>
-        <p>Textos escritos para esta demonstração, para mostrar como os depoimentos aparecem no site.</p>
-      </div>
-      <div class="quotes">
-        <figure class="quote">
-          <blockquote>Paçoca engoliu uma meia às duas da manhã. Mandei mensagem do carro e, quando cheguei, a sala já estava pronta.</blockquote>
-          <figcaption><img src="https://images.unsplash.com/photo-1537204696486-967f1b7198c8?auto=format&fit=crop&w=120&h=120&q=60" alt="" loading="lazy" width="48" height="48"><div><strong>Joana</strong><span>tutora do Paçoca, Bodocongó</span></div></figcaption>
-        </figure>
-        <figure class="quote">
-          <blockquote>Mel é arisca e odeia a caixa de transporte. A Dra. Lívia esperou ela se acalmar antes de examinar.</blockquote>
-          <figcaption><img src="https://images.unsplash.com/photo-1536589961747-e239b2abbec2?auto=format&fit=crop&w=120&h=120&q=60" alt="" loading="lazy" width="48" height="48"><div><strong>Marcos</strong><span>tutor da Mel, Catolé</span></div></figcaption>
-        </figure>
-        <figure class="quote">
-          <blockquote>Bidu ficou três dias internado. Todo fim de tarde chegava foto e boletim no WhatsApp.</blockquote>
-          <figcaption><img src="https://images.unsplash.com/photo-1503256207526-0d5d80fa2f47?auto=format&fit=crop&w=120&h=120&q=60" alt="" loading="lazy" width="48" height="48"><div><strong>Ana</strong><span>tutora do Bidu, Alto Branco</span></div></figcaption>
-        </figure>
-      </div>
-      <p class="fake-tag">Nomes, animais e relatos fictícios.</p>
-    </section>
-
-    <section class="visit" id="horarios">
-      <div class="visit-photo"><img src="https://images.unsplash.com/photo-1624956578877-4948166c5dcb?auto=format&fit=crop&w=900&q=70" alt="Cachorro de pelo caramelo sentado na grama, de boca aberta" loading="lazy" width="900" height="1200"></div>
-      <div class="visit-info">
-        <h2>Horários e endereço</h2>
-        <p class="always"><span class="live" aria-hidden="true"></span><span>Pronto-socorro <b>aberto 24 horas</b>, feriado inclusive.</span></p>
-        <table class="hours">
-          <tr><td>Consultas agendadas</td><td>Seg a sáb, 8h às 20h</td></tr>
-          <tr><td>Vacinas</td><td>Seg a sáb, 8h às 18h</td></tr>
-          <tr><td>Banho e tosa</td><td>Ter a sáb, 8h às 17h</td></tr>
-          <tr><td>Visita à internação</td><td>Todo dia, 10h e 17h</td></tr>
-        </table>
-        <p class="address"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span>Rua fictícia, 240, Mirante, Campina Grande (PB). Estacionamento na frente, com vaga reservada para emergência.</span></p>
-        <div class="visit-actions">
-          <a class="btn btn-brand" href="https://www.google.com/maps/search/?api=1&query=Mirante%2C%20Campina%20Grande%20PB" target="_blank" rel="noopener">Abrir no mapa <span class="dot"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span></a>
+    <section class="band band-choc" id="depoimentos">
+      <div class="wrap">
+        <div class="head">
+          <div><p class="fake">Depoimentos fictícios, escritos para esta demonstração</p><h2 class="big">Quem já passou a noite aqui</h2></div>
+          <div>
+            <p>Nomes, animais e relatos inventados, para mostrar como os depoimentos aparecem no site.</p>
+            <p class="rating"><span class="stars" aria-hidden="true"><svg class="ico"><use href="#i-star"/></svg><svg class="ico"><use href="#i-star"/></svg><svg class="ico"><use href="#i-star"/></svg><svg class="ico"><use href="#i-star"/></svg><svg class="ico"><use href="#i-star"/></svg></span>4,8 no Google, com 213 avaliações (fictício)</p>
+          </div>
+        </div>
+        <div class="quotes">
+          <figure class="quote hero-quote">
+            <img class="pet" src="https://images.unsplash.com/photo-1624956578877-4948166c5dcb?auto=format&fit=crop&w=900&h=680&q=70" alt="Cachorro caramelo de pelo longo apoiado nas patas no meio do mato, de boca aberta" loading="lazy" width="900" height="680">
+            <blockquote>Paçoca engoliu uma meia às duas da manhã. Mandei mensagem do carro e, quando cheguei, a sala já estava pronta.</blockquote>
+            <figcaption><div><strong>Joana Farias</strong><span>tutora do Paçoca, Bodocongó, julho de 2026</span></div></figcaption>
+          </figure>
+          <figure class="quote">
+            <blockquote>Mel é arisca e odeia a caixa de transporte. A Dra. Lívia esperou ela se acalmar antes de examinar. Num sábado cheio a espera passou de meia hora, mas ninguém apressou a gata.</blockquote>
+            <figcaption><img src="https://images.unsplash.com/photo-1536589961747-e239b2abbec2?auto=format&fit=crop&w=160&h=160&q=65" alt="Gato laranja e branco de olhos verdes" loading="lazy" width="64" height="64"><div><strong>Marcos Lucena</strong><span>tutor da Mel, Catolé</span></div></figcaption>
+          </figure>
+          <figure class="quote">
+            <blockquote>Bidu comeu chumbinho no quintal da minha mãe e ficou três dias internado. Todo fim de tarde chegava foto e boletim no WhatsApp. O valor da diária me passaram antes, sem surpresa na saída.</blockquote>
+            <figcaption><img src="https://images.unsplash.com/photo-1503256207526-0d5d80fa2f47?auto=format&fit=crop&w=160&h=160&q=65" alt="Cachorro preto e branco de pelo longo, de boca aberta" loading="lazy" width="64" height="64"><div><strong>Ana Cláudia Borges</strong><span>tutora do Bidu, Alto Branco</span></div></figcaption>
+          </figure>
         </div>
       </div>
     </section>
 
-    <section class="faq" id="duvidas">
-      <h2>Perguntas de quem chega aflito.</h2>
-      <div>
-        <details><summary>Preciso marcar hora para emergência?<span class="toggle" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span></summary><p>Não. Venha direto. Se der, mande mensagem no caminho para a equipe preparar o atendimento.</p></details>
-        <details><summary>A consulta de madrugada custa mais?<span class="toggle" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span></summary><p>Entre 22h e 6h a consulta tem valor de plantão. A recepção informa o valor antes de começar, e nenhum exame é feito sem você autorizar.</p></details>
-        <details><summary>Vocês atendem outros animais além de cão e gato?<span class="toggle" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span></summary><p>Coelhos, porquinhos-da-índia e aves pequenas, com hora marcada. Na emergência, mande mensagem antes para confirmar quem está de plantão.</p></details>
-        <details><summary>Posso ficar com meu animal internado?<span class="toggle" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span></summary><p>A visita é todo dia às 10h e às 17h. Fora desse horário, o boletim com foto chega pelo WhatsApp.</p></details>
-        <details><summary>Quais formas de pagamento?<span class="toggle" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span></summary><p>Pix, débito e crédito em até 6 vezes. Cirurgia e internação podem ser parceladas em mais vezes, é só conversar na recepção.</p></details>
+    <section class="band band-tomato" id="horarios">
+      <div class="wrap">
+        <div class="head">
+          <h2 class="big">Porta aberta</h2>
+          <p class="panel">O pronto-socorro não fecha, nem em feriado. Consulta marcada, vacina e banho têm horário.</p>
+        </div>
+        <div class="visit">
+          <div class="visit-card">
+            <p class="always"><span class="live" aria-hidden="true"></span>Pronto-socorro 24 horas, todo dia</p>
+            <table class="hours">
+              <tr><td>Consultas agendadas</td><td>Seg a sáb, 8h às 20h</td></tr>
+              <tr><td>Vacinas</td><td>Seg a sáb, 8h às 18h</td></tr>
+              <tr><td>Banho e tosa</td><td>Ter a sáb, 8h às 17h</td></tr>
+              <tr><td>Visita à internação</td><td>Todo dia, 10h e 17h</td></tr>
+              <tr><td>Feriados</td><td>Plantão normal</td></tr>
+            </table>
+            <p class="fine">Em feriado, vacina só das 8h às 12h. O banho e tosa fecha no São João, dias 23 e 24 de junho.</p>
+            <h3 class="card-label">Quanto custa a consulta</h3>
+            <table class="hours">
+              <tr><td>De dia, seg a sáb, 8h às 20h</td><td>R$ 150</td></tr>
+              <tr><td>Plantão, das 20h às 8h</td><td>R$ 260</td></tr>
+              <tr><td>Domingo e feriado, o dia todo</td><td>R$ 260</td></tr>
+            </table>
+            <p class="fine">Exame e remédio só com o seu sim, depois de ouvir o valor.</p>
+            <ul class="pay" aria-label="Formas de pagamento">
+              <li><svg class="ico ico-pix" aria-hidden="true"><use href="#i-pix"/></svg>Pix</li>
+              <li><svg class="ico" aria-hidden="true"><use href="#i-credit-card"/></svg>Débito e crédito em até 6x</li>
+              <li><svg class="ico" aria-hidden="true"><use href="#i-first-aid-kit"/></svg>Cirurgia e internação em até 10x</li>
+            </ul>
+          </div>
+          <div class="visit-side">
+            <figure class="map">
+              <div class="map-canvas" id="mapa" role="region" aria-label="Mapa do bairro Mirante, em Campina Grande, com a área aproximada da clínica"></div>
+              <figcaption><svg class="ico" aria-hidden="true"><use href="#i-map-pin"/></svg><span>Endereço fictício, no bairro Mirante. O círculo marca só a área aproximada do bairro.</span></figcaption>
+            </figure>
+            <div class="visit-card">
+              <p class="info"><svg class="ico" aria-hidden="true"><use href="#i-map-pin"/></svg><span>Rua fictícia, 240, Mirante, Campina Grande (PB). A uns cinco minutos de carro do Partage Shopping.</span></p>
+              <p class="info"><svg class="ico" aria-hidden="true"><use href="#i-car"/></svg><span>Seis vagas na frente. A da porta, pintada de amarelo, é só para emergência. De madrugada o portão fica fechado: toque o interfone e alguém desce na hora.</span></p>
+              <div class="visit-actions">
+                <a class="btn btn-butter" href="https://www.google.com/maps/search/?api=1&query=Mirante%2C%20Campina%20Grande%20PB" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-googlemaps"/></svg>Abrir no mapa</a>
+                <a class="btn btn-sos" href="https://wa.me/?text=Ol%C3%A1%21%20Quero%20agendar%20uma%20consulta%20na%20Vig%C3%ADlia.%20Nome%20e%20esp%C3%A9cie%20do%20animal%3A" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-whatsapp"/></svg>Agendar consulta</a>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="cta">
-      <h2>Consulta de rotina também é aqui, de dia e sem susto.</h2>
-      <a class="btn btn-brand" href="https://wa.me/?text=Ol%C3%A1%21%20Quero%20agendar%20uma%20consulta%20na%20Vig%C3%ADlia.%20Nome%20e%20esp%C3%A9cie%20do%20animal%3A" target="_blank" rel="noopener">Agendar consulta <span class="dot"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg></span></a>
+    <section class="band band-butter" id="duvidas">
+      <div class="wrap faq">
+        <h2 class="big">Perguntas de quem chega aflito</h2>
+        <div class="faq-list">
+          <details><summary>Preciso marcar hora para emergência?<span class="toggle" aria-hidden="true"><svg class="ico"><use href="#i-plus"/></svg></span></summary><p>Não. Venha direto. Se der, mande mensagem no caminho para a equipe preparar o atendimento.</p></details>
+          <details><summary>A consulta de madrugada custa mais?<span class="toggle" aria-hidden="true"><svg class="ico"><use href="#i-plus"/></svg></span></summary><p>Custa. Das 20h às 8h, e em domingo e feriado o dia todo, a consulta de plantão sai por R$ 260; de dia, R$ 150. A recepção diz o valor antes de começar, e nenhum exame é feito sem você autorizar.</p></details>
+          <details><summary>Quanto tempo vou esperar?<span class="toggle" aria-hidden="true"><svg class="ico"><use href="#i-plus"/></svg></span></summary><p>Com hora marcada, uns 15 minutos. No plantão, quem está pior entra primeiro: falta de ar e sangramento passam na frente de vômito e coceira.</p></details>
+          <details><summary>Vocês atendem outros animais além de cão e gato?<span class="toggle" aria-hidden="true"><svg class="ico"><use href="#i-plus"/></svg></span></summary><p>Coelhos, porquinhos-da-índia e aves pequenas, com hora marcada. Na emergência, mande mensagem antes para confirmar quem está de plantão.</p></details>
+          <details><summary>Posso ficar com meu animal internado?<span class="toggle" aria-hidden="true"><svg class="ico"><use href="#i-plus"/></svg></span></summary><p>A visita é todo dia às 10h e às 17h. Fora desse horário, o boletim com foto chega pelo WhatsApp.</p></details>
+          <details><summary>Quais formas de pagamento?<span class="toggle" aria-hidden="true"><svg class="ico"><use href="#i-plus"/></svg></span></summary><p>Pix, débito e crédito em até 6 vezes. Cirurgia e internação parcelam em até 10 vezes; é só conversar na recepção.</p></details>
+        </div>
+      </div>
     </section>
   </main>
 
-  <footer class="wrap">
-    <div class="foot-row">
-      <span>Vigília Veterinária 24h · empresa fictícia para demonstração</span>
-      <span>Fotos: Unsplash (licença Unsplash)</span>
+  <footer class="footer on-dark">
+    <div class="wrap">
+      <div class="cta">
+        <h2>Consulta de rotina também é aqui, <span>de dia e sem susto.</span></h2>
+        <a class="btn btn-sos" href="https://wa.me/?text=Ol%C3%A1%21%20Quero%20agendar%20uma%20consulta%20na%20Vig%C3%ADlia.%20Nome%20e%20esp%C3%A9cie%20do%20animal%3A" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-whatsapp"/></svg>Agendar consulta</a>
+      </div>
+      <div class="foot-row">
+        <span>Vigília Veterinária 24h · empresa fictícia para demonstração</span>
+        <span class="insta"><svg class="ico" aria-hidden="true"><use href="#i-instagram"/></svg>@vigilia.plantao.cg (perfil fictício)</span>
+        <span>Fotos: Unsplash (licença Unsplash) · Mapa: OpenStreetMap</span>
+      </div>
+      <div class="wordmark" aria-hidden="true">Vigília<span>.</span></div>
+      <a class="back" href="/"><svg class="ico" aria-hidden="true"><use href="#i-arrow-left"/></svg>Ver outros modelos</a>
+      <p class="credito-autor">Site feito por <a href="https://tarciodiniz.com" rel="author">Tarcio Diniz</a>, desenvolvedor</p>
     </div>
-    <div class="wordmark" aria-hidden="true">vigília<span>.</span></div>
-    <a class="back" href="/"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>Ver outros modelos</a>
-    <p class="credito-autor">Site feito por <a href="https://tarciodiniz.com" rel="author">Tarcio Diniz</a>, desenvolvedor</p>
   </footer>
 
   <div class="sos-bar" role="region" aria-label="Emergência">
     <span class="live" aria-hidden="true"></span>
-    <span class="sos-bar-text"><strong>Aberto agora</strong>Plantão 24 horas</span>
-    <a class="btn btn-sos btn-small" href="https://wa.me/?text=Emerg%C3%AAncia%21%20Estou%20indo%20para%20a%20Vig%C3%ADlia%20agora%20com%20meu%20animal.%20O%20que%20aconteceu%3A" target="_blank" rel="noopener">Emergência agora <span class="dot"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.8 7L4 20l1.1-4.8A8 8 0 1 1 21 12z"/></svg></span></a>
+    <span class="sos-bar-text"><strong>Aberto agora</strong>Plantão 24h</span>
+    <a class="btn btn-sos btn-small" href="https://wa.me/?text=Emerg%C3%AAncia%21%20Estou%20indo%20para%20a%20Vig%C3%ADlia%20agora%20com%20meu%20animal.%20O%20que%20aconteceu%3A" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-whatsapp"/></svg><span>Emergência<span class="bar-extra"> agora</span></span></a>
   </div>
 
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
 <script>
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const LEAFLET_JS = "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js";
+  const MIRANTE_CENTER = [-7.2333, -35.8665];
+  const AREA_RADIUS_METERS = 400;
+  const MAP_ZOOM = 15;
 
   // Smooth only on in-page link clicks; a global smooth scroll-behavior also animates scroll restoration on reload.
   function enableSmoothAnchors() {
@@ -510,11 +695,55 @@
     });
   }
 
-  function watchHeader() {
-    const header = document.getElementById("header");
-    const update = () => header.classList.toggle("is-compact", window.scrollY > 40);
-    window.addEventListener("scroll", update, { passive: true });
-    update();
+  function loadScript(src) {
+    return new Promise((resolve, reject) => {
+      const script = document.createElement("script");
+      script.src = src;
+      script.onload = resolve;
+      script.onerror = reject;
+      document.head.append(script);
+    });
+  }
+
+  // The address is fictional, so the map shows the neighbourhood as an area, never a pin on a house.
+  function buildMap(canvas) {
+    const accent = getComputedStyle(document.documentElement).getPropertyValue("--tomato-deep").trim();
+    // One-finger drag stays with the page on touch screens; pinch still zooms the map.
+    const map = L.map(canvas, { center: MIRANTE_CENTER, zoom: MAP_ZOOM, scrollWheelZoom: false, dragging: !L.Browser.mobile, tap: false });
+    L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      maxZoom: 19,
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>',
+    }).addTo(map);
+    L.circle(MIRANTE_CENTER, { radius: AREA_RADIUS_METERS, color: accent, weight: 3, fillColor: accent, fillOpacity: 0.2 })
+      .addTo(map)
+      .bindTooltip("Endereço fictício, no bairro Mirante", { permanent: true, direction: "center", className: "map-label" });
+  }
+
+  // Leaflet and its tiles only load when the visitor gets near the map, so the first screen stays light.
+  function lazyLoadMap() {
+    const canvas = document.getElementById("mapa");
+    if (!canvas || !("IntersectionObserver" in window)) return;
+    const observer = new IntersectionObserver((entries) => {
+      if (!entries.some((entry) => entry.isIntersecting)) return;
+      observer.disconnect();
+      loadScript(LEAFLET_JS)
+        .then(() => buildMap(canvas))
+        .catch(() => canvas.closest(".map").classList.add("map-failed"));
+    }, { rootMargin: "300px" });
+    observer.observe(canvas);
+  }
+
+  // Letters get their own boxes so the title can arrive piece by piece; the words stay readable for screen readers via .sr-only.
+  function splitTitleLetters() {
+    document.querySelectorAll(".hero-title .t").forEach((line) => {
+      const letters = [...line.textContent].map((char) => {
+        const span = document.createElement("span");
+        span.className = "ch";
+        span.textContent = char === " " ? " " : char;
+        return span;
+      });
+      line.replaceChildren(...letters);
+    });
   }
 
   function formatCount(value, suffix) {
@@ -526,7 +755,7 @@
       const suffix = el.dataset.suffix ?? "";
       const state = { value: 0 };
       gsap.to(state, {
-        value: Number(el.dataset.count), duration: 1.4, ease: "power2.out",
+        value: Number(el.dataset.count), duration: 1.3, ease: "power2.out",
         scrollTrigger: { trigger: el, start: "top 90%", once: true },
         onUpdate: () => { el.textContent = formatCount(state.value, suffix); },
       });
@@ -534,46 +763,57 @@
   }
 
   function animateHero() {
-    gsap.from(".hero h1 .line > span", { yPercent: 105, duration: 0.9, ease: "power4.out", stagger: 0.09 });
-    gsap.from(".hero-photo img", { scale: 1.08, duration: 1.4, ease: "power2.out" });
-    gsap.from(".hero-photo .glass", { y: 24, autoAlpha: 0, duration: 0.7, delay: 0.3, ease: "power3.out", stagger: 0.12 });
+    const intro = gsap.timeline({ defaults: { ease: "power3.out" } });
+    intro
+      .from(".t1 .ch", { yPercent: 70, rotation: () => gsap.utils.random(-12, 12), autoAlpha: 0, duration: 0.5, stagger: 0.04 })
+      .from(".dog", { y: 120, scale: 0.92, autoAlpha: 0, duration: 0.55, ease: "back.out(1.6)" }, 0.1)
+      .to(".dog", { y: -22, duration: 0.2, ease: "power2.out" }, ">")
+      .to(".dog", { y: 0, duration: 0.45, ease: "bounce.out" }, ">")
+      .from(".t2 .ch", { yPercent: 70, rotation: () => gsap.utils.random(-12, 12), autoAlpha: 0, duration: 0.5, stagger: 0.04 }, 0.35)
+      .from(".balloon", { scale: 0.4, autoAlpha: 0, duration: 0.45, ease: "back.out(2.2)", transformOrigin: "50% 0%" }, 0.95)
+      .from(".hero-actions", { y: 16, autoAlpha: 0, duration: 0.4 }, 0.5);
   }
 
-  function revealOnScroll(selector) {
+  function revealOnScroll(selector, fromVars) {
     ScrollTrigger.batch(selector, {
-      start: "top 88%",
+      start: "top 90%",
       once: true,
-      onEnter: (batch) => gsap.from(batch, { y: 32, autoAlpha: 0, duration: 0.6, ease: "power3.out", stagger: 0.08 }),
+      onEnter: (batch) => gsap.from(batch, { y: 36, autoAlpha: 0, duration: 0.6, ease: "power3.out", stagger: 0.08, ...fromVars }),
     });
   }
 
-  function drawStepsLine() {
-    const path = document.querySelector(".steps-line path");
-    const length = path.getTotalLength();
-    gsap.fromTo(path, { strokeDasharray: length, strokeDashoffset: length }, {
-      strokeDashoffset: 0, ease: "none",
-      scrollTrigger: { trigger: ".steps-wrap", start: "top 80%", end: "bottom 60%", scrub: 0.6 },
+  function animateHeadings() {
+    gsap.utils.toArray(".band .big").forEach((title) => {
+      gsap.from(title, { yPercent: 30, autoAlpha: 0, duration: 0.7, ease: "power3.out", scrollTrigger: { trigger: title, start: "top 88%", once: true } });
+    });
+  }
+
+  function animateServiceOpen() {
+    document.querySelectorAll(".svc").forEach((item) => {
+      item.addEventListener("toggle", () => {
+        if (item.open) gsap.from(item.querySelector(".svc-body"), { y: -10, autoAlpha: 0, duration: 0.35, ease: "power2.out" });
+      });
     });
   }
 
   enableSmoothAnchors();
-  watchHeader();
+  lazyLoadMap();
 
   if (window.gsap && window.ScrollTrigger) {
     gsap.registerPlugin(ScrollTrigger);
     const motion = gsap.matchMedia();
     motion.add("(prefers-reduced-motion: no-preference)", () => {
+      splitTitleLetters();
       animateHero();
-      revealOnScroll(".service");
+      animateHeadings();
+      animateServiceOpen();
+      revealOnScroll(".svc");
       revealOnScroll(".step");
-      revealOnScroll(".person");
+      revealOnScroll(".bring-list li", { y: 20 });
+      revealOnScroll(".person", { rotation: -3 });
       revealOnScroll(".quote");
       animateCounters();
-      gsap.from(".wordmark", { yPercent: 40, autoAlpha: 0, duration: 1, ease: "power3.out", scrollTrigger: { trigger: "footer", start: "top 90%", once: true } });
-    });
-    motion.add("(prefers-reduced-motion: no-preference) and (min-width: 961px)", () => {
-      drawStepsLine();
-      gsap.to(".team-photo img", { yPercent: -6, scale: 1.08, ease: "none", scrollTrigger: { trigger: ".team-photo", start: "top bottom", end: "bottom top", scrub: true } });
+      gsap.from(".wordmark", { yPercent: 40, autoAlpha: 0, duration: 1, ease: "power3.out", scrollTrigger: { trigger: ".footer", start: "top 90%", once: true } });
     });
   }
 </script>

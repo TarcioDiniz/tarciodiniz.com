@@ -1,3 +1,5 @@
 .DS_Store
 # anotações internas do projeto, ficam só no Mac
 BRIEFING-*.md
+node_modules/
+test-results/
