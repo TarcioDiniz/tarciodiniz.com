@@ -24,10 +24,21 @@
   "@context": "https://schema.org",
   "@graph": [
     {
+      "@type": "WebSite",
+      "@id": "https://tarciodiniz.com/#site",
+      "url": "https://tarciodiniz.com/",
+      "name": "Tarcio Diniz",
+      "inLanguage": "pt-BR",
+      "publisher": { "@id": "https://tarciodiniz.com/#tarcio" }
+    },
+    {
       "@type": "Person",
       "@id": "https://tarciodiniz.com/#tarcio",
       "name": "Tarcio Diniz",
       "jobTitle": "Desenvolvedor web",
+      "description": "Desenvolvedor web em Campina Grande (PB). Cria sites para negócios locais, rápidos no celular e preparados para o Google, e trabalha há mais de três anos com sistemas em produção e automação com inteligência artificial.",
+      "telephone": "+55 83 99193-1035",
+      "knowsLanguage": ["pt-BR", "en"],
       "url": "https://tarciodiniz.com/",
       "image": "https://tarciodiniz.com/assets/img/tarcio-retrato.webp",
       "address": { "@type": "PostalAddress", "addressLocality": "Campina Grande", "addressRegion": "PB", "addressCountry": "BR" },
@@ -43,10 +54,22 @@
       "image": "https://tarciodiniz.com/assets/og.jpg",
       "description": "Criação de sites para negócios locais: rápidos no celular, com SEO local e botão de WhatsApp.",
       "founder": { "@id": "https://tarciodiniz.com/#tarcio" },
+      "telephone": "+55 83 99193-1035",
+      "priceRange": "$$",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Serviços",
+        "itemListElement": [
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Criação de site para negócio local", "description": "Site de uma página, feito primeiro para o celular, com botão de WhatsApp, cardápio, agendamento ou reserva conforme o ramo." } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "SEO local", "description": "Preparação do site para aparecer nas buscas de Campina Grande e nas respostas de assistentes de IA, com dados estruturados e sitemap." } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Publicação e domínio", "description": "Publicação do site e apoio para registrar o domínio no nome do cliente." } }
+        ]
+      },
       "areaServed": [{ "@type": "City", "name": "Campina Grande" }, { "@type": "State", "name": "Paraíba" }],
       "address": { "@type": "PostalAddress", "addressLocality": "Campina Grande", "addressRegion": "PB", "addressCountry": "BR" },
       "sameAs": ["https://www.instagram.com/eusoutarcio/"]
-    }
+    },
+    {"@type": "FAQPage", "@id": "https://tarciodiniz.com/#duvidas", "mainEntity": [{"@type": "Question", "name": "Quanto custa um site?", "acceptedAnswer": {"@type": "Answer", "text": "Depende do que o seu negócio precisa. Numa conversa de 15 minutos eu entendo e já te passo o valor, sem compromisso."}}, {"@type": "Question", "name": "Em quanto tempo fica pronto?", "acceptedAnswer": {"@type": "Answer", "text": "Em até 3 dias úteis depois da nossa conversa você já vê o seu site. Depois a gente ajusta junto até ficar do seu jeito."}}, {"@type": "Question", "name": "O endereço do site fica no meu nome?", "acceptedAnswer": {"@type": "Answer", "text": "Fica. O seunegocio.com.br é registrado no seu nome, e o site é seu."}}, {"@type": "Question", "name": "Consigo mudar preço e cardápio sozinho?", "acceptedAnswer": {"@type": "Answer", "text": "Dá para combinar. Cardápio, preços e promoções podem ficar numa planilha que você edita no celular. Fotos novas, páginas novas e mudança de layout eu faço para você."}}, {"@type": "Question", "name": "Você atende fora de Campina Grande?", "acceptedAnswer": {"@type": "Answer", "text": "Atendo. A conversa pode ser por chamada de vídeo, e o site funciona para qualquer cidade."}}]}
   ]
 }
 </script>
@@ -116,8 +139,8 @@
   .top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 68px; }
   .logo { font-family: var(--display); font-size: 26px; letter-spacing: .01em; min-height: 44px; min-width: 44px; display: inline-flex; align-items: center; }
   .logo span { color: var(--accent); }
-  .nav { display: flex; gap: 28px; font-size: 15px; font-weight: 500; color: var(--on-dark-muted); }
-  .nav a { padding-block: 11px; }
+  .nav { display: flex; gap: 26px; font-size: 15px; font-weight: 500; color: var(--on-dark-muted); }
+  .nav a { padding-block: 11px; min-width: 44px; text-align: center; }
   .nav a:hover { color: var(--on-dark); }
   .top-cta { display: inline-flex; align-items: center; gap: 10px; font-weight: 600; font-size: 15px; min-height: 44px; }
   .top-cta .ico { color: var(--accent); }
@@ -147,7 +170,7 @@
   .hero-role strong { color: var(--on-dark); font-weight: 600; display: block; }
   .hero-pitch { justify-self: end; max-width: 400px; display: grid; gap: 18px; }
   .hero-pitch p { margin: 0; font-size: 17px; color: var(--on-dark); }
-  .hero-pitch .hero-headline { font-family: var(--display); font-size: clamp(30px, 2.6vw, 40px); line-height: 1; text-transform: uppercase; }
+  .hero-pitch .hero-headline { font-family: var(--display); font-size: clamp(30px, 2.6vw, 40px); line-height: 1; text-transform: uppercase; margin: 0; }
   .hero-pitch .hero-text { color: var(--on-dark-muted); font-size: 16px; }
   .hero-actions { display: flex; flex-wrap: wrap; gap: 10px; }
 
@@ -260,7 +283,7 @@
   .final-actions { display: flex; flex-wrap: wrap; gap: 10px; }
   .foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; margin-top: clamp(64px, 9vw, 120px); padding-block: 24px calc(24px + env(safe-area-inset-bottom, 0px)); border-top: 1px solid var(--line-dark); font-size: 14px; color: var(--on-dark-muted); }
   .foot nav { display: flex; flex-wrap: wrap; gap: 20px; }
-  .foot-link { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; }
+  .foot-link { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; min-width: 44px; }
   .foot a:hover { color: var(--on-dark); }
 
 
@@ -423,7 +446,8 @@
       <nav class="nav" aria-label="Principal">
         <a href="#modelos">Modelos</a>
         <a href="#como">Como funciona</a>
-        <a href="#historia">Sobre mim</a>
+        <a href="#historia">Quem faz</a>
+        <a href="/sobre/">Sobre</a>
         <a href="#duvidas">Dúvidas</a>
       </nav>
       <a class="top-cta" data-whatsapp="Oi, Tarcio! Vim pelo seu site e quero conversar sobre um site para o meu negócio." href="#contato"><svg class="ico ico-lg" aria-hidden="true"><use href="#i-whatsapp"/></svg><span class="top-cta-text">Chamar no WhatsApp</span></a>
@@ -435,7 +459,7 @@
       <div class="wrap hero-stage">
         <div class="hero-meta"><span>Desenvolvedor web</span><span>Campina Grande, PB</span></div>
         <div class="hero-name">
-          <h1 class="display"><span class="word"><span>Tarcio</span></span><span class="word word-2"><span>Diniz</span></span></h1>
+          <h1 class="display"><span class="word"><span>Tarcio</span></span> <span class="word word-2"><span>Diniz</span></span></h1>
         </div>
         <div class="hero-name hero-ghost" aria-hidden="true">
           <p class="display"><span class="word"><span>Tarcio</span></span><span class="word word-2"><span>Diniz</span></span></p>
@@ -447,7 +471,7 @@
           <p class="hero-role"><strong>Sites para negócios locais</strong>Clínicas, restaurantes, pousadas, salões e lojas.</p>
           <span></span>
           <div class="hero-pitch">
-            <p class="hero-headline">Sites que trazem cliente para o seu negócio.</p>
+            <h2 class="hero-headline">Sites que trazem cliente para o seu negócio.</h2>
             <p class="hero-text">Seu cliente te acha no Google e te chama no WhatsApp com um toque. Você vê o seu site pronto em até 3 dias úteis depois da nossa conversa.</p>
             <div class="hero-actions">
               <a class="btn btn-accent" data-whatsapp="Oi, Tarcio! Vim pelo seu site e quero conversar sobre um site para o meu negócio." href="#contato"><svg class="ico ico-lg" aria-hidden="true"><use href="#i-whatsapp"/></svg>Conversar no WhatsApp</a>
@@ -488,11 +512,11 @@
           <span class="count">(05)</span>
         </div>
         <ol class="model-list">
-          <li class="model"><a href="/demos/cardapio/" data-preview="/assets/demos/cardapio.webp"><span class="num">01</span><span class="name">Brasa Smash</span><span class="what">Hamburgueria. Cardápio com sacola que vira pedido no WhatsApp.</span><span class="go"><svg class="ico" aria-hidden="true"><use href="#i-arrow-up"/></svg></span><span class="thumb"><img src="/assets/demos/cardapio.webp" alt="" loading="lazy" width="1440" height="900"></span></a></li>
-          <li class="model"><a href="/demos/fisioterapia/" data-preview="/assets/demos/fisioterapia.webp"><span class="num">02</span><span class="name">Sálvia Fisio</span><span class="what">Clínica de fisioterapia. A pessoa toca onde dói e já agenda pelo WhatsApp.</span><span class="go"><svg class="ico" aria-hidden="true"><use href="#i-arrow-up"/></svg></span><span class="thumb"><img src="/assets/demos/fisioterapia.webp" alt="" loading="lazy" width="1440" height="900"></span></a></li>
-          <li class="model"><a href="/demos/veterinaria/" data-preview="/assets/demos/veterinaria.webp"><span class="num">03</span><span class="name">Vigília Vet</span><span class="what">Veterinária 24h. Botão de emergência sempre à vista no celular.</span><span class="go"><svg class="ico" aria-hidden="true"><use href="#i-arrow-up"/></svg></span><span class="thumb"><img src="/assets/demos/veterinaria.webp" alt="" loading="lazy" width="1440" height="900"></span></a></li>
-          <li class="model"><a href="/demos/pousada/" data-preview="/assets/demos/pousada.webp"><span class="num">04</span><span class="name">Pousada Aroá</span><span class="what">Pousada. Pedido de reserva com datas, hóspedes e quarto.</span><span class="go"><svg class="ico" aria-hidden="true"><use href="#i-arrow-up"/></svg></span><span class="thumb"><img src="/assets/demos/pousada.webp" alt="" loading="lazy" width="1440" height="900"></span></a></li>
-          <li class="model"><a href="/demos/barbearia/" data-preview="/assets/demos/barbearia.webp"><span class="num">05</span><span class="name">Sisal Barbearia</span><span class="what">Barbearia. Agendamento em três escolhas: serviço, barbeiro e horário.</span><span class="go"><svg class="ico" aria-hidden="true"><use href="#i-arrow-up"/></svg></span><span class="thumb"><img src="/assets/demos/barbearia.webp" alt="" loading="lazy" width="1440" height="900"></span></a></li>
+          <li class="model"><a href="/demos/cardapio/" data-preview="/assets/demos/cardapio.webp"><span class="num">01</span><span class="name">Brasa Smash</span><span class="what">Hamburgueria. Cardápio com sacola que vira pedido no WhatsApp.</span><span class="go"><svg class="ico" aria-hidden="true"><use href="#i-arrow-up"/></svg></span><span class="thumb"><img src="/assets/demos/cardapio.webp" alt="Tela do site de demonstração da hamburgueria Brasa Smash Burger" loading="lazy" width="1440" height="900"></span></a></li>
+          <li class="model"><a href="/demos/fisioterapia/" data-preview="/assets/demos/fisioterapia.webp"><span class="num">02</span><span class="name">Sálvia Fisio</span><span class="what">Clínica de fisioterapia. A pessoa toca onde dói e já agenda pelo WhatsApp.</span><span class="go"><svg class="ico" aria-hidden="true"><use href="#i-arrow-up"/></svg></span><span class="thumb"><img src="/assets/demos/fisioterapia.webp" alt="Tela do site de demonstração da clínica Sálvia Fisioterapia" loading="lazy" width="1440" height="900"></span></a></li>
+          <li class="model"><a href="/demos/veterinaria/" data-preview="/assets/demos/veterinaria.webp"><span class="num">03</span><span class="name">Vigília Vet</span><span class="what">Veterinária 24h. Botão de emergência sempre à vista no celular.</span><span class="go"><svg class="ico" aria-hidden="true"><use href="#i-arrow-up"/></svg></span><span class="thumb"><img src="/assets/demos/veterinaria.webp" alt="Tela do site de demonstração da Vigília Veterinária 24 horas" loading="lazy" width="1440" height="900"></span></a></li>
+          <li class="model"><a href="/demos/pousada/" data-preview="/assets/demos/pousada.webp"><span class="num">04</span><span class="name">Pousada Aroá</span><span class="what">Pousada. Pedido de reserva com datas, hóspedes e quarto.</span><span class="go"><svg class="ico" aria-hidden="true"><use href="#i-arrow-up"/></svg></span><span class="thumb"><img src="/assets/demos/pousada.webp" alt="Tela do site de demonstração da Pousada Aroá" loading="lazy" width="1440" height="900"></span></a></li>
+          <li class="model"><a href="/demos/barbearia/" data-preview="/assets/demos/barbearia.webp"><span class="num">05</span><span class="name">Sisal Barbearia</span><span class="what">Barbearia. Agendamento em três escolhas: serviço, barbeiro e horário.</span><span class="go"><svg class="ico" aria-hidden="true"><use href="#i-arrow-up"/></svg></span><span class="thumb"><img src="/assets/demos/barbearia.webp" alt="Tela do site de demonstração da Sisal Barbearia" loading="lazy" width="1440" height="900"></span></a></li>
         </ol>
         <p class="models-note">As empresas dos modelos são fictícias, assim como os preços e as avaliações. Fotos do Unsplash.</p>
         <div class="inline-cta"><a class="btn btn-accent" data-whatsapp="Oi, Tarcio! Vi os modelos no seu site e quero um site assim para o meu negócio." href="#contato"><svg class="ico ico-lg" aria-hidden="true"><use href="#i-whatsapp"/></svg>Quero um site assim</a></div>
@@ -636,7 +660,9 @@
         </div>
         <footer class="foot">
           <span>Tarcio Diniz · Campina Grande, PB · 2026</span>
-          <nav aria-label="Redes">
+          <nav aria-label="Rodapé">
+            <a href="/sobre/" class="foot-link">Sobre</a>
+            <a href="/privacidade/" class="foot-link">Privacidade</a>
             <a href="https://www.instagram.com/eusoutarcio/" target="_blank" rel="noopener" class="foot-link"><svg class="ico" aria-hidden="true"><use href="#i-instagram"/></svg>Instagram</a>
             <a href="https://www.linkedin.com/in/tarciodiniz" target="_blank" rel="noopener" class="foot-link"><svg class="ico" aria-hidden="true"><use href="#i-linkedin"/></svg>LinkedIn</a>
             <a href="https://github.com/TarcioDiniz" target="_blank" rel="noopener" class="foot-link"><svg class="ico" aria-hidden="true"><use href="#i-github"/></svg>GitHub</a>

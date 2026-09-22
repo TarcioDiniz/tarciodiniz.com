@@ -1,4 +1,20 @@
 User-agent: *
 Allow: /
 
+# Robôs de IA liberados, para que as respostas possam citar o site.
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
 Sitemap: https://tarciodiniz.com/sitemap.xml

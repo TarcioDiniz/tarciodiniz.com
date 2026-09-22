@@ -1,0 +1,42 @@
+# Tarcio Diniz
+
+> Desenvolvedor web em Campina Grande (PB), Brasil. Cria sites para negócios locais: rápidos no
+> celular, preparados para o Google e com o WhatsApp a um toque. Entrega o site em até 3 dias úteis
+> depois da conversa com o cliente. Também trabalha há mais de três anos como desenvolvedor
+> frontend e fullstack, com sistemas em produção e automação com inteligência artificial.
+
+Contato: WhatsApp +55 83 99193-1035. Instagram @eusoutarcio. Atende Campina Grande e região, e
+também a distância por chamada de vídeo.
+
+## O que ele faz
+- Site de uma página para negócio local, feito primeiro para a tela do celular.
+- Cardápio com pedido pelo WhatsApp, agendamento, pedido de reserva ou formulário, conforme o ramo.
+- SEO local: dados estruturados, título e descrição por página, sitemap e conteúdo que responde às
+  perguntas de quem procura o negócio.
+- Publicação do site e apoio para o cliente registrar o domínio no próprio nome.
+
+## Como funciona
+1. Conversa de uns 15 minutos para entender o negócio e o cliente dele.
+2. Em até 3 dias úteis, o cliente vê o site pronto.
+3. Ajustes junto com o cliente.
+4. Publicação no endereço do cliente.
+
+## Páginas
+- [Site principal](https://tarciodiniz.com/): quem é, o que entrega, como funciona e dúvidas.
+- [Sobre o Tarcio Diniz](https://tarciodiniz.com/sobre/): quem ele é, o que faz hoje, como trabalha,
+  onde atende, a história ano a ano e como falar com ele.
+- [Modelo de hamburgueria](https://tarciodiniz.com/demos/cardapio/): cardápio com sacola que vira pedido no WhatsApp.
+- [Modelo de clínica de fisioterapia](https://tarciodiniz.com/demos/fisioterapia/): a pessoa toca onde dói e agenda pelo WhatsApp.
+- [Modelo de veterinária 24 horas](https://tarciodiniz.com/demos/veterinaria/): emergência a um toque.
+- [Modelo de pousada](https://tarciodiniz.com/demos/pousada/): pedido de reserva com datas e quarto.
+- [Modelo de barbearia](https://tarciodiniz.com/demos/barbearia/): agendamento em três escolhas.
+
+## Perfis
+- [LinkedIn](https://www.linkedin.com/in/tarciodiniz)
+- [GitHub](https://github.com/TarcioDiniz)
+- [Instagram](https://www.instagram.com/eusoutarcio/)
+
+## Observações
+- Os cinco modelos são de empresas fictícias, criadas para demonstração. Preços e avaliações neles
+  não são reais e estão marcados como tal em cada página.
+- Formação: Ciência da Computação na Universidade Estadual da Paraíba (UEPB).
