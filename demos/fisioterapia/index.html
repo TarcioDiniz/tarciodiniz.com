@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://images.unsplash.com">
-<link href="https://fonts.googleapis.com/css2?family=Anybody:wdth,wght@50..150,500..900&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Gabarito:wght@500..900&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css">
 <link rel="preload" as="image" href="https://images.unsplash.com/photo-1645005513713-9e2b92a687d3?auto=format&fit=crop&w=600&h=800&q=70">
 <style>
@@ -42,7 +42,7 @@
     --max: 1320px;
     --header-h: 64px;
     --band: clamp(72px, 10vw, 136px);
-    --font-display: "Anybody", "Arial Narrow", system-ui, sans-serif;
+    --font-display: "Gabarito", "Arial Black", system-ui, sans-serif;
     --font: "Hanken Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
     --weave: #ffffff26;
     --tape-hover: #f36e8e;
@@ -64,7 +64,7 @@
   body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--font); font-size: 17px; line-height: 1.55; -webkit-font-smoothing: antialiased; overflow-x: clip; }
   img { display: block; max-width: 100%; }
   a { color: inherit; text-decoration: none; }
-  h1, h2, h3 { font-family: var(--font-display); font-weight: 800; font-stretch: 88%; letter-spacing: -0.015em; text-wrap: balance; margin: 0; }
+  h1, h2, h3 { font-family: var(--font-display); font-weight: 800; letter-spacing: -0.015em; text-wrap: balance; margin: 0; }
   p, li, dd, blockquote { text-wrap: pretty; }
   .wrap { max-width: var(--max); margin-inline: auto; padding-inline: var(--gutter); }
   .ico { width: 20px; height: 20px; fill: currentColor; display: block; flex: none; }
@@ -95,7 +95,7 @@
   .header { position: sticky; top: 0; z-index: 50; background: var(--paper); border-bottom: 1px solid var(--line); }
   .topbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: var(--header-h); }
   .logo { display: inline-flex; align-items: baseline; gap: 8px; min-height: 44px; align-items: center; }
-  .logo b { font-family: var(--font-display); font-weight: 900; font-stretch: 125%; font-size: 24px; letter-spacing: -0.02em; line-height: 1; }
+  .logo b { font-family: var(--font-display); font-weight: 900; font-size: 24px; letter-spacing: -0.02em; line-height: 1; }
   .logo b span { color: var(--tape-ink); }
   .logo small { font-size: 13px; font-weight: 700; color: var(--muted); }
   .nav { display: none; gap: clamp(14px, 1.8vw, 28px); font-weight: 600; font-size: 15px; }
@@ -108,7 +108,7 @@
   .hero-grid { display: grid; gap: 32px; }
   .eyebrow { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; margin: 0; font-size: 15px; font-weight: 600; color: var(--muted); }
   .eyebrow b { padding: 3px 10px; border-radius: var(--radius-pill); background: var(--ink); color: var(--on-ink); font-weight: 700; }
-  .hero-title { margin-top: 16px; font-size: clamp(38px, 10.4vw, 96px); line-height: .98; font-weight: 850; font-stretch: 92%; letter-spacing: -0.02em; }
+  .hero-title { margin-top: 16px; font-size: clamp(36px, 10vw, 92px); line-height: 1; font-weight: 900; letter-spacing: -0.02em; }
   .mark-tape { position: relative; display: inline-block; z-index: 0; }
   .mark-tape::before { content: ""; position: absolute; z-index: -1; left: -0.08em; right: -0.12em; bottom: 0.06em; height: 0.46em; rotate: -2deg; background-color: var(--tape); background-image: repeating-linear-gradient(-58deg, var(--weave) 0 2px, transparent 2px 7px); border-radius: 3px; transform-origin: 0 50%; scale: var(--tape-scale, 1) 1; }
   .lead { margin: 20px 0 0; font-size: 18px; max-width: 46ch; color: var(--ink-2); }
@@ -132,7 +132,7 @@
   .polaroid:nth-child(2) .strip-tape { rotate: 3deg; }
   .polaroid figcaption { margin-top: 10px; font-size: 14px; line-height: 1.3; color: var(--muted); }
   .polaroid figcaption span { display: block; }
-  .polaroid figcaption b { display: block; font-family: var(--font-display); font-weight: 800; font-stretch: 110%; font-size: 15px; color: var(--ink); }
+  .polaroid figcaption b { display: block; font-family: var(--font-display); font-weight: 800; font-size: 15px; color: var(--ink); }
 
   /* Section scaffolding */
   .band { padding-block: var(--band); }
@@ -147,9 +147,11 @@
   .numbers .kicker { color: var(--tape-soft); }
   .num-grid { display: grid; gap: 36px 32px; }
   .num { margin: 0; border-top: 1px solid var(--on-ink-line); padding-top: 18px; }
-  .num b { display: block; font-family: var(--font-display); font-weight: 850; font-stretch: 100%; font-size: clamp(54px, 13vw, 120px); line-height: .9; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; white-space: nowrap; }
-  .num b small { font-size: .42em; font-stretch: 100%; letter-spacing: 0; }
-  .num > span { display: block; margin-top: 10px; font-size: 16px; color: var(--on-ink-dim); max-width: 26ch; }
+  .num-figure { position: relative; z-index: 0; display: inline-block; font-family: var(--font-display); font-weight: 850; font-size: clamp(54px, 13vw, 120px); line-height: .9; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .num-figure small { font-size: .42em; letter-spacing: 0; }
+  .num-tape { position: absolute; z-index: -1; left: -0.04em; right: -0.08em; bottom: -0.16em; height: 0.16em; rotate: -2deg; border-radius: 3px; transform-origin: 0 50%; }
+  .num:nth-child(even) .num-tape { background-color: var(--tape-2); rotate: 1.5deg; }
+  .num-label { display: block; margin-top: 22px; font-size: 16px; color: var(--on-ink-dim); max-width: 26ch; }
   .num-note { margin: 36px 0 0; font-size: 15px; color: var(--on-ink-dim); }
 
   /* Where does it hurt */
@@ -169,7 +171,7 @@
   .area-btn[aria-pressed="true"] { background: var(--ink); color: var(--on-ink); box-shadow: none; }
   .pain-panel { position: relative; background: var(--card); border-radius: var(--radius); padding: 26px 20px 22px; box-shadow: 0 1px 0 var(--line), 0 30px 60px -40px var(--shadow-ink-soft); }
   .pain-panel .panel-tape { position: absolute; top: -9px; left: 22px; width: 92px; height: 18px; rotate: -3deg; border-radius: 2px; }
-  .pain-panel h3 { font-size: clamp(26px, 4vw, 40px); line-height: 1.02; font-stretch: 100%; }
+  .pain-panel h3 { font-size: clamp(26px, 4vw, 40px); line-height: 1.02; }
   .pain-panel h3 span { color: var(--tape-ink); }
   .facts { margin: 18px 0 0; display: grid; gap: 14px; }
   .facts div { display: grid; gap: 2px; }
@@ -196,11 +198,13 @@
   .plan-media, .compare-media { aspect-ratio: auto; background: transparent; display: grid; align-items: center; }
   .chapter-body { padding: 22px 20px 26px; display: grid; gap: 10px; align-content: start; }
   .chapter-top { display: flex; align-items: baseline; gap: 14px; }
-  .chapter-num { font-family: var(--font-display); font-weight: 900; font-stretch: 60%; font-size: 64px; line-height: .8; letter-spacing: -0.02em; color: var(--tape-ink); white-space: nowrap; }
-  .chapter:nth-child(6) .chapter-num { color: var(--tape); }
+  .chapter-num { position: relative; z-index: 0; font-family: var(--font-display); font-weight: 900; font-size: 56px; line-height: .8; letter-spacing: -0.03em; color: var(--ink); white-space: nowrap; }
+  .chapter:nth-child(6) .chapter-num { color: var(--on-ink); }
+  .chapter-tape { position: absolute; z-index: -1; left: -0.1em; right: -0.14em; bottom: -0.02em; height: 0.36em; rotate: -3deg; border-radius: 3px; transform-origin: 0 50%; }
+  .chapter:nth-child(even) .chapter-tape { background-color: var(--tape-2); rotate: 2deg; }
   .when { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: var(--radius-pill); background: var(--ink); color: var(--on-ink); font-size: 14px; font-weight: 700; white-space: nowrap; }
   .chapter:nth-child(6) .when { background: var(--tape); color: var(--ink); }
-  .chapter h3 { font-size: clamp(26px, 3.4vw, 40px); line-height: 1.02; font-stretch: 96%; }
+  .chapter h3 { font-size: clamp(26px, 3.4vw, 40px); line-height: 1.02; }
   .chapter p { margin: 0; font-size: 17px; max-width: 52ch; }
   .chapter:nth-child(6) p { color: var(--on-ink-dim); }
   .takeaway { display: flex; gap: 10px; align-items: flex-start; margin-top: 6px; padding-top: 14px; border-top: 1px solid var(--line); font-size: 16px; font-weight: 600; }
@@ -210,13 +214,13 @@
   /* Chapter 3 shows the written plan itself, chapter 5 the before-and-after numbers. */
   .plan-sheet { position: relative; margin: 22px 18px; padding: 20px 18px; border-radius: 6px; background: var(--sheet); box-shadow: 0 16px 36px -24px var(--shadow-ink); rotate: -1.5deg; font-size: 15px; }
   .plan-sheet .sheet-tape { position: absolute; top: -9px; left: 50%; width: 90px; height: 18px; translate: -50% 0; rotate: 2deg; border-radius: 2px; }
-  .plan-sheet h4 { margin: 0 0 10px; font-family: var(--font-display); font-weight: 800; font-stretch: 110%; font-size: 17px; letter-spacing: 0.02em; text-transform: uppercase; }
+  .plan-sheet h4 { margin: 0 0 10px; font-family: var(--font-display); font-weight: 800; font-size: 17px; letter-spacing: 0.02em; text-transform: uppercase; }
   .plan-sheet dl { margin: 0; display: grid; gap: 8px; }
   .plan-sheet dl div { display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: 10px; padding-bottom: 8px; border-bottom: 1px dashed var(--dash); }
   .plan-sheet dt { font-weight: 800; color: var(--muted); }
   .plan-sheet dd { margin: 0; font-weight: 600; }
   .compare { margin: 22px 18px; padding: 18px; border-radius: var(--radius-sm); background: var(--sheet); display: grid; gap: 14px; font-size: 15px; }
-  .compare h4 { margin: 0; font-family: var(--font-display); font-weight: 800; font-stretch: 110%; font-size: 17px; }
+  .compare h4 { margin: 0; font-family: var(--font-display); font-weight: 800; font-size: 17px; }
   .metric { display: grid; gap: 6px; }
   .metric-label { display: flex; justify-content: space-between; gap: 12px; font-weight: 700; }
   .metric-label span { color: var(--muted); font-weight: 600; }
@@ -227,10 +231,10 @@
 
   /* Manifesto that lights up word by word */
   .manifesto { background: var(--sage); }
-  .manifesto-text { margin: 0; font-family: var(--font-display); font-weight: 800; font-stretch: 90%; font-size: clamp(30px, 5.6vw, 72px); line-height: 1.04; letter-spacing: -0.015em; max-width: 20ch; }
+  .manifesto-text { margin: 0; font-family: var(--font-display); font-weight: 800; font-size: clamp(30px, 5.6vw, 72px); line-height: 1.04; letter-spacing: -0.015em; max-width: 20ch; }
   .manifesto-text .w { display: inline; }
   .method { display: grid; gap: 28px; margin-top: clamp(40px, 6vw, 72px); }
-  .method h3 { font-size: 22px; font-stretch: 100%; margin-bottom: 12px; }
+  .method h3 { font-size: 22px; margin-bottom: 12px; }
   .method ul { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
   .method li { display: grid; grid-template-columns: 28px minmax(0, 1fr); gap: 12px; padding-block: 14px; border-bottom: 1px solid var(--line); font-size: 17px; }
   .method li b { display: block; }
@@ -242,10 +246,10 @@
   .team { list-style: none; margin: 32px 0 0; padding: 0; border-top: 2px solid var(--ink); }
   .member { display: grid; grid-template-columns: 60px minmax(0, 1fr); gap: 6px 18px; padding-block: 24px; border-bottom: 1px solid var(--line); }
   .member > :not(.monogram) { grid-column: 2; }
-  .monogram { grid-row: 1 / span 4; width: 60px; height: 60px; border-radius: 50%; display: grid; place-items: center; background: var(--ink); color: var(--on-ink); font-family: var(--font-display); font-weight: 900; font-stretch: 120%; font-size: 19px; }
+  .monogram { grid-row: 1 / span 4; width: 60px; height: 60px; border-radius: 50%; display: grid; place-items: center; background: var(--ink); color: var(--on-ink); font-family: var(--font-display); font-weight: 900; font-size: 19px; }
   .member:nth-child(2) .monogram { background: var(--tape); color: var(--ink); }
   .member:nth-child(3) .monogram { background: var(--tape-2); color: var(--ink); }
-  .member h3 { font-size: 24px; font-stretch: 100%; line-height: 1.1; }
+  .member h3 { font-size: 24px; line-height: 1.1; }
   .member .role { margin: 0; font-weight: 700; color: var(--tape-ink); }
   .cv { list-style: none; margin: 6px 0 0; padding: 0; display: grid; gap: 6px; font-size: 16px; }
   .cv li { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 8px; }
@@ -257,7 +261,7 @@
   /* Specialties */
   .specs { list-style: none; margin: 0; padding: 0; display: grid; gap: 0 48px; border-top: 1px solid var(--line); }
   .spec { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 16px; padding-block: 18px; border-bottom: 1px solid var(--line); }
-  .spec h3 { font-size: 22px; font-stretch: 100%; line-height: 1.15; }
+  .spec h3 { font-size: 22px; line-height: 1.15; }
   .spec .avg { font-size: 14px; font-weight: 800; color: var(--sage-deep); white-space: nowrap; align-self: start; margin-top: .45em; }
   .spec p { grid-column: 1 / -1; margin: 0; font-size: 16px; color: var(--ink-2); }
 
@@ -278,7 +282,7 @@
   .prices th, .prices td { padding: 16px 0; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
   .prices th { font-weight: 800; font-size: 18px; }
   .prices th small { display: block; font-weight: 500; font-size: 15px; color: var(--muted); }
-  .prices td { text-align: right; font-family: var(--font-display); font-weight: 800; font-stretch: 100%; font-size: 20px; white-space: nowrap; padding-left: 16px; }
+  .prices td { text-align: right; font-family: var(--font-display); font-weight: 800; font-size: 20px; white-space: nowrap; padding-left: 16px; }
   .pay-list { list-style: none; margin: 24px 0 0; padding: 0; display: grid; gap: 14px; }
   .pay-list li { display: grid; grid-template-columns: 26px minmax(0, 1fr); gap: 12px; font-size: 16px; }
   .pay-list .ico { width: 24px; height: 24px; margin-top: 1px; }
@@ -293,9 +297,9 @@
   .book-grid { display: grid; gap: 28px; }
   .book-form { display: grid; gap: 14px; }
   .step { margin: 0; padding: 20px 16px; border: 0; border-radius: var(--radius); background: var(--card); color: var(--ink); min-width: 0; }
-  .step legend { float: left; width: 100%; display: flex; align-items: center; gap: 12px; margin-bottom: 14px; padding: 0; font-family: var(--font-display); font-weight: 800; font-stretch: 100%; font-size: 20px; line-height: 1.15; }
+  .step legend { float: left; width: 100%; display: flex; align-items: center; gap: 12px; margin-bottom: 14px; padding: 0; font-family: var(--font-display); font-weight: 800; font-size: 20px; line-height: 1.15; }
   .step legend + * { clear: both; }
-  .step-n { width: 32px; height: 32px; display: grid; place-items: center; flex: none; border-radius: 50%; background: var(--ink); color: var(--on-ink); font-size: 15px; font-stretch: 100%; }
+  .step-n { width: 32px; height: 32px; display: grid; place-items: center; flex: none; border-radius: 50%; background: var(--ink); color: var(--on-ink); font-size: 15px; }
   .opts { display: grid; gap: 8px; }
   .opt { position: relative; display: flex; align-items: center; gap: 12px; min-height: 56px; padding: 10px 14px; border-radius: var(--radius-sm); background: var(--paper); box-shadow: inset 0 0 0 1px var(--line); cursor: pointer; }
   .opt input { position: absolute; inset: 0; margin: 0; opacity: 0; cursor: pointer; }
@@ -316,7 +320,7 @@
   .day { position: relative; flex: none; scroll-snap-align: start; display: grid; justify-items: center; gap: 2px; width: 70px; min-height: 74px; padding: 10px 6px; border-radius: var(--radius-sm); background: var(--paper); box-shadow: inset 0 0 0 1px var(--line); cursor: pointer; }
   .day input { position: absolute; inset: 0; margin: 0; opacity: 0; cursor: pointer; }
   .day small { font-size: 13px; font-weight: 700; color: var(--muted); }
-  .day b { font-family: var(--font-display); font-weight: 850; font-stretch: 100%; font-size: 22px; line-height: 1.1; }
+  .day b { font-family: var(--font-display); font-weight: 850; font-size: 22px; line-height: 1.1; }
   .day:has(input:checked) { background: var(--ink); color: var(--on-ink); box-shadow: none; }
   .day:has(input:checked) small { color: var(--on-ink-dim); }
   .day:has(input:disabled) { opacity: .45; cursor: not-allowed; }
@@ -333,7 +337,7 @@
   .ficha { align-self: start; position: relative; border-radius: var(--radius); background: var(--card); color: var(--ink); padding: 26px 20px 22px; }
   .ficha .ficha-tape { position: absolute; top: -10px; left: 50%; width: 120px; height: 20px; translate: -50% 0; rotate: -2deg; border-radius: 2px; }
   .ficha-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding-bottom: 12px; border-bottom: 2px solid var(--ink); }
-  .ficha-head b { font-family: var(--font-display); font-weight: 900; font-stretch: 115%; font-size: 20px; }
+  .ficha-head b { font-family: var(--font-display); font-weight: 900; font-size: 20px; }
   .ficha-head span { font-weight: 800; }
   .ficha dl { margin: 0; }
   .ficha dl > div { display: grid; grid-template-columns: 92px minmax(0, 1fr); gap: 12px; padding-block: 11px; border-bottom: 1px dashed var(--dash); }
@@ -345,7 +349,7 @@
   /* Hours and map */
   .where { display: grid; gap: 16px; }
   .card { background: var(--card); border-radius: var(--radius); padding: clamp(22px, 3.4vw, 40px); display: flex; flex-direction: column; gap: 16px; min-width: 0; box-shadow: 0 1px 0 var(--line); }
-  .card h3 { font-size: clamp(24px, 3vw, 34px); font-stretch: 96%; line-height: 1.05; }
+  .card h3 { font-size: clamp(24px, 3vw, 34px); line-height: 1.05; }
   .open-now { display: inline-flex; align-items: center; gap: 10px; align-self: flex-start; min-height: 36px; padding: 6px 14px; border-radius: var(--radius-pill); background: var(--sage); font-size: 15px; font-weight: 800; }
   .open-now::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--sage-deep); }
   .open-now.is-closed { background: var(--paper-2); }
@@ -385,8 +389,9 @@
   .foot-cta .btn-line { color: var(--on-ink); box-shadow: inset 0 0 0 2px var(--on-ink); }
   .foot-cta .btn-line:hover { background: var(--ink-2); }
   .foot-actions { display: flex; flex-wrap: wrap; gap: 12px; }
-  .wordmark { margin: 36px 0 0; font-family: var(--font-display); font-weight: 900; font-stretch: 100%; font-size: clamp(76px, 20vw, 300px); line-height: .85; letter-spacing: -0.03em; white-space: nowrap; color: var(--on-ink); }
+  .wordmark { margin: 36px 0 0; font-family: var(--font-display); font-weight: 900; font-size: clamp(76px, 20vw, 300px); line-height: .85; letter-spacing: -0.03em; white-space: nowrap; color: var(--on-ink); position: relative; z-index: 0; display: inline-block; }
   .wordmark span { color: var(--tape); }
+  .wordmark-tape { position: absolute; z-index: -1; left: -0.04em; right: 0.3em; bottom: 0.02em; height: 0.12em; rotate: -1.5deg; border-radius: 4px; transform-origin: 0 50%; background-color: var(--tape-2); }
   .foot-row { display: flex; flex-wrap: wrap; gap: 10px 28px; justify-content: space-between; margin-top: 28px; font-size: 15px; color: var(--on-ink-dim); }
   .foot-handle { display: inline-flex; align-items: center; gap: 8px; color: var(--on-ink); font-weight: 600; }
   .foot-handle .ico { width: 18px; height: 18px; }
@@ -443,7 +448,7 @@
     .polaroid figcaption { font-size: 15px; }
     .sec-head { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); align-items: end; }
     .num-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-    .num b { font-size: min(6vw, 90px); }
+    .num-figure { font-size: min(6vw, 90px); }
     .team-grid .h2 { font-size: clamp(30px, 3.6vw, 54px); }
     .pain { grid-template-columns: minmax(0, 1fr) 280px minmax(0, 1.1fr); grid-template-rows: auto 1fr; gap: 28px 36px; }
     .pain-head { grid-column: 1; grid-row: 1; }
@@ -561,10 +566,10 @@
       <div class="wrap">
         <p class="kicker" id="numbers-title">Nove anos no Alto Branco</p>
         <div class="num-grid">
-          <p class="num"><b data-count="3412" data-format="thousands">3.412</b><span>avaliações desde a primeira sala, em 2017</span></p>
-          <p class="num"><b><span data-count="87">87</span><small>%</small></b><span>recebem alta dentro das sessões previstas no plano</span></p>
-          <p class="num"><b><span data-count="50">50</span><small>min</small></b><span>de sessão, com você do começo ao fim</span></p>
-          <p class="num"><b><span data-count="1">1</span><small>só</small></b><span>fisioterapeuta do primeiro dia até a alta</span></p>
+          <p class="num"><b class="num-figure"><span class="num-tape tape" aria-hidden="true"></span><span data-count="3412" data-format="thousands">3.412</span></b><span class="num-label">avaliações desde a primeira sala, em 2017</span></p>
+          <p class="num"><b class="num-figure"><span class="num-tape tape" aria-hidden="true"></span><span data-count="87">87</span><small>%</small></b><span class="num-label">dos pacientes recebem alta dentro do número de sessões do plano</span></p>
+          <p class="num"><b class="num-figure"><span class="num-tape tape" aria-hidden="true"></span><span data-count="50">50</span><small>min</small></b><span class="num-label">de sessão, com o fisioterapeuta ao seu lado do começo ao fim</span></p>
+          <p class="num"><b class="num-figure"><span class="num-tape tape" aria-hidden="true"></span><span data-count="1">1</span><small>só</small></b><span class="num-label">fisioterapeuta do primeiro dia até a alta</span></p>
         </div>
         <p class="num-note">Números da clínica de janeiro de 2017 a agosto de 2026.</p>
       </div>
@@ -575,7 +580,7 @@
         <div class="pain-head">
           <p class="kicker">Antes de marcar</p>
           <h2 class="h2" id="pain-title">Onde dói?</h2>
-          <p class="intro">Toque no corpo ou no nome do lugar. A gente conta o que costuma causar essa dor, como trata e quantas sessões ela costuma pedir.</p>
+          <p class="intro">Toque no corpo ou no nome do lugar. A gente conta o que costuma causar essa dor, como trata e quantas sessões ela leva, em média.</p>
         </div>
         <div class="body-map" role="group" aria-label="Silhueta do corpo, vista de frente">
           <svg viewBox="0 0 200 460" aria-hidden="true">
@@ -638,7 +643,7 @@
           <li class="chapter" style="--i:0">
             <div class="chapter-media"><img src="https://images.unsplash.com/photo-1637580690960-02f4673ba4c5?auto=format&fit=crop&w=900&h=700&q=70" alt="Homem trabalhando sentado diante do notebook, de costas para a câmera" loading="lazy" width="900" height="700"></div>
             <div class="chapter-body">
-              <div class="chapter-top"><span class="chapter-num" aria-hidden="true">01</span><span class="when">Dia 0</span></div>
+              <div class="chapter-top"><span class="chapter-num" aria-hidden="true"><span class="chapter-tape tape"></span>01</span><span class="when">Dia 0</span></div>
               <h3>Você escreve para a gente</h3>
               <p>Conta onde dói, desde quando e o que piora. A Lúcia, da recepção, responde no mesmo dia com dois ou três horários. Mensagem depois das 20h é respondida às 7h.</p>
               <p class="takeaway"><svg class="ico" aria-hidden="true"><use href="#i-chat-circle-text"/></svg>Você sai com: o horário marcado e a lista do que levar.</p>
@@ -647,9 +652,9 @@
           <li class="chapter" style="--i:1">
             <div class="chapter-media"><img src="https://images.unsplash.com/photo-1739776073455-c53292998b84?auto=format&fit=crop&w=900&h=700&q=70" alt="Fisioterapeuta mede o joelho dobrado de um paciente deitado na maca" loading="lazy" width="900" height="700"></div>
             <div class="chapter-body">
-              <div class="chapter-top"><span class="chapter-num" aria-hidden="true">02</span><span class="when">Dia 1, 60 min</span></div>
+              <div class="chapter-top"><span class="chapter-num" aria-hidden="true"><span class="chapter-tape tape"></span>02</span><span class="when">Dia 1, 60 min</span></div>
               <h3>A avaliação</h3>
-              <p>Quinze minutos de conversa. Depois, testes de força e de movimento, com medida em graus e em quilos, e a leitura dos seus exames. Nada de aparelho ligado enquanto isso.</p>
+              <p>Quinze minutos de conversa. Depois, testes de força e de movimento, com medida em graus e em quilos, e a leitura dos seus exames.</p>
               <p class="takeaway"><svg class="ico" aria-hidden="true"><use href="#i-ruler"/></svg>Você sai com: os números do seu ponto de partida.</p>
             </div>
           </li>
@@ -667,18 +672,18 @@
               </div>
             </div>
             <div class="chapter-body">
-              <div class="chapter-top"><span class="chapter-num" aria-hidden="true">03</span><span class="when">Fim da avaliação</span></div>
+              <div class="chapter-top"><span class="chapter-num" aria-hidden="true"><span class="chapter-tape tape"></span>03</span><span class="when">Fim da avaliação</span></div>
               <h3>O plano por escrito</h3>
-              <p>Diagnóstico funcional em palavras que você entende, a meta que você mesmo escolheu e quantas sessões devem ser. Se for convênio, o plano vai junto com o pedido.</p>
+              <p>Diagnóstico funcional em palavras que você entende, a meta que você mesmo escolheu e o número de sessões previsto. Se for convênio, o plano vai junto com o pedido.</p>
               <p class="takeaway"><svg class="ico" aria-hidden="true"><use href="#i-clipboard-text"/></svg>Você sai com: uma folha que responde "quanto tempo vai levar".</p>
             </div>
           </li>
           <li class="chapter" style="--i:3">
             <div class="chapter-media"><img src="https://images.unsplash.com/photo-1645005512964-5057008b4425?auto=format&fit=crop&w=900&h=700&q=70" alt="Fisioterapeuta ajusta o braço de uma paciente que puxa um elástico verde" loading="lazy" width="900" height="700"></div>
             <div class="chapter-body">
-              <div class="chapter-top"><span class="chapter-num" aria-hidden="true">04</span><span class="when">Semanas 1 a 5</span></div>
+              <div class="chapter-top"><span class="chapter-num" aria-hidden="true"><span class="chapter-tape tape"></span>04</span><span class="when">Semanas 1 a 5</span></div>
               <h3>O tratamento</h3>
-              <p>Terapia manual para aliviar as primeiras semanas e exercício com carga que sobe toda semana. Os exercícios de casa chegam em vídeo no seu WhatsApp, com o seu nome.</p>
+              <p>Terapia manual para aliviar a dor das primeiras semanas e exercício com carga que aumenta aos poucos. Os exercícios de casa chegam em vídeo no seu WhatsApp, com o seu nome.</p>
               <p class="takeaway"><svg class="ico" aria-hidden="true"><use href="#i-barbell"/></svg>Você sai com: três exercícios para fazer em casa, em 10 minutos.</p>
             </div>
           </li>
@@ -692,16 +697,16 @@
               </div>
             </div>
             <div class="chapter-body">
-              <div class="chapter-top"><span class="chapter-num" aria-hidden="true">05</span><span class="when">A cada 10 sessões</span></div>
+              <div class="chapter-top"><span class="chapter-num" aria-hidden="true"><span class="chapter-tape tape"></span>05</span><span class="when">A cada 10 sessões</span></div>
               <h3>A reavaliação</h3>
-              <p>Os mesmos testes do primeiro dia, lado a lado com os números novos. Se o ritmo estiver abaixo do plano, a gente muda o plano, não só insiste nele.</p>
+              <p>Os mesmos testes do primeiro dia, lado a lado com os números novos. Se o ritmo estiver abaixo do plano, a gente muda o plano em vez de insistir nele.</p>
               <p class="takeaway"><svg class="ico" aria-hidden="true"><use href="#i-chart-line-up"/></svg>Você sai com: a prova, em número, de que melhorou.</p>
             </div>
           </li>
           <li class="chapter" style="--i:5">
             <div class="chapter-media"><img src="https://images.unsplash.com/photo-1730382855710-b310f177da50?auto=format&fit=crop&w=900&h=700&q=70" alt="Senhor de colete laranja chuta a bola num campo de grama sintética" loading="lazy" width="900" height="700"></div>
             <div class="chapter-body">
-              <div class="chapter-top"><span class="chapter-num" aria-hidden="true">06</span><span class="when">A alta</span></div>
+              <div class="chapter-top"><span class="chapter-num" aria-hidden="true"><span class="chapter-tape tape"></span>06</span><span class="when">A alta</span></div>
               <h3>De volta ao que você fazia</h3>
               <p>A alta vem com um plano de manutenção para fazer sozinho. Se a mesma dor voltar em até 60 dias, a reavaliação é por nossa conta.</p>
               <p class="takeaway"><svg class="ico" aria-hidden="true"><use href="#i-soccer-ball"/></svg>Você sai com: a pelada de domingo de volta, sem medo.</p>
@@ -719,8 +724,8 @@
           <div>
             <h3>O que a gente faz</h3>
             <ul>
-              <li><svg class="ico" aria-hidden="true"><use href="#i-barbell"/></svg><div><b>Exercício com carga medida</b><span>É o que mais tem estudo por trás para dor de coluna, joelho e ombro. A carga sobe quando o seu corpo pede, não quando o pacote acaba.</span></div></li>
-              <li><svg class="ico" aria-hidden="true"><use href="#i-hand-heart"/></svg><div><b>Terapia manual quando ela alivia</b><span>Mão no lugar certo para destravar e diminuir a dor nas primeiras semanas, abrindo caminho para o exercício.</span></div></li>
+              <li><svg class="ico" aria-hidden="true"><use href="#i-barbell"/></svg><div><b>Exercício com carga medida</b><span>É o que mais tem estudo por trás para dor de coluna, joelho e ombro. A carga só sobe quando o seu corpo aguenta.</span></div></li>
+              <li><svg class="ico" aria-hidden="true"><use href="#i-hand-heart"/></svg><div><b>Terapia manual quando ela alivia</b><span>Mão no lugar certo para destravar e aliviar a dor nas primeiras semanas, até o exercício ficar confortável.</span></div></li>
               <li><svg class="ico" aria-hidden="true"><use href="#i-chat-circle-text"/></svg><div><b>Explicação da sua dor, sem palavra difícil</b><span>Quem entende por que dói tem menos medo de se mexer, e melhora mais rápido.</span></div></li>
             </ul>
           </div>
@@ -741,7 +746,7 @@
         <div class="sticky-col">
           <p class="kicker">Equipe</p>
           <h2 class="h2" id="team-title">Três fisioterapeutas, cada um no que estudou mais.</h2>
-          <p class="intro">Todos com registro no Crefito 1, que cobre a Paraíba, e com especialização na área que atendem. O registro de cada um fica na parede da recepção e sai no seu recibo.</p>
+          <p class="intro">Todos com registro no Crefito e com especialização na área que atendem. O registro de cada um fica na parede da recepção e sai no seu recibo.</p>
         </div>
         <div>
           <ol class="team">
@@ -797,7 +802,7 @@
         <div class="sec-head">
           <div>
             <p class="kicker">Histórias de alta</p>
-            <h2 class="h2" id="stories-title">O antes e o depois, contado por quem passou.</h2>
+            <h2 class="h2" id="stories-title">O antes e o depois, contados por quem passou.</h2>
           </div>
           <p class="intro"><span class="stars" aria-hidden="true"><svg class="ico"><use href="#i-star"/></svg><svg class="ico"><use href="#i-star"/></svg><svg class="ico"><use href="#i-star"/></svg><svg class="ico"><use href="#i-star"/></svg><svg class="ico"><use href="#i-star"/></svg></span> 4,9 no Google, com 214 avaliações.</p>
         </div>
@@ -853,7 +858,7 @@
             <p class="kicker">Agendar</p>
             <h2 class="h2" id="booking-title">Escolha o horário. A Lúcia confirma no WhatsApp.</h2>
           </div>
-          <p class="intro">Cinco escolhas e a mensagem sai pronta. Quem responde é a recepção, no mesmo dia, de 7h às 20h.</p>
+          <p class="intro">Cinco escolhas e a mensagem sai pronta. Quem responde é a recepção, no mesmo dia, das 7h às 20h.</p>
         </div>
 
         <form class="book-form" id="booking-form" novalidate>
@@ -938,7 +943,7 @@
             <div><dt>Nome</dt><dd id="t-name">Falta o seu nome</dd></div>
           </dl>
           <a class="btn btn-tape" id="booking-send" href="https://wa.me/?text=Oi!%20Quero%20agendar%20uma%20avalia%C3%A7%C3%A3o%20na%20S%C3%A1lvia." target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-whatsapp"/></svg>Enviar pelo WhatsApp</a>
-          <p class="ficha-hint" id="ficha-hint">Nada fica salvo aqui. Se precisar desmarcar, avise com 12 horas e a gente remarca sem custo.</p>
+          <p class="ficha-hint" id="ficha-hint">Nada fica salvo aqui. Se precisar desmarcar, avise com 12 horas de antecedência e a gente remarca sem custo.</p>
         </aside>
       </div>
     </section>
@@ -1009,7 +1014,7 @@
           <a class="btn btn-line" href="https://wa.me/?text=Oi!%20Tenho%20uma%20d%C3%BAvida%20antes%20de%20marcar%20na%20S%C3%A1lvia." target="_blank" rel="noopener"><svg class="ico wa" aria-hidden="true"><use href="#i-whatsapp"/></svg>Tirar dúvida</a>
         </div>
       </div>
-      <p class="wordmark" id="wordmark">Sálvia<span>.</span></p>
+      <p class="wordmark" id="wordmark"><span class="wordmark-tape tape" aria-hidden="true"></span>Sálvia<span>.</span></p>
       <div class="foot-row">
         <span>Sálvia Fisioterapia, empresa fictícia para demonstração</span>
         <span class="foot-handle"><svg class="ico" aria-hidden="true"><use href="#i-instagram"/></svg>@salviafisio.demo, perfil fictício</span>
@@ -1449,7 +1454,7 @@
     gsap.to(".progress", { scaleX: 1, ease: "none", scrollTrigger: { trigger: document.body, start: "top top", end: "bottom bottom", scrub: 0.3 } });
   }
 
-  // Numbers count up and stretch wide at the same time, like a muscle warming up.
+  // Numbers count up while a strip of kinesio tape is laid under each one; the elastic ease is the tape settling.
   function animateNumbers() {
     document.querySelectorAll("[data-count]").forEach((el) => {
       const state = { value: 0 };
@@ -1460,13 +1465,14 @@
         onUpdate: () => { el.textContent = thousands ? Math.round(state.value).toLocaleString("pt-BR") : String(Math.round(state.value)); },
       });
     });
-    gsap.fromTo(".num b", { fontStretch: "60%" }, { fontStretch: "100%", duration: 1.6, ease: "elastic.out(1, 0.55)", stagger: 0.1, scrollTrigger: { trigger: ".num-grid", start: "top 85%", once: true } });
+    gsap.from(".num-tape", { scaleX: 0, duration: 1.1, ease: "elastic.out(1, 0.5)", stagger: 0.14, scrollTrigger: { trigger: ".num-grid", start: "top 85%", once: true } });
   }
 
   function animatePainPanel() {
     const onArea = () => {
       gsap.fromTo("#pain-panel > :not(.panel-tape)", { y: 10, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.4, stagger: 0.04, ease: "power2.out", overwrite: true });
       gsap.fromTo("#pain-dots span", { scale: 0 }, { scale: 1, duration: 0.3, stagger: 0.025, ease: "back.out(2)" });
+      gsap.fromTo(".panel-tape", { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: "elastic.out(1, 0.6)", transformOrigin: "0% 50%" });
     };
     document.addEventListener("area", onArea);
     gsap.from(".pin", { scale: 0, duration: 0.5, ease: "back.out(2)", stagger: 0.07, scrollTrigger: { trigger: ".body-map", start: "top 80%", once: true } });
@@ -1485,7 +1491,7 @@
     ScrollTrigger.batch(".chapter", {
       start: "top 88%", once: true,
       onEnter: (batch) => batch.forEach((chapter) => {
-        gsap.from(chapter.querySelector(".chapter-num"), { fontStretch: "150%", duration: 1.2, ease: "elastic.out(1, 0.5)" });
+        gsap.from(chapter.querySelector(".chapter-tape"), { scaleX: 0, rotation: -12, duration: 1, ease: "elastic.out(1, 0.55)", delay: 0.15 });
         const media = chapter.querySelector(".chapter-media img");
         if (media) gsap.from(media, { scale: 1.2, duration: 1.4, ease: "power3.out" });
         gsap.from(chapter.querySelectorAll(".bar span"), { scaleX: 0, transformOrigin: "0 50%", duration: 1, stagger: 0.08, ease: "power3.out", delay: 0.2 });
@@ -1513,9 +1519,9 @@
     return () => { document.removeEventListener("slots", onSlots); document.removeEventListener("ficha", onFicha); };
   }
 
-  // The name in the footer stretches as the page ends: the last exercise of the visit.
+  // The last strip of tape of the visit is laid under the name as the page ends, following the scroll.
   function animateWordmark() {
-    gsap.fromTo("#wordmark", { fontStretch: "55%" }, { fontStretch: "100%", ease: "none", scrollTrigger: { trigger: "#wordmark", start: "top bottom", end: "bottom 75%", scrub: 0.6 } });
+    gsap.fromTo(".wordmark-tape", { scaleX: 0 }, { scaleX: 1, ease: "none", scrollTrigger: { trigger: "#wordmark", start: "top bottom", end: "bottom 70%", scrub: 0.6 } });
   }
 
   function setupMotion() {
