@@ -1,0 +1,1447 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#17191c">
+<meta name="robots" content="noindex, nofollow">
+<title>Algodão Hotel · Campina Grande (demonstração)</title>
+<meta name="description" content="Hotel executivo no São José, em Campina Grande: perto do HU, da UFCG e da UEPB, recepção 24 horas, café às 5h30 e tarifa para empresa. Modelo de demonstração.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://images.unsplash.com">
+<!-- Red Hat Display, Red Hat Text e Red Hat Mono: SIL Open Font License, Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@500;700;900&family=Red+Hat+Mono:wght@400;500;700&family=Red+Hat+Text:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css">
+<!--
+  Créditos das fotos (licença Unsplash, https://unsplash.com/license):
+  Point3D Commercial Imaging Ltd. (unsplash.com/@3dottawa): quartos, mesas, banheiros, copa e corredor, ids 1631048... e 1631049...
+  oning (@oning): quarto com duas camas, 1648383228240
+  Edwin Petrus (@ep_petrus): bufê do café, 1722477936580
+  S O C I A L . C U T (@socialcut): sala de reunião, 1542089363
+  Edson Junior (@roinuj16), fotos feitas em Campina Grande: Açude Velho ao anoitecer, 1768061002232 e 1718384342456
+  Vídeo: "Hotel room tour", Coverr (https://coverr.co/videos/hotel-room-tour), licença Coverr
+  (https://coverr.co/license): uso comercial livre, sem crédito obrigatório. Trecho de 6 s em ida e volta, sem som.
+  Tempos do quadro "Daqui até": rotas do OpenStreetMap (routing.openstreetmap.de, perfis carro e a pé),
+  saindo de -7.2255, -35.8910 no bairro São José, medidas em 23/09/2026, sem trânsito.
+-->
+<style>
+  :root {
+    --concreto: #e9e7e2;
+    --concreto-deep: #dcd9d2;
+    --papel: #f7f6f3;
+    --ink: #17191c;
+    --ink-soft: #3b3f45;
+    --muted: #55595f;
+    --line: #cfccc5;
+    --grafite: #17191c;
+    --grafite-2: #24272b;
+    --grafite-3: #34383e;
+    --on-grafite: #f1efe9;
+    --on-grafite-muted: #a9adb3;
+    --on-grafite-line: rgba(241, 239, 233, 0.16);
+    --amarelo: #f4b400;
+    --amarelo-deep: #d99d00;
+    --on-amarelo: #17191c;
+    --on-amarelo-muted: #3d3a2e;
+    --amarelo-line: rgba(23, 25, 28, 0.22);
+    --flap: #0f1113;
+    --flap-seam: rgba(0, 0, 0, 0.6);
+    --flap-text: #f4f1e8;
+    --whatsapp: #25d366;
+    --header-bg: rgba(233, 231, 226, 0.95);
+    --header-dark: rgba(23, 25, 28, 0.95);
+    --backdrop: rgba(10, 11, 13, 0.86);
+    --shadow: 0 30px 60px -36px rgba(10, 11, 13, 0.6);
+    --radius-sm: 6px;
+    --radius-md: 12px;
+    --radius-lg: 18px;
+    --pill: 999px;
+    --gutter: clamp(16px, 4.5vw, 56px);
+    --max: 1320px;
+    --header-h: 60px;
+    --space: clamp(80px, 11vw, 150px);
+    --font-display: "Red Hat Display", "Helvetica Neue", Arial, sans-serif;
+    --font-body: "Red Hat Text", "Helvetica Neue", Arial, system-ui, sans-serif;
+    --font-mono: "Red Hat Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: var(--concreto); color: var(--ink); font-family: var(--font-body); font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  img, video { display: block; max-width: 100%; }
+  a { color: inherit; text-decoration: none; }
+  button, input, select { font: inherit; color: inherit; }
+  button { cursor: pointer; }
+  [hidden] { display: none !important; }
+  h1, h2, h3 { text-wrap: balance; }
+  p, li, dd, blockquote { text-wrap: pretty; }
+  .wrap { max-width: var(--max); margin: 0 auto; padding-inline: var(--gutter); }
+  .ico { width: 20px; height: 20px; fill: currentColor; display: block; flex: none; }
+  .mono { font-family: var(--font-mono); letter-spacing: 0.04em; }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  :focus-visible { outline: 3px solid var(--amarelo-deep); outline-offset: 3px; }
+  .h2 { margin: 0; font-family: var(--font-display); font-weight: 900; font-size: clamp(34px, 5vw, 68px); line-height: 1; letter-spacing: -0.03em; }
+  .mark { background: linear-gradient(transparent 62%, var(--amarelo) 62%, var(--amarelo) 92%, transparent 92%); padding-inline: 0.06em; }
+
+  .notice { background: var(--grafite); color: var(--on-grafite); font-size: 13px; text-align: center; padding: 8px var(--gutter); }
+  .notice strong { color: var(--on-amarelo); background: var(--amarelo); padding: 1px 8px; border-radius: var(--radius-sm); margin-right: 4px; }
+
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 50px; padding: 10px 22px; border-radius: var(--radius-sm); border: 2px solid var(--ink); background: transparent; color: var(--ink); font-family: var(--font-display); font-weight: 700; font-size: 16px; line-height: 1.2; text-align: center; transition: background-color .2s ease, color .2s ease, border-color .2s ease; }
+  .btn:hover { background: var(--ink); color: var(--papel); }
+  .btn .ico { width: 20px; height: 20px; }
+  .btn-yellow { background: var(--amarelo); border-color: var(--amarelo); color: var(--on-amarelo); }
+  .btn-yellow:hover { background: var(--ink); border-color: var(--ink); color: var(--amarelo); }
+  .btn-wa .ico { color: var(--whatsapp); }
+  .btn-dark { background: var(--ink); border-color: var(--ink); color: var(--papel); }
+  .btn-dark .ico { color: var(--whatsapp); }
+  .btn-dark:hover { background: var(--grafite-3); border-color: var(--grafite-3); color: var(--papel); }
+  .btn-light { border-color: var(--on-grafite); color: var(--on-grafite); }
+  .btn-light:hover { background: var(--on-grafite); color: var(--ink); }
+  .icon-btn { width: 46px; height: 46px; display: inline-grid; place-items: center; border-radius: var(--radius-sm); border: 2px solid currentColor; background: transparent; color: inherit; padding: 0; flex: none; }
+  .icon-btn:hover { background: var(--amarelo); border-color: var(--amarelo); color: var(--on-amarelo); }
+  .icon-btn:disabled { opacity: .35; cursor: not-allowed; }
+
+  /* Header: hides while you read down, comes back on the way up, turns dark over dark sections */
+  .topbar { position: sticky; top: 0; z-index: 40; background: var(--header-bg); color: var(--ink); border-bottom: 1px solid var(--line); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); transition: translate .35s ease, background-color .3s ease, color .3s ease, border-color .3s ease; }
+  .topbar.is-away { translate: 0 -100%; }
+  .topbar.is-dark { background: var(--header-dark); color: var(--on-grafite); border-color: var(--on-grafite-line); }
+  .topbar .wrap { display: flex; align-items: center; gap: 12px; min-height: var(--header-h); }
+  .logo { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; margin-right: auto; }
+  .logo-mark { width: 34px; height: 34px; display: grid; place-items: center; background: var(--amarelo); color: var(--on-amarelo); font-family: var(--font-mono); font-weight: 700; font-size: 20px; border-radius: 4px; }
+  .logo b { font-family: var(--font-display); font-weight: 900; font-size: 22px; letter-spacing: -0.02em; line-height: 1; }
+  .logo small { display: none; font-family: var(--font-mono); font-size: 13px; letter-spacing: .08em; text-transform: uppercase; opacity: .8; }
+  .desk { display: none; margin: 0; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 14px; }
+  .desk .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--whatsapp); box-shadow: 0 0 0 4px rgba(37, 211, 102, .22); }
+  .nav { display: none; }
+  .nav a { display: inline-flex; align-items: center; min-height: 44px; padding-inline: 11px; font-family: var(--font-display); font-weight: 700; font-size: 15px; }
+  .nav a:hover { text-decoration: underline; text-decoration-color: var(--amarelo); text-decoration-thickness: 3px; text-underline-offset: 6px; }
+  .topbar .btn { min-height: 46px; padding: 8px 16px; font-size: 15px; }
+
+  /* Hero: the promise on the left, the departures board with real distances on the right */
+  .hero { padding-block: 24px 0; }
+  .hero-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .eyebrow { margin: 0 0 14px; font-size: 13px; text-transform: uppercase; color: var(--ink-soft); }
+  .hero h1 { margin: 0; font-family: var(--font-display); font-weight: 900; font-size: clamp(42px, 11.4vw, 104px); line-height: .95; letter-spacing: -0.04em; }
+  .lead { margin: 18px 0 0; font-size: 17px; color: var(--ink-soft); max-width: 44ch; }
+  .actions { display: grid; gap: 10px; margin-top: 22px; }
+  .ticks { list-style: none; margin: 22px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; font-size: 13px; }
+  .ticks li { display: inline-flex; align-items: center; gap: 6px; padding: 6px 10px; border: 1.5px solid var(--ink); border-radius: var(--radius-sm); text-transform: uppercase; }
+  .ticks .ico { width: 16px; height: 16px; }
+
+  .board { background: var(--grafite); color: var(--flap-text); border-radius: var(--radius-lg); padding: 16px; box-shadow: var(--shadow); align-self: start; }
+  .board-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 4px 4px 12px; border-bottom: 1px solid var(--on-grafite-line); }
+  .board-head p { margin: 0; }
+  .board-title { font-family: var(--font-mono); font-weight: 700; font-size: 15px; letter-spacing: .12em; color: var(--amarelo); }
+  .board-from { font-family: var(--font-mono); font-size: 13px; color: var(--on-grafite-muted); text-align: right; }
+  .board-tabs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; margin: 12px 0 6px; }
+  .board-tab { min-height: 44px; border: 1.5px solid var(--on-grafite-line); border-radius: var(--radius-sm); background: transparent; color: var(--on-grafite); font-family: var(--font-mono); font-size: 13px; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; padding: 4px; }
+  .board-tab:hover { border-color: var(--on-grafite-muted); }
+  .board-tab[aria-selected="true"] { background: var(--amarelo); border-color: var(--amarelo); color: var(--on-amarelo); }
+  .board table { width: 100%; border-collapse: collapse; font-family: var(--font-mono); }
+  .board thead th { font-size: 13px; font-weight: 500; color: var(--on-grafite-muted); text-align: left; padding: 8px 4px; text-transform: uppercase; letter-spacing: .08em; }
+  .board thead th:nth-child(n + 3) { text-align: right; }
+  .board tbody td { padding: 9px 4px; border-top: 1px solid var(--on-grafite-line); vertical-align: middle; }
+  .dest { font-size: 15px; font-weight: 500; text-transform: uppercase; letter-spacing: .02em; line-height: 1.25; }
+  .how { width: 34px; color: var(--on-grafite-muted); }
+  .how .ico { width: 20px; height: 20px; }
+  .mins { text-align: right; white-space: nowrap; }
+  .km { text-align: right; font-size: 14px; color: var(--on-grafite-muted); white-space: nowrap; width: 58px; }
+  .flap { display: inline-flex; gap: 3px; }
+  .flap b { position: relative; width: 24px; height: 32px; display: grid; place-items: center; background: var(--flap); color: var(--amarelo); border-radius: 3px; font-style: normal; font-size: 20px; font-weight: 700; line-height: 1; }
+  .flap b::after { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: var(--flap-seam); }
+  .board-note { margin: 10px 4px 2px; font-size: 15px; line-height: 1.45; color: var(--on-grafite-muted); }
+
+  /* Night band with the room video */
+  .night { padding-top: 36px; }
+  .band { position: relative; margin: 0; border-radius: var(--radius-lg); overflow: hidden; aspect-ratio: 4 / 5; background: var(--grafite); }
+  .band video { width: 100%; height: 100%; object-fit: cover; }
+  .band figcaption { position: absolute; left: 12px; right: 12px; bottom: 12px; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; background: var(--grafite); color: var(--on-grafite); padding: 12px 14px; border-radius: var(--radius-md); font-size: 15px; line-height: 1.4; }
+  .band figcaption b { font-family: var(--font-mono); font-size: 22px; color: var(--amarelo); }
+
+  /* Sections share one editorial grid: a label column and the content */
+  .sec { padding-top: var(--space); scroll-margin-top: 12px; }
+  .sec-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 18px; border-top: 2px solid currentColor; padding-top: 18px; }
+  /* When the grid is also the padded wrapper, the rule is painted inside the padding so it lines up with the text */
+  .wrap.sec-grid { border-top: 0; background: linear-gradient(currentColor, currentColor) top center / calc(100% - 2 * var(--gutter)) 2px no-repeat; }
+  .sec-label { margin: 0; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; }
+  .sec-intro { margin: 18px 0 0; max-width: 56ch; color: var(--ink-soft); }
+
+  /* Your day here: a line the scroll draws, dark like the hour you arrive */
+  .day { background: var(--grafite); color: var(--on-grafite); padding-top: clamp(48px, 6vw, 88px); padding-bottom: var(--space); margin-top: var(--space); }
+  .day .sec-intro { color: var(--on-grafite-muted); }
+  .tl { position: relative; margin: 36px 0 0; padding: 0 0 0 34px; }
+  .timeline { list-style: none; margin: 0; padding: 0; }
+  .tl-track, .tl-fill { position: absolute; left: 8px; top: 8px; bottom: 8px; width: 3px; border-radius: 3px; }
+  .tl-track { background: var(--on-grafite-line); }
+  .tl-fill { background: var(--amarelo); transform-origin: top center; }
+  .tl-step { position: relative; display: grid; gap: 4px; padding-bottom: 34px; }
+  .tl-step:last-child { padding-bottom: 0; }
+  .tl-step::before { content: ""; position: absolute; left: -34px; top: 6px; width: 19px; height: 19px; border-radius: 50%; background: var(--amarelo); border: 4px solid var(--grafite); }
+  .tl-time { margin: 0; font-family: var(--font-mono); font-weight: 700; font-size: 26px; color: var(--amarelo); line-height: 1.2; }
+  .tl-step h3 { margin: 0; font-family: var(--font-display); font-weight: 700; font-size: 22px; line-height: 1.2; }
+  .tl-step p:last-child { margin: 4px 0 0; color: var(--on-grafite-muted); max-width: 52ch; }
+  .tl-step .ico { display: none; }
+
+  /* Rooms: tabs with a moving underline; without script every room is listed */
+  .rooms-tabs { display: none; }
+  .is-tabbed .rooms-tabs { display: flex; gap: 8px; overflow-x: auto; margin: 28px 0 18px; padding-bottom: 6px; scrollbar-width: none; position: relative; }
+  .rooms-tabs::-webkit-scrollbar { display: none; }
+  .room-tab { flex: none; min-height: 56px; padding: 8px 16px; border: 0; border-bottom: 3px solid var(--line); background: transparent; text-align: left; font-family: var(--font-display); font-weight: 700; font-size: 16px; line-height: 1.2; display: flex; flex-direction: column; justify-content: center; }
+  .room-tab span { font-family: var(--font-mono); font-weight: 400; font-size: 13px; color: var(--muted); }
+  .room-tab[aria-selected="true"] { border-bottom-color: var(--ink); }
+  .room { display: grid; grid-template-columns: minmax(0, 1fr); gap: 22px; margin-top: 36px; }
+  .is-tabbed .room { margin-top: 0; }
+  .room-photo { position: relative; margin: 0; border-radius: var(--radius-lg); overflow: hidden; aspect-ratio: 4 / 3; background: var(--concreto-deep); }
+  .room-photo img { width: 100%; height: 100%; object-fit: cover; }
+  .room-photo .btn { position: absolute; right: 12px; bottom: 12px; min-height: 46px; background: var(--papel); border-color: var(--papel); font-size: 15px; }
+  .room-photo .btn:hover { background: var(--ink); border-color: var(--ink); color: var(--papel); }
+  .room h3 { margin: 0; font-family: var(--font-display); font-weight: 900; font-size: clamp(30px, 3.4vw, 44px); line-height: 1.02; letter-spacing: -0.02em; }
+  .room-meta { margin: 10px 0 0; font-size: 14px; text-transform: uppercase; color: var(--ink-soft); }
+  .room-text { margin: 14px 0 0; color: var(--ink-soft); }
+  .room-amen { list-style: none; margin: 18px 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 10px 16px; font-size: 15px; }
+  .room-amen li { display: flex; align-items: center; gap: 8px; line-height: 1.3; }
+  .room-price { margin: 22px 0 0; padding-top: 16px; border-top: 1.5px solid var(--ink); display: flex; flex-wrap: wrap; gap: 4px 20px; align-items: baseline; }
+  .room-price b { font-family: var(--font-display); font-weight: 900; font-size: 32px; letter-spacing: -0.02em; }
+  .room-price span { font-size: 15px; color: var(--muted); }
+  .room-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+  .included { margin-top: 44px; padding: 18px; background: var(--papel); border-radius: var(--radius-lg); }
+  .included h3 { margin: 0 0 12px; font-size: 14px; font-family: var(--font-mono); font-weight: 700; text-transform: uppercase; letter-spacing: .1em; }
+  .included ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px 22px; font-size: 15px; }
+  .included li { display: flex; align-items: center; gap: 10px; }
+
+  /* Fare of the day: a strip of dates like an airline fare calendar */
+  .fare { background: var(--papel); margin-top: var(--space); padding-top: clamp(48px, 6vw, 88px); padding-bottom: var(--space); scroll-margin-top: 0; }
+  .fare-card { margin-top: 28px; }
+  .chips { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 8px; scrollbar-width: none; }
+  .chips::-webkit-scrollbar { display: none; }
+  .chip { flex: none; min-height: 44px; padding: 8px 14px; border: 1.5px solid var(--ink); border-radius: var(--radius-sm); background: transparent; font-family: var(--font-display); font-weight: 700; font-size: 15px; }
+  .chip[aria-pressed="true"] { background: var(--ink); color: var(--papel); }
+  .strip-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 14px; }
+  .strip-nav { display: none; gap: 8px; }
+  .strip-wrap { margin-top: 10px; }
+  .strip { flex: 1; min-width: 0; display: flex; gap: 8px; overflow-x: auto; scroll-snap-type: x proximity; padding: 4px 2px 10px; scrollbar-width: thin; }
+  .fday { flex: none; scroll-snap-align: start; width: 88px; min-height: 124px; padding: 10px 4px 8px; border: 1.5px solid var(--line); border-radius: var(--radius-md); background: var(--papel); display: flex; flex-direction: column; align-items: center; gap: 3px; font-family: var(--font-mono); color: var(--ink); }
+  .fday:not(:disabled):hover { border-color: var(--ink); }
+  .fday .f-dow { font-size: 13px; text-transform: uppercase; color: var(--muted); }
+  .fday .f-num { font-family: var(--font-display); font-weight: 900; font-size: 26px; line-height: 1; }
+  .fday .f-price { font-size: 13px; font-weight: 700; }
+  .fday .f-left { font-size: 13px; color: var(--muted); }
+  .fday .f-occ { width: 44px; height: 4px; border-radius: 2px; background: var(--concreto-deep); overflow: hidden; }
+  .fday .f-occ b { display: block; height: 100%; background: var(--ink); }
+  .fday.is-weekend { background: var(--concreto); }
+  .fday.is-full { color: var(--muted); }
+  .fday.is-full .f-num { text-decoration: line-through; font-weight: 500; }
+  .fday.is-in, .fday.is-out { background: var(--ink); border-color: var(--ink); color: var(--papel); }
+  .fday.is-in .f-dow, .fday.is-in .f-left, .fday.is-out .f-dow, .fday.is-out .f-left { color: var(--on-grafite-muted); }
+  .fday.is-in .f-occ, .fday.is-out .f-occ { background: var(--grafite-3); }
+  .fday.is-in .f-occ b, .fday.is-out .f-occ b { background: var(--amarelo); }
+  .fday.is-range { background: var(--amarelo); border-color: var(--amarelo); color: var(--on-amarelo); }
+  .fday.is-range .f-dow, .fday.is-range .f-left { color: var(--on-amarelo-muted); }
+  .fday.is-range .f-occ { background: var(--amarelo-line); }
+  .strip-hint { margin: 0; font-size: 15px; color: var(--ink-soft); min-height: 24px; }
+  .fare-form { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; margin-top: 20px; padding-top: 20px; border-top: 1.5px solid var(--ink); }
+  .field-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 6px 0; border-bottom: 1px solid var(--line); }
+  .field-row > span { font-weight: 700; line-height: 1.3; }
+  .field-row > span small { display: block; font-weight: 400; font-size: 14px; color: var(--muted); }
+  .stepper { display: flex; align-items: center; gap: 8px; }
+  .stepper output { min-width: 2ch; text-align: center; font-family: var(--font-mono); font-weight: 700; font-size: 22px; }
+  .who { display: grid; gap: 8px; }
+  .who > span { font-weight: 700; }
+  .who .chips { padding-bottom: 0; flex-wrap: wrap; }
+  .text-field { display: grid; gap: 6px; font-weight: 700; font-size: 15px; }
+  .text-field input, .text-field select { min-height: 50px; padding: 10px 14px; border: 1.5px solid var(--ink); border-radius: var(--radius-sm); background: var(--papel); font-weight: 400; font-size: 16px; width: 100%; }
+  .quote { background: var(--grafite); color: var(--on-grafite); border-radius: var(--radius-lg); padding: 20px; }
+  .quote dl { margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 12px 16px; }
+  .quote dt { font-family: var(--font-mono); font-size: 13px; text-transform: uppercase; letter-spacing: .08em; color: var(--on-grafite-muted); }
+  .quote dd { margin: 2px 0 0; font-weight: 700; }
+  .quote-total { margin: 16px 0 0; padding-top: 14px; border-top: 1px solid var(--on-grafite-line); display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+  .quote-total b { font-family: var(--font-display); font-weight: 900; font-size: 34px; letter-spacing: -0.02em; color: var(--amarelo); }
+  .quote-note { margin: 6px 0 16px; font-size: 15px; color: var(--on-grafite-muted); }
+  .quote .btn { width: 100%; }
+  .form-error { margin: 0 0 12px; font-size: 14px; font-weight: 700; background: var(--amarelo); color: var(--on-amarelo); border-radius: var(--radius-sm); padding: 10px 14px; }
+
+  /* Companies: signage yellow, the calculator is the grafite card */
+  .corp { background: var(--amarelo); color: var(--on-amarelo); padding-top: clamp(48px, 6vw, 88px); padding-bottom: var(--space); }
+  .corp-side .h2 { font-size: clamp(34px, 4vw, 56px); }
+  .corp .sec-intro { color: var(--on-amarelo-muted); }
+  .corp-list { list-style: none; margin: 26px 0 0; padding: 0; border-top: 1.5px solid var(--ink); }
+  .corp-list li { display: grid; grid-template-columns: 26px minmax(0, 1fr); gap: 4px 12px; padding: 14px 0; border-bottom: 1px solid var(--amarelo-line); }
+  .corp-list b { display: block; font-family: var(--font-display); font-size: 18px; line-height: 1.25; }
+  .corp-list span { grid-column: 2; font-size: 15px; color: var(--on-amarelo-muted); }
+  .calc { background: var(--grafite); color: var(--on-grafite); border-radius: var(--radius-lg); padding: clamp(18px, 3vw, 32px); box-shadow: var(--shadow); }
+  .calc h3 { margin: 0 0 6px; font-family: var(--font-display); font-weight: 900; font-size: 26px; }
+  .calc > p { margin: 0 0 18px; color: var(--on-grafite-muted); font-size: 15px; }
+  .range-row { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+  .range-row label { font-weight: 700; }
+  .range-row output { font-family: var(--font-mono); font-weight: 700; font-size: 26px; color: var(--amarelo); white-space: nowrap; }
+  .calc input[type="range"] { width: 100%; height: 44px; margin: 6px 0 4px; accent-color: var(--amarelo); background: transparent; }
+  .tier { margin: 0 0 16px; font-family: var(--font-mono); font-size: 14px; color: var(--on-grafite-muted); text-transform: uppercase; letter-spacing: .06em; }
+  .tier b { color: var(--amarelo); }
+  .rates { width: 100%; border-collapse: collapse; font-size: 15px; }
+  .rates th { font-family: var(--font-mono); font-weight: 500; font-size: 13px; text-transform: uppercase; letter-spacing: .06em; color: var(--on-grafite-muted); text-align: right; padding: 6px 0; }
+  .rates th:first-child, .rates td:first-child { text-align: left; }
+  .rates td { padding: 10px 0; border-top: 1px solid var(--on-grafite-line); text-align: right; font-family: var(--font-mono); }
+  .rates td:first-child { font-family: var(--font-body); font-weight: 700; padding-right: 8px; }
+  .rates td.was { color: var(--on-grafite-muted); text-decoration: line-through; }
+  .rates td.now { color: var(--amarelo); font-weight: 700; font-size: 17px; }
+  .saving { margin: 16px 0 20px; display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding-top: 14px; border-top: 1px solid var(--on-grafite-line); }
+  .saving b { font-family: var(--font-display); font-weight: 900; font-size: 30px; color: var(--amarelo); white-space: nowrap; }
+  .corp-form { display: grid; gap: 12px; }
+  .corp-form .text-field { color: var(--on-grafite); }
+  .corp-form .text-field input, .corp-form .text-field select { background: var(--grafite-2); color: var(--on-grafite); border-color: var(--grafite-3); }
+  .corp-form .btn { margin-top: 4px; }
+  .corp-form .btn-yellow:hover { background: var(--on-grafite); border-color: var(--on-grafite); color: var(--ink); }
+
+  /* Where */
+  .where-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 24px; margin-top: 28px; }
+  .map-canvas { position: relative; height: 340px; border-radius: var(--radius-lg); overflow: hidden; background: var(--concreto-deep); border: 1.5px solid var(--ink); isolation: isolate; font-family: var(--font-body); }
+  .map-wait { position: absolute; inset: 0; display: grid; place-items: center; margin: 0; padding: 24px; text-align: center; font-size: 15px; color: var(--muted); }
+  .map figcaption, .city figcaption { margin-top: 10px; font-size: 14px; color: var(--muted); }
+  .map { margin: 0; }
+  .map-canvas .leaflet-tile-pane { filter: grayscale(1) contrast(1.06) brightness(1.02); }
+  .map-canvas .leaflet-control-zoom { border: 1.5px solid var(--ink); border-radius: var(--radius-sm); overflow: hidden; }
+  .map-canvas .leaflet-control-zoom a { width: 44px; height: 44px; line-height: 42px; font-size: 22px; color: var(--ink); background: var(--papel); }
+  .map-canvas .leaflet-control-attribution { font-size: 13px; line-height: 1.2; background: var(--header-bg); color: var(--ink-soft); padding: 0 6px; }
+  .map-canvas .leaflet-control-attribution a { display: inline-flex; align-items: center; min-height: 44px; min-width: 44px; padding-inline: 2px; color: var(--ink); }
+  .map-canvas .pin-label { font-family: var(--font-mono); font-size: 13px; font-weight: 700; color: var(--ink); background: var(--papel); border: 1.5px solid var(--ink); border-radius: 4px; box-shadow: none; padding: 3px 7px; white-space: nowrap; }
+  .map-canvas .pin-label.is-hotel { background: var(--amarelo); }
+  .map-canvas .pin-label::before { display: none; }
+  .where-side { display: grid; gap: 18px; align-content: start; }
+  .where-side address { font-style: normal; font-weight: 700; display: flex; gap: 10px; align-items: flex-start; }
+  .where-side p { margin: 0; color: var(--ink-soft); }
+  .city { margin: 0; }
+  .city img { width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; border-radius: var(--radius-lg); }
+  .insta { margin: 0; display: inline-flex; align-items: center; gap: 8px; font-weight: 700; }
+  .insta span { font-weight: 400; color: var(--muted); font-size: 14px; }
+
+  /* Reviews */
+  .score { display: flex; align-items: baseline; gap: 14px; margin-top: 24px; }
+  .score b { font-family: var(--font-display); font-weight: 900; font-size: 64px; line-height: 1; letter-spacing: -0.03em; }
+  .score span { color: var(--ink-soft); }
+  .quotes { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; margin-top: 24px; }
+  .q { margin: 0; background: var(--papel); border-radius: var(--radius-lg); padding: 22px; display: flex; flex-direction: column; gap: 14px; border-top: 6px solid var(--ink); }
+  .q blockquote { margin: 0; font-size: 18px; line-height: 1.5; }
+  .q figcaption { font-weight: 700; }
+  .q figcaption span { display: block; font-family: var(--font-mono); font-weight: 400; font-size: 13px; text-transform: uppercase; color: var(--muted); letter-spacing: .04em; margin-top: 2px; }
+  .q .stars { display: flex; gap: 2px; color: var(--amarelo-deep); }
+  .q .stars .ico { width: 18px; height: 18px; }
+  .fake-label { margin: 18px 0 0; font-size: 14px; color: var(--muted); }
+
+  .faq { margin-top: 24px; border-top: 1.5px solid var(--ink); }
+  details { border-bottom: 1px solid var(--line); }
+  summary { list-style: none; cursor: pointer; font-family: var(--font-display); font-weight: 700; font-size: 19px; line-height: 1.3; display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 44px; padding-block: 16px; }
+  summary::-webkit-details-marker { display: none; }
+  summary .ico { transition: rotate .25s ease; }
+  details[open] summary .ico { rotate: 45deg; }
+  details p { margin: 0 0 18px; color: var(--ink-soft); max-width: 62ch; }
+
+  .final { margin-top: var(--space); background: var(--grafite); color: var(--on-grafite); }
+  .final .wrap { padding-block: clamp(64px, 9vw, 120px); display: grid; grid-template-columns: minmax(0, 1fr); gap: 26px; }
+  .final h2 { margin: 0; font-family: var(--font-display); font-weight: 900; font-size: clamp(38px, 6vw, 92px); line-height: .98; letter-spacing: -0.035em; max-width: 14ch; }
+  .final h2 span { color: var(--amarelo); }
+  .final-actions { display: grid; gap: 10px; align-content: end; }
+
+  footer { background: var(--grafite); color: var(--on-grafite-muted); border-top: 1px solid var(--on-grafite-line); overflow: hidden; }
+  footer .wrap { padding-block: 40px calc(40px + env(safe-area-inset-bottom, 0px)); }
+  .foot-row { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; font-size: 14px; }
+  .wordmark { margin: 26px 0 0; padding-bottom: 0.2em; font-family: var(--font-display); font-weight: 900; font-size: clamp(64px, 17.5vw, 260px); letter-spacing: -0.05em; line-height: .82; color: var(--on-grafite); white-space: nowrap; }
+  .wordmark span { color: var(--amarelo); }
+  .orcamento, .credito-autor { margin: 0; font-size: 15px; display: flex; flex-wrap: wrap; align-items: center; gap: 0 1.2em; }
+  .orcamento a, .credito-autor a { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; color: var(--on-grafite); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--amarelo); }
+  .orcamento a:hover, .credito-autor a:hover { color: var(--amarelo); }
+  .credito-autor .ico { width: 16px; height: 16px; }
+
+  /* Fixed booking bar: always one tap from the fare, mirrors what was picked */
+  .bar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 35; background: var(--grafite); color: var(--on-grafite); border-top: 1px solid var(--grafite-3); padding: 10px var(--gutter) calc(10px + env(safe-area-inset-bottom, 0px)); }
+  .bar[hidden] { display: none; }
+  .bar-inner { max-width: var(--max); margin: 0 auto; display: flex; align-items: center; gap: 10px; }
+  .bar-sum { margin: 0 auto 0 0; font-size: 14px; line-height: 1.3; color: var(--on-grafite-muted); min-width: 0; }
+  .bar-sum b { display: block; color: var(--on-grafite); font-size: 16px; }
+  .bar .btn { min-height: 48px; padding: 8px 16px; font-size: 15px; white-space: nowrap; }
+  .bar .icon-btn { color: var(--on-grafite); }
+
+  /* Photo viewer */
+  .viewer { border: 0; padding: 0; margin: auto; background: transparent; width: min(1100px, calc(100vw - 24px)); max-height: calc(100svh - 24px); overflow: visible; color: var(--on-grafite); }
+  .viewer::backdrop { background: var(--backdrop); }
+  .viewer figure { margin: 0; display: flex; flex-direction: column; align-items: center; gap: 10px; }
+  .viewer img { max-height: calc(100svh - 190px); width: auto; border-radius: var(--radius-md); }
+  .viewer figcaption { font-size: 15px; color: var(--on-grafite-muted); text-align: center; }
+  .viewer-bar { display: flex; justify-content: center; gap: 10px; margin-top: 12px; }
+  .viewer .icon-btn { color: var(--on-grafite); }
+
+  @media (min-width: 480px) {
+    .actions { display: flex; flex-wrap: wrap; }
+    .band { aspect-ratio: 16 / 11; }
+    .final-actions { display: flex; flex-wrap: wrap; }
+  }
+  @media (min-width: 700px) {
+    .logo small { display: inline; }
+    .quotes { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .included ul { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .fare-form { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: 32px; align-items: start; }
+    .quote { grid-row: span 4; grid-column: 2; }
+    .band { aspect-ratio: 21 / 9; }
+    .map-canvas { height: 440px; }
+    .strip-nav { display: flex; }
+  }
+  @media (min-width: 1024px) {
+    :root { --header-h: 68px; }
+    .nav { display: flex; }
+    .hero { padding-block: clamp(28px, 4vh, 56px) 0; }
+    .hero-grid { grid-template-columns: minmax(0, 1.15fr) minmax(380px, 0.85fr); gap: clamp(32px, 4vw, 72px); align-items: center; }
+    .hero h1 { font-size: min(7.6vw, 13vh, 112px); }
+    .lead { font-size: 18px; }
+    .sec-grid { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; }
+    .sec-label { grid-column: 1 / 4; padding-top: 10px; }
+    .sec-main { grid-column: 4 / 13; }
+    .room { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 36px; align-items: start; }
+    .tl { padding-left: 0; }
+    .tl-track, .tl-fill { left: 128px; }
+    .tl-step { grid-template-columns: 110px minmax(0, 1fr); column-gap: 58px; padding-bottom: 44px; }
+    .tl-step::before { left: 120px; }
+    .tl-time { font-size: 30px; text-align: right; }
+    .corp-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 80px); align-items: start; }
+    .corp-side { position: sticky; top: calc(var(--header-h) + 24px); }
+    .where-grid { grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 32px; }
+    .final .wrap { grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); align-items: end; }
+    .final-actions { flex-direction: column; }
+  }
+  @media (min-width: 1180px) {
+    .desk { display: inline-flex; margin-right: 6px; }
+  }
+  @media (max-width: 1023px) {
+    .corp-side { margin-bottom: 28px; }
+  }
+  @media (max-width: 380px) {
+    .board { padding: 12px 10px; }
+    .dest { font-size: 14px; }
+    .flap b { width: 21px; height: 30px; font-size: 18px; }
+    .km { width: 48px; font-size: 13px; }
+    .topbar .btn { padding-inline: 12px; }
+    .logo-mark { width: 30px; height: 30px; font-size: 18px; }
+    .logo b { font-size: 20px; }
+    .bar .btn { padding-inline: 12px; }
+  }
+  .hero-copy { display: flex; flex-direction: column; }
+  /* Short portrait phones: the booking action comes right after the title */
+  @media (max-height: 640px) and (orientation: portrait) {
+    .actions { order: 3; margin-top: 18px; }
+    .lead { order: 4; }
+    .ticks { order: 5; }
+    .hero h1 { font-size: clamp(36px, 10.6vw, 52px); }
+    .eyebrow { margin-bottom: 10px; }
+  }
+  /* Short landscape phones: title and board side by side so the action stays in view */
+  @media (max-height: 520px) and (orientation: landscape) and (max-width: 1023px) {
+    .board-tab { letter-spacing: 0; padding: 2px; }
+    .actions { order: 3; }
+    .lead { order: 4; }
+    .hero-grid { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 24px; }
+    .hero h1 { font-size: clamp(34px, 9vh, 52px); }
+    .lead { font-size: 15px; margin-top: 10px; }
+    .actions { margin-top: 14px; }
+    .ticks { display: none; }
+  }
+</style>
+</head>
+<body>
+  <div class="notice" data-aviso="proposta"><strong>Demonstração.</strong> Empresa, preços e avaliações são fictícios. Fotos: Unsplash. Vídeo: Coverr.</div>
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <!-- Icons: brands from Simple Icons (CC0), interface from Phosphor (MIT). -->
+    <symbol id="i-whatsapp" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></symbol>
+    <symbol id="i-instagram" viewBox="0 0 24 24"><path d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/></symbol>
+    <symbol id="i-googlemaps" viewBox="0 0 24 24"><path d="M19.527 4.799c1.212 2.608.937 5.678-.405 8.173-1.101 2.047-2.744 3.74-4.098 5.614-.619.858-1.244 1.75-1.669 2.727-.141.325-.263.658-.383.992-.121.333-.224.673-.34 1.008-.109.314-.236.684-.627.687h-.007c-.466-.001-.579-.53-.695-.887-.284-.874-.581-1.713-1.019-2.525-.51-.944-1.145-1.817-1.79-2.671L19.527 4.799zM8.545 7.705l-3.959 4.707c.724 1.54 1.821 2.863 2.871 4.18.247.31.494.622.737.936l4.984-5.925-.029.01c-1.741.601-3.691-.291-4.392-1.987a3.377 3.377 0 0 1-.209-.716c-.063-.437-.077-.761-.004-1.198l.001-.007zM5.492 3.149l-.003.004c-1.947 2.466-2.281 5.88-1.117 8.77l4.785-5.689-.058-.05-3.607-3.035zM14.661.436l-3.838 4.563a.295.295 0 0 1 .027-.01c1.6-.551 3.403.15 4.22 1.626.176.319.323.683.377 1.045.068.446.085.773.012 1.22l-.003.016 3.836-4.561A8.382 8.382 0 0 0 14.67.439l-.009-.003zM9.466 5.868L14.162.285l-.047-.012A8.31 8.31 0 0 0 11.986 0a8.439 8.439 0 0 0-6.169 2.766l-.016.018 3.665 3.084z"/></symbol>
+    <symbol id="i-pix" viewBox="0 0 24 24"><path d="M5.283 18.36a3.505 3.505 0 0 0 2.493-1.032l3.6-3.6a.684.684 0 0 1 .946 0l3.613 3.613a3.504 3.504 0 0 0 2.493 1.032h.71l-4.56 4.56a3.647 3.647 0 0 1-5.156 0L4.85 18.36ZM18.428 5.627a3.505 3.505 0 0 0-2.493 1.032l-3.613 3.614a.67.67 0 0 1-.946 0l-3.6-3.6A3.505 3.505 0 0 0 5.283 5.64h-.434l4.573-4.572a3.646 3.646 0 0 1 5.156 0l4.559 4.559ZM1.068 9.422 3.79 6.699h1.492a2.483 2.483 0 0 1 1.744.722l3.6 3.6a1.73 1.73 0 0 0 2.443 0l3.614-3.613a2.482 2.482 0 0 1 1.744-.723h1.767l2.737 2.737a3.646 3.646 0 0 1 0 5.156l-2.736 2.736h-1.768a2.482 2.482 0 0 1-1.744-.722l-3.613-3.613a1.77 1.77 0 0 0-2.444 0l-3.6 3.6a2.483 2.483 0 0 1-1.744.722H3.791l-2.723-2.723a3.646 3.646 0 0 1 0-5.156"/></symbol>
+    <symbol id="i-arrow-right" viewBox="0 0 256 256"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></symbol>
+    <symbol id="i-arrow-left" viewBox="0 0 256 256"><path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"/></symbol>
+    <symbol id="i-arrow-up-right" viewBox="0 0 256 256"><path d="M200,64V168a8,8,0,0,1-16,0V83.31L69.66,197.66a8,8,0,0,1-11.32-11.32L172.69,72H88a8,8,0,0,1,0-16H192A8,8,0,0,1,200,64Z"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 256 256"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></symbol>
+    <symbol id="i-minus" viewBox="0 0 256 256"><path d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128Z"/></symbol>
+    <symbol id="i-x" viewBox="0 0 256 256"><path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"/></symbol>
+    <symbol id="i-caret-left" viewBox="0 0 256 256"><path d="M165.66,202.34a8,8,0,0,1-11.32,11.32l-80-80a8,8,0,0,1,0-11.32l80-80a8,8,0,0,1,11.32,11.32L91.31,128Z"/></symbol>
+    <symbol id="i-caret-right" viewBox="0 0 256 256"><path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"/></symbol>
+    <symbol id="i-map-pin" viewBox="0 0 256 256"><path d="M128,64a40,40,0,1,0,40,40A40,40,0,0,0,128,64Zm0,64a24,24,0,1,1,24-24A24,24,0,0,1,128,128Zm0-112a88.1,88.1,0,0,0-88,88c0,31.4,14.51,64.68,42,96.25a254.19,254.19,0,0,0,41.45,38.3,8,8,0,0,0,9.18,0A254.19,254.19,0,0,0,174,200.25c27.45-31.57,42-64.85,42-96.25A88.1,88.1,0,0,0,128,16Zm0,206c-16.53-13-72-60.75-72-118a72,72,0,0,1,144,0C200,161.23,144.53,209,128,222Z"/></symbol>
+    <symbol id="i-bed" viewBox="0 0 256 256"><path d="M216,72H32V48a8,8,0,0,0-16,0V208a8,8,0,0,0,16,0V176H240v32a8,8,0,0,0,16,0V112A40,40,0,0,0,216,72ZM32,88h72v72H32Zm88,72V88h96a24,24,0,0,1,24,24v48Z"/></symbol>
+    <symbol id="i-users" viewBox="0 0 256 256"><path d="M117.25,157.92a60,60,0,1,0-66.5,0A95.83,95.83,0,0,0,3.53,195.63a8,8,0,1,0,13.4,8.74,80,80,0,0,1,134.14,0,8,8,0,0,0,13.4-8.74A95.83,95.83,0,0,0,117.25,157.92ZM40,108a44,44,0,1,1,44,44A44.05,44.05,0,0,1,40,108Zm210.14,98.7a8,8,0,0,1-11.07-2.33A79.83,79.83,0,0,0,172,168a8,8,0,0,1,0-16,44,44,0,1,0-16.34-84.87,8,8,0,1,1-5.94-14.85,60,60,0,0,1,55.53,105.64,95.83,95.83,0,0,1,47.22,37.71A8,8,0,0,1,250.14,206.7Z"/></symbol>
+    <symbol id="i-coffee" viewBox="0 0 256 256"><path d="M80,56V24a8,8,0,0,1,16,0V56a8,8,0,0,1-16,0Zm40,8a8,8,0,0,0,8-8V24a8,8,0,0,0-16,0V56A8,8,0,0,0,120,64Zm32,0a8,8,0,0,0,8-8V24a8,8,0,0,0-16,0V56A8,8,0,0,0,152,64Zm96,56v8a40,40,0,0,1-37.51,39.91,96.59,96.59,0,0,1-27,40.09H208a8,8,0,0,1,0,16H32a8,8,0,0,1,0-16H56.54A96.3,96.3,0,0,1,24,136V88a8,8,0,0,1,8-8H208A40,40,0,0,1,248,120ZM200,96H40v40a80.27,80.27,0,0,0,45.12,72h69.76A80.27,80.27,0,0,0,200,136Zm32,24a24,24,0,0,0-16-22.62V136a95.78,95.78,0,0,1-1.2,15A24,24,0,0,0,232,128Z"/></symbol>
+    <symbol id="i-car" viewBox="0 0 256 256"><path d="M240,104H229.2L201.42,41.5A16,16,0,0,0,186.8,32H69.2a16,16,0,0,0-14.62,9.5L26.8,104H16a8,8,0,0,0,0,16h8v80a16,16,0,0,0,16,16H64a16,16,0,0,0,16-16V184h96v16a16,16,0,0,0,16,16h24a16,16,0,0,0,16-16V120h8a8,8,0,0,0,0-16ZM69.2,48H186.8l24.89,56H44.31ZM64,200H40V184H64Zm128,0V184h24v16Zm24-32H40V120H216ZM56,144a8,8,0,0,1,8-8H80a8,8,0,0,1,0,16H64A8,8,0,0,1,56,144Zm112,0a8,8,0,0,1,8-8h16a8,8,0,0,1,0,16H176A8,8,0,0,1,168,144Z"/></symbol>
+    <symbol id="i-wifi-high" viewBox="0 0 256 256"><path d="M140,204a12,12,0,1,1-12-12A12,12,0,0,1,140,204ZM237.08,87A172,172,0,0,0,18.92,87,8,8,0,0,0,29.08,99.37a156,156,0,0,1,197.84,0A8,8,0,0,0,237.08,87ZM205,122.77a124,124,0,0,0-153.94,0A8,8,0,0,0,61,135.31a108,108,0,0,1,134.06,0,8,8,0,0,0,11.24-1.3A8,8,0,0,0,205,122.77Zm-32.26,35.76a76.05,76.05,0,0,0-89.42,0,8,8,0,0,0,9.42,12.94,60,60,0,0,1,70.58,0,8,8,0,1,0,9.42-12.94Z"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm64-88a8,8,0,0,1-8,8H128a8,8,0,0,1-8-8V72a8,8,0,0,1,16,0v48h48A8,8,0,0,1,192,128Z"/></symbol>
+    <symbol id="i-credit-card" viewBox="0 0 256 256"><path d="M224,48H32A16,16,0,0,0,16,64V192a16,16,0,0,0,16,16H224a16,16,0,0,0,16-16V64A16,16,0,0,0,224,48Zm0,16V88H32V64Zm0,128H32V104H224v88Zm-16-24a8,8,0,0,1-8,8H168a8,8,0,0,1,0-16h32A8,8,0,0,1,208,168Zm-64,0a8,8,0,0,1-8,8H120a8,8,0,0,1,0-16h16A8,8,0,0,1,144,168Z"/></symbol>
+    <symbol id="i-receipt" viewBox="0 0 256 256"><path d="M72,104a8,8,0,0,1,8-8h96a8,8,0,0,1,0,16H80A8,8,0,0,1,72,104Zm8,40h96a8,8,0,0,0,0-16H80a8,8,0,0,0,0,16ZM232,56V208a8,8,0,0,1-11.58,7.15L192,200.94l-28.42,14.21a8,8,0,0,1-7.16,0L128,200.94,99.58,215.15a8,8,0,0,1-7.16,0L64,200.94,35.58,215.15A8,8,0,0,1,24,208V56A16,16,0,0,1,40,40H216A16,16,0,0,1,232,56Zm-16,0H40V195.06l20.42-10.22a8,8,0,0,1,7.16,0L96,199.06l28.42-14.22a8,8,0,0,1,7.16,0L160,199.06l28.42-14.22a8,8,0,0,1,7.16,0L216,195.06Z"/></symbol>
+    <symbol id="i-briefcase" viewBox="0 0 256 256"><path d="M216,56H176V48a24,24,0,0,0-24-24H104A24,24,0,0,0,80,48v8H40A16,16,0,0,0,24,72V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V72A16,16,0,0,0,216,56ZM96,48a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96ZM216,72v41.61A184,184,0,0,1,128,136a184.07,184.07,0,0,1-88-22.38V72Zm0,128H40V131.64A200.19,200.19,0,0,0,128,152a200.25,200.25,0,0,0,88-20.37V200ZM104,112a8,8,0,0,1,8-8h32a8,8,0,0,1,0,16H112A8,8,0,0,1,104,112Z"/></symbol>
+    <symbol id="i-buildings" viewBox="0 0 256 256"><path d="M240,208H224V96a16,16,0,0,0-16-16H144V32a16,16,0,0,0-24.88-13.32L39.12,72A16,16,0,0,0,32,85.34V208H16a8,8,0,0,0,0,16H240a8,8,0,0,0,0-16ZM208,96V208H144V96ZM48,85.34,128,32V208H48ZM112,112v16a8,8,0,0,1-16,0V112a8,8,0,1,1,16,0Zm-32,0v16a8,8,0,0,1-16,0V112a8,8,0,1,1,16,0Zm0,56v16a8,8,0,0,1-16,0V168a8,8,0,0,1,16,0Zm32,0v16a8,8,0,0,1-16,0V168a8,8,0,0,1,16,0Z"/></symbol>
+    <symbol id="i-desk" viewBox="0 0 256 256"><path d="M248,64H8A8,8,0,0,0,8,80h8V192a8,8,0,0,0,16,0V144H224v48a8,8,0,0,0,16,0V80h8a8,8,0,0,0,0-16ZM32,80h88v48H32Zm192,48H136V80h88ZM96,104a8,8,0,0,1-8,8H64a8,8,0,0,1,0-16H88A8,8,0,0,1,96,104Zm64,0a8,8,0,0,1,8-8h24a8,8,0,0,1,0,16H168A8,8,0,0,1,160,104Z"/></symbol>
+    <symbol id="i-printer" viewBox="0 0 256 256"><path d="M214.67,72H200V40a8,8,0,0,0-8-8H64a8,8,0,0,0-8,8V72H41.33C27.36,72,16,82.77,16,96v80a8,8,0,0,0,8,8H56v32a8,8,0,0,0,8,8H192a8,8,0,0,0,8-8V184h32a8,8,0,0,0,8-8V96C240,82.77,228.64,72,214.67,72ZM72,48H184V72H72ZM184,208H72V160H184Zm40-40H200V152a8,8,0,0,0-8-8H64a8,8,0,0,0-8,8v16H32V96c0-4.41,4.19-8,9.33-8H214.67c5.14,0,9.33,3.59,9.33,8Zm-24-52a12,12,0,1,1-12-12A12,12,0,0,1,200,116Z"/></symbol>
+    <symbol id="i-lock-key" viewBox="0 0 256 256"><path d="M128,112a28,28,0,0,0-8,54.83V184a8,8,0,0,0,16,0V166.83A28,28,0,0,0,128,112Zm0,40a12,12,0,1,1,12-12A12,12,0,0,1,128,152Zm80-72H176V56a48,48,0,0,0-96,0V80H48A16,16,0,0,0,32,96V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V96A16,16,0,0,0,208,80ZM96,56a32,32,0,0,1,64,0V80H96ZM208,208H48V96H208V208Z"/></symbol>
+    <symbol id="i-snowflake" viewBox="0 0 256 256"><path d="M223.77,150.09a8,8,0,0,1-5.86,9.68l-24.64,6,6.46,24.11a8,8,0,0,1-5.66,9.8A8.25,8.25,0,0,1,192,200a8,8,0,0,1-7.72-5.93l-7.72-28.8L136,141.86v46.83l21.66,21.65a8,8,0,0,1-11.32,11.32L128,203.31l-18.34,18.35a8,8,0,0,1-11.32-11.32L120,188.69V141.86L79.45,165.27l-7.72,28.8A8,8,0,0,1,64,200a8.25,8.25,0,0,1-2.08-.27,8,8,0,0,1-5.66-9.8l6.46-24.11-24.64-6a8,8,0,0,1,3.82-15.54l29.45,7.23L112,128,71.36,104.54l-29.45,7.23A7.85,7.85,0,0,1,40,112a8,8,0,0,1-1.91-15.77l24.64-6L56.27,66.07a8,8,0,0,1,15.46-4.14l7.72,28.8L120,114.14V67.31L98.34,45.66a8,8,0,0,1,11.32-11.32L128,52.69l18.34-18.35a8,8,0,0,1,11.32,11.32L136,67.31v46.83l40.55-23.41,7.72-28.8a8,8,0,0,1,15.46,4.14l-6.46,24.11,24.64,6A8,8,0,0,1,216,112a7.85,7.85,0,0,1-1.91-.23l-29.45-7.23L144,128l40.64,23.46,29.45-7.23A8,8,0,0,1,223.77,150.09Z"/></symbol>
+    <symbol id="i-plug" viewBox="0 0 256 256"><path d="M237.66,66.34a8,8,0,0,0-11.32,0L192,100.69,155.31,64l34.35-34.34a8,8,0,1,0-11.32-11.32L144,52.69,117.66,26.34a8,8,0,0,0-11.32,11.32L112.69,44l-53,53a40,40,0,0,0,0,56.57l15.71,15.71L26.34,218.34a8,8,0,0,0,11.32,11.32l49.09-49.09,15.71,15.71a40,40,0,0,0,56.57,0l53-53,6.34,6.35a8,8,0,0,0,11.32-11.32L203.31,112l34.35-34.34A8,8,0,0,0,237.66,66.34ZM147.72,185a24,24,0,0,1-33.95,0L71,142.23a24,24,0,0,1,0-33.95l53-53L200.69,132Z"/></symbol>
+    <symbol id="i-fork-knife" viewBox="0 0 256 256"><path d="M72,88V40a8,8,0,0,1,16,0V88a8,8,0,0,1-16,0ZM216,40V224a8,8,0,0,1-16,0V176H152a8,8,0,0,1-8-8,268.75,268.75,0,0,1,7.22-56.88c9.78-40.49,28.32-67.63,53.63-78.47A8,8,0,0,1,216,40ZM200,53.9c-32.17,24.57-38.47,84.42-39.7,106.1H200ZM119.89,38.69a8,8,0,1,0-15.78,2.63L112,88.63a32,32,0,0,1-64,0l7.88-47.31a8,8,0,1,0-15.78-2.63l-8,48A8.17,8.17,0,0,0,32,88a48.07,48.07,0,0,0,40,47.32V224a8,8,0,0,0,16,0V135.32A48.07,48.07,0,0,0,128,88a8.17,8.17,0,0,0-.11-1.31Z"/></symbol>
+    <symbol id="i-t-shirt" viewBox="0 0 256 256"><path d="M247.59,61.22,195.83,33A8,8,0,0,0,192,32H160a8,8,0,0,0-8,8,24,24,0,0,1-48,0,8,8,0,0,0-8-8H64a8,8,0,0,0-3.84,1L8.41,61.22A15.76,15.76,0,0,0,1.82,82.48l19.27,36.81A16.37,16.37,0,0,0,35.67,128H56v80a16,16,0,0,0,16,16H184a16,16,0,0,0,16-16V128h20.34a16.37,16.37,0,0,0,14.58-8.71l19.27-36.81A15.76,15.76,0,0,0,247.59,61.22ZM35.67,112a.62.62,0,0,1-.41-.13L16.09,75.26,56,53.48V112ZM184,208H72V48h16.8a40,40,0,0,0,78.38,0H184Zm36.75-96.14a.55.55,0,0,1-.41.14H200V53.48l39.92,21.78Z"/></symbol>
+    <symbol id="i-airplane-tilt" viewBox="0 0 256 256"><path d="M185.33,114.21l29.14-27.42.17-.17a32,32,0,0,0-45.26-45.26c0,.06-.11.11-.17.17L141.79,70.67l-83-30.2a8,8,0,0,0-8.39,1.86l-24,24a8,8,0,0,0,1.22,12.31l63.89,42.59L76.69,136H56a8,8,0,0,0-5.65,2.34l-24,24A8,8,0,0,0,29,175.42l36.82,14.73,14.7,36.75.06.16a8,8,0,0,0,13.18,2.47l23.87-23.88A8,8,0,0,0,120,200V179.31l14.76-14.76,42.59,63.89a8,8,0,0,0,12.31,1.22l24-24a8,8,0,0,0,1.86-8.39Zm-.07,97.23-42.59-63.88A8,8,0,0,0,136.8,144c-.27,0-.53,0-.79,0a8,8,0,0,0-5.66,2.35l-24,24A8,8,0,0,0,104,176v20.69L90.93,209.76,79.43,181A8,8,0,0,0,75,176.57l-28.74-11.5L59.32,152H80a8,8,0,0,0,5.66-2.34l24-24a8,8,0,0,0-1.22-12.32L44.56,70.74l13.5-13.49,83.22,30.26a8,8,0,0,0,8.56-2L180.78,52.6A16,16,0,0,1,203.4,75.23l-32.87,30.93a8,8,0,0,0-2,8.56l30.26,83.22Z"/></symbol>
+    <symbol id="i-bus" viewBox="0 0 256 256"><path d="M184,32H72A32,32,0,0,0,40,64V208a16,16,0,0,0,16,16H80a16,16,0,0,0,16-16V192h64v16a16,16,0,0,0,16,16h24a16,16,0,0,0,16-16V64A32,32,0,0,0,184,32ZM56,176V120H200v56Zm0-96H200v24H56ZM72,48H184a16,16,0,0,1,16,16H56A16,16,0,0,1,72,48Zm8,160H56V192H80Zm96,0V192h24v16Zm-72-60a12,12,0,1,1-12-12A12,12,0,0,1,104,148Zm72,0a12,12,0,1,1-12-12A12,12,0,0,1,176,148Zm72-68v24a8,8,0,0,1-16,0V80a8,8,0,0,1,16,0ZM24,80v24a8,8,0,0,1-16,0V80a8,8,0,0,1,16,0Z"/></symbol>
+    <symbol id="i-first-aid" viewBox="0 0 256 256"><path d="M216,88H168V40a16,16,0,0,0-16-16H104A16,16,0,0,0,88,40V88H40a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16H88v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V168h48a16,16,0,0,0,16-16V104A16,16,0,0,0,216,88Zm0,64H160a8,8,0,0,0-8,8v56H104V160a8,8,0,0,0-8-8H40V104H96a8,8,0,0,0,8-8V40h48V96a8,8,0,0,0,8,8h56Z"/></symbol>
+    <symbol id="i-graduation-cap" viewBox="0 0 256 256"><path d="M251.76,88.94l-120-64a8,8,0,0,0-7.52,0l-120,64a8,8,0,0,0,0,14.12L32,117.87v48.42a15.91,15.91,0,0,0,4.06,10.65C49.16,191.53,78.51,216,128,216a130,130,0,0,0,48-8.76V240a8,8,0,0,0,16,0V199.51a115.63,115.63,0,0,0,27.94-22.57A15.91,15.91,0,0,0,224,166.29V117.87l27.76-14.81a8,8,0,0,0,0-14.12ZM128,200c-43.27,0-68.72-21.14-80-33.71V126.4l76.24,40.66a8,8,0,0,0,7.52,0L176,143.47v46.34C163.4,195.69,147.52,200,128,200Zm80-33.75a97.83,97.83,0,0,1-16,14.25V134.93l16-8.53ZM188,118.94l-.22-.13-56-29.87a8,8,0,0,0-7.52,14.12L171,128l-43,22.93L25,96,128,41.07,231,96Z"/></symbol>
+    <symbol id="i-star" viewBox="0 0 256 256"><path d="M234.29,114.85l-45,38.83L203,211.75a16.4,16.4,0,0,1-24.5,17.82L128,198.49,77.47,229.57A16.4,16.4,0,0,1,53,211.75l13.76-58.07-45-38.83A16.46,16.46,0,0,1,31.08,86l59-4.76,22.76-55.08a16.36,16.36,0,0,1,30.27,0l22.75,55.08,59,4.76a16.46,16.46,0,0,1,9.37,28.86Z"/></symbol>
+    <symbol id="i-calendar-blank" viewBox="0 0 256 256"><path d="M208,32H184V24a8,8,0,0,0-16,0v8H88V24a8,8,0,0,0-16,0v8H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM72,48v8a8,8,0,0,0,16,0V48h80v8a8,8,0,0,0,16,0V48h24V80H48V48ZM208,208H48V96H208V208Z"/></symbol>
+    <symbol id="i-images" viewBox="0 0 256 256"><path d="M216,40H72A16,16,0,0,0,56,56V72H40A16,16,0,0,0,24,88V200a16,16,0,0,0,16,16H184a16,16,0,0,0,16-16V184h16a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40ZM72,56H216v62.75l-10.07-10.06a16,16,0,0,0-22.63,0l-20,20-44-44a16,16,0,0,0-22.62,0L72,109.37ZM184,200H40V88H56v80a16,16,0,0,0,16,16H184Zm32-32H72V132l36-36,49.66,49.66a8,8,0,0,0,11.31,0L194.63,120,216,141.38V168ZM160,84a12,12,0,1,1,12,12A12,12,0,0,1,160,84Z"/></symbol>
+    <symbol id="i-check" viewBox="0 0 256 256"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 256 256"><path d="M233.54,142.23a8,8,0,0,0-8-2,88.08,88.08,0,0,1-109.8-109.8,8,8,0,0,0-10-10,104.84,104.84,0,0,0-52.91,37A104,104,0,0,0,136,224a103.09,103.09,0,0,0,62.52-20.88,104.84,104.84,0,0,0,37-52.91A8,8,0,0,0,233.54,142.23ZM188.9,190.34A88,88,0,0,1,65.66,67.11a89,89,0,0,1,31.4-26A106,106,0,0,0,96,56,104.11,104.11,0,0,0,200,160a106,106,0,0,0,14.92-1.06A89,89,0,0,1,188.9,190.34Z"/></symbol>
+    <symbol id="i-suitcase-rolling" viewBox="0 0 256 256"><path d="M104,88v96a8,8,0,0,1-16,0V88a8,8,0,0,1,16,0Zm24-8a8,8,0,0,0-8,8v96a8,8,0,0,0,16,0V88A8,8,0,0,0,128,80Zm32,0a8,8,0,0,0-8,8v96a8,8,0,0,0,16,0V88A8,8,0,0,0,160,80Zm48-16V208a16,16,0,0,1-16,16H176v16a8,8,0,0,1-16,0V224H96v16a8,8,0,0,1-16,0V224H64a16,16,0,0,1-16-16V64A16,16,0,0,1,64,48H88V24A24,24,0,0,1,112,0h32a24,24,0,0,1,24,24V48h24A16,16,0,0,1,208,64ZM104,48h48V24a8,8,0,0,0-8-8H112a8,8,0,0,0-8,8Zm88,160V64H64V208H192Z"/></symbol>
+    <symbol id="i-handshake" viewBox="0 0 256 256"><path d="M254.3,107.91,228.78,56.85a16,16,0,0,0-21.47-7.15L182.44,62.13,130.05,48.27a8.14,8.14,0,0,0-4.1,0L73.56,62.13,48.69,49.7a16,16,0,0,0-21.47,7.15L1.7,107.9a16,16,0,0,0,7.15,21.47l27,13.51,55.49,39.63a8.06,8.06,0,0,0,2.71,1.25l64,16a8,8,0,0,0,7.6-2.1l55.07-55.08,26.42-13.21a16,16,0,0,0,7.15-21.46Zm-54.89,33.37L165,113.72a8,8,0,0,0-10.68.61C136.51,132.27,116.66,130,104,122L147.24,80h31.81l27.21,54.41ZM41.53,64,62,74.22,36.43,125.27,16,115.06Zm116,119.13L99.42,168.61l-49.2-35.14,28-56L128,64.28l9.8,2.59-45,43.68-.08.09a16,16,0,0,0,2.72,24.81c20.56,13.13,45.37,11,64.91-5L188,152.66Zm62-57.87-25.52-51L214.47,64,240,115.06Zm-87.75,92.67a8,8,0,0,1-7.75,6.06,8.13,8.13,0,0,1-1.95-.24L80.41,213.33a7.89,7.89,0,0,1-2.71-1.25L51.35,193.26a8,8,0,0,1,9.3-13l25.11,17.94L126,208.24A8,8,0,0,1,131.82,217.94Z"/></symbol>
+    <symbol id="i-presentation" viewBox="0 0 256 256"><path d="M216,40H136V24a8,8,0,0,0-16,0V40H40A16,16,0,0,0,24,56V176a16,16,0,0,0,16,16H79.36L57.75,219a8,8,0,0,0,12.5,10l29.59-37h56.32l29.59,37a8,8,0,1,0,12.5-10l-21.61-27H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Zm0,136H40V56H216V176Z"/></symbol>
+    <symbol id="i-sun-horizon" viewBox="0 0 256 256"><path d="M240,152H199.55a73.54,73.54,0,0,0,.45-8,72,72,0,0,0-144,0,73.54,73.54,0,0,0,.45,8H16a8,8,0,0,0,0,16H240a8,8,0,0,0,0-16ZM72,144a56,56,0,1,1,111.41,8H72.59A56.13,56.13,0,0,1,72,144Zm144,56a8,8,0,0,1-8,8H48a8,8,0,0,1,0-16H208A8,8,0,0,1,216,200ZM72.84,43.58a8,8,0,0,1,14.32-7.16l8,16a8,8,0,0,1-14.32,7.16Zm-56,48.84a8,8,0,0,1,10.74-3.57l16,8a8,8,0,0,1-7.16,14.31l-16-8A8,8,0,0,1,16.84,92.42Zm192,15.16a8,8,0,0,1,3.58-10.73l16-8a8,8,0,1,1,7.16,14.31l-16,8a8,8,0,0,1-10.74-3.58Zm-48-55.16,8-16a8,8,0,0,1,14.32,7.16l-8,16a8,8,0,1,1-14.32-7.16Z"/></symbol>
+    <symbol id="i-person-simple-walk" viewBox="0 0 256 256"><path d="M152,80a32,32,0,1,0-32-32A32,32,0,0,0,152,80Zm0-48a16,16,0,1,1-16,16A16,16,0,0,1,152,32Zm64,112a8,8,0,0,1-8,8c-35.31,0-52.95-17.81-67.12-32.12-2.74-2.77-5.36-5.4-8-7.84l-13.43,30.88,37.2,26.57A8,8,0,0,1,160,176v56a8,8,0,0,1-16,0V180.12l-31.07-22.2L79.34,235.19A8,8,0,0,1,72,240a7.84,7.84,0,0,1-3.19-.67,8,8,0,0,1-4.15-10.52l54.08-124.37c-9.31-1.65-20.92,1.2-34.7,8.58a163.88,163.88,0,0,0-30.57,21.77,8,8,0,0,1-10.95-11.66c2.5-2.35,61.69-57.23,98.72-25.08,3.83,3.32,7.48,7,11,10.57C166.19,122.7,179.36,136,208,136A8,8,0,0,1,216,144Z"/></symbol>
+    <symbol id="i-cooking-pot" viewBox="0 0 256 256"><path d="M88,48V16a8,8,0,0,1,16,0V48a8,8,0,0,1-16,0Zm40,8a8,8,0,0,0,8-8V16a8,8,0,0,0-16,0V48A8,8,0,0,0,128,56Zm32,0a8,8,0,0,0,8-8V16a8,8,0,0,0-16,0V48A8,8,0,0,0,160,56Zm92.8,46.4L224,124v60a32,32,0,0,1-32,32H64a32,32,0,0,1-32-32V124L3.2,102.4a8,8,0,0,1,9.6-12.8L32,104V80a8,8,0,0,1,8-8H216a8,8,0,0,1,8,8v24l19.2-14.4a8,8,0,0,1,9.6,12.8ZM208,88H48v96a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16Z"/></symbol>
+    <symbol id="i-key" viewBox="0 0 256 256"><path d="M216.57,39.43A80,80,0,0,0,83.91,120.78L28.69,176A15.86,15.86,0,0,0,24,187.31V216a16,16,0,0,0,16,16H72a8,8,0,0,0,8-8V208H96a8,8,0,0,0,8-8V184h16a8,8,0,0,0,5.66-2.34l9.56-9.57A79.73,79.73,0,0,0,160,176h.1A80,80,0,0,0,216.57,39.43ZM224,98.1c-1.09,34.09-29.75,61.86-63.89,61.9H160a63.7,63.7,0,0,1-23.65-4.51,8,8,0,0,0-8.84,1.68L116.69,168H96a8,8,0,0,0-8,8v16H72a8,8,0,0,0-8,8v16H40V187.31l58.83-58.82a8,8,0,0,0,1.68-8.84A63.72,63.72,0,0,1,96,95.92c0-34.14,27.81-62.8,61.9-63.89A64,64,0,0,1,224,98.1ZM192,76a12,12,0,1,1-12-12A12,12,0,0,1,192,76Z"/></symbol>
+    <symbol id="i-door-open" viewBox="0 0 256 256"><path d="M232,216H208V40a16,16,0,0,0-16-16H64A16,16,0,0,0,48,40V216H24a8,8,0,0,0,0,16H232a8,8,0,0,0,0-16Zm-40,0H176V40h16ZM64,40h96V216H64Zm80,92a12,12,0,1,1-12-12A12,12,0,0,1,144,132Z"/></symbol>
+    <symbol id="i-user" viewBox="0 0 256 256"><path d="M230.92,212c-15.23-26.33-38.7-45.21-66.09-54.16a72,72,0,1,0-73.66,0C63.78,166.78,40.31,185.66,25.08,212a8,8,0,1,0,13.85,8c18.84-32.56,52.14-52,89.07-52s70.23,19.44,89.07,52a8,8,0,1,0,13.85-8ZM72,96a56,56,0,1,1,56,56A56.06,56.06,0,0,1,72,96Z"/></symbol>
+    <symbol id="i-bathtub" viewBox="0 0 256 256"><path d="M240,96H208a8,8,0,0,0-8-8H136a8,8,0,0,0-8,8H64V52A12,12,0,0,1,76,40a12.44,12.44,0,0,1,12.16,9.59,8,8,0,0,0,15.68-3.18A28.32,28.32,0,0,0,76,24,28,28,0,0,0,48,52V96H16a8,8,0,0,0-8,8v40a56.06,56.06,0,0,0,56,56v16a8,8,0,0,0,16,0V200h96v16a8,8,0,0,0,16,0V200a56.06,56.06,0,0,0,56-56V104A8,8,0,0,0,240,96Zm-48,8v32H144V104Zm40,40a40,40,0,0,1-40,40H64a40,40,0,0,1-40-40V112H128v32a8,8,0,0,0,8,8h64a8,8,0,0,0,8-8V112h24Z"/></symbol>
+    <symbol id="i-shower" viewBox="0 0 256 256"><path d="M64,236a12,12,0,1,1-12-12A12,12,0,0,1,64,236Zm20-44a12,12,0,1,0,12,12A12,12,0,0,0,84,192Zm-64,0a12,12,0,1,0,12,12A12,12,0,0,0,20,192Zm32-32a12,12,0,1,0,12,12A12,12,0,0,0,52,160ZM256,40a8,8,0,0,1-8,8H219.31L191.46,75.86,169.8,202.65a16,16,0,0,1-27.09,8.66l-98-98a16,16,0,0,1,8.69-27.1L180.14,64.54l30.2-30.2A8,8,0,0,1,216,32h32A8,8,0,0,1,256,40ZM174.21,81.79,56,102l98,98Z"/></symbol>
+  </svg>
+
+  <header class="topbar" id="topbar">
+    <div class="wrap">
+      <a class="logo" href="#topo" aria-label="Algodão Hotel, início"><span class="logo-mark" aria-hidden="true">A</span><b>Algodão</b><small>hotel executivo</small></a>
+      <p class="desk"><span class="dot" aria-hidden="true"></span>Recepção aberta · <time id="clock">24h</time></p>
+      <nav class="nav" aria-label="Principal">
+        <a href="#quartos">Quartos</a>
+        <a href="#tarifa">Tarifa do dia</a>
+        <a href="#empresas">Empresas</a>
+        <a href="#localizacao">Onde fica</a>
+      </nav>
+      <a class="btn btn-yellow" href="#tarifa">Reservar</a>
+      <a class="icon-btn" href="https://wa.me/?text=Ol%C3%A1!%20Quero%20saber%20a%20tarifa%20do%20Algod%C3%A3o%20Hotel." target="_blank" rel="noopener" aria-label="Chamar no WhatsApp"><svg class="ico" aria-hidden="true"><use href="#i-whatsapp"/></svg></a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="topo" aria-labelledby="hero-title">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow mono">Hotel executivo · São José · Campina Grande, PB</p>
+          <h1 id="hero-title">Perto do que você veio fazer.</h1>
+          <p class="lead">64 quartos a 7 minutos a pé do Hospital Universitário e a 6 de carro da UFCG. A recepção fica aberta a noite toda e a nota sai no CNPJ da sua empresa.</p>
+          <div class="actions">
+            <a class="btn btn-yellow" href="#tarifa"><svg class="ico" aria-hidden="true"><use href="#i-calendar-blank"/></svg>Ver tarifa e reservar</a>
+            <a class="btn btn-wa" href="https://wa.me/?text=Ol%C3%A1!%20Quero%20saber%20a%20tarifa%20do%20Algod%C3%A3o%20Hotel." target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-whatsapp"/></svg>Chamar no WhatsApp</a>
+          </div>
+          <ul class="ticks mono">
+            <li><svg class="ico" aria-hidden="true"><use href="#i-key"/></svg>Recepção 24h</li>
+            <li><svg class="ico" aria-hidden="true"><use href="#i-coffee"/></svg>Café às 5h30</li>
+            <li><svg class="ico" aria-hidden="true"><use href="#i-car"/></svg>40 vagas cobertas</li>
+            <li><svg class="ico" aria-hidden="true"><use href="#i-receipt"/></svg>Nota no CNPJ</li>
+          </ul>
+        </div>
+
+        <div class="board" id="board">
+          <div class="board-head">
+            <p class="board-title">DAQUI ATÉ</p>
+            <p class="board-from">SAÍDA: PORTA DO HOTEL</p>
+          </div>
+          <div class="board-tabs" role="tablist" aria-label="Destinos por assunto" hidden>
+            <button type="button" class="board-tab" role="tab" aria-selected="true" aria-controls="g-saude" id="t-saude">Saúde</button>
+            <button type="button" class="board-tab" role="tab" aria-selected="false" aria-controls="g-estudo" id="t-estudo">Estudo</button>
+            <button type="button" class="board-tab" role="tab" aria-selected="false" aria-controls="g-cidade" id="t-cidade">Cidade</button>
+            <button type="button" class="board-tab" role="tab" aria-selected="false" aria-controls="g-chegar" id="t-chegar">Chegar</button>
+          </div>
+          <table>
+            <thead><tr><th scope="col">Destino</th><th scope="col"><span class="sr-only">Como</span></th><th scope="col">Min</th><th scope="col">Km</th></tr></thead>
+            <tbody id="g-saude" data-group="saude" role="tabpanel" aria-labelledby="t-saude">
+              <tr><td class="dest">HU Alcides Carneiro</td><td class="how"><svg class="ico" aria-hidden="true"><use href="#i-person-simple-walk"/></svg><span class="sr-only">a pé</span></td><td class="mins"><span class="flap"><b>0</b><b>7</b></span></td><td class="km">0,5</td></tr>
+              <tr><td class="dest">Hospital da FAP</td><td class="how"><svg class="ico" aria-hidden="true"><use href="#i-car"/></svg><span class="sr-only">de carro</span></td><td class="mins"><span class="flap"><b>0</b><b>7</b></span></td><td class="km">4,0</td></tr>
+              <tr><td class="dest">Centro, clínicas</td><td class="how"><svg class="ico" aria-hidden="true"><use href="#i-car"/></svg><span class="sr-only">de carro</span></td><td class="mins"><span class="flap"><b>0</b><b>3</b></span></td><td class="km">1,6</td></tr>
+            </tbody>
+            <tbody id="g-estudo" data-group="estudo" role="tabpanel" aria-labelledby="t-estudo">
+              <tr><td class="dest">UFCG, campus sede</td><td class="how"><svg class="ico" aria-hidden="true"><use href="#i-car"/></svg><span class="sr-only">de carro</span></td><td class="mins"><span class="flap"><b>0</b><b>6</b></span></td><td class="km">3,3</td></tr>
+              <tr><td class="dest">UEPB, Bodocongó</td><td class="how"><svg class="ico" aria-hidden="true"><use href="#i-car"/></svg><span class="sr-only">de carro</span></td><td class="mins"><span class="flap"><b>0</b><b>8</b></span></td><td class="km">5,1</td></tr>
+              <tr><td class="dest">Parque Tecnológico</td><td class="how"><svg class="ico" aria-hidden="true"><use href="#i-car"/></svg><span class="sr-only">de carro</span></td><td class="mins"><span class="flap"><b>1</b><b>0</b></span></td><td class="km">6,1</td></tr>
+            </tbody>
+            <tbody id="g-cidade" data-group="cidade" role="tabpanel" aria-labelledby="t-cidade">
+              <tr><td class="dest">Parque do Povo</td><td class="how"><svg class="ico" aria-hidden="true"><use href="#i-person-simple-walk"/></svg><span class="sr-only">a pé</span></td><td class="mins"><span class="flap"><b>1</b><b>0</b></span></td><td class="km">0,8</td></tr>
+              <tr><td class="dest">Museu do Algodão</td><td class="how"><svg class="ico" aria-hidden="true"><use href="#i-car"/></svg><span class="sr-only">de carro</span></td><td class="mins"><span class="flap"><b>0</b><b>4</b></span></td><td class="km">1,7</td></tr>
+              <tr><td class="dest">Partage Shopping</td><td class="how"><svg class="ico" aria-hidden="true"><use href="#i-car"/></svg><span class="sr-only">de carro</span></td><td class="mins"><span class="flap"><b>0</b><b>6</b></span></td><td class="km">3,8</td></tr>
+            </tbody>
+            <tbody id="g-chegar" data-group="chegar" role="tabpanel" aria-labelledby="t-chegar">
+              <tr><td class="dest">Rodoviária</td><td class="how"><svg class="ico" aria-hidden="true"><use href="#i-bus"/></svg><span class="sr-only">de carro</span></td><td class="mins"><span class="flap"><b>0</b><b>7</b></span></td><td class="km">3,8</td></tr>
+              <tr><td class="dest">Aeroporto João Suassuna</td><td class="how"><svg class="ico" aria-hidden="true"><use href="#i-airplane-tilt"/></svg><span class="sr-only">de carro</span></td><td class="mins"><span class="flap"><b>1</b><b>1</b></span></td><td class="km">6,6</td></tr>
+              <tr><td class="dest">Açude Velho</td><td class="how"><svg class="ico" aria-hidden="true"><use href="#i-car"/></svg><span class="sr-only">de carro</span></td><td class="mins"><span class="flap"><b>0</b><b>4</b></span></td><td class="km">2,2</td></tr>
+            </tbody>
+          </table>
+          <p class="board-note">Tempo sem trânsito, medido pelas ruas no OpenStreetMap. No horário de pico, conte o dobro.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="night" aria-label="Chegada à noite">
+      <div class="wrap">
+        <figure class="band">
+          <video id="band-video" muted loop playsinline preload="none" poster="media/chegada-ao-quarto.webp" aria-label="Porta do quarto se abrindo à noite, com a cama arrumada e a luz baixa">
+            <source src="media/chegada-ao-quarto.mp4" type="video/mp4">
+          </video>
+          <figcaption><b>23:40</b>O voo atrasou. A recepção está acordada e o ar do quarto já foi ligado.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="sec day" id="rotina" data-dark aria-labelledby="day-title">
+      <div class="wrap sec-grid">
+        <p class="sec-label mono">01 · Seu dia aqui</p>
+        <div class="sec-main">
+          <h2 class="h2" id="day-title">Chegou tarde, sai cedo. A gente se organiza em volta disso.</h2>
+          <p class="sec-intro">Quem fica aqui veio para uma banca, um plantão, uma reunião ou um congresso. O hotel funciona no horário dessas pessoas.</p>
+          <div class="tl" id="timeline">
+          <span class="tl-track" aria-hidden="true"></span><span class="tl-fill" aria-hidden="true"></span>
+          <ol class="timeline">
+            <li class="tl-step"><p class="tl-time">23:40</p><div><h3>Chegou tarde</h3><p>Recepção 24 horas. Mande o documento pelo WhatsApp antes e o check-in leva uns 3 minutos.</p></div></li>
+            <li class="tl-step"><p class="tl-time">05:30</p><div><h3>Café antes do plantão</h3><p>O café abre às 5h30 de segunda a sexta. Saindo mais cedo, a gente deixa um lanche embalado na recepção.</p></div></li>
+            <li class="tl-step"><p class="tl-time">07:10</p><div><h3>Saída para a reunião</h3><p>Estacionamento coberto com 40 vagas, sem custo. Da garagem até a UFCG são 6 minutos.</p></div></li>
+            <li class="tl-step"><p class="tl-time">13:00</p><div><h3>Chamada de vídeo no quarto</h3><p>Wi-fi de fibra com 500 mega, mesa de 1,20 m, cadeira de escritório e tomada dos dois lados da cama.</p></div></li>
+            <li class="tl-step"><p class="tl-time">19:00</p><div><h3>Reunião com o time</h3><p>Sala para 8 pessoas no térreo, com TV de 55 polegadas e quadro branco, a R$ 60 a hora.</p></div></li>
+            <li class="tl-step"><p class="tl-time">22:00</p><div><h3>Camisa para amanhã</h3><p>Lavanderia expressa: entregou até as 22h, volta passada às 7h. R$ 12 a peça.</p></div></li>
+          </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec" id="quartos" aria-labelledby="rooms-title">
+      <div class="wrap sec-grid">
+        <p class="sec-label mono">02 · Quartos</p>
+        <div class="sec-main" id="rooms">
+          <h2 class="h2" id="rooms-title">Quatro quartos, todos com <span class="mark">mesa de verdade</span>.</h2>
+          <p class="sec-intro">Preço por quarto, com café. De domingo a quinta a procura é maior; sexta e sábado a diária cai.</p>
+          <div class="rooms-tabs" role="tablist" aria-label="Tipos de quarto">
+            <button type="button" class="room-tab" role="tab" id="rt-solteiro" aria-controls="room-solteiro" aria-selected="true">Executivo Solteiro<span>desde R$ 179</span></button>
+            <button type="button" class="room-tab" role="tab" id="rt-casal" aria-controls="room-casal" aria-selected="false">Executivo Casal<span>desde R$ 209</span></button>
+            <button type="button" class="room-tab" role="tab" id="rt-duplo" aria-controls="room-duplo" aria-selected="false">Executivo Duplo<span>desde R$ 229</span></button>
+            <button type="button" class="room-tab" role="tab" id="rt-estudio" aria-controls="room-estudio" aria-selected="false">Estúdio Longa Estadia<span>desde R$ 239</span></button>
+          </div>
+
+          <article class="room" id="room-solteiro" data-room="solteiro" role="tabpanel" aria-labelledby="rn-solteiro">
+            <figure class="room-photo">
+              <img src="https://images.unsplash.com/photo-1631048834897-22f9c755755e?auto=format&fit=crop&w=1100&h=825&q=72" alt="Cama de casal com cabeceira estofada cinza e abajures dos dois lados" loading="lazy" width="1100" height="825">
+              <button type="button" class="btn" data-gallery="solteiro"><svg class="ico" aria-hidden="true"><use href="#i-images"/></svg>Ver as 3 fotos</button>
+            </figure>
+            <div>
+              <h3 id="rn-solteiro">Executivo Solteiro</h3>
+              <p class="room-meta mono">16 m² · cama de casal · 1 pessoa · 24 quartos</p>
+              <p class="room-text">O mais pedido por quem vem sozinho para banca, plantão ou visita a cliente. A mesa fica de frente para a janela.</p>
+              <ul class="room-amen">
+                <li><svg class="ico" aria-hidden="true"><use href="#i-desk"/></svg>Mesa de 1,20 m</li>
+                <li><svg class="ico" aria-hidden="true"><use href="#i-snowflake"/></svg>Ar-condicionado split</li>
+                <li><svg class="ico" aria-hidden="true"><use href="#i-plug"/></svg>Tomada e USB na cama</li>
+                <li><svg class="ico" aria-hidden="true"><use href="#i-lock-key"/></svg>Cofre para notebook</li>
+              </ul>
+              <p class="room-price"><b>R$ 219</b><span>domingo a quinta</span><span>R$ 179 na sexta e no sábado</span></p>
+              <div class="room-actions"><a class="btn btn-dark" href="#tarifa" data-pick="solteiro"><svg class="ico" aria-hidden="true"><use href="#i-calendar-blank"/></svg>Ver datas deste quarto</a></div>
+            </div>
+          </article>
+
+          <article class="room" id="room-casal" data-room="casal" role="tabpanel" aria-labelledby="rn-casal">
+            <figure class="room-photo">
+              <img src="https://images.unsplash.com/photo-1631048834981-27b558f7a3e7?auto=format&fit=crop&w=1100&h=825&q=72" alt="Cama queen com manta cinza, criado-mudo de madeira e espelho de porta" loading="lazy" width="1100" height="825">
+              <button type="button" class="btn" data-gallery="casal"><svg class="ico" aria-hidden="true"><use href="#i-images"/></svg>Ver as 3 fotos</button>
+            </figure>
+            <div>
+              <h3 id="rn-casal">Executivo Casal</h3>
+              <p class="room-meta mono">20 m² · cama queen · até 2 pessoas · 20 quartos</p>
+              <p class="room-text">Para quem traz a família no congresso ou precisa de mais espaço. Tem poltrona de leitura e armário com porta de correr.</p>
+              <ul class="room-amen">
+                <li><svg class="ico" aria-hidden="true"><use href="#i-bed"/></svg>Cama queen</li>
+                <li><svg class="ico" aria-hidden="true"><use href="#i-desk"/></svg>Mesa de 1,20 m</li>
+                <li><svg class="ico" aria-hidden="true"><use href="#i-snowflake"/></svg>Ar-condicionado split</li>
+                <li><svg class="ico" aria-hidden="true"><use href="#i-shower"/></svg>Chuveiro a gás</li>
+              </ul>
+              <p class="room-price"><b>R$ 259</b><span>domingo a quinta</span><span>R$ 209 na sexta e no sábado</span></p>
+              <div class="room-actions"><a class="btn btn-dark" href="#tarifa" data-pick="casal"><svg class="ico" aria-hidden="true"><use href="#i-calendar-blank"/></svg>Ver datas deste quarto</a></div>
+            </div>
+          </article>
+
+          <article class="room" id="room-duplo" data-room="duplo" role="tabpanel" aria-labelledby="rn-duplo">
+            <figure class="room-photo">
+              <img src="https://images.unsplash.com/photo-1648383228240-6ed939727ad6?auto=format&fit=crop&w=1100&h=825&q=72" alt="Duas camas de solteiro com lençol branco, sofá e mesa ao fundo" loading="lazy" width="1100" height="825">
+              <button type="button" class="btn" data-gallery="duplo"><svg class="ico" aria-hidden="true"><use href="#i-images"/></svg>Ver as 3 fotos</button>
+            </figure>
+            <div>
+              <h3 id="rn-duplo">Executivo Duplo</h3>
+              <p class="room-meta mono">22 m² · duas camas de solteiro · até 2 · 12 quartos</p>
+              <p class="room-text">Para dois colegas da mesma empresa: cada cama tem tomada e luz de leitura próprias.</p>
+              <ul class="room-amen">
+                <li><svg class="ico" aria-hidden="true"><use href="#i-users"/></svg>Duas camas de solteiro</li>
+                <li><svg class="ico" aria-hidden="true"><use href="#i-desk"/></svg>Mesa para dois</li>
+                <li><svg class="ico" aria-hidden="true"><use href="#i-snowflake"/></svg>Ar-condicionado split</li>
+                <li><svg class="ico" aria-hidden="true"><use href="#i-lock-key"/></svg>Cofre</li>
+              </ul>
+              <p class="room-price"><b>R$ 279</b><span>domingo a quinta</span><span>R$ 229 na sexta e no sábado</span></p>
+              <div class="room-actions"><a class="btn btn-dark" href="#tarifa" data-pick="duplo"><svg class="ico" aria-hidden="true"><use href="#i-calendar-blank"/></svg>Ver datas deste quarto</a></div>
+            </div>
+          </article>
+
+          <article class="room" id="room-estudio" data-room="estudio" role="tabpanel" aria-labelledby="rn-estudio">
+            <figure class="room-photo">
+              <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=1100&h=825&q=72" alt="Quarto de estúdio com cama queen, criado-mudo e janela grande" loading="lazy" width="1100" height="825">
+              <button type="button" class="btn" data-gallery="estudio"><svg class="ico" aria-hidden="true"><use href="#i-images"/></svg>Ver as 4 fotos</button>
+            </figure>
+            <div>
+              <h3 id="rn-estudio">Estúdio Longa Estadia</h3>
+              <p class="room-meta mono">32 m² · cama queen · copa · 8 estúdios</p>
+              <p class="room-text">Para residência médica, obra ou projeto de semanas. Copa com cooktop, micro-ondas e geladeira, e uma sala separada da cama.</p>
+              <ul class="room-amen">
+                <li><svg class="ico" aria-hidden="true"><use href="#i-cooking-pot"/></svg>Copa equipada</li>
+                <li><svg class="ico" aria-hidden="true"><use href="#i-t-shirt"/></svg>Lavanderia no andar</li>
+                <li><svg class="ico" aria-hidden="true"><use href="#i-desk"/></svg>Mesa e sala</li>
+                <li><svg class="ico" aria-hidden="true"><use href="#i-calendar-blank"/></svg>15% a menos de 7 noites</li>
+              </ul>
+              <p class="room-price"><b>R$ 289</b><span>domingo a quinta</span><span>R$ 239 na sexta e no sábado</span></p>
+              <div class="room-actions"><a class="btn btn-dark" href="#tarifa" data-pick="estudio"><svg class="ico" aria-hidden="true"><use href="#i-calendar-blank"/></svg>Ver datas deste quarto</a></div>
+            </div>
+          </article>
+
+          <div class="included">
+            <h3>Em todos os quartos, sem cobrar à parte</h3>
+            <ul>
+              <li><svg class="ico" aria-hidden="true"><use href="#i-coffee"/></svg>Café das 5h30 às 10h, no térreo</li>
+              <li><svg class="ico" aria-hidden="true"><use href="#i-car"/></svg>Vaga coberta, uma por quarto</li>
+              <li><svg class="ico" aria-hidden="true"><use href="#i-wifi-high"/></svg>Wi-fi de 500 mega com fibra</li>
+              <li><svg class="ico" aria-hidden="true"><use href="#i-printer"/></svg>Impressão na recepção, até 20 folhas</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec fare" id="tarifa" aria-labelledby="fare-title">
+      <div class="wrap sec-grid">
+        <p class="sec-label mono">03 · Tarifa do dia</p>
+        <div class="sec-main">
+          <h2 class="h2" id="fare-title">Toque na noite de chegada e depois na de saída.</h2>
+          <p class="sec-intro">Cada dia mostra a diária do quarto escolhido e quantos ainda estão livres. Riscado é noite lotada.</p>
+          <div class="fare-card">
+            <div class="chips" role="group" aria-label="Escolher o quarto" id="fare-rooms">
+              <button type="button" class="chip" data-fare-room="solteiro" aria-pressed="true">Executivo Solteiro</button>
+              <button type="button" class="chip" data-fare-room="casal" aria-pressed="false">Executivo Casal</button>
+              <button type="button" class="chip" data-fare-room="duplo" aria-pressed="false">Executivo Duplo</button>
+              <button type="button" class="chip" data-fare-room="estudio" aria-pressed="false">Estúdio</button>
+            </div>
+            <div class="strip-head">
+              <p class="strip-hint" id="strip-hint" aria-live="polite">Toque na noite de chegada.</p>
+              <div class="strip-nav">
+                <button type="button" class="icon-btn" id="strip-prev" aria-label="Dias anteriores"><svg class="ico" aria-hidden="true"><use href="#i-caret-left"/></svg></button>
+                <button type="button" class="icon-btn" id="strip-next" aria-label="Próximos dias"><svg class="ico" aria-hidden="true"><use href="#i-caret-right"/></svg></button>
+              </div>
+            </div>
+            <div class="strip-wrap">
+              <div class="strip" id="strip" role="group" aria-label="Próximos 60 dias" tabindex="0">
+                <p class="strip-hint">Para ver a tarifa de cada dia, chame a recepção no <a href="https://wa.me/?text=Ol%C3%A1!%20Quero%20saber%20a%20tarifa%20do%20Algod%C3%A3o%20Hotel." target="_blank" rel="noopener">WhatsApp</a>.</p>
+              </div>
+            </div>
+            <div class="fare-form">
+              <div class="field-row"><span id="guests-l">Pessoas por quarto<small id="guests-cap">até 1 neste quarto</small></span>
+                <div class="stepper" role="group" aria-labelledby="guests-l">
+                  <button type="button" class="icon-btn" data-step="guests" data-dir="-1" aria-label="Menos uma pessoa"><svg class="ico" aria-hidden="true"><use href="#i-minus"/></svg></button>
+                  <output data-out="guests">1</output>
+                  <button type="button" class="icon-btn" data-step="guests" data-dir="1" aria-label="Mais uma pessoa"><svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></button>
+                </div>
+              </div>
+              <div class="field-row"><span id="rooms-l">Quartos<small>para equipes, até 8</small></span>
+                <div class="stepper" role="group" aria-labelledby="rooms-l">
+                  <button type="button" class="icon-btn" data-step="rooms" data-dir="-1" aria-label="Menos um quarto"><svg class="ico" aria-hidden="true"><use href="#i-minus"/></svg></button>
+                  <output data-out="rooms">1</output>
+                  <button type="button" class="icon-btn" data-step="rooms" data-dir="1" aria-label="Mais um quarto"><svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></button>
+                </div>
+              </div>
+              <div class="who"><span id="who-l">Quem paga</span>
+                <div class="chips" role="group" aria-labelledby="who-l">
+                  <button type="button" class="chip" data-who="pessoal" aria-pressed="true">Eu mesmo</button>
+                  <button type="button" class="chip" data-who="empresa" aria-pressed="false">A empresa, com nota no CNPJ</button>
+                </div>
+              </div>
+              <label class="text-field" id="company-field" hidden>Nome da empresa<input type="text" id="company" autocomplete="organization" placeholder="Como sai na nota"></label>
+              <div class="quote" aria-live="polite">
+                <dl>
+                  <div><dt>Chegada</dt><dd id="q-in">Escolha</dd></div>
+                  <div><dt>Saída</dt><dd id="q-out">Escolha</dd></div>
+                  <div><dt>Noites</dt><dd id="q-nights">0</dd></div>
+                  <div><dt>Diária média</dt><dd id="q-avg">R$ 0</dd></div>
+                </dl>
+                <p class="quote-total"><span>Total com café</span><b id="q-total">R$ 0</b></p>
+                <p class="quote-note" id="q-note">Sem sinal e sem cobrança agora. A recepção confirma no WhatsApp.</p>
+                <p class="form-error" id="q-error" role="alert" hidden></p>
+                <button type="button" class="btn btn-yellow" id="q-send"><svg class="ico" aria-hidden="true"><use href="#i-whatsapp"/></svg>Pedir reserva no WhatsApp</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec corp" id="empresas" aria-labelledby="corp-title">
+      <div class="wrap">
+        <div class="sec-grid">
+          <p class="sec-label mono">04 · Para empresas</p>
+          <div class="sec-main corp-grid">
+            <div class="corp-side">
+              <h2 class="h2" id="corp-title">Sua equipe vem todo mês? A diária cai.</h2>
+              <p class="sec-intro">Convênio sem mensalidade e sem contrato de fidelidade. Quanto mais noites por mês, menor a diária para todo mundo da empresa.</p>
+              <ul class="corp-list">
+                <li><svg class="ico" aria-hidden="true"><use href="#i-receipt"/></svg><div><b>Faturado em 15 dias</b><span>Boleto ou Pix no CNPJ, com a nota de serviço emitida no check-out.</span></div></li>
+                <li><svg class="ico" aria-hidden="true"><use href="#i-clock"/></svg><div><b>Check-out até as 14h</b><span>Sem custo para empresa conveniada, se o quarto não tiver outra entrada no dia.</span></div></li>
+                <li><svg class="ico" aria-hidden="true"><use href="#i-handshake"/></svg><div><b>Uma pessoa para falar</b><span>Joana, da reserva, responde o WhatsApp das 7h às 19h e conhece a sua equipe.</span></div></li>
+                <li><svg class="ico" aria-hidden="true"><use href="#i-presentation"/></svg><div><b>Sala de reunião pela metade</b><span>R$ 30 a hora para conveniado, com café e água.</span></div></li>
+              </ul>
+            </div>
+            <div class="calc">
+              <h3>Quanto a sua empresa paga</h3>
+              <p>Arraste para dizer quantas noites a equipe passa em Campina por mês, somando todo mundo.</p>
+              <div class="range-row"><label for="nights">Noites por mês</label><output id="nights-out" for="nights">12</output></div>
+              <input type="range" id="nights" min="1" max="60" value="12" step="1">
+              <p class="tier" id="tier">Faixa: <b>15% de desconto</b></p>
+              <table class="rates">
+                <thead><tr><th scope="col">Quarto</th><th scope="col">Balcão</th><th scope="col">Convênio</th></tr></thead>
+                <tbody id="rates"></tbody>
+              </table>
+              <p class="saving"><span>Economia no mês, em Executivo Solteiro</span><b id="saving">R$ 0</b></p>
+              <form class="corp-form" id="corp-form" novalidate>
+                <label class="text-field">Empresa<input type="text" id="corp-name" autocomplete="organization"></label>
+                <label class="text-field">Cidade da empresa<input type="text" id="corp-city" autocomplete="address-level2"></label>
+                <label class="text-field">Quantas pessoas viajam
+                  <select id="corp-people"><option>1 ou 2</option><option>de 3 a 5</option><option>de 6 a 10</option><option>mais de 10</option></select>
+                </label>
+                <p class="form-error" id="corp-error" role="alert" hidden></p>
+                <button type="submit" class="btn btn-yellow"><svg class="ico" aria-hidden="true"><use href="#i-whatsapp"/></svg>Pedir proposta no WhatsApp</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec" id="localizacao" aria-labelledby="where-title">
+      <div class="wrap sec-grid">
+        <p class="sec-label mono">05 · Onde fica</p>
+        <div class="sec-main">
+          <h2 class="h2" id="where-title">No São José, entre o HU e o Parque do Povo.</h2>
+          <div class="where-grid">
+            <figure class="map">
+              <div class="map-canvas" id="map" role="region" aria-label="Mapa do bairro São José com hospitais, universidades e rodoviária"><p class="map-wait">O mapa carrega quando você chega aqui.</p></div>
+              <figcaption>O círculo marca o bairro, não a porta. O endereço é fictício.</figcaption>
+            </figure>
+            <div class="where-side">
+              <address><svg class="ico" aria-hidden="true"><use href="#i-map-pin"/></svg>Rua fictícia, 210, São José, Campina Grande (PB)</address>
+              <p>Da rodoviária são 7 minutos de táxi. Do aeroporto, 11. Chegando de carro pela BR-230, entre pelo Açude Velho e siga para o São José.</p>
+              <figure class="city">
+                <img src="https://images.unsplash.com/photo-1768061002232-e0eef24f2d48?auto=format&fit=crop&w=900&h=563&q=72" alt="Prédios iluminados à beira do Açude Velho, em Campina Grande, no fim da tarde" loading="lazy" width="900" height="563">
+                <figcaption>O Açude Velho no fim da tarde, a 4 minutos de carro.</figcaption>
+              </figure>
+              <a class="btn" href="https://www.google.com/maps/search/?api=1&query=S%C3%A3o%20Jos%C3%A9%2C%20Campina%20Grande%2C%20PB" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-googlemaps"/></svg>Abrir no Google Maps</a>
+              <p class="insta"><svg class="ico" aria-hidden="true"><use href="#i-instagram"/></svg>@algodao.hotel.demo <span>(perfil fictício)</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec" aria-labelledby="reviews-title">
+      <div class="wrap sec-grid">
+        <p class="sec-label mono">06 · Hóspedes</p>
+        <div class="sec-main">
+          <h2 class="h2" id="reviews-title">Quem viaja a trabalho volta.</h2>
+          <p class="score"><b>4,7</b><span>de 5, em 412 avaliações no Google</span></p>
+          <div class="quotes">
+            <figure class="q">
+              <span class="stars" aria-label="Nota 5 de 5"><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg></span>
+              <blockquote>Faço banca na UFCG duas vezes por semestre. Chego de Natal perto da meia-noite e o rapaz da recepção já sabe meu nome. Na mesa do quarto cabem o notebook e as provas.</blockquote>
+              <figcaption>Cláudia<span>professora, de Natal · Executivo Solteiro</span></figcaption>
+            </figure>
+            <figure class="q">
+              <span class="stars" aria-label="Nota 5 de 5"><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg></span>
+              <blockquote>Três meses de residência no HU. Ia e voltava a pé, sete minutos. O café às 5h30 salvou meus plantões, e a copa do estúdio me poupou de comer fora todo dia.</blockquote>
+              <figcaption>Felipe<span>médico residente, de João Pessoa · Estúdio</span></figcaption>
+            </figure>
+            <figure class="q">
+              <span class="stars" aria-label="Nota 4 de 5"><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg></span>
+              <blockquote>Representante comercial, venho todo mês. A nota sai no CNPJ sem eu pedir duas vezes. Só o elevador demora na hora do café.</blockquote>
+              <figcaption>Anderson<span>representante, de Recife · Executivo Casal</span></figcaption>
+            </figure>
+          </div>
+          <p class="fake-label">Avaliações fictícias, escritas para esta demonstração.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec" aria-labelledby="faq-title">
+      <div class="wrap sec-grid">
+        <p class="sec-label mono">07 · Dúvidas</p>
+        <div class="sec-main">
+          <h2 class="h2" id="faq-title">O que a recepção mais responde.</h2>
+          <div class="faq">
+            <details><summary>A nota fiscal sai no nome da empresa?<svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Sai. Informe o CNPJ na reserva ou no check-in e a nota de serviço é emitida no check-out, com a hospedagem e o café. Consumo do frigobar vai numa nota separada, se a empresa preferir.</p></details>
+            <details><summary>Dá para entrar antes das 14h?<svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Se o quarto estiver pronto, entra sem custo. Para garantir a entrada às 7h, depois de um voo noturno, cobramos meia diária.</p></details>
+            <details><summary>Tem transporte para o aeroporto?<svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Não temos van própria. A recepção chama um táxi de confiança a qualquer hora, e são 11 minutos até o João Suassuna.</p></details>
+            <details><summary>O estacionamento cabe van ou caminhonete?<svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Caminhonete cabe. Van alta não passa na garagem coberta; tem 4 vagas descobertas no pátio para ela.</p></details>
+            <details><summary>Aceita cachorro?<svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Não aceitamos animais, a não ser cão-guia.</p></details>
+            <details><summary>Como pago?<svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Pix, débito ou crédito em até 3 vezes. Empresa conveniada pode pagar faturado, em 15 dias.</p></details>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="final" aria-labelledby="final-title">
+      <div class="wrap">
+        <h2 id="final-title">Manda as datas. <span>A gente separa o quarto.</span></h2>
+        <div class="final-actions">
+          <a class="btn btn-yellow" href="#tarifa"><svg class="ico" aria-hidden="true"><use href="#i-calendar-blank"/></svg>Ver tarifa e reservar</a>
+          <a class="btn btn-light btn-wa" href="https://wa.me/?text=Ol%C3%A1!%20Quero%20saber%20a%20tarifa%20do%20Algod%C3%A3o%20Hotel." target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-whatsapp"/></svg>Chamar no WhatsApp</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="foot-row">
+        <span>Algodão Hotel · empresa fictícia para demonstração</span>
+        <span>Pix, débito, crédito e faturado para empresa</span>
+        <span>Fotos: Unsplash · Vídeo: Coverr · Mapa: OpenStreetMap</span>
+      </div>
+      <p class="wordmark" aria-hidden="true">algodão<span>.</span></p>
+      <p class="orcamento">Quer um site assim para o seu negócio? <a href="https://tarciodiniz.com/#contato">Peça um orçamento</a></p>
+      <p class="credito-autor"><a class="back-link" href="/"><svg class="ico" aria-hidden="true"><use href="#i-arrow-left"/></svg>Ver outros modelos</a><span>Site feito por <a href="https://tarciodiniz.com" rel="author">Tarcio Diniz</a>, desenvolvedor</span></p>
+    </div>
+  </footer>
+
+  <div class="bar" id="bar" hidden>
+    <div class="bar-inner">
+      <p class="bar-sum" id="bar-sum"><b>Diária desde R$ 179</b>com café e vaga coberta</p>
+      <a class="btn btn-yellow" href="#tarifa">Reservar</a>
+      <a class="icon-btn" href="https://wa.me/?text=Ol%C3%A1!%20Quero%20saber%20a%20tarifa%20do%20Algod%C3%A3o%20Hotel." target="_blank" rel="noopener" aria-label="Chamar no WhatsApp"><svg class="ico" aria-hidden="true"><use href="#i-whatsapp"/></svg></a>
+    </div>
+  </div>
+
+  <dialog class="viewer" id="viewer" aria-label="Fotos do quarto">
+    <figure>
+      <img id="viewer-img" src="data:," alt="">
+      <figcaption id="viewer-cap"></figcaption>
+    </figure>
+    <div class="viewer-bar">
+      <button type="button" class="icon-btn" id="viewer-prev" aria-label="Foto anterior"><svg class="ico" aria-hidden="true"><use href="#i-caret-left"/></svg></button>
+      <button type="button" class="icon-btn" id="viewer-close" aria-label="Fechar fotos"><svg class="ico" aria-hidden="true"><use href="#i-x"/></svg></button>
+      <button type="button" class="icon-btn" id="viewer-next" aria-label="Próxima foto"><svg class="ico" aria-hidden="true"><use href="#i-caret-right"/></svg></button>
+    </div>
+  </dialog>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
+<script>
+  const DAY_MS = 24 * 60 * 60 * 1000;
+  const STRIP_DAYS = 60;
+  const MAX_ROOMS = 8;
+  const LONG_STAY_NIGHTS = 7;
+  const LONG_STAY_DISCOUNT = 0.15;
+  const TIME_ZONE = "America/Fortaleza";
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const photo = (id, w, h) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}${h ? `&h=${h}` : ""}&q=72`;
+
+  const ROOMS = {
+    solteiro: { name: "Executivo Solteiro", units: 24, cap: 1, weekday: 219, weekend: 179,
+      photos: [["1631048834897-22f9c755755e", "Cama de casal com cabeceira estofada cinza"], ["1631049035428-f9ddac7651d7", "Mesa de trabalho de frente para a janela, com luminária e poltrona"], ["1631048835284-39bb446ae470", "Banheiro com bancada de mármore e espelho grande"]] },
+    casal: { name: "Executivo Casal", units: 20, cap: 2, weekday: 259, weekend: 209,
+      photos: [["1631048834981-27b558f7a3e7", "Cama queen com manta cinza e criado-mudo de madeira"], ["1631048835153-946fa051ceee", "Quarto com armário de porta de correr e espelho"], ["1631049035482-d38c547be450", "Banheiro com banheira e cortina branca"]] },
+    duplo: { name: "Executivo Duplo", units: 12, cap: 2, weekday: 279, weekend: 229,
+      photos: [["1648383228240-6ed939727ad6", "Duas camas de solteiro com lençol branco"], ["1631049035486-58f342e9c6a9", "Mesa de trabalho perto da janela"], ["1631049421656-e0b38ea1705a", "Banheiro com bancada clara"]] },
+    estudio: { name: "Estúdio Longa Estadia", units: 8, cap: 2, weekday: 289, weekend: 239,
+      photos: [["1631049307264-da0ec9d70304", "Cama queen e janela grande no estúdio"], ["1631049035509-076f10beb2fe", "Entrada do estúdio com copa, forno e micro-ondas"], ["1631049035260-64d09b5d6912", "Sala do estúdio com sofá, TV e mesa redonda"], ["1631049421483-bbcab9b66473", "Copa com bancada de granito e cafeteira"]] },
+  };
+  // Convênio tiers by nights per month: [minimum nights, discount].
+  const TIERS = [[30, 0.2], [15, 0.15], [5, 0.1], [1, 0]];
+  const state = { room: "solteiro", checkin: "", checkout: "", guests: 1, rooms: 1 };
+
+  function toIso(date) {
+    const pad = (n) => String(n).padStart(2, "0");
+    return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
+  }
+  function parseIso(iso) {
+    const [y, m, d] = iso.split("-").map(Number);
+    return new Date(y, m - 1, d);
+  }
+  function addDays(iso, days) {
+    const date = parseIso(iso);
+    date.setDate(date.getDate() + days);
+    return toIso(date);
+  }
+  const todayIso = () => toIso(new Date());
+  const nightsBetween = (a, b) => Math.round((parseIso(b) - parseIso(a)) / DAY_MS);
+  const money = (value) => `R$ ${Math.round(value).toLocaleString("pt-BR")}`;
+  const plural = (n, one, many) => `${n} ${n === 1 ? one : many}`;
+  const brDate = (iso) => parseIso(iso).toLocaleDateString("pt-BR", { weekday: "short", day: "2-digit", month: "2-digit" }).replace(".", "");
+
+  // Demo occupancy: business demand is high Sunday to Thursday nights; a stable hash keeps it the same on every visit.
+  function hash01(text) {
+    let h = 2166136261;
+    for (let i = 0; i < text.length; i++) { h ^= text.charCodeAt(i); h = Math.imul(h, 16777619); }
+    return ((h >>> 0) % 10000) / 10000;
+  }
+  const isWeekendNight = (iso) => [5, 6].includes(parseIso(iso).getDay());
+  function freeRooms(roomId, iso) {
+    const room = ROOMS[roomId];
+    const weekday = parseIso(iso).getDay();
+    const base = { 0: 0.62, 1: 0.84, 2: 0.9, 3: 0.88, 4: 0.72, 5: 0.42, 6: 0.34 }[weekday];
+    const noise = hash01(`${roomId}:${iso}`) * 0.24 - 0.12;
+    const full = hash01(`full:${iso}`) > 0.9 && !isWeekendNight(iso);
+    if (full) return 0;
+    return Math.max(0, Math.round(room.units * (1 - Math.min(1, base + noise))));
+  }
+  const nightPrice = (roomId, iso) => (isWeekendNight(iso) ? ROOMS[roomId].weekend : ROOMS[roomId].weekday);
+  function nightsFree(roomId, from, to, needed) {
+    for (let iso = from; iso < to; iso = addDays(iso, 1)) if (freeRooms(roomId, iso) < needed) return false;
+    return true;
+  }
+  function quote() {
+    if (!state.checkin || !state.checkout) return null;
+    const nights = nightsBetween(state.checkin, state.checkout);
+    let perRoom = 0;
+    for (let iso = state.checkin; iso < state.checkout; iso = addDays(iso, 1)) perRoom += nightPrice(state.room, iso);
+    const longStay = state.room === "estudio" && nights >= LONG_STAY_NIGHTS;
+    if (longStay) perRoom *= 1 - LONG_STAY_DISCOUNT;
+    return { nights, perRoom, total: perRoom * state.rooms, avg: perRoom / nights, longStay };
+  }
+
+  // Departures board: tabs show one group; the letters and digits flip like an airport panel.
+  const board = document.getElementById("board");
+  const boardTabs = [...board.querySelectorAll(".board-tab")];
+  const boardGroups = [...board.querySelectorAll("tbody[data-group]")];
+  const GLYPHS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+  function scramble(cell, delay) {
+    const finalText = cell.dataset.final || (cell.dataset.final = cell.textContent);
+    const start = performance.now() + delay;
+    const duration = 520 + finalText.length * 18;
+    board.setAttribute("aria-busy", "true");
+    const tick = (now) => {
+      const t = Math.max(0, (now - start) / duration);
+      const settled = Math.floor(t * finalText.length);
+      cell.textContent = [...finalText].map((ch, i) => (i < settled || ch === " " || ch === "," ? ch : GLYPHS[Math.floor(Math.random() * GLYPHS.length)])).join("");
+      if (t < 1) requestAnimationFrame(tick);
+      else { cell.textContent = finalText; board.removeAttribute("aria-busy"); }
+    };
+    requestAnimationFrame(tick);
+  }
+  function flipGroup(group) {
+    if (reduceMotion.matches || !window.gsap) return;
+    group.querySelectorAll(".dest").forEach((cell, i) => scramble(cell, i * 90));
+    gsap.fromTo(group.querySelectorAll(".flap b"), { rotationX: -90, transformPerspective: 200 }, { rotationX: 0, duration: 0.45, ease: "back.out(2)", stagger: 0.06 });
+  }
+  function showGroup(tab, animate = true) {
+    boardTabs.forEach((other) => other.setAttribute("aria-selected", String(other === tab)));
+    boardGroups.forEach((group) => { group.hidden = group.id !== tab.getAttribute("aria-controls"); });
+    if (animate) flipGroup(document.getElementById(tab.getAttribute("aria-controls")));
+  }
+  board.querySelector(".board-tabs").hidden = false;
+  boardTabs.forEach((tab) => tab.addEventListener("click", () => showGroup(tab)));
+  board.querySelector(".board-tabs").addEventListener("keydown", (event) => {
+    const index = boardTabs.findIndex((tab) => tab.getAttribute("aria-selected") === "true");
+    const step = event.key === "ArrowRight" ? 1 : event.key === "ArrowLeft" ? -1 : 0;
+    if (!step) return;
+    const next = boardTabs[(index + step + boardTabs.length) % boardTabs.length];
+    next.focus();
+    showGroup(next);
+  });
+  showGroup(boardTabs[0], false);
+
+  // Clock in the header: the front desk never closes, so the time is what matters.
+  const clock = document.getElementById("clock");
+  const clockFormat = new Intl.DateTimeFormat("pt-BR", { hour: "2-digit", minute: "2-digit", hourCycle: "h23", timeZone: TIME_ZONE });
+  const tickClock = () => { clock.textContent = clockFormat.format(new Date()); };
+  tickClock();
+  setInterval(tickClock, 30000);
+
+  // Header: away on the way down, back on the way up; dark over dark sections.
+  const topbar = document.getElementById("topbar");
+  let lastY = window.scrollY;
+  window.addEventListener("scroll", () => {
+    const y = window.scrollY;
+    const away = !reduceMotion.matches && y > lastY + 4 && y > 400;
+    if (y < lastY - 4 || y < 400) topbar.classList.remove("is-away");
+    else if (away) topbar.classList.add("is-away");
+    lastY = y;
+  }, { passive: true });
+  const darkSections = [...document.querySelectorAll("[data-dark], .final, footer")];
+  const darkObserver = new IntersectionObserver(() => {
+    const probe = topbar.offsetHeight / 2;
+    topbar.classList.toggle("is-dark", darkSections.some((section) => { const r = section.getBoundingClientRect(); return r.top <= probe && r.bottom >= probe; }));
+  }, { threshold: [0, 0.01, 0.99, 1], rootMargin: "0px 0px -90% 0px" });
+  darkSections.forEach((section) => darkObserver.observe(section));
+
+  // Night band video: plays only when it can move.
+  const bandVideo = document.getElementById("band-video");
+  const videoObserver = new IntersectionObserver((entries) => {
+    const visible = entries.some((entry) => entry.isIntersecting);
+    if (reduceMotion.matches) { bandVideo.pause(); return; }
+    if (visible) { bandVideo.preload = "auto"; bandVideo.play().catch(() => {}); } else bandVideo.pause();
+  }, { threshold: 0.2 });
+  videoObserver.observe(bandVideo);
+
+  // Room tabs: without script every room is listed; with it, one at a time.
+  const roomsBox = document.getElementById("rooms");
+  const roomTabs = [...roomsBox.querySelectorAll(".room-tab")];
+  const roomPanels = [...roomsBox.querySelectorAll(".room")];
+  roomsBox.classList.add("is-tabbed");
+  function showRoom(tab, animate) {
+    roomTabs.forEach((other) => { other.setAttribute("aria-selected", String(other === tab)); other.tabIndex = other === tab ? 0 : -1; });
+    const panel = document.getElementById(tab.getAttribute("aria-controls"));
+    roomPanels.forEach((other) => { other.hidden = other !== panel; });
+    if (animate && window.gsap && !reduceMotion.matches) {
+      gsap.fromTo(panel.querySelector(".room-photo"), { clipPath: "inset(0% 0% 0% 100%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.8, ease: "power3.inOut" });
+      gsap.fromTo(panel.querySelector(".room-photo img"), { scale: 1.15 }, { scale: 1, duration: 1.1, ease: "power2.out" });
+      gsap.fromTo(panel.querySelectorAll("h3, .room-meta, .room-text, .room-amen li, .room-price, .room-actions"), { y: 18, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: "power2.out", stagger: 0.04, delay: 0.15 });
+    }
+  }
+  roomTabs.forEach((tab) => tab.addEventListener("click", () => showRoom(tab, true)));
+  roomsBox.querySelector(".rooms-tabs").addEventListener("keydown", (event) => {
+    const index = roomTabs.findIndex((tab) => tab.getAttribute("aria-selected") === "true");
+    const step = event.key === "ArrowRight" ? 1 : event.key === "ArrowLeft" ? -1 : 0;
+    if (!step) return;
+    const next = roomTabs[(index + step + roomTabs.length) % roomTabs.length];
+    next.focus();
+    showRoom(next, true);
+  });
+  showRoom(roomTabs[0], false);
+
+  // Photo viewer.
+  const viewer = document.getElementById("viewer");
+  const viewerImg = document.getElementById("viewer-img");
+  const viewerCap = document.getElementById("viewer-cap");
+  let viewerRoom = null;
+  let viewerIndex = 0;
+  let viewerOpener = null;
+  function showViewer(index) {
+    const list = ROOMS[viewerRoom].photos;
+    viewerIndex = (index + list.length) % list.length;
+    const [id, alt] = list[viewerIndex];
+    viewerImg.src = photo(id, 1600);
+    viewerImg.alt = alt;
+    viewerCap.textContent = `${ROOMS[viewerRoom].name}: ${alt} (${viewerIndex + 1} de ${list.length})`;
+  }
+  document.querySelectorAll("[data-gallery]").forEach((button) => button.addEventListener("click", () => {
+    viewerRoom = button.dataset.gallery;
+    viewerOpener = button;
+    showViewer(0);
+    viewer.showModal();
+  }));
+  document.getElementById("viewer-prev").addEventListener("click", () => showViewer(viewerIndex - 1));
+  document.getElementById("viewer-next").addEventListener("click", () => showViewer(viewerIndex + 1));
+  document.getElementById("viewer-close").addEventListener("click", () => viewer.close());
+  viewer.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowLeft") showViewer(viewerIndex - 1);
+    if (event.key === "ArrowRight") showViewer(viewerIndex + 1);
+  });
+  viewer.addEventListener("click", (event) => { if (event.target === viewer) viewer.close(); });
+  viewer.addEventListener("close", () => viewerOpener?.focus({ preventScroll: true }));
+
+  // Fare strip.
+  const strip = document.getElementById("strip");
+  const stripHint = document.getElementById("strip-hint");
+  const fareChips = [...document.querySelectorAll("[data-fare-room]")];
+  function renderStrip() {
+    const today = todayIso();
+    const keep = strip.scrollLeft;
+    strip.innerHTML = "";
+    for (let i = 0; i < STRIP_DAYS; i++) {
+      const iso = addDays(today, i);
+      const date = parseIso(iso);
+      const free = freeRooms(state.room, iso);
+      const units = ROOMS[state.room].units;
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "fday";
+      button.dataset.iso = iso;
+      const full = free < state.rooms;
+      const canLeave = full && state.checkin && !state.checkout && iso > state.checkin && nightsFree(state.room, state.checkin, iso, state.rooms);
+      if (isWeekendNight(iso)) button.classList.add("is-weekend");
+      if (full) button.classList.add("is-full");
+      if (iso === state.checkin) button.classList.add("is-in");
+      if (iso === state.checkout) button.classList.add("is-out");
+      if (state.checkin && state.checkout && iso > state.checkin && iso < state.checkout) button.classList.add("is-range");
+      button.disabled = full && !canLeave;
+      const dow = date.toLocaleDateString("pt-BR", { weekday: "short" }).replace(".", "");
+      const month = date.toLocaleDateString("pt-BR", { month: "short" }).replace(".", "");
+      const left = free === 0 ? "lotado" : free <= 3 ? `últimos ${free}` : `${free} livres`;
+      button.setAttribute("aria-pressed", String(iso === state.checkin || iso === state.checkout));
+      button.setAttribute("aria-label", `${date.toLocaleDateString("pt-BR", { weekday: "long", day: "numeric", month: "long" })}, ${money(nightPrice(state.room, iso))}, ${left}`);
+      button.innerHTML = `<span class="f-dow">${dow}</span><span class="f-num">${date.getDate()}</span><span class="f-dow">${month}</span><span class="f-price">${money(nightPrice(state.room, iso))}</span><span class="f-occ" aria-hidden="true"><b style="width:${Math.round((1 - free / units) * 100)}%"></b></span><span class="f-left">${left}</span>`;
+      strip.append(button);
+    }
+    strip.scrollLeft = keep;
+    stripHint.textContent = !state.checkin || state.checkout ? "Toque na noite de chegada." : "Agora toque no dia da saída.";
+  }
+  strip.addEventListener("click", (event) => {
+    const button = event.target.closest(".fday");
+    if (!button || button.disabled) return;
+    const iso = button.dataset.iso;
+    if (!state.checkin || state.checkout || iso <= state.checkin) { state.checkin = iso; state.checkout = ""; }
+    else state.checkout = iso;
+    renderFare();
+    strip.querySelector(`[data-iso="${iso}"]`)?.focus({ preventScroll: true });
+  });
+  const stripStep = (dir) => strip.scrollBy({ left: dir * strip.clientWidth * 0.8, behavior: reduceMotion.matches ? "auto" : "smooth" });
+  document.getElementById("strip-prev").addEventListener("click", () => stripStep(-1));
+  document.getElementById("strip-next").addEventListener("click", () => stripStep(1));
+  function setFareRoom(id) {
+    state.room = id;
+    fareChips.forEach((chip) => chip.setAttribute("aria-pressed", String(chip.dataset.fareRoom === id)));
+    state.guests = Math.min(state.guests, ROOMS[id].cap);
+    if (state.checkin && state.checkout && !nightsFree(id, state.checkin, state.checkout, state.rooms)) state.checkout = "";
+    renderFare();
+  }
+  fareChips.forEach((chip) => chip.addEventListener("click", () => setFareRoom(chip.dataset.fareRoom)));
+  document.querySelectorAll("[data-pick]").forEach((link) => link.addEventListener("click", () => setFareRoom(link.dataset.pick)));
+
+  const quoteEls = { in: document.getElementById("q-in"), out: document.getElementById("q-out"), nights: document.getElementById("q-nights"), avg: document.getElementById("q-avg"), total: document.getElementById("q-total"), note: document.getElementById("q-note"), error: document.getElementById("q-error") };
+  const barSum = document.getElementById("bar-sum");
+  function renderFare() {
+    renderStrip();
+    const q = quote();
+    quoteEls.in.textContent = state.checkin ? brDate(state.checkin) : "Escolha";
+    quoteEls.out.textContent = state.checkout ? brDate(state.checkout) : "Escolha";
+    quoteEls.nights.textContent = q ? q.nights : 0;
+    quoteEls.avg.textContent = q ? money(q.avg) : "R$ 0";
+    quoteEls.total.textContent = q ? money(q.total) : "R$ 0";
+    quoteEls.note.textContent = q && q.longStay ? "Estadia de 7 noites ou mais no estúdio: 15% a menos já aplicado." : "Sem sinal e sem cobrança agora. A recepção confirma no WhatsApp.";
+    quoteEls.error.hidden = true;
+    document.getElementById("guests-cap").textContent = `até ${ROOMS[state.room].cap} neste quarto`;
+    renderSteppers();
+    barSum.innerHTML = q
+      ? `<b>${ROOMS[state.room].name}, ${money(q.total)}</b>${brDate(state.checkin)} a ${brDate(state.checkout)}, ${plural(q.nights, "noite", "noites")}`
+      : "<b>Diária desde R$ 179</b>com café e vaga coberta";
+  }
+  function renderSteppers() {
+    document.querySelector('[data-out="guests"]').textContent = state.guests;
+    document.querySelector('[data-out="rooms"]').textContent = state.rooms;
+    document.querySelectorAll("[data-step]").forEach((button) => {
+      const kind = button.dataset.step;
+      const up = Number(button.dataset.dir) > 0;
+      const max = kind === "guests" ? ROOMS[state.room].cap : MAX_ROOMS;
+      button.disabled = up ? state[kind] >= max : state[kind] <= 1;
+    });
+  }
+  document.querySelectorAll("[data-step]").forEach((button) => button.addEventListener("click", () => {
+    const kind = button.dataset.step;
+    const max = kind === "guests" ? ROOMS[state.room].cap : MAX_ROOMS;
+    state[kind] = Math.min(max, Math.max(1, state[kind] + Number(button.dataset.dir)));
+    if (kind === "rooms" && state.checkin && state.checkout && !nightsFree(state.room, state.checkin, state.checkout, state.rooms)) state.checkout = "";
+    renderFare();
+  }));
+  const companyField = document.getElementById("company-field");
+  const whoChips = [...document.querySelectorAll("[data-who]")];
+  let payer = "pessoal";
+  whoChips.forEach((chip) => chip.addEventListener("click", () => {
+    payer = chip.dataset.who;
+    whoChips.forEach((other) => other.setAttribute("aria-pressed", String(other === chip)));
+    companyField.hidden = payer !== "empresa";
+    if (payer === "empresa") document.getElementById("company").focus();
+  }));
+
+  // wa.me without a number lets the visitor pick the chat: the demo has no real phone.
+  const openWhatsApp = (text) => window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, "_blank", "noopener");
+  document.getElementById("q-send").addEventListener("click", () => {
+    const q = quote();
+    const problem = !state.checkin ? "Escolha a noite de chegada na faixa de dias." : !state.checkout ? "Agora escolha o dia da saída." : "";
+    quoteEls.error.textContent = problem;
+    quoteEls.error.hidden = !problem;
+    if (problem) return;
+    const lines = [
+      "Olá! Quero reservar no Algodão Hotel.",
+      `Quarto: ${ROOMS[state.room].name}${state.rooms > 1 ? `, ${state.rooms} quartos` : ""}`,
+      `Chegada: ${brDate(state.checkin)}`,
+      `Saída: ${brDate(state.checkout)} (${plural(q.nights, "noite", "noites")})`,
+      `Pessoas por quarto: ${state.guests}`,
+      `Valor que apareceu: ${money(q.total)}`,
+    ];
+    const company = document.getElementById("company").value.trim();
+    if (payer === "empresa") lines.push(`Nota fiscal no CNPJ da empresa${company ? `: ${company}` : ""}`);
+    openWhatsApp(lines.join("\n"));
+  });
+
+  // Companies calculator: the numbers roll to the new value instead of jumping.
+  const nightsInput = document.getElementById("nights");
+  const nightsOut = document.getElementById("nights-out");
+  const ratesBody = document.getElementById("rates");
+  const savingEl = document.getElementById("saving");
+  ratesBody.innerHTML = Object.entries(ROOMS).map(([id, room]) => `<tr><td>${room.name}</td><td class="was">${money(room.weekday)}</td><td class="now" data-rate="${id}">${money(room.weekday)}</td></tr>`).join("");
+  const tierFor = (nights) => TIERS.find(([min]) => nights >= min)[1];
+  const shown = {};
+  function roll(el, key, value) {
+    const from = shown[key] ?? value;
+    shown[key] = value;
+    if (reduceMotion.matches || !window.gsap) { el.textContent = money(value); return; }
+    const counter = { v: from };
+    gsap.to(counter, { v: value, duration: 0.6, ease: "power2.out", overwrite: true, onUpdate: () => { el.textContent = money(counter.v); } });
+  }
+  function renderCalc() {
+    const nights = Number(nightsInput.value);
+    const discount = tierFor(nights);
+    nightsOut.textContent = plural(nights, "noite", "noites");
+    document.getElementById("tier").innerHTML = discount ? `Faixa: <b>${Math.round(discount * 100)}% de desconto</b>` : "Faixa: <b>tarifa do dia</b>, o convênio começa em 5 noites";
+    Object.entries(ROOMS).forEach(([id, room]) => roll(ratesBody.querySelector(`[data-rate="${id}"]`), id, room.weekday * (1 - discount)));
+    roll(savingEl, "saving", ROOMS.solteiro.weekday * discount * nights);
+  }
+  nightsInput.addEventListener("input", renderCalc);
+  renderCalc();
+  document.getElementById("corp-form").addEventListener("submit", (event) => {
+    event.preventDefault();
+    const name = document.getElementById("corp-name").value.trim();
+    const error = document.getElementById("corp-error");
+    error.textContent = name ? "" : "Escreva o nome da empresa para a proposta sair certa.";
+    error.hidden = Boolean(name);
+    if (!name) return;
+    const nights = Number(nightsInput.value);
+    openWhatsApp([
+      "Olá! Quero a tarifa de convênio do Algodão Hotel.",
+      `Empresa: ${name}`,
+      `Cidade: ${document.getElementById("corp-city").value.trim() || "não informei"}`,
+      `Pessoas que viajam: ${document.getElementById("corp-people").value}`,
+      `Noites por mês, somando todos: ${nights}`,
+    ].join("\n"));
+  });
+
+  // Smooth only on in-page link clicks; a global smooth scroll-behavior also animates reload restoration.
+  function scrollToTarget(target) {
+    const y = target.getBoundingClientRect().top + window.scrollY - 8;
+    window.scrollTo({ top: y, behavior: reduceMotion.matches ? "auto" : "smooth" });
+  }
+  document.querySelectorAll('a[href^="#"]').forEach((link) => link.addEventListener("click", (event) => {
+    const target = document.querySelector(link.getAttribute("href"));
+    if (!target) return;
+    event.preventDefault();
+    scrollToTarget(target);
+    history.replaceState(null, "", link.getAttribute("href"));
+  }));
+
+  // Fixed bar: after the hero, out of the way over the fare section and the footer.
+  const bar = document.getElementById("bar");
+  const barWatch = { topo: true, tarifa: false, foot: false };
+  const barObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => { barWatch[entry.target.id || "foot"] = entry.isIntersecting; });
+    bar.hidden = barWatch.topo || barWatch.tarifa || barWatch.foot;
+  });
+  ["topo", "tarifa"].forEach((id) => barObserver.observe(document.getElementById(id)));
+  barObserver.observe(document.querySelector("footer"));
+
+  // Map: the neighbourhood as a circle and the places the board talks about.
+  const LEAFLET_JS = "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js";
+  const HOTEL_AREA = [-7.2255, -35.891];
+  const HOTEL_AREA_RADIUS_M = 380;
+  const PLACES = [
+    ["HU", [-7.2278397, -35.8924291]],
+    ["UFCG", [-7.214243, -35.9077467]],
+    ["UEPB", [-7.2099317, -35.915281]],
+    ["Parque do Povo", [-7.2240065, -35.8875068]],
+    ["Rodoviária", [-7.2387862, -35.8711676]],
+  ];
+  const cssToken = (name) => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+  function loadScript(src) {
+    return new Promise((resolve, reject) => {
+      const script = document.createElement("script");
+      script.src = src;
+      script.onload = resolve;
+      script.onerror = reject;
+      document.head.append(script);
+    });
+  }
+  function buildMap(container) {
+    container.querySelector(".map-wait")?.remove();
+    // Dragging off on touch screens so a swipe over the map still scrolls the page.
+    const map = L.map(container, { scrollWheelZoom: false, dragging: !L.Browser.mobile, tap: false, zoomControl: false, zoomSnap: 0.25 });
+    L.control.zoom({ position: "bottomleft" }).addTo(map);
+    L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", { maxZoom: 19, attribution: "&copy; OpenStreetMap" }).addTo(map);
+    L.circle(HOTEL_AREA, { radius: HOTEL_AREA_RADIUS_M, color: cssToken("--ink"), weight: 2, fillColor: cssToken("--amarelo"), fillOpacity: 0.45 }).addTo(map)
+      .bindTooltip("Algodão, endereço fictício", { permanent: true, direction: "top", offset: [0, -14], className: "pin-label is-hotel" });
+    PLACES.forEach(([name, at]) => {
+      L.circleMarker(at, { radius: 6, color: cssToken("--papel"), weight: 2, fillColor: cssToken("--ink"), fillOpacity: 1 }).addTo(map)
+        .bindTooltip(name, { permanent: true, direction: "right", offset: [8, 0], className: "pin-label" });
+    });
+    const bounds = L.latLngBounds([HOTEL_AREA, ...PLACES.map(([, at]) => at)]);
+    // Labels open to the right of each dot, so the right side needs more room.
+    map.fitBounds(bounds, { paddingTopLeft: [30, 40], paddingBottomRight: [110, 30] });
+  }
+  const mapBox = document.getElementById("map");
+  const mapObserver = new IntersectionObserver((entries) => {
+    if (!entries.some((entry) => entry.isIntersecting)) return;
+    mapObserver.disconnect();
+    loadScript(LEAFLET_JS).then(() => buildMap(mapBox)).catch((error) => {
+      console.error(error);
+      mapBox.textContent = "O mapa não carregou. Use o botão do Google Maps.";
+    });
+  }, { rootMargin: "300px" });
+  mapObserver.observe(mapBox);
+
+  renderFare();
+
+  // Motion. Every tween lives inside matchMedia, so reduced motion keeps the page still and readable.
+  if (window.gsap && window.ScrollTrigger) {
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.matchMedia().add("(prefers-reduced-motion: no-preference)", () => {
+      // 1. The board settles once when it first comes into view.
+      ScrollTrigger.create({ trigger: board, start: "top 85%", once: true, onEnter: () => flipGroup(board.querySelector("tbody:not([hidden])")) });
+
+      // 2. Night falls: the page darkens around the video as the dark section approaches.
+      gsap.fromTo(".band", { clipPath: "inset(0% 6% 0% 6% round 18px)" }, { clipPath: "inset(0% 0% 0% 0% round 18px)", ease: "none", scrollTrigger: { trigger: ".band", start: "top 90%", end: "center 45%", scrub: true } });
+      gsap.fromTo("body", { backgroundColor: cssToken("--concreto") }, { backgroundColor: cssToken("--grafite"), ease: "none", immediateRender: false, scrollTrigger: { trigger: ".night", start: "top 40%", end: "bottom 35%", scrub: true } });
+      gsap.fromTo("body", { backgroundColor: cssToken("--grafite") }, { backgroundColor: cssToken("--concreto"), ease: "none", immediateRender: false, scrollTrigger: { trigger: "#quartos", start: "top 95%", end: "top 55%", scrub: true } });
+
+      // 3. The day line draws with the scroll and each hour lights up when the line reaches it.
+      gsap.fromTo(".tl-fill", { scaleY: 0 }, { scaleY: 1, ease: "none", scrollTrigger: { trigger: "#timeline", start: "top 70%", end: "bottom 60%", scrub: true } });
+      gsap.utils.toArray(".tl-step").forEach((step) => {
+        gsap.from([...step.children], { x: 30, opacity: 0.35, duration: 0.6, ease: "power2.out", stagger: 0.08, scrollTrigger: { trigger: step, start: "top 72%", toggleActions: "play none none reverse" } });
+      });
+
+      // 4. Titles rise as their section arrives.
+      gsap.utils.toArray(".h2, .final h2").forEach((title) => {
+        gsap.from(title, { yPercent: 30, opacity: 0, duration: 0.8, ease: "power3.out", scrollTrigger: { trigger: title, start: "top 90%", once: true } });
+      });
+      gsap.from(".wordmark", { yPercent: 50, opacity: 0, duration: 1, ease: "power3.out", scrollTrigger: { trigger: "footer", start: "top 92%", once: true } });
+    });
+    document.fonts.ready.then(() => ScrollTrigger.refresh());
+  }
+</script>
+<script>
+  // Keeps the browser chrome (Safari, Arc, Chrome on Android) the same color as whatever sits under the top edge.
+  (() => {
+    const meta = document.querySelector('meta[name="theme-color"]');
+    if (!meta) return;
+    // A 1x1 canvas normalizes any CSS color (rgb, rgba, color-mix, color(srgb ...)) into plain bytes.
+    const pixel = document.createElement("canvas").getContext("2d", { willReadFrequently: true });
+    const rgba = (color) => { pixel.clearRect(0, 0, 1, 1); pixel.fillStyle = "#000"; pixel.fillStyle = color; pixel.fillRect(0, 0, 1, 1); return pixel.getImageData(0, 0, 1, 1).data; };
+    const toHex = (color) => "#" + [...rgba(color).slice(0, 3)].map((n) => n.toString(16).padStart(2, "0")).join("");
+    const opaque = (color) => color !== "transparent" && rgba(color)[3] > 127;
+    // Every layer under the point, top first: the first opaque background is the color the eye sees.
+    const colorAtTop = () => {
+      for (const el of document.elementsFromPoint(window.innerWidth / 2, 1)) {
+        const color = getComputedStyle(el).backgroundColor;
+        if (opaque(color)) return toHex(color);
+      }
+      return toHex(getComputedStyle(document.documentElement).backgroundColor);
+    };
+    let queued = false;
+    const sync = () => {
+      queued = false;
+      const color = colorAtTop();
+      if (meta.content !== color) meta.content = color;
+    };
+    let settle = 0;
+    // A second read after scrolling stops catches headers that fade their background in.
+    const request = () => {
+      if (!queued) { queued = true; requestAnimationFrame(sync); }
+      clearTimeout(settle);
+      settle = setTimeout(() => requestAnimationFrame(sync), 450);
+    };
+    window.addEventListener("scroll", request, { passive: true });
+    window.addEventListener("resize", request);
+    window.addEventListener("load", request);
+    request();
+  })();
+</script>
+</body>
+</html>
