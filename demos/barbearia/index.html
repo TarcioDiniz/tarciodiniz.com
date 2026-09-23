@@ -3,392 +3,469 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#ede6d6">
+<meta name="theme-color" content="#121110">
 <meta name="robots" content="noindex, nofollow">
 <title>Sisal Barbearia · Campina Grande (demonstração)</title>
-<meta name="description" content="Demonstração de site para barbearia: tabela de preços, pedido de horário pelo WhatsApp em três passos, equipe, cortes e endereço.">
+<meta name="description" content="Demonstração de site para barbearia: horários livres para agendar pelo WhatsApp, altura do degradê, tabela de preços, equipe e endereço.">
+<!--
+  Fotos (licença Unsplash, https://unsplash.com/license), por autor:
+  Ten (1775494165568, topo) · Michael DeMoya (1593702275687, degradê) · Fábio Alves (1533245270348) ·
+  Hai Phung (1493256338651) · Gulom Nazarov (1657105052497) · Salah Regouane (1635273051839, 1635273051937) ·
+  Obi (1567894340315) · Tá Focando (1648221122279) · Mr Shave (1599011176306) · Victor Sirbu (1733995471058) ·
+  Nathon Oski (1517832606299) · Nate Johnston (1647140655214) · Arthur Humeau (1549271568) ·
+  Kambria Trout (1760641371942) · Mitchell Orr (1739302493888) · César Badilla Miranda (1705976062088) ·
+  Joshua Lawrence (1621645582931) · Allef Vinicius (1503951914875).
+  Fontes: Anybody e Libre Franklin, SIL Open Font License, Google Fonts.
+  GSAP 3.15.0 (licença padrão sem custo, https://gsap.com/community/standard-license/).
+-->
+<script>document.documentElement.classList.add("js");</script>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://images.unsplash.com">
+<link href="https://fonts.googleapis.com/css2?family=Anybody:wdth,wght@50..150,500..900&family=Libre+Franklin:wght@400..700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" crossorigin>
-<link rel="preload" as="image" href="https://images.unsplash.com/photo-1647140655214-e4a2d914971f?auto=format&fit=crop&w=1200&q=70" imagesrcset="https://images.unsplash.com/photo-1647140655214-e4a2d914971f?auto=format&fit=crop&w=700&q=70 700w, https://images.unsplash.com/photo-1647140655214-e4a2d914971f?auto=format&fit=crop&w=1200&q=70 1200w" imagesizes="(min-width: 900px) 55vw, 100vw">
+<link rel="preload" as="image" href="https://images.unsplash.com/photo-1775494165568-42c0fbb4c782?auto=format&fit=crop&w=900&h=1100&q=70" imagesrcset="https://images.unsplash.com/photo-1775494165568-42c0fbb4c782?auto=format&fit=crop&w=640&h=780&q=70 640w, https://images.unsplash.com/photo-1775494165568-42c0fbb4c782?auto=format&fit=crop&w=900&h=1100&q=70 900w, https://images.unsplash.com/photo-1775494165568-42c0fbb4c782?auto=format&fit=crop&w=1300&h=1590&q=70 1300w" imagesizes="(min-width: 900px) 46vw, 100vw">
 <style>
   :root {
-    --black: #0b0b0b;
-    --black-2: #141414;
-    --black-3: #1d1d1c;
-    --paper: #ede6d6;
-    --paper-2: #e2d9c5;
-    --red: #b3261e;
-    --red-hover: #c8342b;
+    --ink: #121110;
+    --ink-2: #1b1917;
+    --ink-3: #292623;
+    --bone: #efe6d3;
+    --bone-2: #ddd2bb;
+    --bone-dim: #b5ad9c;
+    --mute: #938b7c;
+    --red: #d63a2c;
+    --red-deep: #b72b20;
+    --red-hover: #c93427;
+    /* Red for small text on the dark background: the pole red is too dark to read at 13 px there. */
+    --red-text: #ec6150;
+    --placeholder: #6f675b;
+    --paper: #f2ead9;
+    --paper-2: #e5dbc5;
+    --paper-3: #d8ccb2;
+    --ink-soft: #4a433a;
     --whatsapp: #25d366;
-    --gray-100: #d6d0c3;
-    --gray-300: #aaa498;
-    --gray-400: #827e75;
-    --gray-500: #77736b;
-    --gray-700: #3a3835;
-    --ink-muted: #56514a;
-    --line-dark: rgba(237, 230, 214, 0.16);
-    --line-dark-strong: rgba(237, 230, 214, 0.38);
-    --line-paper: rgba(11, 11, 11, 0.2);
-    --line-paper-strong: rgba(11, 11, 11, 0.55);
-    --sprocket: rgba(237, 230, 214, 0.2);
-    --photo-filter: grayscale(1) contrast(1.18) brightness(0.9);
+    --line-d: rgba(239, 230, 211, 0.14);
+    --line-d2: rgba(239, 230, 211, 0.34);
+    --line-p: rgba(18, 17, 16, 0.16);
+    --line-p2: rgba(18, 17, 16, 0.5);
+    --shade: rgba(18, 17, 16, 0.62);
+    --shade-clear: rgba(18, 17, 16, 0);
+    --wash: rgba(214, 58, 44, 0.46);
+    --wash-clear: rgba(214, 58, 44, 0);
+    --pole-shine: rgba(255, 255, 255, 0.28);
+    --pole-shadow: rgba(0, 0, 0, 0.38);
+    --photo-grade: saturate(0.84) contrast(1.05);
     --map-filter: grayscale(1) contrast(1.05) brightness(0.96);
-    --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    --gutter: clamp(16px, 4.2vw, 48px);
-    --max: 1360px;
+    --gutter: clamp(16px, 4.4vw, 56px);
+    --max: 1380px;
     --header-h: 64px;
-    /* Alfa Slab One is the heavy slab of hand-painted shop signs; Plex carries everything else. */
-    --font-display: "Alfa Slab One", "Rockwell", "Roboto Slab", "Georgia", serif;
-    --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
-    --font: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    /* Anybody has a width axis from 50 to 150: condensed like a shop sign, stretched like a painted door. */
+    --font-display: "Anybody", "Arial Narrow", "Helvetica Neue", sans-serif;
+    --font: "Libre Franklin", system-ui, -apple-system, "Segoe UI", sans-serif;
   }
   * { box-sizing: border-box; }
+  [hidden] { display: none !important; }
   h1, h2, h3 { text-wrap: balance; }
   p, li, dd, blockquote { text-wrap: pretty; }
-  html { scroll-padding-top: calc(var(--header-h) + 8px); background: var(--black); }
-  body { margin: 0; background: var(--black); color: var(--paper); font-family: var(--font); font-size: 16px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
-  /* Static film grain over the whole page; fixed, so it never repaints while scrolling. */
-  body::after { content: ""; position: fixed; inset: 0; z-index: 900; pointer-events: none; background-image: var(--grain); opacity: 0.06; }
+  html { scroll-padding-top: calc(var(--header-h) + 12px); background: var(--ink); }
+  body { margin: 0; background: var(--ink); color: var(--bone); font-family: var(--font); font-size: 16px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
   img { display: block; max-width: 100%; }
-  /* Lets the hero photo bleed to the screen edge without a sideways scroll; clip keeps sticky elements working. */
   main { overflow-x: clip; }
   a { color: inherit; text-decoration: none; }
-  button { font: inherit; cursor: pointer; color: inherit; }
+  button { font: inherit; color: inherit; cursor: pointer; }
   .wrap { max-width: var(--max); margin: 0 auto; padding-inline: var(--gutter); }
   .ico { width: 20px; height: 20px; fill: currentColor; display: block; flex: none; }
-  .mono { font-family: var(--font-mono); }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
-  .notice { background: var(--paper); color: var(--black); font-size: 13px; text-align: center; padding: 8px var(--gutter); }
+  .notice { background: var(--bone); color: var(--ink); font-size: 13px; text-align: center; padding: 8px var(--gutter); }
 
-  /* Black-and-white photo with grain on top */
-  .bw { position: relative; overflow: hidden; background: var(--black-2); margin: 0; }
-  .bw img { width: 100%; height: 100%; object-fit: cover; filter: var(--photo-filter); }
-  .bw::after { content: ""; position: absolute; inset: 0; pointer-events: none; background-image: var(--grain); opacity: 0.22; mix-blend-mode: overlay; }
+  /* Barber pole: stripes run on a tile the same height as their loop, so moving it one tile is seamless. */
+  .pole { position: relative; overflow: hidden; border-radius: 999px; background: var(--bone); }
+  .pole-stripes { position: absolute; left: 0; right: 0; top: -28px; bottom: -28px; background: linear-gradient(135deg, var(--red) 25%, var(--bone) 25% 50%, var(--red) 50% 75%, var(--bone) 75%) 0 0 / 28px 28px; }
+  .pole::after { content: ""; position: absolute; inset: 0; border-radius: inherit; background: linear-gradient(90deg, var(--pole-shadow), var(--pole-shine) 35%, transparent 55%, var(--pole-shadow)); pointer-events: none; }
 
   /* Header */
-  .site-header { position: sticky; top: 0; z-index: 1000; background: var(--black); border-bottom: 1px solid transparent; transition: border-color .25s ease; }
-  .site-header.is-compact { border-bottom-color: var(--line-dark); }
-  .site-header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: var(--header-h); }
-  .logo { display: inline-flex; align-items: baseline; gap: 10px; min-height: 44px; padding-top: 8px; }
-  .logo b { font-family: var(--font-display); font-weight: 400; font-size: 26px; line-height: 1; letter-spacing: .01em; }
-  .logo small { font-family: var(--font-mono); font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--gray-300); }
-  .nav { display: none; gap: 4px; font-size: 15px; font-weight: 500; }
-  .nav a { display: inline-flex; align-items: center; min-height: 44px; padding-inline: 12px; color: var(--gray-300); transition: color .2s ease; }
-  .nav a:hover { color: var(--paper); }
+  .site-header { position: sticky; top: 0; z-index: 1000; background: var(--ink); border-bottom: 1px solid transparent; transition: border-color .25s ease; }
+  .site-header.is-compact { border-bottom-color: var(--line-d); }
+  .site-header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: var(--header-h); }
+  .logo { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; }
+  .logo .pole { width: 11px; height: 30px; }
+  .logo .pole-stripes { background-size: 14px 14px; top: -14px; bottom: -14px; }
+  .logo b { font-family: var(--font-display); font-weight: 800; font-variation-settings: "wdth" 130; font-size: 24px; line-height: 1; letter-spacing: .02em; }
+  .logo small { display: none; font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--bone-dim); }
+  .nav { display: none; gap: 8px; font-size: 15px; font-weight: 500; }
+  .nav a { display: inline-flex; align-items: center; min-height: 44px; padding-inline: 10px; color: var(--bone-dim); transition: color .2s ease; }
+  .nav a:hover { color: var(--bone); }
 
-  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; padding: 12px 22px; border: 0; border-radius: 2px; font-family: var(--font); font-weight: 600; font-size: 16px; letter-spacing: .01em; line-height: 1.2; transition: translate .2s ease, background-color .2s ease, color .2s ease; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 50px; padding: 12px 22px; border: 0; border-radius: 999px; font-family: var(--font); font-weight: 700; font-size: 16px; line-height: 1.2; transition: translate .2s ease, background-color .2s ease, color .2s ease, box-shadow .2s ease; }
   .btn:hover { translate: 0 -2px; }
-  .btn-red { background: var(--red); color: var(--paper); }
+  .btn-red { background: var(--red-deep); color: var(--bone); }
   .btn-red:hover { background: var(--red-hover); }
-  .btn-paper { background: var(--paper); color: var(--black); }
-  .btn-outline { background: transparent; color: var(--paper); box-shadow: inset 0 0 0 1.5px var(--line-dark-strong); }
-  .btn-outline:hover { box-shadow: inset 0 0 0 1.5px var(--paper); }
-  .btn-small { min-height: 44px; padding: 10px 16px; font-size: 15px; }
-  .text-link { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-size: 16px; font-weight: 500; text-decoration: underline; text-underline-offset: 5px; text-decoration-thickness: 1px; }
-  .text-link:hover { text-decoration-color: var(--red); }
+  .btn-bone { background: var(--bone); color: var(--ink); }
+  .btn-outline { background: transparent; color: var(--bone); box-shadow: inset 0 0 0 1.5px var(--line-d2); }
+  .btn-outline:hover { box-shadow: inset 0 0 0 1.5px var(--bone); }
+  .btn-small { min-height: 44px; padding: 10px 18px; font-size: 15px; }
+  .text-link { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-weight: 600; text-decoration: underline; text-underline-offset: 6px; text-decoration-thickness: 1.5px; text-decoration-color: var(--red); }
   .text-link .ico { width: 18px; height: 18px; }
+  .ico-wa { color: var(--whatsapp); }
 
-  /* Hero: title card over a black-and-white portrait */
-  .hero { position: relative; display: grid; padding-bottom: clamp(28px, 5vw, 64px); }
-  .hero-photo { position: relative; margin-inline: calc(var(--gutter) * -1); height: clamp(180px, 33svh, 380px); -webkit-mask-image: linear-gradient(to bottom, var(--black) 55%, transparent); mask-image: linear-gradient(to bottom, var(--black) 55%, transparent); }
-  .hero-photo img { object-position: 50% 32%; }
-  .scene { position: absolute; left: 0; top: 14px; z-index: 1; margin: 0; padding: 4px 8px; background: var(--black); font-family: var(--font-mono); font-size: 13px; letter-spacing: .06em; color: var(--gray-100); }
+  /* Hero: the empty chair, the pole beside the door, and the name painted behind it all */
+  .hero { position: relative; display: grid; grid-template-columns: minmax(0, 1fr); padding-top: clamp(18px, 3vw, 36px); }
   .hero-copy { position: relative; z-index: 2; }
-  /* The slab is about a third wider than a display serif, so the phone size is tuned to "na régua." fitting 320 px. */
-  .hero h1 { font-family: var(--font-display); font-weight: 400; font-size: clamp(34px, 12vw, 62px); line-height: .98; letter-spacing: 0; margin: -0.55em 0 0; }
-  .hero h1 .line { display: block; }
-  .hero h1 .indent { padding-left: .7em; }
-  .razor { display: block; width: min(62%, 420px); height: 4px; margin: 14px 0 0 .7em; background: var(--red); transform-origin: left; }
-  .hero-lead { max-width: 40ch; margin: 18px 0 0; color: var(--gray-100); font-size: 16px; }
-  .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 20px; margin-top: 20px; }
-  .hero-caption { display: none; }
-
-  /* Credits strip */
-  /* On a phone the third caption is the longest, so it gets the widest column. */
-  .credits { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.25fr); border-block: 1px solid var(--line-dark); }
-  .credit { padding: 18px 8px 18px 0; margin: 0; }
-  .credit + .credit { padding-left: 14px; border-left: 1px solid var(--line-dark); }
-  .credit b { display: block; font-family: var(--font-display); font-weight: 400; font-size: clamp(28px, 4.4vw, 54px); line-height: 1; }
-  .credit span { display: flex; align-items: flex-start; gap: 5px; margin-top: 8px; font-family: var(--font-mono); font-size: 13px; line-height: 1.35; color: var(--gray-300); }
-  .credit .ico { width: 14px; height: 14px; margin-top: 2px; color: var(--red); }
+  .kicker { display: inline-flex; align-items: center; gap: 10px; margin: 0 0 14px; font-size: 13px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--bone-dim); }
+  .kicker::before { content: ""; width: 22px; height: 2px; background: var(--red); flex: none; }
+  .hero h1 { margin: 0; font-family: var(--font-display); font-weight: 850; font-variation-settings: "wdth" 72; font-size: clamp(40px, 12.4vw, 66px); line-height: .9; letter-spacing: -.005em; text-transform: uppercase; }
+  .hero h1 .hl { color: var(--red); }
+  .hero-lead { max-width: 40ch; margin: 16px 0 0; color: var(--bone-2); font-size: 16px; }
+  .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 22px; margin-top: 20px; }
+  .next-slot { position: absolute; z-index: 3; left: calc(var(--photo-inset) + 12px); top: 12px; display: inline-flex; align-items: center; gap: 10px; min-height: 44px; max-width: calc(100% - 50px); padding: 8px 14px 8px 12px; border: 1px solid var(--line-d2); border-radius: 999px; background: var(--ink); font-size: 15px; font-weight: 500; text-align: left; transition: border-color .2s ease; }
+  .next-slot:hover { border-color: var(--bone); }
+  .next-slot .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--whatsapp); flex: none; box-shadow: 0 0 0 4px rgba(37, 211, 102, .18); }
+  .next-slot b { font-weight: 700; }
+  .next-slot .ico { width: 16px; height: 16px; color: var(--bone-dim); }
+  .hero-facts { list-style: none; display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 22px 0 0; padding: 14px 0 0; border-top: 1px solid var(--line-d); font-size: 15px; color: var(--bone-dim); }
+  .hero-facts li { display: inline-flex; align-items: center; gap: 6px; }
+  .hero-facts b { color: var(--bone); font-weight: 700; }
+  .hero-facts .ico { width: 15px; height: 15px; color: var(--red-text); }
+  .hero-stage { --photo-inset: 26px; position: relative; margin-top: 28px; }
+  .hero-photo { position: relative; z-index: 1; margin: 0 0 0 var(--photo-inset); height: clamp(260px, 78vw, 460px); border-radius: 18px 18px 18px 18px; overflow: hidden; background: var(--ink-3); }
+  .hero-photo img { width: 100%; height: 118%; object-fit: cover; object-position: 30% 62%; filter: var(--photo-grade); }
+  .hero-photo figcaption { position: absolute; left: 14px; bottom: 14px; padding: 6px 10px; border-radius: 999px; background: var(--ink); color: var(--bone-2); font-size: 13px; }
+  .hero-pole { position: absolute; z-index: 2; left: 0; top: 18px; bottom: 18px; width: 16px; }
+  /* The painted name is sized by its own box (cqw), so the whole word fits in any column. 4.75 is its width in em at wdth 150. */
+  .hero-mark-box { position: relative; z-index: 0; container-type: inline-size; min-width: 0; }
+  .hero-mark { margin: -0.2em 0 0; font-family: var(--font-display); font-weight: 900; font-variation-settings: "wdth" var(--wdth, 150); font-size: calc(100cqw / 4.75); line-height: .82; letter-spacing: -.01em; color: var(--red); white-space: nowrap; user-select: none; pointer-events: none; }
 
   /* Section scaffolding */
-  .section { padding-block: clamp(64px, 10vw, 128px); }
-  .kicker { display: block; margin: 0 0 14px; font-family: var(--font-mono); font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--gray-300); }
-  .h2 { font-family: var(--font-display); font-weight: 400; font-size: clamp(32px, 6vw, 80px); line-height: 1.02; letter-spacing: 0; margin: 0; }
-  .lede { margin: 18px 0 0; max-width: 42ch; color: var(--gray-100); }
+  .section { padding-block: clamp(72px, 10vw, 136px); }
+  .h2 { margin: 0; font-family: var(--font-display); font-weight: 850; font-variation-settings: "wdth" 78; font-size: clamp(38px, 8.6vw, 104px); line-height: .92; text-transform: uppercase; }
+  .lede { max-width: 46ch; margin: 18px 0 0; color: var(--bone-2); }
+  .sec-head { margin-bottom: clamp(32px, 5vw, 64px); }
+  /* The mask clips to each line box; padding keeps accents on capitals (Ê, Á) inside it without moving the layout. */
+  .split-line { padding-block: .14em; margin-block: -.14em; }
 
-  /* Price board, like the one painted on an old barbershop wall */
-  .prices { display: grid; gap: clamp(32px, 5vw, 72px); align-items: start; }
-  .prices-aside .bw { display: none; }
-  .board { position: relative; background: var(--black-2); border: 1px solid var(--line-dark-strong); outline: 1px solid var(--line-dark); outline-offset: -8px; padding: clamp(22px, 4vw, 44px) clamp(18px, 4vw, 44px); font-family: var(--font-mono); overflow: hidden; }
-  .board::after { content: ""; position: absolute; inset: 0; pointer-events: none; background-image: var(--grain); opacity: 0.14; mix-blend-mode: overlay; }
-  .board-head { display: flex; justify-content: space-between; gap: 12px; margin: 0 0 14px; padding-bottom: 14px; border-bottom: 1px solid var(--line-dark-strong); font-size: 13px; letter-spacing: .16em; text-transform: uppercase; color: var(--gray-300); }
-  .board-head span { display: inline-flex; align-items: center; gap: 8px; }
-  .board-head .ico { width: 18px; height: 18px; color: var(--red); }
-  .board-list { list-style: none; margin: 0; padding: 0; }
-  .board-row { display: block; width: 100%; min-height: 44px; padding: 14px 0; border: 0; border-bottom: 1px dashed var(--line-dark); background: transparent; color: var(--paper); text-align: left; font-family: var(--font-mono); transition: background-color .2s ease; }
-  .board-row:hover { background: var(--black-3); }
-  .board-row:focus-visible { outline: 2px solid var(--paper); outline-offset: 2px; }
-  .row-main { display: flex; align-items: flex-end; gap: 10px; font-size: clamp(16px, 2vw, 21px); font-weight: 500; line-height: 1.25; }
-  .row-name { min-width: 0; overflow-wrap: anywhere; }
-  .row-dots { flex: 1 1 auto; min-width: 20px; margin-bottom: .32em; border-bottom: 2px dotted var(--gray-500); }
-  .row-price { flex: none; white-space: nowrap; font-weight: 600; }
-  .row-sub { display: block; margin-top: 4px; font-size: 13px; color: var(--gray-300); }
-  .row-tag { display: inline-block; margin-left: 8px; padding: 1px 7px; background: var(--red); color: var(--paper); font-size: 13px; font-weight: 500; letter-spacing: .04em; vertical-align: 2px; }
-  .board-foot { margin: 18px 0 0; font-size: 15px; color: var(--gray-300); }
-  .pay { display: flex; flex-wrap: wrap; gap: 8px 18px; margin: 14px 0 0; padding-top: 14px; border-top: 1px solid var(--line-dark); font-size: 13px; color: var(--gray-100); }
-  .pay span { display: inline-flex; align-items: center; gap: 7px; }
+  /* Price list: one service per line, big as a painted board */
+  .svc-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line-d2); }
+  .svc { display: grid; grid-template-columns: 64px minmax(0, 1fr) auto; grid-template-areas: "thumb name price" "thumb desc time"; column-gap: 14px; row-gap: 2px; align-items: center; width: 100%; min-height: 88px; padding: 14px 0; border: 0; border-bottom: 1px solid var(--line-d); background: transparent; text-align: left; transition: background-color .25s ease; }
+  .svc:focus-visible { outline: 2px solid var(--bone); outline-offset: 2px; }
+  .svc-thumb { grid-area: thumb; width: 64px; height: 64px; border-radius: 50%; object-fit: cover; filter: var(--photo-grade); background: var(--ink-3); }
+  .svc-name { grid-area: name; min-width: 0; font-family: var(--font-display); font-weight: 800; font-variation-settings: "wdth" var(--svc-w, 70); font-size: clamp(24px, 6.4vw, 30px); line-height: 1; text-transform: uppercase; transition: font-variation-settings .45s cubic-bezier(.2, .8, .2, 1), color .25s ease; }
+  .svc-desc { grid-area: desc; min-width: 0; color: var(--bone-dim); font-size: 15px; line-height: 1.4; }
+  .svc-price { grid-area: price; justify-self: end; font-family: var(--font-display); font-weight: 800; font-variation-settings: "wdth" 80; font-size: 24px; line-height: 1; white-space: nowrap; }
+  .svc-time { grid-area: time; justify-self: end; align-self: start; color: var(--bone-dim); font-size: 13px; white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .svc:hover .svc-name { color: var(--red); --svc-w: 104; }
+  .svc-tag { display: inline-block; margin-left: 8px; padding: 2px 8px; border-radius: 999px; background: var(--red-deep); color: var(--bone); font-family: var(--font); font-size: 13px; font-weight: 600; letter-spacing: .02em; text-transform: none; vertical-align: 4px; font-variation-settings: normal; }
+  .menu-foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 32px; margin-top: 22px; color: var(--bone-dim); font-size: 15px; }
+  .pay { display: flex; flex-wrap: wrap; gap: 8px 18px; margin: 0; }
+  .pay span { display: inline-flex; align-items: center; gap: 8px; color: var(--bone-2); }
   .pay .ico { width: 18px; height: 18px; }
+  .menu-foot p { margin: 0; max-width: 52ch; }
+  /* Photo that follows the mouse over the price list; only built for a real mouse with motion allowed. */
+  .float-photo { position: fixed; left: 0; top: 0; z-index: 900; width: 260px; aspect-ratio: 4 / 5; border-radius: 14px; overflow: hidden; pointer-events: none; visibility: hidden; opacity: 0; background: var(--ink-3); box-shadow: 0 30px 60px rgba(0, 0, 0, .45); }
+  .float-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; filter: var(--photo-grade); }
 
-  /* Booking: a paper ticket */
-  .booking-sec { background: var(--paper); color: var(--black); }
-  .booking-sec .kicker, .reviews-sec .kicker { color: var(--ink-muted); }
-  .booking-sec .lede { color: var(--ink-muted); }
-  .booking-head { margin-bottom: clamp(32px, 5vw, 56px); }
-  .booking { display: grid; gap: 28px; align-items: start; }
-  .step { position: relative; margin: 0; padding: 26px 0; border: 0; border-top: 1.5px dashed var(--line-paper-strong); min-width: 0; }
-  .step legend { float: left; width: 100%; display: flex; align-items: flex-end; gap: 14px; padding: 0; margin: 0 0 18px; }
+  /* Fade height: a line over a real haircut that follows the choice */
+  .fade-sec { background: var(--red-deep); color: var(--bone); }
+  .fade-sec .kicker { color: var(--bone); }
+  .fade-sec .kicker::before { background: var(--bone); }
+  .fade-sec .lede { color: var(--bone); }
+  .fade-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(28px, 4vw, 64px); align-items: start; }
+  .fade-figure { --fade-y: 62%; position: relative; margin: 0; aspect-ratio: 1; border-radius: 18px; overflow: hidden; background: var(--ink-3); }
+  .fade-figure img { width: 100%; height: 100%; object-fit: cover; filter: var(--photo-grade); }
+  .fade-wash { position: absolute; left: 30%; right: 0; top: var(--fade-y); bottom: 0; background: linear-gradient(to bottom, var(--wash), var(--wash-clear) 80%); border-top: 2px dashed var(--bone); -webkit-mask-image: linear-gradient(to right, transparent, #000 22%); mask-image: linear-gradient(to right, transparent, #000 22%); pointer-events: none; }
+  .fade-tag { position: absolute; right: 12px; top: var(--fade-y); translate: 0 -50%; padding: 6px 12px; border-radius: 999px; background: var(--ink); color: var(--bone); font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; white-space: nowrap; }
+  .fade-ruler { position: absolute; left: 12px; top: 40%; bottom: 10%; width: 54px; border-left: 2px solid var(--bone); pointer-events: none; }
+  .fade-ruler span { position: absolute; left: 0; translate: 0 -50%; display: flex; align-items: center; gap: 4px; font-size: 13px; font-weight: 700; color: var(--bone); }
+  .fade-ruler span::before { content: ""; width: 8px; height: 2px; background: var(--bone); }
+  .fade-ruler b { padding: 2px 8px; border-radius: 999px; background: var(--shade); font-weight: 700; }
+  .fade-options { display: grid; gap: 22px; margin-top: 28px; }
+  .opt-group { margin: 0; padding: 0; border: 0; min-width: 0; }
+  .opt-group legend { padding: 0; margin: 0 0 10px; font-size: 13px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+  .opt-row { display: flex; flex-wrap: wrap; gap: 8px; }
+  .opt { position: relative; }
+  .opt input { position: absolute; inset: 0; margin: 0; opacity: 0; cursor: pointer; }
+  .opt > span { display: flex; align-items: center; min-height: 48px; padding: 10px 18px; border-radius: 999px; box-shadow: inset 0 0 0 1.5px var(--bone); font-weight: 700; transition: background-color .2s ease, color .2s ease; }
+  .opt input:checked + span { background: var(--bone); color: var(--ink); }
+  .opt input:focus-visible + span { outline: 2px solid var(--ink); outline-offset: 3px; }
+  .opt:hover > span { background: var(--red-hover); }
+  .opt input:checked:hover + span { background: var(--bone); }
+  .fade-explain { margin: 0; min-height: 3em; font-size: 16px; }
+  .fade-result { display: grid; gap: 10px; padding-top: 18px; border-top: 1px solid rgba(239, 230, 211, .4); }
+  .fade-result p { margin: 0; font-size: 15px; }
+  .fade-result b { font-weight: 700; }
+
+  /* Booking: the day's slots on paper */
+  .book-sec { background: var(--paper); color: var(--ink); }
+  .book-sec .kicker { color: var(--ink-soft); }
+  .book-sec .lede { color: var(--ink-soft); }
+  .booking { display: grid; grid-template-columns: minmax(0, 1fr); gap: 32px; align-items: start; }
+  .steps { min-width: 0; }
+  .step { position: relative; margin: 0; padding: 26px 0; border: 0; border-top: 1.5px solid var(--line-p2); min-width: 0; }
+  .step legend { float: left; width: 100%; display: flex; align-items: baseline; gap: 12px; padding: 0; margin: 0 0 16px; }
   .step legend + * { clear: both; }
-  .step-num { font-family: var(--font-display); font-size: 60px; line-height: .8; color: var(--red); }
-  .step-title { display: flex; align-items: center; gap: 10px; margin-top: 4px; font-family: var(--font-display); font-size: clamp(24px, 3vw, 32px); line-height: 1.08; }
-  .step-title .ok { display: none; width: 26px; height: 26px; border-radius: 50%; background: var(--black); color: var(--paper); place-items: center; }
+  .step-num { font-family: var(--font-display); font-weight: 900; font-variation-settings: "wdth" 60; font-size: 44px; line-height: .8; color: var(--red-deep); }
+  .step-title { font-family: var(--font-display); font-weight: 800; font-variation-settings: "wdth" 90; font-size: clamp(22px, 3vw, 30px); line-height: 1.05; text-transform: uppercase; }
+  .step-title .ok { display: none; margin-left: 8px; width: 24px; height: 24px; border-radius: 50%; background: var(--ink); color: var(--paper); vertical-align: 2px; place-items: center; }
   .step-title .ok .ico { width: 14px; height: 14px; }
   .step.is-done .step-title .ok { display: inline-grid; }
-  .choices { display: flex; flex-wrap: wrap; gap: 8px; }
-  .choice { position: relative; }
-  .choice input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
-  .choice span { display: flex; flex-direction: column; justify-content: center; min-height: 48px; padding: 9px 14px; border: 1.5px solid var(--black); border-radius: 2px; background: transparent; font-size: 16px; font-weight: 600; line-height: 1.25; transition: background-color .2s ease, color .2s ease; }
-  .choice small { font-family: var(--font-mono); font-size: 13px; font-weight: 400; color: var(--ink-muted); transition: color .2s ease; }
-  .choice:hover span { background: var(--paper-2); }
-  .choice input:checked + span { background: var(--black); color: var(--paper); }
-  .choice input:checked + span small { color: var(--gray-100); }
-  .choice input:focus-visible + span { outline: 2px solid var(--red); outline-offset: 2px; }
-  .choice input:disabled + span { opacity: .35; text-decoration: line-through; }
-  .choice input:disabled { cursor: not-allowed; }
-  .sub-label { margin: 18px 0 10px; font-family: var(--font-mono); font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-muted); }
-  .sub-label:first-of-type { margin-top: 0; }
-  .days { display: flex; flex-wrap: wrap; gap: 8px; }
-  .days .choice span { align-items: center; min-width: 60px; }
-  .days .choice b { font-family: var(--font-display); font-weight: 400; font-size: 22px; line-height: 1.05; }
-  .name-field { display: grid; gap: 8px; margin-top: 20px; font-family: var(--font-mono); font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-muted); }
-  .name-field input { min-height: 48px; font: inherit; font-family: var(--font); font-size: 16px; letter-spacing: normal; text-transform: none; color: var(--black); background: transparent; border: 0; border-bottom: 1.5px solid var(--black); border-radius: 0; padding: 10px 2px; }
-  .name-field input::placeholder { color: var(--gray-500); }
-  .name-field input:focus { outline: 2px solid var(--red); outline-offset: 2px; }
-
-  .ticket { position: relative; background: var(--black); color: var(--paper); padding: clamp(22px, 3vw, 32px); border-radius: 2px; }
-  .ticket::before { content: ""; position: absolute; left: 0; right: 0; top: -7px; height: 14px; background: radial-gradient(circle at 7px 7px, var(--paper) 5px, transparent 5.5px) 0 0 / 18px 14px repeat-x; }
-  .ticket-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin: 6px 0 16px; }
-  .ticket-head h3 { margin: 0; font-family: var(--font-display); font-weight: 400; font-size: 26px; line-height: 1.05; }
-  .ticket-head span { font-family: var(--font-mono); font-size: 13px; color: var(--gray-300); }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip { position: relative; }
+  .chip input { position: absolute; inset: 0; margin: 0; opacity: 0; cursor: pointer; }
+  .chip > span { display: flex; flex-direction: column; justify-content: center; min-height: 50px; padding: 8px 16px; border-radius: 14px; box-shadow: inset 0 0 0 1.5px var(--ink); font-weight: 700; line-height: 1.25; transition: background-color .2s ease, color .2s ease; }
+  .chip small { font-size: 13px; font-weight: 500; color: var(--ink-soft); transition: color .2s ease; }
+  .chip:hover > span { background: var(--paper-2); }
+  .chip input:checked + span { background: var(--ink); color: var(--paper); }
+  .chip input:checked + span small { color: var(--bone-2); }
+  .chip input:focus-visible + span { outline: 2px solid var(--red-deep); outline-offset: 2px; }
+  .chip input:disabled { cursor: not-allowed; }
+  .chip input:disabled + span { opacity: .4; text-decoration: line-through; }
+  .days { display: flex; gap: 8px; overflow-x: auto; padding: 4px 2px 10px; margin: -4px -2px 0; scrollbar-width: thin; overscroll-behavior-x: contain; }
+  .days .chip { flex: none; }
+  .days .chip > span { align-items: center; min-width: 64px; padding: 8px 12px; }
+  .days .chip b { font-family: var(--font-display); font-weight: 850; font-variation-settings: "wdth" 70; font-size: 26px; line-height: 1; }
+  .slots-head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 16px; margin: 0 0 12px; font-size: 15px; color: var(--ink-soft); }
+  .slots-head b { color: var(--ink); }
+  .legend { display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 13px; }
+  .legend span { display: inline-flex; align-items: center; gap: 6px; }
+  .legend .swatch { width: 14px; height: 14px; border-radius: 4px; box-shadow: inset 0 0 0 1.5px var(--ink); }
+  .legend .swatch.is-taken { background: repeating-linear-gradient(135deg, var(--paper-3) 0 3px, transparent 3px 6px); box-shadow: inset 0 0 0 1px var(--line-p2); }
+  .slots { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; perspective: 700px; }
+  .slot { position: relative; }
+  .slot input { position: absolute; inset: 0; margin: 0; opacity: 0; cursor: pointer; }
+  .slot > span { display: grid; place-items: center; min-height: 48px; border-radius: 12px; box-shadow: inset 0 0 0 1.5px var(--ink); font-weight: 700; font-variant-numeric: tabular-nums; transition: background-color .2s ease, color .2s ease; }
+  .slot:hover > span { background: var(--paper-2); }
+  .slot input:checked + span { background: var(--red-deep); color: var(--bone); box-shadow: none; }
+  .slot input:focus-visible + span { outline: 2px solid var(--ink); outline-offset: 2px; }
+  .slot.is-taken > span, .slot.is-lunch > span { color: var(--ink-soft); background: repeating-linear-gradient(135deg, var(--paper-2) 0 4px, transparent 4px 8px); box-shadow: inset 0 0 0 1px var(--line-p); text-decoration: line-through; font-weight: 500; }
+  .slot.is-lunch > span { text-decoration: none; }
+  .slot input:disabled { cursor: not-allowed; }
+  .slots-empty { grid-column: 1 / -1; margin: 0; padding: 16px; border-radius: 12px; background: var(--paper-2); color: var(--ink-soft); }
+  .name-field { display: grid; gap: 8px; margin-top: 22px; font-size: 13px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-soft); }
+  .name-field input { min-height: 50px; padding: 10px 2px; border: 0; border-bottom: 1.5px solid var(--ink); border-radius: 0; background: transparent; color: var(--ink); font: 500 16px var(--font); letter-spacing: normal; text-transform: none; }
+  .name-field input::placeholder { color: var(--placeholder); }
+  .name-field input:focus { outline: 2px solid var(--red-deep); outline-offset: 2px; }
+  .ticket { position: relative; padding: clamp(22px, 3vw, 32px); border-radius: 18px; background: var(--ink); color: var(--bone); }
+  .ticket-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin: 0 0 14px; }
+  .ticket-head h3 { margin: 0; font-family: var(--font-display); font-weight: 850; font-variation-settings: "wdth" 80; font-size: 28px; line-height: 1; text-transform: uppercase; }
+  .ticket-head .pole { width: 10px; height: 34px; }
+  .ticket-head .pole-stripes { background-size: 14px 14px; top: -14px; bottom: -14px; }
   .ticket dl { margin: 0 0 20px; font-size: 15px; }
-  .ticket dl div { display: flex; justify-content: space-between; gap: 16px; padding-block: 10px; border-bottom: 1px dashed var(--line-dark-strong); }
-  .ticket dt { font-family: var(--font-mono); font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--gray-300); padding-top: 2px; }
-  .ticket dd { margin: 0; text-align: right; font-weight: 500; }
-  .ticket dd.is-empty { color: var(--gray-400); font-weight: 400; }
+  .ticket dl div { display: flex; justify-content: space-between; gap: 16px; padding-block: 10px; border-bottom: 1px dashed var(--line-d2); }
+  .ticket dt { font-size: 13px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--bone-dim); padding-top: 2px; }
+  .ticket dd { margin: 0; text-align: right; font-weight: 600; }
+  .ticket dd.is-empty { color: var(--mute); font-weight: 400; }
   .wa-btn { width: 100%; min-height: 56px; font-size: 17px; }
   .wa-btn .ico { width: 22px; height: 22px; }
-  .wa-btn[aria-disabled="true"] { background: var(--black-3); color: var(--gray-300); cursor: not-allowed; translate: none; }
-  .ticket .hint { margin: 12px 0 0; min-height: 1.5em; font-size: 14px; color: var(--gray-100); }
-  .ticket .honest { display: flex; gap: 10px; margin: 16px 0 0; padding-top: 14px; border-top: 1px solid var(--line-dark); font-size: 15px; color: var(--gray-300); }
-  .ticket .honest .ico { width: 18px; height: 18px; margin-top: 1px; }
+  .wa-btn[aria-disabled="true"] { background: var(--ink-3); color: var(--bone-dim); cursor: not-allowed; translate: none; }
+  .ticket .hint { margin: 12px 0 0; min-height: 1.5em; font-size: 15px; color: var(--bone-2); }
+  .ticket .honest { display: flex; gap: 10px; margin: 16px 0 0; padding-top: 14px; border-top: 1px solid var(--line-d); font-size: 15px; color: var(--bone-dim); }
+  .ticket .honest .ico { width: 18px; height: 18px; margin-top: 2px; }
 
-  /* Team: the chairs, and the three hands behind them */
-  .team-sec { display: grid; gap: clamp(32px, 5vw, 64px); }
-  .team-photo { aspect-ratio: 16 / 11; width: 100%; }
-  .team-photo img { object-position: 45% 60%; }
-  .barbers { list-style: none; margin: 32px 0 0; padding: 0; }
-  .barber { display: grid; grid-template-columns: 84px minmax(0, 1fr); gap: 4px 20px; padding-block: 26px; border-top: 1px solid var(--line-dark); }
-  .barber:last-child { border-bottom: 1px solid var(--line-dark); }
-  .stamp { grid-row: 1 / span 4; width: 84px; height: 84px; border-radius: 50%; display: grid; place-items: center; background: var(--red); color: var(--paper); box-shadow: inset 0 0 0 4px var(--red), inset 0 0 0 5.5px var(--paper), inset 0 0 0 10px var(--red), inset 0 0 0 11px var(--paper); font-family: var(--font-display); font-size: 34px; line-height: 1; rotate: -8deg; }
-  .barber:nth-child(2) .stamp { rotate: 6deg; }
-  .barber:nth-child(3) .stamp { rotate: -3deg; }
-  .barber h3 { margin: 0; font-family: var(--font-display); font-weight: 400; font-size: clamp(26px, 3vw, 34px); line-height: 1.05; }
-  .barber .role { margin: 6px 0 8px; font-family: var(--font-mono); font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--gray-300); }
-  .barber p { margin: 0; color: var(--gray-100); font-size: 16px; max-width: 52ch; }
-  .barber .foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 4px 16px; margin-top: 10px; }
-  .barber .days-off { font-family: var(--font-mono); font-size: 13px; color: var(--gray-300); }
+  /* Team: three pairs of hands */
+  .team { list-style: none; display: grid; grid-template-columns: minmax(0, 1fr); gap: 40px; margin: 0; padding: 0; }
+  .barber { display: grid; gap: 16px; }
+  .barber-photo { position: relative; margin: 0; aspect-ratio: 4 / 3; border-radius: 16px; overflow: hidden; background: var(--ink-3); }
+  .barber-photo img { width: 100%; height: 120%; object-fit: cover; filter: var(--photo-grade); }
+  .barber-photo .chair { position: absolute; left: 12px; top: 12px; padding: 5px 11px; border-radius: 999px; background: var(--ink); font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+  .barber h3 { margin: 0; font-family: var(--font-display); font-weight: 850; font-variation-settings: "wdth" 90; font-size: clamp(30px, 4vw, 44px); line-height: 1; text-transform: uppercase; }
+  .barber .role { margin: 6px 0 0; font-size: 13px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--red-text); }
+  .barber p { margin: 0; color: var(--bone-2); }
+  .barber .foot { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 4px 16px; padding-top: 10px; border-top: 1px solid var(--line-d); }
+  .barber .off { font-size: 14px; color: var(--bone-dim); }
 
-  /* Gallery: a strip of film */
-  .strip-sec { padding-block: clamp(56px, 8vw, 104px); }
-  .strip-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 16px 32px; margin-bottom: 28px; }
-  .strip-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 20px; }
-  .strip-nav { display: flex; gap: 8px; }
-  .strip-nav button { width: 48px; height: 48px; display: grid; place-items: center; border: 1px solid var(--line-dark-strong); border-radius: 2px; background: transparent; transition: background-color .2s ease; }
-  .strip-nav button:hover { background: var(--black-3); }
-  .film { position: relative; background: var(--black-2); padding-block: 30px; }
-  .film::before, .film::after { content: ""; position: absolute; left: 0; right: 0; height: 12px; background: linear-gradient(90deg, var(--sprocket) 0 12px, transparent 12px) 6px 0 / 26px 12px repeat-x; pointer-events: none; }
-  .film::before { top: 9px; }
-  .film::after { bottom: 9px; }
-  .film-track { display: flex; gap: 10px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; padding-inline: calc(var(--gutter) + max(0px, (100% - var(--max)) / 2)); scroll-padding-inline: calc(var(--gutter) + max(0px, (100% - var(--max)) / 2)); overscroll-behavior-x: contain; }
-  .film-track::-webkit-scrollbar { display: none; }
-  .frame { flex: 0 0 min(74vw, 340px); scroll-snap-align: start; margin: 0; }
-  .frame .bw { aspect-ratio: 4 / 5; }
-  .frame figcaption { display: flex; gap: 12px; margin-top: 10px; font-size: 14px; color: var(--gray-100); }
-  .frame figcaption b { font-family: var(--font-mono); font-weight: 500; color: var(--gray-400); }
-  .strip-note { margin: 18px auto 0; font-size: 15px; color: var(--gray-300); }
+  /* Gallery: a row of cuts; pinned and scrubbed on a computer, a native swipe on the phone */
+  .gallery { background: var(--ink-2); padding-block: clamp(64px, 9vw, 120px); overflow: hidden; }
+  .gallery-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 16px 32px; margin-bottom: 28px; }
+  .rail { display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; overscroll-behavior-x: contain; padding-inline: calc(var(--gutter) + max(0px, (100% - var(--max)) / 2)); scroll-padding-inline: calc(var(--gutter) + max(0px, (100% - var(--max)) / 2)); }
+  .rail::-webkit-scrollbar { display: none; }
+  .frame { flex: 0 0 min(76vw, 360px); scroll-snap-align: start; margin: 0; }
+  .frame-img { aspect-ratio: 4 / 5; border-radius: 14px; overflow: hidden; background: var(--ink-3); }
+  .frame-img img { width: 100%; height: 100%; object-fit: cover; filter: var(--photo-grade); }
+  .frame figcaption { display: flex; gap: 12px; margin-top: 12px; font-size: 15px; color: var(--bone-2); }
+  .frame figcaption b { font-family: var(--font-display); font-weight: 800; font-variation-settings: "wdth" 70; color: var(--red-text); }
+  .progress { height: 3px; margin-top: 26px; background: var(--line-d); border-radius: 2px; overflow: hidden; display: none; }
+  .progress span { display: block; height: 100%; background: var(--red); transform-origin: left; transform: scaleX(0); }
+  .gallery.is-pinned .rail { overflow: visible; scroll-snap-type: none; }
+  .gallery.is-pinned .progress { display: block; }
 
-  /* Reviews, printed like clippings */
-  .reviews-sec { background: var(--paper); color: var(--black); }
-  .reviews { display: grid; gap: 36px; }
+  /* Reviews */
+  .reviews-sec { background: var(--paper); color: var(--ink); }
+  .reviews-sec .kicker { color: var(--ink-soft); }
+  .reviews { display: grid; grid-template-columns: minmax(0, 1fr); gap: 40px; }
   .review { margin: 0; }
-  .review blockquote { margin: 0; font-size: clamp(18px, 1.8vw, 21px); font-weight: 500; line-height: 1.45; }
-  .review.lead blockquote { font-family: var(--font-display); font-weight: 400; font-size: clamp(26px, 4vw, 52px); line-height: 1.1; }
-  .review figcaption { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; margin-top: 14px; font-size: 14px; color: var(--ink-muted); }
-  .review figcaption b { color: var(--black); font-weight: 600; }
-  .stars { display: inline-flex; gap: 2px; color: var(--red); }
-  .stars .ico { width: 15px; height: 15px; }
-  .fict { padding: 1px 7px; border: 1px solid var(--red); color: var(--red); font-family: var(--font-mono); font-size: 13px; letter-spacing: .06em; text-transform: uppercase; }
+  .review blockquote { margin: 0; font-size: clamp(18px, 1.8vw, 21px); font-weight: 500; line-height: 1.5; }
+  .review.lead blockquote { font-family: var(--font-display); font-weight: 700; font-variation-settings: "wdth" 85; font-size: clamp(28px, 4.2vw, 54px); line-height: 1.05; text-transform: uppercase; }
+  .review figcaption { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; margin-top: 14px; font-size: 15px; color: var(--ink-soft); }
+  .review figcaption b { color: var(--ink); font-weight: 700; }
+  .stars { display: inline-flex; gap: 2px; color: var(--red-deep); }
+  .stars .ico { width: 16px; height: 16px; }
+  .fict { padding: 1px 8px; border-radius: 999px; box-shadow: inset 0 0 0 1px var(--red-deep); color: var(--red-deep); font-size: 13px; font-weight: 600; }
 
   /* Place */
-  .place { display: grid; gap: clamp(28px, 4vw, 56px); }
-  .open-now { display: inline-flex; align-items: center; gap: 10px; margin: 18px 0 0; font-size: 16px; font-weight: 600; }
-  .open-now::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: var(--red); flex: none; }
-  .hours { width: 100%; margin-top: 24px; border-collapse: collapse; font-family: var(--font-mono); font-size: 15px; }
-  .hours td { padding: 12px 10px; border-bottom: 1px dashed var(--line-dark-strong); }
+  .place { display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(28px, 4vw, 56px); }
+  .open-now { display: inline-flex; align-items: center; gap: 10px; margin: 18px 0 0; font-size: 16px; font-weight: 700; }
+  .open-now::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--red); flex: none; }
+  .hours { width: 100%; margin-top: 22px; border-collapse: collapse; font-size: 16px; font-variant-numeric: tabular-nums; }
+  .hours td { padding: 12px 10px; border-bottom: 1px dashed var(--line-d2); }
   .hours td:last-child { text-align: right; }
-  .hours tr.is-today td { background: var(--red); color: var(--paper); border-bottom-color: var(--red); }
+  .hours tr.is-today td { background: var(--red-deep); color: var(--bone); border-bottom-color: var(--red-deep); }
   .hours tr.is-today td:first-child::after { content: " · hoje"; }
-  .hours tr.is-holiday td { color: var(--gray-300); }
-  .hours-note { margin: 10px 0 0; font-size: 15px; color: var(--gray-300); }
-  .address { display: flex; gap: 10px; margin: 22px 0 16px; color: var(--gray-100); }
+  .hours tr.is-holiday td { color: var(--bone-dim); }
+  .hours-note { margin: 12px 0 0; font-size: 15px; color: var(--bone-dim); }
+  .address { display: flex; gap: 10px; margin: 22px 0 16px; color: var(--bone-2); }
   .address .ico { margin-top: 2px; color: var(--red); }
   .place-actions { display: flex; flex-wrap: wrap; gap: 10px; }
-  .place-actions .ico-wa { color: var(--whatsapp); }
   .map-figure { margin: 0; min-width: 0; }
-  .map { position: relative; isolation: isolate; height: 320px; border: 1px solid var(--line-dark-strong); background: var(--black-2); }
-  .map-figure figcaption { margin-top: 10px; font-size: 14px; color: var(--gray-300); }
-  .map-fallback { position: absolute; inset: 0; display: grid; place-items: center; padding: 24px; margin: 0; text-align: center; font-size: 14px; color: var(--gray-300); }
+  .map { position: relative; isolation: isolate; height: 320px; border-radius: 16px; overflow: hidden; background: var(--ink-2); }
+  .map-figure figcaption { margin-top: 10px; font-size: 14px; color: var(--bone-dim); }
+  .map-fallback { position: absolute; inset: 0; display: grid; place-items: center; padding: 24px; margin: 0; text-align: center; font-size: 15px; color: var(--bone-dim); }
   .map.is-ready .map-fallback { display: none; }
-  /* Leaflet: black-and-white streets, finger-sized zoom and a readable credit line */
-  .map.leaflet-container { background: var(--black-2); font-family: var(--font); }
+  .map.leaflet-container { background: var(--ink-2); font-family: var(--font); }
   .map .leaflet-tile-pane { filter: var(--map-filter); }
-  .map .leaflet-bar { border: 0; border-radius: 2px; box-shadow: none; }
-  .map .leaflet-bar a { width: 44px; height: 44px; line-height: 44px; font-size: 22px; background: var(--black); color: var(--paper); border-bottom-color: var(--line-dark-strong); }
-  .map .leaflet-bar a:hover { background: var(--black-3); color: var(--paper); }
-  .map .leaflet-control-attribution { font-size: 13px; line-height: 1.4; padding: 0 8px; background: rgba(237, 230, 214, 0.9); color: var(--black); }
-  .map .leaflet-control-attribution a { display: inline-block; padding-block: 12px; color: var(--black); text-decoration: underline; }
-  .map .map-label { width: 170px; padding: 6px 10px; border: 0; border-radius: 2px; background: var(--black); color: var(--paper); font-family: var(--font-mono); font-size: 13px; line-height: 1.35; text-align: center; box-shadow: none; white-space: normal; }
-  .map .map-ref { padding: 3px 8px; border: 1px solid var(--black); border-radius: 2px; background: var(--paper); color: var(--black); font-size: 13px; font-weight: 600; box-shadow: none; }
+  .map .leaflet-bar { border: 0; border-radius: 12px; overflow: hidden; box-shadow: none; }
+  .map .leaflet-bar a { width: 44px; height: 44px; line-height: 44px; font-size: 22px; background: var(--ink); color: var(--bone); border-bottom-color: var(--line-d2); }
+  .map .leaflet-bar a:hover { background: var(--ink-3); color: var(--bone); }
+  .map .leaflet-control-attribution { font-size: 13px; line-height: 1.4; padding: 0 8px; background: rgba(239, 230, 211, 0.92); color: var(--ink); }
+  .map .leaflet-control-attribution a { display: inline-block; padding-block: 12px; color: var(--ink); text-decoration: underline; }
+  .map .map-label { width: 170px; padding: 6px 10px; border: 0; border-radius: 8px; background: var(--ink); color: var(--bone); font-family: var(--font); font-size: 13px; line-height: 1.35; text-align: center; box-shadow: none; white-space: normal; }
+  .map .map-ref { padding: 3px 8px; border: 1px solid var(--ink); border-radius: 6px; background: var(--bone); color: var(--ink); font-size: 13px; font-weight: 600; box-shadow: none; }
   .map .map-label::before, .map .map-ref::before { display: none; }
-
-  /* Practical notes: what a regular would tell you before your first visit */
-  .practical { list-style: none; margin: 0; padding: 0; display: grid; grid-column: 1 / -1; border-top: 1px solid var(--line-dark); }
-  .practical li { display: grid; align-content: start; grid-template-columns: 28px minmax(0, 1fr); gap: 4px 14px; padding-block: 18px; border-bottom: 1px dashed var(--line-dark-strong); }
+  .practical { list-style: none; margin: 0; padding: 0; display: grid; grid-column: 1 / -1; border-top: 1px solid var(--line-d); }
+  .practical li { display: grid; align-content: start; grid-template-columns: 28px minmax(0, 1fr); gap: 4px 14px; padding-block: 18px; border-bottom: 1px dashed var(--line-d2); }
   .practical .ico { width: 24px; height: 24px; margin-top: 2px; color: var(--red); }
-  .practical .ico-brand { color: var(--paper); }
-  .practical h3 { margin: 0; font-family: var(--font-mono); font-size: 13px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: var(--gray-300); }
-  .practical p { grid-column: 2; margin: 0; color: var(--gray-100); }
+  .practical .ico-brand { color: var(--bone); }
+  .practical h3 { margin: 0; font-size: 13px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--bone-dim); }
+  .practical p { grid-column: 2; margin: 0; color: var(--bone-2); }
 
   /* FAQ */
-  .faq { display: grid; gap: 32px; }
-  details { border-bottom: 1px solid var(--line-dark); }
-  details:first-child { border-top: 1px solid var(--line-dark); }
+  .faq { display: grid; grid-template-columns: minmax(0, 1fr); gap: 32px; padding-top: clamp(24px, 4vw, 48px); }
+  .faq .h2 { font-size: clamp(38px, 6vw, 80px); }
+  details { border-bottom: 1px solid var(--line-d); }
+  details:first-child { border-top: 1px solid var(--line-d); }
   summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 44px; padding-block: 18px; font-size: 17px; font-weight: 600; }
   summary::-webkit-details-marker { display: none; }
   summary .ico { transition: rotate .2s ease; }
   details[open] summary .ico { rotate: 45deg; }
-  details p { margin: 0 0 20px; max-width: 60ch; color: var(--gray-100); }
+  details p { margin: 0 0 20px; max-width: 60ch; color: var(--bone-2); }
 
-  /* End card and footer credits */
-  .endcard { border-top: 1px solid var(--line-dark); padding-block: clamp(64px, 10vw, 128px) 0; }
-  .endcard h2 { max-width: 13ch; }
-  .endcard .btn { margin-top: 28px; justify-self: start; }
-  .roll { list-style: none; margin: clamp(56px, 8vw, 96px) 0 0; padding: 0; max-width: 560px; font-family: var(--font-mono); font-size: 14px; }
-  .roll li { display: flex; align-items: flex-end; gap: 10px; padding-block: 6px; color: var(--gray-300); }
-  .roll li b { font-weight: 500; color: var(--paper); text-align: right; }
-  .roll .row-dots { border-bottom-color: var(--gray-700); }
-  .wordmark { margin: 48px 0 0; font-family: var(--font-display); font-size: clamp(88px, 24vw, 360px); line-height: .9; color: var(--black-3); white-space: nowrap; overflow: hidden; }
+  /* End card and footer */
+  .endcard { display: grid; gap: 26px; justify-items: start; padding-block: clamp(64px, 9vw, 120px); border-top: 1px solid var(--line-d); }
+  .endcard .h2 { max-width: 14ch; }
+  .wordmark-box { container-type: inline-size; }
+  .wordmark { position: relative; margin: 0; font-family: var(--font-display); font-weight: 900; font-variation-settings: "wdth" 150; font-size: calc(100cqw / 5.1); line-height: .8; letter-spacing: -.01em; color: var(--ink-3); white-space: nowrap; user-select: none; }
   .wordmark span { color: var(--red); }
   footer { padding-bottom: 40px; }
-  .foot-row { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; align-items: center; padding-top: 20px; border-top: 1px solid var(--line-dark); font-size: 13px; color: var(--gray-300); }
-  .foot-links { display: flex; flex-wrap: wrap; gap: 0 20px; }
-  .back-link { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-size: 14px; font-weight: 500; color: var(--paper); }
+  .foot-row { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; align-items: center; padding-top: 22px; border-top: 1px solid var(--line-d); font-size: 13px; color: var(--bone-dim); }
+  .back-link { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-size: 14px; font-weight: 600; color: var(--bone); }
   .back-link:hover { text-decoration: underline; text-underline-offset: 4px; }
   .back-link .ico { width: 18px; height: 18px; }
-  .credito-autor { margin: 8px 0 0; font-size: 14px; color: var(--gray-300); }
-  .credito-autor a { display: inline-flex; align-items: center; min-height: 44px; color: var(--paper); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--red); }
+  .quote-line { margin: 10px 0 0; font-size: 14px; color: var(--bone-dim); }
+  .quote-line a, .credito-autor a { display: inline-flex; align-items: center; min-height: 44px; color: var(--bone); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--red); }
+  .credito-autor { margin: 0; font-size: 14px; color: var(--bone-dim); }
+
+  @media (max-width: 419px) {
+    .kicker { letter-spacing: .08em; gap: 8px; }
+    .kicker::before { width: 14px; }
+  }
+
+  @media (min-width: 420px) {
+    .logo small { display: inline; }
+  }
 
   @media (min-width: 600px) {
-    .credits { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    .hero h1 { font-size: clamp(56px, 9.4vw, 84px); }
+    .hero-stage { --photo-inset: 34px; }
+    .hero-photo { height: clamp(360px, 62vw, 520px); }
+    .hero-pole { width: 20px; }
+    .svc { grid-template-columns: 72px minmax(0, 1fr) auto auto; grid-template-areas: "thumb name time price" "thumb desc time price"; column-gap: 20px; }
+    .svc-thumb { width: 72px; height: 72px; }
+    .svc-time { align-self: center; padding-right: 8px; font-size: 14px; }
+    .svc-price { align-self: center; font-size: 28px; }
+    .fade-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+    .fade-sec .h2 { font-size: clamp(38px, 5.6vw, 84px); }
     .reviews { grid-template-columns: 1fr 1fr; gap: 40px 56px; }
-    .step { padding-left: 96px; }
-    .step legend { display: block; }
-    .step-num { position: absolute; left: 0; top: 22px; font-size: 76px; }
     .review.lead { grid-column: 1 / -1; }
+    .team { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .practical { grid-template-columns: 1fr 1fr; column-gap: 40px; }
+    .slots { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+    .step { padding-left: 76px; }
+    .step legend { display: block; }
+    .step-num { position: absolute; left: 0; top: 24px; font-size: 64px; }
   }
 
   @media (min-width: 900px) {
     :root { --header-h: 76px; }
     .nav { display: flex; }
-    .hero { grid-template-columns: repeat(12, minmax(0, 1fr)); grid-template-rows: 1fr auto; min-height: min(calc(100svh - var(--header-h) - 36px), 980px); padding-block: 8px clamp(32px, 4vw, 56px); }
-    .hero-photo { grid-column: 6 / 13; grid-row: 1 / 3; height: auto; min-height: 560px; margin-inline: 0 calc(var(--gutter) * -1); -webkit-mask-image: linear-gradient(to right, transparent 0%, var(--black) 30%); mask-image: linear-gradient(to right, transparent 0%, var(--black) 30%); }
-    .hero-photo { margin-right: calc(-1 * (var(--gutter) + max(0px, (100vw - var(--max)) / 2))); }
-    .hero-photo img { position: absolute; inset: 0; object-position: 40% 30%; }
-    .scene { left: auto; right: 0; top: auto; bottom: clamp(32px, 4vw, 56px); }
-    .hero-copy { grid-column: 1 / 11; grid-row: 1; align-self: center; }
-    .hero h1 { font-size: clamp(66px, min(7.6vw, 12.4svh), 136px); margin: 0; }
-    .razor { margin-top: 26px; }
-    .hero-lead { font-size: 18px; }
-    .hero-caption { display: block; grid-column: 1 / 6; grid-row: 2; align-self: end; margin: 0; font-family: var(--font-mono); font-size: 13px; color: var(--gray-300); }
-    .prices { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
-    .prices-aside { position: sticky; top: calc(var(--header-h) + 24px); }
-    .prices-aside .bw { display: block; margin-top: 36px; aspect-ratio: 16 / 10; }
-    .booking { grid-template-columns: minmax(0, 1.6fr) minmax(300px, 1fr); gap: 56px; }
-    .ticket { position: sticky; top: calc(var(--header-h) + 28px); margin-top: 26px; }
-    .step { padding-left: 124px; }
-    .step-num { font-size: 104px; }
-    .team-sec { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); align-items: start; }
-    .team-photo { position: sticky; top: calc(var(--header-h) + 24px); aspect-ratio: 4 / 5; }
-    .barber { grid-template-columns: 104px minmax(0, 1fr); }
-    .stamp { width: 96px; height: 96px; font-size: 40px; }
+    .hero { grid-template-columns: minmax(0, 1.08fr) minmax(0, .92fr); grid-template-rows: auto auto; column-gap: clamp(28px, 4vw, 64px); min-height: min(calc(100svh - var(--header-h) - 40px), 1000px); padding-top: clamp(24px, 3vw, 48px); }
+    .hero-copy { grid-column: 1; grid-row: 1; align-self: center; padding-bottom: 28px; }
+    .hero h1 { font-size: clamp(60px, min(6.6vw, 11.4svh), 124px); }
+    .hero-lead { font-size: 18px; margin-top: 22px; }
+    .hero-stage { grid-column: 2; grid-row: 1 / span 2; margin-top: 0; }
+    .hero-stage { --photo-inset: 40px; }
+    .hero-photo { height: 100%; min-height: 540px; }
+    .hero-pole { width: 22px; top: 36px; bottom: 36px; }
+    .hero-mark-box { grid-column: 1; grid-row: 2; align-self: end; }
+    .hero-mark { margin: 0 0 -0.06em; }
+    .svc { grid-template-columns: 80px minmax(0, 1.2fr) minmax(0, 1fr) 90px 110px; grid-template-areas: "thumb name desc time price"; min-height: 104px; padding-block: 18px; }
+    .svc-name { font-size: clamp(34px, 4.2vw, 62px); }
+    .svc-desc { font-size: 16px; padding-right: 12px; }
+    .svc:hover { background: var(--ink-2); }
+    .booking { grid-template-columns: minmax(0, 1.55fr) minmax(320px, 1fr); gap: 56px; }
+    .ticket { position: sticky; top: calc(var(--header-h) + 24px); margin-top: 26px; }
+    .step { padding-left: 104px; }
+    .step-num { font-size: 88px; }
+    .slots { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+    .fade-grid { grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); }
+    .team { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; }
+    .barber:nth-child(2) { margin-top: 64px; }
+    .barber:nth-child(3) { margin-top: 128px; }
+    .barber-photo { aspect-ratio: 4 / 5; }
     .reviews { grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr); gap: 48px 72px; align-items: start; }
     .review.lead { grid-column: 1; grid-row: 1 / span 2; }
-    .endcard { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 0 64px; align-items: end; }
-    .endcard .roll { grid-column: 2; grid-row: 1 / span 2; align-self: end; margin: 0; }
     .place { grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); align-items: center; }
     .map { height: 440px; }
     .practical { grid-template-columns: repeat(4, minmax(0, 1fr)); }
     .practical li { grid-template-columns: 1fr; gap: 10px; padding: 22px 20px 22px 0; border-bottom: 0; }
-    .practical li + li { padding-left: 20px; border-left: 1px dashed var(--line-dark-strong); }
+    .practical li + li { padding-left: 20px; border-left: 1px dashed var(--line-d2); }
     .practical p { grid-column: 1; }
     .faq { grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr); gap: 56px; }
+    .endcard { grid-template-columns: minmax(0, 1fr) auto; align-items: end; }
+    .frame { flex-basis: 360px; }
+  }
+
+  /* A real mouse with motion allowed gets the photo that follows the cursor, so the list drops its thumbnails. */
+  @media (min-width: 900px) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+    .js .svc { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr) 90px 110px; grid-template-areas: "name desc time price"; }
+    .js .svc-thumb { display: none; }
   }
 
   @media (min-width: 1600px) {
-    :root { --max: 1600px; }
-    .frame { flex-basis: 380px; }
+    :root { --max: 1560px; }
+    .frame { flex-basis: 400px; }
   }
 
-  /* Short screens (phone on its side): title and action share the first screen with the photo */
-  @media (max-height: 600px) and (min-width: 560px) {
-    .hero { grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); gap: 0 28px; align-items: center; min-height: 0; padding-block: 8px 28px; }
-    .hero-photo { grid-column: 1; grid-row: 1; height: calc(100svh - var(--header-h) - 60px); min-height: 240px; margin-inline: calc(var(--gutter) * -1) 0; -webkit-mask-image: linear-gradient(to right, var(--black) 70%, transparent); mask-image: linear-gradient(to right, var(--black) 70%, transparent); }
-    .scene { display: none; }
-    .hero-copy { grid-column: 2; grid-row: 1; align-self: center; }
-    .hero h1 { font-size: clamp(30px, 9svh, 52px); margin: 0; }
-    .razor { margin-top: 10px; }
+  /* Short screens (phone on its side): copy and photo side by side, the lead gives way */
+  @media (max-height: 560px) and (min-width: 560px) {
+    .hero { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); column-gap: 24px; min-height: 0; padding-top: 12px; }
+    .hero-copy { grid-column: 1; grid-row: 1; align-self: start; padding-bottom: 12px; }
+    .hero h1 { font-size: clamp(30px, 10svh, 52px); }
+    .hero-lead, .hero-facts { display: none; }
+    .hero-actions { margin-top: 12px; }
+    .hero-stage { grid-column: 2; grid-row: 1 / span 2; margin-top: 0; }
+    .hero-stage { --photo-inset: 30px; }
+    .hero-photo { height: calc(100svh - var(--header-h) - 60px); min-height: 220px; }
+    .hero-mark-box { grid-column: 1; grid-row: 2; }
+    .hero-mark { margin: 0; }
+  }
+  @media (max-height: 640px) and (max-width: 559px) {
     .hero-lead { font-size: 15px; margin-top: 12px; }
     .hero-actions { margin-top: 14px; }
-    .hero-caption { display: none; }
-  }
-  @media (max-height: 420px) and (min-width: 560px) {
-    .hero-lead { display: none; }
-  }
-  /* Short portrait phones: the lead gives way so the button stays in the first screen */
-  @media (max-height: 640px) and (max-width: 559px) {
-    .hero-photo { height: 30svh; }
-    .hero-lead { display: none; }
   }
 </style>
 </head>
 <body>
-  <div class="notice" data-aviso="proposta"><strong>Demonstração.</strong> Empresa, preços e avaliações são fictícios. Fotos: Unsplash.</div>
-
+  <div class="notice" data-aviso="proposta"><strong>Demonstração.</strong> Empresa, preços, horários e avaliações são fictícios. Fotos: Unsplash.</div>
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <!-- Icons: brands from Simple Icons (CC0), interface from Phosphor (MIT). -->
   <symbol id="i-whatsapp" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></symbol>
@@ -397,8 +474,9 @@
   <symbol id="i-pix" viewBox="0 0 24 24"><path d="M5.283 18.36a3.505 3.505 0 0 0 2.493-1.032l3.6-3.6a.684.684 0 0 1 .946 0l3.613 3.613a3.504 3.504 0 0 0 2.493 1.032h.71l-4.56 4.56a3.647 3.647 0 0 1-5.156 0L4.85 18.36ZM18.428 5.627a3.505 3.505 0 0 0-2.493 1.032l-3.613 3.614a.67.67 0 0 1-.946 0l-3.6-3.6A3.505 3.505 0 0 0 5.283 5.64h-.434l4.573-4.572a3.646 3.646 0 0 1 5.156 0l4.559 4.559ZM1.068 9.422 3.79 6.699h1.492a2.483 2.483 0 0 1 1.744.722l3.6 3.6a1.73 1.73 0 0 0 2.443 0l3.614-3.613a2.482 2.482 0 0 1 1.744-.723h1.767l2.737 2.737a3.646 3.646 0 0 1 0 5.156l-2.736 2.736h-1.768a2.482 2.482 0 0 1-1.744-.722l-3.613-3.613a1.77 1.77 0 0 0-2.444 0l-3.6 3.6a2.483 2.483 0 0 1-1.744.722H3.791l-2.723-2.723a3.646 3.646 0 0 1 0-5.156"/></symbol>
   <symbol id="i-arrow-right" viewBox="0 0 256 256"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></symbol>
   <symbol id="i-arrow-left" viewBox="0 0 256 256"><path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"/></symbol>
+  <symbol id="i-arrow-down" viewBox="0 0 256 256"><path d="M205.66,149.66l-72,72a8,8,0,0,1-11.32,0l-72-72a8,8,0,0,1,11.32-11.32L120,196.69V40a8,8,0,0,1,16,0V196.69l58.34-58.35a8,8,0,0,1,11.32,11.32Z"/></symbol>
   <symbol id="i-plus" viewBox="0 0 256 256"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></symbol>
-  <symbol id="i-check" viewBox="0 0 256 256"><path d="M232.49,80.49l-128,128a12,12,0,0,1-17,0l-56-56a12,12,0,1,1,17-17L96,183,215.51,63.51a12,12,0,0,1,17,17Z"/></symbol>
+  <symbol id="i-check" viewBox="0 0 256 256"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></symbol>
   <symbol id="i-map-pin" viewBox="0 0 256 256"><path d="M128,64a40,40,0,1,0,40,40A40,40,0,0,0,128,64Zm0,64a24,24,0,1,1,24-24A24,24,0,0,1,128,128Zm0-112a88.1,88.1,0,0,0-88,88c0,31.4,14.51,64.68,42,96.25a254.19,254.19,0,0,0,41.45,38.3,8,8,0,0,0,9.18,0A254.19,254.19,0,0,0,174,200.25c27.45-31.57,42-64.85,42-96.25A88.1,88.1,0,0,0,128,16Zm0,206c-16.53-13-72-60.75-72-118a72,72,0,0,1,144,0C200,161.23,144.53,209,128,222Z"/></symbol>
   <symbol id="i-info" viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm16-40a8,8,0,0,1-8,8,16,16,0,0,1-16-16V128a8,8,0,0,1,0-16,16,16,0,0,1,16,16v40A8,8,0,0,1,144,176ZM112,84a12,12,0,1,1,12,12A12,12,0,0,1,112,84Z"/></symbol>
   <symbol id="i-caret-left" viewBox="0 0 256 256"><path d="M165.66,202.34a8,8,0,0,1-11.32,11.32l-80-80a8,8,0,0,1,0-11.32l80-80a8,8,0,0,1,11.32,11.32L91.31,128Z"/></symbol>
@@ -410,15 +488,18 @@
   <symbol id="i-hourglass-medium" viewBox="0 0 256 256"><path d="M200,75.64V40a16,16,0,0,0-16-16H72A16,16,0,0,0,56,40V76a16.07,16.07,0,0,0,6.4,12.8L114.67,128,62.4,167.2A16.07,16.07,0,0,0,56,180v36a16,16,0,0,0,16,16H184a16,16,0,0,0,16-16V180.36a16.09,16.09,0,0,0-6.35-12.77L141.27,128l52.38-39.6A16.05,16.05,0,0,0,200,75.64ZM72,40H184V75.64L178.23,80H77.33L72,76Zm56,78L98.67,96h58.4Zm56,98H72V180l48-36v24a8,8,0,0,0,16,0V144.08l48,36.28Z"/></symbol>
   <symbol id="i-coffee" viewBox="0 0 256 256"><path d="M80,56V24a8,8,0,0,1,16,0V56a8,8,0,0,1-16,0Zm40,8a8,8,0,0,0,8-8V24a8,8,0,0,0-16,0V56A8,8,0,0,0,120,64Zm32,0a8,8,0,0,0,8-8V24a8,8,0,0,0-16,0V56A8,8,0,0,0,152,64Zm96,56v8a40,40,0,0,1-37.51,39.91,96.59,96.59,0,0,1-27,40.09H208a8,8,0,0,1,0,16H32a8,8,0,0,1,0-16H56.54A96.3,96.3,0,0,1,24,136V88a8,8,0,0,1,8-8H208A40,40,0,0,1,248,120ZM200,96H40v40a80.27,80.27,0,0,0,45.12,72h69.76A80.27,80.27,0,0,0,200,136Zm32,24a24,24,0,0,0-16-22.62V136a95.78,95.78,0,0,1-1.2,15A24,24,0,0,0,232,128Z"/></symbol>
   <symbol id="i-car" viewBox="0 0 256 256"><path d="M240,104H229.2L201.42,41.5A16,16,0,0,0,186.8,32H69.2a16,16,0,0,0-14.62,9.5L26.8,104H16a8,8,0,0,0,0,16h8v80a16,16,0,0,0,16,16H64a16,16,0,0,0,16-16V184h96v16a16,16,0,0,0,16,16h24a16,16,0,0,0,16-16V120h8a8,8,0,0,0,0-16ZM69.2,48H186.8l24.89,56H44.31ZM64,200H40V184H64Zm128,0V184h24v16Zm24-32H40V120H216ZM56,144a8,8,0,0,1,8-8H80a8,8,0,0,1,0,16H64A8,8,0,0,1,56,144Zm112,0a8,8,0,0,1,8-8h16a8,8,0,0,1,0,16H176A8,8,0,0,1,168,144Z"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm64-88a8,8,0,0,1-8,8H128a8,8,0,0,1-8-8V72a8,8,0,0,1,16,0v48h48A8,8,0,0,1,192,128Z"/></symbol>
+  <symbol id="i-calendar-blank" viewBox="0 0 256 256"><path d="M208,32H184V24a8,8,0,0,0-16,0v8H88V24a8,8,0,0,0-16,0v8H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM72,48v8a8,8,0,0,0,16,0V48h80v8a8,8,0,0,0,16,0V48h24V80H48V48ZM208,208H48V96H208V208Z"/></symbol>
+  <symbol id="i-x" viewBox="0 0 256 256"><path d="M208.49,191.51a12,12,0,0,1-17,17L128,145,64.49,208.49a12,12,0,0,1-17-17L111,128,47.51,64.49a12,12,0,0,1,17-17L128,111l63.51-63.52a12,12,0,0,1,17,17L145,128Z"/></symbol>
   </svg>
 
   <header class="site-header" id="topo">
     <div class="wrap">
-      <a class="logo" href="#topo" aria-label="Sisal Barbearia, início"><b>Sisal</b><small>barbearia</small></a>
+      <a class="logo" href="#topo" aria-label="Sisal Barbearia, início"><span class="pole" aria-hidden="true"><span class="pole-stripes"></span></span><b>SISAL</b><small>barbearia</small></a>
       <nav class="nav" aria-label="Principal">
-        <a href="#precos">Preços</a>
+        <a href="#tabela">Tabela</a>
+        <a href="#degrade">Degradê</a>
         <a href="#equipe">Equipe</a>
-        <a href="#cortes">Cortes</a>
         <a href="#onde">Onde fica</a>
       </nav>
       <a class="btn btn-red btn-small" href="#agendar">Agendar</a>
@@ -427,198 +508,233 @@
 
   <main>
     <div class="wrap">
-      <section class="hero" aria-label="Apresentação">
-        <figure class="hero-photo bw">
-          <img src="https://images.unsplash.com/photo-1647140655214-e4a2d914971f?auto=format&fit=crop&w=1200&q=70" srcset="https://images.unsplash.com/photo-1647140655214-e4a2d914971f?auto=format&fit=crop&w=700&q=70 700w, https://images.unsplash.com/photo-1647140655214-e4a2d914971f?auto=format&fit=crop&w=1200&q=70 1200w" sizes="(min-width: 900px) 55vw, 100vw" alt="Barbeiro acertando o topo do cabelo de um cliente com pente e tesoura, em preto e branco" width="1200" height="1500" fetchpriority="high">
-        </figure>
-        <p class="scene">Barbearia no Prata, Campina Grande</p>
+      <section class="hero" aria-labelledby="hero-titulo">
         <div class="hero-copy">
-          <h1><span class="line">Cabelo</span><span class="line indent">na régua.</span><span class="line">Barba</span><span class="line indent">no ponto.</span></h1>
-          <span class="razor" aria-hidden="true"></span>
-          <p class="hero-lead">Três cadeiras, café coado na hora e barbeiro que lembra como você gosta.</p>
+          <p class="kicker">Barbearia no Prata · Campina Grande</p>
+          <h1 id="hero-titulo">Hora marcada e cadeira <span class="hl">livre.</span></h1>
+          <p class="hero-lead">Corte, barba e degradê desde 2014. Escolha um horário livre aqui embaixo e a confirmação chega no seu WhatsApp.</p>
           <div class="hero-actions">
-            <a class="btn btn-red" href="#agendar">Agendar horário <svg class="ico" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
-            <a class="text-link" href="#precos">Ver a tabela</a>
+            <a class="btn btn-red" href="#agendar">Ver horários livres <svg class="ico" aria-hidden="true"><use href="#i-arrow-down"/></svg></a>
+            <a class="text-link" href="#tabela">Tabela de preços</a>
           </div>
+          <ul class="hero-facts" aria-label="A casa em números">
+            <li><b>2014</b> abriu no Prata</li>
+            <li><b>3</b> cadeiras</li>
+            <li><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><b>4,8</b> no Google, 213 avaliações</li>
+          </ul>
         </div>
-        <p class="hero-caption">Cena 01. Degradê com topo na tesoura, cadeira dois.</p>
-      </section>
-
-      <div class="credits" aria-label="A casa em números">
-        <p class="credit"><b>2014</b><span>abriu no Prata</span></p>
-        <p class="credit"><b data-count="3">3</b><span>cadeiras</span></p>
-        <p class="credit"><b data-count="4.8" data-decimals="1">4,8</b><span><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg>213 notas no Google</span></p>
-      </div>
-
-      <section class="section prices" id="precos" aria-labelledby="precos-titulo">
-        <div class="prices-aside">
-          <span class="kicker">Tabela</span>
-          <h2 class="h2" id="precos-titulo">Preço na parede. Sem surpresa no caixa.</h2>
-          <p class="lede">O valor do quadro é o que você paga. O tempo embaixo é o que a gente reserva na agenda, com folga para conversar. Toque num serviço para já deixar ele marcado no pedido.</p>
-          <figure class="bw">
-            <img src="https://images.unsplash.com/photo-1549271568-e87e07c5406b?auto=format&fit=crop&w=900&q=70" alt="Pentes, tesouras e navalha arrumados sobre uma toalha branca" loading="lazy" width="900" height="600">
+        <div class="hero-stage">
+          <span class="pole hero-pole" aria-hidden="true"><span class="pole-stripes"></span></span>
+          <button class="next-slot" type="button" data-next-slot hidden><span class="dot" aria-hidden="true"></span><span data-next-text>Veja o próximo horário livre</span><svg class="ico" aria-hidden="true"><use href="#i-arrow-right"/></svg></button>
+          <figure class="hero-photo">
+            <img src="https://images.unsplash.com/photo-1775494165568-42c0fbb4c782?auto=format&fit=crop&w=900&h=1100&q=70" srcset="https://images.unsplash.com/photo-1775494165568-42c0fbb4c782?auto=format&fit=crop&w=640&h=780&q=70 640w, https://images.unsplash.com/photo-1775494165568-42c0fbb4c782?auto=format&fit=crop&w=900&h=1100&q=70 900w, https://images.unsplash.com/photo-1775494165568-42c0fbb4c782?auto=format&fit=crop&w=1300&h=1590&q=70 1300w" sizes="(min-width: 900px) 46vw, 100vw" alt="Cadeira de barbeiro antiga, vazia, perto de uma porta de madeira aberta para a rua, com a luz da tarde entrando" width="900" height="1100" fetchpriority="high">
+            <figcaption>Cadeira 1, três da tarde</figcaption>
           </figure>
         </div>
-        <div class="board">
-          <p class="board-head"><span><svg class="ico" aria-hidden="true"><use href="#i-scissors"/></svg>Serviço</span><span>Valor</span></p>
-          <ol class="board-list">
-            <li><button class="board-row" type="button" data-service="corte" aria-label="Corte, R$ 45, 40 minutos. Escolher para agendar"><span class="row-main"><span class="row-name">Corte</span><span class="row-dots"></span><span class="row-price">R$ 45</span></span><span class="row-sub">40 min · tesoura ou máquina, lavagem inclusa</span></button></li>
-            <li><button class="board-row" type="button" data-service="barba" aria-label="Barba, R$ 35, 30 minutos. Escolher para agendar"><span class="row-main"><span class="row-name">Barba</span><span class="row-dots"></span><span class="row-price">R$ 35</span></span><span class="row-sub">30 min · toalha quente, navalha e óleo</span></button></li>
-            <li><button class="board-row" type="button" data-service="corte-barba" aria-label="Corte e barba, R$ 70, 70 minutos. Escolher para agendar"><span class="row-main"><span class="row-name">Corte e barba</span><span class="row-dots"></span><span class="row-price">R$ 70</span></span><span class="row-sub">70 min · R$ 10 a menos do que separado</span></button></li>
-            <li><button class="board-row" type="button" data-service="sobrancelha" aria-label="Sobrancelha, R$ 15, 15 minutos. Escolher para agendar"><span class="row-main"><span class="row-name">Sobrancelha</span><span class="row-dots"></span><span class="row-price">R$ 15</span></span><span class="row-sub">15 min · pinça ou navalha, só limpando</span></button></li>
-            <li><button class="board-row" type="button" data-service="pigmentacao" aria-label="Pigmentação, R$ 30, 30 minutos. Escolher para agendar"><span class="row-main"><span class="row-name">Pigmentação</span><span class="row-dots"></span><span class="row-price">R$ 30</span></span><span class="row-sub">30 min · cobre falha na barba, dura de 3 a 5 dias</span></button></li>
-            <li><button class="board-row" type="button" data-service="noivo" aria-label="Pacote do noivo, R$ 220, 2 horas e meia. Escolher para agendar"><span class="row-main"><span class="row-name">Pacote do noivo</span><span class="row-dots"></span><span class="row-price">R$ 220</span></span><span class="row-sub">2h30 · corte de teste, e no dia corte, barba, sobrancelha e pele <span class="row-tag">casamento</span></span></button></li>
-          </ol>
-          <p class="board-foot">Padrinhos que vêm com o noivo pagam o corte com 15% de desconto. Criança até 10 anos paga R$ 35.</p>
-          <p class="pay" aria-label="Formas de pagamento"><span><svg class="ico" aria-hidden="true"><use href="#i-pix"/></svg>Pix</span><span><svg class="ico" aria-hidden="true"><use href="#i-credit-card"/></svg>Débito e crédito</span><span><svg class="ico" aria-hidden="true"><use href="#i-money"/></svg>Dinheiro</span></p>
-        </div>
+        <div class="hero-mark-box" aria-hidden="true"><p class="hero-mark">SISAL</p></div>
       </section>
     </div>
 
-    <section class="section booking-sec" id="agendar" aria-labelledby="agendar-titulo">
+    <section class="section" id="tabela" aria-labelledby="tabela-titulo">
       <div class="wrap">
-        <div class="booking-head">
-          <span class="kicker">Ficha de agendamento</span>
-          <h2 class="h2" id="agendar-titulo">Três escolhas. A&nbsp;mensagem sai pronta.</h2>
-          <p class="lede">O botão abre o WhatsApp com tudo escrito, e a gente responde com o horário livre mais perto do que você pediu.</p>
+        <div class="sec-head">
+          <p class="kicker">Tabela</p>
+          <h2 class="h2" id="tabela-titulo" data-split>Preço na parede, sem surpresa no caixa.</h2>
+          <p class="lede">O valor do quadro é o que você paga. O tempo ao lado é o que a gente reserva na agenda. Toque num serviço para levar ele pro agendamento.</p>
+        </div>
+        <ol class="svc-list" data-svc-list>
+          <li><button class="svc" type="button" data-service="corte"><img class="svc-thumb" src="https://images.unsplash.com/photo-1635273051839-003bf06a8751?auto=format&fit=crop&w=200&h=200&q=70" data-float-src="https://images.unsplash.com/photo-1635273051839-003bf06a8751?auto=format&fit=crop&w=520&h=650&q=70" alt="" loading="lazy" width="200" height="200"><span class="svc-name">Corte</span><span class="svc-desc">Tesoura ou máquina, com lavagem.</span><span class="svc-time">40 min</span><span class="svc-price">R$ 45</span></button></li>
+          <li><button class="svc" type="button" data-service="degrade"><img class="svc-thumb" src="https://images.unsplash.com/photo-1567894340315-735d7c361db0?auto=format&fit=crop&w=200&h=200&q=70" data-float-src="https://images.unsplash.com/photo-1567894340315-735d7c361db0?auto=format&fit=crop&w=520&h=650&q=70" alt="" loading="lazy" width="200" height="200"><span class="svc-name">Degradê na navalha<span class="svc-tag">mais pedido</span></span><span class="svc-desc">Acabamento na navalha. A altura você escolhe logo abaixo.</span><span class="svc-time">45 min</span><span class="svc-price">R$ 50</span></button></li>
+          <li><button class="svc" type="button" data-service="barba"><img class="svc-thumb" src="https://images.unsplash.com/photo-1648221122279-5246dd0cf86c?auto=format&fit=crop&w=200&h=200&q=70" data-float-src="https://images.unsplash.com/photo-1648221122279-5246dd0cf86c?auto=format&fit=crop&w=520&h=650&q=70" alt="" loading="lazy" width="200" height="200"><span class="svc-name">Barba</span><span class="svc-desc">Toalha quente, navalha e óleo.</span><span class="svc-time">30 min</span><span class="svc-price">R$ 35</span></button></li>
+          <li><button class="svc" type="button" data-service="corte-barba"><img class="svc-thumb" src="https://images.unsplash.com/photo-1599011176306-4a96f1516d4d?auto=format&fit=crop&w=200&h=200&q=70" data-float-src="https://images.unsplash.com/photo-1599011176306-4a96f1516d4d?auto=format&fit=crop&w=520&h=650&q=70" alt="" loading="lazy" width="200" height="200"><span class="svc-name">Corte e barba</span><span class="svc-desc">R$ 10 a menos do que separado.</span><span class="svc-time">70 min</span><span class="svc-price">R$ 70</span></button></li>
+          <li><button class="svc" type="button" data-service="sobrancelha"><img class="svc-thumb" src="https://images.unsplash.com/photo-1733995471058-3d6ff2013de3?auto=format&fit=crop&w=200&h=200&q=70" data-float-src="https://images.unsplash.com/photo-1733995471058-3d6ff2013de3?auto=format&fit=crop&w=520&h=650&q=70" alt="" loading="lazy" width="200" height="200"><span class="svc-name">Sobrancelha</span><span class="svc-desc">Na pinça ou na navalha, só limpando.</span><span class="svc-time">15 min</span><span class="svc-price">R$ 15</span></button></li>
+          <li><button class="svc" type="button" data-service="pigmentacao"><img class="svc-thumb" src="https://images.unsplash.com/photo-1517832606299-7ae9b720a186?auto=format&fit=crop&w=200&h=200&q=70" data-float-src="https://images.unsplash.com/photo-1517832606299-7ae9b720a186?auto=format&fit=crop&w=520&h=650&q=70" alt="" loading="lazy" width="200" height="200"><span class="svc-name">Pigmentação</span><span class="svc-desc">Cobre falha na barba e dura de 3 a 5 dias.</span><span class="svc-time">30 min</span><span class="svc-price">R$ 30</span></button></li>
+          <li><button class="svc" type="button" data-service="infantil"><img class="svc-thumb" src="https://images.unsplash.com/photo-1647140655214-e4a2d914971f?auto=format&fit=crop&w=200&h=200&q=70" data-float-src="https://images.unsplash.com/photo-1647140655214-e4a2d914971f?auto=format&fit=crop&w=520&h=650&q=70" alt="" loading="lazy" width="200" height="200"><span class="svc-name">Corte infantil</span><span class="svc-desc">Até 10 anos, com a Lara e um adulto junto.</span><span class="svc-time">30 min</span><span class="svc-price">R$ 35</span></button></li>
+          <li><button class="svc" type="button" data-service="noivo"><img class="svc-thumb" src="https://images.unsplash.com/photo-1549271568-e87e07c5406b?auto=format&fit=crop&w=200&h=200&q=70" data-float-src="https://images.unsplash.com/photo-1549271568-e87e07c5406b?auto=format&fit=crop&w=520&h=650&q=70" alt="" loading="lazy" width="200" height="200"><span class="svc-name">Pacote do noivo</span><span class="svc-desc">Corte de teste antes e, no dia, corte, barba, sobrancelha e pele.</span><span class="svc-time">2h30</span><span class="svc-price">R$ 220</span></button></li>
+        </ol>
+        <div class="menu-foot">
+          <p class="pay" aria-label="Formas de pagamento"><span><svg class="ico" aria-hidden="true"><use href="#i-pix"/></svg>Pix</span><span><svg class="ico" aria-hidden="true"><use href="#i-credit-card"/></svg>Débito e crédito</span><span><svg class="ico" aria-hidden="true"><use href="#i-money"/></svg>Dinheiro</span></p>
+          <p>Padrinho que vem com o noivo paga o corte com 15% de desconto.</p>
+        </div>
+      </div>
+      <div class="float-photo" aria-hidden="true" data-float></div>
+    </section>
+
+    <section class="section fade-sec" id="degrade" aria-labelledby="degrade-titulo">
+      <div class="wrap fade-grid">
+        <figure class="fade-figure" data-fade-figure>
+          <img src="https://images.unsplash.com/photo-1593702275687-f8b402bf1fb5?auto=format&fit=crop&rect=1250,500,2900,2900&w=900&h=900&q=70" srcset="https://images.unsplash.com/photo-1593702275687-f8b402bf1fb5?auto=format&fit=crop&rect=1250,500,2900,2900&w=600&h=600&q=70 600w, https://images.unsplash.com/photo-1593702275687-f8b402bf1fb5?auto=format&fit=crop&rect=1250,500,2900,2900&w=900&h=900&q=70 900w" sizes="(min-width: 900px) 46vw, (min-width: 600px) 48vw, 100vw" alt="Barbeiro passando a máquina na nuca de um cliente, com o degradê já feito na lateral da cabeça" loading="lazy" width="900" height="900">
+          <span class="fade-wash" aria-hidden="true"></span>
+          <span class="fade-ruler" aria-hidden="true"><span style="top: 20%"><b>alto</b></span><span style="top: 44%"><b>médio</b></span><span style="top: 68%"><b>baixo</b></span></span>
+          <span class="fade-tag" aria-hidden="true" data-fade-tag>médio</span>
+        </figure>
+        <div>
+          <p class="kicker">Degradê</p>
+          <h2 class="h2" id="degrade-titulo" data-split>Até onde vai o&nbsp;degradê?</h2>
+          <p class="lede">Mostre a altura antes de sentar. A linha na foto acompanha a sua escolha, e ela vai junto no pedido do horário.</p>
+          <form class="fade-options" data-fade-form>
+            <fieldset class="opt-group">
+              <legend>Altura</legend>
+              <div class="opt-row">
+                <label class="opt"><input type="radio" name="height" value="baixo" data-y="74" data-text="Começa rente na nuca e some antes da orelha. Discreto, passa bem no trabalho."><span>Baixo</span></label>
+                <label class="opt"><input type="radio" name="height" value="médio" data-y="62" data-text="Sobe até o meio da orelha. É o que mais sai aqui na cadeira do Rafa." checked><span>Médio</span></label>
+                <label class="opt"><input type="radio" name="height" value="alto" data-y="50" data-text="Vai até a linha da cabeça, bem marcado. Fica mais limpo, e pede retoque em duas semanas."><span>Alto</span></label>
+              </div>
+            </fieldset>
+            <p class="fade-explain" data-fade-explain aria-live="polite">Sobe até o meio da orelha. É o que mais sai aqui na cadeira do Rafa.</p>
+            <fieldset class="opt-group">
+              <legend>Na base</legend>
+              <div class="opt-row">
+                <label class="opt"><input type="radio" name="base" value="pente zero na base" checked><span>Pente zero</span></label>
+                <label class="opt"><input type="radio" name="base" value="navalha na pele"><span>Navalha na pele</span></label>
+              </div>
+            </fieldset>
+            <fieldset class="opt-group">
+              <legend>Em cima</legend>
+              <div class="opt-row">
+                <label class="opt"><input type="radio" name="top" value="tesoura" checked><span>Tesoura</span></label>
+                <label class="opt"><input type="radio" name="top" value="máquina"><span>Máquina</span></label>
+              </div>
+            </fieldset>
+            <div class="fade-result">
+              <p>Vai no pedido: <b data-fade-summary>degradê médio, pente zero na base, tesoura em cima</b>.</p>
+              <a class="text-link" href="#agendar" data-fade-go>Escolher o horário <svg class="ico" aria-hidden="true"><use href="#i-arrow-down"/></svg></a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="section book-sec" id="agendar" aria-labelledby="agendar-titulo">
+      <div class="wrap">
+        <div class="sec-head">
+          <p class="kicker">Agendar</p>
+          <h2 class="h2" id="agendar-titulo" data-split>Escolha o horário livre.</h2>
+          <p class="lede">Os horários riscados já têm cliente. O botão abre o WhatsApp com tudo escrito, e o horário fica seu quando a gente responder confirmando.</p>
         </div>
 
         <form class="booking" id="booking" novalidate>
           <div class="steps">
             <fieldset class="step" data-step="service">
               <legend><span class="step-num" aria-hidden="true">1</span><span class="step-title">Qual serviço?<span class="ok"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg></span></span></legend>
-              <div class="choices">
-                <label class="choice"><input type="radio" name="service" value="corte" data-label="Corte" data-detail="R$ 45, 40 min"><span>Corte<small>R$ 45 · 40 min</small></span></label>
-                <label class="choice"><input type="radio" name="service" value="barba" data-label="Barba" data-detail="R$ 35, 30 min"><span>Barba<small>R$ 35 · 30 min</small></span></label>
-                <label class="choice"><input type="radio" name="service" value="corte-barba" data-label="Corte e barba" data-detail="R$ 70, 70 min"><span>Corte e barba<small>R$ 70 · 70 min</small></span></label>
-                <label class="choice"><input type="radio" name="service" value="sobrancelha" data-label="Sobrancelha" data-detail="R$ 15, 15 min"><span>Sobrancelha<small>R$ 15 · 15 min</small></span></label>
-                <label class="choice"><input type="radio" name="service" value="pigmentacao" data-label="Pigmentação" data-detail="R$ 30, 30 min"><span>Pigmentação<small>R$ 30 · 30 min</small></span></label>
-                <label class="choice"><input type="radio" name="service" value="noivo" data-label="Pacote do noivo" data-detail="R$ 220, 2h30"><span>Pacote do noivo<small>R$ 220 · 2h30</small></span></label>
+              <div class="chips">
+                <label class="chip"><input type="radio" name="service" value="corte" data-label="Corte" data-detail="R$ 45, 40 min" data-fade="1"><span>Corte<small>R$ 45 · 40 min</small></span></label>
+                <label class="chip"><input type="radio" name="service" value="degrade" data-label="Degradê na navalha" data-detail="R$ 50, 45 min" data-fade="1"><span>Degradê<small>R$ 50 · 45 min</small></span></label>
+                <label class="chip"><input type="radio" name="service" value="barba" data-label="Barba" data-detail="R$ 35, 30 min"><span>Barba<small>R$ 35 · 30 min</small></span></label>
+                <label class="chip"><input type="radio" name="service" value="corte-barba" data-label="Corte e barba" data-detail="R$ 70, 70 min" data-fade="1"><span>Corte e barba<small>R$ 70 · 70 min</small></span></label>
+                <label class="chip"><input type="radio" name="service" value="sobrancelha" data-label="Sobrancelha" data-detail="R$ 15, 15 min"><span>Sobrancelha<small>R$ 15 · 15 min</small></span></label>
+                <label class="chip"><input type="radio" name="service" value="pigmentacao" data-label="Pigmentação" data-detail="R$ 30, 30 min"><span>Pigmentação<small>R$ 30 · 30 min</small></span></label>
+                <label class="chip"><input type="radio" name="service" value="infantil" data-label="Corte infantil" data-detail="R$ 35, 30 min" data-barber="Lara"><span>Infantil<small>R$ 35 · 30 min</small></span></label>
+                <label class="chip"><input type="radio" name="service" value="noivo" data-label="Pacote do noivo" data-detail="R$ 220, 2h30" data-fade="1"><span>Pacote do noivo<small>R$ 220 · 2h30</small></span></label>
               </div>
             </fieldset>
 
             <fieldset class="step" data-step="barber">
               <legend><span class="step-num" aria-hidden="true">2</span><span class="step-title">Com quem?<span class="ok"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg></span></span></legend>
-              <div class="choices">
-                <label class="choice"><input type="radio" name="barber" value="Damião" data-label="Seu Damião" data-off="1"><span>Seu Damião<small>barba e navalha</small></span></label>
-                <label class="choice"><input type="radio" name="barber" value="Rafa" data-label="Rafa" data-off=""><span>Rafa<small>degradê e desenho</small></span></label>
-                <label class="choice"><input type="radio" name="barber" value="Lara" data-label="Lara" data-off="6"><span>Lara<small>tesoura e cacheado</small></span></label>
-                <label class="choice"><input type="radio" name="barber" value="Tanto faz" data-label="Tanto faz" data-off=""><span>Tanto faz<small>o primeiro livre</small></span></label>
+              <div class="chips">
+                <label class="chip"><input type="radio" name="barber" value="Damião" data-label="Seu Damião"><span>Seu Damião<small>navalha e barba</small></span></label>
+                <label class="chip"><input type="radio" name="barber" value="Rafa" data-label="Rafa"><span>Rafa<small>degradê e desenho</small></span></label>
+                <label class="chip"><input type="radio" name="barber" value="Lara" data-label="Lara"><span>Lara<small>tesoura e criança</small></span></label>
+                <label class="chip"><input type="radio" name="barber" value="any" data-label="Tanto faz"><span>Tanto faz<small>o primeiro livre</small></span></label>
               </div>
             </fieldset>
 
-            <fieldset class="step" data-step="when">
-              <legend><span class="step-num" aria-hidden="true">3</span><span class="step-title">Que dia e turno?<span class="ok"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg></span></span></legend>
+            <fieldset class="step" data-step="day">
+              <legend><span class="step-num" aria-hidden="true">3</span><span class="step-title">Que dia?<span class="ok"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg></span></span></legend>
+              <div class="days" id="days" role="radiogroup" aria-label="Dia">
+                <p class="slots-empty">Os dias abertos aparecem aqui. Se preferir, peça o horário direto na conversa.</p>
+              </div>
+            </fieldset>
+
+            <fieldset class="step" data-step="time">
+              <legend><span class="step-num" aria-hidden="true">4</span><span class="step-title">Que horas?<span class="ok"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg></span></span></legend>
               <div>
-                <p class="sub-label" id="dia-label">Dia</p>
-                <div class="days" id="days" role="radiogroup" aria-labelledby="dia-label">
-                  <label class="choice"><input type="radio" name="day" value="segunda" data-weekday="1" data-label="segunda"><span><b>Seg</b></span></label>
-                  <label class="choice"><input type="radio" name="day" value="terça" data-weekday="2" data-label="terça"><span><b>Ter</b></span></label>
-                  <label class="choice"><input type="radio" name="day" value="quarta" data-weekday="3" data-label="quarta"><span><b>Qua</b></span></label>
-                  <label class="choice"><input type="radio" name="day" value="quinta" data-weekday="4" data-label="quinta"><span><b>Qui</b></span></label>
-                  <label class="choice"><input type="radio" name="day" value="sexta" data-weekday="5" data-label="sexta"><span><b>Sex</b></span></label>
-                  <label class="choice"><input type="radio" name="day" value="sábado" data-weekday="6" data-label="sábado"><span><b>Sáb</b></span></label>
+                <div class="slots-head">
+                  <span data-slots-status aria-live="polite">Escolha o dia para ver os horários.</span>
+                  <span class="legend" aria-hidden="true"><span><span class="swatch"></span>livre</span><span><span class="swatch is-taken"></span>ocupado</span></span>
                 </div>
-                <p class="sub-label" id="turno-label">Turno</p>
-                <div class="choices" role="radiogroup" aria-labelledby="turno-label">
-                  <label class="choice"><input type="radio" name="shift" value="manha" data-label="manhã (9h às 12h)"><span>Manhã<small>9h às 12h</small></span></label>
-                  <label class="choice"><input type="radio" name="shift" value="tarde" data-label="tarde (13h às 18h)"><span>Tarde<small>13h às 18h</small></span></label>
-                  <label class="choice"><input type="radio" name="shift" value="noite" data-label="noite (18h às 20h)"><span>Noite<small>18h às 20h</small></span></label>
-                </div>
+                <div class="slots" id="slots" role="radiogroup" aria-label="Horário"></div>
                 <label class="name-field">Seu nome (opcional)<input type="text" name="name" autocomplete="given-name" maxlength="40" placeholder="Para a gente saber quem é"></label>
               </div>
             </fieldset>
           </div>
 
           <aside class="ticket" aria-live="polite">
-            <div class="ticket-head"><h3>Seu pedido</h3><span>Sisal · Prata</span></div>
+            <div class="ticket-head"><h3>Seu horário</h3><span class="pole" aria-hidden="true"><span class="pole-stripes"></span></span></div>
             <dl>
               <div><dt>Serviço</dt><dd data-out="service" class="is-empty">a escolher</dd></div>
+              <div data-fade-row hidden><dt>Degradê</dt><dd data-out="fade"></dd></div>
               <div><dt>Barbeiro</dt><dd data-out="barber" class="is-empty">a escolher</dd></div>
               <div><dt>Dia</dt><dd data-out="day" class="is-empty">a escolher</dd></div>
-              <div><dt>Turno</dt><dd data-out="shift" class="is-empty">a escolher</dd></div>
+              <div><dt>Horário</dt><dd data-out="time" class="is-empty">a escolher</dd></div>
             </dl>
-            <a class="btn btn-red wa-btn" id="wa-btn" href="https://wa.me/?text=Ol%C3%A1%2C%20Sisal.%20Quero%20pedir%20um%20hor%C3%A1rio." target="_blank" rel="noopener" aria-disabled="true"><svg class="ico" aria-hidden="true"><use href="#i-whatsapp"/></svg><span>Pedir horário no WhatsApp</span></a>
-            <p class="hint" id="hint">Falta escolher o serviço, o barbeiro, o dia e o turno.</p>
-            <p class="honest"><svg class="ico" aria-hidden="true"><use href="#i-info"/></svg><span>O botão não reserva a cadeira sozinho. Ele manda o pedido, e o horário só fica marcado quando a gente responder confirmando. Depois de marcado, seguramos a cadeira por 15 minutos.</span></p>
+            <a class="btn btn-red wa-btn" id="wa-btn" href="https://wa.me/?text=Ol%C3%A1%2C%20Sisal.%20Quero%20marcar%20um%20hor%C3%A1rio." target="_blank" rel="noopener" aria-disabled="true"><svg class="ico" aria-hidden="true"><use href="#i-whatsapp"/></svg><span>Pedir esse horário</span></a>
+            <p class="hint" id="hint">Falta escolher o serviço, o barbeiro, o dia e o horário.</p>
+            <p class="honest"><svg class="ico" aria-hidden="true"><use href="#i-info"/></svg><span>O botão não reserva sozinho. O horário fica seu quando a gente confirmar na conversa, e seguramos a cadeira por 15 minutos.</span></p>
           </aside>
         </form>
       </div>
     </section>
 
-    <div class="wrap">
-      <section class="section team-sec" id="equipe" aria-labelledby="equipe-titulo">
-        <figure class="team-photo bw">
-          <img src="https://images.unsplash.com/photo-1621645582931-d1d3e6564943?auto=format&fit=crop&w=1000&q=70" alt="Fileira de cadeiras de barbeiro antigas, de couro e metal, num salão escuro" loading="lazy" width="1000" height="1250">
-        </figure>
-        <div>
-          <span class="kicker">Elenco</span>
-          <h2 class="h2" id="equipe-titulo">Três cadeiras, três&nbsp;jeitos de cortar.</h2>
+    <section class="section" id="equipe" aria-labelledby="equipe-titulo">
+      <div class="wrap">
+        <div class="sec-head">
+          <p class="kicker">Equipe</p>
+          <h2 class="h2" id="equipe-titulo" data-split>Três cadeiras, três jeitos de cortar.</h2>
           <p class="lede">Cada um tem o corte em que é melhor. Se não souber com quem marcar, escolha "tanto faz" e a gente indica.</p>
-          <ol class="barbers">
-            <li class="barber">
-              <span class="stamp" aria-hidden="true">D</span>
-              <h3>Seu Damião</h3>
-              <p class="role">Fundador · 24 anos de navalha</p>
-              <p>Aprendeu com o pai, numa cadeira da Feira Central. É quem você procura para barba clássica, navalha e corte social que aguenta um mês.</p>
-              <div class="foot"><span class="days-off">Não atende às segundas</span><a class="text-link" href="#agendar" data-barber="Damião">Marcar com ele <svg class="ico" aria-hidden="true"><use href="#i-arrow-right"/></svg></a></div>
-            </li>
-            <li class="barber">
-              <span class="stamp" aria-hidden="true">R</span>
-              <h3>Rafa</h3>
-              <p class="role">Degradê · 8 anos de casa</p>
-              <p>Degradê navalhado, risco e desenho. Traga a foto de referência que ele diz na hora se dá certo no seu cabelo.</p>
-              <div class="foot"><span class="days-off">Atende todos os dias abertos</span><a class="text-link" href="#agendar" data-barber="Rafa">Marcar com ele <svg class="ico" aria-hidden="true"><use href="#i-arrow-right"/></svg></a></div>
-            </li>
-            <li class="barber">
-              <span class="stamp" aria-hidden="true">L</span>
-              <h3>Lara</h3>
-              <p class="role">Tesoura · 5 anos de casa</p>
-              <p>Corte na tesoura, cabelo cacheado e crespo, e o primeiro corte de criança, com paciência para quem não para quieto.</p>
-              <div class="foot"><span class="days-off">Não atende aos sábados</span><a class="text-link" href="#agendar" data-barber="Lara">Marcar com ela <svg class="ico" aria-hidden="true"><use href="#i-arrow-right"/></svg></a></div>
-            </li>
-          </ol>
         </div>
-      </section>
-    </div>
+        <ol class="team">
+          <li class="barber">
+            <figure class="barber-photo"><img src="https://images.unsplash.com/photo-1533245270348-821d4d5c7514?auto=format&fit=crop&w=800&h=1000&q=70" alt="Mãos tatuadas passando a navalha no pescoço de um cliente" loading="lazy" width="800" height="1000"><span class="chair">Cadeira 1</span></figure>
+            <div><h3>Seu Damião</h3><p class="role">Navalha · 24 anos de cadeira</p></div>
+            <p>Aprendeu com o pai numa cadeira da Feira Central. É quem você procura para barba clássica, navalha e corte social que aguenta o mês.</p>
+            <div class="foot"><span class="off">Não atende às segundas</span><a class="text-link" href="#agendar" data-pick-barber="Damião">Marcar com ele <svg class="ico" aria-hidden="true"><use href="#i-arrow-right"/></svg></a></div>
+          </li>
+          <li class="barber">
+            <figure class="barber-photo"><img src="https://images.unsplash.com/photo-1493256338651-d82f7acb2b38?auto=format&fit=crop&w=800&h=1000&q=70" alt="Barbeiro acertando a nuca de um cliente com a máquina" loading="lazy" width="800" height="1000"><span class="chair">Cadeira 2</span></figure>
+            <div><h3>Rafa</h3><p class="role">Máquina · 8 anos de casa</p></div>
+            <p>Degradê, risco e desenho. Traga a foto de referência que ele diz na hora se dá certo no seu cabelo.</p>
+            <div class="foot"><span class="off">Atende todos os dias abertos</span><a class="text-link" href="#agendar" data-pick-barber="Rafa">Marcar com ele <svg class="ico" aria-hidden="true"><use href="#i-arrow-right"/></svg></a></div>
+          </li>
+          <li class="barber">
+            <figure class="barber-photo"><img src="https://images.unsplash.com/photo-1657105052497-f996284ffff8?auto=format&fit=crop&w=800&h=1000&q=70" alt="Tesoura de desbaste e pente acertando o cabelo na parte de trás da cabeça" loading="lazy" width="800" height="1000"><span class="chair">Cadeira 3</span></figure>
+            <div><h3>Lara</h3><p class="role">Tesoura · 5 anos de casa</p></div>
+            <p>Corte na tesoura, cabelo cacheado e crespo, e o primeiro corte de criança, com paciência para quem não para quieto.</p>
+            <div class="foot"><span class="off">Não atende aos sábados</span><a class="text-link" href="#agendar" data-pick-barber="Lara">Marcar com ela <svg class="ico" aria-hidden="true"><use href="#i-arrow-right"/></svg></a></div>
+          </li>
+        </ol>
+      </div>
+    </section>
 
-    <section class="strip-sec" id="cortes" aria-labelledby="cortes-titulo">
-      <div class="wrap strip-head">
+    <section class="gallery" id="cortes" aria-labelledby="cortes-titulo" data-gallery>
+      <div class="wrap gallery-head">
         <div>
-          <span class="kicker">Rolo de cortes</span>
-          <h2 class="h2" id="cortes-titulo">O que mais sai daqui.</h2>
+          <p class="kicker">Instagram</p>
+          <h2 class="h2" id="cortes-titulo" data-split>Saiu da cadeira essa semana.</h2>
         </div>
-        <div class="strip-tools">
-          <a class="text-link" href="https://www.instagram.com/" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-instagram"/></svg>@sisal.prata.demo</a>
-          <div class="strip-nav">
-            <button type="button" data-strip="-1" aria-label="Fotos anteriores"><svg class="ico" aria-hidden="true"><use href="#i-caret-left"/></svg></button>
-            <button type="button" data-strip="1" aria-label="Próximas fotos"><svg class="ico" aria-hidden="true"><use href="#i-caret-right"/></svg></button>
-          </div>
-        </div>
+        <a class="text-link" href="https://www.instagram.com/" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-instagram"/></svg>@sisal.prata.demo</a>
       </div>
-      <div class="film">
-        <div class="film-track" id="film-track" tabindex="0" aria-label="Fotos de cortes, role para o lado">
-          <figure class="frame"><div class="bw"><img src="https://images.unsplash.com/photo-1593702275687-f8b402bf1fb5?auto=format&fit=crop&w=700&h=875&q=70" alt="Máquina fazendo o degradê na lateral da cabeça de um cliente" loading="lazy" width="700" height="875"></div><figcaption><b>01</b>Degradê navalhado</figcaption></figure>
-          <figure class="frame"><div class="bw"><img src="https://images.unsplash.com/photo-1517832606299-7ae9b720a186?auto=format&fit=crop&w=700&h=875&q=70" alt="Barba sendo aparada na tesoura com o cliente reclinado" loading="lazy" width="700" height="875"></div><figcaption><b>02</b>Barba desenhada</figcaption></figure>
-          <figure class="frame"><div class="bw"><img src="https://images.unsplash.com/photo-1493256338651-d82f7acb2b38?auto=format&fit=crop&w=700&h=875&q=70" alt="Barbeiro acertando a nuca de um cliente com a máquina" loading="lazy" width="700" height="875"></div><figcaption><b>03</b>Nuca no pente zero</figcaption></figure>
-          <figure class="frame"><div class="bw"><img src="https://images.unsplash.com/photo-1648221122279-5246dd0cf86c?auto=format&fit=crop&w=700&h=875&q=70" alt="Cliente com toalha quente no rosto enquanto o barbeiro acerta a barba" loading="lazy" width="700" height="875"></div><figcaption><b>04</b>Toalha quente</figcaption></figure>
-          <figure class="frame"><div class="bw"><img src="https://images.unsplash.com/photo-1635273051839-003bf06a8751?auto=format&fit=crop&w=700&h=875&q=70" alt="Mãos do barbeiro passando a máquina no cabelo de um cliente" loading="lazy" width="700" height="875"></div><figcaption><b>05</b>Social na máquina</figcaption></figure>
-          <figure class="frame"><div class="bw"><img src="https://images.unsplash.com/photo-1599011176306-4a96f1516d4d?auto=format&fit=crop&w=700&h=875&q=70" alt="Barba cheia sendo acertada na tesoura, de perfil" loading="lazy" width="700" height="875"></div><figcaption><b>06</b>Barba cheia na tesoura</figcaption></figure>
-        </div>
+      <div class="rail" data-rail tabindex="0" aria-label="Fotos de cortes, deslize para o lado">
+        <figure class="frame"><div class="frame-img"><img src="https://images.unsplash.com/photo-1760641371942-e3d39565ac67?auto=format&fit=crop&w=720&h=900&q=70" alt="Rapaz de perfil com degradê médio e topete" loading="lazy" width="720" height="900"></div><figcaption><b>01</b>Degradê médio, topete na tesoura</figcaption></figure>
+        <figure class="frame"><div class="frame-img"><img src="https://images.unsplash.com/photo-1739302493888-6f96cbc37105?auto=format&fit=crop&w=720&h=900&q=70" alt="Máquina acertando a barba de um cliente" loading="lazy" width="720" height="900"></div><figcaption><b>02</b>Barba no pente 2</figcaption></figure>
+        <figure class="frame"><div class="frame-img"><img src="https://images.unsplash.com/photo-1635273051937-a0ddef9573b6?auto=format&fit=crop&w=720&h=900&q=70" alt="Barbeiro de chapéu fazendo a risca no cabelo de um cliente" loading="lazy" width="720" height="900"></div><figcaption><b>03</b>Social com risca</figcaption></figure>
+        <figure class="frame"><div class="frame-img"><img src="https://images.unsplash.com/photo-1705976062088-5433328c2dcd?auto=format&fit=crop&w=720&h=900&q=70" alt="Cliente reclinado na cadeira enquanto o barbeiro desenha a barba" loading="lazy" width="720" height="900"></div><figcaption><b>04</b>Barba desenhada</figcaption></figure>
+        <figure class="frame"><div class="frame-img"><img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=720&h=900&q=70" alt="Cliente reclinado recebendo navalha na barba, na penumbra" loading="lazy" width="720" height="900"></div><figcaption><b>05</b>Navalha depois da toalha quente</figcaption></figure>
+        <figure class="frame"><div class="frame-img"><img src="https://images.unsplash.com/photo-1621645582931-d1d3e6564943?auto=format&fit=crop&w=720&h=900&q=70" alt="Fileira de cadeiras de barbeiro de couro e metal" loading="lazy" width="720" height="900"></div><figcaption><b>06</b>Sábado, 7h50, antes de abrir</figcaption></figure>
       </div>
-      <p class="wrap strip-note">Fotos ilustrativas. No site de uma barbearia de verdade, entram os cortes feitos na casa, os mesmos que saem no Instagram.</p>
+      <div class="wrap"><div class="progress" aria-hidden="true"><span data-progress></span></div></div>
     </section>
 
     <section class="section reviews-sec" aria-labelledby="clientes-titulo">
       <div class="wrap">
-        <span class="kicker" id="clientes-titulo">O que dizem na cadeira</span>
+        <p class="kicker" id="clientes-titulo">O que dizem na cadeira</p>
         <div class="reviews">
           <figure class="review lead">
-            <blockquote>“Corto com Seu Damião desde os quinze. Me mudei pro Malvinas e continuo atravessando a cidade todo mês. A navalha dele eu não troco.”</blockquote>
+            <blockquote>“Corto com Seu Damião desde os quinze. Me mudei pro Malvinas e continuo atravessando a cidade todo mês.”</blockquote>
             <figcaption><span class="stars" aria-label="5 de 5 estrelas"><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg></span><b>Everton, cliente desde 2014</b><span class="fict">Depoimento fictício</span></figcaption>
           </figure>
           <figure class="review">
-            <blockquote>“Mandei a foto do degradê numa sexta às 10 da manhã e o Rafa me encaixou às 18h40. Esperei uns 15 minutos porque o cliente de antes atrasou, mas saiu igual à foto.”</blockquote>
+            <blockquote>“Marquei pelo site às 10h pra 18h30 com o Rafa. Esperei uns 10 minutos porque o cliente de antes atrasou, mas o degradê saiu igual à foto que levei.”</blockquote>
             <figcaption><span class="stars" aria-label="4 de 5 estrelas"><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg></span><b>Igor, de Bodocongó</b><span class="fict">Fictício</span></figcaption>
           </figure>
           <figure class="review">
@@ -632,8 +748,8 @@
     <div class="wrap">
       <section class="section place" id="onde" aria-labelledby="onde-titulo">
         <div>
-          <span class="kicker">Onde fica</span>
-          <h2 class="h2" id="onde-titulo">Na esquina do Prata.</h2>
+          <p class="kicker">Onde fica</p>
+          <h2 class="h2" id="onde-titulo" data-split>Na esquina do Prata.</h2>
           <p class="open-now" data-open-now>Terça a sábado, a partir das 9h</p>
           <table class="hours">
             <tr data-days="1"><td>Segunda</td><td>13h às 20h</td></tr>
@@ -645,7 +761,7 @@
           <p class="hours-note">No São João, fechamos só no dia 24. No resto de junho a casa abre normal, e a agenda enche.</p>
           <p class="address"><svg class="ico" aria-hidden="true"><use href="#i-map-pin"/></svg><span>Rua fictícia, 214, Prata, Campina Grande (PB). Uns 5 minutos de carro da Feira Central e do Açude Velho.</span></p>
           <div class="place-actions">
-            <a class="btn btn-paper" href="https://www.google.com/maps/search/?api=1&query=Prata%2C%20Campina%20Grande%20PB" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-googlemaps"/></svg>Abrir no mapa</a>
+            <a class="btn btn-bone" href="https://www.google.com/maps/search/?api=1&query=Prata%2C%20Campina%20Grande%20PB" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-googlemaps"/></svg>Abrir no mapa</a>
             <a class="btn btn-outline" href="https://wa.me/?text=Ol%C3%A1%2C%20Sisal.%20Como%20est%C3%A1%20a%20fila%20agora%3F%20Queria%20passar%20a%C3%AD%20sem%20hora%20marcada." target="_blank" rel="noopener"><svg class="ico ico-wa" aria-hidden="true"><use href="#i-whatsapp"/></svg>Perguntar a fila</a>
           </div>
         </div>
@@ -666,56 +782,65 @@
 
       <section class="section faq" id="duvidas" aria-labelledby="duvidas-titulo">
         <div>
-          <span class="kicker">Dúvidas</span>
-          <h2 class="h2" id="duvidas-titulo">Antes de sentar na cadeira.</h2>
+          <p class="kicker">Dúvidas</p>
+          <h2 class="h2" id="duvidas-titulo" data-split>Antes de sentar na cadeira.</h2>
         </div>
         <div>
           <details><summary>E se eu me atrasar?<svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Seguramos a cadeira por 15 minutos. Passou disso, a gente encaixa no próximo horário livre do mesmo dia, se tiver. Avisando no WhatsApp, fica mais fácil segurar.</p></details>
           <details><summary>Preciso desmarcar. Como faço?<svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Responda na mesma conversa do WhatsApp, de preferência com duas horas de antecedência. Não cobramos taxa.</p></details>
           <details><summary>Vocês cortam cabelo de criança?<svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Cortamos, a partir de 2 anos, com a Lara. Até 10 anos o corte sai por R$ 35, e um adulto fica junto o tempo todo.</p></details>
-          <details><summary>Abre em feriado?<svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Abre das 8h às 12h, só com quem chegar ou marcar até a véspera. A exceção é o São João: no dia 24 a casa fica fechada.</p></details>
+          <details><summary>Abre em feriado?<svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Abre das 8h às 12h, com quem chegar ou marcar até a véspera. A exceção é o São João: no dia 24 a casa fica fechada.</p></details>
           <details><summary>Como funciona o pacote do noivo?<svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Um corte de teste umas duas semanas antes, para acertar o comprimento, e no dia do casamento corte, barba, sobrancelha e limpeza de pele. Se o casamento for cedo, abrimos antes do horário.</p></details>
         </div>
       </section>
 
       <section class="endcard" aria-labelledby="fim-titulo">
-        <h2 class="h2" id="fim-titulo">Sábado de manhã enche. Peça seu horário antes.</h2>
-        <a class="btn btn-red" href="#agendar">Agendar horário <svg class="ico" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
-        <ul class="roll" aria-label="Créditos da casa">
-          <li><span>Navalha</span><span class="row-dots"></span><b>Seu Damião</b></li>
-          <li><span>Degradê</span><span class="row-dots"></span><b>Rafa</b></li>
-          <li><span>Tesoura</span><span class="row-dots"></span><b>Lara</b></li>
-          <li><span>Café</span><span class="row-dots"></span><b>por conta da casa</b></li>
-        </ul>
+        <h2 class="h2" id="fim-titulo">Sábado de manhã enche. Garanta o seu antes.</h2>
+        <a class="btn btn-red" href="#agendar">Ver horários livres <svg class="ico" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
       </section>
     </div>
   </main>
 
   <footer class="wrap">
-    <div class="wordmark" aria-hidden="true">Sisal<span>.</span></div>
+    <div class="wordmark-box" aria-hidden="true"><p class="wordmark">SISAL<span>.</span></p></div>
     <div class="foot-row">
       <span>Sisal Barbearia · empresa fictícia para demonstração · Fotos: Unsplash (licença Unsplash) · Mapa: OpenStreetMap</span>
       <a class="back-link" href="/"><svg class="ico" aria-hidden="true"><use href="#i-arrow-left"/></svg>Ver outros modelos</a>
     </div>
+    <p class="quote-line">Quer um site assim para o seu negócio? <a href="https://tarciodiniz.com/#contato">Peça um orçamento</a></p>
     <p class="credito-autor">Site feito por <a href="https://tarciodiniz.com" rel="author">Tarcio Diniz</a>, desenvolvedor</p>
   </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/SplitText.min.js"></script>
 <script>
   const OPEN_HOURS = { 0: null, 1: [13, 20], 2: [9, 20], 3: [9, 20], 4: [9, 20], 5: [9, 20], 6: [8, 18] };
-  const SHIFTS_BY_WEEKDAY = { 1: ["tarde", "noite"], 2: ["manha", "tarde", "noite"], 3: ["manha", "tarde", "noite"], 4: ["manha", "tarde", "noite"], 5: ["manha", "tarde", "noite"], 6: ["manha", "tarde"] };
+  const BARBERS = {
+    Damião: { label: "Seu Damião", off: [1], lunch: 12 * 60 },
+    Rafa: { label: "Rafa", off: [], lunch: 12 * 60 + 30 },
+    Lara: { label: "Lara", off: [6], lunch: 12 * 60 },
+  };
+  const ANY_BARBER_ORDER = ["Rafa", "Damião", "Lara"];
+  const SLOT_MINUTES = 30;
+  const LUNCH_MINUTES = 60;
+  const LAST_SLOT_BEFORE_CLOSE = 30;
+  const BOOKING_LEAD_MINUTES = 25;
+  const OPEN_DAYS_SHOWN = 8;
+  const BUSY_BASE = 0.3;
+  const BUSY_EVENING = 0.3;
+  const BUSY_SATURDAY_MORNING = 0.35;
+  const BUSY_CAP = 0.85;
+  const EVENING_FROM = 17 * 60;
   const WEEKDAY_SHORT = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"];
   const WEEKDAY_LONG = ["domingo", "segunda", "terça", "quarta", "quinta", "sexta", "sábado"];
-  const OPEN_DAYS_SHOWN = 8;
-  const SHIFT_END_HOUR = { manha: 12, tarde: 18, noite: 20 };
-  const MISSING_NAMES = { service: "o serviço", barber: "o barbeiro", day: "o dia", shift: "o turno" };
-  const GREETING = "Olá, Sisal. Quero pedir um horário.";
+  const MISSING_NAMES = { service: "o serviço", barber: "o barbeiro", day: "o dia", time: "o horário" };
+  const GREETING = "Olá, Sisal. Quero marcar um horário.";
 
   const LEAFLET_URL = "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js";
   const TILE_URL = "https://tile.openstreetmap.org/{z}/{x}/{y}.png";
   const TILE_ATTRIBUTION = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>';
-  // Prata, checked on OpenStreetMap on 21/09/2026. The address is fictional, so the map shows the neighbourhood, never a door.
+  // Prata, checked on OpenStreetMap on 23/09/2026. The address is fictional, so the map shows the neighbourhood, never a door.
   const MAP_CENTER = [-7.2201, -35.894];
   const MAP_AREA_RADIUS_M = 400;
   const MAP_START_ZOOM = 15;
@@ -728,112 +853,257 @@
   const MAP_LOAD_MARGIN = "300px";
 
   const form = document.getElementById("booking");
+  const daysBox = document.getElementById("days");
+  const slotsBox = document.getElementById("slots");
+  const slotsStatus = document.querySelector("[data-slots-status]");
   const waButton = document.getElementById("wa-btn");
   const hint = document.getElementById("hint");
-  const filmTrack = document.getElementById("film-track");
+  const fadeForm = document.querySelector("[data-fade-form]");
+  const fadeFigure = document.querySelector("[data-fade-figure]");
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const canAnimate = () => Boolean(window.gsap) && !reduceMotion.matches;
+  let fadeTouched = false;
 
-  function pad(value) { return String(value).padStart(2, "0"); }
+  const pad = (value) => String(value).padStart(2, "0");
+  const clockLabel = (minutes) => `${Math.floor(minutes / 60)}h${minutes % 60 ? pad(minutes % 60) : ""}`;
+  const dateKey = (date) => `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
+  const shortDate = (date) => `${pad(date.getDate())}/${pad(date.getMonth() + 1)}`;
+  const startOfDay = (date) => new Date(date.getFullYear(), date.getMonth(), date.getDate());
+  const addDays = (date, days) => new Date(date.getFullYear(), date.getMonth(), date.getDate() + days);
+  const nowMinutes = () => { const now = new Date(); return now.getHours() * 60 + now.getMinutes(); };
+  const selected = (name) => form.querySelector(`input[name="${name}"]:checked`);
 
-  function openShiftsToday(weekday) {
-    const hour = new Date().getHours();
-    return (SHIFTS_BY_WEEKDAY[weekday] ?? []).filter((shift) => SHIFT_END_HOUR[shift] - 1 > hour);
+  // Same day, barber and time always give the same answer, so the agenda does not reshuffle between visits.
+  function seededChance(text) {
+    let hash = 2166136261;
+    for (let i = 0; i < text.length; i++) { hash ^= text.charCodeAt(i); hash = Math.imul(hash, 16777619); }
+    return ((hash >>> 0) % 1000) / 1000;
   }
 
-  function buildDayOptions() {
-    const container = document.getElementById("days");
-    container.innerHTML = "";
-    const today = new Date();
-    for (let offset = 0; container.children.length < OPEN_DAYS_SHOWN; offset += 1) {
-      const date = new Date(today.getFullYear(), today.getMonth(), today.getDate() + offset);
-      const weekday = date.getDay();
-      if (!OPEN_HOURS[weekday]) continue;
-      if (offset === 0 && openShiftsToday(weekday).length === 0) continue;
-      const dateLabel = `${pad(date.getDate())}/${pad(date.getMonth() + 1)}`;
-      const prefix = offset === 0 ? "hoje, " : offset === 1 ? "amanhã, " : "";
+  function busyChance(date, minutes) {
+    let chance = BUSY_BASE;
+    if (minutes >= EVENING_FROM) chance += BUSY_EVENING;
+    if (date.getDay() === 6 && minutes < 12 * 60) chance += BUSY_SATURDAY_MORNING;
+    return Math.min(chance, BUSY_CAP);
+  }
+
+  function dayStartTimes(date) {
+    const hours = OPEN_HOURS[date.getDay()];
+    if (!hours) return [];
+    const times = [];
+    for (let m = hours[0] * 60; m <= hours[1] * 60 - LAST_SLOT_BEFORE_CLOSE; m += SLOT_MINUTES) times.push(m);
+    return times;
+  }
+
+  // One barber at one time: free, taken, lunch, past or off.
+  function barberState(barber, date, minutes) {
+    const info = BARBERS[barber];
+    if (info.off.includes(date.getDay())) return "off";
+    const isToday = dateKey(date) === dateKey(new Date());
+    if (isToday && minutes < nowMinutes() + BOOKING_LEAD_MINUTES) return "past";
+    if (minutes >= info.lunch && minutes < info.lunch + LUNCH_MINUTES && date.getDay() !== 6) return "lunch";
+    return seededChance(`${dateKey(date)}|${barber}|${minutes}`) < busyChance(date, minutes) ? "taken" : "free";
+  }
+
+  function slotFor(barberChoice, date, minutes) {
+    if (barberChoice !== "any") return { state: barberState(barberChoice, date, minutes), barber: barberChoice };
+    const states = ANY_BARBER_ORDER.map((barber) => ({ barber, state: barberState(barber, date, minutes) }));
+    const free = states.find((s) => s.state === "free");
+    if (free) return free;
+    if (states.every((s) => s.state === "past")) return { state: "past", barber: null };
+    return { state: states.some((s) => s.state === "lunch") && !states.some((s) => s.state === "taken") ? "lunch" : "taken", barber: null };
+  }
+
+  function openDays() {
+    const days = [];
+    const today = startOfDay(new Date());
+    for (let offset = 0; days.length < OPEN_DAYS_SHOWN && offset < 21; offset++) {
+      const date = addDays(today, offset);
+      if (!OPEN_HOURS[date.getDay()]) continue;
+      if (offset === 0 && !dayStartTimes(date).some((m) => m >= nowMinutes() + BOOKING_LEAD_MINUTES)) continue;
+      days.push({ date, offset });
+    }
+    return days;
+  }
+
+  function dayLabel({ date, offset }) {
+    const prefix = offset === 0 ? "hoje, " : offset === 1 ? "amanhã, " : "";
+    return `${prefix}${WEEKDAY_LONG[date.getDay()]}, ${shortDate(date)}`;
+  }
+
+  function buildDays() {
+    daysBox.innerHTML = "";
+    openDays().forEach((day) => {
       const label = document.createElement("label");
-      label.className = "choice";
-      label.innerHTML = `<input type="radio" name="day" value="${dateLabel}" data-weekday="${weekday}"><span><small>${offset === 0 ? "Hoje" : WEEKDAY_SHORT[weekday]}</small><b>${pad(date.getDate())}</b></span>`;
+      label.className = "chip";
+      label.innerHTML = `<input type="radio" name="day" value="${dateKey(day.date)}"><span><small>${day.offset === 0 ? "Hoje" : WEEKDAY_SHORT[day.date.getDay()]}</small><b>${pad(day.date.getDate())}</b></span>`;
       const input = label.querySelector("input");
-      input.dataset.label = `${prefix}${WEEKDAY_LONG[weekday]}, ${dateLabel}`;
-      if (offset === 0) input.dataset.today = "true";
-      container.append(label);
+      input.dataset.label = dayLabel(day);
+      input.dataset.weekday = String(day.date.getDay());
+      daysBox.append(label);
+    });
+  }
+
+  function selectedDate() {
+    const input = selected("day");
+    if (!input) return null;
+    const [y, m, d] = input.value.split("-").map(Number);
+    return new Date(y, m - 1, d);
+  }
+
+  // A barber's day off cannot be picked, so the request never asks for the impossible.
+  function syncDays() {
+    const barber = selected("barber");
+    const off = barber && barber.value !== "any" ? BARBERS[barber.value].off : [];
+    daysBox.querySelectorAll("input").forEach((input) => {
+      input.disabled = off.includes(Number(input.dataset.weekday));
+      if (input.disabled) input.checked = false;
+    });
+  }
+
+  function renderSlots(animate) {
+    const date = selectedDate();
+    const barber = selected("barber");
+    const keep = selected("time")?.value;
+    slotsBox.innerHTML = "";
+    if (!date || !barber) {
+      slotsStatus.textContent = !barber ? "Escolha o barbeiro e o dia para ver os horários." : "Escolha o dia para ver os horários.";
+      return;
+    }
+    let freeCount = 0;
+    dayStartTimes(date).forEach((minutes) => {
+      const { state, barber: who } = slotFor(barber.value, date, minutes);
+      if (state === "past" || state === "off") return;
+      const label = document.createElement("label");
+      label.className = `slot is-${state}`;
+      const text = state === "lunch" ? "almoço" : clockLabel(minutes);
+      const spoken = state === "free" ? clockLabel(minutes) : `${clockLabel(minutes)}, ${state === "lunch" ? "almoço" : "ocupado"}`;
+      label.innerHTML = `<input type="radio" name="time" value="${minutes}" aria-label="${spoken}"${state === "free" ? "" : " disabled"}><span>${text}</span>`;
+      if (who) label.querySelector("input").dataset.barber = who;
+      if (state === "free") freeCount += 1;
+      slotsBox.append(label);
+    });
+    const kept = keep && slotsBox.querySelector(`input[value="${keep}"]:not(:disabled)`);
+    if (kept) kept.checked = true;
+    if (!slotsBox.children.length) slotsBox.innerHTML = '<p class="slots-empty">Nesse dia não sobrou horário. Tente o próximo.</p>';
+    const who = barber.value === "any" ? "" : ` com ${BARBERS[barber.value].label}`;
+    slotsStatus.innerHTML = `<b>${freeCount} ${freeCount === 1 ? "horário livre" : "horários livres"}</b>${who}`;
+    if (animate && canAnimate()) {
+      gsap.from(slotsBox.querySelectorAll(".slot"), { rotationX: -85, opacity: 0, transformOrigin: "50% 0%", duration: 0.42, ease: "power2.out", stagger: 0.014, clearProps: "transform,opacity" });
     }
   }
 
-  function selected(name) { return form.querySelector(`input[name="${name}"]:checked`); }
-
-  // A barber's day off or a shift outside opening hours cannot be picked, so the request never asks for the impossible.
-  function syncAvailability() {
-    const day = selected("day");
-    const barber = selected("barber");
-    const weekday = day ? Number(day.dataset.weekday) : null;
-    let allowedShifts = weekday === null ? null : SHIFTS_BY_WEEKDAY[weekday];
-    if (day && day.dataset.today) allowedShifts = openShiftsToday(weekday);
-    form.querySelectorAll('input[name="shift"]').forEach((input) => {
-      input.disabled = allowedShifts !== null && !allowedShifts.includes(input.value);
-      if (input.disabled) input.checked = false;
-    });
-    const offDay = barber ? barber.dataset.off : "";
-    form.querySelectorAll('input[name="day"]').forEach((input) => {
-      input.disabled = offDay !== "" && input.dataset.weekday === offDay;
-      if (input.disabled) input.checked = false;
-    });
+  function fadeDescription() {
+    const data = new FormData(fadeForm);
+    return `degradê ${data.get("height")}, ${data.get("base")}, ${data.get("top")} em cima`;
   }
 
-  function describeChoice(name) {
+  function describe(name) {
     const input = selected(name);
     if (!input) return null;
-    return name === "service" ? `${input.dataset.label} (${input.dataset.detail})` : input.dataset.label;
+    if (name === "service") return `${input.dataset.label} (${input.dataset.detail})`;
+    if (name === "time") return clockLabel(Number(input.value));
+    if (name === "barber" && input.value === "any") {
+      const slot = selected("time");
+      return slot && slot.dataset.barber ? `tanto faz (livre: ${BARBERS[slot.dataset.barber].label})` : "tanto faz";
+    }
+    return input.dataset.label;
+  }
+
+  function wantsFade() {
+    const service = selected("service");
+    return Boolean(service && service.dataset.fade && fadeTouched);
   }
 
   function whatsappMessage(choices) {
     const name = form.elements.name.value.trim();
-    const lines = [
-      GREETING,
-      `Serviço: ${choices.service}`,
-      `Barbeiro: ${choices.barber}`,
-      `Dia: ${choices.day}`,
-      `Turno: ${choices.shift}`,
-    ];
+    const lines = [GREETING, `Serviço: ${choices.service}`];
+    if (wantsFade()) lines.push(`Degradê: ${fadeDescription().replace(/^degradê /, "")}`);
+    lines.push(`Barbeiro: ${choices.barber}`, `Dia: ${choices.day}`, `Horário: ${choices.time}`);
     if (name) lines.push(`Nome: ${name}`);
-    lines.push("Qual horário está livre?");
+    lines.push("Pode confirmar?");
     return lines.join("\n");
   }
 
-  function joinList(items) {
-    return items.length < 2 ? items.join("") : `${items.slice(0, -1).join(", ")} e ${items.at(-1)}`;
-  }
+  const joinList = (items) => (items.length < 2 ? items.join("") : `${items.slice(0, -1).join(", ")} e ${items.at(-1)}`);
 
   function renderSummary() {
-    syncAvailability();
     const choices = {};
     const missing = [];
     Object.keys(MISSING_NAMES).forEach((key) => {
-      choices[key] = describeChoice(key);
+      choices[key] = describe(key);
       const output = form.querySelector(`[data-out="${key}"]`);
       output.textContent = choices[key] ?? "a escolher";
       output.classList.toggle("is-empty", !choices[key]);
       if (!choices[key]) missing.push(MISSING_NAMES[key]);
     });
-    form.querySelector('[data-step="service"]').classList.toggle("is-done", Boolean(choices.service));
-    form.querySelector('[data-step="barber"]').classList.toggle("is-done", Boolean(choices.barber));
-    form.querySelector('[data-step="when"]').classList.toggle("is-done", Boolean(choices.day && choices.shift));
+    const fadeRow = form.querySelector("[data-fade-row]");
+    fadeRow.hidden = !wantsFade();
+    if (wantsFade()) fadeRow.querySelector("dd").textContent = fadeDescription().replace(/^degradê /, "");
+    form.querySelectorAll(".step").forEach((step) => step.classList.toggle("is-done", Boolean(choices[step.dataset.step])));
     const ready = missing.length === 0;
     waButton.setAttribute("aria-disabled", String(!ready));
     waButton.href = `https://wa.me/?text=${encodeURIComponent(ready ? whatsappMessage(choices) : GREETING)}`;
     hint.textContent = ready ? "Tudo certo. A mensagem abre pronta, é só enviar." : `Falta escolher ${joinList(missing)}.`;
   }
 
+  function onBookingChange(event) {
+    const name = event.target.name;
+    const barberFromService = name === "service" && event.target.dataset.barber && pick("barber", event.target.dataset.barber);
+    if (name === "barber" || barberFromService) syncDays();
+    if (name === "barber" || name === "day" || barberFromService) renderSlots(true);
+    renderSummary();
+  }
+
+  function pick(name, value) {
+    const input = form.querySelector(`input[name="${name}"][value="${value}"]`);
+    if (!input || input.disabled) return false;
+    input.checked = true;
+    return true;
+  }
+
   function scrollToTarget(target) {
     target.scrollIntoView({ behavior: reduceMotion.matches ? "auto" : "smooth", block: "start" });
   }
 
-  function preselect(name, value) {
-    const input = form.querySelector(`input[name="${name}"][value="${value}"]`);
-    if (!input || input.disabled) return;
-    input.checked = true;
-    renderSummary();
+  // Earliest free chair from now on, across the three barbers.
+  function nextFreeSlot() {
+    for (const day of openDays()) {
+      for (const minutes of dayStartTimes(day.date)) {
+        const slot = slotFor("any", day.date, minutes);
+        if (slot.state === "free") return { day, minutes, barber: slot.barber };
+      }
+    }
+    return null;
+  }
+
+  function showNextSlot() {
+    const button = document.querySelector("[data-next-slot]");
+    const next = nextFreeSlot();
+    if (!next) return;
+    const when = next.day.offset === 0 ? "hoje" : next.day.offset === 1 ? "amanhã" : WEEKDAY_LONG[next.day.date.getDay()];
+    button.querySelector("[data-next-text]").innerHTML = `Livre ${when} às <b>${clockLabel(next.minutes)}</b> · ${BARBERS[next.barber].label}`;
+    button.setAttribute("aria-label", `Pegar o horário livre de ${when} às ${clockLabel(next.minutes)} com ${BARBERS[next.barber].label}`);
+    button.hidden = false;
+    button.addEventListener("click", () => {
+      pick("barber", next.barber);
+      syncDays();
+      pick("day", dateKey(next.day.date));
+      renderSlots(false);
+      pick("time", String(next.minutes));
+      renderSummary();
+      scrollToTarget(document.getElementById("agendar"));
+    });
+  }
+
+  function renderFade(animate) {
+    const height = fadeForm.querySelector('input[name="height"]:checked');
+    const y = `${height.dataset.y}%`;
+    if (animate && canAnimate()) gsap.to(fadeFigure, { "--fade-y": y, duration: 0.7, ease: "power3.inOut", overwrite: true });
+    else fadeFigure.style.setProperty("--fade-y", y);
+    document.querySelector("[data-fade-tag]").textContent = height.value;
+    document.querySelector("[data-fade-explain]").textContent = height.dataset.text;
+    document.querySelector("[data-fade-summary]").textContent = fadeDescription();
   }
 
   function markOpenNow() {
@@ -851,13 +1121,6 @@
     document.querySelectorAll(".hours tr").forEach((row) => row.classList.toggle("is-today", row.dataset.days.split(" ").includes(String(weekday))));
   }
 
-  // Moves the strip by one frame; scrollBy on the track only, so the page itself never jumps sideways.
-  function stepFilm(direction) {
-    const frame = filmTrack.querySelector(".frame");
-    const gap = parseFloat(getComputedStyle(filmTrack).columnGap) || 0;
-    filmTrack.scrollBy({ left: direction * (frame.getBoundingClientRect().width + gap), behavior: reduceMotion.matches ? "auto" : "smooth" });
-  }
-
   function loadScript(src) {
     return new Promise((resolve, reject) => {
       const script = document.createElement("script");
@@ -868,7 +1131,7 @@
     });
   }
 
-  function cssToken(name) { return getComputedStyle(document.documentElement).getPropertyValue(name).trim(); }
+  const cssToken = (name) => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
 
   function drawMap(container) {
     const accent = cssToken("--red");
@@ -883,7 +1146,7 @@
       .addTo(map);
     const bounds = area.getBounds();
     MAP_LANDMARKS.forEach(({ name, at, direction }) => {
-      L.circleMarker(at, { radius: 6, color: cssToken("--black"), weight: 2, fillColor: cssToken("--paper"), fillOpacity: 1 })
+      L.circleMarker(at, { radius: 6, color: cssToken("--ink"), weight: 2, fillColor: cssToken("--bone"), fillOpacity: 1 })
         .bindTooltip(name, { permanent: true, direction, offset: [0, direction === "top" ? -6 : 6], className: "map-ref" })
         .addTo(map);
       bounds.extend(at);
@@ -905,13 +1168,22 @@
     observer.observe(container);
   }
 
-  buildDayOptions();
+  buildDays();
   markOpenNow();
+  // The agenda is visible from the start: "tanto faz" and the first open day are already picked.
+  pick("barber", "any");
+  const firstDay = daysBox.querySelector("input");
+  if (firstDay) firstDay.checked = true;
+  renderSlots(false);
+  renderFade(false);
   renderSummary();
+  showNextSlot();
   watchMap();
-  form.addEventListener("change", renderSummary);
+  form.addEventListener("change", onBookingChange);
   form.elements.name.addEventListener("input", renderSummary);
   form.addEventListener("submit", (event) => event.preventDefault());
+  fadeForm.addEventListener("change", () => { fadeTouched = true; renderFade(true); renderSummary(); });
+  fadeForm.addEventListener("submit", (event) => event.preventDefault());
 
   waButton.addEventListener("click", (event) => {
     if (waButton.getAttribute("aria-disabled") !== "true") return;
@@ -920,17 +1192,22 @@
     if (firstMissing) scrollToTarget(firstMissing);
   });
 
-  document.querySelectorAll(".board-row").forEach((row) => {
+  document.querySelectorAll(".svc").forEach((row) => {
     row.addEventListener("click", () => {
-      preselect("service", row.dataset.service);
+      pick("service", row.dataset.service);
+      const barber = form.querySelector(`input[name="service"][value="${row.dataset.service}"]`).dataset.barber;
+      if (barber) { pick("barber", barber); syncDays(); renderSlots(false); }
+      renderSummary();
       scrollToTarget(document.getElementById("agendar"));
     });
   });
-  document.querySelectorAll("[data-barber]").forEach((link) => {
-    link.addEventListener("click", () => preselect("barber", link.dataset.barber));
+  document.querySelectorAll("[data-pick-barber]").forEach((link) => {
+    link.addEventListener("click", () => { pick("barber", link.dataset.pickBarber); syncDays(); renderSlots(false); renderSummary(); });
   });
-  document.querySelectorAll("[data-strip]").forEach((button) => {
-    button.addEventListener("click", () => stepFilm(Number(button.dataset.strip)));
+  document.querySelector("[data-fade-go]").addEventListener("click", () => {
+    fadeTouched = true;
+    if (!selected("service")) pick("service", "degrade");
+    renderSummary();
   });
 
   // Smooth only on in-page link clicks; a global smooth scroll-behavior also animates the browser's scroll restoration on reload.
@@ -944,47 +1221,155 @@
     });
   });
 
+  // ---------- Motion: everything below is extra, the page is complete without it ----------
+  const POLE_TILE = 28;
+  const POLE_LOOP_SECONDS = 1.4;
+  const POLE_MAX_BOOST = 9;
+  const VELOCITY_PER_BOOST = 280;
+  const FLOAT_FOLLOW = 0.5;
+  const FLOAT_TILT = 8;
+
+  // Pole stripes loop forever; scrolling speeds them up and scrolling back turns them the other way.
+  function spinPoles() {
+    const loops = gsap.utils.toArray(".pole-stripes").map((stripes) => {
+      const tile = stripes.closest(".logo, .ticket-head") ? POLE_TILE / 2 : POLE_TILE;
+      return gsap.fromTo(stripes, { y: 0 }, { y: -tile, duration: POLE_LOOP_SECONDS, ease: "none", repeat: -1 });
+    });
+    const boost = { value: 1 };
+    const apply = () => loops.forEach((loop) => loop.timeScale(boost.value));
+    const settle = () => gsap.to(boost, { value: Math.sign(boost.value) || 1, duration: 1.4, ease: "power3.out", overwrite: true, onUpdate: apply });
+    ScrollTrigger.create({
+      start: 0,
+      end: "max",
+      onUpdate: (self) => {
+        const speed = gsap.utils.clamp(1, POLE_MAX_BOOST, 1 + Math.abs(self.getVelocity()) / VELOCITY_PER_BOOST);
+        boost.value = speed * self.direction;
+        apply();
+        settle();
+      },
+    });
+  }
+
+  // The painted name squeezes as the hero leaves, like a razor closing; the photo drifts slower than the page.
+  function heroScroll() {
+    const scrub = { trigger: ".hero", start: "top top", end: "bottom top", scrub: 0.6 };
+    gsap.fromTo(".hero-mark", { "--wdth": 150 }, { "--wdth": 52, ease: "none", scrollTrigger: { ...scrub } });
+    gsap.fromTo(".hero-photo img", { yPercent: -8 }, { yPercent: 6, ease: "none", scrollTrigger: { ...scrub } });
+    // Transform only: the painted name is never hidden, it just rises into place.
+    gsap.from(".hero-mark", { yPercent: 32, duration: 1.4, ease: "expo.out", delay: 0.1 });
+  }
+
+  function revealTitles() {
+    document.querySelectorAll("[data-split]").forEach((title) => {
+      SplitText.create(title, {
+        type: "lines",
+        mask: "lines",
+        linesClass: "split-line",
+        autoSplit: true,
+        onSplit: (self) => gsap.from(self.lines, { yPercent: 110, duration: 1, ease: "expo.out", stagger: 0.08, scrollTrigger: { trigger: title, start: "top 88%", once: true } }),
+      });
+    });
+  }
+
+  function revealRows() {
+    ScrollTrigger.batch(".svc", {
+      start: "top 92%",
+      once: true,
+      onEnter: (rows) => gsap.from(rows, { x: -28, opacity: 0, duration: 0.6, ease: "power3.out", stagger: 0.06 }),
+    });
+    gsap.utils.toArray(".barber-photo img").forEach((img) => {
+      gsap.fromTo(img, { yPercent: -10 }, { yPercent: 0, ease: "none", scrollTrigger: { trigger: img.parentElement, start: "top bottom", end: "bottom top", scrub: true } });
+    });
+  }
+
+  // Photo that trails the mouse over the price list; built on first hover so nothing downloads before that.
+  function followingPhoto() {
+    const list = document.querySelector("[data-svc-list]");
+    const float = document.querySelector("[data-float]");
+    const rows = [...list.querySelectorAll(".svc")];
+    let photos = [];
+    let current = -1;
+    let lastX = 0;
+    gsap.set(float, { xPercent: 12, yPercent: -50, scale: 0.7, autoAlpha: 0, transformOrigin: "0% 50%" });
+    const toX = gsap.quickTo(float, "x", { duration: FLOAT_FOLLOW, ease: "power3" });
+    const toY = gsap.quickTo(float, "y", { duration: FLOAT_FOLLOW, ease: "power3" });
+    const toTilt = gsap.quickTo(float, "rotation", { duration: 0.8, ease: "power3" });
+    const clampTilt = gsap.utils.clamp(-FLOAT_TILT, FLOAT_TILT);
+    const build = () => {
+      photos = rows.map((row) => {
+        const img = document.createElement("img");
+        img.alt = "";
+        img.src = row.querySelector("[data-float-src]").dataset.floatSrc;
+        float.append(img);
+        return img;
+      });
+    };
+    const show = (index) => {
+      if (index === current) return;
+      if (current >= 0) gsap.to(photos[current], { opacity: 0, duration: 0.25, overwrite: true });
+      gsap.to(photos[index], { opacity: 1, duration: 0.25, overwrite: true });
+      current = index;
+      gsap.to(float, { scale: 1, autoAlpha: 1, duration: 0.4, ease: "power3.out", overwrite: "auto" });
+    };
+    const hide = () => {
+      gsap.to(float, { scale: 0.7, autoAlpha: 0, duration: 0.3, ease: "power2.in", overwrite: "auto" });
+      current = -1;
+      photos.forEach((img) => gsap.to(img, { opacity: 0, duration: 0.2, delay: 0.1, overwrite: true }));
+    };
+    const onMove = (event) => {
+      if (!photos.length) { build(); gsap.set(float, { x: event.clientX, y: event.clientY }); }
+      toX(event.clientX);
+      toY(event.clientY);
+      toTilt(clampTilt((event.clientX - lastX) * 0.5));
+      lastX = event.clientX;
+      const index = rows.indexOf(event.target.closest(".svc"));
+      if (index < 0) hide(); else show(index);
+    };
+    list.addEventListener("pointermove", onMove);
+    list.addEventListener("pointerleave", hide);
+    return () => {
+      list.removeEventListener("pointermove", onMove);
+      list.removeEventListener("pointerleave", hide);
+      photos.forEach((img) => img.remove());
+    };
+  }
+
+  // On a computer the row of cuts is pinned and the wheel walks it sideways; on the phone it is a native swipe.
+  function pinGallery() {
+    const section = document.querySelector("[data-gallery]");
+    const rail = section.querySelector("[data-rail]");
+    const setProgress = gsap.quickSetter("[data-progress]", "scaleX");
+    section.classList.add("is-pinned");
+    const distance = () => Math.max(0, rail.scrollWidth - document.documentElement.clientWidth);
+    const slide = gsap.to(rail, {
+      x: () => -distance(),
+      ease: "none",
+      scrollTrigger: { trigger: section, start: "top top", end: () => `+=${distance()}`, pin: true, scrub: 0.6, anticipatePin: 1, invalidateOnRefresh: true, onUpdate: (self) => setProgress(self.progress) },
+    });
+    gsap.utils.toArray(".frame-img img", rail).forEach((img) => {
+      gsap.fromTo(img, { xPercent: -6, scale: 1.12 }, { xPercent: 6, scale: 1.12, ease: "none", scrollTrigger: { trigger: img, containerAnimation: slide, start: "left right", end: "right left", scrub: true } });
+    });
+    return () => { section.classList.remove("is-pinned"); gsap.set(rail, { clearProps: "transform" }); };
+  }
+
+  // Without the library the thumbnails of the price list must come back, so the no-script layout is used.
+  if (!window.gsap || !window.ScrollTrigger) document.documentElement.classList.remove("js");
   if (window.gsap && window.ScrollTrigger) {
     gsap.registerPlugin(ScrollTrigger);
+    if (window.SplitText) gsap.registerPlugin(SplitText);
+    ScrollTrigger.config({ ignoreMobileResize: true });
     ScrollTrigger.create({ start: "top -40", end: "max", toggleClass: { targets: ".site-header", className: "is-compact" } });
 
     const motion = gsap.matchMedia();
     motion.add("(prefers-reduced-motion: no-preference)", () => {
-      // Opening credits: the photo fades up from black and the title comes in one line at a time.
-      const intro = gsap.timeline({ defaults: { ease: "power2.out" } });
-      intro.from(".hero-photo img", { autoAlpha: 0, scale: 1.04, duration: 1.2 }, 0)
-        .from(".hero h1 .line", { autoAlpha: 0, y: 14, duration: 0.55, stagger: 0.18 }, 0.1)
-        .from(".razor", { scaleX: 0, duration: 0.5, ease: "power3.inOut" }, 0.75)
-        .from(".hero-lead, .hero-actions, .scene", { autoAlpha: 0, duration: 0.5, stagger: 0.08 }, 0.85);
-
-      // Opacity only, never visibility: a hidden fieldset drops the focus of a field the visitor is typing in.
-      ScrollTrigger.batch(".board-row", {
-        start: "top 92%",
-        once: true,
-        onEnter: (batch) => gsap.from(batch, { opacity: 0, x: -12, duration: 0.5, ease: "power2.out", stagger: 0.06 }),
-      });
-      ScrollTrigger.batch(".step, .review, .frame, .practical li", {
-        start: "top 90%",
-        once: true,
-        onEnter: (batch) => gsap.from(batch, { opacity: 0, y: 24, duration: 0.6, ease: "power3.out", stagger: 0.08 }),
-      });
-      // The initials land like a rubber stamp hitting paper.
-      gsap.utils.toArray(".stamp").forEach((stamp) => {
-        gsap.from(stamp, { scale: 1.6, autoAlpha: 0, duration: 0.45, ease: "power4.in", scrollTrigger: { trigger: stamp, start: "top 88%", once: true } });
-      });
-
-      document.querySelectorAll("[data-count]").forEach((el) => {
-        const target = Number(el.dataset.count);
-        const decimals = Number(el.dataset.decimals ?? 0);
-        const state = { value: 0 };
-        gsap.to(state, {
-          value: target, duration: 1.2, ease: "power2.out",
-          scrollTrigger: { trigger: el, start: "top 95%", once: true },
-          onUpdate: () => { el.textContent = state.value.toLocaleString("pt-BR", { minimumFractionDigits: decimals, maximumFractionDigits: decimals }); },
-        });
-      });
-      gsap.from(".wordmark", { yPercent: 30, autoAlpha: 0, duration: 1, ease: "power3.out", scrollTrigger: { trigger: "footer", start: "top 92%", once: true } });
+      spinPoles();
+      heroScroll();
+      if (window.SplitText) revealTitles();
+      revealRows();
     });
+    motion.add("(prefers-reduced-motion: no-preference) and (min-width: 900px) and (min-height: 560px)", pinGallery);
+    motion.add("(prefers-reduced-motion: no-preference) and (min-width: 900px) and (hover: hover) and (pointer: fine)", followingPhoto);
+    document.fonts.ready.then(() => ScrollTrigger.refresh());
   }
 </script>
 <script>
