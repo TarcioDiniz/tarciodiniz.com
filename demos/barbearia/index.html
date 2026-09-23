@@ -15,7 +15,7 @@
   Nathon Oski (1517832606299) · Nate Johnston (1647140655214) · Arthur Humeau (1549271568) ·
   Kambria Trout (1760641371942) · Mitchell Orr (1739302493888) · César Badilla Miranda (1705976062088) ·
   Joshua Lawrence (1621645582931) · Allef Vinicius (1503951914875).
-  Fontes: Anybody e Libre Franklin, SIL Open Font License, Google Fonts.
+  Fontes: Sofia Sans Extra Condensed e Libre Franklin, SIL Open Font License, Google Fonts.
   GSAP 3.15.0 (licença padrão sem custo, https://gsap.com/community/standard-license/).
 -->
 <script>document.documentElement.classList.add("js");</script>
@@ -23,7 +23,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://images.unsplash.com">
-<link href="https://fonts.googleapis.com/css2?family=Anybody:wdth,wght@50..150,500..900&family=Libre+Franklin:wght@400..700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Extra+Condensed:wght@600..900&family=Libre+Franklin:wght@400..700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" crossorigin>
 <link rel="preload" as="image" href="https://images.unsplash.com/photo-1775494165568-42c0fbb4c782?auto=format&fit=crop&w=900&h=1100&q=70" imagesrcset="https://images.unsplash.com/photo-1775494165568-42c0fbb4c782?auto=format&fit=crop&w=640&h=780&q=70 640w, https://images.unsplash.com/photo-1775494165568-42c0fbb4c782?auto=format&fit=crop&w=900&h=1100&q=70 900w, https://images.unsplash.com/photo-1775494165568-42c0fbb4c782?auto=format&fit=crop&w=1300&h=1590&q=70 1300w" imagesizes="(min-width: 900px) 46vw, 100vw">
 <style>
@@ -61,8 +61,8 @@
     --gutter: clamp(16px, 4.4vw, 56px);
     --max: 1380px;
     --header-h: 64px;
-    /* Anybody has a width axis from 50 to 150: condensed like a shop sign, stretched like a painted door. */
-    --font-display: "Anybody", "Arial Narrow", "Helvetica Neue", sans-serif;
+    /* Tall and narrow like the letters on a painted price board; Libre Franklin carries the rest. */
+    --font-display: "Sofia Sans Extra Condensed", "Arial Narrow", "Helvetica Neue", sans-serif;
     --font: "Libre Franklin", system-ui, -apple-system, "Segoe UI", sans-serif;
   }
   * { box-sizing: border-box; }
@@ -93,7 +93,7 @@
   .logo { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; }
   .logo .pole { width: 11px; height: 30px; }
   .logo .pole-stripes { background-size: 14px 14px; top: -14px; bottom: -14px; }
-  .logo b { font-family: var(--font-display); font-weight: 800; font-variation-settings: "wdth" 130; font-size: 24px; line-height: 1; letter-spacing: .02em; }
+  .logo b { font-family: var(--font-display); font-weight: 900; font-size: 30px; line-height: 1; letter-spacing: .06em; }
   .logo small { display: none; font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--bone-dim); }
   .nav { display: none; gap: 8px; font-size: 15px; font-weight: 500; }
   .nav a { display: inline-flex; align-items: center; min-height: 44px; padding-inline: 10px; color: var(--bone-dim); transition: color .2s ease; }
@@ -116,7 +116,7 @@
   .hero-copy { position: relative; z-index: 2; }
   .kicker { display: inline-flex; align-items: center; gap: 10px; margin: 0 0 14px; font-size: 13px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--bone-dim); }
   .kicker::before { content: ""; width: 22px; height: 2px; background: var(--red); flex: none; }
-  .hero h1 { margin: 0; font-family: var(--font-display); font-weight: 850; font-variation-settings: "wdth" 72; font-size: clamp(40px, 12.4vw, 66px); line-height: .9; letter-spacing: -.005em; text-transform: uppercase; }
+  .hero h1 { margin: 0; font-family: var(--font-display); font-weight: 900; font-size: clamp(48px, 15vw, 80px); line-height: .88; letter-spacing: 0; text-transform: uppercase; }
   .hero h1 .hl { color: var(--red); }
   .hero-lead { max-width: 40ch; margin: 16px 0 0; color: var(--bone-2); font-size: 16px; }
   .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 22px; margin-top: 20px; }
@@ -134,13 +134,23 @@
   .hero-photo img { width: 100%; height: 118%; object-fit: cover; object-position: 30% 62%; filter: var(--photo-grade); }
   .hero-photo figcaption { position: absolute; left: 14px; bottom: 14px; padding: 6px 10px; border-radius: 999px; background: var(--ink); color: var(--bone-2); font-size: 13px; }
   .hero-pole { position: absolute; z-index: 2; left: 0; top: 18px; bottom: 18px; width: 16px; }
-  /* The painted name is sized by its own box (cqw), so the whole word fits in any column. 4.75 is its width in em at wdth 150. */
-  .hero-mark-box { position: relative; z-index: 0; container-type: inline-size; min-width: 0; }
-  .hero-mark { margin: -0.2em 0 0; font-family: var(--font-display); font-weight: 900; font-variation-settings: "wdth" var(--wdth, 150); font-size: calc(100cqw / 4.75); line-height: .82; letter-spacing: -.01em; color: var(--red); white-space: nowrap; user-select: none; pointer-events: none; }
+  /* Fade ruler: the guard numbers a barber reads off the clipper, from skin (0) to length (4).
+     The blade marks where the fade stops; scrolling walks it up the scale. */
+  .rule { --rule-p: .667; position: relative; z-index: 0; min-width: 0; margin-top: 22px; padding: 16px 18px 12px; border-radius: 18px; background: var(--ink-2); box-shadow: inset 0 0 0 1px var(--line-d); }
+  .rule-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 12px; font-size: 13px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--bone-dim); }
+  .rule-read { font-family: var(--font-display); font-size: 26px; font-weight: 900; letter-spacing: .04em; line-height: 1; color: var(--bone); }
+  .rule-read b { color: var(--red-text); }
+  .rule-track { position: relative; height: 26px; border-radius: 999px; background: var(--ink-3); }
+  .rule-fill { position: absolute; inset: 0; border-radius: inherit; background: linear-gradient(90deg, var(--bone) 0%, var(--bone-2) 18%, var(--mute) 48%, var(--ink-soft) 76%, var(--ink) 100%); clip-path: inset(0 calc(100% - var(--rule-p) * 100%) 0 0 round 999px); }
+  /* Comb teeth over the track, one every guard step */
+  .rule-track::after { content: ""; position: absolute; inset: 0; border-radius: inherit; background: repeating-linear-gradient(90deg, transparent 0 calc(100% / 6 - 2px), var(--line-d2) calc(100% / 6 - 2px) calc(100% / 6)); pointer-events: none; }
+  .rule-blade { position: absolute; top: -8px; bottom: -8px; left: calc(var(--rule-p) * 100%); width: 6px; margin-left: -3px; border-radius: 3px; background: var(--red); box-shadow: 0 0 0 2px var(--ink-2); }
+  .rule-ticks { list-style: none; display: flex; justify-content: space-between; margin: 12px 0 0; padding: 0; font-family: var(--font-display); font-size: 20px; font-weight: 800; line-height: 1; color: var(--bone-dim); }
+  .rule-ticks li { min-width: 1ch; text-align: center; }
 
   /* Section scaffolding */
   .section { padding-block: clamp(72px, 10vw, 136px); }
-  .h2 { margin: 0; font-family: var(--font-display); font-weight: 850; font-variation-settings: "wdth" 78; font-size: clamp(38px, 8.6vw, 104px); line-height: .92; text-transform: uppercase; }
+  .h2 { margin: 0; font-family: var(--font-display); font-weight: 900; font-size: clamp(46px, 10.4vw, 124px); line-height: .9; text-transform: uppercase; }
   .lede { max-width: 46ch; margin: 18px 0 0; color: var(--bone-2); }
   .sec-head { margin-bottom: clamp(32px, 5vw, 64px); }
   /* The mask clips to each line box; padding keeps accents on capitals (Ê, Á) inside it without moving the layout. */
@@ -151,11 +161,11 @@
   .svc { display: grid; grid-template-columns: 64px minmax(0, 1fr) auto; grid-template-areas: "thumb name price" "thumb desc time"; column-gap: 14px; row-gap: 2px; align-items: center; width: 100%; min-height: 88px; padding: 14px 0; border: 0; border-bottom: 1px solid var(--line-d); background: transparent; text-align: left; transition: background-color .25s ease; }
   .svc:focus-visible { outline: 2px solid var(--bone); outline-offset: 2px; }
   .svc-thumb { grid-area: thumb; width: 64px; height: 64px; border-radius: 50%; object-fit: cover; filter: var(--photo-grade); background: var(--ink-3); }
-  .svc-name { grid-area: name; min-width: 0; font-family: var(--font-display); font-weight: 800; font-variation-settings: "wdth" var(--svc-w, 70); font-size: clamp(24px, 6.4vw, 30px); line-height: 1; text-transform: uppercase; transition: font-variation-settings .45s cubic-bezier(.2, .8, .2, 1), color .25s ease; }
+  .svc-name { grid-area: name; min-width: 0; font-family: var(--font-display); font-weight: 900; font-size: clamp(30px, 8vw, 38px); line-height: .95; text-transform: uppercase; transition: letter-spacing .45s cubic-bezier(.2, .8, .2, 1), color .25s ease; }
   .svc-desc { grid-area: desc; min-width: 0; color: var(--bone-dim); font-size: 15px; line-height: 1.4; }
-  .svc-price { grid-area: price; justify-self: end; font-family: var(--font-display); font-weight: 800; font-variation-settings: "wdth" 80; font-size: 24px; line-height: 1; white-space: nowrap; }
+  .svc-price { grid-area: price; justify-self: end; font-family: var(--font-display); font-weight: 900; font-size: 30px; line-height: 1; white-space: nowrap; }
   .svc-time { grid-area: time; justify-self: end; align-self: start; color: var(--bone-dim); font-size: 13px; white-space: nowrap; font-variant-numeric: tabular-nums; }
-  .svc:hover .svc-name { color: var(--red); --svc-w: 104; }
+  .svc:hover .svc-name { color: var(--red); letter-spacing: .05em; }
   .svc-tag { display: inline-block; margin-left: 8px; padding: 2px 8px; border-radius: 999px; background: var(--red-deep); color: var(--bone); font-family: var(--font); font-size: 13px; font-weight: 600; letter-spacing: .02em; text-transform: none; vertical-align: 4px; font-variation-settings: normal; }
   .menu-foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 32px; margin-top: 22px; color: var(--bone-dim); font-size: 15px; }
   .pay { display: flex; flex-wrap: wrap; gap: 8px 18px; margin: 0; }
@@ -205,8 +215,8 @@
   .step { position: relative; margin: 0; padding: 26px 0; border: 0; border-top: 1.5px solid var(--line-p2); min-width: 0; }
   .step legend { float: left; width: 100%; display: flex; align-items: baseline; gap: 12px; padding: 0; margin: 0 0 16px; }
   .step legend + * { clear: both; }
-  .step-num { font-family: var(--font-display); font-weight: 900; font-variation-settings: "wdth" 60; font-size: 44px; line-height: .8; color: var(--red-deep); }
-  .step-title { font-family: var(--font-display); font-weight: 800; font-variation-settings: "wdth" 90; font-size: clamp(22px, 3vw, 30px); line-height: 1.05; text-transform: uppercase; }
+  .step-num { font-family: var(--font-display); font-weight: 900; font-size: 54px; line-height: .8; color: var(--red-deep); }
+  .step-title { font-family: var(--font-display); font-weight: 900; font-size: clamp(28px, 3.6vw, 38px); line-height: 1.05; text-transform: uppercase; }
   .step-title .ok { display: none; margin-left: 8px; width: 24px; height: 24px; border-radius: 50%; background: var(--ink); color: var(--paper); vertical-align: 2px; place-items: center; }
   .step-title .ok .ico { width: 14px; height: 14px; }
   .step.is-done .step-title .ok { display: inline-grid; }
@@ -224,7 +234,7 @@
   .days { display: flex; gap: 8px; overflow-x: auto; padding: 4px 2px 10px; margin: -4px -2px 0; scrollbar-width: thin; overscroll-behavior-x: contain; }
   .days .chip { flex: none; }
   .days .chip > span { align-items: center; min-width: 64px; padding: 8px 12px; }
-  .days .chip b { font-family: var(--font-display); font-weight: 850; font-variation-settings: "wdth" 70; font-size: 26px; line-height: 1; }
+  .days .chip b { font-family: var(--font-display); font-weight: 900; font-size: 30px; line-height: 1; }
   .slots-head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 16px; margin: 0 0 12px; font-size: 15px; color: var(--ink-soft); }
   .slots-head b { color: var(--ink); }
   .legend { display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 13px; }
@@ -248,7 +258,7 @@
   .name-field input:focus { outline: 2px solid var(--red-deep); outline-offset: 2px; }
   .ticket { position: relative; padding: clamp(22px, 3vw, 32px); border-radius: 18px; background: var(--ink); color: var(--bone); }
   .ticket-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin: 0 0 14px; }
-  .ticket-head h3 { margin: 0; font-family: var(--font-display); font-weight: 850; font-variation-settings: "wdth" 80; font-size: 28px; line-height: 1; text-transform: uppercase; }
+  .ticket-head h3 { margin: 0; font-family: var(--font-display); font-weight: 900; font-size: 34px; line-height: 1; text-transform: uppercase; }
   .ticket-head .pole { width: 10px; height: 34px; }
   .ticket-head .pole-stripes { background-size: 14px 14px; top: -14px; bottom: -14px; }
   .ticket dl { margin: 0 0 20px; font-size: 15px; }
@@ -269,7 +279,7 @@
   .barber-photo { position: relative; margin: 0; aspect-ratio: 4 / 3; border-radius: 16px; overflow: hidden; background: var(--ink-3); }
   .barber-photo img { width: 100%; height: 120%; object-fit: cover; filter: var(--photo-grade); }
   .barber-photo .chair { position: absolute; left: 12px; top: 12px; padding: 5px 11px; border-radius: 999px; background: var(--ink); font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
-  .barber h3 { margin: 0; font-family: var(--font-display); font-weight: 850; font-variation-settings: "wdth" 90; font-size: clamp(30px, 4vw, 44px); line-height: 1; text-transform: uppercase; }
+  .barber h3 { margin: 0; font-family: var(--font-display); font-weight: 900; font-size: clamp(38px, 4.8vw, 54px); line-height: 1; text-transform: uppercase; }
   .barber .role { margin: 6px 0 0; font-size: 13px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--red-text); }
   .barber p { margin: 0; color: var(--bone-2); }
   .barber .foot { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 4px 16px; padding-top: 10px; border-top: 1px solid var(--line-d); }
@@ -284,7 +294,7 @@
   .frame-img { aspect-ratio: 4 / 5; border-radius: 14px; overflow: hidden; background: var(--ink-3); }
   .frame-img img { width: 100%; height: 100%; object-fit: cover; filter: var(--photo-grade); }
   .frame figcaption { display: flex; gap: 12px; margin-top: 12px; font-size: 15px; color: var(--bone-2); }
-  .frame figcaption b { font-family: var(--font-display); font-weight: 800; font-variation-settings: "wdth" 70; color: var(--red-text); }
+  .frame figcaption b { font-family: var(--font-display); font-weight: 900; font-size: 18px; line-height: 1.2; color: var(--red-text); }
   .progress { height: 3px; margin-top: 26px; background: var(--line-d); border-radius: 2px; overflow: hidden; display: none; }
   .progress span { display: block; height: 100%; background: var(--red); transform-origin: left; transform: scaleX(0); }
   .gallery.is-pinned .rail { overflow: visible; scroll-snap-type: none; }
@@ -296,7 +306,7 @@
   .reviews { display: grid; grid-template-columns: minmax(0, 1fr); gap: 40px; }
   .review { margin: 0; }
   .review blockquote { margin: 0; font-size: clamp(18px, 1.8vw, 21px); font-weight: 500; line-height: 1.5; }
-  .review.lead blockquote { font-family: var(--font-display); font-weight: 700; font-variation-settings: "wdth" 85; font-size: clamp(28px, 4.2vw, 54px); line-height: 1.05; text-transform: uppercase; }
+  .review.lead blockquote { font-family: var(--font-display); font-weight: 800; font-size: clamp(34px, 5vw, 64px); line-height: 1; text-transform: uppercase; }
   .review figcaption { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; margin-top: 14px; font-size: 15px; color: var(--ink-soft); }
   .review figcaption b { color: var(--ink); font-weight: 700; }
   .stars { display: inline-flex; gap: 2px; color: var(--red-deep); }
@@ -341,7 +351,7 @@
 
   /* FAQ */
   .faq { display: grid; grid-template-columns: minmax(0, 1fr); gap: 32px; padding-top: clamp(24px, 4vw, 48px); }
-  .faq .h2 { font-size: clamp(38px, 6vw, 80px); }
+  .faq .h2 { font-size: clamp(46px, 7vw, 96px); }
   details { border-bottom: 1px solid var(--line-d); }
   details:first-child { border-top: 1px solid var(--line-d); }
   summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 44px; padding-block: 18px; font-size: 17px; font-weight: 600; }
@@ -354,7 +364,7 @@
   .endcard { display: grid; gap: 26px; justify-items: start; padding-block: clamp(64px, 9vw, 120px); border-top: 1px solid var(--line-d); }
   .endcard .h2 { max-width: 14ch; }
   .wordmark-box { container-type: inline-size; }
-  .wordmark { position: relative; margin: 0; font-family: var(--font-display); font-weight: 900; font-variation-settings: "wdth" 150; font-size: calc(100cqw / 5.1); line-height: .8; letter-spacing: -.01em; color: var(--ink-3); white-space: nowrap; user-select: none; }
+  .wordmark { position: relative; margin: 0; font-family: var(--font-display); font-weight: 900; font-size: calc(100cqw / 4); line-height: .8; letter-spacing: .06em; color: var(--ink-3); white-space: nowrap; user-select: none; }
   .wordmark span { color: var(--red); }
   footer { padding-bottom: 40px; }
   .foot-row { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; align-items: center; padding-top: 22px; border-top: 1px solid var(--line-d); font-size: 13px; color: var(--bone-dim); }
@@ -381,9 +391,9 @@
     .svc { grid-template-columns: 72px minmax(0, 1fr) auto auto; grid-template-areas: "thumb name time price" "thumb desc time price"; column-gap: 20px; }
     .svc-thumb { width: 72px; height: 72px; }
     .svc-time { align-self: center; padding-right: 8px; font-size: 14px; }
-    .svc-price { align-self: center; font-size: 28px; }
+    .svc-price { align-self: center; font-size: 34px; }
     .fade-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
-    .fade-sec .h2 { font-size: clamp(38px, 5.6vw, 84px); }
+    .fade-sec .h2 { font-size: clamp(46px, 6.6vw, 100px); }
     .reviews { grid-template-columns: 1fr 1fr; gap: 40px 56px; }
     .review.lead { grid-column: 1 / -1; }
     .team { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -391,7 +401,7 @@
     .slots { grid-template-columns: repeat(6, minmax(0, 1fr)); }
     .step { padding-left: 76px; }
     .step legend { display: block; }
-    .step-num { position: absolute; left: 0; top: 24px; font-size: 64px; }
+    .step-num { position: absolute; left: 0; top: 24px; font-size: 76px; }
   }
 
   @media (min-width: 900px) {
@@ -399,22 +409,21 @@
     .nav { display: flex; }
     .hero { grid-template-columns: minmax(0, 1.08fr) minmax(0, .92fr); grid-template-rows: auto auto; column-gap: clamp(28px, 4vw, 64px); min-height: min(calc(100svh - var(--header-h) - 40px), 1000px); padding-top: clamp(24px, 3vw, 48px); }
     .hero-copy { grid-column: 1; grid-row: 1; align-self: center; padding-bottom: 28px; }
-    .hero h1 { font-size: clamp(60px, min(6.6vw, 11.4svh), 124px); }
+    .hero h1 { font-size: clamp(72px, min(8vw, 13.4svh), 150px); }
     .hero-lead { font-size: 18px; margin-top: 22px; }
     .hero-stage { grid-column: 2; grid-row: 1 / span 2; margin-top: 0; }
     .hero-stage { --photo-inset: 40px; }
     .hero-photo { height: 100%; min-height: 540px; }
     .hero-pole { width: 22px; top: 36px; bottom: 36px; }
-    .hero-mark-box { grid-column: 1; grid-row: 2; align-self: end; }
-    .hero-mark { margin: 0 0 -0.06em; }
+    .rule { grid-column: 1; grid-row: 2; align-self: end; margin: 0 0 8px; max-width: 620px; }
     .svc { grid-template-columns: 80px minmax(0, 1.2fr) minmax(0, 1fr) 90px 110px; grid-template-areas: "thumb name desc time price"; min-height: 104px; padding-block: 18px; }
-    .svc-name { font-size: clamp(34px, 4.2vw, 62px); }
+    .svc-name { font-size: clamp(42px, 5vw, 76px); }
     .svc-desc { font-size: 16px; padding-right: 12px; }
     .svc:hover { background: var(--ink-2); }
     .booking { grid-template-columns: minmax(0, 1.55fr) minmax(320px, 1fr); gap: 56px; }
     .ticket { position: sticky; top: calc(var(--header-h) + 24px); margin-top: 26px; }
     .step { padding-left: 104px; }
-    .step-num { font-size: 88px; }
+    .step-num { font-size: 104px; }
     .slots { grid-template-columns: repeat(6, minmax(0, 1fr)); }
     .fade-grid { grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); }
     .team { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; }
@@ -449,14 +458,13 @@
   @media (max-height: 560px) and (min-width: 560px) {
     .hero { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); column-gap: 24px; min-height: 0; padding-top: 12px; }
     .hero-copy { grid-column: 1; grid-row: 1; align-self: start; padding-bottom: 12px; }
-    .hero h1 { font-size: clamp(30px, 10svh, 52px); }
+    .hero h1 { font-size: clamp(36px, 12svh, 62px); }
     .hero-lead, .hero-facts { display: none; }
     .hero-actions { margin-top: 12px; }
     .hero-stage { grid-column: 2; grid-row: 1 / span 2; margin-top: 0; }
     .hero-stage { --photo-inset: 30px; }
     .hero-photo { height: calc(100svh - var(--header-h) - 60px); min-height: 220px; }
-    .hero-mark-box { grid-column: 1; grid-row: 2; }
-    .hero-mark { margin: 0; }
+    .rule { display: none; }
   }
   @media (max-height: 640px) and (max-width: 559px) {
     .hero-lead { font-size: 15px; margin-top: 12px; }
@@ -531,7 +539,11 @@
             <figcaption>Cadeira 1, três da tarde</figcaption>
           </figure>
         </div>
-        <div class="hero-mark-box" aria-hidden="true"><p class="hero-mark">SISAL</p></div>
+        <div class="rule" aria-hidden="true" data-rule>
+          <div class="rule-head"><span>Régua do degradê</span><span class="rule-read">pente <b data-rule-read>2</b></span></div>
+          <div class="rule-track"><span class="rule-fill"></span><span class="rule-blade"></span></div>
+          <ol class="rule-ticks"><li>0</li><li>½</li><li>1</li><li>1½</li><li>2</li><li>3</li><li>4</li></ol>
+        </div>
       </section>
     </div>
 
@@ -1222,6 +1234,8 @@
   });
 
   // ---------- Motion: everything below is extra, the page is complete without it ----------
+  const RULE_START = 0;
+  const RULE_INTRO = 0.26;
   const POLE_TILE = 28;
   const POLE_LOOP_SECONDS = 1.4;
   const POLE_MAX_BOOST = 9;
@@ -1250,13 +1264,26 @@
     });
   }
 
-  // The painted name squeezes as the hero leaves, like a razor closing; the photo drifts slower than the page.
+  // Signature: the fade ruler. On load the blade runs from skin to "pente 1"; scrolling the hero away walks it
+  // up to 4, and the reading follows the nearest guard, as if the page itself were the fade.
+  function fadeRuler() {
+    const rule = document.querySelector("[data-rule]");
+    const read = rule.querySelector("[data-rule-read]");
+    const ticks = [...rule.querySelectorAll(".rule-ticks li")].map((li) => li.textContent);
+    const state = { intro: 0, scroll: 0 };
+    const render = () => {
+      const progress = RULE_START + state.intro * (RULE_INTRO - RULE_START) + state.scroll * (1 - RULE_INTRO);
+      rule.style.setProperty("--rule-p", progress.toFixed(4));
+      read.textContent = ticks[Math.round(progress * (ticks.length - 1))];
+    };
+    gsap.to(state, { intro: 1, duration: 1.6, ease: "expo.out", delay: 0.3, onUpdate: render });
+    ScrollTrigger.create({ trigger: ".hero", start: "top top", end: "bottom top", scrub: 0.6, onUpdate: (self) => { state.scroll = self.progress; render(); } });
+    render();
+    return () => rule.style.removeProperty("--rule-p");
+  }
+
   function heroScroll() {
-    const scrub = { trigger: ".hero", start: "top top", end: "bottom top", scrub: 0.6 };
-    gsap.fromTo(".hero-mark", { "--wdth": 150 }, { "--wdth": 52, ease: "none", scrollTrigger: { ...scrub } });
-    gsap.fromTo(".hero-photo img", { yPercent: -8 }, { yPercent: 6, ease: "none", scrollTrigger: { ...scrub } });
-    // Transform only: the painted name is never hidden, it just rises into place.
-    gsap.from(".hero-mark", { yPercent: 32, duration: 1.4, ease: "expo.out", delay: 0.1 });
+    gsap.fromTo(".hero-photo img", { yPercent: -8 }, { yPercent: 6, ease: "none", scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: 0.6 } });
   }
 
   function revealTitles() {
@@ -1364,6 +1391,7 @@
     motion.add("(prefers-reduced-motion: no-preference)", () => {
       spinPoles();
       heroScroll();
+      fadeRuler();
       if (window.SplitText) revealTitles();
       revealRows();
     });
