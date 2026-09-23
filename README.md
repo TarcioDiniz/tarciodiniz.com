@@ -1,7 +1,7 @@
 # tarciodiniz.com
 
 Meu site pessoal, no ar em [tarciodiniz.com](https://tarciodiniz.com). Sou desenvolvedor em
-Campina Grande (PB) e faço sites para negócios locais: rápidos no celular, fáceis de achar no
+Campina Grande (PB) e faço sites para negócios de todo o Brasil: rápidos no celular, fáceis de achar no
 Google e com o WhatsApp a um toque.
 
 A página principal fala com o dono de negócio primeiro e traz, mais abaixo, a minha história e o
