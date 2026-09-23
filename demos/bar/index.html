@@ -1,0 +1,1103 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0d0a18">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="data:,">
+<title>Rebuliço · Bar e pista no Centro de Campina Grande (demonstração)</title>
+<meta name="description" content="Modelo de demonstração: bar e casa noturna fictícia do Centro de Campina Grande, com a agenda da semana, a carta e a lista pelo WhatsApp.">
+<!--
+  Mídia conferida em 23/09/2026.
+
+  Vídeo da capa (media/capa-1280.mp4 e media/capa-720.mp4): montagem própria de 9 s, sem som, com cinco
+  clipes do Pexels, cortados e passados para duas cores. Licença do Pexels: uso livre, inclusive
+  editado, sem atribuição obrigatória (https://www.pexels.com/license/). Autores:
+    E CG, "Salsa Colorful Shoes", https://www.pexels.com/video/19851286/
+    Denys Gromov, "Close-up View of Bartender Pouring Drink into Wineglasses", https://www.pexels.com/video/13063150/
+    Marc Espejo, "People Dancing in Club", https://www.pexels.com/video/12893896/
+    Thiago Zanutim Lucas, "A Bartender Putting Ice Cubes in a Cocktail Glass", https://www.pexels.com/video/11268024/
+    Yan Krukau, "Back View of a Dj Playing Mixer", https://www.pexels.com/video/9003390/
+
+  Fotos do Unsplash (licença Unsplash, https://unsplash.com/license), por autor:
+    Karla Vidal: trio na rua, noite de quinta (photo-1779037805819, recortada para tirar uma faixa)
+    Ophélie Bonavita: pista com papel picado, sexta (photo-1687511844598)
+    Marcela Laskoski: DJ, sábado (photo-1470225620780)
+    Sebastián Brito: pandeiro, domingo (photo-1777375430837)
+    Colin Lloyd: mãos para cima (photo-1618176581835)
+    Antonino Visalli: globo de espelhos (photo-1570207859654, recortada para tirar um letreiro)
+    Ian Talmacs: caipirinha com amendoim (photo-1666355704386) e caipirinha na mão (photo-1662560094368)
+    A J.: pista verde (photo-1578736641330)
+    Cristian Rivadeneira: drink de laranja (photo-1644809818228)
+    Jessica Lenihan: chope tirado (photo-1769767677849)
+    Fernando Dantas: bandeirinhas (photo-1688948871377, recortada para tirar um letreiro no pé da foto)
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Doto:wght,ROND@400..900,0..100&family=Handjet:wght@400..800&family=Onest:wght@400..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css">
+<link rel="preload" as="image" href="media/capa-1280.webp" media="(min-width: 701px) and (orientation: landscape)">
+<link rel="preload" as="image" href="media/capa-720.webp" media="(max-width: 700px), (orientation: portrait)">
+<style>
+  :root {
+    --night: #0d0a18;
+    --night-2: #16112a;
+    --night-3: #231b3f;
+    --led: #ffb21a;
+    --led-glow: rgba(255, 178, 26, 0.5);
+    --pink: #ff4f9a;
+    --pink-glow: rgba(255, 79, 154, 0.55);
+    --green: #35d49a;
+    --blue: #6b93ff;
+    --orange: #ff7a2f;
+    --paper: #efe7d6;
+    --paper-2: #e0d5bf;
+    --ink: #120e1c;
+    /* Muted ink that still passes 4.5:1 on the flyer paper (7.7:1). */
+    --ink-soft: #4b4160;
+    --on-night: #f3ecdf;
+    --on-night-2: #b9aecb;
+    --line: rgba(243, 236, 223, 0.14);
+    --line-ink: rgba(18, 14, 28, 0.22);
+    --veil: rgba(13, 10, 24, 0.62);
+    --glass-line: rgba(243, 236, 223, 0.32);
+    --bubble: #d9f7c5;
+    --whatsapp: #25d366;
+    --shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.9);
+    --radius: 18px;
+    --radius-lg: clamp(20px, 2.2vw, 32px);
+    --pill: 999px;
+    --gutter: clamp(16px, 4vw, 48px);
+    --max: 1320px;
+    --font-led: "Doto", ui-monospace, "Courier New", monospace;
+    --font-display: "Handjet", "Arial Narrow", system-ui, sans-serif;
+    --font: "Onest", system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-padding-top: 16px; }
+  body { margin: 0; background: var(--night); color: var(--on-night); font-family: var(--font); font-size: 16px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+  img, video { display: block; max-width: 100%; }
+  a { color: inherit; text-decoration: none; }
+  button, input { font: inherit; color: inherit; }
+  button { cursor: pointer; }
+  [hidden] { display: none !important; }
+  h1, h2, h3 { margin: 0; text-wrap: balance; }
+  h2, h3 { font-family: var(--font-display); font-weight: 800; text-transform: uppercase; letter-spacing: 0.01em; }
+  p { text-wrap: pretty; }
+  :focus-visible { outline: 3px solid var(--led); outline-offset: 3px; }
+  .wrap { max-width: var(--max); margin-inline: auto; padding-inline: var(--gutter); }
+  .ico { width: 20px; height: 20px; fill: currentColor; flex: none; display: block; }
+  .ico-wa { color: var(--whatsapp); }
+  .led { font-family: var(--font-led); font-variation-settings: "ROND" 100; color: var(--led); text-shadow: 0 0 14px var(--led-glow), 0 0 2px var(--led); }
+
+  .notice { background: #07050d; color: var(--on-night); font-size: 13px; line-height: 1.4; text-align: center; padding: 8px var(--gutter); }
+  .notice strong { color: var(--led); }
+
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 52px; padding: 0 22px; border-radius: var(--pill); border: 0; font-weight: 700; font-size: 16px; line-height: 1.1; white-space: nowrap; transition: translate 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease; }
+  .btn:hover { translate: 0 -2px; }
+  .btn .ico { width: 20px; height: 20px; }
+  .btn-led { background: var(--led); color: var(--ink); box-shadow: 0 0 26px -6px var(--led-glow); }
+  .btn-led:hover { box-shadow: 0 0 34px -2px var(--led-glow); }
+  .btn-ghost { background: var(--veil); color: var(--on-night); border: 1px solid var(--glass-line); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+  .btn-ink { background: var(--ink); color: var(--paper); }
+  .btn-sm { min-height: 44px; padding: 0 16px; font-size: 15px; gap: 8px; }
+
+  /* Top bar */
+  .topbar { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 10px; }
+  .logo { display: inline-flex; align-items: center; min-height: 44px; font-weight: 900; font-size: 26px; line-height: 1; letter-spacing: 0.02em; text-transform: uppercase; }
+  .nav { display: flex; gap: 26px; font-weight: 500; font-size: 15px; color: var(--on-night-2); }
+  .nav a { padding-block: 12px; transition: color 0.2s; }
+  .nav a:hover { color: var(--led); }
+
+  /* Hero: duotone video, LED sign and ticker */
+  .hero { padding-inline: clamp(8px, 1.2vw, 16px); }
+  .hero-card { position: relative; isolation: isolate; overflow: hidden; border-radius: var(--radius-lg); height: max(440px, calc(100svh - 120px)); max-height: 1040px; display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: auto minmax(0, 1fr) auto; background: var(--night-2); }
+  .hero-media { position: absolute; inset: -8% 0; z-index: -2; }
+  .hero-media picture, .hero-media img, .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .hero-video { opacity: 0; transition: opacity 0.8s ease; }
+  .hero-video.is-playing { opacity: 1; }
+  .hero-card::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(13, 10, 24, 0.55) 0%, rgba(13, 10, 24, 0.05) 30%, rgba(13, 10, 24, 0.3) 55%, rgba(13, 10, 24, 0.93) 100%); }
+  .ticker { min-width: 0; display: flex; align-items: center; gap: 8px; padding: 6px 8px 6px 0; background: rgba(7, 5, 13, 0.78); border-bottom: 1px solid rgba(255, 178, 26, 0.28); }
+  .ticker-view { flex: 1; min-width: 0; overflow: hidden; }
+  .ticker-track { display: flex; width: max-content; }
+  .ticker-group { display: flex; align-items: center; gap: 30px; padding: 6px 15px; font-size: 18px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; white-space: nowrap; }
+  .ticker-group .ico { width: 16px; height: 16px; color: var(--pink); filter: drop-shadow(0 0 6px var(--pink-glow)); }
+  .round-btn { flex: none; width: 44px; height: 44px; display: grid; place-items: center; padding: 0; border-radius: 50%; border: 1px solid var(--glass-line); background: var(--veil); color: var(--on-night); }
+  .round-btn .ico { width: 16px; height: 16px; }
+  .round-btn .i-play { display: none; }
+  .round-btn[aria-pressed="true"] .i-play { display: block; }
+  .round-btn[aria-pressed="true"] .i-pause { display: none; }
+  .hero-body { display: grid; gap: 16px; padding: clamp(18px, 3vw, 44px); }
+  .hero-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
+  .kicker { margin: 0; font-weight: 600; font-size: 15px; }
+  .pill { display: inline-flex; align-items: center; gap: 8px; margin: 0; min-height: 36px; padding: 6px 14px; border-radius: var(--pill); background: var(--veil); border: 1px solid var(--glass-line); font-size: 14px; font-weight: 600; line-height: 1.2; }
+  .pill b { font-family: var(--font-led); font-size: 17px; font-weight: 900; color: var(--led); }
+  .pill .ico { width: 16px; height: 16px; color: var(--led); }
+  .hero-title { display: grid; gap: 12px; }
+  .led-word { --led-w: 900; display: block; font-weight: var(--led-w); font-size: clamp(48px, 17vw, 250px); line-height: 0.9; letter-spacing: 0; text-transform: uppercase; white-space: nowrap; }
+  .h1-sub { display: block; max-width: 24ch; font-family: var(--font-display); font-weight: 700; font-size: clamp(26px, 3.4vw, 50px); line-height: 1; letter-spacing: 0.01em; }
+  .tonight { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; margin: 0; max-width: 60ch; font-size: 16px; line-height: 1.45; }
+  .tonight b { color: var(--pink); font-weight: 700; }
+  .live-dot { width: 10px; height: 10px; flex: none; border-radius: 50%; background: var(--pink); box-shadow: 0 0 12px var(--pink); }
+  .hero-foot { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 14px 24px; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+
+  /* The week: party flyers pasted on the wall */
+  .week { padding-block: clamp(64px, 9vw, 120px) clamp(48px, 7vw, 100px); overflow: hidden; }
+  .week-head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 12px 40px; margin-bottom: 28px; }
+  .week-head h2 { font-size: clamp(52px, 8.4vw, 132px); line-height: 0.84; }
+  .week-head p { margin: 0; max-width: 36ch; font-size: 17px; color: var(--on-night-2); }
+  .week-scroller { padding-block: 24px 36px; }
+  .week-track { list-style: none; margin-block: 0; padding-block: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(18px, 2vw, 30px); }
+  .flyer { --accent: var(--pink); position: relative; display: flex; flex-direction: column; gap: 12px; padding: 12px 12px 16px; border-radius: 8px; background: var(--paper); color: var(--ink); rotate: var(--tilt, 0deg); box-shadow: var(--shadow); }
+  .flyer:nth-child(2) { --accent: var(--led); }
+  .flyer:nth-child(3) { --accent: var(--green); }
+  .flyer:nth-child(4) { --accent: var(--blue); }
+  .flyer-top { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; }
+  .flyer-day { margin: 0; font-family: var(--font-led); font-variation-settings: "ROND" 100; font-weight: 900; font-size: 54px; line-height: 0.9; text-transform: uppercase; }
+  .flyer-date { margin: 0; font-family: var(--font-display); font-weight: 700; font-size: 22px; color: var(--ink-soft); }
+  .duo { position: relative; isolation: isolate; overflow: hidden; margin: 0; background: var(--accent); }
+  .duo img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.15) brightness(var(--lift, 1.08)); mix-blend-mode: multiply; }
+  .duo::after { content: ""; position: absolute; inset: 0; background: var(--night); mix-blend-mode: lighten; pointer-events: none; }
+  .flyer .duo { aspect-ratio: 16 / 11; border-radius: 4px; }
+  .flyer h3 { font-size: clamp(34px, 2.8vw, 44px); line-height: 0.88; }
+  .flyer-what { margin: 0; font-size: 15px; line-height: 1.45; color: var(--ink-soft); }
+  .flyer-info { display: grid; margin: 0; border-top: 2px solid var(--ink); }
+  .flyer-info div { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; padding-block: 7px; border-bottom: 1px dashed var(--line-ink); }
+  .flyer-info dt { font-size: 14px; color: var(--ink-soft); }
+  .flyer-info dd { margin: 0; font-family: var(--font-display); font-weight: 700; font-size: 21px; line-height: 1.1; white-space: nowrap; }
+  .flyer .btn { margin-top: auto; width: 100%; min-height: 48px; font-size: 15px; white-space: normal; text-align: center; }
+  .today { position: absolute; top: -18px; right: -12px; z-index: 2; width: 78px; height: 78px; display: grid; place-items: center; border-radius: 50%; background: var(--pink); color: var(--ink); font-family: var(--font-led); font-variation-settings: "ROND" 100; font-weight: 900; font-size: 19px; rotate: 14deg; box-shadow: 0 0 26px var(--pink-glow); }
+  .swipe-hint { display: none; margin: 0; padding-inline: var(--gutter); font-size: 14px; color: var(--on-night-2); }
+
+  /* Manifesto that lights up word by word, photos at different speeds */
+  .manifesto { position: relative; padding-block: clamp(110px, 16vw, 230px); overflow: hidden; }
+  .m-row { display: contents; }
+  .m-photo { position: absolute; z-index: 1; margin: 0; width: clamp(130px, 17vw, 250px); aspect-ratio: 3 / 4; border-radius: 14px; overflow: hidden; box-shadow: var(--shadow); }
+  .m-photo img { width: 100%; height: 100%; object-fit: cover; }
+  .m-photo.duo { --accent: var(--pink); }
+  .p1 { left: 3%; top: 7%; rotate: -4deg; }
+  .p2 { right: 4%; top: 12%; rotate: 5deg; --accent: var(--led); }
+  .p3 { left: 9%; bottom: 6%; rotate: 3deg; }
+  .p4 { right: 8%; bottom: 8%; rotate: -3deg; --accent: var(--blue); }
+  .manifesto-text { position: relative; z-index: 2; max-width: 15ch; margin: 0 auto; padding-inline: var(--gutter); text-align: center; font-family: var(--font-display); font-weight: 800; font-size: clamp(44px, 7.2vw, 116px); line-height: 0.92; text-transform: uppercase; }
+  .manifesto-text .hl { color: var(--led); text-shadow: 0 0 22px var(--led-glow); }
+
+  /* Bar menu as an LED price board */
+  .carta { padding-block: clamp(72px, 10vw, 130px); background: var(--night-2); }
+  .carta-grid { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 72px); align-items: start; }
+  .carta h2 { font-size: clamp(48px, 7vw, 108px); line-height: 0.86; }
+  .carta-note { margin: 14px 0 0; max-width: 46ch; font-size: 16px; color: var(--on-night-2); }
+  .board { list-style: none; margin: 28px 0 0; padding: 0; }
+  .board li { padding-block: 14px; border-bottom: 1px solid var(--line); }
+  .board-row { display: flex; align-items: baseline; gap: 12px; }
+  .board-name { font-family: var(--font-display); font-weight: 700; font-size: clamp(24px, 2.2vw, 32px); line-height: 1.05; text-transform: uppercase; }
+  .board-row::after { content: ""; order: 1; flex: 1; min-width: 20px; border-bottom: 2px dotted rgba(255, 178, 26, 0.4); translate: 0 -6px; }
+  .board-price { order: 2; font-size: clamp(20px, 1.8vw, 26px); font-weight: 800; white-space: nowrap; }
+  .board-note { margin: 4px 0 0; font-size: 15px; line-height: 1.45; color: var(--on-night-2); }
+  .snacks { position: sticky; top: 24px; padding: clamp(22px, 3vw, 34px); border-radius: var(--radius); background: var(--paper); color: var(--ink); rotate: 1.2deg; box-shadow: var(--shadow); }
+  .snacks h3 { font-size: clamp(30px, 2.8vw, 40px); line-height: 0.92; }
+  .snacks > p { margin: 12px 0 0; font-size: 15px; color: var(--ink-soft); }
+  .snacks ul { list-style: none; margin: 16px 0 0; padding: 0; }
+  .snacks li { display: flex; justify-content: space-between; gap: 14px; padding-block: 12px; border-bottom: 1px dashed var(--line-ink); font-size: 16px; line-height: 1.4; }
+  .snacks li span:last-child { font-family: var(--font-display); font-weight: 700; font-size: 20px; line-height: 1.2; white-space: nowrap; }
+  .drinks { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: clamp(36px, 5vw, 64px); }
+  .drinks figure { margin: 0; }
+  .drinks img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: var(--radius); }
+  .drinks figcaption { margin-top: 10px; font-size: 15px; color: var(--on-night-2); }
+  .drinks figcaption b { display: block; font-family: var(--font-display); font-weight: 700; font-size: 24px; line-height: 1.1; color: var(--on-night); text-transform: uppercase; }
+
+  /* List, VIP box and birthday: the form is a ticket */
+  .booking { padding-block: clamp(72px, 10vw, 130px); }
+  .booking-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: clamp(32px, 5vw, 80px); align-items: start; }
+  .booking h2 { font-size: clamp(46px, 6.4vw, 100px); line-height: 0.86; }
+  .booking-text > p { margin: 18px 0 0; max-width: 44ch; font-size: 17px; color: var(--on-night-2); }
+  .rules { list-style: none; margin: 28px 0 0; padding: 0; display: grid; gap: 14px; }
+  .rules li { display: flex; gap: 14px; align-items: flex-start; font-size: 16px; line-height: 1.5; }
+  .rules .ico { width: 24px; height: 24px; margin-top: 2px; color: var(--led); }
+  .ticket { --pad: clamp(22px, 3vw, 32px); position: relative; padding: var(--pad); border-radius: 18px; background: var(--paper); color: var(--ink); box-shadow: var(--shadow); }
+  .ticket::before, .ticket::after { content: ""; position: absolute; top: calc(var(--pad) + 42px); width: 30px; height: 30px; border-radius: 50%; background: var(--night); }
+  .ticket::before { left: -15px; }
+  .ticket::after { right: -15px; }
+  .ticket-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding-bottom: 18px; margin-bottom: 18px; border-bottom: 2px dashed var(--line-ink); }
+  .ticket-head p { margin: 0; font-family: var(--font-led); font-variation-settings: "ROND" 100; font-weight: 900; font-size: 26px; text-transform: uppercase; }
+  .ticket-head span { font-family: var(--font-display); font-weight: 700; font-size: 20px; color: var(--ink-soft); text-transform: uppercase; }
+  .field { margin: 0 0 16px; padding: 0; border: 0; }
+  .field legend, .field-label { display: block; margin-bottom: 8px; padding: 0; font-size: 14px; font-weight: 600; color: var(--ink-soft); }
+  .choices { display: flex; flex-wrap: wrap; gap: 8px; }
+  .choice { position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 46px; padding: 0 16px; border: 1.5px solid var(--ink); border-radius: 12px; font-weight: 600; font-size: 15px; cursor: pointer; transition: background-color 0.2s, color 0.2s; }
+  .choice input { position: absolute; inset: 0; margin: 0; opacity: 0; cursor: pointer; }
+  .choice .ico { width: 18px; height: 18px; }
+  .choice:has(input:checked) { background: var(--ink); color: var(--paper); }
+  .choice:has(input:focus-visible) { outline: 3px solid var(--pink); outline-offset: 2px; }
+  .choices-nights .choice { font-family: var(--font-display); font-weight: 700; font-size: 19px; text-transform: uppercase; }
+  .text-input { width: 100%; min-height: 52px; padding: 0 14px; border: 1.5px solid var(--ink); border-radius: 12px; background: #fbf7ee; font-size: 16px; color: var(--ink); }
+  .stepper { display: flex; align-items: center; gap: 14px; }
+  .step { width: 48px; height: 48px; display: grid; place-items: center; padding: 0; border: 1.5px solid var(--ink); border-radius: 50%; background: transparent; }
+  .step .ico { width: 18px; height: 18px; }
+  .step:disabled { opacity: 0.35; cursor: default; }
+  .people { min-width: 3ch; font-family: var(--font-display); font-weight: 800; font-size: 44px; line-height: 1; text-align: center; }
+  .kind-note { margin: 14px 0 0; padding: 12px 14px; border-radius: 12px; background: var(--paper-2); font-size: 15px; line-height: 1.45; }
+  .preview { margin-top: 16px; }
+  .preview p:first-child { margin: 0 0 6px; font-size: 14px; color: var(--ink-soft); }
+  .bubble { margin: 0; padding: 12px 14px; border-radius: 4px 14px 14px 14px; background: var(--bubble); font-size: 15px; line-height: 1.45; white-space: pre-line; }
+  .ticket .btn { width: 100%; margin-top: 16px; }
+  .ticket .btn .ico { color: var(--whatsapp); }
+
+  /* São João */
+  .sj { position: relative; overflow: hidden; padding-block: clamp(120px, 13vw, 190px) clamp(72px, 9vw, 120px); background: radial-gradient(120% 70% at 50% 115%, rgba(255, 122, 47, 0.38), transparent 62%), var(--night-2); }
+  .flags { position: absolute; top: 0; left: 0; width: 100%; height: clamp(100px, 11vw, 160px); overflow: visible; }
+  .flag-string { fill: none; stroke: var(--on-night-2); stroke-width: 1.5; }
+  .flag path { stroke: none; }
+  .f1 { fill: var(--pink); } .f2 { fill: var(--led); } .f3 { fill: var(--green); } .f4 { fill: var(--blue); } .f5 { fill: var(--orange); }
+  .flag.far, .flag-string.far { opacity: 0.55; }
+  .sj-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr); gap: clamp(28px, 5vw, 80px); align-items: center; }
+  .sj-kicker { margin: 0 0 10px; font-family: var(--font-led); font-weight: 800; font-size: 20px; color: var(--orange); text-transform: uppercase; }
+  .sj h2 { font-size: clamp(46px, 6.6vw, 104px); line-height: 0.86; }
+  .sj-text > p { margin: 18px 0 0; max-width: 46ch; font-size: 17px; color: var(--on-night-2); }
+  .sj-facts { list-style: none; margin: 24px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .sj-facts li { padding: 8px 14px; border-radius: var(--pill); border: 1px solid var(--line); font-size: 15px; font-weight: 600; }
+  .sj-photo { margin: 0; border-radius: var(--radius-lg); overflow: hidden; rotate: -1.5deg; box-shadow: var(--shadow); }
+  .sj-photo img { width: 100%; aspect-ratio: 5 / 4; object-fit: cover; }
+
+  /* Where, hours, questions */
+  .place { padding-block: clamp(72px, 10vw, 130px) 0; }
+  .place-grid { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 16px; }
+  .place-map { position: relative; isolation: isolate; overflow: hidden; min-height: 460px; border-radius: var(--radius-lg); background: var(--night-3); }
+  .map { position: absolute; inset: 0; }
+  .map .leaflet-tile-pane { filter: invert(1) hue-rotate(210deg) saturate(0.55) brightness(0.92) contrast(0.92); }
+  .map .leaflet-container { background: var(--night-3); }
+  .map .leaflet-control-zoom a { width: 44px; height: 44px; display: grid; place-items: center; color: var(--ink); }
+  .map .leaflet-control-zoom .ico { width: 18px; height: 18px; }
+  .map .leaflet-control-attribution { padding: 0 8px; font-size: 13px; line-height: 1.2; background: color-mix(in srgb, var(--paper) 90%, transparent); color: var(--ink); }
+  .map .leaflet-control-attribution a { display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; color: var(--ink); }
+  .map .leaflet-tooltip { font-family: var(--font); font-size: 13px; font-weight: 700; color: var(--ink); }
+  .map-label { position: absolute; z-index: 900; top: 12px; right: 12px; max-width: calc(100% - 88px); margin: 0; padding: 8px 12px; border-radius: 14px; background: var(--paper); color: var(--ink); box-shadow: var(--shadow); font-size: 13px; font-weight: 600; line-height: 1.35; }
+  .map-label::before { content: ""; display: inline-block; width: 10px; height: 10px; margin-right: 6px; border-radius: 50%; background: var(--pink); }
+  .place-info { display: flex; flex-direction: column; gap: 20px; padding: clamp(22px, 3.4vw, 40px); border-radius: var(--radius-lg); background: var(--night-2); border: 1px solid var(--line); }
+  .place-info h2 { font-size: clamp(42px, 5vw, 76px); line-height: 0.88; }
+  .hours { width: 100%; border-collapse: collapse; }
+  .hours td { padding: 9px 0; border-bottom: 1px solid var(--line); font-size: 15px; vertical-align: top; }
+  .hours td:first-child { font-family: var(--font-led); font-variation-settings: "ROND" 100; font-weight: 900; font-size: 22px; line-height: 1.1; text-transform: uppercase; color: var(--led); }
+  .hours td:last-child { text-align: right; font-weight: 600; }
+  .hours tr.is-today td:first-child { color: var(--pink); text-shadow: 0 0 12px var(--pink-glow); }
+  .hours tr.note td { font-size: 14px; color: var(--on-night-2); }
+  .hours tr.note td:first-child { font-family: var(--font); font-weight: 500; font-size: 14px; text-transform: none; }
+  .facts { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; font-size: 15px; }
+  .facts li { display: flex; gap: 12px; align-items: flex-start; }
+  .facts > li > .ico { width: 22px; height: 22px; margin-top: 1px; color: var(--led); }
+  .facts p { margin: 0; }
+  .facts small { display: block; font-size: 14px; color: var(--on-night-2); }
+  .pay { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+  .pay span { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border: 1px solid var(--line); border-radius: var(--pill); font-size: 14px; font-weight: 600; }
+  .pay .ico { width: 18px; height: 18px; }
+  .place-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+
+  .faq { display: grid; grid-template-columns: 1fr 1.4fr; gap: 40px; padding-block: clamp(72px, 10vw, 130px); }
+  .faq h2 { font-size: clamp(42px, 5.4vw, 84px); line-height: 0.88; }
+  details { border-bottom: 1px solid var(--line); }
+  summary { list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 44px; padding-block: 18px; font-weight: 600; font-size: 18px; cursor: pointer; }
+  summary::-webkit-details-marker { display: none; }
+  summary .ico { width: 18px; height: 18px; color: var(--led); transition: rotate 0.2s; }
+  details[open] summary .ico { rotate: 45deg; }
+  details p { margin: 0 0 20px; max-width: 60ch; font-size: 16px; color: var(--on-night-2); }
+
+  .cta { background: var(--led); color: var(--ink); padding-block: clamp(56px, 8vw, 110px); }
+  .cta .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; }
+  .cta h2 { max-width: 15ch; font-size: clamp(42px, 6vw, 96px); line-height: 0.86; }
+  .cta-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+  .cta .btn-ink .ico-wa { color: var(--whatsapp); }
+  .cta .btn-line { background: transparent; color: var(--ink); border: 2px solid var(--ink); }
+
+  footer { padding-block: 40px 60px; overflow: hidden; }
+  .foot-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 20px; padding-bottom: 16px; border-bottom: 1px solid var(--line); font-size: 14px; color: var(--on-night-2); }
+  .insta { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-weight: 600; color: var(--on-night); }
+  .wordmark { --led-w: 900; margin: 30px 0 0; font-weight: var(--led-w); font-size: clamp(44px, 16vw, 250px); line-height: 0.9; text-transform: uppercase; white-space: nowrap; }
+  .back-link { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; margin-top: 24px; font-weight: 700; font-size: 15px; }
+  .back-link .ico { width: 18px; height: 18px; color: var(--led); }
+  .back-link:hover { color: var(--led); }
+  .orcamento { margin: 8px 0 0; font-size: 15px; color: var(--on-night-2); }
+  .orcamento a { display: inline-flex; align-items: center; min-height: 44px; color: var(--led); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+  .credito-autor { margin: 0; font-size: 15px; color: var(--on-night-2); }
+  .credito-autor a { display: inline-flex; align-items: center; min-height: 44px; color: var(--on-night); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--led); }
+  .credito-autor a:hover { color: var(--led); }
+
+  @media (max-width: 1180px) {
+    .week-track { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 36px 28px; }
+  }
+  @media (max-width: 899px) {
+    .nav { display: none; }
+    .carta-grid, .booking-grid, .sj-grid, .place-grid, .faq { grid-template-columns: 1fr; }
+    .place-map { min-height: 320px; }
+    .snacks { position: static; rotate: none; }
+    .manifesto { padding-block: 56px; }
+    .m-row { display: flex; justify-content: space-between; gap: 16px; padding-inline: var(--gutter); }
+    .m-row-top { margin-bottom: 36px; }
+    .m-row-bottom { margin-top: 36px; }
+    .m-photo { position: relative; inset: auto; width: 44%; max-width: 240px; }
+    .m-row .m-photo:nth-child(2) { margin-top: 36px; }
+  }
+  @media (max-width: 700px) {
+    .hero-card { height: max(440px, calc(100svh - 126px)); }
+    .hero-body { gap: 12px; padding: 16px 16px 18px; }
+    .h1-sub { font-size: clamp(24px, 7vw, 32px); }
+    .hero-actions { width: 100%; }
+    .hero-actions .btn { flex: 1 1 auto; padding: 0 16px; }
+    .pill.rating .long { display: none; }
+    /* Phones swipe the flyers sideways; the next one peeks in so the gesture is obvious. */
+    .week-scroller { overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; padding-block: 28px 20px; }
+    .week-scroller::-webkit-scrollbar { display: none; }
+    .week-track { display: flex; width: max-content; max-width: none; margin: 0; gap: 18px; padding-inline: var(--gutter); }
+    .flyer { width: min(78vw, 330px); scroll-snap-align: center; }
+    .swipe-hint { display: block; }
+    .drinks { grid-template-columns: 1fr 1fr; }
+    .drinks figure:last-child { display: none; }
+    .cta-actions, .cta-actions .btn { width: 100%; }
+  }
+  @media (max-width: 380px) {
+    .logo { font-size: 21px; }
+    .topbar .btn-sm { padding: 0 12px; font-size: 14px; }
+    .choice { padding: 0 12px; }
+  }
+  @media (max-height: 620px) {
+    .tonight { display: none; }
+    .led-word { font-size: min(17vw, 19svh); }
+  }
+  @media (max-height: 520px) {
+    .topbar { padding-block: 4px; }
+    .hero-card { height: max(250px, calc(100svh - 104px)); }
+    .ticker { display: none; }
+    .hero-body { gap: 8px; padding: 14px 18px; }
+    .hero-meta { display: none; }
+    .led-word { font-size: min(14vw, 24svh); }
+    .h1-sub { font-size: min(26px, 7svh); }
+    .hero-actions { width: auto; }
+    .hero-actions .btn { min-height: 46px; }
+  }
+</style>
+</head>
+<body>
+  <div class="notice" data-aviso="proposta"><strong>Demonstração.</strong> Empresa, preços e avaliações são fictícios. Fotos: Unsplash.</div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <!-- Icons: brands from Simple Icons (CC0), interface from Phosphor (MIT). -->
+  <symbol id="i-whatsapp" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></symbol>
+  <symbol id="i-instagram" viewBox="0 0 24 24"><path d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/></symbol>
+  <symbol id="i-googlemaps" viewBox="0 0 24 24"><path d="M19.527 4.799c1.212 2.608.937 5.678-.405 8.173-1.101 2.047-2.744 3.74-4.098 5.614-.619.858-1.244 1.75-1.669 2.727-.141.325-.263.658-.383.992-.121.333-.224.673-.34 1.008-.109.314-.236.684-.627.687h-.007c-.466-.001-.579-.53-.695-.887-.284-.874-.581-1.713-1.019-2.525-.51-.944-1.145-1.817-1.79-2.671L19.527 4.799zM8.545 7.705l-3.959 4.707c.724 1.54 1.821 2.863 2.871 4.18.247.31.494.622.737.936l4.984-5.925-.029.01c-1.741.601-3.691-.291-4.392-1.987a3.377 3.377 0 0 1-.209-.716c-.063-.437-.077-.761-.004-1.198l.001-.007zM5.492 3.149l-.003.004c-1.947 2.466-2.281 5.88-1.117 8.77l4.785-5.689-.058-.05-3.607-3.035zM14.661.436l-3.838 4.563a.295.295 0 0 1 .027-.01c1.6-.551 3.403.15 4.22 1.626.176.319.323.683.377 1.045.068.446.085.773.012 1.22l-.003.016 3.836-4.561A8.382 8.382 0 0 0 14.67.439l-.009-.003zM9.466 5.868L14.162.285l-.047-.012A8.31 8.31 0 0 0 11.986 0a8.439 8.439 0 0 0-6.169 2.766l-.016.018 3.665 3.084z"/></symbol>
+  <symbol id="i-pix" viewBox="0 0 24 24"><path d="M5.283 18.36a3.505 3.505 0 0 0 2.493-1.032l3.6-3.6a.684.684 0 0 1 .946 0l3.613 3.613a3.504 3.504 0 0 0 2.493 1.032h.71l-4.56 4.56a3.647 3.647 0 0 1-5.156 0L4.85 18.36ZM18.428 5.627a3.505 3.505 0 0 0-2.493 1.032l-3.613 3.614a.67.67 0 0 1-.946 0l-3.6-3.6A3.505 3.505 0 0 0 5.283 5.64h-.434l4.573-4.572a3.646 3.646 0 0 1 5.156 0l4.559 4.559ZM1.068 9.422 3.79 6.699h1.492a2.483 2.483 0 0 1 1.744.722l3.6 3.6a1.73 1.73 0 0 0 2.443 0l3.614-3.613a2.482 2.482 0 0 1 1.744-.723h1.767l2.737 2.737a3.646 3.646 0 0 1 0 5.156l-2.736 2.736h-1.768a2.482 2.482 0 0 1-1.744-.722l-3.613-3.613a1.77 1.77 0 0 0-2.444 0l-3.6 3.6a2.483 2.483 0 0 1-1.744.722H3.791l-2.723-2.723a3.646 3.646 0 0 1 0-5.156"/></symbol>
+  <symbol id="i-arrow-right" viewBox="0 0 256 256"><path d="M224.49,136.49l-72,72a12,12,0,0,1-17-17L187,140H40a12,12,0,0,1,0-24H187L135.51,64.48a12,12,0,0,1,17-17l72,72A12,12,0,0,1,224.49,136.49Z"/></symbol>
+  <symbol id="i-arrow-left" viewBox="0 0 256 256"><path d="M228,128a12,12,0,0,1-12,12H69l51.52,51.51a12,12,0,0,1-17,17l-72-72a12,12,0,0,1,0-17l72-72a12,12,0,0,1,17,17L69,116H216A12,12,0,0,1,228,128Z"/></symbol>
+  <symbol id="i-arrow-down" viewBox="0 0 256 256"><path d="M208.49,152.49l-72,72a12,12,0,0,1-17,0l-72-72a12,12,0,0,1,17-17L116,187V40a12,12,0,0,1,24,0V187l51.51-51.52a12,12,0,0,1,17,17Z"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 256 256"><path d="M228,128a12,12,0,0,1-12,12H140v76a12,12,0,0,1-24,0V140H40a12,12,0,0,1,0-24h76V40a12,12,0,0,1,24,0v76h76A12,12,0,0,1,228,128Z"/></symbol>
+  <symbol id="i-minus" viewBox="0 0 256 256"><path d="M228,128a12,12,0,0,1-12,12H40a12,12,0,0,1,0-24H216A12,12,0,0,1,228,128Z"/></symbol>
+  <symbol id="i-star" viewBox="0 0 256 256"><path d="M234.29,114.85l-45,38.83L203,211.75a16.4,16.4,0,0,1-24.5,17.82L128,198.49,77.47,229.57A16.4,16.4,0,0,1,53,211.75l13.76-58.07-45-38.83A16.46,16.46,0,0,1,31.08,86l59-4.76,22.76-55.08a16.36,16.36,0,0,1,30.27,0l22.75,55.08,59,4.76a16.46,16.46,0,0,1,9.37,28.86Z"/></symbol>
+  <symbol id="i-credit-card" viewBox="0 0 256 256"><path d="M224,48H32A16,16,0,0,0,16,64V192a16,16,0,0,0,16,16H224a16,16,0,0,0,16-16V64A16,16,0,0,0,224,48Zm0,16V88H32V64Zm0,128H32V104H224v88Zm-16-24a8,8,0,0,1-8,8H168a8,8,0,0,1,0-16h32A8,8,0,0,1,208,168Zm-64,0a8,8,0,0,1-8,8H120a8,8,0,0,1,0-16h16A8,8,0,0,1,144,168Z"/></symbol>
+  <symbol id="i-money" viewBox="0 0 256 256"><path d="M128,88a40,40,0,1,0,40,40A40,40,0,0,0,128,88Zm0,64a24,24,0,1,1,24-24A24,24,0,0,1,128,152ZM240,56H16a8,8,0,0,0-8,8V192a8,8,0,0,0,8,8H240a8,8,0,0,0,8-8V64A8,8,0,0,0,240,56ZM193.65,184H62.35A56.78,56.78,0,0,0,24,145.65v-35.3A56.78,56.78,0,0,0,62.35,72h131.3A56.78,56.78,0,0,0,232,110.35v35.3A56.78,56.78,0,0,0,193.65,184ZM232,93.37A40.81,40.81,0,0,1,210.63,72H232ZM45.37,72A40.81,40.81,0,0,1,24,93.37V72ZM24,162.63A40.81,40.81,0,0,1,45.37,184H24ZM210.63,184A40.81,40.81,0,0,1,232,162.63V184Z"/></symbol>
+  <symbol id="i-car" viewBox="0 0 256 256"><path d="M240,104H229.2L201.42,41.5A16,16,0,0,0,186.8,32H69.2a16,16,0,0,0-14.62,9.5L26.8,104H16a8,8,0,0,0,0,16h8v80a16,16,0,0,0,16,16H64a16,16,0,0,0,16-16V184h96v16a16,16,0,0,0,16,16h24a16,16,0,0,0,16-16V120h8a8,8,0,0,0,0-16ZM69.2,48H186.8l24.89,56H44.31ZM64,200H40V184H64Zm128,0V184h24v16Zm24-32H40V120H216ZM56,144a8,8,0,0,1,8-8H80a8,8,0,0,1,0,16H64A8,8,0,0,1,56,144Zm112,0a8,8,0,0,1,8-8h16a8,8,0,0,1,0,16H176A8,8,0,0,1,168,144Z"/></symbol>
+  <symbol id="i-taxi" viewBox="0 0 256 256"><path d="M240,104H228.64L201.25,56.06A16,16,0,0,0,187.36,48H165.42l-12-29.94A15.93,15.93,0,0,0,138.58,8H117.42a15.93,15.93,0,0,0-14.86,10.06L90.58,48H68.64a16,16,0,0,0-13.89,8.06L27.36,104H16a8,8,0,0,0,0,16h8v80a16,16,0,0,0,16,16H64a16,16,0,0,0,16-16V184h96v16a16,16,0,0,0,16,16h24a16,16,0,0,0,16-16V120h8a8,8,0,0,0,0-16ZM117.42,24h21.16l9.6,24H107.82ZM68.64,64H187.36l22.85,40H45.79ZM64,200H40V184H64Zm128,0V184h24v16Zm24-32H40V120H216ZM56,144a8,8,0,0,1,8-8H80a8,8,0,0,1,0,16H64A8,8,0,0,1,56,144Zm112,0a8,8,0,0,1,8-8h16a8,8,0,0,1,0,16H176A8,8,0,0,1,168,144Z"/></symbol>
+  <symbol id="i-quotes" viewBox="0 0 256 256"><path d="M116,72v88a48.05,48.05,0,0,1-48,48,8,8,0,0,1,0-16,32,32,0,0,0,32-32v-8H40a16,16,0,0,1-16-16V72A16,16,0,0,1,40,56h60A16,16,0,0,1,116,72ZM216,56H156a16,16,0,0,0-16,16v64a16,16,0,0,0,16,16h60v8a32,32,0,0,1-32,32,8,8,0,0,0,0,16,48.05,48.05,0,0,0,48-48V72A16,16,0,0,0,216,56Z"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm64-88a8,8,0,0,1-8,8H128a8,8,0,0,1-8-8V72a8,8,0,0,1,16,0v48h48A8,8,0,0,1,192,128Z"/></symbol>
+  <symbol id="i-users-three" viewBox="0 0 256 256"><path d="M244.8,150.4a8,8,0,0,1-11.2-1.6A51.6,51.6,0,0,0,192,128a8,8,0,0,1-7.37-4.89,8,8,0,0,1,0-6.22A8,8,0,0,1,192,112a24,24,0,1,0-23.24-30,8,8,0,1,1-15.5-4A40,40,0,1,1,219,117.51a67.94,67.94,0,0,1,27.43,21.68A8,8,0,0,1,244.8,150.4ZM190.92,212a8,8,0,1,1-13.84,8,57,57,0,0,0-98.16,0,8,8,0,1,1-13.84-8,72.06,72.06,0,0,1,33.74-29.92,48,48,0,1,1,58.36,0A72.06,72.06,0,0,1,190.92,212ZM128,176a32,32,0,1,0-32-32A32,32,0,0,0,128,176ZM72,120a8,8,0,0,0-8-8A24,24,0,1,1,87.24,82a8,8,0,1,0,15.5-4A40,40,0,1,0,37,117.51,67.94,67.94,0,0,0,9.6,139.19a8,8,0,1,0,12.8,9.61A51.6,51.6,0,0,1,64,128,8,8,0,0,0,72,120Z"/></symbol>
+  <symbol id="i-crown" viewBox="0 0 256 256"><path d="M248,80a28,28,0,1,0-51.12,15.77l-26.79,33L146,73.4a28,28,0,1,0-36.06,0L85.91,128.74l-26.79-33a28,28,0,1,0-26.6,12L47,194.63A16,16,0,0,0,62.78,208H193.22A16,16,0,0,0,209,194.63l14.47-86.85A28,28,0,0,0,248,80ZM128,40a12,12,0,1,1-12,12A12,12,0,0,1,128,40ZM24,80A12,12,0,1,1,36,92,12,12,0,0,1,24,80ZM193.22,192H62.78L48.86,108.52,81.79,149A8,8,0,0,0,88,152a7.83,7.83,0,0,0,1.08-.07,8,8,0,0,0,6.26-4.74l29.3-67.4a27,27,0,0,0,6.72,0l29.3,67.4a8,8,0,0,0,6.26,4.74A7.83,7.83,0,0,0,168,152a8,8,0,0,0,6.21-3l32.93-40.52ZM220,92a12,12,0,1,1,12-12A12,12,0,0,1,220,92Z"/></symbol>
+  <symbol id="i-cake" viewBox="0 0 256 256"><path d="M232,112a24,24,0,0,0-24-24H136V79a32.06,32.06,0,0,0,24-31c0-28-26.44-45.91-27.56-46.66a8,8,0,0,0-8.88,0C122.44,2.09,96,20,96,48a32.06,32.06,0,0,0,24,31v9H48a24,24,0,0,0-24,24v23.33a40.84,40.84,0,0,0,8,24.24V200a24,24,0,0,0,24,24H200a24,24,0,0,0,24-24V159.57a40.84,40.84,0,0,0,8-24.24ZM112,48c0-13.57,10-24.46,16-29.79,6,5.33,16,16.22,16,29.79a16,16,0,0,1-32,0ZM40,112a8,8,0,0,1,8-8H208a8,8,0,0,1,8,8v23.33c0,13.25-10.46,24.31-23.32,24.66A24,24,0,0,1,168,136a8,8,0,0,0-16,0,24,24,0,0,1-48,0,8,8,0,0,0-16,0,24,24,0,0,1-24.68,24C50.46,159.64,40,148.58,40,135.33Zm160,96H56a8,8,0,0,1-8-8V172.56A38.77,38.77,0,0,0,62.88,176a39.69,39.69,0,0,0,29-11.31A40.36,40.36,0,0,0,96,160a40,40,0,0,0,64,0,40.36,40.36,0,0,0,4.13,4.67A39.67,39.67,0,0,0,192,176c.38,0,.76,0,1.14,0A38.77,38.77,0,0,0,208,172.56V200A8,8,0,0,1,200,208Z"/></symbol>
+  <symbol id="i-identification-card" viewBox="0 0 256 256"><path d="M200,112a8,8,0,0,1-8,8H152a8,8,0,0,1,0-16h40A8,8,0,0,1,200,112Zm-8,24H152a8,8,0,0,0,0,16h40a8,8,0,0,0,0-16Zm40-80V200a16,16,0,0,1-16,16H40a16,16,0,0,1-16-16V56A16,16,0,0,1,40,40H216A16,16,0,0,1,232,56ZM216,200V56H40V200H216Zm-80.26-34a8,8,0,1,1-15.5,4c-2.63-10.26-13.06-18-24.25-18s-21.61,7.74-24.25,18a8,8,0,1,1-15.5-4,39.84,39.84,0,0,1,17.19-23.34,32,32,0,1,1,45.12,0A39.76,39.76,0,0,1,135.75,166ZM96,136a16,16,0,1,0-16-16A16,16,0,0,0,96,136Z"/></symbol>
+  <symbol id="i-ticket" viewBox="0 0 256 256"><path d="M232,104a8,8,0,0,0,8-8V64a16,16,0,0,0-16-16H32A16,16,0,0,0,16,64V96a8,8,0,0,0,8,8,24,24,0,0,1,0,48,8,8,0,0,0-8,8v32a16,16,0,0,0,16,16H224a16,16,0,0,0,16-16V160a8,8,0,0,0-8-8,24,24,0,0,1,0-48ZM32,167.2a40,40,0,0,0,0-78.4V64H88V192H32Zm192,0V192H104V64H224V88.8a40,40,0,0,0,0,78.4Z"/></symbol>
+  <symbol id="i-music-notes" viewBox="0 0 256 256"><path d="M212.92,17.69a8,8,0,0,0-6.86-1.45l-128,32A8,8,0,0,0,72,56V166.08A36,36,0,1,0,88,196V110.25l112-28v51.83A36,36,0,1,0,216,164V24A8,8,0,0,0,212.92,17.69ZM52,216a20,20,0,1,1,20-20A20,20,0,0,1,52,216ZM88,93.75V62.25l112-28v31.5ZM180,184a20,20,0,1,1,20-20A20,20,0,0,1,180,184Z"/></symbol>
+  <symbol id="i-martini" viewBox="0 0 256 256"><path d="M237.66,45.66A8,8,0,0,0,232,32H24a8,8,0,0,0-5.66,13.66L120,147.31V208H88a8,8,0,0,0,0,16h80a8,8,0,0,0,0-16H136V147.31ZM43.31,48H212.69l-16,16H59.31ZM128,132.69,75.31,80H180.69Z"/></symbol>
+  <symbol id="i-beer-bottle" viewBox="0 0 256 256"><path d="M245.66,42.34l-32-32a8,8,0,0,0-11.32,11.32l1.48,1.47L148.65,64.51l-38.22,7.65a8.05,8.05,0,0,0-4.09,2.18L23,157.66a24,24,0,0,0,0,33.94L64.4,233a24,24,0,0,0,33.94,0l83.32-83.31a8,8,0,0,0,2.18-4.09l7.65-38.22,41.38-55.17,1.47,1.48a8,8,0,0,0,11.32-11.32ZM96,107.31,148.69,160,104,204.69,51.31,152ZM81.37,224a7.94,7.94,0,0,1-5.65-2.34L34.34,180.28a8,8,0,0,1,0-11.31L40,163.31,92.69,216,87,221.66A8,8,0,0,1,81.37,224ZM177.6,99.2a7.92,7.92,0,0,0-1.44,3.23l-7.53,37.63L160,148.69,107.31,96l8.63-8.63,37.63-7.53a7.92,7.92,0,0,0,3.23-1.44l58.45-43.84,6.19,6.19Z"/></symbol>
+  <symbol id="i-check" viewBox="0 0 256 256"><path d="M232.49,80.49l-128,128a12,12,0,0,1-17,0l-56-56a12,12,0,1,1,17-17L96,183,215.51,63.51a12,12,0,0,1,17,17Z"/></symbol>
+  <symbol id="i-map-pin" viewBox="0 0 256 256"><path d="M128,64a40,40,0,1,0,40,40A40,40,0,0,0,128,64Zm0,64a24,24,0,1,1,24-24A24,24,0,0,1,128,128Zm0-112a88.1,88.1,0,0,0-88,88c0,31.4,14.51,64.68,42,96.25a254.19,254.19,0,0,0,41.45,38.3,8,8,0,0,0,9.18,0A254.19,254.19,0,0,0,174,200.25c27.45-31.57,42-64.85,42-96.25A88.1,88.1,0,0,0,128,16Zm0,206c-16.53-13-72-60.75-72-118a72,72,0,0,1,144,0C200,161.23,144.53,209,128,222Z"/></symbol>
+  <symbol id="i-confetti" viewBox="0 0 256 256"><path d="M111.49,52.63a15.8,15.8,0,0,0-26,5.77L33,202.78A15.83,15.83,0,0,0,47.76,224a16,16,0,0,0,5.46-1l144.37-52.5a15.8,15.8,0,0,0,5.78-26Zm-8.33,135.21-35-35,13.16-36.21,58.05,58.05Zm-55,20,14-38.41,24.45,24.45ZM156,168.64,87.36,100l13-35.87,91.43,91.43ZM160,72a37.8,37.8,0,0,1,3.84-15.58C169.14,45.83,179.14,40,192,40c6.7,0,11-2.29,13.65-7.21A22,22,0,0,0,208,23.94,8,8,0,0,1,224,24c0,12.86-8.52,32-32,32-6.7,0-11,2.29-13.65,7.21A22,22,0,0,0,176,72.06,8,8,0,0,1,160,72ZM136,40V16a8,8,0,0,1,16,0V40a8,8,0,0,1-16,0Zm101.66,82.34a8,8,0,1,1-11.32,11.31l-16-16a8,8,0,0,1,11.32-11.32Zm4.87-42.75-24,8a8,8,0,0,1-5.06-15.18l24-8a8,8,0,0,1,5.06,15.18Z"/></symbol>
+  <symbol id="i-vinyl-record" viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm0-144a56.06,56.06,0,0,0-56,56,8,8,0,0,1-16,0,72.08,72.08,0,0,1,72-72,8,8,0,0,1,0,16Zm72,56a72.08,72.08,0,0,1-72,72,8,8,0,0,1,0-16,56.06,56.06,0,0,0,56-56,8,8,0,0,1,16,0Zm-40,0a32,32,0,1,0-32,32A32,32,0,0,0,160,128Zm-48,0a16,16,0,1,1,16,16A16,16,0,0,1,112,128Z"/></symbol>
+</svg>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <!-- Pause and play, from Phosphor (MIT), bold weight. -->
+    <symbol id="i-pause" viewBox="0 0 256 256"><path d="M200,28H160a20,20,0,0,0-20,20V208a20,20,0,0,0,20,20h40a20,20,0,0,0,20-20V48A20,20,0,0,0,200,28Zm-4,176H164V52h32ZM96,28H56A20,20,0,0,0,36,48V208a20,20,0,0,0,20,20H96a20,20,0,0,0,20-20V48A20,20,0,0,0,96,28ZM92,204H60V52H92Z"/></symbol>
+    <symbol id="i-play" viewBox="0 0 256 256"><path d="M234.49,111.07,90.41,22.94A20,20,0,0,0,60,39.87V216.13a20,20,0,0,0,30.41,16.93l144.08-88.13a19.82,19.82,0,0,0,0-33.86ZM84,208.85V47.15L216.16,128Z"/></symbol>
+  </svg>
+
+  <header class="wrap topbar">
+    <a class="logo led" href="#top" aria-label="Rebuliço, voltar ao topo">Rebuliço</a>
+    <nav class="nav" aria-label="Principal">
+      <a href="#semana">A semana</a>
+      <a href="#carta">Carta do bar</a>
+      <a href="#reservar">Lista e camarote</a>
+      <a href="#onde">Onde fica</a>
+    </nav>
+    <a class="btn btn-led btn-sm" href="#reservar"><svg class="ico" aria-hidden="true"><use href="#i-ticket"/></svg>Lista e camarote</a>
+  </header>
+
+  <main>
+    <section class="hero" id="top" aria-label="Apresentação">
+      <div class="hero-card">
+        <div class="hero-media" aria-hidden="true">
+          <picture>
+            <source media="(max-width: 700px), (orientation: portrait)" srcset="media/capa-720.webp" width="720" height="1280">
+            <img src="media/capa-1280.webp" alt="" width="1280" height="720" fetchpriority="high">
+          </picture>
+          <video class="hero-video" muted loop playsinline preload="none" data-small="media/capa-720.mp4" data-large="media/capa-1280.mp4"></video>
+        </div>
+        <div class="ticker">
+          <div class="ticker-view" aria-hidden="true">
+            <div class="ticker-track">
+              <div class="ticker-group led" id="ticker-group">
+                <span>Quinta a domingo</span><svg class="ico"><use href="#i-music-notes"/></svg>
+                <span>Lista até 20h pelo WhatsApp</span><svg class="ico"><use href="#i-music-notes"/></svg>
+                <span>Balde com 6 long necks: R$ 54</span><svg class="ico"><use href="#i-music-notes"/></svg>
+                <span>Só maiores de 18</span><svg class="ico"><use href="#i-music-notes"/></svg>
+              </div>
+            </div>
+          </div>
+          <button class="round-btn" type="button" id="motion-pause" aria-pressed="false" aria-label="Pausar o vídeo e o letreiro" hidden><svg class="ico i-pause" aria-hidden="true"><use href="#i-pause"/></svg><svg class="ico i-play" aria-hidden="true"><use href="#i-play"/></svg></button>
+        </div>
+        <div></div>
+        <div class="hero-body">
+          <div class="hero-meta">
+            <p class="kicker">Centro de Campina Grande · 18+</p>
+            <p class="pill rating"><b>4,7</b><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><span>1.284 avaliações<span class="long"> no Google</span></span></p>
+          </div>
+          <h1 class="hero-title"><span class="led led-word">Rebuliço</span> <span class="h1-sub">Bar e pista no Centro de Campina. De quinta a domingo, até o dia clarear.</span></h1>
+          <div class="hero-foot">
+            <p class="tonight"><span class="live-dot" aria-hidden="true"></span><b id="tonight-label">Esta semana:</b> <span id="tonight-text">quinta tem Forró de Quinta, sexta tem Sexta Brega e sábado a pista vai até as 5h.</span></p>
+            <div class="hero-actions">
+              <a class="btn btn-led" id="hero-list" href="https://wa.me/?text=Ol%C3%A1%2C%20Rebuli%C3%A7o!%20Quero%20p%C3%B4r%20nome%20na%20lista." target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-whatsapp"/></svg>Nome na lista pelo WhatsApp</a>
+              <a class="btn btn-ghost" href="#reservar"><svg class="ico" aria-hidden="true"><use href="#i-crown"/></svg>Reservar camarote</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="week" id="semana" aria-labelledby="week-title">
+      <div class="wrap week-head">
+        <h2 id="week-title">A semana na pista</h2>
+        <p>Quinta é forró, sexta é brega, sábado vai até as 5h e domingo é pagode. De segunda a quarta a casa descansa.</p>
+      </div>
+      <p class="swipe-hint">Arraste para o lado para ver as quatro noites.</p>
+      <div class="week-scroller">
+        <ol class="wrap week-track">
+          <li class="flyer" data-day="4" style="--tilt: -1.6deg">
+            <div class="flyer-top"><p class="flyer-day">Qui</p><p class="flyer-date" data-date></p></div>
+            <figure class="duo"><img src="https://images.unsplash.com/photo-1779037805819-ad14ead830c7?auto=format&rect=1000,600,2900,2406&fit=crop&w=800&h=550&q=70" alt="Trio de forró tocando na rua, à noite" width="800" height="550" loading="lazy"></figure>
+            <h3>Forró de Quinta</h3>
+            <p class="flyer-what">Trio pé de serra ao vivo, com sanfona, zabumba e triângulo. Dá para chegar sem par.</p>
+            <dl class="flyer-info">
+              <div><dt>Porta</dt><dd>21h às 2h</dd></div>
+              <div><dt>Lista até 20h</dt><dd>R$ 10</dd></div>
+              <div><dt>Na porta</dt><dd>R$ 20</dd></div>
+            </dl>
+            <a class="btn btn-ink" href="#reservar" data-night="4">Nome na lista de quinta</a>
+          </li>
+          <li class="flyer" data-day="5" style="--tilt: 1.2deg">
+            <div class="flyer-top"><p class="flyer-day">Sex</p><p class="flyer-date" data-date></p></div>
+            <figure class="duo" style="--lift: 1.15"><img src="https://images.unsplash.com/photo-1687511844598-165c1fc387cc?auto=format&fit=crop&w=800&h=550&q=70" alt="Pista cheia com mãos para cima e papel picado" width="800" height="550" loading="lazy"></figure>
+            <h3>Sexta Brega</h3>
+            <p class="flyer-what">Brega, piseiro e bregadeira com DJ a noite toda. A que mais enche, chega antes das 23h.</p>
+            <dl class="flyer-info">
+              <div><dt>Porta</dt><dd>22h às 4h</dd></div>
+              <div><dt>Lista até 20h</dt><dd>R$ 15</dd></div>
+              <div><dt>Na porta</dt><dd>R$ 25</dd></div>
+            </dl>
+            <a class="btn btn-ink" href="#reservar" data-night="5">Nome na lista de sexta</a>
+          </li>
+          <li class="flyer" data-day="6" style="--tilt: -0.8deg">
+            <div class="flyer-top"><p class="flyer-day">Sáb</p><p class="flyer-date" data-date></p></div>
+            <figure class="duo" style="--lift: 1.35"><img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=800&h=550&q=70" alt="Mão de DJ na mesa de som" width="800" height="550" loading="lazy"></figure>
+            <h3>Rebuliço até as 5h</h3>
+            <p class="flyer-what">DJ convidado, funk, pop e o que a pista pedir. Camarote costuma esgotar na quinta.</p>
+            <dl class="flyer-info">
+              <div><dt>Porta</dt><dd>22h às 5h</dd></div>
+              <div><dt>Lista até 20h</dt><dd>R$ 20</dd></div>
+              <div><dt>Na porta</dt><dd>R$ 30</dd></div>
+            </dl>
+            <a class="btn btn-ink" href="#reservar" data-night="6">Nome na lista de sábado</a>
+          </li>
+          <li class="flyer" data-day="0" style="--tilt: 1.8deg">
+            <div class="flyer-top"><p class="flyer-day">Dom</p><p class="flyer-date" data-date></p></div>
+            <figure class="duo" style="--lift: 1.3"><img src="https://images.unsplash.com/photo-1777375430837-b8cf2e820832?auto=format&fit=crop&w=800&h=550&q=70" alt="Mãos tocando pandeiro no escuro" width="800" height="550" loading="lazy"></figure>
+            <h3>Pagode do Pôr do Sol</h3>
+            <p class="flyer-what">Roda de pagode ao vivo no fim de tarde, para fechar o fim de semana sem pressa.</p>
+            <dl class="flyer-info">
+              <div><dt>Porta</dt><dd>16h às 22h</dd></div>
+              <div><dt>Lista até 17h</dt><dd>Grátis</dd></div>
+              <div><dt>Na porta</dt><dd>R$ 10</dd></div>
+            </dl>
+            <a class="btn btn-ink" href="#reservar" data-night="0">Nome na lista de domingo</a>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="manifesto" aria-label="O clima da casa">
+      <div class="m-row m-row-top">
+        <figure class="m-photo duo p1" data-speed="0.7"><img src="https://images.unsplash.com/photo-1618176581835-d60e9c2567b9?auto=format&fit=crop&w=500&h=660&q=70" alt="Mãos para cima na pista" width="500" height="660" loading="lazy"></figure>
+        <figure class="m-photo duo p2" data-speed="1.3"><img src="https://images.unsplash.com/photo-1570207859654-a9a7ad65ed3d?auto=format&rect=1100,300,1865,2400&fit=crop&w=500&h=660&q=70" alt="Globo de espelhos com luz azul" width="500" height="660" loading="lazy"></figure>
+      </div>
+      <p class="manifesto-text" id="manifesto">Aqui a comida só forra o estômago. O povo vem para <span class="hl">dançar</span>, cantar junto e sair com o dia clareando no Centro.</p>
+      <div class="m-row m-row-bottom">
+        <figure class="m-photo p3" data-speed="0.9"><img src="https://images.unsplash.com/photo-1666355704386-93cf5f887404?auto=format&fit=crop&w=500&h=660&q=70" alt="Caipirinha na caneca com um pote de amendoim" width="500" height="660" loading="lazy"></figure>
+        <figure class="m-photo duo p4" data-speed="1.2"><img src="https://images.unsplash.com/photo-1578736641330-3155e606cd40?auto=format&fit=crop&w=500&h=660&q=70" alt="Pista dançando sob luz de laser" width="500" height="660" loading="lazy"></figure>
+      </div>
+    </section>
+
+    <section class="carta" id="carta" aria-labelledby="carta-title">
+      <div class="wrap carta-grid">
+        <div>
+          <h2 id="carta-title">Carta do bar</h2>
+          <p class="carta-note">Preço de balcão, pago na comanda. Até as 23h o balde sai por R$ 45.</p>
+          <ul class="board">
+            <li><div class="board-row"><span class="board-name">Balde com 6 long necks</span><span class="board-price led">R$ 54</span></div><p class="board-note">Pilsen no gelo. O mais pedido de sexta.</p></li>
+            <li><div class="board-row"><span class="board-name">Cerveja 600 ml</span><span class="board-price led">R$ 15</span></div></li>
+            <li><div class="board-row"><span class="board-name">Chope pilsen 400 ml</span><span class="board-price led">R$ 11</span></div></li>
+            <li><div class="board-row"><span class="board-name">Caipirinha do brejo</span><span class="board-price led">R$ 18</span></div><p class="board-note">Limão, cajá ou maracujá, com cachaça de alambique do brejo paraibano.</p></li>
+            <li><div class="board-row"><span class="board-name">Rebuliço da casa</span><span class="board-price led">R$ 24</span></div><p class="board-note">Cachaça, cajá, limão e xarope de rapadura, com borda de sal e pimenta.</p></li>
+            <li><div class="board-row"><span class="board-name">Gin tônica de umbu</span><span class="board-price led">R$ 28</span></div></li>
+            <li><div class="board-row"><span class="board-name">Dose de cachaça</span><span class="board-price led">R$ 9</span></div></li>
+            <li><div class="board-row"><span class="board-name">Água, refri e energético</span><span class="board-price led">R$ 5 a 16</span></div></li>
+          </ul>
+        </div>
+        <aside class="snacks" aria-labelledby="snacks-title">
+          <h3 id="snacks-title">Para forrar o estômago</h3>
+          <p>A cozinha fecha à 1h, antes da pista.</p>
+          <ul>
+            <li><span>Macaxeira frita com manteiga da terra</span><span>R$ 26</span></li>
+            <li><span>Dadinho de tapioca com geleia de pimenta</span><span>R$ 29</span></li>
+            <li><span>Carne de sol com coalho e macaxeira, serve 3</span><span>R$ 58</span></li>
+            <li><span>Pastel de queijo ou de carne, 6 unidades</span><span>R$ 24</span></li>
+          </ul>
+        </aside>
+      </div>
+      <div class="wrap drinks">
+        <figure><img src="https://images.unsplash.com/photo-1662560094368-821ba04f6d0c?auto=format&fit=crop&w=600&h=750&q=70" alt="Mão segurando caipirinha na caneca" width="600" height="750" loading="lazy"><figcaption><b>Caipirinha do brejo</b>Na caneca, com gelo até a boca.</figcaption></figure>
+        <figure><img src="https://images.unsplash.com/photo-1644809818228-e29aa5aa8151?auto=format&fit=crop&w=600&h=750&q=70" alt="Drink laranja com gelo" width="600" height="750" loading="lazy"><figcaption><b>Rebuliço da casa</b>Cajá, rapadura e um toque de pimenta.</figcaption></figure>
+        <figure><img src="https://images.unsplash.com/photo-1769767677849-668341f05f62?auto=format&fit=crop&w=600&h=750&q=70" alt="Chope sendo tirado na torneira" width="600" height="750" loading="lazy"><figcaption><b>Chope de 400 ml</b>Tirado na hora, com dois dedos de colarinho.</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="booking" id="reservar" aria-labelledby="booking-title">
+      <div class="wrap booking-grid">
+        <div class="booking-text">
+          <h2 id="booking-title">Lista, camarote e aniversário</h2>
+          <p>Escolha a noite e quantas pessoas vêm. A mensagem sai pronta no nosso WhatsApp, e a gente confirma por lá.</p>
+          <ul class="rules">
+            <li><svg class="ico" aria-hidden="true"><use href="#i-ticket"/></svg><span>A lista vale até 20h do dia (no domingo, até 17h). Depois, entra pelo valor da porta.</span></li>
+            <li><svg class="ico" aria-hidden="true"><use href="#i-crown"/></svg><span>Camarote para até 12 pessoas, com consumação de R$ 600 em bebida e sinal de R$ 150 no Pix.</span></li>
+            <li><svg class="ico" aria-hidden="true"><use href="#i-cake"/></svg><span>Aniversariante da semana entra sem pagar e bota até 10 amigos na lista.</span></li>
+            <li><svg class="ico" aria-hidden="true"><use href="#i-identification-card"/></svg><span>Só maiores de 18, com documento com foto. Sem documento, não entra.</span></li>
+          </ul>
+        </div>
+        <form class="ticket" id="booking" action="https://wa.me/" method="get" target="_blank">
+          <input type="hidden" name="text" value="Olá, Rebuliço! Quero pôr nome na lista.">
+          <div class="ticket-head"><p>Rebuliço</p><span id="ticket-code">Pedido de lista</span></div>
+          <fieldset class="field">
+            <legend>O que você quer?</legend>
+            <div class="choices">
+              <label class="choice"><input type="radio" name="kind" value="lista" checked><svg class="ico" aria-hidden="true"><use href="#i-ticket"/></svg>Lista</label>
+              <label class="choice"><input type="radio" name="kind" value="camarote"><svg class="ico" aria-hidden="true"><use href="#i-crown"/></svg>Camarote</label>
+              <label class="choice"><input type="radio" name="kind" value="aniversario"><svg class="ico" aria-hidden="true"><use href="#i-cake"/></svg>Aniversário</label>
+            </div>
+          </fieldset>
+          <fieldset class="field">
+            <legend>Qual noite?</legend>
+            <div class="choices choices-nights" id="nights">
+              <label class="choice"><input type="radio" name="night" value="4" checked>Quinta</label>
+              <label class="choice"><input type="radio" name="night" value="5">Sexta</label>
+              <label class="choice"><input type="radio" name="night" value="6">Sábado</label>
+              <label class="choice"><input type="radio" name="night" value="0">Domingo</label>
+            </div>
+          </fieldset>
+          <div class="field">
+            <label class="field-label" for="guest-name">Seu nome</label>
+            <input class="text-input" id="guest-name" type="text" autocomplete="given-name" placeholder="Como está no documento">
+          </div>
+          <div class="field">
+            <span class="field-label" id="people-label">Quantas pessoas, com você</span>
+            <div class="stepper" role="group" aria-labelledby="people-label">
+              <button class="step" type="button" id="people-minus" aria-label="Menos uma pessoa"><svg class="ico" aria-hidden="true"><use href="#i-minus"/></svg></button>
+              <output class="people" id="people" aria-live="polite">4</output>
+              <button class="step" type="button" id="people-plus" aria-label="Mais uma pessoa"><svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></button>
+            </div>
+            <p class="kind-note" id="kind-note">Na lista, cada nome paga o valor de lista da noite na entrada.</p>
+          </div>
+          <div class="preview" hidden>
+            <p>A mensagem vai assim:</p>
+            <p class="bubble" id="preview"></p>
+          </div>
+          <button class="btn btn-ink" type="submit"><svg class="ico" aria-hidden="true"><use href="#i-whatsapp"/></svg>Mandar no WhatsApp</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="sj" aria-labelledby="sj-title">
+<svg class="flags" viewBox="0 0 1200 150" preserveAspectRatio="xMidYMin slice" aria-hidden="true" focusable="false">
+  <path class="flag-string far" d="M-40 44 Q600 124 1240 44"/>
+  <g class="flag f4 far" transform="translate(-13.3 47.3)"><path d="M-11 0H11L0 22Z"/></g>
+  <g class="flag f5 far" transform="translate(40.0 53.4)"><path d="M-11 0H11L0 22Z"/></g>
+  <g class="flag f1 far" transform="translate(93.3 58.9)"><path d="M-11 0H11L0 22Z"/></g>
+  <g class="flag f2 far" transform="translate(146.7 63.9)"><path d="M-11 0H11L0 22Z"/></g>
+  <g class="flag f3 far" transform="translate(200.0 68.4)"><path d="M-11 0H11L0 22Z"/></g>
+  <g class="flag f4 far" transform="translate(253.3 72.3)"><path d="M-11 0H11L0 22Z"/></g>
+  <g class="flag f5 far" transform="translate(306.7 75.6)"><path d="M-11 0H11L0 22Z"/></g>
+  <g class="flag f1 far" transform="translate(360.0 78.4)"><path d="M-11 0H11L0 22Z"/></g>
+  <g class="flag f2 far" transform="translate(413.3 80.6)"><path d="M-11 0H11L0 22Z"/></g>
+  <g class="flag f3 far" transform="translate(466.7 82.3)"><path d="M-11 0H11L0 22Z"/></g>
+  <g class="flag f4 far" transform="translate(520.0 83.4)"><path d="M-11 0H11L0 22Z"/></g>
+  <g class="flag f5 far" transform="translate(573.3 83.9)"><path d="M-11 0H11L0 22Z"/></g>
+  <g class="flag f1 far" transform="translate(626.7 83.9)"><path d="M-11 0H11L0 22Z"/></g>
+  <g class="flag f2 far" transform="translate(680.0 83.4)"><path d="M-11 0H11L0 22Z"/></g>
+  <g class="flag f3 far" transform="translate(733.3 82.3)"><path d="M-11 0H11L0 22Z"/></g>
+  <g class="flag f4 far" transform="translate(786.7 80.6)"><path d="M-11 0H11L0 22Z"/></g>
+  <g class="flag f5 far" transform="translate(840.0 78.4)"><path d="M-11 0H11L0 22Z"/></g>
+  <g class="flag f1 far" transform="translate(893.3 75.6)"><path d="M-11 0H11L0 22Z"/></g>
+  <g class="flag f2 far" transform="translate(946.7 72.3)"><path d="M-11 0H11L0 22Z"/></g>
+  <g class="flag f3 far" transform="translate(1000.0 68.4)"><path d="M-11 0H11L0 22Z"/></g>
+  <g class="flag f4 far" transform="translate(1053.3 63.9)"><path d="M-11 0H11L0 22Z"/></g>
+  <g class="flag f5 far" transform="translate(1106.7 58.9)"><path d="M-11 0H11L0 22Z"/></g>
+  <g class="flag f1 far" transform="translate(1160.0 53.4)"><path d="M-11 0H11L0 22Z"/></g>
+  <g class="flag f2 far" transform="translate(1213.3 47.3)"><path d="M-11 0H11L0 22Z"/></g>
+  <path class="flag-string" d="M-20 8 Q600 78 1220 8"/>
+  <g class="flag f1" transform="translate(3.8 10.6)"><path d="M-15 0H15L0 30Z"/></g>
+  <g class="flag f2" transform="translate(51.5 15.6)"><path d="M-15 0H15L0 30Z"/></g>
+  <g class="flag f3" transform="translate(99.2 20.2)"><path d="M-15 0H15L0 30Z"/></g>
+  <g class="flag f4" transform="translate(146.9 24.3)"><path d="M-15 0H15L0 30Z"/></g>
+  <g class="flag f5" transform="translate(194.6 28.0)"><path d="M-15 0H15L0 30Z"/></g>
+  <g class="flag f1" transform="translate(242.3 31.4)"><path d="M-15 0H15L0 30Z"/></g>
+  <g class="flag f2" transform="translate(290.0 34.2)"><path d="M-15 0H15L0 30Z"/></g>
+  <g class="flag f3" transform="translate(337.7 36.7)"><path d="M-15 0H15L0 30Z"/></g>
+  <g class="flag f4" transform="translate(385.4 38.8)"><path d="M-15 0H15L0 30Z"/></g>
+  <g class="flag f5" transform="translate(433.1 40.5)"><path d="M-15 0H15L0 30Z"/></g>
+  <g class="flag f1" transform="translate(480.8 41.7)"><path d="M-15 0H15L0 30Z"/></g>
+  <g class="flag f2" transform="translate(528.5 42.5)"><path d="M-15 0H15L0 30Z"/></g>
+  <g class="flag f3" transform="translate(576.2 42.9)"><path d="M-15 0H15L0 30Z"/></g>
+  <g class="flag f4" transform="translate(623.8 42.9)"><path d="M-15 0H15L0 30Z"/></g>
+  <g class="flag f5" transform="translate(671.5 42.5)"><path d="M-15 0H15L0 30Z"/></g>
+  <g class="flag f1" transform="translate(719.2 41.7)"><path d="M-15 0H15L0 30Z"/></g>
+  <g class="flag f2" transform="translate(766.9 40.5)"><path d="M-15 0H15L0 30Z"/></g>
+  <g class="flag f3" transform="translate(814.6 38.8)"><path d="M-15 0H15L0 30Z"/></g>
+  <g class="flag f4" transform="translate(862.3 36.7)"><path d="M-15 0H15L0 30Z"/></g>
+  <g class="flag f5" transform="translate(910.0 34.2)"><path d="M-15 0H15L0 30Z"/></g>
+  <g class="flag f1" transform="translate(957.7 31.4)"><path d="M-15 0H15L0 30Z"/></g>
+  <g class="flag f2" transform="translate(1005.4 28.0)"><path d="M-15 0H15L0 30Z"/></g>
+  <g class="flag f3" transform="translate(1053.1 24.3)"><path d="M-15 0H15L0 30Z"/></g>
+  <g class="flag f4" transform="translate(1100.8 20.2)"><path d="M-15 0H15L0 30Z"/></g>
+  <g class="flag f5" transform="translate(1148.5 15.6)"><path d="M-15 0H15L0 30Z"/></g>
+  <g class="flag f1" transform="translate(1196.2 10.6)"><path d="M-15 0H15L0 30Z"/></g>
+</svg>
+      <div class="wrap sj-grid">
+        <div class="sj-text">
+          <p class="sj-kicker">São João</p>
+          <h2 id="sj-title">Em junho, o Rebuliço vira arraiá</h2>
+          <p>No mês do São João a casa abre todo dia às 17h, com trio pé de serra no palco e quadrilha passando na porta. Fica a uns 10 minutos a pé do Parque do Povo: dá para esquentar aqui antes do show e voltar para a saideira.</p>
+          <ul class="sj-facts">
+            <li>Todo dia em junho</li>
+            <li>Das 17h às 2h</li>
+            <li>Forró ao vivo toda noite</li>
+          </ul>
+        </div>
+        <figure class="sj-photo"><img src="https://images.unsplash.com/photo-1688948871377-9093cc4e0989?auto=format&rect=0,0,3712,3900&fit=crop&w=900&h=720&q=70" alt="Bandeirinhas de São João contra o céu azul" width="900" height="720" loading="lazy"></figure>
+      </div>
+    </section>
+
+    <section class="wrap place" id="onde" aria-labelledby="place-title">
+      <div class="place-grid">
+        <div class="place-map">
+          <div class="map" id="map" role="region" aria-label="Mapa da área do Centro de Campina Grande"></div>
+          <p class="map-label">Endereço fictício, no Centro</p>
+        </div>
+        <div class="place-info">
+          <h2 id="place-title">Onde fica</h2>
+          <table class="hours">
+            <tr data-day="4"><td>Qui</td><td>21h às 2h</td></tr>
+            <tr data-day="5"><td>Sex</td><td>22h às 4h</td></tr>
+            <tr data-day="6"><td>Sáb</td><td>22h às 5h</td></tr>
+            <tr data-day="0"><td>Dom</td><td>16h às 22h</td></tr>
+            <tr><td>Seg a qua</td><td>Fechado</td></tr>
+            <tr class="note"><td>Em junho</td><td>Todo dia, 17h às 2h</td></tr>
+          </table>
+          <ul class="facts">
+            <li><svg class="ico" aria-hidden="true"><use href="#i-map-pin"/></svg><p>Rua fictícia, 88, Centro, a duas quadras da Maciel Pinheiro.<small>Uns 10 minutos a pé do Parque do Povo.</small></p></li>
+            <li><svg class="ico" aria-hidden="true"><use href="#i-taxi"/></svg><p>Uber e 99 param na porta.<small>Estacionamento pago na rua de trás, R$ 15 a noite. Se for beber, deixe o carro em casa.</small></p></li>
+            <li><svg class="ico" aria-hidden="true"><use href="#i-credit-card"/></svg><p>Consumação na comanda, paga na saída.<span class="pay"><span><svg class="ico" aria-hidden="true"><use href="#i-pix"/></svg>Pix</span><span><svg class="ico" aria-hidden="true"><use href="#i-credit-card"/></svg>Cartão</span><span><svg class="ico" aria-hidden="true"><use href="#i-money"/></svg>Dinheiro</span></span></p></li>
+          </ul>
+          <div class="place-actions">
+            <a class="btn btn-led" href="https://www.google.com/maps/search/?api=1&query=Rua%20Maciel%20Pinheiro%2C%20Centro%2C%20Campina%20Grande%20PB" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-googlemaps"/></svg>Abrir no Google Maps</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap faq" id="duvidas" aria-labelledby="faq-title">
+      <h2 id="faq-title">Antes de vir</h2>
+      <div>
+        <details><summary>Precisa levar documento?<svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Precisa. A entrada é só para maiores de 18, com documento com foto, físico ou digital. Sem documento, não entra, nem acompanhado.</p></details>
+        <details><summary>Até que horas vale a lista?<svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Até as 20h do dia, de quinta a sábado, e até as 17h no domingo. O nome precisa estar na lista antes de você chegar; na porta, vale o preço cheio.</p></details>
+        <details><summary>Como funciona o camarote?<svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>São quatro camarotes para até 12 pessoas cada, com consumação de R$ 600 em bebida. Para segurar, a gente pede um sinal de R$ 150 no Pix, que entra na conta da noite.</p></details>
+        <details><summary>Tem comida?<svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Tem petisco para forrar o estômago até 1h: macaxeira, dadinho de tapioca, carne de sol e pastel. Jantar mesmo, não é a nossa.</p></details>
+        <details><summary>Posso levar bolo no aniversário?<svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Pode. Avise na mensagem da lista e deixe o bolo com a gente na entrada, que ele fica na geladeira do bar até a hora do parabéns.</p></details>
+        <details><summary>Tem onde estacionar?<svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Tem estacionamento pago na rua de trás, R$ 15 a noite. Mas se for beber, vem de Uber ou 99, que param na porta.</p></details>
+      </div>
+    </section>
+
+    <section class="cta" aria-labelledby="cta-title">
+      <div class="wrap">
+        <h2 id="cta-title">Bota o nome na lista e chega&nbsp;cedo</h2>
+        <div class="cta-actions">
+          <a class="btn btn-ink" id="cta-list" href="https://wa.me/?text=Ol%C3%A1%2C%20Rebuli%C3%A7o!%20Quero%20p%C3%B4r%20nome%20na%20lista." target="_blank" rel="noopener"><svg class="ico ico-wa" aria-hidden="true"><use href="#i-whatsapp"/></svg>Nome na lista pelo WhatsApp</a>
+          <a class="btn btn-line" href="#reservar"><svg class="ico" aria-hidden="true"><use href="#i-crown"/></svg>Reservar camarote</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <div class="foot-row">
+      <span>Rebuliço · empresa fictícia para demonstração</span>
+      <a class="insta" href="https://www.instagram.com/" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-instagram"/></svg>@rebulico.bar.demo</a>
+      <span>Fotos: Unsplash · Vídeo: Pexels · Mapa: OpenStreetMap</span>
+    </div>
+    <div class="wordmark led" aria-hidden="true">Rebuliço</div>
+    <a class="back-link" href="/"><svg class="ico" aria-hidden="true"><use href="#i-arrow-left"/></svg>Ver outros modelos</a>
+    <p class="orcamento">Quer um site assim para o seu negócio? <a href="https://tarciodiniz.com/#contato">Peça um orçamento</a></p>
+    <p class="credito-autor">Site feito por <a href="https://tarciodiniz.com" rel="author">Tarcio Diniz</a>, desenvolvedor</p>
+  </footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/SplitText.min.js"></script>
+<script>
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const $ = (selector) => document.querySelector(selector);
+  const icon = (name) => `<svg class="ico" aria-hidden="true"><use href="#i-${name}"/></svg>`;
+  const waLink = (text) => `https://wa.me/?text=${encodeURIComponent(text)}`;
+  // One button pauses everything that moves on its own in the cover (video and LED ticker).
+  const motionToggle = document.getElementById("motion-pause");
+  const coverPaused = () => motionToggle.getAttribute("aria-pressed") === "true";
+  motionToggle.addEventListener("click", () => {
+    const paused = !coverPaused();
+    motionToggle.setAttribute("aria-pressed", String(paused));
+    motionToggle.setAttribute("aria-label", paused ? "Continuar o vídeo e o letreiro" : "Pausar o vídeo e o letreiro");
+    document.dispatchEvent(new CustomEvent("cover-pause", { detail: paused }));
+  });
+
+  /* ---------- The week, on Campina Grande time ---------- */
+  // Weekday (0 = Sunday) to night. `closes` past 24 means the night runs into the next day.
+  const NIGHTS = {
+    4: { day: "quinta", name: "Forró de Quinta", door: "21h", opens: 21, closes: 26, listUntil: "20h" },
+    5: { day: "sexta", name: "Sexta Brega", door: "22h", opens: 22, closes: 28, listUntil: "20h" },
+    6: { day: "sábado", name: "Rebuliço até as 5h", door: "22h", opens: 22, closes: 29, listUntil: "20h" },
+    0: { day: "domingo", name: "Pagode do Pôr do Sol", door: "16h", opens: 16, closes: 22, listUntil: "17h" },
+  };
+  const DAY_MS = 86400000;
+  const localNow = () => new Date(new Date().toLocaleString("en-US", { timeZone: "America/Recife" }));
+  const shortDate = (date) => `${String(date.getDate()).padStart(2, "0")}/${String(date.getMonth() + 1).padStart(2, "0")}`;
+
+  // The next four open nights, starting today; before 6h, last night still counts if the party is on.
+  function upcomingNights(now) {
+    const nights = [];
+    const hour = now.getHours();
+    const yesterday = new Date(now.getTime() - DAY_MS);
+    const lastNight = NIGHTS[yesterday.getDay()];
+    if (hour < 6 && lastNight && hour + 24 < lastNight.closes) nights.push({ ...lastNight, weekday: yesterday.getDay(), date: yesterday, live: true });
+    for (let offset = 0; nights.length < 4 && offset < 8; offset++) {
+      const date = new Date(now.getTime() + offset * DAY_MS);
+      const night = NIGHTS[date.getDay()];
+      // A night that already ended today (Sunday after 22h) moves on to next week.
+      if (night && offset === 0 && night.closes <= 24 && hour >= night.closes) continue;
+      if (night) nights.push({ ...night, weekday: date.getDay(), date, live: offset === 0 && hour >= night.opens });
+    }
+    return nights;
+  }
+
+  function describeTonight(nights, now) {
+    const next = nights[0];
+    const isToday = next.date.getDate() === now.getDate() || next.live;
+    if (next.live) return { label: "Rolando agora:", text: next.name.includes(" até ") ? `${next.name}.` : `${next.name}, até as ${next.closes % 24}h.` };
+    if (isToday) return { label: "Hoje:", text: `${next.day} tem ${next.name}. Porta às ${next.door}, lista até ${next.listUntil}.` };
+    return { label: "Hoje a casa descansa.", text: `${next.day[0].toUpperCase()}${next.day.slice(1)} tem ${next.name}, porta às ${next.door}.` };
+  }
+
+  const now = localNow();
+  const nights = upcomingNights(now);
+  const tonight = describeTonight(nights, now);
+  $("#tonight-label").textContent = tonight.label;
+  $("#tonight-text").textContent = tonight.text;
+  $("#ticker-group").innerHTML = [`${tonight.label} ${tonight.text}`, "Lista até 20h pelo WhatsApp", "Balde com 6 long necks: R$ 54", "Só maiores de 18"]
+    .map((text) => `<span>${text}</span>${icon("music-notes")}`).join("");
+
+  // Each flyer shows its next date; only the night that is on now (or later today) gets the sticker.
+  nights.forEach((night, index) => {
+    const flyer = document.querySelector(`.flyer[data-day="${night.weekday}"]`);
+    if (!flyer || flyer.dataset.dated) return;
+    flyer.dataset.dated = "1";
+    flyer.querySelector("[data-date]").textContent = shortDate(night.date);
+    const isToday = index === 0 && (night.live || night.date.getDate() === now.getDate());
+    if (isToday) flyer.insertAdjacentHTML("beforeend", '<span class="today" aria-hidden="true">Hoje</span>');
+    const row = document.querySelector(`.hours tr[data-day="${night.weekday}"]`);
+    if (row && isToday) row.classList.add("is-today");
+  });
+
+  /* ---------- List, VIP box and birthday form ---------- */
+  const KINDS = {
+    lista: { min: 1, max: 20, start: 4, code: "Pedido de lista", note: (n) => `Na lista, cada nome paga o valor de lista da noite na entrada (${n.listUntil === "17h" ? "grátis até 17h no domingo" : "vale até 20h"}).` },
+    camarote: { min: 4, max: 12, start: 10, code: "Pedido de camarote", note: () => "Camarote para até 12 pessoas, com consumação de R$ 600 em bebida. O sinal de R$ 150 vai no Pix depois que a gente confirmar." },
+    aniversario: { min: 1, max: 11, start: 8, code: "Lista de aniversário", note: () => "Você entra sem pagar e bota até 10 amigos na lista, que pagam o valor de lista. Avise até a véspera." },
+  };
+  const form = $("#booking");
+  const nightsBox = $("#nights");
+  nightsBox.innerHTML = nights.map((night, index) => `<label class="choice"><input type="radio" name="night" value="${index}"${index === 0 ? " checked" : ""}>${night.day.slice(0, 3)} ${shortDate(night.date)}</label>`).join("");
+  form.querySelector('input[name="text"]').remove();
+  form.querySelector(".preview").hidden = false;
+  let people = KINDS.lista.start;
+
+  const selectedKind = () => form.querySelector('input[name="kind"]:checked').value;
+  const selectedNight = () => nights[Number(form.querySelector('input[name="night"]:checked').value)];
+
+  function bookingMessage() {
+    const kind = selectedKind();
+    const night = selectedNight();
+    const when = `${night.day} (${shortDate(night.date)}), ${night.name}`;
+    const name = $("#guest-name").value.trim() || "(seu nome)";
+    if (kind === "camarote") return `Olá, Rebuliço! Quero reservar camarote para ${when}.\nNome: ${name}\nPessoas: ${people}\nSei que a consumação é de R$ 600 e o sinal é no Pix.`;
+    if (kind === "aniversario") return `Olá, Rebuliço! Faço aniversário esta semana e quero a lista de aniversariante para ${when}.\nNome: ${name}\nAmigos na lista: ${people - 1}`;
+    return `Olá, Rebuliço! Quero pôr nome na lista de ${when}.\nNome: ${name}\nPessoas: ${people}`;
+  }
+
+  function renderBooking() {
+    const kind = KINDS[selectedKind()];
+    people = Math.min(kind.max, Math.max(kind.min, people));
+    $("#people").textContent = people;
+    $("#people-minus").disabled = people <= kind.min;
+    $("#people-plus").disabled = people >= kind.max;
+    $("#kind-note").textContent = kind.note(selectedNight());
+    $("#ticket-code").textContent = kind.code;
+    $("#preview").textContent = bookingMessage();
+  }
+
+  form.addEventListener("change", (event) => {
+    if (event.target.name === "kind") people = KINDS[event.target.value].start;
+    renderBooking();
+  });
+  $("#guest-name").addEventListener("input", renderBooking);
+  $("#people-minus").addEventListener("click", () => { people -= 1; renderBooking(); });
+  $("#people-plus").addEventListener("click", () => { people += 1; renderBooking(); });
+  // Demo has no real number: wa.me without a phone lets the visitor pick the chat.
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    window.open(waLink(bookingMessage()), "_blank", "noopener");
+  });
+  renderBooking();
+
+  // Flyer buttons pick that night on the ticket before scrolling to it.
+  document.querySelectorAll("[data-night]").forEach((link) => {
+    link.addEventListener("click", () => {
+      const index = nights.findIndex((night) => String(night.weekday) === link.dataset.night);
+      if (index >= 0) form.querySelector(`input[name="night"][value="${index}"]`).checked = true;
+      form.querySelector('input[name="kind"][value="lista"]').checked = true;
+      people = KINDS.lista.start;
+      renderBooking();
+    });
+  });
+
+  const listMessage = `Olá, Rebuliço! Quero pôr nome na lista de ${nights[0].day} (${shortDate(nights[0].date)}), ${nights[0].name}.\nNome:\nPessoas:`;
+  ["#hero-list", "#cta-list"].forEach((selector) => { $(selector).href = waLink(listMessage); });
+
+  /* ---------- In-page links: smooth only on click, never global ---------- */
+  document.querySelectorAll('a[href^="#"]').forEach((link) => {
+    link.addEventListener("click", (event) => {
+      const target = link.hash.length > 1 && document.querySelector(link.hash);
+      if (!target) return;
+      event.preventDefault();
+      target.scrollIntoView({ behavior: reduceMotion.matches ? "auto" : "smooth", block: "start" });
+      history.replaceState(null, "", link.hash);
+    });
+  });
+
+  /* ---------- Cover video: loaded after the page, never with reduced motion ---------- */
+  function startCoverVideo() {
+    const video = $(".hero-video");
+    if (!video || reduceMotion.matches || navigator.connection?.saveData) return;
+    const small = window.matchMedia("(max-width: 700px), (orientation: portrait)").matches;
+    video.muted = true;
+    video.src = small ? video.dataset.small : video.dataset.large;
+    video.addEventListener("playing", () => { video.classList.add("is-playing"); motionToggle.hidden = false; }, { once: true });
+    document.addEventListener("cover-pause", (event) => { if (event.detail) video.pause(); else video.play().catch(() => {}); });
+    new IntersectionObserver(([entry]) => { if (entry.isIntersecting && !coverPaused() && !reduceMotion.matches) video.play().catch(() => {}); else video.pause(); }).observe(video);
+    reduceMotion.addEventListener("change", () => { if (reduceMotion.matches) { video.pause(); video.classList.remove("is-playing"); } });
+  }
+  if (document.readyState === "complete") startCoverVideo(); else window.addEventListener("load", startCoverVideo, { once: true });
+
+  /* ---------- Map: fictional address, so the Centro shows as an area, never a pin ---------- */
+  const CENTRO = [-7.2175, -35.884];
+  const PARQUE_DO_POVO = [-7.224, -35.8875];
+
+  function loadScript(src) {
+    return new Promise((resolve, reject) => {
+      const script = document.createElement("script");
+      script.src = src;
+      script.onload = resolve;
+      script.onerror = reject;
+      document.head.append(script);
+    });
+  }
+
+  function buildMap() {
+    const css = getComputedStyle(document.documentElement);
+    const accent = css.getPropertyValue("--pink").trim();
+    const led = css.getPropertyValue("--led").trim();
+    const map = L.map("map", { scrollWheelZoom: false, dragging: !L.Browser.mobile, tap: false, zoomControl: false });
+    L.control.zoom({ position: "topleft", zoomInText: icon("plus"), zoomOutText: icon("minus") }).addTo(map);
+    map.attributionControl.setPrefix('<a href="https://leafletjs.com">Leaflet</a>');
+    L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", { maxZoom: 19, attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>' }).addTo(map);
+    const AREA_RADIUS = 350;
+    L.circle(CENTRO, { radius: AREA_RADIUS, color: accent, weight: 2, fillColor: accent, fillOpacity: 0.22 }).addTo(map);
+    L.circleMarker(PARQUE_DO_POVO, { radius: 7, color: led, weight: 2, fillColor: led, fillOpacity: 1 })
+      .bindTooltip("Parque do Povo", { permanent: true, direction: "top", offset: [0, -8] })
+      .addTo(map);
+    // Circle bounds need a projected map, so the area box comes from the lat/lng itself.
+    map.fitBounds(L.latLng(CENTRO).toBounds(AREA_RADIUS * 2).extend(PARQUE_DO_POVO), { paddingTopLeft: [56, 64], paddingBottomRight: [70, 40], maxZoom: 16 });
+  }
+
+  const mapElement = $("#map");
+  const mapWatcher = new IntersectionObserver((entries) => {
+    if (!entries.some((entry) => entry.isIntersecting)) return;
+    mapWatcher.disconnect();
+    loadScript("https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js").then(buildMap).catch(() => mapElement.classList.add("is-offline"));
+  }, { rootMargin: "300px" });
+  mapWatcher.observe(mapElement);
+
+  /* ---------- Motion: five moments, all inside matchMedia so reduced motion keeps the page still ---------- */
+  function runTicker() {
+    const view = $(".ticker-view");
+    const track = view.querySelector(".ticker-track");
+    const group = track.querySelector(".ticker-group");
+    const clones = [];
+    let loop = 0;
+    let x = 0;
+    const measure = () => {
+      loop = group.getBoundingClientRect().width;
+      // Capped so a layout surprise can never turn this into an endless loop.
+      while (loop > 0 && clones.length < 12 && track.scrollWidth < loop + view.clientWidth * 1.3) {
+        const clone = group.cloneNode(true);
+        clone.removeAttribute("id");
+        track.append(clone);
+        clones.push(clone);
+      }
+    };
+    measure();
+    const setX = gsap.quickSetter(track, "x", "px");
+    const tick = (time, deltaTime) => {
+      if (coverPaused()) return;
+      x = gsap.utils.wrap(-loop, 0, x - 60 * (deltaTime / 1000));
+      setX(x);
+    };
+    gsap.ticker.add(tick);
+    motionToggle.hidden = false;
+    window.addEventListener("resize", measure);
+    return () => {
+      gsap.ticker.remove(tick);
+      motionToggle.hidden = true;
+      window.removeEventListener("resize", measure);
+      clones.forEach((clone) => clone.remove());
+      gsap.set(track, { clearProps: "transform" });
+    };
+  }
+
+  // Flags swing with the scroll and settle back, like paper in the wind.
+  function runFlags() {
+    const flags = gsap.utils.toArray(".flag");
+    gsap.set(flags, { transformOrigin: "50% 0%" });
+    const swing = gsap.utils.pipe(gsap.utils.clamp(-26, 26), gsap.utils.snap(0.5));
+    const trigger = ScrollTrigger.create({
+      trigger: ".sj", start: "top bottom", end: "bottom top",
+      onUpdate: (self) => {
+        const angle = swing(self.getVelocity() / -90);
+        gsap.to(flags, { rotation: angle, duration: 0.5, ease: "power2.out", stagger: { each: 0.015, from: "center" }, overwrite: true, onComplete: () => gsap.to(flags, { rotation: 0, duration: 1.8, ease: "elastic.out(1, 0.25)", stagger: { each: 0.02, from: "edges" } }) });
+      },
+    });
+    return () => { trigger.kill(); gsap.set(flags, { clearProps: "transform" }); };
+  }
+
+  if (window.gsap && window.ScrollTrigger) {
+    gsap.registerPlugin(ScrollTrigger);
+    if (window.SplitText) gsap.registerPlugin(SplitText);
+    ScrollTrigger.config({ ignoreMobileResize: true });
+    const motion = gsap.matchMedia();
+
+    motion.add("(prefers-reduced-motion: no-preference)", () => {
+      // 1. The sign powers up (never goes dark), the ticker runs, the scroll pulls the cover apart.
+      gsap.fromTo(".led-word", { "--led-w": 420 }, { "--led-w": 900, duration: 1.1, ease: "steps(6)" });
+      gsap.fromTo(".led-word", { opacity: 1 }, { keyframes: { opacity: [1, 0.45, 1, 0.7, 1] }, duration: 0.7, delay: 1.1, ease: "none" });
+      gsap.from(".h1-sub, .hero-foot", { y: 24, duration: 0.8, ease: "power3.out", stagger: 0.08 });
+      gsap.timeline({ scrollTrigger: { trigger: ".hero-card", start: 0, end: "bottom top", scrub: 0.5 } })
+        .to(".hero-media", { yPercent: 16, scale: 1.16, ease: "none" }, 0)
+        .to(".led-word", { letterSpacing: "0.14em", y: -60, ease: "none" }, 0)
+        .to(".hero-foot", { y: -90, ease: "none" }, 0);
+      const stopTicker = runTicker();
+
+      // 2. Flyers get slapped on the wall, each at its own angle.
+      gsap.utils.toArray(".flyer").forEach((flyer, index) => {
+        gsap.fromTo(flyer, { rotation: index % 2 ? 10 : -9, y: 90, scale: 1.08 }, { rotation: 0, y: 0, scale: 1, ease: "power2.out", scrollTrigger: { trigger: flyer, start: "top bottom", end: "top 55%", scrub: 0.6 } });
+      });
+
+      // 3. The manifesto lights up word by word while the photos drift at different speeds.
+      let split = null;
+      if (window.SplitText) {
+        split = SplitText.create("#manifesto", { type: "words", aria: "auto" });
+        gsap.fromTo(split.words, { opacity: 0.16 }, { opacity: 1, stagger: 0.12, ease: "none", scrollTrigger: { trigger: ".manifesto", start: "top 70%", end: "bottom 65%", scrub: true } });
+      }
+      gsap.utils.toArray(".m-photo").forEach((photo) => {
+        const speed = Number(photo.dataset.speed);
+        gsap.fromTo(photo, { yPercent: (speed - 1) * -90 }, { yPercent: (speed - 1) * 90, ease: "none", scrollTrigger: { trigger: ".manifesto", start: "top bottom", end: "bottom top", scrub: true } });
+      });
+
+      // 4. São João flags.
+      const stopFlags = runFlags();
+
+      // 5. The footer sign powers up when it arrives.
+      gsap.fromTo(".wordmark", { "--led-w": 400 }, { "--led-w": 900, ease: "steps(5)", scrollTrigger: { trigger: "footer", start: "top 90%", end: "bottom bottom", scrub: 0.4 } });
+
+      return () => { stopTicker(); stopFlags(); if (split) split.revert(); };
+    });
+
+    document.fonts.ready.then(() => ScrollTrigger.refresh());
+  }
+</script>
+<script>
+  // Keeps the browser chrome (Safari, Arc, Chrome on Android) the same color as whatever sits under the top edge.
+  (() => {
+    const meta = document.querySelector('meta[name="theme-color"]');
+    if (!meta) return;
+    // A 1x1 canvas normalizes any CSS color (rgb, rgba, color-mix, color(srgb ...)) into plain bytes.
+    const pixel = document.createElement("canvas").getContext("2d", { willReadFrequently: true });
+    const rgba = (color) => { pixel.clearRect(0, 0, 1, 1); pixel.fillStyle = "#000"; pixel.fillStyle = color; pixel.fillRect(0, 0, 1, 1); return pixel.getImageData(0, 0, 1, 1).data; };
+    const toHex = (color) => "#" + [...rgba(color).slice(0, 3)].map((n) => n.toString(16).padStart(2, "0")).join("");
+    const opaque = (color) => color !== "transparent" && rgba(color)[3] > 127;
+    // Every layer under the point, top first: the first opaque background is the color the eye sees.
+    const colorAtTop = () => {
+      for (const el of document.elementsFromPoint(window.innerWidth / 2, 1)) {
+        const color = getComputedStyle(el).backgroundColor;
+        if (opaque(color)) return toHex(color);
+      }
+      return toHex(getComputedStyle(document.documentElement).backgroundColor);
+    };
+    let queued = false;
+    const sync = () => {
+      queued = false;
+      const color = colorAtTop();
+      if (meta.content !== color) meta.content = color;
+    };
+    let settle = 0;
+    // A second read after scrolling stops catches headers that fade their background in.
+    const request = () => {
+      if (!queued) { queued = true; requestAnimationFrame(sync); }
+      clearTimeout(settle);
+      settle = setTimeout(() => requestAnimationFrame(sync), 450);
+    };
+    window.addEventListener("scroll", request, { passive: true });
+    window.addEventListener("resize", request);
+    window.addEventListener("load", request);
+    request();
+  })();
+</script>
+</body>
+</html>
