@@ -10,7 +10,7 @@ import path from "node:path";
 import puppeteer from "puppeteer-core";
 
 const CHROME = process.env.CHROME ?? "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
-const DEFAULT_PAGES = ["/", "/demos/cardapio/", "/demos/fisioterapia/", "/demos/veterinaria/", "/demos/pousada/", "/demos/barbearia/"];
+const DEFAULT_PAGES = ["/", "/sobre/", "/demos/cardapio/", "/demos/bar/", "/demos/cafe/", "/demos/fisioterapia/", "/demos/veterinaria/", "/demos/pousada/", "/demos/hotel/", "/demos/barbearia/"];
 const PHONES = [
   { name: "320x568", width: 320, height: 568 },
   { name: "360x740", width: 360, height: 740 },

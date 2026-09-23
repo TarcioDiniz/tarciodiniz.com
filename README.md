@@ -5,16 +5,19 @@ Campina Grande (PB) e faço sites para negócios de todo o Brasil: rápidos no c
 Google e com o WhatsApp a um toque.
 
 A página principal fala com o dono de negócio primeiro e traz, mais abaixo, a minha história e o
-que eu faço como desenvolvedor. Em `demos/` ficam cinco modelos de empresas fictícias, cada um com
+que eu faço como desenvolvedor. Em `demos/` ficam oito modelos de empresas fictícias, cada um com
 uma função de verdade:
 
 | modelo | o que mostra |
 |---|---|
-| [Brasa Smash](https://tarciodiniz.com/demos/cardapio/) | cardápio com sacola que vira pedido no WhatsApp |
-| [Sálvia Fisioterapia](https://tarciodiniz.com/demos/fisioterapia/) | "Onde dói?": a pessoa toca no corpo e já agenda pelo WhatsApp |
-| [Vigília Veterinária](https://tarciodiniz.com/demos/veterinaria/) | botão de emergência sempre à vista no celular |
-| [Pousada Aroá](https://tarciodiniz.com/demos/pousada/) | pedido de reserva com datas, hóspedes e quarto |
-| [Sisal Barbearia](https://tarciodiniz.com/demos/barbearia/) | agendamento em três escolhas |
+| [Brasa Smash](https://tarciodiniz.com/demos/cardapio/) | cardápio que vira comanda e pedido no WhatsApp, com vídeo na capa |
+| [Rebuliço](https://tarciodiniz.com/demos/bar/) | bar e pista: a noite de hoje na capa, nome na lista, camarote e aniversário pelo WhatsApp |
+| [Caneca Azul](https://tarciodiniz.com/demos/cafe/) | café de bairro: comanda, encomenda de bolo e vídeo na capa |
+| [Sálvia Fisioterapia](https://tarciodiniz.com/demos/fisioterapia/) | "Onde dói?", o tratamento passo a passo e agendamento com horários livres |
+| [Vigília Veterinária](https://tarciodiniz.com/demos/veterinaria/) | cão ou gato muda a página, emergência a um toque e agendamento |
+| [Pousada Aroá](https://tarciodiniz.com/demos/pousada/) | quartos com galeria, calendário de datas livres e pedido de reserva |
+| [Algodão Hotel](https://tarciodiniz.com/demos/hotel/) | distância até o que o hóspede veio fazer, tarifa do dia e convênio para empresa |
+| [Sisal Barbearia](https://tarciodiniz.com/demos/barbearia/) | horários livres na tela e a altura do degradê no pedido |
 
 ## Como é feito
 
@@ -62,11 +65,15 @@ npx wrangler pages deploy <pasta> --project-name tarciodiniz --branch main
 
 ## Créditos
 
-- Fontes do Google Fonts: Anton e Inter Tight no site; nos modelos, Bricolage Grotesque, Schibsted
-  Grotesk, Big Shoulders Display, Rubik, Young Serif, Karla, Alfa Slab One e IBM Plex.
+- Fontes do Google Fonts: Anton e Inter Tight no site; nos modelos, Anybody, Figtree e Martian Mono
+  (Brasa Smash), Doto, Handjet e Onest (Rebuliço), Coustard e Be Vietnam Pro (Caneca Azul), Gabarito
+  e Hanken Grotesk (Sálvia), Unbounded e Albert Sans (Vigília), Gloock e Work Sans (Aroá), Red Hat
+  Display, Text e Mono (Algodão) e Sofia Sans Extra Condensed e Libre Franklin (Sisal).
 - Mapas: [Leaflet](https://leafletjs.com) com dados do [OpenStreetMap](https://www.openstreetmap.org/copyright).
 - Ícones: [Simple Icons](https://simpleicons.org) (CC0) para as marcas e
   [Phosphor](https://phosphoricons.com) (MIT) para a interface.
-- Fotos dos modelos: [Unsplash](https://unsplash.com). As fotos em `assets/img/` são minhas.
+- Fotos dos modelos: [Unsplash](https://unsplash.com) e [Pexels](https://www.pexels.com); vídeos das capas:
+  [Pexels](https://www.pexels.com) e [Coverr](https://coverr.co). O autor de cada foto e vídeo está num
+  comentário no topo do HTML do modelo. As fotos em `assets/img/` são minhas.
 
 As empresas, os preços e as avaliações dos modelos são fictícios.

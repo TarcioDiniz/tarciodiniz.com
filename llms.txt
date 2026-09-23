@@ -26,11 +26,14 @@ Grande e região pessoalmente, e as demais cidades por chamada de vídeo e Whats
 - [Site principal](https://tarciodiniz.com/): quem é, o que entrega, como funciona e dúvidas.
 - [Sobre o Tarcio Diniz](https://tarciodiniz.com/sobre/): quem ele é, o que faz hoje, como trabalha,
   onde atende, a história ano a ano e como falar com ele.
-- [Modelo de hamburgueria](https://tarciodiniz.com/demos/cardapio/): cardápio com sacola que vira pedido no WhatsApp.
-- [Modelo de clínica de fisioterapia](https://tarciodiniz.com/demos/fisioterapia/): a pessoa toca onde dói e agenda pelo WhatsApp.
-- [Modelo de veterinária 24 horas](https://tarciodiniz.com/demos/veterinaria/): emergência a um toque.
-- [Modelo de pousada](https://tarciodiniz.com/demos/pousada/): pedido de reserva com datas e quarto.
-- [Modelo de barbearia](https://tarciodiniz.com/demos/barbearia/): agendamento em três escolhas.
+- [Modelo de hamburgueria](https://tarciodiniz.com/demos/cardapio/): cardápio que vira comanda e pedido no WhatsApp.
+- [Modelo de bar com pista](https://tarciodiniz.com/demos/bar/): nome na lista, camarote e aniversário pelo WhatsApp.
+- [Modelo de café](https://tarciodiniz.com/demos/cafe/): cardápio que vira comanda e encomenda de bolo.
+- [Modelo de clínica de fisioterapia](https://tarciodiniz.com/demos/fisioterapia/): a pessoa mostra onde dói, entende o tratamento e agenda um horário livre.
+- [Modelo de veterinária 24 horas](https://tarciodiniz.com/demos/veterinaria/): emergência a um toque e agendamento de consulta, vacina e banho.
+- [Modelo de pousada](https://tarciodiniz.com/demos/pousada/): quartos com galeria, datas livres no calendário e pedido de reserva.
+- [Modelo de hotel executivo](https://tarciodiniz.com/demos/hotel/): distância até hospitais e universidades, tarifa do dia e convênio para empresa.
+- [Modelo de barbearia](https://tarciodiniz.com/demos/barbearia/): horários livres na tela e agendamento pelo WhatsApp.
 
 ## Perfis
 - [LinkedIn](https://www.linkedin.com/in/tarciodiniz)
@@ -38,6 +41,6 @@ Grande e região pessoalmente, e as demais cidades por chamada de vídeo e Whats
 - [Instagram](https://www.instagram.com/eusoutarcio/)
 
 ## Observações
-- Os cinco modelos são de empresas fictícias, criadas para demonstração. Preços e avaliações neles
+- Os oito modelos são de empresas fictícias, criadas para demonstração. Preços e avaliações neles
   não são reais e estão marcados como tal em cada página.
 - Formação: Ciência da Computação na Universidade Estadual da Paraíba (UEPB).
