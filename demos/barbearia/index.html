@@ -471,6 +471,104 @@
     .hero-actions { margin-top: 14px; }
   }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "HairSalon",
+      "@id": "https://tarciodiniz.com/demos/barbearia/#negocio",
+      "name": "Sisal Barbearia",
+      "description": "Demonstração de site para barbearia: horários livres para agendar pelo WhatsApp, altura do degradê, tabela de preços, equipe e endereço.",
+      "url": "https://tarciodiniz.com/demos/barbearia/",
+      "image": "https://images.unsplash.com/photo-1775494165568-42c0fbb4c782?auto=format&fit=crop&w=900&h=1100&q=70",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Rua fictícia, 214, Prata",
+        "addressLocality": "Campina Grande",
+        "addressRegion": "PB",
+        "addressCountry": "BR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -7.2201,
+        "longitude": -35.894
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "https://schema.org/Monday",
+          "opens": "13:00",
+          "closes": "20:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "https://schema.org/Tuesday",
+            "https://schema.org/Wednesday",
+            "https://schema.org/Thursday",
+            "https://schema.org/Friday"
+          ],
+          "opens": "09:00",
+          "closes": "20:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "https://schema.org/Saturday",
+          "opens": "08:00",
+          "closes": "18:00"
+        }
+      ],
+      "priceRange": "R$ 15 a R$ 220"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "E se eu me atrasar?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Seguramos a cadeira por 15 minutos. Passou disso, a gente encaixa no próximo horário livre do mesmo dia, se tiver. Avisando no WhatsApp, fica mais fácil segurar."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Preciso desmarcar. Como faço?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Responda na mesma conversa do WhatsApp, de preferência com duas horas de antecedência. Não cobramos taxa."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Vocês cortam cabelo de criança?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Cortamos, a partir de 2 anos, com a Lara. Até 10 anos o corte sai por R$ 35, e um adulto fica junto o tempo todo."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Abre em feriado?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Abre das 8h às 12h, com quem chegar ou marcar até a véspera. A exceção é o São João: no dia 24 a casa fica fechada."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Como funciona o pacote do noivo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Um corte de teste umas duas semanas antes, para acertar o comprimento, e no dia do casamento corte, barba, sobrancelha e limpeza de pele. Se o casamento for cedo, abrimos antes do horário."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
   <div class="notice" data-aviso="proposta"><strong>Demonstração.</strong> Empresa, preços, horários e avaliações são fictícios. Fotos: Unsplash.</div>

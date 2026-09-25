@@ -480,6 +480,95 @@
     .wordmark { font-size: min(20vw, 36svh); }
   }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "VeterinaryCare",
+      "@id": "https://tarciodiniz.com/demos/veterinaria/#negocio",
+      "name": "Vigília Veterinária 24h",
+      "description": "Modelo de demonstração: veterinária 24 horas fictícia em Campina Grande, com emergência pelo WhatsApp e agendamento de consulta, vacina, banho e visita.",
+      "url": "https://tarciodiniz.com/demos/veterinaria/",
+      "image": "https://images.unsplash.com/photo-1770836037793-95bdbf190f71?auto=format&fit=crop&w=1000&h=750&q=70",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Rua fictícia, 240, Mirante",
+        "addressLocality": "Campina Grande",
+        "addressRegion": "PB",
+        "addressCountry": "BR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -7.2333,
+        "longitude": -35.8665
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "https://schema.org/Monday",
+            "https://schema.org/Tuesday",
+            "https://schema.org/Wednesday",
+            "https://schema.org/Thursday",
+            "https://schema.org/Friday",
+            "https://schema.org/Saturday",
+            "https://schema.org/Sunday"
+          ],
+          "opens": "00:00",
+          "closes": "23:59"
+        }
+      ],
+      "priceRange": "R$ 15 a R$ 650"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Preciso marcar hora para emergência?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Não. Venha direto. Se der, mande mensagem no caminho para a equipe preparar a sala."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "A consulta de madrugada custa mais?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Custa. Das 20h às 8h, e em domingo e feriado, a consulta de plantão sai por R$ 260; de dia, R$ 150. A recepção diz o valor antes de começar, e nenhum exame é feito sem você autorizar."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quanto tempo vou esperar?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Com hora marcada, uns 15 minutos. No plantão, quem está pior entra primeiro: falta de ar e sangramento passam na frente de vômito e coceira."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Atendem outros bichos além de cão e gato?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Coelho, porquinho-da-índia e ave pequena, com hora marcada. De madrugada, mande mensagem antes para saber quem está de plantão."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Posso ficar com ele internado?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A visita é todo dia às 10h e às 17h. Fora desse horário, o boletim com foto chega pelo WhatsApp às 18h."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
   <div class="notice" data-aviso="proposta"><strong>Demonstração.</strong> Empresa, preços e avaliações são fictícios. Fotos: Unsplash.</div>

@@ -444,6 +444,103 @@
     .ticks { display: none; }
   }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Hotel",
+      "@id": "https://tarciodiniz.com/demos/hotel/#negocio",
+      "name": "Algodão Hotel",
+      "description": "Hotel executivo no São José, em Campina Grande: perto do HU, da UFCG e da UEPB, recepção 24 horas, café às 5h30 e tarifa para empresa. Modelo de demonstração.",
+      "url": "https://tarciodiniz.com/demos/hotel/",
+      "image": "https://images.unsplash.com/photo-1631048834897-22f9c755755e?auto=format&fit=crop&w=1100&h=825&q=72",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Rua fictícia, 210, São José",
+        "addressLocality": "Campina Grande",
+        "addressRegion": "PB",
+        "addressCountry": "BR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -7.2255,
+        "longitude": -35.891
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "https://schema.org/Monday",
+            "https://schema.org/Tuesday",
+            "https://schema.org/Wednesday",
+            "https://schema.org/Thursday",
+            "https://schema.org/Friday",
+            "https://schema.org/Saturday",
+            "https://schema.org/Sunday"
+          ],
+          "opens": "00:00",
+          "closes": "23:59"
+        }
+      ],
+      "priceRange": "R$ 179 a R$ 289"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "A nota fiscal sai no nome da empresa?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sai. Informe o CNPJ na reserva ou no check-in e a nota de serviço é emitida no check-out, com a hospedagem e o café. Consumo do frigobar vai numa nota separada, se a empresa preferir."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Dá para entrar antes das 14h?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Se o quarto estiver pronto, entra sem custo. Para garantir a entrada às 7h, depois de um voo noturno, cobramos meia diária."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Tem transporte para o aeroporto?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Não temos van própria. A recepção chama um táxi de confiança a qualquer hora, e são 11 minutos até o João Suassuna."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "O estacionamento cabe van ou caminhonete?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Caminhonete cabe. Van alta não passa na garagem coberta; tem 4 vagas descobertas no pátio para ela."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Aceita cachorro?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Não aceitamos animais, a não ser cão-guia."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Como pago?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Pix, débito ou crédito em até 3 vezes. Empresa conveniada pode pagar faturado, em 15 dias."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
   <div class="notice" data-aviso="proposta"><strong>Demonstração.</strong> Empresa, preços e avaliações são fictícios. Fotos: Unsplash. Vídeo: Coverr.</div>

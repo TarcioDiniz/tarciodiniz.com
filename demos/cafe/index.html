@@ -469,6 +469,105 @@
     .hero-actions { margin-top: 18px; }
   }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "CafeOrCoffeeShop",
+      "@id": "https://tarciodiniz.com/demos/cafe/#negocio",
+      "name": "Caneca Azul",
+      "description": "Demonstração de site para café de bairro: cardápio que vira pedido no WhatsApp, encomenda de bolo, ambiente para ficar, horário e mapa.",
+      "url": "https://tarciodiniz.com/demos/cafe/",
+      "image": "https://tarciodiniz.com/demos/cafe/media/capa.webp",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Rua fictícia, 88, São José",
+        "addressLocality": "Campina Grande",
+        "addressRegion": "PB",
+        "addressCountry": "BR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -7.2262,
+        "longitude": -35.8922
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "https://schema.org/Tuesday",
+            "https://schema.org/Wednesday",
+            "https://schema.org/Thursday",
+            "https://schema.org/Friday"
+          ],
+          "opens": "06:30",
+          "closes": "19:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "https://schema.org/Saturday",
+          "opens": "07:00",
+          "closes": "19:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "https://schema.org/Sunday",
+          "opens": "07:00",
+          "closes": "12:00"
+        }
+      ],
+      "priceRange": "R$ 4 a R$ 26",
+      "hasMenu": "https://tarciodiniz.com/demos/cafe/#cardapio"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Posso passar a tarde trabalhando aí?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Pode. Só pedimos que, no sábado de manhã, quem estiver só no notebook libere a mesa grande se chegar família."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Encomenda de bolo precisa de quanto tempo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Dois dias. Para sábado, peça até quinta. O sinal é de metade do valor, no Pix, e o resto você paga na retirada."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Vocês entregam?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Pelo iFood, das 7h às 18h. Pelo WhatsApp a gente prepara para você retirar no balcão, sem taxa."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Fazem café da manhã para grupo ou empresa?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Fazemos, de 8 a 30 pessoas, aqui no alpendre ou para levar em bandeja. Mande o número de pessoas e o dia no WhatsApp que a gente monta o cardápio."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Tem opção sem lactose?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Tem leite sem lactose para o café, sem custo a mais. A manteiga de garrafa e o coalho têm lactose; peça o cuscuz só com ovo."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
   <div class="notice" data-aviso="proposta"><strong>Demonstração.</strong> Empresa, preços e avaliações são fictícios. Fotos: Unsplash e Pexels. Vídeo: Pexels.</div>

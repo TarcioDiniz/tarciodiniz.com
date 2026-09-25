@@ -435,6 +435,107 @@
     .hero-actions .btn { min-height: 46px; }
   }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Restaurant",
+      "@id": "https://tarciodiniz.com/demos/cardapio/#negocio",
+      "name": "Brasa Smash Burger",
+      "description": "Modelo de demonstração: hamburgueria fictícia do Catolé com cardápio que monta a comanda e manda o pedido pelo WhatsApp.",
+      "url": "https://tarciodiniz.com/demos/cardapio/",
+      "image": "https://tarciodiniz.com/demos/cardapio/media/capa-1280.webp",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Rua fictícia, 123, Catolé",
+        "addressLocality": "Campina Grande",
+        "addressCountry": "BR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -7.2348,
+        "longitude": -35.8787
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "https://schema.org/Tuesday",
+            "https://schema.org/Wednesday",
+            "https://schema.org/Thursday"
+          ],
+          "opens": "18:00",
+          "closes": "23:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "https://schema.org/Friday",
+            "https://schema.org/Saturday"
+          ],
+          "opens": "18:00",
+          "closes": "00:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "https://schema.org/Sunday",
+          "opens": "17:00",
+          "closes": "22:00"
+        }
+      ],
+      "priceRange": "R$ 9,90 a R$ 44,90",
+      "servesCuisine": "Hambúrguer",
+      "hasMenu": "https://tarciodiniz.com/demos/cardapio/#cardapio"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Vocês entregam?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Entregamos. No Catolé a taxa é R$ 5,00 e o pedido chega em 35 a 45 minutos; nos bairros vizinhos, de R$ 7,00 a R$ 9,00. Monte a comanda aqui no cardápio e ela chega pronta no nosso WhatsApp."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Tem no iFood?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Tem, com o mesmo cardápio. Lá o preço fica um pouco maior por causa da taxa do aplicativo, então pelo WhatsApp sai mais em conta."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quais formas de pagamento?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Pix, cartão de débito e crédito (o motoboy leva a maquininha) e dinheiro. Se for pagar em dinheiro, escreva o troco na observação da comanda."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Tem opção vegetariana?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Tem. Qualquer smash pode sair com blend de grão de bico, sem custo extra. Avise na observação."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Dá para reservar mesa?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Para grupos de mais de oito pessoas, sim. Mande mensagem com o dia e o horário. Sexta e sábado, só até as 19h30."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
   <div class="notice" data-aviso="proposta"><strong>Demonstração.</strong> Empresa, preços e avaliações são fictícios. Fotos: Unsplash.</div>

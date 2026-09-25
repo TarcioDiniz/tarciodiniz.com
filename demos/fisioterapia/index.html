@@ -486,6 +486,98 @@
     .polaroid figcaption b { white-space: nowrap; }
   }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Physiotherapy",
+      "@id": "https://tarciodiniz.com/demos/fisioterapia/#negocio",
+      "name": "Sálvia Fisioterapia",
+      "description": "Modelo de demonstração: clínica de fisioterapia fictícia em Campina Grande, com mapa da dor, o tratamento do primeiro contato à alta e agendamento com horários.",
+      "url": "https://tarciodiniz.com/demos/fisioterapia/",
+      "image": "https://images.unsplash.com/photo-1645005513713-9e2b92a687d3?auto=format&fit=crop&w=600&h=800&q=70",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Rua fictícia, 250, sala 3, Alto Branco",
+        "addressLocality": "Campina Grande",
+        "addressCountry": "BR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -7.2022,
+        "longitude": -35.8819
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "https://schema.org/Monday",
+            "https://schema.org/Tuesday",
+            "https://schema.org/Wednesday",
+            "https://schema.org/Thursday",
+            "https://schema.org/Friday"
+          ],
+          "opens": "07:00",
+          "closes": "20:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "https://schema.org/Saturday",
+          "opens": "08:00",
+          "closes": "12:00"
+        }
+      ],
+      "priceRange": "R$ 40 a R$ 1.080"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Preciso de pedido médico?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Não. O fisioterapeuta pode avaliar você sem encaminhamento. Se tiver pedido, exame ou laudo, traga, que ajuda na avaliação."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quantas vezes por semana?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Duas, na maioria dos casos. No pós-operatório, as primeiras semanas costumam ser três, até o inchaço baixar."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Vocês atendem plano de saúde?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Alguns convênios, sim. Escolha \"convênio\" no agendamento e escreva o nome do plano: a recepção confere antes de confirmar. Se o seu não estiver na lista, o particular sai com recibo, e muitos planos devolvem parte do valor."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "E se eu melhorar antes do previsto?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Melhor ainda. A alta vem quando os testes batem a meta, não quando o pacote acaba. Sessão de pacote que sobrar vale para o pilates."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "E se eu precisar desmarcar?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Avise com 12 horas de antecedência pelo WhatsApp e a gente remarca sem custo."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
   <div class="notice" data-aviso="proposta"><strong>Demonstração.</strong> Empresa, preços e avaliações são fictícios. Fotos: Unsplash.</div>
