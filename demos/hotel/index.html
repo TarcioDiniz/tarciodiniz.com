@@ -8,12 +8,51 @@
 <title>Algodão Hotel · Campina Grande (demonstração)</title>
 <meta name="description" content="Hotel executivo no São José, em Campina Grande: perto do HU, da UFCG e da UEPB, recepção 24 horas, café às 5h30 e tarifa para empresa. Modelo de demonstração.">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://images.unsplash.com">
 <!-- Red Hat Display, Red Hat Text e Red Hat Mono: SIL Open Font License, Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@500;700;900&family=Red+Hat+Mono:wght@400;500;700&family=Red+Hat+Text:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css">
+<link rel="preload" href="media/chegada-ao-quarto.webp" as="image" fetchpriority="high">
+<!-- Lighthouse's LCP-discovery check only reads fetchpriority off <img>/<link>, not off a <video poster>, so the video tag's own fetchpriority="high" doesn't register there; this preload is what actually gets the poster prioritized. -->
+<link rel="preload" href="/assets/fonts/red-hat-display-latin-d1745e9f.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/red-hat-text-latin-4a02ce4b.woff2" as="font" type="font/woff2" crossorigin>
+<style id="fontes">
+  /* Red Hat Display 500 normal, latin-ext */
+  @font-face { font-family: 'Red Hat Display'; font-style: normal; font-weight: 500; font-display: swap; src: url(/assets/fonts/red-hat-display-latin-ext-e010d937.woff2) format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+  /* Red Hat Display 500 normal, latin */
+  @font-face { font-family: 'Red Hat Display'; font-style: normal; font-weight: 500; font-display: swap; src: url(/assets/fonts/red-hat-display-latin-d1745e9f.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+  /* Red Hat Display 700 normal, latin-ext */
+  @font-face { font-family: 'Red Hat Display'; font-style: normal; font-weight: 700; font-display: swap; src: url(/assets/fonts/red-hat-display-latin-ext-e010d937.woff2) format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+  /* Red Hat Display 700 normal, latin */
+  @font-face { font-family: 'Red Hat Display'; font-style: normal; font-weight: 700; font-display: swap; src: url(/assets/fonts/red-hat-display-latin-d1745e9f.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+  /* Red Hat Display 900 normal, latin-ext */
+  @font-face { font-family: 'Red Hat Display'; font-style: normal; font-weight: 900; font-display: swap; src: url(/assets/fonts/red-hat-display-latin-ext-e010d937.woff2) format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+  /* Red Hat Display 900 normal, latin */
+  @font-face { font-family: 'Red Hat Display'; font-style: normal; font-weight: 900; font-display: swap; src: url(/assets/fonts/red-hat-display-latin-d1745e9f.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+  /* Red Hat Mono 400 normal, latin-ext */
+  @font-face { font-family: 'Red Hat Mono'; font-style: normal; font-weight: 400; font-display: swap; src: url(/assets/fonts/red-hat-mono-latin-ext-ac844c92.woff2) format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+  /* Red Hat Mono 400 normal, latin */
+  @font-face { font-family: 'Red Hat Mono'; font-style: normal; font-weight: 400; font-display: swap; src: url(/assets/fonts/red-hat-mono-latin-00b0eba6.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+  /* Red Hat Mono 500 normal, latin-ext */
+  @font-face { font-family: 'Red Hat Mono'; font-style: normal; font-weight: 500; font-display: swap; src: url(/assets/fonts/red-hat-mono-latin-ext-ac844c92.woff2) format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+  /* Red Hat Mono 500 normal, latin */
+  @font-face { font-family: 'Red Hat Mono'; font-style: normal; font-weight: 500; font-display: swap; src: url(/assets/fonts/red-hat-mono-latin-00b0eba6.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+  /* Red Hat Mono 700 normal, latin-ext */
+  @font-face { font-family: 'Red Hat Mono'; font-style: normal; font-weight: 700; font-display: swap; src: url(/assets/fonts/red-hat-mono-latin-ext-ac844c92.woff2) format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+  /* Red Hat Mono 700 normal, latin */
+  @font-face { font-family: 'Red Hat Mono'; font-style: normal; font-weight: 700; font-display: swap; src: url(/assets/fonts/red-hat-mono-latin-00b0eba6.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+  /* Red Hat Text 400 normal, latin-ext */
+  @font-face { font-family: 'Red Hat Text'; font-style: normal; font-weight: 400; font-display: swap; src: url(/assets/fonts/red-hat-text-latin-ext-82f7fe4d.woff2) format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+  /* Red Hat Text 400 normal, latin */
+  @font-face { font-family: 'Red Hat Text'; font-style: normal; font-weight: 400; font-display: swap; src: url(/assets/fonts/red-hat-text-latin-4a02ce4b.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+  /* Red Hat Text 500 normal, latin-ext */
+  @font-face { font-family: 'Red Hat Text'; font-style: normal; font-weight: 500; font-display: swap; src: url(/assets/fonts/red-hat-text-latin-ext-82f7fe4d.woff2) format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+  /* Red Hat Text 500 normal, latin */
+  @font-face { font-family: 'Red Hat Text'; font-style: normal; font-weight: 500; font-display: swap; src: url(/assets/fonts/red-hat-text-latin-4a02ce4b.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+  /* Red Hat Text 700 normal, latin-ext */
+  @font-face { font-family: 'Red Hat Text'; font-style: normal; font-weight: 700; font-display: swap; src: url(/assets/fonts/red-hat-text-latin-ext-82f7fe4d.woff2) format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+  /* Red Hat Text 700 normal, latin */
+  @font-face { font-family: 'Red Hat Text'; font-style: normal; font-weight: 700; font-display: swap; src: url(/assets/fonts/red-hat-text-latin-4a02ce4b.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" media="print" onload="this.media='all'">
 <!--
   Créditos das fotos (licença Unsplash, https://unsplash.com/license):
   Point3D Commercial Imaging Ltd. (unsplash.com/@3dottawa): quartos, mesas, banheiros, copa e corredor, ids 1631048... e 1631049...
@@ -601,7 +640,7 @@
 
   <header class="topbar" id="topbar">
     <div class="wrap">
-      <a class="logo" href="#topo" aria-label="Algodão Hotel, início"><span class="logo-mark" aria-hidden="true">A</span><b>Algodão</b><small>hotel executivo</small></a>
+      <a class="logo" href="#topo"><span class="logo-mark" aria-hidden="true">A</span><b>Algodão</b><small>hotel executivo</small><span class="sr-only">, início</span></a>
       <p class="desk"><span class="dot" aria-hidden="true"></span>Recepção aberta · <time id="clock">24h</time></p>
       <nav class="nav" aria-label="Principal">
         <a href="#quartos">Quartos</a>
@@ -668,6 +707,11 @@
             </tbody>
           </table>
           <p class="board-note">Tempo sem trânsito, medido pelas ruas no OpenStreetMap. No horário de pico, conte o dobro.</p>
+          <script>
+            /* Collapse to the first group before paint: doing this here, and not in the deferred script below, keeps the board from painting tall and then shrinking (that resize was pushing hero-copy, which sits beside it). */
+            document.getElementById("board").querySelectorAll("tbody[data-group]").forEach((group, index) => { group.hidden = index !== 0; });
+            document.querySelector("#board .board-tabs").hidden = false;
+          </script>
         </div>
       </div>
     </section>
@@ -675,7 +719,7 @@
     <section class="night" aria-label="Chegada à noite">
       <div class="wrap">
         <figure class="band">
-          <video id="band-video" muted loop playsinline preload="none" poster="media/chegada-ao-quarto.webp" aria-label="Porta do quarto se abrindo à noite, com a cama arrumada e a luz baixa">
+          <video id="band-video" muted loop playsinline preload="none" poster="media/chegada-ao-quarto.webp" fetchpriority="high" aria-label="Porta do quarto se abrindo à noite, com a cama arrumada e a luz baixa">
             <source src="media/chegada-ao-quarto.mp4" type="video/mp4">
           </video>
           <figcaption><b>23:40</b>O voo atrasou. A recepção está acordada e o ar do quarto já foi ligado.</figcaption>
@@ -717,9 +761,9 @@
             <button type="button" class="room-tab" role="tab" id="rt-estudio" aria-controls="room-estudio" aria-selected="false">Estúdio Longa Estadia<span>desde R$ 239</span></button>
           </div>
 
-          <article class="room" id="room-solteiro" data-room="solteiro" role="tabpanel" aria-labelledby="rn-solteiro">
+          <div class="room" id="room-solteiro" data-room="solteiro" role="tabpanel" aria-labelledby="rn-solteiro">
             <figure class="room-photo">
-              <img src="https://images.unsplash.com/photo-1631048834897-22f9c755755e?auto=format&fit=crop&w=1100&h=825&q=72" alt="Cama de casal com cabeceira estofada cinza e abajures dos dois lados" loading="lazy" width="1100" height="825">
+              <img src="https://images.unsplash.com/photo-1631048834897-22f9c755755e?auto=format&fit=crop&w=700&h=525&q=72" srcset="https://images.unsplash.com/photo-1631048834897-22f9c755755e?auto=format&fit=crop&w=480&h=360&q=72 480w, https://images.unsplash.com/photo-1631048834897-22f9c755755e?auto=format&fit=crop&w=700&h=525&q=72 700w, https://images.unsplash.com/photo-1631048834897-22f9c755755e?auto=format&fit=crop&w=960&h=720&q=72 960w" sizes="(min-width: 1024px) 480px, calc(100vw - 2 * clamp(16px, 4.5vw, 56px))" alt="Cama de casal com cabeceira estofada cinza e abajures dos dois lados" loading="lazy" width="1100" height="825">
               <button type="button" class="btn" data-gallery="solteiro"><svg class="ico" aria-hidden="true"><use href="#i-images"/></svg>Ver as 3 fotos</button>
             </figure>
             <div>
@@ -735,11 +779,11 @@
               <p class="room-price"><b>R$ 219</b><span>domingo a quinta</span><span>R$ 179 na sexta e no sábado</span></p>
               <div class="room-actions"><a class="btn btn-dark" href="#tarifa" data-pick="solteiro"><svg class="ico" aria-hidden="true"><use href="#i-calendar-blank"/></svg>Ver datas deste quarto</a></div>
             </div>
-          </article>
+          </div>
 
-          <article class="room" id="room-casal" data-room="casal" role="tabpanel" aria-labelledby="rn-casal">
+          <div class="room" id="room-casal" data-room="casal" role="tabpanel" aria-labelledby="rn-casal">
             <figure class="room-photo">
-              <img src="https://images.unsplash.com/photo-1631048834981-27b558f7a3e7?auto=format&fit=crop&w=1100&h=825&q=72" alt="Cama queen com manta cinza, criado-mudo de madeira e espelho de porta" loading="lazy" width="1100" height="825">
+              <img src="https://images.unsplash.com/photo-1631048834981-27b558f7a3e7?auto=format&fit=crop&w=700&h=525&q=72" srcset="https://images.unsplash.com/photo-1631048834981-27b558f7a3e7?auto=format&fit=crop&w=480&h=360&q=72 480w, https://images.unsplash.com/photo-1631048834981-27b558f7a3e7?auto=format&fit=crop&w=700&h=525&q=72 700w, https://images.unsplash.com/photo-1631048834981-27b558f7a3e7?auto=format&fit=crop&w=960&h=720&q=72 960w" sizes="(min-width: 1024px) 480px, calc(100vw - 2 * clamp(16px, 4.5vw, 56px))" alt="Cama queen com manta cinza, criado-mudo de madeira e espelho de porta" loading="lazy" width="1100" height="825">
               <button type="button" class="btn" data-gallery="casal"><svg class="ico" aria-hidden="true"><use href="#i-images"/></svg>Ver as 3 fotos</button>
             </figure>
             <div>
@@ -755,11 +799,11 @@
               <p class="room-price"><b>R$ 259</b><span>domingo a quinta</span><span>R$ 209 na sexta e no sábado</span></p>
               <div class="room-actions"><a class="btn btn-dark" href="#tarifa" data-pick="casal"><svg class="ico" aria-hidden="true"><use href="#i-calendar-blank"/></svg>Ver datas deste quarto</a></div>
             </div>
-          </article>
+          </div>
 
-          <article class="room" id="room-duplo" data-room="duplo" role="tabpanel" aria-labelledby="rn-duplo">
+          <div class="room" id="room-duplo" data-room="duplo" role="tabpanel" aria-labelledby="rn-duplo">
             <figure class="room-photo">
-              <img src="https://images.unsplash.com/photo-1648383228240-6ed939727ad6?auto=format&fit=crop&w=1100&h=825&q=72" alt="Duas camas de solteiro com lençol branco, sofá e mesa ao fundo" loading="lazy" width="1100" height="825">
+              <img src="https://images.unsplash.com/photo-1648383228240-6ed939727ad6?auto=format&fit=crop&w=700&h=525&q=72" srcset="https://images.unsplash.com/photo-1648383228240-6ed939727ad6?auto=format&fit=crop&w=480&h=360&q=72 480w, https://images.unsplash.com/photo-1648383228240-6ed939727ad6?auto=format&fit=crop&w=700&h=525&q=72 700w, https://images.unsplash.com/photo-1648383228240-6ed939727ad6?auto=format&fit=crop&w=960&h=720&q=72 960w" sizes="(min-width: 1024px) 480px, calc(100vw - 2 * clamp(16px, 4.5vw, 56px))" alt="Duas camas de solteiro com lençol branco, sofá e mesa ao fundo" loading="lazy" width="1100" height="825">
               <button type="button" class="btn" data-gallery="duplo"><svg class="ico" aria-hidden="true"><use href="#i-images"/></svg>Ver as 3 fotos</button>
             </figure>
             <div>
@@ -775,11 +819,11 @@
               <p class="room-price"><b>R$ 279</b><span>domingo a quinta</span><span>R$ 229 na sexta e no sábado</span></p>
               <div class="room-actions"><a class="btn btn-dark" href="#tarifa" data-pick="duplo"><svg class="ico" aria-hidden="true"><use href="#i-calendar-blank"/></svg>Ver datas deste quarto</a></div>
             </div>
-          </article>
+          </div>
 
-          <article class="room" id="room-estudio" data-room="estudio" role="tabpanel" aria-labelledby="rn-estudio">
+          <div class="room" id="room-estudio" data-room="estudio" role="tabpanel" aria-labelledby="rn-estudio">
             <figure class="room-photo">
-              <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=1100&h=825&q=72" alt="Quarto de estúdio com cama queen, criado-mudo e janela grande" loading="lazy" width="1100" height="825">
+              <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=700&h=525&q=72" srcset="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=480&h=360&q=72 480w, https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=700&h=525&q=72 700w, https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=960&h=720&q=72 960w" sizes="(min-width: 1024px) 480px, calc(100vw - 2 * clamp(16px, 4.5vw, 56px))" alt="Quarto de estúdio com cama queen, criado-mudo e janela grande" loading="lazy" width="1100" height="825">
               <button type="button" class="btn" data-gallery="estudio"><svg class="ico" aria-hidden="true"><use href="#i-images"/></svg>Ver as 4 fotos</button>
             </figure>
             <div>
@@ -795,7 +839,7 @@
               <p class="room-price"><b>R$ 289</b><span>domingo a quinta</span><span>R$ 239 na sexta e no sábado</span></p>
               <div class="room-actions"><a class="btn btn-dark" href="#tarifa" data-pick="estudio"><svg class="ico" aria-hidden="true"><use href="#i-calendar-blank"/></svg>Ver datas deste quarto</a></div>
             </div>
-          </article>
+          </div>
 
           <div class="included">
             <h3>Em todos os quartos, sem cobrar à parte</h3>
@@ -949,17 +993,17 @@
           <p class="score"><b>4,7</b><span>de 5, em 412 avaliações no Google</span></p>
           <div class="quotes">
             <figure class="q">
-              <span class="stars" aria-label="Nota 5 de 5"><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg></span>
+              <span class="stars" role="img" aria-label="Nota 5 de 5"><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg></span>
               <blockquote>Faço banca na UFCG duas vezes por semestre. Chego de Natal perto da meia-noite e o rapaz da recepção já sabe meu nome. Na mesa do quarto cabem o notebook e as provas.</blockquote>
               <figcaption>Cláudia<span>professora, de Natal · Executivo Solteiro</span></figcaption>
             </figure>
             <figure class="q">
-              <span class="stars" aria-label="Nota 5 de 5"><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg></span>
+              <span class="stars" role="img" aria-label="Nota 5 de 5"><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg></span>
               <blockquote>Três meses de residência no HU. Ia e voltava a pé, sete minutos. O café às 5h30 salvou meus plantões, e a copa do estúdio me poupou de comer fora todo dia.</blockquote>
               <figcaption>Felipe<span>médico residente, de João Pessoa · Estúdio</span></figcaption>
             </figure>
             <figure class="q">
-              <span class="stars" aria-label="Nota 4 de 5"><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg></span>
+              <span class="stars" role="img" aria-label="Nota 4 de 5"><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg></span>
               <blockquote>Representante comercial, venho todo mês. A nota sai no CNPJ sem eu pedir duas vezes. Só o elevador demora na hora do café.</blockquote>
               <figcaption>Anderson<span>representante, de Recife · Executivo Casal</span></figcaption>
             </figure>
@@ -1030,8 +1074,8 @@
     </div>
   </dialog>
 
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
+<script src="/assets/vendor/gsap-3.15.0/gsap.min.js"></script>
+<script src="/assets/vendor/gsap-3.15.0/ScrollTrigger.min.js"></script>
 <script>
   const DAY_MS = 24 * 60 * 60 * 1000;
   const STRIP_DAYS = 60;
@@ -1266,8 +1310,9 @@
       const month = date.toLocaleDateString("pt-BR", { month: "short" }).replace(".", "");
       const left = free === 0 ? "lotado" : free <= 3 ? `últimos ${free}` : `${free} livres`;
       button.setAttribute("aria-pressed", String(iso === state.checkin || iso === state.checkout));
-      button.setAttribute("aria-label", `${date.toLocaleDateString("pt-BR", { weekday: "long", day: "numeric", month: "long" })}, ${money(nightPrice(state.room, iso))}, ${left}`);
-      button.innerHTML = `<span class="f-dow">${dow}</span><span class="f-num">${date.getDate()}</span><span class="f-dow">${month}</span><span class="f-price">${money(nightPrice(state.room, iso))}</span><span class="f-occ" aria-hidden="true"><b style="width:${Math.round((1 - free / units) * 100)}%"></b></span><span class="f-left">${left}</span>`;
+      button.setAttribute("aria-label", `${dow.toUpperCase()} ${date.getDate()} ${month.toUpperCase()} ${money(nightPrice(state.room, iso))} ${left}`);
+      /* Spaces between the spans are whitespace-only flex items, so flexbox drops them with no visual effect; they only give the button's flattened text real word breaks, matching the aria-label below. */
+      button.innerHTML = `<span class="f-dow">${dow}</span> <span class="f-num">${date.getDate()}</span> <span class="f-dow">${month}</span> <span class="f-price">${money(nightPrice(state.room, iso))}</span><span class="f-occ" aria-hidden="true"><b style="width:${Math.round((1 - free / units) * 100)}%"></b></span> <span class="f-left">${left}</span>`;
       strip.append(button);
     }
     strip.scrollLeft = keep;
