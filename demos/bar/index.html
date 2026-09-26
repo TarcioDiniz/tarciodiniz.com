@@ -33,12 +33,25 @@
     Jessica Lenihan: chope tirado (photo-1769767677849)
     Fernando Dantas: bandeirinhas (photo-1688948871377, recortada para tirar um letreiro no pé da foto)
 -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Doto:wght,ROND@400..900,0..100&family=Handjet:wght@400..800&family=Onest:wght@400..700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css">
-<link rel="preload" as="image" href="media/capa-1280.webp" media="(min-width: 701px) and (orientation: landscape)">
-<link rel="preload" as="image" href="media/capa-720.webp" media="(max-width: 700px), (orientation: portrait)">
+<link rel="preload" href="/assets/fonts/handjet-latin-4911ee8b.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/onest-latin-2baf1380.woff2" as="font" type="font/woff2" crossorigin>
+<style id="fontes">
+  /* Doto 400 900 normal, latin-ext */
+  @font-face { font-family: 'Doto'; font-style: normal; font-weight: 400 900; font-display: swap; src: url(/assets/fonts/doto-latin-ext-071e9da1.woff2) format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+  /* Doto 400 900 normal, latin */
+  @font-face { font-family: 'Doto'; font-style: normal; font-weight: 400 900; font-display: swap; src: url(/assets/fonts/doto-latin-55542920.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+  /* Handjet 400 800 normal, latin-ext */
+  @font-face { font-family: 'Handjet'; font-style: normal; font-weight: 400 800; font-display: swap; src: url(/assets/fonts/handjet-latin-ext-315ec42c.woff2) format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+  /* Handjet 400 800 normal, latin */
+  @font-face { font-family: 'Handjet'; font-style: normal; font-weight: 400 800; font-display: swap; src: url(/assets/fonts/handjet-latin-4911ee8b.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+  /* Onest 400 700 normal, latin-ext */
+  @font-face { font-family: 'Onest'; font-style: normal; font-weight: 400 700; font-display: swap; src: url(/assets/fonts/onest-latin-ext-7e511d1b.woff2) format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+  /* Onest 400 700 normal, latin */
+  @font-face { font-family: 'Onest'; font-style: normal; font-weight: 400 700; font-display: swap; src: url(/assets/fonts/onest-latin-2baf1380.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" media="print" onload="this.media='all'">
+<link rel="preload" as="image" href="media/capa-1280.webp" media="(min-width: 701px) and (orientation: landscape)" fetchpriority="high">
+<link rel="preload" as="image" href="media/capa-720.webp" media="(max-width: 700px), (orientation: portrait)" fetchpriority="high">
 <style>
   :root {
     --night: #0d0a18;
@@ -585,7 +598,7 @@
         <ol class="wrap week-track">
           <li class="flyer" data-day="4" style="--tilt: -1.6deg">
             <div class="flyer-top"><p class="flyer-day">Qui</p><p class="flyer-date" data-date></p></div>
-            <figure class="duo"><img src="https://images.unsplash.com/photo-1779037805819-ad14ead830c7?auto=format&rect=1000,600,2900,2406&fit=crop&w=800&h=550&q=70" alt="Trio de forró tocando na rua, à noite" width="800" height="550" loading="lazy"></figure>
+            <figure class="duo"><img src="https://images.unsplash.com/photo-1779037805819-ad14ead830c7?auto=format&rect=1000,600,2900,2406&fit=crop&w=800&h=550&q=70" srcset="https://images.unsplash.com/photo-1779037805819-ad14ead830c7?auto=format&rect=1000,600,2900,2406&fit=crop&w=300&h=206&q=70 300w, https://images.unsplash.com/photo-1779037805819-ad14ead830c7?auto=format&rect=1000,600,2900,2406&fit=crop&w=550&h=378&q=70 550w, https://images.unsplash.com/photo-1779037805819-ad14ead830c7?auto=format&rect=1000,600,2900,2406&fit=crop&w=800&h=550&q=70 800w" sizes="(max-width: 700px) min(73vw, 312px), (max-width: 1180px) 44vw, 265px" alt="Trio de forró tocando na rua, à noite" width="800" height="550" loading="lazy"></figure>
             <h3>Forró de Quinta</h3>
             <p class="flyer-what">Trio pé de serra ao vivo, com sanfona, zabumba e triângulo. Dá para chegar sem par.</p>
             <dl class="flyer-info">
@@ -597,7 +610,7 @@
           </li>
           <li class="flyer" data-day="5" style="--tilt: 1.2deg">
             <div class="flyer-top"><p class="flyer-day">Sex</p><p class="flyer-date" data-date></p></div>
-            <figure class="duo" style="--lift: 1.15"><img src="https://images.unsplash.com/photo-1687511844598-165c1fc387cc?auto=format&fit=crop&w=800&h=550&q=70" alt="Pista cheia com mãos para cima e papel picado" width="800" height="550" loading="lazy"></figure>
+            <figure class="duo" style="--lift: 1.15"><img src="https://images.unsplash.com/photo-1687511844598-165c1fc387cc?auto=format&fit=crop&w=800&h=550&q=70" srcset="https://images.unsplash.com/photo-1687511844598-165c1fc387cc?auto=format&fit=crop&w=300&h=206&q=70 300w, https://images.unsplash.com/photo-1687511844598-165c1fc387cc?auto=format&fit=crop&w=550&h=378&q=70 550w, https://images.unsplash.com/photo-1687511844598-165c1fc387cc?auto=format&fit=crop&w=800&h=550&q=70 800w" sizes="(max-width: 700px) min(73vw, 312px), (max-width: 1180px) 44vw, 265px" alt="Pista cheia com mãos para cima e papel picado" width="800" height="550" loading="lazy"></figure>
             <h3>Sexta Brega</h3>
             <p class="flyer-what">Brega, piseiro e bregadeira com DJ a noite toda. A que mais enche, chega antes das 23h.</p>
             <dl class="flyer-info">
@@ -609,7 +622,7 @@
           </li>
           <li class="flyer" data-day="6" style="--tilt: -0.8deg">
             <div class="flyer-top"><p class="flyer-day">Sáb</p><p class="flyer-date" data-date></p></div>
-            <figure class="duo" style="--lift: 1.35"><img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=800&h=550&q=70" alt="Mão de DJ na mesa de som" width="800" height="550" loading="lazy"></figure>
+            <figure class="duo" style="--lift: 1.35"><img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=800&h=550&q=70" srcset="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=300&h=206&q=70 300w, https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=550&h=378&q=70 550w, https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=800&h=550&q=70 800w" sizes="(max-width: 700px) min(73vw, 312px), (max-width: 1180px) 44vw, 265px" alt="Mão de DJ na mesa de som" width="800" height="550" loading="lazy"></figure>
             <h3>Rebuliço até as 5h</h3>
             <p class="flyer-what">DJ convidado, funk, pop e o que a pista pedir. Camarote costuma esgotar na quinta.</p>
             <dl class="flyer-info">
@@ -621,7 +634,7 @@
           </li>
           <li class="flyer" data-day="0" style="--tilt: 1.8deg">
             <div class="flyer-top"><p class="flyer-day">Dom</p><p class="flyer-date" data-date></p></div>
-            <figure class="duo" style="--lift: 1.3"><img src="https://images.unsplash.com/photo-1777375430837-b8cf2e820832?auto=format&fit=crop&w=800&h=550&q=70" alt="Mãos tocando pandeiro no escuro" width="800" height="550" loading="lazy"></figure>
+            <figure class="duo" style="--lift: 1.3"><img src="https://images.unsplash.com/photo-1777375430837-b8cf2e820832?auto=format&fit=crop&w=800&h=550&q=70" srcset="https://images.unsplash.com/photo-1777375430837-b8cf2e820832?auto=format&fit=crop&w=300&h=206&q=70 300w, https://images.unsplash.com/photo-1777375430837-b8cf2e820832?auto=format&fit=crop&w=550&h=378&q=70 550w, https://images.unsplash.com/photo-1777375430837-b8cf2e820832?auto=format&fit=crop&w=800&h=550&q=70 800w" sizes="(max-width: 700px) min(73vw, 312px), (max-width: 1180px) 44vw, 265px" alt="Mãos tocando pandeiro no escuro" width="800" height="550" loading="lazy"></figure>
             <h3>Pagode do Pôr do Sol</h3>
             <p class="flyer-what">Roda de pagode ao vivo no fim de tarde, para fechar o fim de semana sem pressa.</p>
             <dl class="flyer-info">
@@ -637,13 +650,13 @@
 
     <section class="manifesto" aria-label="O clima da casa">
       <div class="m-row m-row-top">
-        <figure class="m-photo duo p1" data-speed="0.7"><img src="https://images.unsplash.com/photo-1618176581835-d60e9c2567b9?auto=format&fit=crop&w=500&h=660&q=70" alt="Mãos para cima na pista" width="500" height="660" loading="lazy"></figure>
-        <figure class="m-photo duo p2" data-speed="1.3"><img src="https://images.unsplash.com/photo-1570207859654-a9a7ad65ed3d?auto=format&rect=1100,300,1865,2400&fit=crop&w=500&h=660&q=70" alt="Globo de espelhos com luz azul" width="500" height="660" loading="lazy"></figure>
+        <figure class="m-photo duo p1" data-speed="0.7"><img src="https://images.unsplash.com/photo-1618176581835-d60e9c2567b9?auto=format&fit=crop&w=500&h=660&q=70" srcset="https://images.unsplash.com/photo-1618176581835-d60e9c2567b9?auto=format&fit=crop&w=250&h=330&q=70 250w, https://images.unsplash.com/photo-1618176581835-d60e9c2567b9?auto=format&fit=crop&w=350&h=462&q=70 350w, https://images.unsplash.com/photo-1618176581835-d60e9c2567b9?auto=format&fit=crop&w=500&h=660&q=70 500w" sizes="(max-width: 899px) min(45vw, 264px), min(18.6vw, 273px)" alt="Mãos para cima na pista" width="500" height="660" loading="lazy"></figure>
+        <figure class="m-photo duo p2" data-speed="1.3"><img src="https://images.unsplash.com/photo-1570207859654-a9a7ad65ed3d?auto=format&rect=1100,300,1865,2400&fit=crop&w=500&h=660&q=70" srcset="https://images.unsplash.com/photo-1570207859654-a9a7ad65ed3d?auto=format&rect=1100,300,1865,2400&fit=crop&w=250&h=330&q=70 250w, https://images.unsplash.com/photo-1570207859654-a9a7ad65ed3d?auto=format&rect=1100,300,1865,2400&fit=crop&w=350&h=462&q=70 350w, https://images.unsplash.com/photo-1570207859654-a9a7ad65ed3d?auto=format&rect=1100,300,1865,2400&fit=crop&w=500&h=660&q=70 500w" sizes="(max-width: 899px) min(45vw, 264px), min(18.6vw, 273px)" alt="Globo de espelhos com luz azul" width="500" height="660" loading="lazy"></figure>
       </div>
       <p class="manifesto-text" id="manifesto">Aqui a comida só forra o estômago. O povo vem para <span class="hl">dançar</span>, cantar junto e sair com o dia clareando no Centro.</p>
       <div class="m-row m-row-bottom">
-        <figure class="m-photo p3" data-speed="0.9"><img src="https://images.unsplash.com/photo-1666355704386-93cf5f887404?auto=format&fit=crop&w=500&h=660&q=70" alt="Caipirinha na caneca com um pote de amendoim" width="500" height="660" loading="lazy"></figure>
-        <figure class="m-photo duo p4" data-speed="1.2"><img src="https://images.unsplash.com/photo-1578736641330-3155e606cd40?auto=format&fit=crop&w=500&h=660&q=70" alt="Pista dançando sob luz de laser" width="500" height="660" loading="lazy"></figure>
+        <figure class="m-photo p3" data-speed="0.9"><img src="https://images.unsplash.com/photo-1666355704386-93cf5f887404?auto=format&fit=crop&w=500&h=660&q=70" srcset="https://images.unsplash.com/photo-1666355704386-93cf5f887404?auto=format&fit=crop&w=250&h=330&q=70 250w, https://images.unsplash.com/photo-1666355704386-93cf5f887404?auto=format&fit=crop&w=350&h=462&q=70 350w, https://images.unsplash.com/photo-1666355704386-93cf5f887404?auto=format&fit=crop&w=500&h=660&q=70 500w" sizes="(max-width: 899px) min(45vw, 264px), min(18.6vw, 273px)" alt="Caipirinha na caneca com um pote de amendoim" width="500" height="660" loading="lazy"></figure>
+        <figure class="m-photo duo p4" data-speed="1.2"><img src="https://images.unsplash.com/photo-1578736641330-3155e606cd40?auto=format&fit=crop&w=500&h=660&q=70" srcset="https://images.unsplash.com/photo-1578736641330-3155e606cd40?auto=format&fit=crop&w=250&h=330&q=70 250w, https://images.unsplash.com/photo-1578736641330-3155e606cd40?auto=format&fit=crop&w=350&h=462&q=70 350w, https://images.unsplash.com/photo-1578736641330-3155e606cd40?auto=format&fit=crop&w=500&h=660&q=70 500w" sizes="(max-width: 899px) min(45vw, 264px), min(18.6vw, 273px)" alt="Pista dançando sob luz de laser" width="500" height="660" loading="lazy"></figure>
       </div>
     </section>
 
@@ -868,9 +881,9 @@
     <p class="credito-autor">Site feito por <a href="https://tarciodiniz.com" rel="author">Tarcio Diniz</a>, desenvolvedor</p>
   </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/SplitText.min.js"></script>
+<script src="/assets/vendor/gsap-3.15.0/gsap.min.js"></script>
+<script src="/assets/vendor/gsap-3.15.0/ScrollTrigger.min.js"></script>
+<script src="/assets/vendor/gsap-3.15.0/SplitText.min.js"></script>
 <script>
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   const $ = (selector) => document.querySelector(selector);
@@ -1149,8 +1162,8 @@
       // 3. The manifesto lights up word by word while the photos drift at different speeds.
       let split = null;
       if (window.SplitText) {
-        split = SplitText.create("#manifesto", { type: "words", aria: "auto" });
-        gsap.fromTo(split.words, { opacity: 0.16 }, { opacity: 1, stagger: 0.12, ease: "none", scrollTrigger: { trigger: ".manifesto", start: "top 70%", end: "bottom 65%", scrub: true } });
+        split = SplitText.create("#manifesto", { type: "words", aria: "none" });
+        gsap.fromTo(split.words, { opacity: 0.65 }, { opacity: 1, stagger: 0.12, ease: "none", scrollTrigger: { trigger: ".manifesto", start: "top 70%", end: "bottom 65%", scrub: true } });
       }
       gsap.utils.toArray(".m-photo").forEach((photo) => {
         const speed = Number(photo.dataset.speed);
