@@ -9,22 +9,24 @@
 <meta name="description" content="Móveis planejados em Campina Grande: medição e projeto 3D sem custo, fábrica própria, montagem pela nossa equipe e orçamento na hora pelo site. Modelo de demonstração.">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <!-- Archivo e Source Serif 4: SIL Open Font License, Google Fonts -->
-<link rel="preload" as="image" href="img/capa-1200.webp" imagesrcset="img/capa-800.webp 800w, img/capa-1200.webp 1200w, img/capa-1600.webp 1600w, img/capa-2000.webp 2000w" imagesizes="100vw" fetchpriority="high">
+<link rel="preload" as="image" href="img/capa-retrato-844.webp" imagesrcset="img/capa-retrato-600.webp 600w, img/capa-retrato-844.webp 844w" imagesizes="max(64vh, 92vw)" media="(orientation: portrait)" fetchpriority="high">
+<link rel="preload" as="image" href="img/capa-1200.webp" imagesrcset="img/capa-800.webp 800w, img/capa-1200.webp 1200w, img/capa-1600.webp 1600w, img/capa-2000.webp 2000w" imagesizes="100vw" media="(orientation: landscape)" fetchpriority="high">
 <link rel="preload" href="/assets/fonts/archivo-latin-ad60be9c.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/assets/fonts/source-serif-4-latin-2c60df80.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/source-serif-4-latin-08d29082.woff2" as="font" type="font/woff2" crossorigin>
 <style id="fontes">
   /* Archivo 100 900 normal, latin-ext */
   @font-face { font-family: 'Archivo'; font-style: normal; font-weight: 100 900; font-stretch: 62% 125%; font-display: swap; src: url(/assets/fonts/archivo-latin-ext-8ec07340.woff2) format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
   /* Archivo 100 900 normal, latin */
   @font-face { font-family: 'Archivo'; font-style: normal; font-weight: 100 900; font-stretch: 62% 125%; font-display: swap; src: url(/assets/fonts/archivo-latin-ad60be9c.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+  /* Source Serif 4 at a fixed optical size of 18, the body size: 54 KB instead of 122 KB with the full opsz axis. */
   /* Source Serif 4 400 normal, latin-ext */
-  @font-face { font-family: 'Source Serif 4'; font-style: normal; font-weight: 400; font-display: swap; src: url(/assets/fonts/source-serif-4-latin-ext-23835fe8.woff2) format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+  @font-face { font-family: 'Source Serif 4'; font-style: normal; font-weight: 400; font-display: swap; src: url(/assets/fonts/source-serif-4-latin-ext-011ae7de.woff2) format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
   /* Source Serif 4 400 normal, latin */
-  @font-face { font-family: 'Source Serif 4'; font-style: normal; font-weight: 400; font-display: swap; src: url(/assets/fonts/source-serif-4-latin-2c60df80.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+  @font-face { font-family: 'Source Serif 4'; font-style: normal; font-weight: 400; font-display: swap; src: url(/assets/fonts/source-serif-4-latin-08d29082.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
   /* Source Serif 4 600 normal, latin-ext */
-  @font-face { font-family: 'Source Serif 4'; font-style: normal; font-weight: 600; font-display: swap; src: url(/assets/fonts/source-serif-4-latin-ext-23835fe8.woff2) format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+  @font-face { font-family: 'Source Serif 4'; font-style: normal; font-weight: 600; font-display: swap; src: url(/assets/fonts/source-serif-4-latin-ext-011ae7de.woff2) format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
   /* Source Serif 4 600 normal, latin */
-  @font-face { font-family: 'Source Serif 4'; font-style: normal; font-weight: 600; font-display: swap; src: url(/assets/fonts/source-serif-4-latin-2c60df80.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+  @font-face { font-family: 'Source Serif 4'; font-style: normal; font-weight: 600; font-display: swap; src: url(/assets/fonts/source-serif-4-latin-08d29082.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" media="print" onload="this.media='all'">
 <!--
@@ -139,6 +141,7 @@
   .hero-frame { position: relative; border-radius: var(--radius-lg); overflow: hidden; background: var(--espresso); color: var(--on-dark);
     min-height: max(420px, min(900px, calc(100svh - var(--header-h) - 64px))); display: grid; grid-template-rows: 1fr auto; }
   .hero-media { position: absolute; inset: 0; }
+  .hero-media picture { display: block; width: 100%; height: 100%; }
   .hero-media img { width: 100%; height: 100%; object-fit: cover; object-position: 60% 50%; }
   .hero-frame::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, var(--scrim) 0%, var(--scrim-soft) 40%, var(--scrim-soft) 55%, var(--scrim) 100%); pointer-events: none; }
   /* On tall screens the title and the text sit over the bright windows, so the fade stays darker all the way. */
@@ -560,7 +563,11 @@
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-frame">
         <div class="hero-media">
-          <img src="img/capa-1200.webp" srcset="img/capa-800.webp 800w, img/capa-1200.webp 1200w, img/capa-1600.webp 1600w, img/capa-2000.webp 2000w" sizes="100vw" width="2000" height="1125" alt="Sala e jantar com aparador comprido e estante em madeira freijó, sofá bege e luz de fim de tarde entrando pelas janelas" fetchpriority="high">
+          <picture>
+            <!-- Standing screens show a narrow strip of the wide photo; this file is that strip at full height. -->
+            <source media="(orientation: portrait)" srcset="img/capa-retrato-600.webp 600w, img/capa-retrato-844.webp 844w" sizes="max(64vh, 92vw)" width="844" height="1125">
+            <img src="img/capa-1200.webp" srcset="img/capa-800.webp 800w, img/capa-1200.webp 1200w, img/capa-1600.webp 1600w, img/capa-2000.webp 2000w" sizes="100vw" width="2000" height="1125" alt="Sala e jantar com aparador comprido e estante em madeira freijó, sofá bege e luz de fim de tarde entrando pelas janelas" fetchpriority="high">
+          </picture>
         </div>
         <div class="hero-top">
           <p>Marcenaria em Campina Grande desde 2013</p>
@@ -592,7 +599,7 @@
       <div class="wrap">
         <div class="intro-grid">
           <figure class="intro-photo">
-            <img src="img/sala-1200.webp" srcset="img/sala-700.webp 700w, img/sala-1200.webp 1200w" sizes="(max-width: 900px) 92vw, 44vw" width="1200" height="800" alt="Painel ripado em freijó atrás da TV, rack suspenso branco com gavetas e estantes com livros e cerâmicas" loading="lazy">
+            <img src="img/sala-1200.webp" srcset="img/sala-700.webp 700w, img/sala-1200.webp 1200w" sizes="(max-width: 1023px) 100vw, min(80vw, 1160px)" width="1200" height="800" alt="Painel ripado em freijó atrás da TV, rack suspenso branco com gavetas e estantes com livros e cerâmicas" loading="lazy">
             <figcaption class="photo-tag"><svg class="ico" aria-hidden="true"><use href="#i-map-pin"/></svg>Painel de TV no Alto Branco</figcaption>
           </figure>
           <div class="intro-text">
@@ -874,7 +881,7 @@
               <a class="btn btn-line" href="#orcamento">Simular o valor</a>
             </div>
           </div>
-          <div class="closing-photo"><img src="img/cozinha-armarios-1200.webp" srcset="img/cozinha-armarios-700.webp 700w, img/cozinha-armarios-1200.webp 1200w" sizes="(max-width: 800px) 92vw, 36vw" width="1200" height="675" alt="Cozinha integrada com parede de armários em freijó, portas brancas embaixo e ilha com banquetas" loading="lazy"></div>
+          <div class="closing-photo"><img src="img/cozinha-armarios-1200.webp" srcset="img/cozinha-armarios-700.webp 700w, img/cozinha-armarios-1200.webp 1200w" sizes="(max-width: 800px) max(92vw, 427px), (max-width: 1023px) 92vw, min(67vw, 820px)" width="1200" height="675" alt="Cozinha integrada com parede de armários em freijó, portas brancas embaixo e ilha com banquetas" loading="lazy"></div>
         </div>
       </div>
     </section>
