@@ -36,6 +36,10 @@ site é do desenvolvedor web de Campina Grande (PB), dono do Instagram @eusoutar
 3. Ajustes junto com o cliente.
 4. Publicação no endereço do cliente, registrado no nome dele.
 
+Não tem mensalidade obrigatória. A hospedagem é no Cloudflare Pages, sem custo mensal, e o domínio
+fica no nome do cliente, que renova uma vez por ano. Mudanças nos 30 dias depois da entrega não têm
+custo; depois, entram na manutenção mensal opcional ou são cobradas a cada pedido.
+
 ## O que ele não promete
 - Posição no Google, lugar no mapa ou citação em respostas de IA. Ninguém controla isso. Ele deixa o
   site pronto para ser lido e encontrado.
@@ -46,6 +50,8 @@ site é do desenvolvedor web de Campina Grande (PB), dono do Instagram @eusoutar
   a ano, onde atende e como falar com ele.
 - [Site no Google e nas IAs](https://tarciodiniz.com/site-no-google-e-nas-ias/): o que um site faz para
   ser encontrado e citado, o que ninguém garante e o que vai em todo site entregue.
+- [Como funciona](https://tarciodiniz.com/como-funciona/): da conversa ao site no ar, o que vem no site
+  e o que acontece depois da entrega.
 - [Privacidade](https://tarciodiniz.com/privacidade/): como ele trata os dados de quem fala com ele.
 
 ## Modelos de demonstração
@@ -67,4 +73,4 @@ nelas não são reais e estão marcados como tal em cada página.
 - [GitHub](https://github.com/TarcioDiniz)
 - [Instagram](https://www.instagram.com/eusoutarcio/)
 
-Atualizado em 2026-09-25.
+Atualizado em 2026-09-26.
