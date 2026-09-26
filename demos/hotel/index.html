@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script>document.documentElement.classList.add("js");</script>
 <meta name="theme-color" content="#17191c">
 <meta name="robots" content="noindex, nofollow">
 <title>Algodão Hotel · Campina Grande (demonstração)</title>
@@ -174,6 +175,9 @@
   .board-title { font-family: var(--font-mono); font-weight: 700; font-size: 15px; letter-spacing: .12em; color: var(--amarelo); }
   .board-from { font-family: var(--font-mono); font-size: 13px; color: var(--on-grafite-muted); text-align: right; }
   .board-tabs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; margin: 12px 0 6px; }
+  /* With script, the board paints on the first group from the first frame; after the inline script runs, the hidden attributes take over. */
+  .js .board:not(.is-ready) .board-tabs[hidden] { display: grid; }
+  .js .board:not(.is-ready) tbody[data-group] ~ tbody[data-group] { display: none; }
   .board-tab { min-height: 44px; border: 1.5px solid var(--on-grafite-line); border-radius: var(--radius-sm); background: transparent; color: var(--on-grafite); font-family: var(--font-mono); font-size: 13px; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; padding: 4px; }
   .board-tab:hover { border-color: var(--on-grafite-muted); }
   .board-tab[aria-selected="true"] { background: var(--amarelo); border-color: var(--amarelo); color: var(--on-amarelo); }
@@ -708,9 +712,10 @@
           </table>
           <p class="board-note">Tempo sem trânsito, medido pelas ruas no OpenStreetMap. No horário de pico, conte o dobro.</p>
           <script>
-            /* Collapse to the first group before paint: doing this here, and not in the deferred script below, keeps the board from painting tall and then shrinking (that resize was pushing hero-copy, which sits beside it). */
+            /* Same state the CSS already painted (first group, tabs visible), now as attributes the tab script can change. */
             document.getElementById("board").querySelectorAll("tbody[data-group]").forEach((group, index) => { group.hidden = index !== 0; });
             document.querySelector("#board .board-tabs").hidden = false;
+            document.getElementById("board").classList.add("is-ready");
           </script>
         </div>
       </div>
