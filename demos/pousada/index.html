@@ -8,13 +8,34 @@
 <title>Pousada Aroá · Lagoa Seca (demonstração)</title>
 <meta name="description" content="Pousada de sítio em Lagoa Seca, a 8 km de Campina Grande: cinco tipos de quarto, café regional, piscina e reserva pelo WhatsApp. Modelo de demonstração.">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://images.unsplash.com">
 <!-- Gloock e Work Sans: SIL Open Font License, Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Gloock&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css">
-<link rel="preload" as="image" href="media/rede-no-alpendre.webp">
+<link rel="preload" href="/assets/fonts/gloock-latin-dcbd8c02.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/work-sans-latin-a9e8928e.woff2" as="font" type="font/woff2" crossorigin>
+<style id="fontes">
+  /* Gloock 400 normal, latin-ext */
+  @font-face { font-family: 'Gloock'; font-style: normal; font-weight: 400; font-display: swap; src: url(/assets/fonts/gloock-latin-ext-7048e72e.woff2) format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+  /* Gloock 400 normal, latin */
+  @font-face { font-family: 'Gloock'; font-style: normal; font-weight: 400; font-display: swap; src: url(/assets/fonts/gloock-latin-dcbd8c02.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+  /* Work Sans 400 normal, latin-ext */
+  @font-face { font-family: 'Work Sans'; font-style: normal; font-weight: 400; font-display: swap; src: url(/assets/fonts/work-sans-latin-ext-25930b26.woff2) format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+  /* Work Sans 400 normal, latin */
+  @font-face { font-family: 'Work Sans'; font-style: normal; font-weight: 400; font-display: swap; src: url(/assets/fonts/work-sans-latin-a9e8928e.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+  /* Work Sans 500 normal, latin-ext */
+  @font-face { font-family: 'Work Sans'; font-style: normal; font-weight: 500; font-display: swap; src: url(/assets/fonts/work-sans-latin-ext-25930b26.woff2) format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+  /* Work Sans 500 normal, latin */
+  @font-face { font-family: 'Work Sans'; font-style: normal; font-weight: 500; font-display: swap; src: url(/assets/fonts/work-sans-latin-a9e8928e.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+  /* Work Sans 600 normal, latin-ext */
+  @font-face { font-family: 'Work Sans'; font-style: normal; font-weight: 600; font-display: swap; src: url(/assets/fonts/work-sans-latin-ext-25930b26.woff2) format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+  /* Work Sans 600 normal, latin */
+  @font-face { font-family: 'Work Sans'; font-style: normal; font-weight: 600; font-display: swap; src: url(/assets/fonts/work-sans-latin-a9e8928e.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+  /* Work Sans 700 normal, latin-ext */
+  @font-face { font-family: 'Work Sans'; font-style: normal; font-weight: 700; font-display: swap; src: url(/assets/fonts/work-sans-latin-ext-25930b26.woff2) format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+  /* Work Sans 700 normal, latin */
+  @font-face { font-family: 'Work Sans'; font-style: normal; font-weight: 700; font-display: swap; src: url(/assets/fonts/work-sans-latin-a9e8928e.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" media="print" onload="this.media='all'">
+<link rel="preload" as="image" fetchpriority="high" href="media/rede-no-alpendre.webp">
 <!--
   Créditos das fotos (licença Unsplash, https://unsplash.com/license):
   Grant Durr (unsplash.com/@grant_durr): quartos, banheiros, alpendre, casa e pôr do sol, ids 1658595...
@@ -639,7 +660,7 @@
 
   <header class="topbar">
     <div class="wrap">
-      <a class="logo" href="#topo" aria-label="Pousada Aroá, início"><b>Aroá<span>.</span></b><small>pousada</small></a>
+      <a class="logo" href="#topo"><b>Aroá<span>.</span></b><small>pousada</small><span class="sr-only">, início</span></a>
       <p class="greeting" id="greeting">Café da manhã das 7h às 10h, no alpendre.</p>
       <nav class="nav" aria-label="Principal">
         <a href="#quartos">Quartos</a>
@@ -700,11 +721,11 @@
         <div class="hosts">
           <div class="hosts-photos">
             <figure>
-              <div class="photo-arch"><img src="https://images.unsplash.com/photo-1773861540606-e5df23583620?auto=format&fit=crop&w=900&h=1125&q=70" alt="Casa-sede térrea, branca, com varanda de grade azul e jardim na frente" loading="lazy" width="900" height="1125"></div>
+              <div class="photo-arch"><img src="https://images.unsplash.com/photo-1773861540606-e5df23583620?auto=format&fit=crop&w=900&h=1125&q=70" srcset="https://images.unsplash.com/photo-1773861540606-e5df23583620?auto=format&fit=crop&w=400&h=500&q=70 400w, https://images.unsplash.com/photo-1773861540606-e5df23583620?auto=format&fit=crop&w=700&h=875&q=70 700w, https://images.unsplash.com/photo-1773861540606-e5df23583620?auto=format&fit=crop&w=900&h=1125&q=70 900w" sizes="(min-width: 1024px) 25vw, 50vw" alt="Casa-sede térrea, branca, com varanda de grade azul e jardim na frente" loading="lazy" width="900" height="1125"></div>
               <figcaption>A casa-sede, onde fica a recepção e o salão do café.</figcaption>
             </figure>
             <figure>
-              <div class="photo-oval"><img src="https://images.unsplash.com/photo-1771217022632-4de64c7af397?auto=format&fit=crop&w=600&h=800&q=70" alt="Mesa de café posta no alpendre, com a mata e o vale ao fundo" loading="lazy" width="600" height="800"></div>
+              <div class="photo-oval"><img src="https://images.unsplash.com/photo-1771217022632-4de64c7af397?auto=format&fit=crop&w=600&h=800&q=70" srcset="https://images.unsplash.com/photo-1771217022632-4de64c7af397?auto=format&fit=crop&w=300&h=400&q=70 300w, https://images.unsplash.com/photo-1771217022632-4de64c7af397?auto=format&fit=crop&w=550&h=733&q=70 550w, https://images.unsplash.com/photo-1771217022632-4de64c7af397?auto=format&fit=crop&w=600&h=800&q=70 600w" sizes="(min-width: 1024px) 18vw, 37vw" alt="Mesa de café posta no alpendre, com a mata e o vale ao fundo" loading="lazy" width="600" height="800"></div>
               <figcaption>Café no alpendre, das 7h às 10h.</figcaption>
             </figure>
           </div>
@@ -742,10 +763,10 @@
           <article class="stay" data-stay="varanda" data-tags="casal" aria-labelledby="st-varanda">
             <div class="stay-media">
               <div class="stay-track" tabindex="0" role="group" aria-label="Fotos da Suíte Varanda">
-                <img src="https://images.unsplash.com/photo-1658595149684-3c3c6aa3c154?auto=format&fit=crop&w=800&h=680&q=70" alt="Quarto com cama de casal, poltrona de vime e janela para o pasto" loading="lazy" width="800" height="680">
-                <img src="https://images.unsplash.com/photo-1658595148908-fe7d2df74679?auto=format&fit=crop&w=800&h=680&q=70" alt="Alpendre com mesa de madeira e bancos, na porta da suíte" loading="lazy" width="800" height="680">
-                <img src="https://images.unsplash.com/photo-1593113054573-4e63ccd73426?auto=format&fit=crop&w=800&h=680&q=70" alt="Rede de crochê amarela armada no alpendre, com vasos de plantas" loading="lazy" width="800" height="680">
-                <img src="https://images.unsplash.com/photo-1658595151073-b9e5b4063537?auto=format&fit=crop&w=800&h=680&q=70" alt="Vista do alpendre: pasto verde e a serra ao fundo" loading="lazy" width="800" height="680">
+                <img src="https://images.unsplash.com/photo-1658595149684-3c3c6aa3c154?auto=format&fit=crop&w=800&h=680&q=70" srcset="https://images.unsplash.com/photo-1658595149684-3c3c6aa3c154?auto=format&fit=crop&w=500&h=425&q=70 500w, https://images.unsplash.com/photo-1658595149684-3c3c6aa3c154?auto=format&fit=crop&w=700&h=595&q=70 700w, https://images.unsplash.com/photo-1658595149684-3c3c6aa3c154?auto=format&fit=crop&w=800&h=680&q=70 800w" sizes="(min-width: 1024px) 33vw, (min-width: 700px) 50vw, calc(100vw - 38px)" alt="Quarto com cama de casal, poltrona de vime e janela para o pasto" loading="lazy" width="800" height="680">
+                <img src="https://images.unsplash.com/photo-1658595148908-fe7d2df74679?auto=format&fit=crop&w=800&h=680&q=70" srcset="https://images.unsplash.com/photo-1658595148908-fe7d2df74679?auto=format&fit=crop&w=500&h=425&q=70 500w, https://images.unsplash.com/photo-1658595148908-fe7d2df74679?auto=format&fit=crop&w=700&h=595&q=70 700w, https://images.unsplash.com/photo-1658595148908-fe7d2df74679?auto=format&fit=crop&w=800&h=680&q=70 800w" sizes="(min-width: 1024px) 33vw, (min-width: 700px) 50vw, calc(100vw - 38px)" alt="Alpendre com mesa de madeira e bancos, na porta da suíte" loading="lazy" width="800" height="680">
+                <img src="https://images.unsplash.com/photo-1593113054573-4e63ccd73426?auto=format&fit=crop&w=800&h=680&q=70" srcset="https://images.unsplash.com/photo-1593113054573-4e63ccd73426?auto=format&fit=crop&w=500&h=425&q=70 500w, https://images.unsplash.com/photo-1593113054573-4e63ccd73426?auto=format&fit=crop&w=700&h=595&q=70 700w, https://images.unsplash.com/photo-1593113054573-4e63ccd73426?auto=format&fit=crop&w=800&h=680&q=70 800w" sizes="(min-width: 1024px) 33vw, (min-width: 700px) 50vw, calc(100vw - 38px)" alt="Rede de crochê amarela armada no alpendre, com vasos de plantas" loading="lazy" width="800" height="680">
+                <img src="https://images.unsplash.com/photo-1658595151073-b9e5b4063537?auto=format&fit=crop&w=800&h=680&q=70" srcset="https://images.unsplash.com/photo-1658595151073-b9e5b4063537?auto=format&fit=crop&w=500&h=425&q=70 500w, https://images.unsplash.com/photo-1658595151073-b9e5b4063537?auto=format&fit=crop&w=700&h=595&q=70 700w, https://images.unsplash.com/photo-1658595151073-b9e5b4063537?auto=format&fit=crop&w=800&h=680&q=70 800w" sizes="(min-width: 1024px) 33vw, (min-width: 700px) 50vw, calc(100vw - 38px)" alt="Vista do alpendre: pasto verde e a serra ao fundo" loading="lazy" width="800" height="680">
               </div>
               <span class="stay-badge">A mais pedida</span>
               <button type="button" class="stay-nav prev" aria-label="Foto anterior da Suíte Varanda"><svg class="ico" aria-hidden="true"><use href="#i-caret-left"/></svg></button>
@@ -762,9 +783,9 @@
           <article class="stay" data-stay="serra" data-tags="casal pet" aria-labelledby="st-serra">
             <div class="stay-media">
               <div class="stay-track" tabindex="0" role="group" aria-label="Fotos da Suíte Serra">
-                <img src="https://images.unsplash.com/photo-1658595149097-d8542848bc94?auto=format&fit=crop&w=800&h=680&q=70" alt="Suíte com teto de madeira, cama de casal e janelas dos dois lados" loading="lazy" width="800" height="680">
-                <img src="https://images.unsplash.com/photo-1658595150417-6ac57aca6016?auto=format&fit=crop&w=800&h=680&q=70" alt="Banheiro da suíte com pia de louça e janela de madeira" loading="lazy" width="800" height="680">
-                <img src="https://images.unsplash.com/photo-1659045549051-9e4b29c12425?auto=format&fit=crop&w=800&h=680&q=70" alt="Cavalo pastando no capim alto, com pedras e mata atrás" loading="lazy" width="800" height="680">
+                <img src="https://images.unsplash.com/photo-1658595149097-d8542848bc94?auto=format&fit=crop&w=800&h=680&q=70" srcset="https://images.unsplash.com/photo-1658595149097-d8542848bc94?auto=format&fit=crop&w=500&h=425&q=70 500w, https://images.unsplash.com/photo-1658595149097-d8542848bc94?auto=format&fit=crop&w=700&h=595&q=70 700w, https://images.unsplash.com/photo-1658595149097-d8542848bc94?auto=format&fit=crop&w=800&h=680&q=70 800w" sizes="(min-width: 1024px) 33vw, (min-width: 700px) 50vw, calc(100vw - 38px)" alt="Suíte com teto de madeira, cama de casal e janelas dos dois lados" loading="lazy" width="800" height="680">
+                <img src="https://images.unsplash.com/photo-1658595150417-6ac57aca6016?auto=format&fit=crop&w=800&h=680&q=70" srcset="https://images.unsplash.com/photo-1658595150417-6ac57aca6016?auto=format&fit=crop&w=500&h=425&q=70 500w, https://images.unsplash.com/photo-1658595150417-6ac57aca6016?auto=format&fit=crop&w=700&h=595&q=70 700w, https://images.unsplash.com/photo-1658595150417-6ac57aca6016?auto=format&fit=crop&w=800&h=680&q=70 800w" sizes="(min-width: 1024px) 33vw, (min-width: 700px) 50vw, calc(100vw - 38px)" alt="Banheiro da suíte com pia de louça e janela de madeira" loading="lazy" width="800" height="680">
+                <img src="https://images.unsplash.com/photo-1659045549051-9e4b29c12425?auto=format&fit=crop&w=800&h=680&q=70" srcset="https://images.unsplash.com/photo-1659045549051-9e4b29c12425?auto=format&fit=crop&w=500&h=425&q=70 500w, https://images.unsplash.com/photo-1659045549051-9e4b29c12425?auto=format&fit=crop&w=700&h=595&q=70 700w, https://images.unsplash.com/photo-1659045549051-9e4b29c12425?auto=format&fit=crop&w=800&h=680&q=70 800w" sizes="(min-width: 1024px) 33vw, (min-width: 700px) 50vw, calc(100vw - 38px)" alt="Cavalo pastando no capim alto, com pedras e mata atrás" loading="lazy" width="800" height="680">
               </div>
               <span class="stay-badge">Aceita cachorro</span>
               <button type="button" class="stay-nav prev" aria-label="Foto anterior da Suíte Serra"><svg class="ico" aria-hidden="true"><use href="#i-caret-left"/></svg></button>
@@ -781,9 +802,9 @@
           <article class="stay" data-stay="duplo" data-tags="casal" aria-labelledby="st-duplo">
             <div class="stay-media">
               <div class="stay-track" tabindex="0" role="group" aria-label="Fotos do Quarto Duplo">
-                <img src="https://images.unsplash.com/photo-1658595149174-ff76486ec800?auto=format&fit=crop&w=800&h=680&q=70" alt="Duas camas de solteiro de madeira com abajures e cômoda branca" loading="lazy" width="800" height="680">
-                <img src="https://images.unsplash.com/photo-1658595148963-13b7da6dcd6d?auto=format&fit=crop&w=800&h=680&q=70" alt="Camas de solteiro juntas, com cabeceira de madeira e lençol branco" loading="lazy" width="800" height="680">
-                <img src="https://images.unsplash.com/photo-1658595149986-181e37bf28b7?auto=format&fit=crop&w=800&h=680&q=70" alt="Banheiro com pia sobre bancada, banco de madeira e biombo" loading="lazy" width="800" height="680">
+                <img src="https://images.unsplash.com/photo-1658595149174-ff76486ec800?auto=format&fit=crop&w=800&h=680&q=70" srcset="https://images.unsplash.com/photo-1658595149174-ff76486ec800?auto=format&fit=crop&w=500&h=425&q=70 500w, https://images.unsplash.com/photo-1658595149174-ff76486ec800?auto=format&fit=crop&w=700&h=595&q=70 700w, https://images.unsplash.com/photo-1658595149174-ff76486ec800?auto=format&fit=crop&w=800&h=680&q=70 800w" sizes="(min-width: 1024px) 33vw, (min-width: 700px) 50vw, calc(100vw - 38px)" alt="Duas camas de solteiro de madeira com abajures e cômoda branca" loading="lazy" width="800" height="680">
+                <img src="https://images.unsplash.com/photo-1658595148963-13b7da6dcd6d?auto=format&fit=crop&w=800&h=680&q=70" srcset="https://images.unsplash.com/photo-1658595148963-13b7da6dcd6d?auto=format&fit=crop&w=500&h=425&q=70 500w, https://images.unsplash.com/photo-1658595148963-13b7da6dcd6d?auto=format&fit=crop&w=700&h=595&q=70 700w, https://images.unsplash.com/photo-1658595148963-13b7da6dcd6d?auto=format&fit=crop&w=800&h=680&q=70 800w" sizes="(min-width: 1024px) 33vw, (min-width: 700px) 50vw, calc(100vw - 38px)" alt="Camas de solteiro juntas, com cabeceira de madeira e lençol branco" loading="lazy" width="800" height="680">
+                <img src="https://images.unsplash.com/photo-1658595149986-181e37bf28b7?auto=format&fit=crop&w=800&h=680&q=70" srcset="https://images.unsplash.com/photo-1658595149986-181e37bf28b7?auto=format&fit=crop&w=500&h=425&q=70 500w, https://images.unsplash.com/photo-1658595149986-181e37bf28b7?auto=format&fit=crop&w=700&h=595&q=70 700w, https://images.unsplash.com/photo-1658595149986-181e37bf28b7?auto=format&fit=crop&w=800&h=680&q=70 800w" sizes="(min-width: 1024px) 33vw, (min-width: 700px) 50vw, calc(100vw - 38px)" alt="Banheiro com pia sobre bancada, banco de madeira e biombo" loading="lazy" width="800" height="680">
               </div>
               <button type="button" class="stay-nav prev" aria-label="Foto anterior do Quarto Duplo"><svg class="ico" aria-hidden="true"><use href="#i-caret-left"/></svg></button>
               <button type="button" class="stay-nav next" aria-label="Próxima foto do Quarto Duplo"><svg class="ico" aria-hidden="true"><use href="#i-caret-right"/></svg></button>
@@ -799,9 +820,9 @@
           <article class="stay" data-stay="familia" data-tags="familia" aria-labelledby="st-familia">
             <div class="stay-media">
               <div class="stay-track" tabindex="0" role="group" aria-label="Fotos do Quarto Família">
-                <img src="https://images.unsplash.com/photo-1658595151074-d5d517a24e13?auto=format&fit=crop&w=800&h=680&q=70" alt="Quarto de teto alto em duas águas, com janela de madeira e quadros" loading="lazy" width="800" height="680">
-                <img src="https://images.unsplash.com/photo-1658595149281-8d6bb3643eab?auto=format&fit=crop&w=800&h=680&q=70" alt="Camas de madeira com lençóis brancos e mesa redonda ao lado" loading="lazy" width="800" height="680">
-                <img src="https://images.unsplash.com/photo-1658595148900-c77873724e98?auto=format&fit=crop&w=800&h=680&q=70" alt="Banheiro com banheira, box de vidro e plantas na bancada" loading="lazy" width="800" height="680">
+                <img src="https://images.unsplash.com/photo-1658595151074-d5d517a24e13?auto=format&fit=crop&w=800&h=680&q=70" srcset="https://images.unsplash.com/photo-1658595151074-d5d517a24e13?auto=format&fit=crop&w=500&h=425&q=70 500w, https://images.unsplash.com/photo-1658595151074-d5d517a24e13?auto=format&fit=crop&w=700&h=595&q=70 700w, https://images.unsplash.com/photo-1658595151074-d5d517a24e13?auto=format&fit=crop&w=800&h=680&q=70 800w" sizes="(min-width: 1024px) 33vw, (min-width: 700px) 50vw, calc(100vw - 38px)" alt="Quarto de teto alto em duas águas, com janela de madeira e quadros" loading="lazy" width="800" height="680">
+                <img src="https://images.unsplash.com/photo-1658595149281-8d6bb3643eab?auto=format&fit=crop&w=800&h=680&q=70" srcset="https://images.unsplash.com/photo-1658595149281-8d6bb3643eab?auto=format&fit=crop&w=500&h=425&q=70 500w, https://images.unsplash.com/photo-1658595149281-8d6bb3643eab?auto=format&fit=crop&w=700&h=595&q=70 700w, https://images.unsplash.com/photo-1658595149281-8d6bb3643eab?auto=format&fit=crop&w=800&h=680&q=70 800w" sizes="(min-width: 1024px) 33vw, (min-width: 700px) 50vw, calc(100vw - 38px)" alt="Camas de madeira com lençóis brancos e mesa redonda ao lado" loading="lazy" width="800" height="680">
+                <img src="https://images.unsplash.com/photo-1658595148900-c77873724e98?auto=format&fit=crop&w=800&h=680&q=70" srcset="https://images.unsplash.com/photo-1658595148900-c77873724e98?auto=format&fit=crop&w=500&h=425&q=70 500w, https://images.unsplash.com/photo-1658595148900-c77873724e98?auto=format&fit=crop&w=700&h=595&q=70 700w, https://images.unsplash.com/photo-1658595148900-c77873724e98?auto=format&fit=crop&w=800&h=680&q=70 800w" sizes="(min-width: 1024px) 33vw, (min-width: 700px) 50vw, calc(100vw - 38px)" alt="Banheiro com banheira, box de vidro e plantas na bancada" loading="lazy" width="800" height="680">
               </div>
               <span class="stay-badge">Cabe a família</span>
               <button type="button" class="stay-nav prev" aria-label="Foto anterior do Quarto Família"><svg class="ico" aria-hidden="true"><use href="#i-caret-left"/></svg></button>
@@ -818,10 +839,10 @@
           <article class="stay" data-stay="casa" data-tags="familia pet casa" aria-labelledby="st-casa">
             <div class="stay-media">
               <div class="stay-track" tabindex="0" role="group" aria-label="Fotos da Casa do Alpendre">
-                <img src="https://images.unsplash.com/photo-1658595157748-6f836dfa5baa?auto=format&fit=crop&w=800&h=680&q=70" alt="Casa branca de dois andares com escada externa e gramado na frente" loading="lazy" width="800" height="680">
-                <img src="https://images.unsplash.com/photo-1574348882011-0029b2f4ab9b?auto=format&fit=crop&w=800&h=680&q=70" alt="Sala com janelas em arco, rede vermelha armada e muitas plantas" loading="lazy" width="800" height="680">
-                <img src="https://images.unsplash.com/photo-1658595149584-29e4010c7526?auto=format&fit=crop&w=800&h=680&q=70" alt="Mesa comprida de madeira no alpendre coberto da casa" loading="lazy" width="800" height="680">
-                <img src="https://images.unsplash.com/photo-1658595149299-c23ae5fd73fe?auto=format&fit=crop&w=800&h=680&q=70" alt="Banheiro com banheira de pé e chuveiro com box" loading="lazy" width="800" height="680">
+                <img src="https://images.unsplash.com/photo-1658595157748-6f836dfa5baa?auto=format&fit=crop&w=800&h=680&q=70" srcset="https://images.unsplash.com/photo-1658595157748-6f836dfa5baa?auto=format&fit=crop&w=500&h=425&q=70 500w, https://images.unsplash.com/photo-1658595157748-6f836dfa5baa?auto=format&fit=crop&w=700&h=595&q=70 700w, https://images.unsplash.com/photo-1658595157748-6f836dfa5baa?auto=format&fit=crop&w=800&h=680&q=70 800w" sizes="(min-width: 1024px) 33vw, (min-width: 700px) 50vw, calc(100vw - 38px)" alt="Casa branca de dois andares com escada externa e gramado na frente" loading="lazy" width="800" height="680">
+                <img src="https://images.unsplash.com/photo-1574348882011-0029b2f4ab9b?auto=format&fit=crop&w=800&h=680&q=70" srcset="https://images.unsplash.com/photo-1574348882011-0029b2f4ab9b?auto=format&fit=crop&w=500&h=425&q=70 500w, https://images.unsplash.com/photo-1574348882011-0029b2f4ab9b?auto=format&fit=crop&w=700&h=595&q=70 700w, https://images.unsplash.com/photo-1574348882011-0029b2f4ab9b?auto=format&fit=crop&w=800&h=680&q=70 800w" sizes="(min-width: 1024px) 33vw, (min-width: 700px) 50vw, calc(100vw - 38px)" alt="Sala com janelas em arco, rede vermelha armada e muitas plantas" loading="lazy" width="800" height="680">
+                <img src="https://images.unsplash.com/photo-1658595149584-29e4010c7526?auto=format&fit=crop&w=800&h=680&q=70" srcset="https://images.unsplash.com/photo-1658595149584-29e4010c7526?auto=format&fit=crop&w=500&h=425&q=70 500w, https://images.unsplash.com/photo-1658595149584-29e4010c7526?auto=format&fit=crop&w=700&h=595&q=70 700w, https://images.unsplash.com/photo-1658595149584-29e4010c7526?auto=format&fit=crop&w=800&h=680&q=70 800w" sizes="(min-width: 1024px) 33vw, (min-width: 700px) 50vw, calc(100vw - 38px)" alt="Mesa comprida de madeira no alpendre coberto da casa" loading="lazy" width="800" height="680">
+                <img src="https://images.unsplash.com/photo-1658595149299-c23ae5fd73fe?auto=format&fit=crop&w=800&h=680&q=70" srcset="https://images.unsplash.com/photo-1658595149299-c23ae5fd73fe?auto=format&fit=crop&w=500&h=425&q=70 500w, https://images.unsplash.com/photo-1658595149299-c23ae5fd73fe?auto=format&fit=crop&w=700&h=595&q=70 700w, https://images.unsplash.com/photo-1658595149299-c23ae5fd73fe?auto=format&fit=crop&w=800&h=680&q=70 800w" sizes="(min-width: 1024px) 33vw, (min-width: 700px) 50vw, calc(100vw - 38px)" alt="Banheiro com banheira de pé e chuveiro com box" loading="lazy" width="800" height="680">
               </div>
               <span class="stay-badge">Casa só para vocês</span>
               <button type="button" class="stay-nav prev" aria-label="Foto anterior da Casa do Alpendre"><svg class="ico" aria-hidden="true"><use href="#i-caret-left"/></svg></button>
@@ -1111,9 +1132,9 @@
     </div>
   </dialog>
 
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/Flip.min.js"></script>
+<script src="/assets/vendor/gsap-3.15.0/gsap.min.js"></script>
+<script src="/assets/vendor/gsap-3.15.0/ScrollTrigger.min.js"></script>
+<script src="/assets/vendor/gsap-3.15.0/Flip.min.js"></script>
 <script>
   const DAY_MS = 24 * 60 * 60 * 1000;
   const MAX_MONTHS_AHEAD = 11;
@@ -1343,7 +1364,7 @@
     if (iso === state.checkout) button.classList.add("is-out");
     if (state.checkin && state.checkout && iso > state.checkin && iso < state.checkout) button.classList.add("is-range");
     button.setAttribute("aria-pressed", String(iso === state.checkin || iso === state.checkout));
-    button.setAttribute("aria-label", `${label}, ${note}`);
+    button.setAttribute("aria-label", `${number}, ${label}, ${note}`);
     button.innerHTML = `<span class="num">${number}</span>${price !== null ? `<small>${price}</small>` : ""}`;
     return button;
   }
@@ -1814,7 +1835,9 @@
     // 4. Section titles rise out of their line, the notes settle at their tilt.
     function reveals() {
       gsap.utils.toArray(".section-head h2, .route h2, .rules h2, .final h2").forEach((title) => {
-        gsap.from(title, { yPercent: 40, autoAlpha: 0, duration: 0.9, ease: "power3.out", scrollTrigger: { trigger: title, start: "top 90%", once: true } });
+        // Plain opacity, not autoAlpha: visibility:hidden would pull these headings out of the
+        // accessibility tree before the ScrollTrigger fires, breaking heading navigation.
+        gsap.from(title, { yPercent: 40, opacity: 0, duration: 0.9, ease: "power3.out", scrollTrigger: { trigger: title, start: "top 90%", once: true } });
       });
       ScrollTrigger.batch(".note", { start: "top 92%", once: true, onEnter: (batch) => gsap.from(batch, { y: 50, autoAlpha: 0, duration: 0.8, ease: "back.out(1.4)", stagger: 0.1 }) });
       gsap.from(".wordmark", { yPercent: 40, autoAlpha: 0, duration: 1.1, ease: "power3.out", scrollTrigger: { trigger: "footer", start: "top 90%", once: true } });
