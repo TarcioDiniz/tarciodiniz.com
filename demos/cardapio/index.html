@@ -40,12 +40,25 @@
     Emanuel Ekström: Duplo com batata (photo-1600688640154)
   O recorte do Duplo foi feito com o Vision do macOS a partir da foto de Arvid Skywalker.
 -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anybody:wdth,wght@50..150,500..900&family=Figtree:wght@400..800&family=Martian+Mono:wght@400..700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css">
-<link rel="preload" as="image" href="media/capa-1280.webp" media="(min-width: 701px) and (orientation: landscape)">
-<link rel="preload" as="image" href="media/capa-720.webp" media="(max-width: 700px), (orientation: portrait)">
+<link rel="preload" href="/assets/fonts/anybody-latin-abad48c1.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/figtree-latin-f96cbbc0.woff2" as="font" type="font/woff2" crossorigin>
+<style id="fontes">
+  /* Anybody 500 900 normal, latin-ext */
+  @font-face { font-family: 'Anybody'; font-style: normal; font-weight: 500 900; font-stretch: 50% 150%; font-display: swap; src: url(/assets/fonts/anybody-latin-ext-50540145.woff2) format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+  /* Anybody 500 900 normal, latin */
+  @font-face { font-family: 'Anybody'; font-style: normal; font-weight: 500 900; font-stretch: 50% 150%; font-display: swap; src: url(/assets/fonts/anybody-latin-abad48c1.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+  /* Figtree 400 800 normal, latin-ext */
+  @font-face { font-family: 'Figtree'; font-style: normal; font-weight: 400 800; font-display: swap; src: url(/assets/fonts/figtree-latin-ext-7471c0c2.woff2) format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+  /* Figtree 400 800 normal, latin */
+  @font-face { font-family: 'Figtree'; font-style: normal; font-weight: 400 800; font-display: swap; src: url(/assets/fonts/figtree-latin-f96cbbc0.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+  /* Martian Mono 400 700 normal, latin-ext */
+  @font-face { font-family: 'Martian Mono'; font-style: normal; font-weight: 400 700; font-stretch: 100%; font-display: swap; src: url(/assets/fonts/martian-mono-latin-ext-47fec9dc.woff2) format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+  /* Martian Mono 400 700 normal, latin */
+  @font-face { font-family: 'Martian Mono'; font-style: normal; font-weight: 400 700; font-stretch: 100%; font-display: swap; src: url(/assets/fonts/martian-mono-latin-402a4bfd.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" media="print" onload="this.media='all'">
+<link rel="preload" as="image" href="media/capa-1280.webp" media="(min-width: 701px) and (orientation: landscape)" fetchpriority="high">
+<link rel="preload" as="image" href="media/capa-720.webp" media="(max-width: 700px), (orientation: portrait)" fetchpriority="high">
 <style>
   :root {
     --char: #16110d;
@@ -650,7 +663,7 @@
             <p class="cat-note">Prensado na chapa bem quente até formar casquinha. Todos no brioche da casa.</p>
             <ul class="items">
               <li class="item item-feature" data-name="Brasa Duplo" data-price="34.9">
-                <figure class="feature-photo"><img src="https://images.unsplash.com/photo-1678110707289-ab14382a1625?auto=format&fit=crop&w=900&h=675&q=70" alt="Brasa Duplo: dois smash com cheddar derretido, picles e cebola" width="900" height="675" loading="lazy"></figure>
+                <figure class="feature-photo"><img src="https://images.unsplash.com/photo-1678110707289-ab14382a1625?auto=format&fit=crop&w=900&h=675&q=70" srcset="https://images.unsplash.com/photo-1678110707289-ab14382a1625?auto=format&fit=crop&w=400&h=300&q=70 400w, https://images.unsplash.com/photo-1678110707289-ab14382a1625?auto=format&fit=crop&w=640&h=480&q=70 640w, https://images.unsplash.com/photo-1678110707289-ab14382a1625?auto=format&fit=crop&w=900&h=675&q=70 900w" sizes="(max-width: 700px) calc(100vw - 52px), (max-width: 899px) 47vw, (max-width: 1279px) 30vw, 396px" alt="Brasa Duplo: dois smash com cheddar derretido, picles e cebola" width="900" height="675" loading="lazy"></figure>
                 <div class="item-text">
                   <p class="badge">O mais pedido</p>
                   <h4>Brasa Duplo</h4>
@@ -659,22 +672,22 @@
                 <div class="item-buy"><span class="price">R$ 34,90</span><button class="add" type="button" aria-label="Pôr Brasa Duplo na comanda"><svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></button></div>
               </li>
               <li class="item" data-name="Clássico" data-price="24.9">
-                <img class="thumb" src="https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format&fit=crop&w=200&h=200&q=70" alt="Hambúrguer com alface, tomate e queijo" width="96" height="96" loading="lazy">
+                <img class="thumb" src="https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format&fit=crop&w=200&h=200&q=70" srcset="https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format&fit=crop&w=100&h=100&q=70 100w, https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format&fit=crop&w=150&h=150&q=70 150w, https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format&fit=crop&w=200&h=200&q=70 200w" sizes="(max-width: 700px) 76px, 96px" alt="Hambúrguer com alface, tomate e queijo" width="96" height="96" loading="lazy">
                 <div class="item-text"><h4>Clássico</h4><p>Smash de 90&nbsp;g, queijo prato, alface, tomate e maionese da casa.</p></div>
                 <div class="item-buy"><span class="price">R$ 24,90</span><button class="add" type="button" aria-label="Pôr Clássico na comanda"><svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></button></div>
               </li>
               <li class="item" data-name="Bacon na Brasa" data-price="31.9">
-                <img class="thumb" src="https://images.unsplash.com/photo-1607013251379-e6eecfffe234?auto=format&fit=crop&w=200&h=200&q=70" alt="Cheeseburger duplo com picles" width="96" height="96" loading="lazy">
+                <img class="thumb" src="https://images.unsplash.com/photo-1607013251379-e6eecfffe234?auto=format&fit=crop&w=200&h=200&q=70" srcset="https://images.unsplash.com/photo-1607013251379-e6eecfffe234?auto=format&fit=crop&w=100&h=100&q=70 100w, https://images.unsplash.com/photo-1607013251379-e6eecfffe234?auto=format&fit=crop&w=150&h=150&q=70 150w, https://images.unsplash.com/photo-1607013251379-e6eecfffe234?auto=format&fit=crop&w=200&h=200&q=70 200w" sizes="(max-width: 700px) 76px, 96px" alt="Cheeseburger duplo com picles" width="96" height="96" loading="lazy">
                 <div class="item-text"><h4>Bacon na Brasa</h4><p>Smash de 90&nbsp;g, bacon em tira, cheddar e barbecue de rapadura.</p></div>
                 <div class="item-buy"><span class="price">R$ 31,90</span><button class="add" type="button" aria-label="Pôr Bacon na Brasa na comanda"><svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></button></div>
               </li>
               <li class="item" data-name="Sertão" data-price="33.9">
-                <img class="thumb" src="https://images.unsplash.com/photo-1713330801172-03f8d1c0dde7?auto=format&fit=crop&w=200&h=200&q=70" alt="Hambúrguer alto em tábua de madeira" width="96" height="96" loading="lazy">
+                <img class="thumb" src="https://images.unsplash.com/photo-1713330801172-03f8d1c0dde7?auto=format&fit=crop&w=200&h=200&q=70" srcset="https://images.unsplash.com/photo-1713330801172-03f8d1c0dde7?auto=format&fit=crop&w=100&h=100&q=70 100w, https://images.unsplash.com/photo-1713330801172-03f8d1c0dde7?auto=format&fit=crop&w=150&h=150&q=70 150w, https://images.unsplash.com/photo-1713330801172-03f8d1c0dde7?auto=format&fit=crop&w=200&h=200&q=70 200w" sizes="(max-width: 700px) 76px, 96px" alt="Hambúrguer alto em tábua de madeira" width="96" height="96" loading="lazy">
                 <div class="item-text"><p class="tag">Da região</p><h4>Sertão</h4><p>Smash de 90&nbsp;g, queijo coalho na chapa, carne de sol desfiada e mel de engenho.</p></div>
                 <div class="item-buy"><span class="price">R$ 33,90</span><button class="add" type="button" aria-label="Pôr Sertão na comanda"><svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></button></div>
               </li>
               <li class="item" data-name="Smash Simples" data-price="21.9">
-                <img class="thumb" src="https://images.unsplash.com/photo-1771818708882-bd87d9c46297?auto=format&fit=crop&w=200&h=200&q=70" alt="Smash com picles embrulhado em papel" width="96" height="96" loading="lazy">
+                <img class="thumb" src="https://images.unsplash.com/photo-1771818708882-bd87d9c46297?auto=format&fit=crop&w=200&h=200&q=70" srcset="https://images.unsplash.com/photo-1771818708882-bd87d9c46297?auto=format&fit=crop&w=100&h=100&q=70 100w, https://images.unsplash.com/photo-1771818708882-bd87d9c46297?auto=format&fit=crop&w=150&h=150&q=70 150w, https://images.unsplash.com/photo-1771818708882-bd87d9c46297?auto=format&fit=crop&w=200&h=200&q=70 200w" sizes="(max-width: 700px) 76px, 96px" alt="Smash com picles embrulhado em papel" width="96" height="96" loading="lazy">
                 <div class="item-text"><h4>Smash Simples</h4><p>Um smash de 90&nbsp;g, cheddar e picles, no brioche da casa.</p></div>
                 <div class="item-buy"><span class="price">R$ 21,90</span><button class="add" type="button" aria-label="Pôr Smash Simples na comanda"><svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></button></div>
               </li>
@@ -686,17 +699,17 @@
             <p class="cat-note">Só saem daqui. O pão sem glúten custa R$ 4,00 a mais, é só pedir.</p>
             <ul class="items">
               <li class="item" data-name="Frango Crocante" data-price="29.9">
-                <img class="thumb" src="https://images.unsplash.com/photo-1637710847214-f91d99669e18?auto=format&fit=crop&w=200&h=200&q=70" alt="Sanduíche de frango empanado" width="96" height="96" loading="lazy">
+                <img class="thumb" src="https://images.unsplash.com/photo-1637710847214-f91d99669e18?auto=format&fit=crop&w=200&h=200&q=70" srcset="https://images.unsplash.com/photo-1637710847214-f91d99669e18?auto=format&fit=crop&w=100&h=100&q=70 100w, https://images.unsplash.com/photo-1637710847214-f91d99669e18?auto=format&fit=crop&w=150&h=150&q=70 150w, https://images.unsplash.com/photo-1637710847214-f91d99669e18?auto=format&fit=crop&w=200&h=200&q=70 200w" sizes="(max-width: 700px) 76px, 96px" alt="Sanduíche de frango empanado" width="96" height="96" loading="lazy">
                 <div class="item-text"><h4>Frango Crocante</h4><p>Sobrecoxa empanada na panko, repolho roxo e maionese de limão.</p></div>
                 <div class="item-buy"><span class="price">R$ 29,90</span><button class="add" type="button" aria-label="Pôr Frango Crocante na comanda"><svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></button></div>
               </li>
               <li class="item" data-name="Monstro" data-price="42.9">
-                <img class="thumb" src="https://images.unsplash.com/photo-1688246780164-00c01647e78c?auto=format&fit=crop&w=200&h=200&q=70" alt="Cheeseburger triplo com cebola crispy" width="96" height="96" loading="lazy">
+                <img class="thumb" src="https://images.unsplash.com/photo-1688246780164-00c01647e78c?auto=format&fit=crop&w=200&h=200&q=70" srcset="https://images.unsplash.com/photo-1688246780164-00c01647e78c?auto=format&fit=crop&w=100&h=100&q=70 100w, https://images.unsplash.com/photo-1688246780164-00c01647e78c?auto=format&fit=crop&w=150&h=150&q=70 150w, https://images.unsplash.com/photo-1688246780164-00c01647e78c?auto=format&fit=crop&w=200&h=200&q=70 200w" sizes="(max-width: 700px) 76px, 96px" alt="Cheeseburger triplo com cebola crispy" width="96" height="96" loading="lazy">
                 <div class="item-text"><h4>Monstro</h4><p>Três smash de 90&nbsp;g, cheddar triplo, bacon e cebola crispy.</p></div>
                 <div class="item-buy"><span class="price">R$ 42,90</span><button class="add" type="button" aria-label="Pôr Monstro na comanda"><svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></button></div>
               </li>
               <li class="item" data-name="Combo Brasa" data-price="44.9">
-                <img class="thumb" src="https://images.unsplash.com/photo-1551782450-a2132b4ba21d?auto=format&fit=crop&w=200&h=200&q=70" alt="Hambúrguer com cesta de batata frita" width="96" height="96" loading="lazy">
+                <img class="thumb" src="https://images.unsplash.com/photo-1551782450-a2132b4ba21d?auto=format&fit=crop&w=200&h=200&q=70" srcset="https://images.unsplash.com/photo-1551782450-a2132b4ba21d?auto=format&fit=crop&w=100&h=100&q=70 100w, https://images.unsplash.com/photo-1551782450-a2132b4ba21d?auto=format&fit=crop&w=150&h=150&q=70 150w, https://images.unsplash.com/photo-1551782450-a2132b4ba21d?auto=format&fit=crop&w=200&h=200&q=70 200w" sizes="(max-width: 700px) 76px, 96px" alt="Hambúrguer com cesta de batata frita" width="96" height="96" loading="lazy">
                 <div class="item-text"><p class="tag">Combo</p><h4>Combo Brasa</h4><p>Brasa Duplo, batata média e refrigerante lata.</p></div>
                 <div class="item-buy"><span class="price">R$ 44,90</span><button class="add" type="button" aria-label="Pôr Combo Brasa na comanda"><svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></button></div>
               </li>
@@ -708,17 +721,17 @@
             <p class="cat-note">Batata cortada aqui e frita duas vezes. Cada porção serve bem duas pessoas.</p>
             <ul class="items">
               <li class="item" data-name="Batata Brasa" data-price="18.9">
-                <img class="thumb" src="https://images.unsplash.com/photo-1598679253544-2c97992403ea?auto=format&fit=crop&w=200&h=200&q=70" alt="Batata frita no papel" width="96" height="96" loading="lazy">
+                <img class="thumb" src="https://images.unsplash.com/photo-1598679253544-2c97992403ea?auto=format&fit=crop&w=200&h=200&q=70" srcset="https://images.unsplash.com/photo-1598679253544-2c97992403ea?auto=format&fit=crop&w=100&h=100&q=70 100w, https://images.unsplash.com/photo-1598679253544-2c97992403ea?auto=format&fit=crop&w=150&h=150&q=70 150w, https://images.unsplash.com/photo-1598679253544-2c97992403ea?auto=format&fit=crop&w=200&h=200&q=70 200w" sizes="(max-width: 700px) 76px, 96px" alt="Batata frita no papel" width="96" height="96" loading="lazy">
                 <div class="item-text"><h4>Batata Brasa</h4><p>Batata frita com sal de alho e o molho da casa.</p></div>
                 <div class="item-buy"><span class="price">R$ 18,90</span><button class="add" type="button" aria-label="Pôr Batata Brasa na comanda"><svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></button></div>
               </li>
               <li class="item" data-name="Anéis de Cebola" data-price="21.9">
-                <img class="thumb" src="https://images.unsplash.com/photo-1639024471283-03518883512d?auto=format&fit=crop&w=200&h=200&q=70" alt="Anéis de cebola empanados" width="96" height="96" loading="lazy">
+                <img class="thumb" src="https://images.unsplash.com/photo-1639024471283-03518883512d?auto=format&fit=crop&w=200&h=200&q=70" srcset="https://images.unsplash.com/photo-1639024471283-03518883512d?auto=format&fit=crop&w=100&h=100&q=70 100w, https://images.unsplash.com/photo-1639024471283-03518883512d?auto=format&fit=crop&w=150&h=150&q=70 150w, https://images.unsplash.com/photo-1639024471283-03518883512d?auto=format&fit=crop&w=200&h=200&q=70 200w" sizes="(max-width: 700px) 76px, 96px" alt="Anéis de cebola empanados" width="96" height="96" loading="lazy">
                 <div class="item-text"><h4>Anéis de Cebola</h4><p>Empanados na cerveja, com maionese defumada.</p></div>
                 <div class="item-buy"><span class="price">R$ 21,90</span><button class="add" type="button" aria-label="Pôr Anéis de Cebola na comanda"><svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></button></div>
               </li>
               <li class="item" data-name="Batata Rústica" data-price="22.9">
-                <img class="thumb" src="https://images.unsplash.com/photo-1630431341973-02e1b662ec35?auto=format&fit=crop&w=200&h=200&q=70" alt="Batata rústica com ervas" width="96" height="96" loading="lazy">
+                <img class="thumb" src="https://images.unsplash.com/photo-1630431341973-02e1b662ec35?auto=format&fit=crop&w=200&h=200&q=70" srcset="https://images.unsplash.com/photo-1630431341973-02e1b662ec35?auto=format&fit=crop&w=100&h=100&q=70 100w, https://images.unsplash.com/photo-1630431341973-02e1b662ec35?auto=format&fit=crop&w=150&h=150&q=70 150w, https://images.unsplash.com/photo-1630431341973-02e1b662ec35?auto=format&fit=crop&w=200&h=200&q=70 200w" sizes="(max-width: 700px) 76px, 96px" alt="Batata rústica com ervas" width="96" height="96" loading="lazy">
                 <div class="item-text"><h4>Batata Rústica</h4><p>Com casca, alecrim e queijo coalho ralado por cima.</p></div>
                 <div class="item-buy"><span class="price">R$ 22,90</span><button class="add" type="button" aria-label="Pôr Batata Rústica na comanda"><svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></button></div>
               </li>
@@ -730,17 +743,17 @@
             <p class="cat-note">Milkshake batido na hora. Refrigerante lata sai por R$ 6,00.</p>
             <ul class="items">
               <li class="item" data-name="Shake de Cookies" data-price="19.9">
-                <img class="thumb" src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=200&h=200&q=70" alt="Milkshake de chocolate com biscoito" width="96" height="96" loading="lazy">
+                <img class="thumb" src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=200&h=200&q=70" srcset="https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=100&h=100&q=70 100w, https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=150&h=150&q=70 150w, https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=200&h=200&q=70 200w" sizes="(max-width: 700px) 76px, 96px" alt="Milkshake de chocolate com biscoito" width="96" height="96" loading="lazy">
                 <div class="item-text"><h4>Shake de Cookies</h4><p>Sorvete de creme, cookies e calda de chocolate. 400 ml.</p></div>
                 <div class="item-buy"><span class="price">R$ 19,90</span><button class="add" type="button" aria-label="Pôr Shake de Cookies na comanda"><svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></button></div>
               </li>
               <li class="item" data-name="Shake de Morango" data-price="18.9">
-                <img class="thumb" src="https://images.unsplash.com/photo-1553787499-6f9133860278?auto=format&fit=crop&w=200&h=200&q=70" alt="Milkshake com chantilly" width="96" height="96" loading="lazy">
+                <img class="thumb" src="https://images.unsplash.com/photo-1553787499-6f9133860278?auto=format&fit=crop&w=200&h=200&q=70" srcset="https://images.unsplash.com/photo-1553787499-6f9133860278?auto=format&fit=crop&w=100&h=100&q=70 100w, https://images.unsplash.com/photo-1553787499-6f9133860278?auto=format&fit=crop&w=150&h=150&q=70 150w, https://images.unsplash.com/photo-1553787499-6f9133860278?auto=format&fit=crop&w=200&h=200&q=70 200w" sizes="(max-width: 700px) 76px, 96px" alt="Milkshake com chantilly" width="96" height="96" loading="lazy">
                 <div class="item-text"><h4>Shake de Morango</h4><p>Morango, sorvete de creme e chantilly. 400 ml.</p></div>
                 <div class="item-buy"><span class="price">R$ 18,90</span><button class="add" type="button" aria-label="Pôr Shake de Morango na comanda"><svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></button></div>
               </li>
               <li class="item" data-name="Limonada da Casa" data-price="9.9">
-                <img class="thumb" src="https://images.unsplash.com/photo-1623084921164-4a8c5c37a912?auto=format&fit=crop&w=200&h=200&q=70" alt="Copo de limonada" width="96" height="96" loading="lazy">
+                <img class="thumb" src="https://images.unsplash.com/photo-1623084921164-4a8c5c37a912?auto=format&fit=crop&w=200&h=200&q=70" srcset="https://images.unsplash.com/photo-1623084921164-4a8c5c37a912?auto=format&fit=crop&w=100&h=100&q=70 100w, https://images.unsplash.com/photo-1623084921164-4a8c5c37a912?auto=format&fit=crop&w=150&h=150&q=70 150w, https://images.unsplash.com/photo-1623084921164-4a8c5c37a912?auto=format&fit=crop&w=200&h=200&q=70 200w" sizes="(max-width: 700px) 76px, 96px" alt="Copo de limonada" width="96" height="96" loading="lazy">
                 <div class="item-text"><h4>Limonada da Casa</h4><p>Limão, hortelã e rapadura. 500 ml.</p></div>
                 <div class="item-buy"><span class="price">R$ 9,90</span><button class="add" type="button" aria-label="Pôr Limonada da Casa na comanda"><svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></button></div>
               </li>
@@ -752,12 +765,12 @@
             <p class="cat-note">Para fechar a noite.</p>
             <ul class="items">
               <li class="item" data-name="Brownie com Sorvete" data-price="16.9">
-                <img class="thumb" src="https://images.unsplash.com/photo-1654796605330-8a1248a2cb07?auto=format&fit=crop&w=200&h=200&q=70" alt="Brownie com bola de sorvete e calda" width="96" height="96" loading="lazy">
+                <img class="thumb" src="https://images.unsplash.com/photo-1654796605330-8a1248a2cb07?auto=format&fit=crop&w=200&h=200&q=70" srcset="https://images.unsplash.com/photo-1654796605330-8a1248a2cb07?auto=format&fit=crop&w=100&h=100&q=70 100w, https://images.unsplash.com/photo-1654796605330-8a1248a2cb07?auto=format&fit=crop&w=150&h=150&q=70 150w, https://images.unsplash.com/photo-1654796605330-8a1248a2cb07?auto=format&fit=crop&w=200&h=200&q=70 200w" sizes="(max-width: 700px) 76px, 96px" alt="Brownie com bola de sorvete e calda" width="96" height="96" loading="lazy">
                 <div class="item-text"><h4>Brownie com Sorvete</h4><p>Brownie quente, sorvete de creme e calda de chocolate.</p></div>
                 <div class="item-buy"><span class="price">R$ 16,90</span><button class="add" type="button" aria-label="Pôr Brownie com Sorvete na comanda"><svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></button></div>
               </li>
               <li class="item" data-name="Brownie" data-price="10.9">
-                <img class="thumb" src="https://images.unsplash.com/photo-1624353365286-3f8d62daad51?auto=format&fit=crop&w=200&h=200&q=70" alt="Pedaços de brownie" width="96" height="96" loading="lazy">
+                <img class="thumb" src="https://images.unsplash.com/photo-1624353365286-3f8d62daad51?auto=format&fit=crop&w=200&h=200&q=70" srcset="https://images.unsplash.com/photo-1624353365286-3f8d62daad51?auto=format&fit=crop&w=100&h=100&q=70 100w, https://images.unsplash.com/photo-1624353365286-3f8d62daad51?auto=format&fit=crop&w=150&h=150&q=70 150w, https://images.unsplash.com/photo-1624353365286-3f8d62daad51?auto=format&fit=crop&w=200&h=200&q=70 200w" sizes="(max-width: 700px) 76px, 96px" alt="Pedaços de brownie" width="96" height="96" loading="lazy">
                 <div class="item-text"><h4>Brownie</h4><p>Chocolate meio amargo com castanha de caju.</p></div>
                 <div class="item-buy"><span class="price">R$ 10,90</span><button class="add" type="button" aria-label="Pôr Brownie na comanda"><svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></button></div>
               </li>
@@ -928,9 +941,9 @@
   </div>
   <div class="backdrop" id="backdrop" hidden></div>
 
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/Flip.min.js"></script>
+<script src="/assets/vendor/gsap-3.15.0/gsap.min.js"></script>
+<script src="/assets/vendor/gsap-3.15.0/ScrollTrigger.min.js"></script>
+<script src="/assets/vendor/gsap-3.15.0/Flip.min.js"></script>
 <script>
   const currency = new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" });
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -1260,7 +1273,7 @@
       labels.forEach((label, index) => {
         const at = 0.6 + index * 0.5;
         timeline.fromTo(label.querySelector(".leader"), { scaleX: 0 }, { scaleX: 1, duration: 0.45, ease: "power2.out" }, at)
-          .fromTo(label.querySelector(".label-text"), { autoAlpha: 0.2, x: label.dataset.side === "l" ? -18 : 18 }, { autoAlpha: 1, x: 0, duration: 0.35 }, at + 0.15);
+          .fromTo(label.querySelector(".label-text"), { autoAlpha: 0.9, x: label.dataset.side === "l" ? -18 : 18 }, { autoAlpha: 1, x: 0, duration: 0.35 }, at + 0.15);
       });
       timeline.to({}, { duration: 0.4 });
     });
