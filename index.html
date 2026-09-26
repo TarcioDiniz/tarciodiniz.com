@@ -858,11 +858,12 @@
     const list = document.querySelector(".model-list");
     let lastX = 0;
     const onMove = (event) => { moveX(event.clientX + 28); moveY(event.clientY - 110); rotate(gsap.utils.clamp(-8, 8, (event.clientX - lastX) * 0.6)); lastX = event.clientX; };
+    // Scrolling fires show and hide a few ms apart; without overwrite the longer show finishes last and the preview never goes away.
     const show = (event) => {
       previewImg.src = event.currentTarget.dataset.preview;
-      gsap.to(preview, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "power2.out" });
+      gsap.to(preview, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "power2.out", overwrite: "auto" });
     };
-    const hide = () => gsap.to(preview, { autoAlpha: 0, scale: 0.85, duration: 0.25, ease: "power2.in" });
+    const hide = () => gsap.to(preview, { autoAlpha: 0, scale: 0.85, duration: 0.25, ease: "power2.in", overwrite: "auto" });
     gsap.set(preview, { scale: 0.85 });
     list.addEventListener("pointermove", onMove);
     list.addEventListener("pointerleave", hide);
