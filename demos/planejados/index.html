@@ -8,12 +8,25 @@
 <title>Braúna Marcenaria · Campina Grande (demonstração)</title>
 <meta name="description" content="Móveis planejados em Campina Grande: medição e projeto 3D sem custo, fábrica própria, montagem pela nossa equipe e orçamento na hora pelo site. Modelo de demonstração.">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <!-- Archivo e Source Serif 4: SIL Open Font License, Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css">
-<link rel="preload" as="image" href="img/capa-1200.webp" imagesrcset="img/capa-800.webp 800w, img/capa-1200.webp 1200w, img/capa-2000.webp 2000w" imagesizes="100vw">
+<link rel="preload" href="/assets/fonts/archivo-latin-ad60be9c.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/source-serif-4-latin-2c60df80.woff2" as="font" type="font/woff2" crossorigin>
+<style id="fontes">
+  /* Archivo 100 900 normal, latin-ext */
+  @font-face { font-family: 'Archivo'; font-style: normal; font-weight: 100 900; font-stretch: 62% 125%; font-display: swap; src: url(/assets/fonts/archivo-latin-ext-8ec07340.woff2) format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+  /* Archivo 100 900 normal, latin */
+  @font-face { font-family: 'Archivo'; font-style: normal; font-weight: 100 900; font-stretch: 62% 125%; font-display: swap; src: url(/assets/fonts/archivo-latin-ad60be9c.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+  /* Source Serif 4 400 normal, latin-ext */
+  @font-face { font-family: 'Source Serif 4'; font-style: normal; font-weight: 400; font-display: swap; src: url(/assets/fonts/source-serif-4-latin-ext-23835fe8.woff2) format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+  /* Source Serif 4 400 normal, latin */
+  @font-face { font-family: 'Source Serif 4'; font-style: normal; font-weight: 400; font-display: swap; src: url(/assets/fonts/source-serif-4-latin-2c60df80.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+  /* Source Serif 4 600 normal, latin-ext */
+  @font-face { font-family: 'Source Serif 4'; font-style: normal; font-weight: 600; font-display: swap; src: url(/assets/fonts/source-serif-4-latin-ext-23835fe8.woff2) format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+  /* Source Serif 4 600 normal, latin */
+  @font-face { font-family: 'Source Serif 4'; font-style: normal; font-weight: 600; font-display: swap; src: url(/assets/fonts/source-serif-4-latin-2c60df80.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" media="print" onload="this.media='all'">
+<link rel="preload" as="image" href="img/capa-1200.webp" imagesrcset="img/capa-800.webp 800w, img/capa-1200.webp 1200w, img/capa-1600.webp 1600w, img/capa-2000.webp 2000w" imagesizes="100vw" fetchpriority="high">
 <!--
   Fotos: geradas com IA no Higgsfield (Soul Location e Nano Banana 2 Lite) em 25/09/2026, para esta
   empresa fictícia. Nenhuma mostra lugar, pessoa ou marca reais. As quatro cozinhas do seletor de
@@ -528,7 +541,7 @@
 
   <header class="topbar" id="topbar">
     <div class="wrap topbar-in">
-      <a class="brand" href="#inicio" aria-label="Braúna Marcenaria, início"><b>braúna</b><small>marcenaria sob medida</small></a>
+      <a class="brand" href="#inicio"><b>braúna</b><small>marcenaria sob medida</small><span class="sr-only">, início</span></a>
       <nav class="nav" aria-label="Seções">
         <a href="#acabamentos">Acabamentos</a>
         <a href="#ambientes">Ambientes</a>
@@ -547,7 +560,7 @@
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-frame">
         <div class="hero-media">
-          <img src="img/capa-1200.webp" srcset="img/capa-800.webp 800w, img/capa-1200.webp 1200w, img/capa-2000.webp 2000w" sizes="100vw" width="2000" height="1125" alt="Sala e jantar com aparador comprido e estante em madeira freijó, sofá bege e luz de fim de tarde entrando pelas janelas" fetchpriority="high">
+          <img src="img/capa-1200.webp" srcset="img/capa-800.webp 800w, img/capa-1200.webp 1200w, img/capa-1600.webp 1600w, img/capa-2000.webp 2000w" sizes="100vw" width="2000" height="1125" alt="Sala e jantar com aparador comprido e estante em madeira freijó, sofá bege e luz de fim de tarde entrando pelas janelas" fetchpriority="high">
         </div>
         <div class="hero-top">
           <p>Marcenaria em Campina Grande desde 2013</p>
@@ -612,10 +625,10 @@
           <div>
             <div class="finish-stage" id="finish-stage">
               <span class="finish-badge" id="finish-badge" aria-live="polite">Freijó natural</span>
-              <img class="is-on" data-finish="freijo" src="img/cozinha-freijo-1360.webp" srcset="img/cozinha-freijo-800.webp 800w, img/cozinha-freijo-1360.webp 1360w" sizes="(max-width: 900px) 92vw, 58vw" width="1360" height="768" alt="Cozinha com armários do chão ao teto em freijó natural e ilha branca" loading="lazy">
-              <img data-finish="branco" src="img/cozinha-branco-1360.webp" srcset="img/cozinha-branco-800.webp 800w, img/cozinha-branco-1360.webp 1360w" sizes="(max-width: 900px) 92vw, 58vw" width="1360" height="768" alt="A mesma cozinha com os armários em branco TX" loading="lazy">
-              <img data-finish="grafite" src="img/cozinha-grafite-1360.webp" srcset="img/cozinha-grafite-800.webp 800w, img/cozinha-grafite-1360.webp 1360w" sizes="(max-width: 900px) 92vw, 58vw" width="1360" height="768" alt="A mesma cozinha com os armários em grafite fosco" loading="lazy">
-              <img data-finish="salvia" src="img/cozinha-salvia-1360.webp" srcset="img/cozinha-salvia-800.webp 800w, img/cozinha-salvia-1360.webp 1360w" sizes="(max-width: 900px) 92vw, 58vw" width="1360" height="768" alt="A mesma cozinha com os armários em laca verde sálvia" loading="lazy">
+              <img class="is-on" data-finish="freijo" src="img/cozinha-freijo-1360.webp" srcset="img/cozinha-freijo-660.webp 660w, img/cozinha-freijo-900.webp 900w, img/cozinha-freijo-1360.webp 1360w" sizes="(max-width: 900px) 92vw, 58vw" width="1360" height="768" alt="Cozinha com armários do chão ao teto em freijó natural e ilha branca" loading="lazy">
+              <img data-finish="branco" src="img/cozinha-branco-1360.webp" srcset="img/cozinha-branco-660.webp 660w, img/cozinha-branco-900.webp 900w, img/cozinha-branco-1360.webp 1360w" sizes="(max-width: 900px) 92vw, 58vw" width="1360" height="768" alt="A mesma cozinha com os armários em branco TX" loading="lazy">
+              <img data-finish="grafite" src="img/cozinha-grafite-1360.webp" srcset="img/cozinha-grafite-660.webp 660w, img/cozinha-grafite-900.webp 900w, img/cozinha-grafite-1360.webp 1360w" sizes="(max-width: 900px) 92vw, 58vw" width="1360" height="768" alt="A mesma cozinha com os armários em grafite fosco" loading="lazy">
+              <img data-finish="salvia" src="img/cozinha-salvia-1360.webp" srcset="img/cozinha-salvia-660.webp 660w, img/cozinha-salvia-900.webp 900w, img/cozinha-salvia-1360.webp 1360w" sizes="(max-width: 900px) 92vw, 58vw" width="1360" height="768" alt="A mesma cozinha com os armários em laca verde sálvia" loading="lazy">
             </div>
             <p class="finish-caption">Cozinha no Catolé: armários de 2,70 m até o teto e ilha em branco TX com puxador cava.</p>
           </div>
@@ -788,17 +801,17 @@
         </div>
         <div class="review-grid">
           <figure class="review">
-            <span class="stars" aria-label="5 de 5 estrelas"><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg></span>
+            <span class="stars" role="img" aria-label="5 de 5 estrelas"><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg></span>
             <blockquote>Mediram a cozinha numa terça e na outra terça o 3D estava no meu WhatsApp. Montaram em dois dias e ainda levaram o entulho.</blockquote>
             <figcaption><b>Juliana A.</b><span>Catolé, cozinha e área de serviço</span></figcaption>
           </figure>
           <figure class="review">
-            <span class="stars" aria-label="5 de 5 estrelas"><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg></span>
+            <span class="stars" role="img" aria-label="5 de 5 estrelas"><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg></span>
             <blockquote>Meu quarto tem uma coluna no meio da parede. O guarda-roupa contornou a coluna e hoje ninguém percebe que ela existe.</blockquote>
             <figcaption><b>Rodrigo M.</b><span>Mirante, dormitório de casal</span></figcaption>
           </figure>
           <figure class="review">
-            <span class="stars" aria-label="5 de 5 estrelas"><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg></span>
+            <span class="stars" role="img" aria-label="5 de 5 estrelas"><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg></span>
             <blockquote>Sou alto e pedi a bancada do escritório 4 cm acima do padrão. Fizeram sem cobrar nada a mais e mandaram foto de cada etapa.</blockquote>
             <figcaption><b>Thiago L.</b><span>Alto Branco, home office</span></figcaption>
           </figure>
@@ -889,8 +902,8 @@
   </div>
 
 <script>document.documentElement.classList.add("js");</script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
+<script src="/assets/vendor/gsap-3.15.0/gsap.min.js"></script>
+<script src="/assets/vendor/gsap-3.15.0/ScrollTrigger.min.js"></script>
 <script>
   const TIME_ZONE = "America/Fortaleza";
   const LEAFLET_JS = "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js";
