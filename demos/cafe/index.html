@@ -26,6 +26,11 @@
 <link rel="preload" href="/assets/fonts/be-vietnam-pro-latin-aa210c0a.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/coustard-latin-dc2b6747.woff2" as="font" type="font/woff2" crossorigin>
 <style id="fontes">
+  /* Fallbacks with the web fonts' width (measured on the font files), so the hero does not rewrap when they arrive. */
+  @font-face { font-family: "Be Vietnam Pro fallback"; font-weight: 400; src: local("Arial"), local("Liberation Sans"), local("Arimo"); size-adjust: 109.4%; ascent-override: 91.4%; descent-override: 24.2%; line-gap-override: 0%; }
+  @font-face { font-family: "Be Vietnam Pro fallback"; font-weight: 700; src: local("Arial Bold"), local("Arial-BoldMT"), local("Liberation Sans Bold"), local("Arimo Bold"); size-adjust: 106.3%; ascent-override: 94.1%; descent-override: 24.9%; line-gap-override: 0%; }
+  @font-face { font-family: "Coustard fallback"; font-weight: 400; src: local("Georgia"), local("DejaVu Serif"); size-adjust: 107.6%; ascent-override: 95.1%; descent-override: 35.4%; line-gap-override: 0%; }
+  @font-face { font-family: "Coustard fallback"; font-weight: 900; src: local("Georgia Bold"), local("Georgia-Bold"), local("DejaVu Serif Bold"); size-adjust: 107.6%; ascent-override: 95.1%; descent-override: 35.4%; line-gap-override: 0%; }
   /* Be Vietnam Pro 400 normal, latin-ext */
   @font-face { font-family: 'Be Vietnam Pro'; font-style: normal; font-weight: 400; font-display: swap; src: url(/assets/fonts/be-vietnam-pro-latin-ext-15c8383b.woff2) format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
   /* Be Vietnam Pro 400 normal, latin */
@@ -83,8 +88,8 @@
     --header-h: 66px;
     --radius: 26px;
     /* Coustard is a soft slab with ball ends, like the lettering on old coffee packets; Be Vietnam Pro reads well small. */
-    --font-display: "Coustard", "Rockwell", "Georgia", serif;
-    --font: "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --font-display: "Coustard", "Coustard fallback", "Rockwell", "Georgia", serif;
+    --font: "Be Vietnam Pro", "Be Vietnam Pro fallback", system-ui, -apple-system, "Segoe UI", sans-serif;
   }
   * { box-sizing: border-box; }
   [hidden] { display: none !important; }
@@ -656,41 +661,41 @@
           </div>
           <ul class="hero-facts" aria-label="Hoje na casa">
             <li class="open" data-open-short>Aberto de terça a domingo</li>
+            <script>
+              // Runs right after the status item: the status line changes length, and swapping it later
+              // (after GSAP loads) moved the whole hero on a slow connection. The main script reuses these.
+              // Opening hours in minutes; Monday closed.
+              const OPEN_HOURS = { 0: [7 * 60, 12 * 60], 1: null, 2: [390, 19 * 60], 3: [390, 19 * 60], 4: [390, 19 * 60], 5: [390, 19 * 60], 6: [7 * 60, 19 * 60] };
+              const WEEKDAY_LONG = ["domingo", "segunda", "terça", "quarta", "quinta", "sexta", "sábado"];
+              const pad = (value) => String(value).padStart(2, "0");
+              const clock = (minutes) => `${Math.floor(minutes / 60)}h${minutes % 60 ? pad(minutes % 60) : ""}`;
+              const nowMinutes = () => { const now = new Date(); return now.getHours() * 60 + now.getMinutes(); };
+              function markOpenNow() {
+                const now = new Date();
+                const weekday = now.getDay();
+                const hours = OPEN_HOURS[weekday];
+                const minutes = nowMinutes();
+                let text;
+                let open = false;
+                if (hours && minutes < hours[0]) text = `Abre hoje às ${clock(hours[0])}`;
+                else if (hours && minutes < hours[1]) { text = `Aberto agora, até as ${clock(hours[1])}`; open = true; }
+                else {
+                  let offset = 1;
+                  while (!OPEN_HOURS[(weekday + offset) % 7]) offset++;
+                  const next = OPEN_HOURS[(weekday + offset) % 7];
+                  text = `Fechado agora. Abre ${offset === 1 ? "amanhã" : WEEKDAY_LONG[(weekday + offset) % 7]} às ${clock(next[0])}`;
+                }
+                document.querySelectorAll("[data-open-now], [data-open-short]").forEach((el) => {
+                  el.textContent = text;
+                  el.classList.toggle("is-closed", !open);
+                });
+                document.querySelectorAll(".hours tr").forEach((row) => row.classList.toggle("is-today", row.dataset.days.split(" ").includes(String(weekday))));
+              }
+              markOpenNow();
+            </script>
             <li><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><b>4,9</b> no Google, 318 avaliações</li>
             <li><b>Desde 2017</b></li>
           </ul>
-          <script>
-            // Runs as soon as the hero is parsed: the status line changes length, and swapping it later
-            // (after GSAP loads) moved the whole hero on a slow connection. The main script reuses these.
-            // Opening hours in minutes; Monday closed.
-            const OPEN_HOURS = { 0: [7 * 60, 12 * 60], 1: null, 2: [390, 19 * 60], 3: [390, 19 * 60], 4: [390, 19 * 60], 5: [390, 19 * 60], 6: [7 * 60, 19 * 60] };
-            const WEEKDAY_LONG = ["domingo", "segunda", "terça", "quarta", "quinta", "sexta", "sábado"];
-            const pad = (value) => String(value).padStart(2, "0");
-            const clock = (minutes) => `${Math.floor(minutes / 60)}h${minutes % 60 ? pad(minutes % 60) : ""}`;
-            const nowMinutes = () => { const now = new Date(); return now.getHours() * 60 + now.getMinutes(); };
-            function markOpenNow() {
-              const now = new Date();
-              const weekday = now.getDay();
-              const hours = OPEN_HOURS[weekday];
-              const minutes = nowMinutes();
-              let text;
-              let open = false;
-              if (hours && minutes < hours[0]) text = `Abre hoje às ${clock(hours[0])}`;
-              else if (hours && minutes < hours[1]) { text = `Aberto agora, até as ${clock(hours[1])}`; open = true; }
-              else {
-                let offset = 1;
-                while (!OPEN_HOURS[(weekday + offset) % 7]) offset++;
-                const next = OPEN_HOURS[(weekday + offset) % 7];
-                text = `Fechado agora. Abre ${offset === 1 ? "amanhã" : WEEKDAY_LONG[(weekday + offset) % 7]} às ${clock(next[0])}`;
-              }
-              document.querySelectorAll("[data-open-now], [data-open-short]").forEach((el) => {
-                el.textContent = text;
-                el.classList.toggle("is-closed", !open);
-              });
-              document.querySelectorAll(".hours tr").forEach((row) => row.classList.toggle("is-today", row.dataset.days.split(" ").includes(String(weekday))));
-            }
-            markOpenNow();
-          </script>
         </div>
         <div class="stage" data-stage>
           <div class="mug" data-mug>
