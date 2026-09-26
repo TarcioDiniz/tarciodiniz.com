@@ -1,0 +1,6 @@
+# Arquivos com versão no caminho: podem ficar um ano no cache do navegador.
+/assets/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/vendor/*
+  Cache-Control: public, max-age=31536000, immutable
