@@ -9,7 +9,7 @@
 <meta name="description" content="Estética automotiva no Bessa, em João Pessoa: lavagem detalhada com cera de carnaúba, higienização, polimento e vitrificação. Monte o serviço e veja o preço e a hora em que o carro fica pronto. Modelo de demonstração.">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <!-- Funnel Display e Rethink Sans: SIL Open Font License, Google Fonts -->
-<link rel="preload" as="image" href="img/lavagem-depois-1400.webp" imagesrcset="img/lavagem-depois-900.webp 900w, img/lavagem-depois-1400.webp 1400w, img/lavagem-depois-2000.webp 2000w" imagesizes="(max-width: 900px) 100vw, 60vw" fetchpriority="high">
+<link rel="preload" as="image" href="img/lavagem-depois-1400.webp" imagesrcset="img/lavagem-depois-900.webp 900w, img/lavagem-depois-1400.webp 1400w, img/lavagem-depois-2000.webp 2000w" imagesizes="(max-width: 900px) 100vw, 1190px" fetchpriority="high">
 <link rel="preload" href="/assets/fonts/funnel-display-latin-a76dad9d.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/rethink-sans-latin-1ed119b6.woff2" as="font" type="font/woff2" crossorigin>
 <style id="fontes">
@@ -151,10 +151,11 @@
 
   /* Hero: copy on the left, the before and after on the right; stacked on phones. */
   .hero { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); min-height: max(560px, min(920px, calc(100svh - var(--header-h) - 38px))); background: var(--palm-deep); color: var(--on-dark); }
-  .hero .compare { order: 2; min-height: 100%; }
+  /* Fixed cells: the compare comes first in the HTML, and on a slow connection it was painted in the first column before the copy arrived. */
+  .hero .compare { order: 2; grid-column: 2; grid-row: 1; min-height: 100%; }
   .hero .compare img { object-position: 42% 60%; }
   .hero .tag { top: 20px; }
-  .hero-copy { order: 1; display: grid; align-content: end; gap: 24px; padding: clamp(28px, 4vw, 64px) clamp(24px, 4vw, 64px) clamp(28px, 4.4vw, 64px) max(var(--gutter), calc((100vw - var(--max)) / 2)); }
+  .hero-copy { order: 1; grid-column: 1; grid-row: 1; display: grid; align-content: end; gap: 24px; padding: clamp(28px, 4vw, 64px) clamp(24px, 4vw, 64px) clamp(28px, 4.4vw, 64px) max(var(--gutter), calc((100vw - var(--max)) / 2)); }
   .hero-eyebrow { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-display); font-size: 15px; font-weight: 600; color: var(--wax); }
   .hero-eyebrow::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--wax); box-shadow: 0 0 0 4px rgba(240, 194, 75, 0.25); }
   .hero-title { font-family: var(--font-display); font-weight: 800; font-size: clamp(48px, 6vw, 104px); line-height: 0.92; letter-spacing: -0.04em; }
@@ -171,10 +172,10 @@
   }
   @media (max-width: 900px) {
     .hero { grid-template-columns: 1fr; min-height: 0; }
-    .hero .compare { order: 1; min-height: 0; height: clamp(240px, 42svh, 520px); }
+    .hero .compare { order: 1; grid-column: auto; grid-row: auto; min-height: 0; height: clamp(240px, 42svh, 520px); }
     .hero .compare img { object-position: 46% 62%; }
     .hero .tag { top: 12px; }
-    .hero-copy { order: 2; align-content: start; gap: 14px; padding: 18px var(--gutter) 24px; }
+    .hero-copy { order: 2; grid-column: auto; grid-row: auto; align-content: start; gap: 14px; padding: 18px var(--gutter) 24px; }
     .hero-title { font-size: clamp(40px, 11.5vw, 64px); }
     .hero-title .line { display: inline; }
     .hero-actions .btn-wax { flex: 1; }
@@ -187,8 +188,8 @@
   /* Phone on its side: back to two columns, so the title and the button share the first screen. */
   @media (max-width: 900px) and (max-height: 500px) and (orientation: landscape) {
     .hero { grid-template-columns: 1fr 1fr; min-height: calc(100svh - var(--header-h) - 38px); }
-    .hero .compare { order: 2; height: auto; min-height: 100%; }
-    .hero-copy { order: 1; align-content: center; padding: 16px 20px 16px var(--gutter); }
+    .hero .compare { order: 2; grid-column: 2; grid-row: 1; height: auto; min-height: 100%; }
+    .hero-copy { order: 1; grid-column: 1; grid-row: 1; align-content: center; padding: 16px 20px 16px var(--gutter); }
     .hero-title { font-size: clamp(30px, 5.2vw, 40px); }
     .hero-title .line { display: block; }
   }
@@ -494,12 +495,12 @@
     <section class="hero" aria-labelledby="hero-title">
       <div class="compare" id="hero-compare" style="--pos: 50%">
         <picture>
-          <source media="(max-width: 900px)" srcset="img/lavagem-depois-900.webp 900w, img/lavagem-depois-1400.webp 1400w" sizes="100vw">
-          <img class="after" src="img/lavagem-depois-1400.webp" srcset="img/lavagem-depois-900.webp 900w, img/lavagem-depois-1400.webp 1400w, img/lavagem-depois-2000.webp 2000w" sizes="60vw" width="2000" height="1342" alt="SUV branco limpo e brilhando dentro do estúdio, depois da lavagem detalhada" fetchpriority="high">
+          <source media="(max-width: 900px)" srcset="img/lavagem-depois-900.webp 900w, img/lavagem-depois-1400.webp 1400w, img/lavagem-depois-2000.webp 2000w" sizes="100vw">
+          <img class="after" src="img/lavagem-depois-1400.webp" srcset="img/lavagem-depois-900.webp 900w, img/lavagem-depois-1400.webp 1400w, img/lavagem-depois-2000.webp 2000w" sizes="1190px" width="2000" height="1342" alt="SUV branco limpo e brilhando dentro do estúdio, depois da lavagem detalhada" fetchpriority="high">
         </picture>
         <picture>
-          <source media="(max-width: 900px)" srcset="img/lavagem-antes-900.webp 900w, img/lavagem-antes-1400.webp 1400w" sizes="100vw">
-          <img class="before" src="img/lavagem-antes-1400.webp" srcset="img/lavagem-antes-900.webp 900w, img/lavagem-antes-1400.webp 1400w, img/lavagem-antes-2000.webp 2000w" sizes="60vw" width="2000" height="1342" alt="O mesmo SUV coberto de barro vermelho na chegada, antes da lavagem">
+          <source media="(max-width: 900px)" srcset="img/lavagem-antes-900.webp 900w, img/lavagem-antes-1400.webp 1400w, img/lavagem-antes-2000.webp 2000w" sizes="100vw">
+          <img class="before" src="img/lavagem-antes-1400.webp" srcset="img/lavagem-antes-900.webp 900w, img/lavagem-antes-1400.webp 1400w, img/lavagem-antes-2000.webp 2000w" sizes="1190px" width="2000" height="1342" alt="O mesmo SUV coberto de barro vermelho na chegada, antes da lavagem">
         </picture>
         <span class="line" aria-hidden="true"></span>
         <span class="knob" aria-hidden="true"><svg class="ico"><use href="#i-arrows-left-right"/></svg></span>
@@ -662,7 +663,7 @@
 
     <section class="wax" aria-labelledby="wax-title">
       <div class="wrap wax-grid">
-        <div class="wax-photo"><img src="img/cera-1600.webp" srcset="img/cera-760.webp 760w, img/cera-900.webp 900w, img/cera-1600.webp 1600w" sizes="(max-width: 900px) 92vw, 55vw" width="1600" height="1073" alt="Mão de luva preta passando cera amarela de carnaúba no capô de um carro verde, com a lata aberta ao lado" loading="lazy"></div>
+        <div class="wax-photo"><img src="img/cera-1600.webp" srcset="img/cera-760.webp 760w, img/cera-900.webp 900w, img/cera-1600.webp 1600w" sizes="(max-width: 900px) 92vw, min(55vw, 740px)" width="1600" height="1073" alt="Mão de luva preta passando cera amarela de carnaúba no capô de um carro verde, com a lata aberta ao lado" loading="lazy"></div>
         <div class="wax-copy">
           <p class="kicker">Por que carnaúba</p>
           <h2 class="display h2" id="wax-title">Toda lavagem sai com a cera daqui</h2>
