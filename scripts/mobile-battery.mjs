@@ -10,7 +10,7 @@ import path from "node:path";
 import puppeteer from "puppeteer-core";
 
 const CHROME = process.env.CHROME ?? "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
-const DEFAULT_PAGES = ["/", "/sobre/", "/demos/cardapio/", "/demos/bar/", "/demos/cafe/", "/demos/fisioterapia/", "/demos/veterinaria/", "/demos/pousada/", "/demos/hotel/", "/demos/barbearia/", "/demos/planejados/", "/demos/estetica-automotiva/"];
+const DEFAULT_PAGES = ["/", "/sobre/", "/como-funciona/", "/site-no-google-e-nas-ias/", "/privacidade/", "/demos/cardapio/", "/demos/bar/", "/demos/cafe/", "/demos/fisioterapia/", "/demos/veterinaria/", "/demos/pousada/", "/demos/hotel/", "/demos/barbearia/", "/demos/planejados/", "/demos/estetica-automotiva/"];
 const PHONES = [
   { name: "320x568", width: 320, height: 568 },
   { name: "360x740", width: 360, height: 740 },
@@ -33,6 +33,9 @@ function parseArgs(argv) {
   return options;
 }
 
+// Legal pages carry no sales action, so "no main action on the first screen" does not apply to them.
+const NO_MAIN_ACTION_PAGES = new Set(["/privacidade/"]);
+const MAIN_ACTION_MISSING = "nenhuma ação principal inteira na primeira tela";
 const slug = (pagePath) => pagePath.replace(/^\/|\/$/g, "").replace(/\//g, "-") || "home";
 const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -249,7 +252,8 @@ async function auditPhone(browser, options, pagePath, phone, outDir) {
   await page.evaluate(() => document.fonts.ready);
   await scrollThrough(page);
 
-  const findings = await page.evaluate(auditInPage);
+  const findings = (await page.evaluate(auditInPage))
+    .filter((finding) => !(NO_MAIN_ACTION_PAGES.has(pagePath) && finding.detail === MAIN_ACTION_MISSING));
   const height = await page.evaluate(() => document.documentElement.scrollHeight);
   await page.evaluate(() => window.scrollTo(0, document.documentElement.scrollHeight));
   await wait(SETTLE_MS * 2);
