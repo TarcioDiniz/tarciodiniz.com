@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# Regenerates the model screenshots used on the home page (assets/demos/<ramo>.webp).
+# Regenerates the model screenshots used on the home page (assets/demos/<ramo>.webp), plus the
+# smaller widths the home asks for in srcset (assets/demos/<ramo>-480.webp and -800.webp).
 # Needs the site served at BASE_URL (default http://127.0.0.1:8811) and cwebp installed.
 set -euo pipefail
 
@@ -9,6 +10,7 @@ CHROME="${CHROME:-/Applications/Google Chrome.app/Contents/MacOS/Google Chrome}"
 OUT_DIR="$SITE_DIR/assets/demos"
 MODELS=(cardapio bar cafe fisioterapia veterinaria pousada hotel barbearia planejados estetica-automotiva)
 WEBP_QUALITY=78
+SMALLER_WIDTHS=(480 800)
 
 mkdir -p "$OUT_DIR"
 tmp_dir="$(mktemp -d)"
@@ -24,5 +26,8 @@ for model in "${MODELS[@]}"; do
   "$CHROME" --headless=new --hide-scrollbars --window-size=1440,900 \
     --force-prefers-reduced-motion --virtual-time-budget=6000 --screenshot="$png" "$BASE_URL/demos/$model/" >/dev/null 2>&1
   cwebp -quiet -q "$WEBP_QUALITY" "$png" -o "$OUT_DIR/$model.webp"
+  for width in "${SMALLER_WIDTHS[@]}"; do
+    cwebp -quiet -q "$WEBP_QUALITY" -resize "$width" 0 "$png" -o "$OUT_DIR/$model-$width.webp"
+  done
   echo "ok $model -> assets/demos/$model.webp"
 done

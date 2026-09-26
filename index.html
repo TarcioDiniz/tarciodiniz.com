@@ -18,10 +18,36 @@
 <meta property="og:image" content="https://tarciodiniz.com/assets/og.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="/assets/img/tarcio-recorte.webp" type="image/webp">
+<link rel="preload" href="/assets/fonts/anton-latin-5f6dede7.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/inter-tight-latin-a807ee01.woff2" as="font" type="font/woff2" crossorigin>
+<style id="fontes">
+  /* Fallbacks with the web font's width, so the swap does not move the layout (CLS). */
+  @font-face { font-family: "Anton fallback"; src: local("Impact"); size-adjust: 93.6%; ascent-override: 125.7%; descent-override: 35.2%; line-gap-override: 0%; }
+  @font-face { font-family: "Anton fallback sans"; src: local("Arial"), local("Liberation Sans"), local("Arimo"); size-adjust: 68.5%; ascent-override: 171.7%; descent-override: 48%; line-gap-override: 0%; }
+  @font-face { font-family: "Inter Tight fallback"; font-weight: 400; src: local("Arial"), local("Liberation Sans"), local("Arimo"); size-adjust: 96.2%; ascent-override: 100.7%; descent-override: 25.1%; line-gap-override: 0%; }
+  @font-face { font-family: "Inter Tight fallback"; font-weight: 700; src: local("Arial Bold"), local("Arial-BoldMT"), local("Liberation Sans Bold"), local("Arimo Bold"); size-adjust: 96.2%; ascent-override: 100.7%; descent-override: 25.1%; line-gap-override: 0%; }
+  /* Anton 400 normal, latin-ext */
+  @font-face { font-family: 'Anton'; font-style: normal; font-weight: 400; font-display: swap; src: url(/assets/fonts/anton-latin-ext-7bc989ab.woff2) format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+  /* Anton 400 normal, latin */
+  @font-face { font-family: 'Anton'; font-style: normal; font-weight: 400; font-display: swap; src: url(/assets/fonts/anton-latin-5f6dede7.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+  /* Inter Tight 400 normal, latin-ext */
+  @font-face { font-family: 'Inter Tight'; font-style: normal; font-weight: 400; font-display: swap; src: url(/assets/fonts/inter-tight-latin-ext-17cab155.woff2) format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+  /* Inter Tight 400 normal, latin */
+  @font-face { font-family: 'Inter Tight'; font-style: normal; font-weight: 400; font-display: swap; src: url(/assets/fonts/inter-tight-latin-a807ee01.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+  /* Inter Tight 500 normal, latin-ext */
+  @font-face { font-family: 'Inter Tight'; font-style: normal; font-weight: 500; font-display: swap; src: url(/assets/fonts/inter-tight-latin-ext-17cab155.woff2) format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+  /* Inter Tight 500 normal, latin */
+  @font-face { font-family: 'Inter Tight'; font-style: normal; font-weight: 500; font-display: swap; src: url(/assets/fonts/inter-tight-latin-a807ee01.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+  /* Inter Tight 600 normal, latin-ext */
+  @font-face { font-family: 'Inter Tight'; font-style: normal; font-weight: 600; font-display: swap; src: url(/assets/fonts/inter-tight-latin-ext-17cab155.woff2) format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+  /* Inter Tight 600 normal, latin */
+  @font-face { font-family: 'Inter Tight'; font-style: normal; font-weight: 600; font-display: swap; src: url(/assets/fonts/inter-tight-latin-a807ee01.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+  /* Inter Tight 700 normal, latin-ext */
+  @font-face { font-family: 'Inter Tight'; font-style: normal; font-weight: 700; font-display: swap; src: url(/assets/fonts/inter-tight-latin-ext-17cab155.woff2) format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+  /* Inter Tight 700 normal, latin */
+  @font-face { font-family: 'Inter Tight'; font-style: normal; font-weight: 700; font-display: swap; src: url(/assets/fonts/inter-tight-latin-a807ee01.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+</style>
+<link rel="preload" as="image" href="/assets/img/tarcio-recorte-720.webp" imagesrcset="/assets/img/tarcio-recorte-480.webp 480w, /assets/img/tarcio-recorte-720.webp 720w, /assets/img/tarcio-recorte.webp 1023w" imagesizes="(max-width: 960px) and (orientation: landscape) and (max-height: 540px) 34vw, (max-width: 960px) min(64vw, 400px), (min-width: 1800px) min(30vw, 600px), min(32vw, 480px)" type="image/webp" fetchpriority="high">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -247,8 +273,8 @@
     --on-dark: #efebe3;
     --on-dark-muted: #9c958b;
     --line-dark: rgba(239, 235, 227, 0.14);
-    --display: "Anton", "Arial Narrow", Impact, sans-serif;
-    --body: "Inter Tight", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --display: "Anton", "Anton fallback", "Anton fallback sans", sans-serif;
+    --body: "Inter Tight", "Inter Tight fallback", system-ui, -apple-system, "Segoe UI", sans-serif;
     --gutter: clamp(16px, 4vw, 48px);
     --max: 1320px;
     --radius: 999px;
@@ -461,10 +487,11 @@
   @media (hover: hover) and (pointer: fine) { .motion .cursor { display: block; } }
   .step-progress { height: 4px; background: rgba(18,17,16,.18); margin-bottom: -2px; position: relative; z-index: 1; }
   .step-progress span { display: block; height: 100%; width: 100%; background: var(--accent-ink); transform-origin: left; }
-  .steps.is-sequenced .step b, .steps.is-sequenced .step h3, .steps.is-sequenced .step p { opacity: .28; transition: opacity .35s ease; }
+  /* Steps not yet reached stay readable on the yellow: 3:1 for the number and title (large text), 4.5:1 for the paragraph. */
+  .steps.is-sequenced .step b, .steps.is-sequenced .step h3, .steps.is-sequenced .step p { opacity: .6; transition: opacity .35s ease; }
+  .steps.is-sequenced .step p { opacity: .8; }
   .steps.is-sequenced .step.is-on b, .steps.is-sequenced .step.is-on h3, .steps.is-sequenced .step.is-on p { opacity: 1; }
   .split-line { overflow: hidden; padding-bottom: .04em; }
-  .statement .word-dim { opacity: .16; }
   .chapter-media { will-change: clip-path; }
 
   .dock { position: fixed; left: 12px; right: 12px; bottom: calc(12px + env(safe-area-inset-bottom, 0px)); z-index: 60; display: none; align-items: center; gap: 10px; padding: 14px 18px; border-radius: 18px; background: var(--ink); color: var(--on-dark); border: 1px solid var(--accent); font-weight: 700; font-size: 16px; box-shadow: 0 16px 40px -12px rgba(0,0,0,.55); transform: translateY(calc(100% + 24px)); transition: transform .4s cubic-bezier(.2,.8,.2,1); }
@@ -603,7 +630,7 @@
 
   <header class="top" id="top">
     <div class="wrap">
-      <a class="logo" href="#conteudo" aria-label="Tarcio Diniz, início">TD<span>.</span></a>
+      <a class="logo" href="#conteudo" aria-label="TD, Tarcio Diniz, início">TD<span>.</span></a>
       <nav class="nav" aria-label="Principal">
         <a href="#modelos">Modelos</a>
         <a href="#como">Como funciona</a>
@@ -620,13 +647,13 @@
       <div class="wrap hero-stage">
         <div class="hero-meta"><span>Desenvolvedor web</span><span>Atendo o Brasil inteiro</span></div>
         <div class="hero-name">
-          <h1 class="display"><span class="word"><span>Tarcio</span></span> <span class="word word-2"><span>Diniz</span></span></h1>
+          <h1 class="display" aria-label="Tarcio Diniz"><span class="word"><span>Tarcio</span></span> <span class="word word-2"><span>Diniz</span></span></h1>
         </div>
         <div class="hero-name hero-ghost" aria-hidden="true">
           <p class="display"><span class="word"><span>Tarcio</span></span><span class="word word-2"><span>Diniz</span></span></p>
         </div>
         <div class="hero-portrait">
-          <img src="/assets/img/tarcio-recorte.webp" alt="Tarcio Diniz sorrindo, de camiseta preta" width="1023" height="1400" fetchpriority="high">
+          <img src="/assets/img/tarcio-recorte-720.webp" srcset="/assets/img/tarcio-recorte-480.webp 480w, /assets/img/tarcio-recorte-720.webp 720w, /assets/img/tarcio-recorte.webp 1023w" sizes="(max-width: 960px) and (orientation: landscape) and (max-height: 540px) 34vw, (max-width: 960px) min(64vw, 400px), (min-width: 1800px) min(30vw, 600px), min(32vw, 480px)" alt="Tarcio Diniz sorrindo, de camiseta preta" width="1023" height="1400" fetchpriority="high">
         </div>
         <div class="hero-foot">
           <p class="hero-role"><strong>Sites para negócios locais</strong>Clínicas, restaurantes, pousadas, salões e lojas.</p>
@@ -673,21 +700,21 @@
           <span class="count">(10)</span>
         </div>
         <ol class="model-list">
-          <li class="model"><a href="/demos/cardapio/" data-preview="/assets/demos/cardapio.webp"><span class="num">01</span><span class="name">Brasa Smash</span><span class="what">Hamburgueria. Cardápio que vira comanda e pedido no WhatsApp.</span><span class="go"><svg class="ico" aria-hidden="true"><use href="#i-arrow-up"/></svg></span><span class="thumb"><img src="/assets/demos/cardapio.webp" alt="Tela do site de demonstração da hamburgueria Brasa Smash" loading="lazy" width="1440" height="900"></span></a></li>
-          <li class="model"><a href="/demos/bar/" data-preview="/assets/demos/bar.webp"><span class="num">02</span><span class="name">Rebuliço</span><span class="what">Bar e pista. Nome na lista, camarote e aniversário pelo WhatsApp.</span><span class="go"><svg class="ico" aria-hidden="true"><use href="#i-arrow-up"/></svg></span><span class="thumb"><img src="/assets/demos/bar.webp" alt="Tela do site de demonstração do bar Rebuliço" loading="lazy" width="1440" height="900"></span></a></li>
-          <li class="model"><a href="/demos/cafe/" data-preview="/assets/demos/cafe.webp"><span class="num">03</span><span class="name">Caneca Azul</span><span class="what">Café de bairro. Cardápio que vira comanda e encomenda de bolo.</span><span class="go"><svg class="ico" aria-hidden="true"><use href="#i-arrow-up"/></svg></span><span class="thumb"><img src="/assets/demos/cafe.webp" alt="Tela do site de demonstração do café Caneca Azul" loading="lazy" width="1440" height="900"></span></a></li>
-          <li class="model"><a href="/demos/fisioterapia/" data-preview="/assets/demos/fisioterapia.webp"><span class="num">04</span><span class="name">Sálvia Fisio</span><span class="what">Clínica de fisioterapia. Onde dói, o tratamento passo a passo e horário livre para agendar.</span><span class="go"><svg class="ico" aria-hidden="true"><use href="#i-arrow-up"/></svg></span><span class="thumb"><img src="/assets/demos/fisioterapia.webp" alt="Tela do site de demonstração da clínica Sálvia Fisioterapia" loading="lazy" width="1440" height="900"></span></a></li>
-          <li class="model"><a href="/demos/veterinaria/" data-preview="/assets/demos/veterinaria.webp"><span class="num">05</span><span class="name">Vigília Vet</span><span class="what">Veterinária 24h. Cão ou gato muda a página, e a emergência fica a um toque.</span><span class="go"><svg class="ico" aria-hidden="true"><use href="#i-arrow-up"/></svg></span><span class="thumb"><img src="/assets/demos/veterinaria.webp" alt="Tela do site de demonstração da Vigília Veterinária 24 horas" loading="lazy" width="1440" height="900"></span></a></li>
-          <li class="model"><a href="/demos/pousada/" data-preview="/assets/demos/pousada.webp"><span class="num">06</span><span class="name">Pousada Aroá</span><span class="what">Pousada. Quartos com galeria, datas livres no calendário e reserva.</span><span class="go"><svg class="ico" aria-hidden="true"><use href="#i-arrow-up"/></svg></span><span class="thumb"><img src="/assets/demos/pousada.webp" alt="Tela do site de demonstração da Pousada Aroá" loading="lazy" width="1440" height="900"></span></a></li>
-          <li class="model"><a href="/demos/hotel/" data-preview="/assets/demos/hotel.webp"><span class="num">07</span><span class="name">Algodão Hotel</span><span class="what">Hotel executivo. Distância até o que você veio fazer e tarifa para empresa.</span><span class="go"><svg class="ico" aria-hidden="true"><use href="#i-arrow-up"/></svg></span><span class="thumb"><img src="/assets/demos/hotel.webp" alt="Tela do site de demonstração do Algodão Hotel" loading="lazy" width="1440" height="900"></span></a></li>
-          <li class="model"><a href="/demos/barbearia/" data-preview="/assets/demos/barbearia.webp"><span class="num">08</span><span class="name">Sisal Barbearia</span><span class="what">Barbearia. Horários livres na tela e a altura do degradê no pedido.</span><span class="go"><svg class="ico" aria-hidden="true"><use href="#i-arrow-up"/></svg></span><span class="thumb"><img src="/assets/demos/barbearia.webp" alt="Tela do site de demonstração da Sisal Barbearia" loading="lazy" width="1440" height="900"></span></a></li>
-          <li class="model"><a href="/demos/planejados/" data-preview="/assets/demos/planejados.webp"><span class="num">09</span><span class="name">Braúna</span><span class="what">Marcenaria de planejados. O cliente troca a cor do armário na foto e simula o orçamento.</span><span class="go"><svg class="ico" aria-hidden="true"><use href="#i-arrow-up"/></svg></span><span class="thumb"><img src="/assets/demos/planejados.webp" alt="Tela do site de demonstração da marcenaria Braúna" loading="lazy" width="1440" height="900"></span></a></li>
-          <li class="model"><a href="/demos/estetica-automotiva/" data-preview="/assets/demos/estetica-automotiva.webp"><span class="num">10</span><span class="name">Carnaúba</span><span class="what">Estética automotiva. O cliente escolhe o carro e já vê o preço e a hora de buscar.</span><span class="go"><svg class="ico" aria-hidden="true"><use href="#i-arrow-up"/></svg></span><span class="thumb"><img src="/assets/demos/estetica-automotiva.webp" alt="Tela do site de demonstração da estética automotiva Carnaúba" loading="lazy" width="1440" height="900"></span></a></li>
+          <li class="model"><a href="/demos/cardapio/" data-preview="/assets/demos/cardapio-800.webp"><span class="num">01</span><span class="name">Brasa Smash</span><span class="what">Hamburgueria. Cardápio que vira comanda e pedido no WhatsApp.</span><span class="go"><svg class="ico" aria-hidden="true"><use href="#i-arrow-up"/></svg></span><span class="thumb"><img src="/assets/demos/cardapio-800.webp" srcset="/assets/demos/cardapio-480.webp 480w, /assets/demos/cardapio-800.webp 800w, /assets/demos/cardapio.webp 1440w" sizes="92vw" alt="Tela do site de demonstração da hamburgueria Brasa Smash" loading="lazy" decoding="async" width="1440" height="900"></span></a></li>
+          <li class="model"><a href="/demos/bar/" data-preview="/assets/demos/bar-800.webp"><span class="num">02</span><span class="name">Rebuliço</span><span class="what">Bar e pista. Nome na lista, camarote e aniversário pelo WhatsApp.</span><span class="go"><svg class="ico" aria-hidden="true"><use href="#i-arrow-up"/></svg></span><span class="thumb"><img src="/assets/demos/bar-800.webp" srcset="/assets/demos/bar-480.webp 480w, /assets/demos/bar-800.webp 800w, /assets/demos/bar.webp 1440w" sizes="92vw" alt="Tela do site de demonstração do bar Rebuliço" loading="lazy" decoding="async" width="1440" height="900"></span></a></li>
+          <li class="model"><a href="/demos/cafe/" data-preview="/assets/demos/cafe-800.webp"><span class="num">03</span><span class="name">Caneca Azul</span><span class="what">Café de bairro. Cardápio que vira comanda e encomenda de bolo.</span><span class="go"><svg class="ico" aria-hidden="true"><use href="#i-arrow-up"/></svg></span><span class="thumb"><img src="/assets/demos/cafe-800.webp" srcset="/assets/demos/cafe-480.webp 480w, /assets/demos/cafe-800.webp 800w, /assets/demos/cafe.webp 1440w" sizes="92vw" alt="Tela do site de demonstração do café Caneca Azul" loading="lazy" decoding="async" width="1440" height="900"></span></a></li>
+          <li class="model"><a href="/demos/fisioterapia/" data-preview="/assets/demos/fisioterapia-800.webp"><span class="num">04</span><span class="name">Sálvia Fisio</span><span class="what">Clínica de fisioterapia. Onde dói, o tratamento passo a passo e horário livre para agendar.</span><span class="go"><svg class="ico" aria-hidden="true"><use href="#i-arrow-up"/></svg></span><span class="thumb"><img src="/assets/demos/fisioterapia-800.webp" srcset="/assets/demos/fisioterapia-480.webp 480w, /assets/demos/fisioterapia-800.webp 800w, /assets/demos/fisioterapia.webp 1440w" sizes="92vw" alt="Tela do site de demonstração da clínica Sálvia Fisioterapia" loading="lazy" decoding="async" width="1440" height="900"></span></a></li>
+          <li class="model"><a href="/demos/veterinaria/" data-preview="/assets/demos/veterinaria-800.webp"><span class="num">05</span><span class="name">Vigília Vet</span><span class="what">Veterinária 24h. Cão ou gato muda a página, e a emergência fica a um toque.</span><span class="go"><svg class="ico" aria-hidden="true"><use href="#i-arrow-up"/></svg></span><span class="thumb"><img src="/assets/demos/veterinaria-800.webp" srcset="/assets/demos/veterinaria-480.webp 480w, /assets/demos/veterinaria-800.webp 800w, /assets/demos/veterinaria.webp 1440w" sizes="92vw" alt="Tela do site de demonstração da Vigília Veterinária 24 horas" loading="lazy" decoding="async" width="1440" height="900"></span></a></li>
+          <li class="model"><a href="/demos/pousada/" data-preview="/assets/demos/pousada-800.webp"><span class="num">06</span><span class="name">Pousada Aroá</span><span class="what">Pousada. Quartos com galeria, datas livres no calendário e reserva.</span><span class="go"><svg class="ico" aria-hidden="true"><use href="#i-arrow-up"/></svg></span><span class="thumb"><img src="/assets/demos/pousada-800.webp" srcset="/assets/demos/pousada-480.webp 480w, /assets/demos/pousada-800.webp 800w, /assets/demos/pousada.webp 1440w" sizes="92vw" alt="Tela do site de demonstração da Pousada Aroá" loading="lazy" decoding="async" width="1440" height="900"></span></a></li>
+          <li class="model"><a href="/demos/hotel/" data-preview="/assets/demos/hotel-800.webp"><span class="num">07</span><span class="name">Algodão Hotel</span><span class="what">Hotel executivo. Distância até o que você veio fazer e tarifa para empresa.</span><span class="go"><svg class="ico" aria-hidden="true"><use href="#i-arrow-up"/></svg></span><span class="thumb"><img src="/assets/demos/hotel-800.webp" srcset="/assets/demos/hotel-480.webp 480w, /assets/demos/hotel-800.webp 800w, /assets/demos/hotel.webp 1440w" sizes="92vw" alt="Tela do site de demonstração do Algodão Hotel" loading="lazy" decoding="async" width="1440" height="900"></span></a></li>
+          <li class="model"><a href="/demos/barbearia/" data-preview="/assets/demos/barbearia-800.webp"><span class="num">08</span><span class="name">Sisal Barbearia</span><span class="what">Barbearia. Horários livres na tela e a altura do degradê no pedido.</span><span class="go"><svg class="ico" aria-hidden="true"><use href="#i-arrow-up"/></svg></span><span class="thumb"><img src="/assets/demos/barbearia-800.webp" srcset="/assets/demos/barbearia-480.webp 480w, /assets/demos/barbearia-800.webp 800w, /assets/demos/barbearia.webp 1440w" sizes="92vw" alt="Tela do site de demonstração da Sisal Barbearia" loading="lazy" decoding="async" width="1440" height="900"></span></a></li>
+          <li class="model"><a href="/demos/planejados/" data-preview="/assets/demos/planejados-800.webp"><span class="num">09</span><span class="name">Braúna</span><span class="what">Marcenaria de planejados. O cliente troca a cor do armário na foto e simula o orçamento.</span><span class="go"><svg class="ico" aria-hidden="true"><use href="#i-arrow-up"/></svg></span><span class="thumb"><img src="/assets/demos/planejados-800.webp" srcset="/assets/demos/planejados-480.webp 480w, /assets/demos/planejados-800.webp 800w, /assets/demos/planejados.webp 1440w" sizes="92vw" alt="Tela do site de demonstração da marcenaria Braúna" loading="lazy" decoding="async" width="1440" height="900"></span></a></li>
+          <li class="model"><a href="/demos/estetica-automotiva/" data-preview="/assets/demos/estetica-automotiva-800.webp"><span class="num">10</span><span class="name">Carnaúba</span><span class="what">Estética automotiva. O cliente escolhe o carro e já vê o preço e a hora de buscar.</span><span class="go"><svg class="ico" aria-hidden="true"><use href="#i-arrow-up"/></svg></span><span class="thumb"><img src="/assets/demos/estetica-automotiva-800.webp" srcset="/assets/demos/estetica-automotiva-480.webp 480w, /assets/demos/estetica-automotiva-800.webp 800w, /assets/demos/estetica-automotiva.webp 1440w" sizes="92vw" alt="Tela do site de demonstração da estética automotiva Carnaúba" loading="lazy" decoding="async" width="1440" height="900"></span></a></li>
         </ol>
         <p class="models-note">As empresas dos modelos são fictícias, assim como os preços e as avaliações. Fotos do Unsplash e do Pexels, e as da Braúna e da Carnaúba geradas com IA; vídeos do Pexels e do Coverr.</p>
         <div class="inline-cta"><a class="btn btn-accent" data-whatsapp="Oi, Tarcio! Vi os modelos no seu site e quero um site assim para o meu negócio." href="#contato"><svg class="ico ico-lg" aria-hidden="true"><use href="#i-whatsapp"/></svg>Quero um site assim</a></div>
       </div>
-      <div class="preview" aria-hidden="true"><img src="/assets/demos/cardapio.webp" alt=""></div>
+      <div class="preview" aria-hidden="true"><img src="/assets/demos/cardapio-800.webp" alt="" loading="lazy" decoding="async"></div>
     </section>
 
     <section class="gets" aria-labelledby="gets-title">
@@ -742,7 +769,7 @@
         </article>
 
         <article class="chapter">
-          <div class="chapter-media"><img src="/assets/img/tarcio-sentado.webp" alt="Tarcio sentado, de polo azul, sorrindo" loading="lazy" width="933" height="1400"></div>
+          <div class="chapter-media"><img src="/assets/img/tarcio-sentado-640.webp" srcset="/assets/img/tarcio-sentado-640.webp 640w, /assets/img/tarcio-sentado.webp 1050w" sizes="(max-width: 960px) min(82vw, 380px), 46vw" alt="Tarcio sentado, de polo azul, sorrindo" loading="lazy" decoding="async" width="933" height="1400"></div>
           <div>
             <span class="chapter-when">2023 até hoje</span>
             <h3>Quase três anos de sistema no ar</h3>
@@ -751,7 +778,7 @@
         </article>
 
         <article class="chapter">
-          <div class="chapter-media"><img src="/assets/img/tarcio-corrida.webp" alt="Tarcio com a camisa e a medalha de uma corrida de 2025" loading="lazy" width="1050" height="1400"></div>
+          <div class="chapter-media"><img src="/assets/img/tarcio-corrida-640.webp" srcset="/assets/img/tarcio-corrida-640.webp 640w, /assets/img/tarcio-corrida.webp 1050w" sizes="(max-width: 960px) min(82vw, 380px), 46vw" alt="Tarcio com a camisa e a medalha de uma corrida de 2025" loading="lazy" decoding="async" width="1050" height="1400"></div>
           <div>
             <span class="chapter-when">2025</span>
             <h3>Constância se treina</h3>
@@ -760,7 +787,7 @@
         </article>
 
         <article class="chapter">
-          <div class="chapter-media"><img src="/assets/img/tarcio-summit.webp" alt="Tarcio no Summit Paraíba, evento de gestão e posicionamento" loading="lazy" width="1050" height="1400"></div>
+          <div class="chapter-media"><img src="/assets/img/tarcio-summit-640.webp" srcset="/assets/img/tarcio-summit-640.webp 640w, /assets/img/tarcio-summit.webp 1050w" sizes="(max-width: 960px) min(82vw, 380px), 46vw" alt="Tarcio no Summit Paraíba, evento de gestão e posicionamento" loading="lazy" decoding="async" width="1050" height="1400"></div>
           <div>
             <span class="chapter-when">Agosto de 2026</span>
             <h3>Aprendendo o lado do negócio</h3>
@@ -769,7 +796,7 @@
         </article>
 
         <article class="chapter">
-          <div class="chapter-media"><img src="/assets/img/tarcio-em-casa.webp" alt="Tarcio em casa, à mesa, com o cachorro no colo" loading="lazy" width="1050" height="1400"></div>
+          <div class="chapter-media"><img src="/assets/img/tarcio-em-casa-640.webp" srcset="/assets/img/tarcio-em-casa-640.webp 640w, /assets/img/tarcio-em-casa.webp 1050w" sizes="(max-width: 960px) min(82vw, 380px), 46vw" alt="Tarcio em casa, à mesa, com o cachorro no colo" loading="lazy" decoding="async" width="1050" height="1400"></div>
           <div>
             <span class="chapter-when">Hoje</span>
             <h3>E em casa, quem manda é ele</h3>
@@ -845,10 +872,10 @@
     </section>
   </main>
 
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/SplitText.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js"></script>
+<script src="/assets/vendor/gsap-3.15.0/gsap.min.js"></script>
+<script src="/assets/vendor/gsap-3.15.0/ScrollTrigger.min.js"></script>
+<script src="/assets/vendor/gsap-3.15.0/SplitText.min.js"></script>
+<script src="/assets/vendor/lenis-1.3.26/lenis.min.js"></script>
 <script>
   // WhatsApp pessoal do Tarcio, só dígitos com DDI e DDD.
   const WHATSAPP_NUMBER = "5583991931035";
@@ -899,7 +926,7 @@
   }
 
   function playIntro() {
-    const nameChars = SplitText.create(".hero-name:not(.hero-ghost) .word > span", { type: "chars" }).chars;
+    const nameChars = SplitText.create(".hero-name:not(.hero-ghost) .word > span", { type: "chars", aria: "hidden" }).chars;
     const intro = gsap.timeline({ defaults: { ease: "power4.out" } });
     intro
       .from(".curtain span i", { yPercent: 110, duration: 0.5 })
@@ -935,9 +962,14 @@
     });
   }
 
+  const STATEMENT_DIM_INK = 0.5;
+  const STATEMENT_DIM_MARK = 0.8;
+
   function lightUpStatement() {
     const split = SplitText.create(".statement h2", { type: "words" });
-    gsap.fromTo(split.words, { opacity: 0.16 }, { opacity: 1, stagger: 0.1, ease: "none", scrollTrigger: { trigger: ".statement h2", start: "top 80%", end: "bottom 45%", scrub: true } });
+    // The dim start still reads at 3:1 on the paper (large text), so the line is legible before it lights up.
+    const dimOpacity = (index, word) => (word.closest("mark") ? STATEMENT_DIM_MARK : STATEMENT_DIM_INK);
+    gsap.fromTo(split.words, { opacity: dimOpacity }, { opacity: 1, stagger: 0.1, ease: "none", scrollTrigger: { trigger: ".statement h2", start: "top 80%", end: "bottom 45%", scrub: true } });
     gsap.utils.toArray(".fact b").forEach((fact) => {
       gsap.from(fact, { yPercent: 60, autoAlpha: 0, duration: 0.8, ease: "power3.out", scrollTrigger: { trigger: fact, start: "top 90%", once: true } });
     });
