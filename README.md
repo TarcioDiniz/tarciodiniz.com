@@ -36,6 +36,16 @@ uma função de verdade:
 - `functions/_middleware.js` redireciona `www.tarciodiniz.com` e `tarciodiniz.pages.dev` para
   `tarciodiniz.com` com 301. As prévias por ramo não são redirecionadas.
 - A cor da barra do navegador (`theme-color`) acompanha o que está no topo da página ao rolar.
+- Nada de fora bloqueia a primeira pintura. As fontes são servidas do próprio site, em
+  `assets/fonts/`, com as mesmas regras do Google Fonts. Página nova ou fonte nova passa por
+  `scripts/fontes-locais.py`, que baixa os arquivos e troca o `<link>` pelo bloco `<style id="fontes">`.
+  GSAP e Lenis ficam em `assets/vendor/` e o CSS do Leaflet carrega sem bloquear.
+- Nas páginas do site, a fonte de reserva tem a largura da Anton e da Inter Tight (`size-adjust`),
+  para o título não pular quando a fonte chega.
+- Fotos com `srcset` e `sizes` medidos no CSS de cada página. As capturas dos modelos e as minhas
+  fotos têm versões menores (`-480`, `-640`, `-800` etc.) ao lado do arquivo original.
+- `_headers` guarda fontes e scripts por um ano no navegador. Pode, porque a fonte leva um código
+  no nome do arquivo e o script leva a versão no nome da pasta: mudou, muda o endereço.
 
 ## Rodar local
 
@@ -60,6 +70,18 @@ npm run mobile -- /demos/pousada/   # uma página
 ```
 
 Os ícones de cada página saem de `scripts/icon-sprite.py` (Simple Icons e Phosphor, versões fixas).
+
+Bateria Lighthouse, página por página, uma de cada vez para a nota não oscilar por disputa de CPU:
+desempenho, acessibilidade, práticas recomendadas, SEO e navegação agêntica, no celular e no
+computador. Contra um servidor local a nota de desempenho, LCP e TBT só avisam, porque o servidor
+não comprime como a produção. Gera o JSON de cada página e um `resumo.md` em
+`test-results/lighthouse/`.
+
+```sh
+npm run lighthouse                                    # todas as páginas, celular e computador
+npm run lighthouse -- --form mobile /privacidade/     # uma página, só celular
+npm run lighthouse -- --base https://tarciodiniz.com  # contra a produção
+```
 
 ## Publicar
 
