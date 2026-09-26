@@ -662,7 +662,7 @@
         </div>
         <div class="stage" data-stage>
           <div class="mug" data-mug>
-            <video muted loop playsinline preload="metadata" poster="media/capa-poster-480.webp" width="720" height="1280" aria-hidden="true" data-video><source src="media/capa.mp4" type="video/mp4"></video>
+            <video muted loop playsinline preload="none" poster="media/capa-poster-480.webp" width="720" height="1280" aria-hidden="true" data-video><source src="media/capa.mp4" type="video/mp4"></video>
             <button class="video-toggle" type="button" data-video-toggle hidden aria-label="Pausar o vídeo da capa"><svg class="ico" aria-hidden="true" data-icon-pause><use href="#i-pause"/></svg><svg class="ico" aria-hidden="true" data-icon-play hidden><use href="#i-play"/></svg></button>
           </div>
           <div class="seal" data-seal aria-hidden="true">
@@ -1316,7 +1316,8 @@
       toggle.querySelector("[data-icon-play]").hidden = !video.paused;
       toggle.setAttribute("aria-label", video.paused ? "Tocar o vídeo da capa" : "Pausar o vídeo da capa");
     };
-    const tryPlay = () => { if (!pausedByVisitor && !reduceMotion.matches) video.play().then(setIcon).catch(() => {}); };
+    let pageLoaded = document.readyState === "complete";
+    const tryPlay = () => { if (pageLoaded && !pausedByVisitor && !reduceMotion.matches) video.play().then(setIcon).catch(() => {}); };
     video.addEventListener("play", setIcon);
     video.addEventListener("pause", setIcon);
     toggle.addEventListener("click", () => {
@@ -1331,7 +1332,7 @@
     };
     reduceMotion.addEventListener("change", onMotionChange);
     // The video waits for the page to finish loading, so it never competes with the first screen.
-    window.addEventListener("load", onMotionChange);
+    window.addEventListener("load", () => { pageLoaded = true; onMotionChange(); });
     if (document.readyState === "complete") onMotionChange();
   }
 

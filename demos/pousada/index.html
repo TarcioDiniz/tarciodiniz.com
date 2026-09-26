@@ -1708,7 +1708,8 @@
     heroVideo.preload = "auto";
     heroVideo.play().catch(() => {});
   }
-  syncVideo();
+  // Starts after the page loads, so the 1 MB video never competes with the poster and the text on a slow phone.
+  if (document.readyState === "complete") syncVideo(); else window.addEventListener("load", syncVideo, { once: true });
   reduceMotion.addEventListener("change", syncVideo);
 
   // Phone bar: shows after the hero and hides over the footer, so it never covers the credits.

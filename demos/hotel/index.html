@@ -10,8 +10,8 @@
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://images.unsplash.com">
 <!-- Red Hat Display, Red Hat Text e Red Hat Mono: SIL Open Font License, Google Fonts -->
-<link rel="preload" href="media/chegada-ao-quarto.webp" as="image" fetchpriority="high">
-<!-- Lighthouse's LCP-discovery check only reads fetchpriority off <img>/<link>, not off a <video poster>, so the video tag's own fetchpriority="high" doesn't register there; this preload is what actually gets the poster prioritized. -->
+<!-- From 1024px the night band starts on the first screen and its poster is the largest paint; a <video> cannot ask for priority, the preload can. -->
+<link rel="preload" href="media/chegada-ao-quarto.webp" as="image" fetchpriority="high" media="(min-width: 1024px)">
 <link rel="preload" href="/assets/fonts/red-hat-display-latin-d1745e9f.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/red-hat-text-latin-4a02ce4b.woff2" as="font" type="font/woff2" crossorigin>
 <style id="fontes">
@@ -719,7 +719,7 @@
     <section class="night" aria-label="Chegada à noite">
       <div class="wrap">
         <figure class="band">
-          <video id="band-video" muted loop playsinline preload="none" poster="media/chegada-ao-quarto.webp" fetchpriority="high" aria-label="Porta do quarto se abrindo à noite, com a cama arrumada e a luz baixa">
+          <video id="band-video" muted loop playsinline preload="none" poster="media/chegada-ao-quarto.webp" aria-label="Porta do quarto se abrindo à noite, com a cama arrumada e a luz baixa">
             <source src="media/chegada-ao-quarto.mp4" type="video/mp4">
           </video>
           <figcaption><b>23:40</b>O voo atrasou. A recepção está acordada e o ar do quarto já foi ligado.</figcaption>
@@ -1217,12 +1217,18 @@
 
   // Night band video: plays only when it can move.
   const bandVideo = document.getElementById("band-video");
-  const videoObserver = new IntersectionObserver((entries) => {
-    const visible = entries.some((entry) => entry.isIntersecting);
+  let bandVisible = false;
+  const syncBandVideo = () => {
     if (reduceMotion.matches) { bandVideo.pause(); return; }
-    if (visible) { bandVideo.preload = "auto"; bandVideo.play().catch(() => {}); } else bandVideo.pause();
+    // Waits for the page to load: on a computer the band is on the first screen and the video would compete with it.
+    if (bandVisible && document.readyState === "complete") { bandVideo.preload = "auto"; bandVideo.play().catch(() => {}); } else bandVideo.pause();
+  };
+  const videoObserver = new IntersectionObserver((entries) => {
+    bandVisible = entries.some((entry) => entry.isIntersecting);
+    syncBandVideo();
   }, { threshold: 0.2 });
   videoObserver.observe(bandVideo);
+  window.addEventListener("load", syncBandVideo, { once: true });
 
   // Room tabs: without script every room is listed; with it, one at a time.
   const roomsBox = document.getElementById("rooms");
