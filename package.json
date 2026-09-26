@@ -3,9 +3,11 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "mobile": "node scripts/mobile-battery.mjs"
+    "mobile": "node scripts/mobile-battery.mjs",
+    "lighthouse": "node scripts/lighthouse-battery.mjs"
   },
   "devDependencies": {
+    "lighthouse": "13.5.0",
     "puppeteer-core": "24.22.0"
   }
 }
