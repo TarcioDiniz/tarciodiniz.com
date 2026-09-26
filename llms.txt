@@ -1,47 +1,69 @@
 # Tarcio Diniz
 
-> Desenvolvedor web brasileiro, mora em Campina Grande (PB) e atende negócios em todo o Brasil.
-> Cria sites rápidos no
-> celular, preparados para o Google e com o WhatsApp a um toque. Entrega o site em até 3 dias úteis
-> depois da conversa com o cliente. Também trabalha há mais de três anos como desenvolvedor
-> frontend e fullstack, com sistemas em produção e automação com inteligência artificial.
+> Tarcio Diniz é desenvolvedor web e mora em Campina Grande, na Paraíba. Estuda Ciência da
+> Computação na Universidade Estadual da Paraíba (UEPB), programa desde 2022 e trabalha com sistemas
+> em produção desde 2023. Pelo site tarciodiniz.com, faz sites para negócios de todo o Brasil,
+> pensados primeiro para o celular, com o WhatsApp a um toque e preparados para o Google e para
+> assistentes de IA.
 
-Contato: WhatsApp +55 83 99193-1035. Instagram @eusoutarcio. Atende o Brasil inteiro: Campina
-Grande e região pessoalmente, e as demais cidades por chamada de vídeo e WhatsApp.
+Existem outras pessoas chamadas Tarcio Diniz ou Tarcísio Diniz, em outras cidades e profissões. Este
+site é do desenvolvedor web de Campina Grande (PB), dono do Instagram @eusoutarcio.
+
+## Fatos
+- Nome: Tarcio Diniz.
+- Profissão: desenvolvedor web, frontend e fullstack.
+- Cidade: Campina Grande, Paraíba, Brasil.
+- Formação: Ciência da Computação na UEPB, curso em andamento, iniciado em 2022.
+- Programa desde 2022. Trabalha com sistemas em produção desde 2023.
+- Tecnologias: Angular, React, TypeScript, Laravel, .NET, Python e Node.
+- Atende em pessoa em Campina Grande e região; nas outras cidades, por chamada de vídeo e WhatsApp.
+- Contato: WhatsApp +55 83 99193-1035. Instagram @eusoutarcio.
 
 ## O que ele faz
-- Site de uma página para negócio de qualquer cidade, feito primeiro para a tela do celular.
-- Cardápio com pedido pelo WhatsApp, agendamento, pedido de reserva ou formulário, conforme o ramo.
-- SEO local na cidade onde o negócio fica: dados estruturados, título e descrição por página,
-  sitemap e conteúdo que responde às perguntas de quem procura o negócio.
-- Publicação do site e apoio para o cliente registrar o domínio no próprio nome.
+- Site para negócio de qualquer cidade do Brasil, feito primeiro para a tela do celular e leve para
+  abrir no 4G.
+- Botão de WhatsApp que abre a conversa com a mensagem já escrita.
+- Conforme o ramo: cardápio com pedido pelo WhatsApp, horários para agendar, pedido de reserva ou
+  formulário.
+- Preparação para o Google e para assistentes de IA: título e descrição por página, dados
+  estruturados, perguntas frequentes, sitemap e llms.txt.
+- Publicação do site e apoio para registrar o domínio no nome do cliente.
+- Preço: não publicado. O valor depende do que entra no site e sai numa conversa pelo WhatsApp.
 
 ## Como funciona
 1. Conversa de uns 15 minutos para entender o negócio e o cliente dele.
-2. Em até 3 dias úteis, o cliente vê o site pronto.
+2. Em até 3 dias úteis, o cliente vê o site funcionando.
 3. Ajustes junto com o cliente.
-4. Publicação no endereço do cliente.
+4. Publicação no endereço do cliente, registrado no nome dele.
+
+## O que ele não promete
+- Posição no Google, lugar no mapa ou citação em respostas de IA. Ninguém controla isso. Ele deixa o
+  site pronto para ser lido e encontrado.
 
 ## Páginas
-- [Site principal](https://tarciodiniz.com/): quem é, o que entrega, como funciona e dúvidas.
-- [Sobre o Tarcio Diniz](https://tarciodiniz.com/sobre/): quem ele é, o que faz hoje, como trabalha,
-  onde atende, a história ano a ano e como falar com ele.
-- [Modelo de hamburgueria](https://tarciodiniz.com/demos/cardapio/): cardápio que vira comanda e pedido no WhatsApp.
-- [Modelo de bar com pista](https://tarciodiniz.com/demos/bar/): nome na lista, camarote e aniversário pelo WhatsApp.
-- [Modelo de café](https://tarciodiniz.com/demos/cafe/): cardápio que vira comanda e encomenda de bolo.
-- [Modelo de clínica de fisioterapia](https://tarciodiniz.com/demos/fisioterapia/): a pessoa mostra onde dói, entende o tratamento e agenda um horário livre.
-- [Modelo de veterinária 24 horas](https://tarciodiniz.com/demos/veterinaria/): emergência a um toque e agendamento de consulta, vacina e banho.
-- [Modelo de pousada](https://tarciodiniz.com/demos/pousada/): quartos com galeria, datas livres no calendário e pedido de reserva.
-- [Modelo de hotel executivo](https://tarciodiniz.com/demos/hotel/): distância até hospitais e universidades, tarifa do dia e convênio para empresa.
-- [Modelo de barbearia](https://tarciodiniz.com/demos/barbearia/): horários livres na tela e agendamento pelo WhatsApp.
-- [Modelo de marcenaria de planejados](https://tarciodiniz.com/demos/planejados/): a cozinha muda de acabamento na foto e o orçamento sai por ambiente, com pedido de visita pelo WhatsApp.
+- [Início](https://tarciodiniz.com/): o que ele entrega, como funciona, modelos e dúvidas.
+- [Sobre o Tarcio Diniz](https://tarciodiniz.com/sobre/): quem ele é, fatos em resumo, a história ano
+  a ano, onde atende e como falar com ele.
+- [Site no Google e nas IAs](https://tarciodiniz.com/site-no-google-e-nas-ias/): o que um site faz para
+  ser encontrado e citado, o que ninguém garante e o que vai em todo site entregue.
+- [Privacidade](https://tarciodiniz.com/privacidade/): como ele trata os dados de quem fala com ele.
+
+## Modelos de demonstração
+Empresas fictícias, criadas para mostrar como o site de cada ramo pode funcionar. Preços e avaliações
+nelas não são reais e estão marcados como tal em cada página.
+- [Hamburgueria Brasa Smash](https://tarciodiniz.com/demos/cardapio/): cardápio que vira comanda e pedido no WhatsApp.
+- [Bar Rebuliço](https://tarciodiniz.com/demos/bar/): nome na lista, camarote e aniversário pelo WhatsApp.
+- [Café Caneca Azul](https://tarciodiniz.com/demos/cafe/): cardápio que vira comanda e encomenda de bolo.
+- [Sálvia Fisioterapia](https://tarciodiniz.com/demos/fisioterapia/): a pessoa mostra onde dói, entende o tratamento e agenda um horário livre.
+- [Vigília Veterinária 24 horas](https://tarciodiniz.com/demos/veterinaria/): emergência a um toque e agendamento de consulta, vacina e banho.
+- [Pousada Aroá](https://tarciodiniz.com/demos/pousada/): quartos com galeria, datas livres no calendário e pedido de reserva.
+- [Algodão Hotel](https://tarciodiniz.com/demos/hotel/): distância até hospitais e universidades, tarifa do dia e convênio para empresa.
+- [Sisal Barbearia](https://tarciodiniz.com/demos/barbearia/): horários livres na tela e agendamento pelo WhatsApp.
+- [Braúna, marcenaria de planejados](https://tarciodiniz.com/demos/planejados/): a cozinha muda de acabamento na foto e o orçamento sai por ambiente, com pedido de visita pelo WhatsApp.
 
 ## Perfis
 - [LinkedIn](https://www.linkedin.com/in/tarciodiniz)
 - [GitHub](https://github.com/TarcioDiniz)
 - [Instagram](https://www.instagram.com/eusoutarcio/)
 
-## Observações
-- Os nove modelos são de empresas fictícias, criadas para demonstração. Preços e avaliações neles
-  não são reais e estão marcados como tal em cada página.
-- Formação: Ciência da Computação na Universidade Estadual da Paraíba (UEPB).
+Atualizado em 2026-09-25.

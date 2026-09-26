@@ -1,8 +1,8 @@
 # tarciodiniz.com
 
-Meu site pessoal, no ar em [tarciodiniz.com](https://tarciodiniz.com). Sou desenvolvedor em
-Campina Grande (PB) e faço sites para negócios de todo o Brasil: rápidos no celular, fáceis de achar no
-Google e com o WhatsApp a um toque.
+Site do Tarcio Diniz, desenvolvedor web em Campina Grande (PB), no ar em
+[tarciodiniz.com](https://tarciodiniz.com). Faço sites para negócios de todo o Brasil: rápidos no
+celular, preparados para o Google e com o WhatsApp a um toque.
 
 A página principal fala com o dono de negócio primeiro e traz, mais abaixo, a minha história e o
 que eu faço como desenvolvedor. Em `demos/` ficam nove modelos de empresas fictícias, cada um com
@@ -28,8 +28,12 @@ uma função de verdade:
   sistema. Sem JavaScript, a página aparece inteira.
 - Testado em 18 tamanhos de tela, do celular de 320 px ao monitor ultrawide: sem rolagem lateral,
   sem texto cortado, toque com pelo menos 44 px e o botão principal sempre na primeira tela.
-- SEO local com dados estruturados `Person` e `ProfessionalService`, sitemap e imagem de
-  compartilhamento. Os modelos têm `noindex`.
+- SEO local com dados estruturados `Person`, `ProfessionalService`, `FAQPage` e `Article`, sitemap,
+  `llms.txt` e imagem de compartilhamento. Os modelos têm `noindex`.
+- `404.html` na raiz: sem ele, o Cloudflare Pages devolve a página inicial com status 200 para
+  qualquer endereço que não existe.
+- `functions/_middleware.js` redireciona `www.tarciodiniz.com` e `tarciodiniz.pages.dev` para
+  `tarciodiniz.com` com 301. As prévias por ramo não são redirecionadas.
 - A cor da barra do navegador (`theme-color`) acompanha o que está no topo da página ao rolar.
 
 ## Rodar local
@@ -58,11 +62,16 @@ Os ícones de cada página saem de `scripts/icon-sprite.py` (Simple Icons e Phos
 
 ## Publicar
 
-Hospedado no Cloudflare Pages, projeto `tarciodiniz`:
+Hospedado no Cloudflare Pages, projeto `tarciodiniz`. O script publica o último commit, nunca a
+pasta de trabalho, então arquivo sem commit não vai para o ar:
 
 ```sh
-npx wrangler pages deploy <pasta> --project-name tarciodiniz --branch main
+scripts/publicar.sh <ramo>        # main é a produção; qualquer outro nome vira prévia
+scripts/publicar.sh <ramo> --dry  # só monta a pasta e mostra onde ficou
 ```
+
+Depois de publicar na produção, avise o Bing das páginas que mudaram pelo IndexNow (a chave é o
+arquivo `.txt` de nome hexadecimal na raiz).
 
 ## Créditos
 
