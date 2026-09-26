@@ -5,7 +5,7 @@ Site do Tarcio Diniz, desenvolvedor web em Campina Grande (PB), no ar em
 celular, preparados para o Google e com o WhatsApp a um toque.
 
 A página principal fala com o dono de negócio primeiro e traz, mais abaixo, a minha história e o
-que eu faço como desenvolvedor. Em `demos/` ficam nove modelos de empresas fictícias, cada um com
+que eu faço como desenvolvedor. Em `demos/` ficam dez modelos de empresas fictícias, cada um com
 uma função de verdade:
 
 | modelo | o que mostra |
@@ -19,6 +19,7 @@ uma função de verdade:
 | [Algodão Hotel](https://tarciodiniz.com/demos/hotel/) | distância até o que o hóspede veio fazer, tarifa do dia e convênio para empresa |
 | [Sisal Barbearia](https://tarciodiniz.com/demos/barbearia/) | horários livres na tela e a altura do degradê no pedido |
 | [Braúna Marcenaria](https://tarciodiniz.com/demos/planejados/) | planejados: acabamento trocado na foto, orçamento por ambiente e pedido de visita pelo WhatsApp |
+| [Carnaúba Estética Automotiva](https://tarciodiniz.com/demos/estetica-automotiva/) | estética automotiva: preço por porte e serviço, hora em que o carro fica pronto e pedido pelo WhatsApp |
 
 ## Como é feito
 
@@ -78,14 +79,14 @@ arquivo `.txt` de nome hexadecimal na raiz).
 - Fontes do Google Fonts: Anton e Inter Tight no site; nos modelos, Anybody, Figtree e Martian Mono
   (Brasa Smash), Doto, Handjet e Onest (Rebuliço), Coustard e Be Vietnam Pro (Caneca Azul), Gabarito
   e Hanken Grotesk (Sálvia), Unbounded e Albert Sans (Vigília), Gloock e Work Sans (Aroá), Red Hat
-  Display, Text e Mono (Algodão), Sofia Sans Extra Condensed e Libre Franklin (Sisal) e Archivo e
-  Source Serif 4 (Braúna).
+  Display, Text e Mono (Algodão), Sofia Sans Extra Condensed e Libre Franklin (Sisal), Archivo e
+  Source Serif 4 (Braúna) e Funnel Display e Rethink Sans (Carnaúba).
 - Mapas: [Leaflet](https://leafletjs.com) com dados do [OpenStreetMap](https://www.openstreetmap.org/copyright).
 - Ícones: [Simple Icons](https://simpleicons.org) (CC0) para as marcas e
   [Phosphor](https://phosphoricons.com) (MIT) para a interface.
 - Fotos dos modelos: [Unsplash](https://unsplash.com) e [Pexels](https://www.pexels.com); vídeos das capas:
   [Pexels](https://www.pexels.com) e [Coverr](https://coverr.co). O autor de cada foto e vídeo está num
-  comentário no topo do HTML do modelo. As fotos da Braúna foram geradas com IA no
-  [Higgsfield](https://higgsfield.ai). As fotos em `assets/img/` são minhas.
+  comentário no topo do HTML do modelo. As fotos da Braúna e da Carnaúba foram geradas com
+  IA no [Higgsfield](https://higgsfield.ai). As fotos em `assets/img/` são minhas.
 
 As empresas, os preços e as avaliações dos modelos são fictícios.

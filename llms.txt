@@ -60,6 +60,7 @@ nelas não são reais e estão marcados como tal em cada página.
 - [Algodão Hotel](https://tarciodiniz.com/demos/hotel/): distância até hospitais e universidades, tarifa do dia e convênio para empresa.
 - [Sisal Barbearia](https://tarciodiniz.com/demos/barbearia/): horários livres na tela e agendamento pelo WhatsApp.
 - [Braúna, marcenaria de planejados](https://tarciodiniz.com/demos/planejados/): a cozinha muda de acabamento na foto e o orçamento sai por ambiente, com pedido de visita pelo WhatsApp.
+- [Carnaúba, estética automotiva](https://tarciodiniz.com/demos/estetica-automotiva/): o cliente escolhe o porte do carro e os serviços e vê o total e a hora em que fica pronto, com o pedido pelo WhatsApp.
 
 ## Perfis
 - [LinkedIn](https://www.linkedin.com/in/tarciodiniz)
