@@ -962,14 +962,23 @@
     });
   }
 
-  const STATEMENT_DIM_INK = 0.5;
-  const STATEMENT_DIM_MARK = 0.8;
+  const STATEMENT_DIM = 0.5;
+  const STATEMENT_WORD_STAGGER = 0.1;
+  const STATEMENT_WORD_DURATION = 0.5;
 
   function lightUpStatement() {
     const split = SplitText.create(".statement h2", { type: "words" });
-    // The dim start still reads at 3:1 on the paper (large text), so the line is legible before it lights up.
-    const dimOpacity = (index, word) => (word.closest("mark") ? STATEMENT_DIM_MARK : STATEMENT_DIM_INK);
-    gsap.fromTo(split.words, { opacity: dimOpacity }, { opacity: 1, stagger: 0.1, ease: "none", scrollTrigger: { trigger: ".statement h2", start: "top 80%", end: "bottom 45%", scrub: true } });
+    const palette = getComputedStyle(document.documentElement);
+    const ink = palette.getPropertyValue("--ink").trim();
+    const gold = palette.getPropertyValue("--accent-deep").trim();
+    const lighting = gsap.timeline({ scrollTrigger: { trigger: ".statement h2", start: "top 80%", end: "bottom 45%", scrub: true } });
+    // Dim words read at 3:1 on the paper (large text). The gold phrase starts in the same grey and turns gold
+    // as it lights: gold at half opacity would fall to 2:1.
+    lighting.fromTo(split.words, { opacity: STATEMENT_DIM }, { opacity: 1, duration: STATEMENT_WORD_DURATION, stagger: STATEMENT_WORD_STAGGER, ease: "none" }, 0);
+    split.words.forEach((word, index) => {
+      if (!word.closest("mark")) return;
+      lighting.fromTo(word, { color: ink }, { color: gold, duration: STATEMENT_WORD_DURATION, ease: "none" }, index * STATEMENT_WORD_STAGGER);
+    });
     gsap.utils.toArray(".fact b").forEach((fact) => {
       gsap.from(fact, { yPercent: 60, autoAlpha: 0, duration: 0.8, ease: "power3.out", scrollTrigger: { trigger: fact, start: "top 90%", once: true } });
     });
