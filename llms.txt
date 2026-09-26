@@ -37,8 +37,9 @@ site é do desenvolvedor web de Campina Grande (PB), dono do Instagram @eusoutar
 4. Publicação no endereço do cliente, registrado no nome dele.
 
 Não tem mensalidade obrigatória. A hospedagem é no Cloudflare Pages, sem custo mensal, e o domínio
-fica no nome do cliente, que renova uma vez por ano. Mudanças nos 30 dias depois da entrega não têm
-custo; depois, entram na manutenção mensal opcional ou são cobradas a cada pedido.
+fica no nome do cliente, que renova uma vez por ano. Foto nova e mudança de layout não têm custo nos
+30 dias depois da entrega; depois, entram na manutenção mensal opcional ou são cobradas a cada
+pedido, como o cliente preferir. Página nova é orçada à parte, inclusive nos primeiros 30 dias.
 
 ## O que ele não promete
 - Posição no Google, lugar no mapa ou citação em respostas de IA. Ninguém controla isso. Ele deixa o
