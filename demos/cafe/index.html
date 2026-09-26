@@ -659,6 +659,38 @@
             <li><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><b>4,9</b> no Google, 318 avaliações</li>
             <li><b>Desde 2017</b></li>
           </ul>
+          <script>
+            // Runs as soon as the hero is parsed: the status line changes length, and swapping it later
+            // (after GSAP loads) moved the whole hero on a slow connection. The main script reuses these.
+            // Opening hours in minutes; Monday closed.
+            const OPEN_HOURS = { 0: [7 * 60, 12 * 60], 1: null, 2: [390, 19 * 60], 3: [390, 19 * 60], 4: [390, 19 * 60], 5: [390, 19 * 60], 6: [7 * 60, 19 * 60] };
+            const WEEKDAY_LONG = ["domingo", "segunda", "terça", "quarta", "quinta", "sexta", "sábado"];
+            const pad = (value) => String(value).padStart(2, "0");
+            const clock = (minutes) => `${Math.floor(minutes / 60)}h${minutes % 60 ? pad(minutes % 60) : ""}`;
+            const nowMinutes = () => { const now = new Date(); return now.getHours() * 60 + now.getMinutes(); };
+            function markOpenNow() {
+              const now = new Date();
+              const weekday = now.getDay();
+              const hours = OPEN_HOURS[weekday];
+              const minutes = nowMinutes();
+              let text;
+              let open = false;
+              if (hours && minutes < hours[0]) text = `Abre hoje às ${clock(hours[0])}`;
+              else if (hours && minutes < hours[1]) { text = `Aberto agora, até as ${clock(hours[1])}`; open = true; }
+              else {
+                let offset = 1;
+                while (!OPEN_HOURS[(weekday + offset) % 7]) offset++;
+                const next = OPEN_HOURS[(weekday + offset) % 7];
+                text = `Fechado agora. Abre ${offset === 1 ? "amanhã" : WEEKDAY_LONG[(weekday + offset) % 7]} às ${clock(next[0])}`;
+              }
+              document.querySelectorAll("[data-open-now], [data-open-short]").forEach((el) => {
+                el.textContent = text;
+                el.classList.toggle("is-closed", !open);
+              });
+              document.querySelectorAll(".hours tr").forEach((row) => row.classList.toggle("is-today", row.dataset.days.split(" ").includes(String(weekday))));
+            }
+            markOpenNow();
+          </script>
         </div>
         <div class="stage" data-stage>
           <div class="mug" data-mug>
@@ -945,8 +977,6 @@
 <script src="/assets/vendor/gsap-3.15.0/SplitText.min.js"></script>
 <script src="/assets/vendor/gsap-3.15.0/Flip.min.js"></script>
 <script>
-  // Opening hours in minutes; Monday closed.
-  const OPEN_HOURS = { 0: [7 * 60, 12 * 60], 1: null, 2: [390, 19 * 60], 3: [390, 19 * 60], 4: [390, 19 * 60], 5: [390, 19 * 60], 6: [7 * 60, 19 * 60] };
   const PICKUP_STEP = 30;
   const PICKUP_LEAD = 20;
   const PICKUP_OPTIONS = 10;
@@ -954,7 +984,6 @@
   const CAKE_DAYS_SHOWN = 6;
   const AFTERNOON_START = 14 * 60;
   const WEEKDAY_SHORT = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"];
-  const WEEKDAY_LONG = ["domingo", "segunda", "terça", "quarta", "quinta", "sexta", "sábado"];
   const ORDER_GREETING = "Olá, Caneca Azul. Quero fazer um pedido.";
   const CAKE_GREETING = "Olá, Caneca Azul. Quero encomendar um bolo.";
   const money = new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" });
@@ -977,39 +1006,13 @@
 
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   const canAnimate = () => Boolean(window.gsap) && !reduceMotion.matches;
-  const pad = (value) => String(value).padStart(2, "0");
-  const clock = (minutes) => `${Math.floor(minutes / 60)}h${minutes % 60 ? pad(minutes % 60) : ""}`;
   const addDays = (date, days) => new Date(date.getFullYear(), date.getMonth(), date.getDate() + days);
   const today = () => { const now = new Date(); return new Date(now.getFullYear(), now.getMonth(), now.getDate()); };
-  const nowMinutes = () => { const now = new Date(); return now.getHours() * 60 + now.getMinutes(); };
   const shortDate = (date) => `${pad(date.getDate())}/${pad(date.getMonth() + 1)}`;
   const joinList = (items) => (items.length < 2 ? items.join("") : `${items.slice(0, -1).join(", ")} e ${items.at(-1)}`);
 
   function scrollToTarget(target) {
     target.scrollIntoView({ behavior: reduceMotion.matches ? "auto" : "smooth", block: "start" });
-  }
-
-  // ---------- Open now ----------
-  function markOpenNow() {
-    const now = new Date();
-    const weekday = now.getDay();
-    const hours = OPEN_HOURS[weekday];
-    const minutes = nowMinutes();
-    let text;
-    let open = false;
-    if (hours && minutes < hours[0]) text = `Abre hoje às ${clock(hours[0])}`;
-    else if (hours && minutes < hours[1]) { text = `Aberto agora, até as ${clock(hours[1])}`; open = true; }
-    else {
-      let offset = 1;
-      while (!OPEN_HOURS[(weekday + offset) % 7]) offset++;
-      const next = OPEN_HOURS[(weekday + offset) % 7];
-      text = `Fechado agora. Abre ${offset === 1 ? "amanhã" : WEEKDAY_LONG[(weekday + offset) % 7]} às ${clock(next[0])}`;
-    }
-    document.querySelectorAll("[data-open-now], [data-open-short]").forEach((el) => {
-      el.textContent = text;
-      el.classList.toggle("is-closed", !open);
-    });
-    document.querySelectorAll(".hours tr").forEach((row) => row.classList.toggle("is-today", row.dataset.days.split(" ").includes(String(weekday))));
   }
 
   // ---------- Order pad ----------
