@@ -417,12 +417,13 @@
   .split-line { overflow: hidden; padding-bottom: .04em; }
   .chapter-media { will-change: clip-path; }
 
-  .dock { position: fixed; left: 12px; right: 12px; bottom: calc(12px + env(safe-area-inset-bottom, 0px)); z-index: 60; display: none; align-items: center; gap: 10px; padding: 14px 18px; border-radius: 18px; background: var(--ink); color: var(--on-dark); border: 1px solid var(--accent); font-weight: 700; font-size: 16px; box-shadow: 0 16px 40px -12px rgba(0,0,0,.55); transform: translateY(calc(100% + 24px)); transition: transform .4s cubic-bezier(.2,.8,.2,1); }
+  .dock { position: fixed; left: 12px; right: 12px; bottom: calc(12px + env(safe-area-inset-bottom, 0px)); z-index: 60; display: none; align-items: center; gap: 10px; padding: 14px 18px; border-radius: 18px; background: var(--ink); color: var(--on-dark); border: 1px solid var(--accent); font-weight: 700; font-size: 16px; box-shadow: 0 16px 40px -12px rgba(0,0,0,.55); visibility: hidden; transform: translateY(calc(100% + 24px + env(safe-area-inset-bottom, 0px))); transition: transform .4s cubic-bezier(.2,.8,.2,1), visibility 0s linear .4s; }
   .dock span { white-space: nowrap; }
   .dock .ico { color: var(--accent); }
   .dock small { margin-left: auto; font-size: 13px; font-weight: 500; opacity: .75; white-space: nowrap; }
   @media (max-width: 400px) { .dock { justify-content: center; } .dock small { display: none; } }
-  .dock.is-visible { transform: none; }
+  /* Off screen is not enough: on the iPhone the home indicator inset left 22 px of the dock showing and tappable. Visibility flips only after the slide ends. */
+  .dock.is-visible { visibility: visible; transform: none; transition-delay: 0s; }
 
   @media (max-width: 960px) {
     .nav { display: none; }
