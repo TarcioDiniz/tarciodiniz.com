@@ -790,7 +790,7 @@
               <div><dt>Dia</dt><dd data-out="day" class="is-empty">a escolher</dd></div>
               <div><dt>Horário</dt><dd data-out="time" class="is-empty">a escolher</dd></div>
             </dl>
-            <a class="btn btn-red wa-btn" id="wa-btn" href="https://wa.me/?text=Ol%C3%A1%2C%20Sisal.%20Quero%20marcar%20um%20hor%C3%A1rio." target="_blank" rel="noopener" aria-disabled="true"><svg class="ico" aria-hidden="true"><use href="#i-whatsapp"/></svg><span>Pedir esse horário</span></a>
+            <a class="btn btn-red wa-btn" id="wa-btn" href="https://wa.me/5583991931035?text=Ol%C3%A1%2C%20Sisal.%20Quero%20marcar%20um%20hor%C3%A1rio." target="_blank" rel="noopener" aria-disabled="true"><svg class="ico" aria-hidden="true"><use href="#i-whatsapp"/></svg><span>Pedir esse horário</span></a>
             <p class="hint" id="hint">Falta escolher o serviço, o barbeiro, o dia e o horário.</p>
             <p class="honest"><svg class="ico" aria-hidden="true"><use href="#i-info"/></svg><span>O botão não reserva sozinho. O horário fica seu quando a gente confirmar na conversa, e seguramos a cadeira por 15 minutos.</span></p>
           </aside>
@@ -884,7 +884,7 @@
           <p class="address"><svg class="ico" aria-hidden="true"><use href="#i-map-pin"/></svg><span>Rua fictícia, 214, Prata, Campina Grande (PB). Uns 5 minutos de carro da Feira Central e do Açude Velho.</span></p>
           <div class="place-actions">
             <a class="btn btn-bone" href="https://www.google.com/maps/search/?api=1&query=Prata%2C%20Campina%20Grande%20PB" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-googlemaps"/></svg>Abrir no mapa</a>
-            <a class="btn btn-outline" href="https://wa.me/?text=Ol%C3%A1%2C%20Sisal.%20Como%20est%C3%A1%20a%20fila%20agora%3F%20Queria%20passar%20a%C3%AD%20sem%20hora%20marcada." target="_blank" rel="noopener"><svg class="ico ico-wa" aria-hidden="true"><use href="#i-whatsapp"/></svg>Perguntar a fila</a>
+            <a class="btn btn-outline" href="https://wa.me/5583991931035?text=Ol%C3%A1%2C%20Sisal.%20Como%20est%C3%A1%20a%20fila%20agora%3F%20Queria%20passar%20a%C3%AD%20sem%20hora%20marcada." target="_blank" rel="noopener"><svg class="ico ico-wa" aria-hidden="true"><use href="#i-whatsapp"/></svg>Perguntar a fila</a>
           </div>
         </div>
         <figure class="map-figure">
@@ -1165,7 +1165,7 @@
     form.querySelectorAll(".step").forEach((step) => step.classList.toggle("is-done", Boolean(choices[step.dataset.step])));
     const ready = missing.length === 0;
     waButton.setAttribute("aria-disabled", String(!ready));
-    waButton.href = `https://wa.me/?text=${encodeURIComponent(ready ? whatsappMessage(choices) : GREETING)}`;
+    waButton.href = `https://wa.me/5583991931035?text=${encodeURIComponent(ready ? whatsappMessage(choices) : GREETING)}`;
     hint.textContent = ready ? "Tudo certo. A mensagem abre pronta, é só enviar." : `Falta escolher ${joinList(missing)}.`;
   }
 

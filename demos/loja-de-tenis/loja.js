@@ -275,7 +275,7 @@
     $("#campo-bairro").hidden = delivery !== "entrega";
     const t = totals();
     $("#contas").innerHTML = sumsTemplate(t);
-    $("#enviar").href = `https://wa.me/?text=${encodeURIComponent(orderMessage(t))}`;
+    $("#enviar").href = `https://wa.me/5583991931035?text=${encodeURIComponent(orderMessage(t))}`;
   }
 
   function changeQty(index, delta) {

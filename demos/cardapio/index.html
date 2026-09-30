@@ -618,7 +618,7 @@
           <p class="lead">Blend de 90&nbsp;g prensado na hora e pão brioche que sai do nosso forno toda tarde. Monte o pedido no cardápio e ele chega pronto no WhatsApp.</p>
           <div class="hero-actions">
             <a class="btn btn-mustard" href="#cardapio">Montar pedido<svg class="ico" aria-hidden="true"><use href="#i-arrow-down"/></svg></a>
-            <a class="btn btn-glass" href="https://wa.me/?text=Ol%C3%A1%2C%20Brasa!%20Quero%20fazer%20um%20pedido." target="_blank" rel="noopener"><svg class="ico ico-wa" aria-hidden="true"><use href="#i-whatsapp"/></svg>Pedir no WhatsApp</a>
+            <a class="btn btn-glass" href="https://wa.me/5583991931035?text=Ol%C3%A1%2C%20Brasa!%20Quero%20fazer%20um%20pedido." target="_blank" rel="noopener"><svg class="ico ico-wa" aria-hidden="true"><use href="#i-whatsapp"/></svg>Pedir no WhatsApp</a>
           </div>
         </div>
       </div>
@@ -1012,8 +1012,8 @@
     ].filter(Boolean).join("\n");
   }
 
-  // Demo has no real number: wa.me without a phone lets the visitor pick the chat.
-  const sendOrder = () => window.open(`https://wa.me/?text=${encodeURIComponent(whatsappMessage())}`, "_blank", "noopener");
+  // The demo sends to Tarcio's WhatsApp, so a visitor who tests the order reaches him.
+  const sendOrder = () => window.open(`https://wa.me/5583991931035?text=${encodeURIComponent(whatsappMessage())}`, "_blank", "noopener");
 
   document.querySelectorAll(".item .add").forEach((button) => {
     button.addEventListener("click", () => {

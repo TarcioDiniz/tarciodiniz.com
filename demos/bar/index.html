@@ -580,7 +580,7 @@
           <div class="hero-foot">
             <p class="tonight"><span class="live-dot" aria-hidden="true"></span><b id="tonight-label">Esta semana:</b> <span id="tonight-text">quinta tem Forró de Quinta, sexta tem Sexta Brega e sábado a pista vai até as 5h.</span></p>
             <div class="hero-actions">
-              <a class="btn btn-led" id="hero-list" href="https://wa.me/?text=Ol%C3%A1%2C%20Rebuli%C3%A7o!%20Quero%20p%C3%B4r%20nome%20na%20lista." target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-whatsapp"/></svg>Nome na lista pelo WhatsApp</a>
+              <a class="btn btn-led" id="hero-list" href="https://wa.me/5583991931035?text=Ol%C3%A1%2C%20Rebuli%C3%A7o!%20Quero%20p%C3%B4r%20nome%20na%20lista." target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-whatsapp"/></svg>Nome na lista pelo WhatsApp</a>
               <a class="btn btn-ghost" href="#reservar"><svg class="ico" aria-hidden="true"><use href="#i-crown"/></svg>Reservar camarote</a>
             </div>
           </div>
@@ -706,7 +706,7 @@
             <li><svg class="ico" aria-hidden="true"><use href="#i-identification-card"/></svg><span>Só maiores de 18, com documento com foto. Sem documento, não entra.</span></li>
           </ul>
         </div>
-        <form class="ticket" id="booking" action="https://wa.me/" method="get" target="_blank">
+        <form class="ticket" id="booking" action="https://wa.me/5583991931035" method="get" target="_blank">
           <input type="hidden" name="text" value="Olá, Rebuliço! Quero pôr nome na lista.">
           <div class="ticket-head"><p>Rebuliço</p><span id="ticket-code">Pedido de lista</span></div>
           <fieldset class="field">
@@ -862,7 +862,7 @@
       <div class="wrap">
         <h2 id="cta-title">Bota o nome na lista e chega&nbsp;cedo</h2>
         <div class="cta-actions">
-          <a class="btn btn-ink" id="cta-list" href="https://wa.me/?text=Ol%C3%A1%2C%20Rebuli%C3%A7o!%20Quero%20p%C3%B4r%20nome%20na%20lista." target="_blank" rel="noopener"><svg class="ico ico-wa" aria-hidden="true"><use href="#i-whatsapp"/></svg>Nome na lista pelo WhatsApp</a>
+          <a class="btn btn-ink" id="cta-list" href="https://wa.me/5583991931035?text=Ol%C3%A1%2C%20Rebuli%C3%A7o!%20Quero%20p%C3%B4r%20nome%20na%20lista." target="_blank" rel="noopener"><svg class="ico ico-wa" aria-hidden="true"><use href="#i-whatsapp"/></svg>Nome na lista pelo WhatsApp</a>
           <a class="btn btn-line" href="#reservar"><svg class="ico" aria-hidden="true"><use href="#i-crown"/></svg>Reservar camarote</a>
         </div>
       </div>
@@ -888,7 +888,7 @@
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   const $ = (selector) => document.querySelector(selector);
   const icon = (name) => `<svg class="ico" aria-hidden="true"><use href="#i-${name}"/></svg>`;
-  const waLink = (text) => `https://wa.me/?text=${encodeURIComponent(text)}`;
+  const waLink = (text) => `https://wa.me/5583991931035?text=${encodeURIComponent(text)}`;
   // One button pauses everything that moves on its own in the cover (video and LED ticker).
   const motionToggle = document.getElementById("motion-pause");
   const coverPaused = () => motionToggle.getAttribute("aria-pressed") === "true";
@@ -1000,7 +1000,7 @@
   $("#guest-name").addEventListener("input", renderBooking);
   $("#people-minus").addEventListener("click", () => { people -= 1; renderBooking(); });
   $("#people-plus").addEventListener("click", () => { people += 1; renderBooking(); });
-  // Demo has no real number: wa.me without a phone lets the visitor pick the chat.
+  // The demo sends to Tarcio's WhatsApp, so a visitor who tests the order reaches him.
   form.addEventListener("submit", (event) => {
     event.preventDefault();
     window.open(waLink(bookingMessage()), "_blank", "noopener");
