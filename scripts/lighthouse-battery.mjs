@@ -15,7 +15,7 @@ import * as chromeLauncher from "chrome-launcher";
 const CHROME = process.env.CHROME ?? "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
 
 const SITE_PAGES = ["/", "/sobre/", "/como-funciona/", "/site-no-google-e-nas-ias/", "/privacidade/"];
-const DEMO_PAGES = ["/demos/cardapio/", "/demos/bar/", "/demos/cafe/", "/demos/fisioterapia/", "/demos/veterinaria/", "/demos/pousada/", "/demos/hotel/", "/demos/barbearia/", "/demos/planejados/", "/demos/estetica-automotiva/"];
+const DEMO_PAGES = ["/demos/cardapio/", "/demos/bar/", "/demos/cafe/", "/demos/fisioterapia/", "/demos/veterinaria/", "/demos/pousada/", "/demos/hotel/", "/demos/barbearia/", "/demos/planejados/", "/demos/estetica-automotiva/", "/demos/loja-de-tenis/"];
 const A11Y_ONLY_PAGES = ["/404.html"];
 const DEFAULT_PAGES = [...SITE_PAGES, ...DEMO_PAGES, ...A11Y_ONLY_PAGES];
 const A11Y_ONLY = new Set(A11Y_ONLY_PAGES);

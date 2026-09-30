@@ -1,0 +1,1017 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Passada · Tênis e streetwear no Centro de Campina Grande (demonstração)</title>
+<meta name="description" content="Tênis originais Nike, Adidas, New Balance, Puma e Converse no Centro de Campina Grande. Escolha o número, mande o pedido pelo WhatsApp e receba no mesmo dia. Modelo de demonstração.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#F4F3EF">
+<link rel="manifest" href="app.webmanifest">
+<link rel="apple-touch-icon" href="icones/app-180.png">
+<meta name="apple-mobile-web-app-title" content="Passada">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="preload" href="fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="img/cenas/capa-900.webp" as="image" media="(max-width: 899px)">
+<link rel="preload" href="img/cenas/capa.webp" as="image" media="(min-width: 900px)">
+<!--
+  Passada é uma loja fictícia, criada como modelo por Tarcio Diniz em 30/09/2026.
+  Fotos do Unsplash (licença Unsplash, uso livre), recortadas do fundo para o catálogo.
+  Autores: @felipefxo, @_karsten, @ervan_me, @howardbouchevereau, @uxsj_ph, @christinej_keller,
+  @mxpissioli, @maksimcul8r, @sonu_kmr, @mockupgraphics, @_k8_, @maryamnemati, @barrettward,
+  @cantoinette, @wangbinghua, @i_bekkers, @victor_broch, @mrcharkhgard, @davelz03.
+  Lista com o link de cada foto em fonte/fotos.tsv.
+-->
+<style>
+@font-face { font-family: 'Archivo'; font-style: normal; font-weight: 100 900; font-stretch: 62% 125%; font-display: swap; src: url(fonts/archivo-latin-ext.woff2) format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: 'Archivo'; font-style: normal; font-weight: 100 900; font-stretch: 62% 125%; font-display: swap; src: url(fonts/archivo-latin.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+
+:root {
+  --bg: #F4F3EF;
+  --surface: #FFFFFF;
+  --card: #ECEAE4;
+  --card-2: #E4E1D9;
+  --ink: #151515;
+  --ink-2: #55544F;
+  --ink-3: #66645E;
+  --line: #DCD9D1;
+  --accent: #C4461C;
+  --accent-ink: #FFFFFF;
+  --dark: #121212;
+  --dark-2: #1D1D1C;
+  --on-dark: #F4F3EF;
+  --on-dark-2: #B9B7B0;
+  --wa: #25D366;
+  --pix: #32BCAD;
+  --scrim: rgba(12, 12, 12, 0.62);
+  --r-xl: 28px;
+  --r-lg: 22px;
+  --r-md: 16px;
+  --r-sm: 10px;
+  --pill: 999px;
+  --gutter: clamp(16px, 4vw, 40px);
+  --max: 1360px;
+  --section: clamp(64px, 9vw, 112px);
+  --font: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+  --wide: 116%;
+  --shadow-product: drop-shadow(0 18px 16px rgba(20, 18, 14, 0.18));
+  --ease: cubic-bezier(.2, .7, .2, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+html.travado { overflow: hidden; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; }
+button { font: inherit; color: inherit; cursor: pointer; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+[tabindex="-1"]:focus { outline: none; }
+.ico { width: 1.25em; height: 1.25em; fill: currentColor; flex: none; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.wrap { width: 100%; max-width: var(--max); margin-inline: auto; padding-inline: var(--gutter); }
+
+/* Títulos */
+.h1, .h2, .h3 { font-stretch: var(--wide); font-weight: 800; letter-spacing: -0.025em; line-height: 1.02; margin: 0; text-wrap: balance; }
+.produto-nome, .passo h3, .tile-nome, .destaque p, .lead { text-wrap: balance; }
+.h1 { font-size: clamp(2.35rem, 7.4vw, 5.4rem); }
+.h2 { font-size: clamp(1.9rem, 4.2vw, 3.1rem); }
+.h3 { font-size: clamp(1.2rem, 2vw, 1.45rem); letter-spacing: -0.015em; }
+.lead { color: var(--ink-2); font-size: clamp(1rem, 1.4vw, 1.125rem); max-width: 34em; margin: 14px 0 0; }
+
+/* Botões */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: .55em;
+  min-height: 48px; padding: 0 22px; border-radius: var(--pill); border: 1.5px solid transparent;
+  font-weight: 650; font-size: 15px; text-decoration: none; white-space: nowrap;
+  transition: transform .25s var(--ease), background-color .25s, color .25s, border-color .25s;
+}
+.btn:active { transform: scale(.97); }
+.btn-ink { background: var(--ink); color: var(--bg); }
+.btn-ink:hover { background: #000; }
+.btn-light { background: var(--surface); color: var(--ink); }
+.btn-light:hover { background: var(--bg); }
+.btn-line { border-color: var(--ink); color: var(--ink); background: transparent; }
+.btn-line:hover { background: var(--ink); color: var(--bg); }
+.btn-line-light { border-color: rgba(255,255,255,.8); color: #fff; background: transparent; }
+.btn-line-light:hover { background: #fff; color: var(--ink); }
+.btn .wa-ico { color: var(--wa); }
+.btn-sm { min-height: 40px; padding: 0 16px; font-size: 14px; }
+
+/* Faixas do topo */
+.aviso { background: var(--dark); color: var(--on-dark-2); font-size: 12.5px; text-align: center; padding: 7px var(--gutter); }
+.aviso strong { color: var(--on-dark); font-weight: 650; }
+.promo { border-bottom: 1px solid var(--line); font-size: 13px; font-weight: 550; }
+.promo ul { list-style: none; margin: 0; padding: 9px var(--gutter); display: flex; gap: 28px; justify-content: center; overflow-x: auto; scrollbar-width: none; }
+.promo ul::-webkit-scrollbar { display: none; }
+.promo li { display: flex; align-items: center; gap: 8px; white-space: nowrap; }
+.promo .ico { width: 16px; height: 16px; }
+.promo .pix { color: var(--pix); }
+
+/* Cabeçalho */
+.topo { position: sticky; top: 0; z-index: 40; background: color-mix(in srgb, var(--bg) 94%, transparent); backdrop-filter: saturate(1.4) blur(8px); -webkit-backdrop-filter: saturate(1.4) blur(8px); border-bottom: 1px solid transparent; transition: border-color .3s; }
+.topo.rolou { border-bottom-color: var(--line); }
+.topo .wrap { display: flex; align-items: center; gap: 20px; min-height: 64px; }
+.marca-loja { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 800; font-stretch: 120%; font-size: 21px; letter-spacing: -0.02em; }
+.marca-loja svg { width: 30px; height: 30px; }
+.menu { display: none; gap: 28px; margin-inline: auto; }
+.menu a { text-decoration: none; font-size: 15px; font-weight: 550; color: var(--ink-2); padding: 6px 0; border-bottom: 2px solid transparent; transition: color .2s, border-color .2s; }
+.menu a:hover { color: var(--ink); border-bottom-color: var(--ink); }
+.acoes { display: flex; gap: 8px; margin-left: auto; }
+.icone-btn { position: relative; display: grid; place-items: center; width: 44px; height: 44px; border-radius: var(--pill); border: 0; background: transparent; text-decoration: none; }
+.icone-btn:hover { background: var(--card); }
+.icone-btn .ico { width: 22px; height: 22px; }
+.contador { position: absolute; top: 4px; right: 3px; min-width: 18px; height: 18px; padding: 0 5px; border-radius: 9px; background: var(--accent); color: var(--accent-ink); font-size: 11px; font-weight: 700; display: grid; place-items: center; line-height: 1; }
+.contador[data-zero] { display: none; }
+.menu-cel { display: none; gap: 8px; overflow-x: auto; scrollbar-width: none; padding: 0 var(--gutter) 12px; }
+.menu-cel::-webkit-scrollbar { display: none; }
+.menu-cel a { flex: none; text-decoration: none; font-size: 14px; font-weight: 600; padding: 8px 14px; border-radius: var(--pill); background: var(--card); }
+@media (min-width: 900px) {
+  .menu { display: flex; }
+  .menu-cel { display: none; }
+  .topo .wrap { min-height: 76px; }
+}
+
+/* Capa */
+.capa { padding-top: 8px; }
+.capa-quadro { position: relative; border-radius: var(--r-xl); overflow: hidden; background: #2B3542; min-height: clamp(400px, calc(100svh - 150px), 640px); display: flex; align-items: flex-end; }
+.capa-botoes .btn { min-height: 44px; padding: 0 18px; font-size: 14.5px; }
+.so-largo { display: none; }
+@media (min-width: 600px) { .so-largo { display: inline; } }
+@media (orientation: landscape) and (max-height: 500px) {
+  .capa-quadro { min-height: 0; }
+  .capa-selos { display: none; }
+  .capa-texto { padding-top: 22px; padding-bottom: 20px; }
+  .capa-texto p { display: none; }
+  .capa-botoes { margin-top: 16px; }
+  .capa-texto .h1 { font-size: 2.1rem; max-width: 20ch; }
+  .capa-texto p { margin: 10px 0 14px; }
+}
+.capa-quadro picture, .capa-quadro .capa-foto { position: absolute; inset: 0; width: 100%; height: 100%; }
+.capa-foto { object-fit: cover; object-position: 74% 50%; }
+.capa-quadro::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(12,12,12,0) 28%, rgba(12,12,12,.55) 58%, rgba(12,12,12,.86) 100%); pointer-events: none; }
+.capa-texto { position: relative; z-index: 1; color: #fff; padding: 28px 22px 26px; }
+.capa-texto .h1 { max-width: 14ch; }
+@media (max-width: 599px) { .capa-texto .h1 { font-size: clamp(2.05rem, 9.2vw, 2.6rem); font-stretch: 104%; } }
+@media (max-width: 399px) {
+  .capa-selos { display: none; }
+  .btn-wa-capa { width: 44px; padding: 0; }
+  .btn-wa-capa .rotulo-wa { display: none; }
+  .aviso { font-size: 12px; }
+}
+.capa-texto .h1 { text-wrap: balance; }
+.capa-texto p { color: rgba(255,255,255,.9); font-size: 16px; max-width: 30em; margin: 16px 0 22px; }
+.capa-botoes { display: flex; flex-wrap: wrap; gap: 10px; }
+.capa-selos { position: absolute; z-index: 1; top: 18px; left: 18px; right: 18px; display: flex; flex-wrap: wrap; gap: 8px; }
+.selo { display: inline-flex; align-items: center; gap: 7px; background: rgba(255,255,255,.94); color: var(--ink); border-radius: var(--pill); padding: 7px 12px; font-size: 12.5px; font-weight: 600; }
+.selo .ico { width: 16px; height: 16px; }
+@media (min-width: 900px) {
+  .capa-quadro { min-height: min(760px, calc(100vh - 150px)); align-items: center; }
+  .capa-foto { object-position: 60% 50%; }
+  .capa-quadro::after { background: linear-gradient(90deg, rgba(12,12,12,.74) 0%, rgba(12,12,12,.5) 36%, rgba(12,12,12,0) 62%); }
+  .capa-texto { padding: 64px clamp(40px, 5vw, 72px); max-width: 760px; }
+  .capa-texto .h1 { font-size: clamp(3rem, 5vw, 4.5rem); max-width: 13ch; }
+  .capa-texto p { font-size: 18px; }
+  .capa-botoes .btn { min-height: 48px; padding: 0 22px; font-size: 15px; }
+  .capa-selos { top: auto; bottom: 28px; left: auto; right: 28px; justify-content: flex-end; max-width: 420px; }
+}
+
+/* Três destaques */
+.destaques { padding-top: 16px; }
+.destaques-lista { display: grid; grid-auto-flow: column; grid-auto-columns: 84%; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; padding-bottom: 4px; }
+.destaques-lista::-webkit-scrollbar { display: none; }
+.destaque { position: relative; scroll-snap-align: start; border-radius: var(--r-lg); overflow: hidden; min-height: 420px; display: flex; flex-direction: column; justify-content: flex-end; padding: 22px; }
+.destaque p { margin: 0 0 16px; font-size: 15.5px; font-weight: 550; line-height: 1.35; max-width: 22em; }
+.destaque-produto { background: var(--card); }
+.destaque-produto img { position: absolute; top: 12%; left: 50%; width: 88%; transform: translateX(-50%) rotate(-8deg); filter: var(--shadow-product); }
+.destaque-produto .logo-marca { position: absolute; top: 20px; left: 50%; transform: translateX(-50%); }
+.destaque-foto { color: #fff; background: var(--dark-2); }
+.destaque-foto img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.destaque-foto::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(12,12,12,.08) 15%, rgba(12,12,12,.86) 68%); }
+.destaque-foto > *:not(img) { position: relative; z-index: 1; }
+.destaque-promo { background: var(--accent); color: var(--accent-ink); justify-content: space-between; }
+.destaque .promo-grande { font-stretch: 125%; font-weight: 900; font-size: clamp(3rem, 6vw, 4.2rem); line-height: .92; letter-spacing: -0.03em; margin: 8px 0 0; }
+.promo-grande span { display: block; font-size: .5em; letter-spacing: -0.01em; margin-top: 10px; }
+.destaque .promo-miudo { font-size: 15px; font-weight: 500; }
+@media (min-width: 900px) {
+  .destaques-lista { grid-auto-flow: row; grid-template-columns: repeat(3, 1fr); overflow: visible; gap: 16px; }
+  .destaque { min-height: 460px; padding: 26px; }
+}
+
+/* Seções */
+.secao { padding-top: var(--section); }
+.secao-topo { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 18px 32px; margin-bottom: 28px; }
+.secao-topo.centro { flex-direction: column; align-items: center; text-align: center; }
+.secao-topo.centro .lead { margin-inline: auto; }
+
+/* Filtro */
+.filtro { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; margin-inline: calc(var(--gutter) * -1); padding-inline: var(--gutter); }
+.filtro::-webkit-scrollbar { display: none; }
+.filtro button { flex: none; min-height: 40px; padding: 0 16px; border-radius: var(--pill); border: 1.5px solid var(--line); background: transparent; font-size: 14px; font-weight: 600; transition: background-color .2s, border-color .2s, color .2s; }
+.filtro button:hover { border-color: var(--ink); }
+.filtro button[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--bg); }
+@media (min-width: 900px) { .filtro { margin-inline: 0; padding-inline: 0; } }
+
+/* Produtos */
+.grade { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px 12px; }
+@media (min-width: 900px) { .grade { grid-template-columns: repeat(4, 1fr); gap: 36px 18px; } }
+.produto { position: relative; display: flex; flex-direction: column; }
+.produto[hidden] { display: none; }
+.produto-foto { position: relative; aspect-ratio: 1 / 1.04; border-radius: var(--r-md); background: var(--card); overflow: hidden; border: 0; padding: 0; width: 100%; display: grid; place-items: center; transition: background-color .3s; }
+.produto-foto:hover { background: var(--card-2); }
+.produto-foto img { width: 80%; height: 72%; object-fit: contain; filter: var(--shadow-product); transform: rotate(var(--gire, 0deg)) scale(var(--escala, 1)); transition: transform .5s var(--ease); }
+.produto-foto:hover img { transform: rotate(var(--gire, 0deg)) scale(calc(var(--escala, 1) * 1.05)); }
+.logo-marca { position: absolute; top: 14px; left: 14px; height: 18px; display: flex; align-items: center; color: var(--ink); }
+.logo-marca svg { height: 18px; width: auto; max-width: 44px; fill: currentColor; }
+.logo-marca .txt { font-size: 10.5px; font-weight: 800; font-stretch: 125%; letter-spacing: .06em; }
+.cores { position: absolute; top: 14px; right: 14px; display: flex; }
+.cores i { width: 14px; height: 14px; border-radius: 50%; border: 2px solid var(--card); margin-left: -4px; }
+.etiqueta { position: absolute; left: 12px; bottom: 12px; background: var(--surface); border-radius: var(--pill); padding: 4px 10px; font-size: 11.5px; font-weight: 650; }
+.etiqueta.quente { background: var(--accent); color: var(--accent-ink); }
+.pegar { position: absolute; right: 10px; bottom: 10px; width: 40px; height: 40px; border-radius: 50%; background: var(--ink); color: var(--bg); display: grid; place-items: center; }
+.pegar .ico { width: 19px; height: 19px; }
+.produto-info { display: grid; grid-template-columns: 1fr auto; gap: 2px 10px; padding: 12px 2px 0; }
+.produto-nome { font-weight: 650; font-size: 15px; line-height: 1.3; margin: 0; }
+.produto-preco { font-weight: 700; font-size: 15px; font-variant-numeric: tabular-nums; text-align: right; }
+.produto-cat { color: var(--ink-3); font-size: 13px; }
+.produto-parc { color: var(--ink-2); font-size: 13px; text-align: right; font-variant-numeric: tabular-nums; }
+@media (max-width: 599px) {
+  .produto-info { grid-template-columns: 1fr; }
+  .produto-preco, .produto-parc { text-align: left; }
+  .cores i { width: 12px; height: 12px; }
+  .logo-marca, .cores { top: 11px; }
+  .logo-marca { left: 11px; } .cores { right: 11px; }
+}
+.mais { display: flex; justify-content: center; margin-top: 36px; }
+
+/* Categorias */
+.mosaico { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.tile { position: relative; border-radius: var(--r-lg); overflow: hidden; min-height: 230px; color: #fff; background: var(--dark-2); text-decoration: none; display: flex; align-items: flex-end; padding: 16px; }
+.tile img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .8s var(--ease); }
+.tile:hover img { transform: scale(1.04); }
+.tile::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(12,12,12,0) 45%, rgba(12,12,12,.72) 100%); }
+.tile-texto { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
+.tile-nome { font-stretch: var(--wide); font-weight: 800; font-size: clamp(1.25rem, 2.2vw, 1.75rem); letter-spacing: -0.02em; line-height: 1; }
+.tile .btn { min-height: 36px; padding: 0 14px; font-size: 13px; }
+.tile-grande { grid-column: 1 / -1; min-height: 360px; }
+@media (min-width: 900px) {
+  .mosaico { grid-template-columns: repeat(4, 1fr); grid-template-rows: 300px 300px; gap: 16px; }
+  .tile { padding: 22px; min-height: 0; }
+  .tile-grande { grid-column: 1 / 3; grid-row: 1 / 3; }
+  .tile-largo { grid-column: 3 / 5; }
+}
+
+/* Como comprar */
+.passos { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; counter-reset: passo; }
+.passo { background: var(--surface); border-radius: var(--r-lg); padding: 22px; display: grid; grid-template-columns: auto 1fr; gap: 4px 16px; align-items: start; }
+.passo-ico { grid-row: 1 / 3; width: 48px; height: 48px; border-radius: 14px; background: var(--card); display: grid; place-items: center; }
+.passo-ico .ico { width: 24px; height: 24px; }
+.passo-ico .wa { color: #1B9E4B; }
+.passo h3 { margin: 0; font-size: 16.5px; font-weight: 700; line-height: 1.3; }
+.passo p { margin: 0; color: var(--ink-2); font-size: 15px; }
+@media (min-width: 900px) {
+  .passos { grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .passo { grid-template-columns: 1fr; padding: 26px; gap: 10px; }
+  .passo-ico { grid-row: auto; margin-bottom: 18px; }
+}
+
+/* Chamada final */
+.chamada { position: relative; border-radius: var(--r-xl); overflow: hidden; color: #fff; background: var(--dark-2); min-height: 460px; display: flex; align-items: flex-end; }
+.chamada img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 60%; }
+.chamada::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(12,12,12,.2) 0%, rgba(12,12,12,.86) 100%); }
+.chamada-texto { position: relative; z-index: 1; padding: 28px 22px; max-width: 860px; }
+.chamada-texto .h2 { text-wrap: balance; }
+.chamada-texto p { color: rgba(255,255,255,.9); margin: 14px 0 22px; font-size: 16px; }
+@media (min-width: 900px) {
+  .chamada { min-height: 440px; align-items: center; justify-content: center; text-align: center; }
+  .chamada::after { background: rgba(12,12,12,.58); }
+  .chamada-texto { padding: 56px; }
+  .chamada-texto p { font-size: 18px; margin-inline: auto; max-width: 32em; }
+}
+
+/* Rodapé */
+.rodape { background: var(--dark); color: var(--on-dark-2); margin-top: var(--section); padding: 56px 0 calc(28px + env(safe-area-inset-bottom, 0px)); font-size: 15px; }
+.rodape .marca-loja { color: var(--on-dark); }
+.rodape-grade { display: grid; gap: 32px; }
+.rodape h2 { color: var(--on-dark); font-size: 14px; font-weight: 700; margin: 0 0 12px; letter-spacing: .01em; }
+.rodape ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.rodape a { color: var(--on-dark-2); text-decoration: none; }
+.rodape a:hover { color: var(--on-dark); }
+.rodape-sobre p { margin: 14px 0 0; max-width: 26em; }
+.pagamentos { display: flex; gap: 10px; margin-top: 18px; }
+.pagamentos span { display: grid; place-items: center; width: 52px; height: 34px; border-radius: 8px; background: var(--dark-2); }
+.pagamentos .ico { width: 30px; height: 20px; color: var(--on-dark); }
+.pagamentos .pix { color: var(--pix); }
+.redes { display: flex; gap: 8px; margin-top: 16px; }
+.redes a { display: inline-flex; align-items: center; gap: 8px; border: 1px solid #333; border-radius: var(--pill); padding: 8px 14px; font-size: 13.5px; }
+.rodape-autor { border-top: 1px solid #2A2A28; margin-top: 40px; padding-top: 20px; display: grid; gap: 6px; color: var(--on-dark); }
+.rodape-autor p { margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 4px 20px; min-height: 44px; }
+.rodape-autor a { color: var(--on-dark); text-decoration: underline; text-underline-offset: 3px; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; }
+.rodape-autor .back-link { text-decoration: none; }
+.rodape-base { border-top: 1px solid #2A2A28; margin-top: 16px; padding-top: 20px; font-size: 15px; color: #9A9892; }
+@media (min-width: 900px) {
+  .rodape-grade { grid-template-columns: 1.6fr 1fr 1fr 1fr; }
+}
+
+/* Ficha do produto e sacola */
+dialog { border: 0; padding: 0; color: var(--ink); background: var(--surface); max-width: none; max-height: none; }
+dialog::backdrop { background: rgba(12,12,12,.5); }
+.ficha { width: 100%; margin: auto 0 0; border-radius: var(--r-xl) var(--r-xl) 0 0; max-height: 92dvh; overflow: auto; overscroll-behavior: contain; }
+.ficha-grade { display: grid; grid-template-columns: minmax(0, 1fr); }
+.ficha-foto, .ficha-corpo { min-width: 0; }
+.ficha-foto { position: relative; background: var(--card); aspect-ratio: 4 / 3; display: grid; place-items: center; }
+.ficha-foto img { width: 74%; height: 76%; object-fit: contain; filter: var(--shadow-product); }
+.ficha-corpo { padding: 22px 20px calc(22px + env(safe-area-inset-bottom, 0px)); display: flex; flex-direction: column; gap: 14px; }
+.ficha-marca { font-size: 13px; font-weight: 650; color: var(--ink-3); text-transform: uppercase; letter-spacing: .06em; }
+.ficha h2 { font-stretch: var(--wide); font-weight: 800; font-size: 1.6rem; letter-spacing: -0.02em; line-height: 1.08; margin: 2px 0 0; }
+.ficha-preco { font-size: 1.35rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+.ficha-preco small { display: block; font-size: 14px; font-weight: 500; color: var(--ink-2); margin-top: 2px; }
+.ficha-preco .pix-linha { color: #13796F; font-weight: 600; }
+.rotulo { font-size: 14px; font-weight: 650; margin: 0 0 8px; display: flex; justify-content: space-between; gap: 12px; }
+.rotulo span { font-weight: 500; color: var(--ink-3); }
+.tamanhos { display: grid; grid-template-columns: repeat(auto-fill, minmax(62px, 1fr)); gap: 8px; }
+.tamanhos button { min-height: 46px; border-radius: 12px; border: 1.5px solid var(--line); background: var(--surface); font-weight: 650; font-size: 15px; font-variant-numeric: tabular-nums; }
+.tamanhos button:hover:not(:disabled) { border-color: var(--ink); }
+.tamanhos button[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--bg); }
+.tamanhos button:disabled { color: #A9A7A0; background: var(--bg); text-decoration: line-through; cursor: not-allowed; }
+.ficha-nota { font-size: 13.5px; color: var(--ink-2); margin: 0; display: flex; gap: 8px; align-items: flex-start; }
+.ficha-nota .ico { margin-top: 2px; }
+.ficha .btn { width: 100%; }
+.fechar { position: absolute; top: 12px; right: 12px; z-index: 2; width: 42px; height: 42px; border-radius: 50%; border: 0; background: var(--surface); display: grid; place-items: center; }
+.fechar .ico { width: 20px; height: 20px; }
+.aviso-tamanho { color: var(--accent); font-size: 13.5px; font-weight: 600; margin: -6px 0 0; min-height: 1.2em; }
+@media (min-width: 900px) {
+  .ficha { width: min(920px, calc(100% - 48px)); margin: auto; border-radius: var(--r-xl); }
+  .ficha-grade { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); }
+  .ficha-foto { aspect-ratio: auto; min-height: 520px; }
+  .ficha-corpo { padding: 36px 32px 32px; justify-content: center; }
+}
+
+.sacola { width: 100%; height: 100dvh; margin: 0 0 0 auto; display: none; flex-direction: column; }
+.sacola[open] { display: flex; }
+.sacola-topo { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; border-bottom: 1px solid var(--line); }
+.sacola-topo h2 { margin: 0; font-size: 19px; font-weight: 800; font-stretch: var(--wide); letter-spacing: -0.02em; }
+.sacola-topo .fechar { position: static; background: var(--bg); }
+.sacola-meio { flex: 1; overflow: auto; overscroll-behavior: contain; padding: 8px 20px 20px; }
+.sacola-vazia { text-align: center; padding: 48px 12px; color: var(--ink-2); }
+.sacola-vazia .ico { width: 40px; height: 40px; margin: 0 auto 10px; color: var(--ink-3); }
+.itens { list-style: none; margin: 0; padding: 0; }
+.item { display: grid; grid-template-columns: 76px 1fr auto; gap: 12px; padding: 14px 0; border-bottom: 1px solid var(--line); align-items: center; }
+.item-foto { width: 76px; height: 76px; border-radius: 12px; background: var(--card); display: grid; place-items: center; }
+.item-foto img { width: 82%; height: 82%; object-fit: contain; }
+.item-nome { font-weight: 650; font-size: 14.5px; line-height: 1.3; margin: 0; }
+.item-det { font-size: 13px; color: var(--ink-3); margin: 2px 0 0; }
+.item-lado { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
+.item-preco { font-weight: 700; font-size: 14.5px; font-variant-numeric: tabular-nums; }
+.qtd { display: inline-flex; align-items: center; border: 1.5px solid var(--line); border-radius: var(--pill); }
+.qtd button { width: 32px; height: 32px; border: 0; background: transparent; display: grid; place-items: center; }
+.qtd .ico { width: 15px; height: 15px; }
+.qtd output { min-width: 18px; text-align: center; font-weight: 650; font-size: 14px; }
+.escolha { margin-top: 20px; }
+.escolha fieldset { border: 0; padding: 0; margin: 0 0 16px; }
+.escolha legend { font-size: 14px; font-weight: 700; margin-bottom: 8px; padding: 0; }
+.opcao { display: flex; gap: 12px; align-items: flex-start; border: 1.5px solid var(--line); border-radius: 14px; padding: 12px 14px; margin-bottom: 8px; cursor: pointer; font-size: 14.5px; }
+.opcao:has(input:checked) { border-color: var(--ink); background: var(--bg); }
+.opcao input { margin: 3px 0 0; accent-color: var(--ink); width: 18px; height: 18px; }
+.opcao b { display: block; font-weight: 650; }
+.opcao span { color: var(--ink-2); font-size: 13px; }
+.campo { display: grid; gap: 6px; font-size: 14px; font-weight: 600; margin-top: 4px; }
+.campo input { font: inherit; font-weight: 500; font-size: 16px; min-height: 46px; border: 1.5px solid var(--line); border-radius: 12px; padding: 0 14px; background: var(--surface); }
+.campo input:focus { outline: none; border-color: var(--ink); }
+.sacola-fim { border-top: 1px solid var(--line); padding: 14px 20px calc(16px + env(safe-area-inset-bottom, 0px)); background: var(--surface); }
+.contas { display: grid; gap: 4px; font-size: 14px; margin: 0 0 12px; }
+.contas div { display: flex; justify-content: space-between; gap: 12px; }
+.contas dt { color: var(--ink-2); }
+.contas dd { margin: 0; font-variant-numeric: tabular-nums; font-weight: 600; }
+.contas .desc dd { color: #13796F; }
+.contas .total { font-size: 17px; margin-top: 6px; padding-top: 8px; border-top: 1px dashed var(--line); }
+.contas .total dt { color: var(--ink); font-weight: 700; }
+.contas .total dd { font-weight: 800; }
+.sacola-fim .btn { width: 100%; }
+.sacola-fim small { display: block; text-align: center; color: var(--ink-3); font-size: 12.5px; margin-top: 8px; }
+@media (min-width: 600px) {
+  .sacola { width: 440px; }
+}
+
+.toast { position: fixed; left: 50%; bottom: calc(20px + env(safe-area-inset-bottom, 0px)); transform: translate(-50%, calc(100% + 60px)); visibility: hidden; z-index: 60; background: var(--ink); color: var(--bg); border-radius: var(--pill); padding: 12px 18px; font-size: 14.5px; font-weight: 600; display: flex; align-items: center; gap: 10px; transition: transform .35s var(--ease), visibility 0s linear .35s; box-shadow: 0 10px 30px rgba(0,0,0,.2); }
+.toast.mostra { transform: translate(-50%, 0); visibility: visible; transition: transform .35s var(--ease), visibility 0s; }
+.toast .ico { color: var(--wa); }
+
+/* Celular com cara de aplicativo: abas embaixo, janelas que sobem de baixo */
+.entrega-chip { display: none; }
+.abas { display: none; }
+.alca { display: none; }
+a, button { -webkit-tap-highlight-color: transparent; }
+@media (max-width: 899px) {
+  :root { --abas: 64px; --topo-cel: 58px; }
+  body { padding-bottom: calc(var(--abas) + env(safe-area-inset-bottom, 0px)); }
+  .topo .wrap { min-height: var(--topo-cel); gap: 12px; }
+  .acoes { display: none; }
+  .entrega-chip { display: inline-flex; align-items: center; gap: 6px; margin-left: auto; padding: 7px 12px; border-radius: var(--pill); background: var(--card); font-size: 13px; font-weight: 600; text-decoration: none; white-space: nowrap; }
+  .entrega-chip .ico { width: 16px; height: 16px; }
+  .capa-quadro { min-height: clamp(340px, calc(100svh - 134px - var(--abas) - env(safe-area-inset-bottom, 0px) - 12px), 620px); }
+  [id] { scroll-margin-top: calc(var(--topo-cel) + 12px); }
+  #lancamentos .filtro { position: sticky; top: var(--topo-cel); z-index: 30; background: var(--bg); padding-block: 10px; margin-bottom: 8px; box-shadow: 0 1px 0 var(--line); }
+  .secao-topo { margin-bottom: 18px; }
+  .abas { position: fixed; left: 0; right: 0; bottom: 0; z-index: 45; display: grid; grid-template-columns: repeat(5, 1fr); background: color-mix(in srgb, var(--surface) 94%, transparent); backdrop-filter: saturate(1.4) blur(14px); -webkit-backdrop-filter: saturate(1.4) blur(14px); border-top: 1px solid var(--line); padding: 4px 6px env(safe-area-inset-bottom, 0px); }
+  .aba { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; min-height: calc(var(--abas) - 8px); border: 0; background: transparent; text-decoration: none; color: var(--ink-3); font-size: 11.5px; font-weight: 600; border-radius: 14px; transition: color .2s, background-color .2s, transform .15s; }
+  .aba .ico { width: 25px; height: 25px; }
+  .aba[aria-current="page"] { color: var(--ink); }
+  .aba[aria-current="page"] .ico { transform: translateY(-1px); }
+  .aba:active { background: var(--card); transform: scale(.94); }
+  .aba-ico { position: relative; display: inline-grid; }
+  .aba .contador { top: -5px; right: -11px; }
+  .aba-wa .ico { color: #1B9E4B; }
+  .produto-foto:active { background: var(--card-2); }
+  .produto-foto:active img { transform: rotate(var(--gire, 0deg)) scale(calc(var(--escala, 1) * .95)); }
+  .btn:active, .tile:active, .destaque:active { transform: scale(.98); }
+  .toast { bottom: calc(var(--abas) + 12px + env(safe-area-inset-bottom, 0px)); }
+
+  .folha { width: 100%; max-width: 100%; margin: auto 0 0; border-radius: 24px 24px 0 0; transition: transform .28s var(--ease); }
+  .folha[open] { animation: subir .34s var(--ease); }
+  .folha[open]::backdrop { animation: esmaecer .34s ease; }
+  .alca { display: block; position: absolute; top: 8px; left: 50%; transform: translateX(-50%); z-index: 3; width: 42px; height: 5px; border-radius: 3px; background: rgba(21,21,21,.22); }
+  .ficha { max-height: 94dvh; }
+  .ficha-foto { aspect-ratio: auto; height: clamp(190px, 52vw, 300px); }
+  .ficha-foto img { position: absolute; inset: 0; margin: auto; width: 72%; height: 80%; }
+  .ficha-corpo { padding-bottom: 0; }
+  .ficha-acao { position: sticky; bottom: 0; margin: 4px -20px 0; padding: 12px 20px calc(12px + env(safe-area-inset-bottom, 0px)); background: var(--surface); box-shadow: 0 -1px 0 var(--line); }
+  .sacola { height: 94dvh; }
+  .sacola-topo { position: relative; padding-top: 22px; }
+}
+@keyframes subir { from { transform: translateY(100%); } }
+@keyframes esmaecer { from { opacity: 0; } }
+
+/* Busca */
+.busca { width: min(640px, calc(100% - 48px)); margin: 10vh auto auto; border-radius: var(--r-xl); max-height: 80dvh; overflow: auto; overscroll-behavior: contain; padding-bottom: calc(16px + env(safe-area-inset-bottom, 0px)); }
+.busca-topo { position: sticky; top: 0; z-index: 2; display: flex; align-items: center; gap: 10px; padding: 18px 16px 12px; background: var(--surface); }
+.busca-topo .fechar { position: static; flex: none; background: var(--bg); }
+.busca-campo { flex: 1; display: flex; align-items: center; gap: 10px; min-height: 48px; padding: 0 14px; border-radius: 14px; background: var(--bg); border: 1.5px solid var(--line); }
+.busca-campo:focus-within { border-color: var(--ink); }
+.busca-campo .ico { color: var(--ink-3); }
+.busca-campo input { flex: 1; min-width: 0; border: 0; background: transparent; font: inherit; font-size: 16px; font-weight: 500; outline: none; }
+.busca-atalhos { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; padding: 0 16px 6px; }
+.busca-atalhos::-webkit-scrollbar { display: none; }
+.busca-atalhos button { flex: none; min-height: 38px; padding: 0 14px; border-radius: var(--pill); border: 1.5px solid var(--line); background: var(--surface); font-size: 14px; font-weight: 600; }
+.busca-conta { margin: 10px 16px 4px; font-size: 13px; color: var(--ink-3); min-height: 1.2em; }
+.busca-lista { list-style: none; margin: 0; padding: 0 16px; }
+.busca-lista button { width: 100%; display: grid; grid-template-columns: 64px 1fr auto; gap: 12px; align-items: center; text-align: left; border: 0; background: transparent; padding: 10px 0; border-bottom: 1px solid var(--line); }
+.busca-lista button:active { background: var(--bg); }
+.busca-lista .item-foto { width: 64px; height: 64px; }
+.busca-lista b { display: block; font-size: 15px; font-weight: 650; line-height: 1.3; }
+.busca-lista small { color: var(--ink-3); font-size: 13px; }
+.busca-lista .preco { font-weight: 700; font-size: 14.5px; font-variant-numeric: tabular-nums; }
+.busca-vazio { margin: 24px 16px; color: var(--ink-2); text-align: center; }
+@media (max-width: 899px) {
+  .busca { width: 100%; margin: auto 0 0; border-radius: 24px 24px 0 0; max-height: 88dvh; height: 88dvh; }
+  .busca-topo { padding-top: 24px; }
+}
+
+@media (max-width: 359px) { .so-360 { display: none; } }
+@media (orientation: landscape) and (max-height: 500px) {
+  .capa-quadro { min-height: 0; }
+  .promo { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .folha[open], .folha[open]::backdrop { animation: none; }
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition-duration: .01ms !important; }
+}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ShoeStore",
+  "name": "Passada",
+  "description": "Loja de tênis e streetwear no Centro de Campina Grande (PB). Empresa fictícia de demonstração.",
+  "address": { "@type": "PostalAddress", "addressLocality": "Campina Grande", "addressRegion": "PB", "addressCountry": "BR" },
+  "openingHours": ["Mo-Fr 09:00-19:00", "Sa 09:00-17:00"],
+  "paymentAccepted": "Pix, cartão de crédito em até 10x"
+}
+</script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <!-- Icons: brands from Simple Icons (CC0), interface from Phosphor (MIT). -->
+  <symbol id="i-nike" viewBox="0 0 24 24"><path d="M24 7.8L6.442 15.276c-1.456.616-2.679.925-3.668.925-1.12 0-1.933-.392-2.437-1.177-.317-.504-.41-1.143-.28-1.918.13-.775.476-1.6 1.036-2.478.467-.71 1.232-1.643 2.297-2.8a6.122 6.122 0 00-.784 1.848c-.28 1.195-.028 2.072.756 2.632.373.261.886.392 1.54.392.522 0 1.11-.084 1.764-.252L24 7.8z"/></symbol>
+  <symbol id="i-adidas" viewBox="0 0 24 24"><path d="m24 19.535-8.697-15.07-4.659 2.687 7.145 12.383Zm-8.287 0L9.969 9.59 5.31 12.277l4.192 7.258ZM4.658 14.723l2.776 4.812H1.223L0 17.41Z"/></symbol>
+  <symbol id="i-newbalance" viewBox="0 0 24 24"><path d="M12.169 10.306l1.111-1.937 3.774-.242.132-.236-3.488-.242.82-1.414h6.47c1.99 0 3.46.715 2.887 2.8-.17.638-.979 2.233-3.356 2.899.507.06 1.76.616 1.54 2.057-.384 2.558-3.69 3.774-5.533 3.774l-7.641.006-.38-1.48 4.005-.28.137-.237-4.346-.264-.467-1.755 6.178-.363.137-.231-11.096-.693.534-.925 11.948-.775.138-.231-3.504-.231m5 .385l1.1-.006c.738-.005 1.502-.34 1.783-1.018.259-.632-.088-1.171-.55-1.166h-1.067l-1.266 2.19zm-1.27 2.195l-1.326 2.305h1.265c.589 0 1.64-.292 1.964-1.128.302-.781-.253-1.177-.638-1.177h-1.266zM6.26 16.445l-.77 1.315L0 17.77l.534-.923 5.726-.402zm.385-10.216l4.417.006.336 1.248-5.276-.33.523-.924zm5 2.245l.484 1.832-7.542-.495.528-.92 6.53-.417zm-3.84 5.281l-.957 1.661-5.32-.302.534-.924 5.743-.435z"/></symbol>
+  <symbol id="i-puma" viewBox="0 0 24 24"><path d="M23.845 3.008c-.417-.533-1.146-.106-1.467.08-2.284 1.346-2.621 3.716-3.417 5.077-.626 1.09-1.652 1.89-2.58 1.952-.686.049-1.43-.084-2.168-.405-1.807-.781-2.78-1.792-3.017-1.97-.487-.37-4.23-4.015-7.28-4.164 0 0-.372-.75-.465-.763-.222-.025-.45.451-.616.501-.15.053-.413-.512-.565-.487-.153.02-.302.586-.6.877-.22.213-.486.2-.637.463-.052.096-.034.265-.093.42-.127.32-.551.354-.555.697 0 .381.357.454.669.72.248.212.265.362.554.461.258.088.632-.187.964-.088.277.081.543.14.602.423.054.256 0 .658-.34.613-.112-.015-.598-.174-1.198-.11-.725.077-1.553.309-1.634 1.11-.041.447.514.97 1.055.866.371-.071.196-.506.399-.716.267-.27 1.772.944 3.172.944.593 0 1.031-.15 1.467-.605.04-.029.093-.102.155-.11a.632.632 0 01.195.088c1.131.897 1.984 2.7 6.13 2.721.582.007 1.25.279 1.796.777.48.433.764 1.125 1.037 1.825.418 1.053 1.161 2.069 2.292 3.203.06.068.99.78 1.06.833.012.01.084.167.053.255-.02.69-.123 2.67 1.365 2.753.366.02.275-.231.275-.41-.005-.341-.065-.685.113-1.04.253-.478-.526-.709-.509-1.756.019-.784-.645-.651-.984-1.25-.19-.343-.368-.532-.35-.946.073-2.38-.517-3.948-.805-4.327-.227-.294-.423-.403-.207-.54 1.24-.815 1.525-1.574 1.525-1.574.66-1.541 1.256-2.945 2.075-3.57.166-.12.589-.44.852-.56.763-.362 1.173-.578 1.388-.788.356-.337.635-1.053.294-1.48z"/></symbol>
+  <symbol id="i-whatsapp" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></symbol>
+  <symbol id="i-pix" viewBox="0 0 24 24"><path d="M5.283 18.36a3.505 3.505 0 0 0 2.493-1.032l3.6-3.6a.684.684 0 0 1 .946 0l3.613 3.613a3.504 3.504 0 0 0 2.493 1.032h.71l-4.56 4.56a3.647 3.647 0 0 1-5.156 0L4.85 18.36ZM18.428 5.627a3.505 3.505 0 0 0-2.493 1.032l-3.613 3.614a.67.67 0 0 1-.946 0l-3.6-3.6A3.505 3.505 0 0 0 5.283 5.64h-.434l4.573-4.572a3.646 3.646 0 0 1 5.156 0l4.559 4.559ZM1.068 9.422 3.79 6.699h1.492a2.483 2.483 0 0 1 1.744.722l3.6 3.6a1.73 1.73 0 0 0 2.443 0l3.614-3.613a2.482 2.482 0 0 1 1.744-.723h1.767l2.737 2.737a3.646 3.646 0 0 1 0 5.156l-2.736 2.736h-1.768a2.482 2.482 0 0 1-1.744-.722l-3.613-3.613a1.77 1.77 0 0 0-2.444 0l-3.6 3.6a2.483 2.483 0 0 1-1.744.722H3.791l-2.723-2.723a3.646 3.646 0 0 1 0-5.156"/></symbol>
+  <symbol id="i-instagram" viewBox="0 0 24 24"><path d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/></symbol>
+  <symbol id="i-visa" viewBox="0 0 24 24"><path d="M9.112 8.262L5.97 15.758H3.92L2.374 9.775c-.094-.368-.175-.503-.461-.658C1.447 8.864.677 8.627 0 8.479l.046-.217h3.3a.904.904 0 01.894.764l.817 4.338 2.018-5.102zm8.033 5.049c.008-1.979-2.736-2.088-2.717-2.972.006-.269.262-.555.822-.628a3.66 3.66 0 011.913.336l.34-1.59a5.207 5.207 0 00-1.814-.333c-1.917 0-3.266 1.02-3.278 2.479-.012 1.079.963 1.68 1.698 2.04.756.367 1.01.603 1.006.931-.005.504-.602.725-1.16.734-.975.015-1.54-.263-1.992-.473l-.351 1.642c.453.208 1.289.39 2.156.398 2.037 0 3.37-1.006 3.377-2.564m5.061 2.447H24l-1.565-7.496h-1.656a.883.883 0 00-.826.55l-2.909 6.946h2.036l.405-1.12h2.488zm-2.163-2.656l1.02-2.815.588 2.815zm-8.16-4.84l-1.603 7.496H8.34l1.605-7.496z"/></symbol>
+  <symbol id="i-mastercard" viewBox="0 0 24 24"><path d="M11.343 18.031c.058.049.12.098.181.146-1.177.783-2.59 1.238-4.107 1.238C3.32 19.416 0 16.096 0 12c0-4.095 3.32-7.416 7.416-7.416 1.518 0 2.931.456 4.105 1.238-.06.051-.12.098-.165.15C9.6 7.489 8.595 9.688 8.595 12c0 2.311 1.001 4.51 2.748 6.031zm5.241-13.447c-1.52 0-2.931.456-4.105 1.238.06.051.12.098.165.15C14.4 7.489 15.405 9.688 15.405 12c0 2.31-1.001 4.507-2.748 6.031-.058.049-.12.098-.181.146 1.177.783 2.588 1.238 4.107 1.238C20.68 19.416 24 16.096 24 12c0-4.094-3.32-7.416-7.416-7.416zM12 6.174c-.096.075-.189.15-.28.231C10.156 7.764 9.169 9.765 9.169 12c0 2.236.987 4.236 2.551 5.595.09.08.185.158.28.232.096-.074.189-.152.28-.232 1.563-1.359 2.551-3.359 2.551-5.595 0-2.235-.987-4.236-2.551-5.595-.09-.08-.184-.156-.28-.231z"/></symbol>
+  <symbol id="i-magnifying-glass" viewBox="0 0 256 256"><path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"/></symbol>
+  <symbol id="i-handbag" viewBox="0 0 256 256"><path d="M239.89,198.12l-14.26-120a16,16,0,0,0-16-14.12H176a48,48,0,0,0-96,0H46.33a16,16,0,0,0-16,14.12l-14.26,120A16,16,0,0,0,20,210.6a16.13,16.13,0,0,0,12,5.4H223.92A16.13,16.13,0,0,0,236,210.6,16,16,0,0,0,239.89,198.12ZM128,32a32,32,0,0,1,32,32H96A32,32,0,0,1,128,32ZM32,200,46.33,80H80v24a8,8,0,0,0,16,0V80h64v24a8,8,0,0,0,16,0V80h33.75l14.17,120Z"/></symbol>
+  <symbol id="i-arrow-right" viewBox="0 0 256 256"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></symbol>
+  <symbol id="i-arrow-left" viewBox="0 0 256 256"><path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"/></symbol>
+  <symbol id="i-arrow-up-right" viewBox="0 0 256 256"><path d="M200,64V168a8,8,0,0,1-16,0V83.31L69.66,197.66a8,8,0,0,1-11.32-11.32L172.69,72H88a8,8,0,0,1,0-16H192A8,8,0,0,1,200,64Z"/></symbol>
+  <symbol id="i-x" viewBox="0 0 256 256"><path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"/></symbol>
+  <symbol id="i-minus" viewBox="0 0 256 256"><path d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128Z"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 256 256"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></symbol>
+  <symbol id="i-truck" viewBox="0 0 256 256"><path d="M255.42,117l-14-35A15.93,15.93,0,0,0,226.58,72H192V64a8,8,0,0,0-8-8H32A16,16,0,0,0,16,72V184a16,16,0,0,0,16,16H49a32,32,0,0,0,62,0h50a32,32,0,0,0,62,0h17a16,16,0,0,0,16-16V120A7.94,7.94,0,0,0,255.42,117ZM192,88h34.58l9.6,24H192ZM32,72H176v64H32ZM80,208a16,16,0,1,1,16-16A16,16,0,0,1,80,208Zm81-24H111a32,32,0,0,0-62,0H32V152H176v12.31A32.11,32.11,0,0,0,161,184Zm31,24a16,16,0,1,1,16-16A16,16,0,0,1,192,208Zm48-24H223a32.06,32.06,0,0,0-31-24V128h48Z"/></symbol>
+  <symbol id="i-check" viewBox="0 0 256 256"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></symbol>
+  <symbol id="i-map-pin" viewBox="0 0 256 256"><path d="M128,64a40,40,0,1,0,40,40A40,40,0,0,0,128,64Zm0,64a24,24,0,1,1,24-24A24,24,0,0,1,128,128Zm0-112a88.1,88.1,0,0,0-88,88c0,31.4,14.51,64.68,42,96.25a254.19,254.19,0,0,0,41.45,38.3,8,8,0,0,0,9.18,0A254.19,254.19,0,0,0,174,200.25c27.45-31.57,42-64.85,42-96.25A88.1,88.1,0,0,0,128,16Zm0,206c-16.53-13-72-60.75-72-118a72,72,0,0,1,144,0C200,161.23,144.53,209,128,222Z"/></symbol>
+  <symbol id="i-arrows-clockwise" viewBox="0 0 256 256"><path d="M224,48V96a8,8,0,0,1-8,8H168a8,8,0,0,1,0-16h28.69L182.06,73.37a79.56,79.56,0,0,0-56.13-23.43h-.45A79.52,79.52,0,0,0,69.59,72.71,8,8,0,0,1,58.41,61.27a96,96,0,0,1,135,.79L208,76.69V48a8,8,0,0,1,16,0ZM186.41,183.29a80,80,0,0,1-112.47-.66L59.31,168H88a8,8,0,0,0,0-16H40a8,8,0,0,0-8,8v48a8,8,0,0,0,16,0V179.31l14.63,14.63A95.43,95.43,0,0,0,130,222.06h.53a95.36,95.36,0,0,0,67.07-27.33,8,8,0,0,0-11.18-11.44Z"/></symbol>
+  <symbol id="i-receipt" viewBox="0 0 256 256"><path d="M72,104a8,8,0,0,1,8-8h96a8,8,0,0,1,0,16H80A8,8,0,0,1,72,104Zm8,40h96a8,8,0,0,0,0-16H80a8,8,0,0,0,0,16ZM232,56V208a8,8,0,0,1-11.58,7.15L192,200.94l-28.42,14.21a8,8,0,0,1-7.16,0L128,200.94,99.58,215.15a8,8,0,0,1-7.16,0L64,200.94,35.58,215.15A8,8,0,0,1,24,208V56A16,16,0,0,1,40,40H216A16,16,0,0,1,232,56Zm-16,0H40V195.06l20.42-10.22a8,8,0,0,1,7.16,0L96,199.06l28.42-14.22a8,8,0,0,1,7.16,0L160,199.06l28.42-14.22a8,8,0,0,1,7.16,0L216,195.06Z"/></symbol>
+  <symbol id="i-trash" viewBox="0 0 256 256"><path d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM96,40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96Zm96,168H64V64H192ZM112,104v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Z"/></symbol>
+  <symbol id="i-house" viewBox="0 0 256 256"><path d="M219.31,108.68l-80-80a16,16,0,0,0-22.62,0l-80,80A15.87,15.87,0,0,0,32,120v96a8,8,0,0,0,8,8h64a8,8,0,0,0,8-8V160h32v56a8,8,0,0,0,8,8h64a8,8,0,0,0,8-8V120A15.87,15.87,0,0,0,219.31,108.68ZM208,208H160V152a8,8,0,0,0-8-8H104a8,8,0,0,0-8,8v56H48V120l80-80,80,80Z"/></symbol>
+  <symbol id="i-sneaker" viewBox="0 0 256 256"><path d="M228.65,129.11l-60.73-20.24a24,24,0,0,1-14.32-13L130.39,41.6s0-.07,0-.1A16,16,0,0,0,110.25,33L34.53,60.49A16.05,16.05,0,0,0,24,75.53V192a16,16,0,0,0,16,16H240a16,16,0,0,0,16-16V167.06A40,40,0,0,0,228.65,129.11ZM115.72,48l7.11,16.63-21.56,7.85A8,8,0,0,0,104,88a7.91,7.91,0,0,0,2.73-.49l22.4-8.14,4.74,11.07-16.6,6A8,8,0,0,0,120,112a7.91,7.91,0,0,0,2.73-.49l17.6-6.4a40.24,40.24,0,0,0,7.68,10l-14.74,5.36A8,8,0,0,0,136,136a8.14,8.14,0,0,0,2.73-.48l28-10.18,56.87,18.95A24,24,0,0,1,238.93,160H40V75.53ZM40,192h0V176H240v16Z"/></symbol>
+</svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-passada" viewBox="0 0 32 32"><rect width="32" height="32" rx="9" fill="#151515"/><path d="M9.5 22.5 14 9.5h3.2l-4.5 13z" fill="#F4F3EF"/><path d="M16.3 22.5 20.8 9.5H24l-4.5 13z" fill="#E0582A"/></symbol>
+  <symbol id="i-passada-claro" viewBox="0 0 32 32"><rect width="32" height="32" rx="9" fill="#F4F3EF"/><path d="M9.5 22.5 14 9.5h3.2l-4.5 13z" fill="#151515"/><path d="M16.3 22.5 20.8 9.5H24l-4.5 13z" fill="#C4461C"/></symbol>
+</svg>
+
+<div class="aviso"><strong>Demonstração.</strong> Loja fictícia<span class="so-largo"> criada como modelo por Tarcio Diniz</span>, preços de exemplo.</div>
+<div class="promo">
+  <ul>
+    <li><svg class="ico" aria-hidden="true"><use href="#i-truck"/></svg>Entrega hoje em Campina Grande nos pedidos até 16h</li>
+    <li><svg class="ico" aria-hidden="true"><use href="#i-receipt"/></svg>10x sem juros no cartão</li>
+    <li><svg class="ico pix" aria-hidden="true"><use href="#i-pix"/></svg>5% de desconto no Pix</li>
+    <li><svg class="ico" aria-hidden="true"><use href="#i-arrows-clockwise"/></svg>Troca em 7 dias</li>
+  </ul>
+</div>
+
+<header class="topo" id="topo">
+  <div class="wrap">
+    <a class="marca-loja" href="#inicio" aria-label="Passada, início"><svg aria-hidden="true"><use href="#i-passada"/></svg>Passada</a>
+    <a class="entrega-chip" href="#como-comprar"><svg class="ico" aria-hidden="true"><use href="#i-truck"/></svg>Entrega hoje<span class="so-360"> em CG</span></a>
+    <nav class="menu" aria-label="Principal">
+      <a href="#lancamentos">Lançamentos</a>
+      <a href="#estilos">Por estilo</a>
+      <a href="#acessorios">Acessórios</a>
+      <a href="#como-comprar">Como comprar</a>
+      <a href="#loja">A loja</a>
+    </nav>
+    <div class="acoes">
+      <a class="icone-btn" href="https://wa.me/?text=Ol%C3%A1%2C%20Passada!" target="_blank" rel="noopener" aria-label="Chamar no WhatsApp"><svg class="ico" aria-hidden="true"><use href="#i-whatsapp"/></svg></a>
+      <button class="icone-btn" type="button" id="abrir-sacola" aria-label="Abrir sacola"><svg class="ico" aria-hidden="true"><use href="#i-handbag"/></svg><span class="contador" data-contador data-zero>0</span></button>
+    </div>
+  </div>
+  <nav class="menu-cel" aria-label="Seções">
+    <a href="#lancamentos">Lançamentos</a>
+    <a href="#estilos">Por estilo</a>
+    <a href="#acessorios">Acessórios</a>
+    <a href="#como-comprar">Como comprar</a>
+    <a href="#loja">A loja</a>
+  </nav>
+</header>
+
+<main id="inicio">
+  <section class="capa wrap" aria-labelledby="capa-titulo">
+    <div class="capa-quadro">
+      <picture>
+        <source media="(min-width: 900px)" srcset="img/cenas/capa.webp">
+        <img class="capa-foto" src="img/cenas/capa-900.webp" width="1100" height="756" alt="Rapaz de boné verde sentado num muro, com tênis azul e rosa, e palmeiras ao fundo num dia de sol" fetchpriority="high">
+      </picture>
+      <div class="capa-selos">
+        <span class="selo"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Original, com nota fiscal</span>
+        <span class="selo"><svg class="ico" aria-hidden="true"><use href="#i-map-pin"/></svg>Centro de Campina Grande</span>
+      </div>
+      <div class="capa-texto">
+        <h1 class="h1" id="capa-titulo">Tênis original pra rodar Campina toda</h1>
+        <p><span class="so-largo">Nike, Adidas, New Balance, Puma e Converse. </span>Escolheu o número até as 16h, o par chega hoje na sua porta.</p>
+        <div class="capa-botoes">
+          <a class="btn btn-light" href="#lancamentos">Ver o que chegou<svg class="ico" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+          <a class="btn btn-line-light btn-wa-capa" href="https://wa.me/?text=Ol%C3%A1%2C%20Passada!%20Quero%20ajuda%20para%20escolher%20um%20t%C3%AAnis." target="_blank" rel="noopener" aria-label="Chamar no WhatsApp"><svg class="ico" aria-hidden="true"><use href="#i-whatsapp"/></svg><span class="rotulo-wa"><span class="so-largo">Chamar no </span>WhatsApp</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="destaques wrap" aria-label="Destaques da semana">
+    <div class="destaques-lista">
+      <article class="destaque destaque-produto">
+        <span class="logo-marca"><svg aria-label="Puma"><use href="#i-puma"/></svg></span>
+        <img src="img/produtos/u26.webp" width="900" height="496" alt="Tênis Puma Mayze branco com faixa terracota e solado alto" loading="lazy">
+        <p>Plataforma alta que não cansa o pé. Puma Mayze, do 34 ao 39.</p>
+        <div><button class="btn btn-ink btn-sm" type="button" data-abrir="puma-mayze">Escolher meu número</button></div>
+      </article>
+      <article class="destaque destaque-foto">
+        <img src="img/cenas/u221.webp" width="900" height="1350" alt="Pernas andando na calçada com meia branca listrada e tênis branco" loading="lazy">
+        <p>Chegou reposição de Samba e Dunk. Tem do 35 ao 43, mas o 40 costuma acabar primeiro.</p>
+        <div><a class="btn btn-light btn-sm" href="#lancamentos">Ver a reposição</a></div>
+      </article>
+      <article class="destaque destaque-promo">
+        <p class="promo-grande">Leve 2<span>15% off no par mais barato</span></p>
+        <div>
+          <p class="promo-miudo">Vale para tênis, no site e na loja, até 31/10. Não soma com o desconto do Pix.</p>
+          <a class="btn btn-light btn-sm" href="#lancamentos">Montar meu par</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="secao wrap" id="lancamentos" aria-labelledby="lanc-titulo">
+    <div class="secao-topo">
+      <div>
+        <h2 class="h2" id="lanc-titulo">Chegou agora</h2>
+        <p class="lead">Reposição toda semana. Número que acaba sai da lista na hora, então o que está aqui tem na loja.</p>
+      </div>
+    </div>
+    <div class="filtro" role="group" aria-label="Filtrar por marca">
+        <button type="button" aria-pressed="true" data-marca="todas">Todas</button>
+        <button type="button" aria-pressed="false" data-marca="nike">Nike</button>
+        <button type="button" aria-pressed="false" data-marca="adidas">Adidas</button>
+        <button type="button" aria-pressed="false" data-marca="newbalance">New Balance</button>
+        <button type="button" aria-pressed="false" data-marca="puma">Puma</button>
+        <button type="button" aria-pressed="false" data-marca="converse">Converse</button>
+    </div>
+    <div class="grade" id="grade-tenis">
+      <article class="produto" data-id="air-max-1" data-marca="nike" data-marca-nome="Nike" data-nome="Nike Air Max 1 Ultra" data-preco="999.90" data-img="img/produtos/u0.webp" data-cat="Feminino" data-tamanhos="34|35|36|37|38|39" data-esgotados="34">
+        <button class="produto-foto" type="button" data-abrir="air-max-1" aria-label="Ver Nike Air Max 1 Ultra e escolher o tamanho">
+          <span class="logo-marca"><svg aria-label="Nike"><use href="#i-nike"/></svg></span>
+          <span class="cores" aria-hidden="true"><i style="background:#F2683A"></i><i style="background:#F1EEE7"></i><i style="background:#C8C8C6"></i></span>
+          <img src="img/produtos/u0.webp" width="900" height="821" alt="Tênis Nike Air Max 1 branco com laranja" loading="lazy" style="--gire:-4deg;--escala:1.0">
+          <span class="etiqueta">Novo</span>
+          <span class="pegar" aria-hidden="true"><svg class="ico"><use href="#i-plus"/></svg></span>
+        </button>
+        <div class="produto-info">
+          <h3 class="produto-nome">Nike Air Max 1 Ultra</h3>
+          <span class="produto-preco">R$ 999,90</span>
+          <span class="produto-cat">Feminino</span>
+          <span class="produto-parc">10x R$ 99,99</span>
+        </div>
+      </article>
+      <article class="produto" data-id="dunk-low-oliva" data-marca="nike" data-marca-nome="Nike" data-nome="Nike Dunk Low Verde Oliva" data-preco="899.90" data-img="img/produtos/u25.webp" data-cat="Unissex" data-tamanhos="35|36|37|38|39|40|41|42|43" data-esgotados="40">
+        <button class="produto-foto" type="button" data-abrir="dunk-low-oliva" aria-label="Ver Nike Dunk Low Verde Oliva e escolher o tamanho">
+          <span class="logo-marca"><svg aria-label="Nike"><use href="#i-nike"/></svg></span>
+          <span class="cores" aria-hidden="true"><i style="background:#9DB98A"></i><i style="background:#F1EFE9"></i><i style="background:#6B7C4C"></i></span>
+          <img src="img/produtos/u25.webp" width="674" height="900" alt="Tênis Nike Dunk Low de camurça verde clara e branco" loading="lazy" style="--gire:-56deg;--escala:1.12">
+          <span class="etiqueta">Voltou</span>
+          <span class="pegar" aria-hidden="true"><svg class="ico"><use href="#i-plus"/></svg></span>
+        </button>
+        <div class="produto-info">
+          <h3 class="produto-nome">Nike Dunk Low Verde Oliva</h3>
+          <span class="produto-preco">R$ 899,90</span>
+          <span class="produto-cat">Unissex</span>
+          <span class="produto-parc">10x R$ 89,99</span>
+        </div>
+      </article>
+      <article class="produto" data-id="nb-997h" data-marca="newbalance" data-marca-nome="New Balance" data-nome="New Balance 997H Cinza" data-preco="699.90" data-img="img/produtos/u36.webp" data-cat="Masculino" data-tamanhos="38|39|40|41|42|43|44" data-esgotados="">
+        <button class="produto-foto" type="button" data-abrir="nb-997h" aria-label="Ver New Balance 997H Cinza e escolher o tamanho">
+          <span class="logo-marca"><svg aria-label="New Balance"><use href="#i-newbalance"/></svg></span>
+          <span class="cores" aria-hidden="true"><i style="background:#A7A9AC"></i><i style="background:#E6E6E3"></i><i style="background:#2B2B2B"></i></span>
+          <img src="img/produtos/u36.webp" width="612" height="900" alt="Tênis New Balance 997H cinza de camurça" loading="lazy" style="--gire:32deg;--escala:1.02">
+          
+          <span class="pegar" aria-hidden="true"><svg class="ico"><use href="#i-plus"/></svg></span>
+        </button>
+        <div class="produto-info">
+          <h3 class="produto-nome">New Balance 997H Cinza</h3>
+          <span class="produto-preco">R$ 699,90</span>
+          <span class="produto-cat">Masculino</span>
+          <span class="produto-parc">10x R$ 69,99</span>
+        </div>
+      </article>
+      <article class="produto" data-id="puma-mayze" data-marca="puma" data-marca-nome="Puma" data-nome="Puma Mayze Terracota" data-preco="599.90" data-img="img/produtos/u26.webp" data-cat="Feminino" data-tamanhos="34|35|36|37|38|39" data-esgotados="34,38">
+        <button class="produto-foto" type="button" data-abrir="puma-mayze" aria-label="Ver Puma Mayze Terracota e escolher o tamanho">
+          <span class="logo-marca"><svg aria-label="Puma"><use href="#i-puma"/></svg></span>
+          <span class="cores" aria-hidden="true"><i style="background:#B8432C"></i><i style="background:#F0E9DC"></i><i style="background:#E3A92C"></i><i style="background:#5E7A5B"></i></span>
+          <img src="img/produtos/u26.webp" width="900" height="496" alt="Tênis Puma Mayze branco com faixa terracota e solado alto" loading="lazy" style="--gire:0deg;--escala:1.0">
+          <span class="etiqueta quente">Últimos pares</span>
+          <span class="pegar" aria-hidden="true"><svg class="ico"><use href="#i-plus"/></svg></span>
+        </button>
+        <div class="produto-info">
+          <h3 class="produto-nome">Puma Mayze Terracota</h3>
+          <span class="produto-preco">R$ 599,90</span>
+          <span class="produto-cat">Feminino</span>
+          <span class="produto-parc">10x R$ 59,99</span>
+        </div>
+      </article>
+      <article class="produto" data-id="samba-og-verde" data-marca="adidas" data-marca-nome="Adidas" data-nome="Adidas Samba OG Verde" data-preco="799.90" data-img="img/produtos/u57.webp" data-cat="Unissex" data-tamanhos="35|36|37|38|39|40|41|42|43" data-esgotados="39,40">
+        <button class="produto-foto" type="button" data-abrir="samba-og-verde" aria-label="Ver Adidas Samba OG Verde e escolher o tamanho">
+          <span class="logo-marca"><svg aria-label="Adidas"><use href="#i-adidas"/></svg></span>
+          <span class="cores" aria-hidden="true"><i style="background:#2E8B57"></i><i style="background:#F4F2EC"></i><i style="background:#8A6E4B"></i></span>
+          <img src="img/produtos/u57.webp" width="900" height="859" alt="Par de tênis Adidas Samba branco com listras verdes e sola marrom" loading="lazy" style="--gire:0deg;--escala:1.02">
+          <span class="etiqueta">Voltou</span>
+          <span class="pegar" aria-hidden="true"><svg class="ico"><use href="#i-plus"/></svg></span>
+        </button>
+        <div class="produto-info">
+          <h3 class="produto-nome">Adidas Samba OG Verde</h3>
+          <span class="produto-preco">R$ 799,90</span>
+          <span class="produto-cat">Unissex</span>
+          <span class="produto-parc">10x R$ 79,99</span>
+        </div>
+      </article>
+      <article class="produto" data-id="af1-07" data-marca="nike" data-marca-nome="Nike" data-nome="Nike Air Force 1 &#x27;07" data-preco="799.90" data-img="img/produtos/u109.webp" data-cat="Unissex" data-tamanhos="35|36|37|38|39|40|41|42|43|44" data-esgotados="">
+        <button class="produto-foto" type="button" data-abrir="af1-07" aria-label="Ver Nike Air Force 1 &#x27;07 e escolher o tamanho">
+          <span class="logo-marca"><svg aria-label="Nike"><use href="#i-nike"/></svg></span>
+          <span class="cores" aria-hidden="true"><i style="background:#F7F7F5"></i><i style="background:#5E6B3A"></i></span>
+          <img src="img/produtos/u109.webp" width="900" height="830" alt="Par de tênis Nike Air Force 1 branco com cadarço verde" loading="lazy" style="--gire:0deg;--escala:1.0">
+          
+          <span class="pegar" aria-hidden="true"><svg class="ico"><use href="#i-plus"/></svg></span>
+        </button>
+        <div class="produto-info">
+          <h3 class="produto-nome">Nike Air Force 1 &#x27;07</h3>
+          <span class="produto-preco">R$ 799,90</span>
+          <span class="produto-cat">Unissex</span>
+          <span class="produto-parc">10x R$ 79,99</span>
+        </div>
+      </article>
+      <article class="produto" data-id="chuck-70-hi" data-marca="converse" data-marca-nome="Converse" data-nome="Converse Chuck 70 Cano Alto" data-preco="499.90" data-img="img/produtos/u124.webp" data-cat="Unissex" data-tamanhos="34|35|36|37|38|39|40|41|42|43|44" data-esgotados="37">
+        <button class="produto-foto" type="button" data-abrir="chuck-70-hi" aria-label="Ver Converse Chuck 70 Cano Alto e escolher o tamanho">
+          <span class="logo-marca"><span class="txt">CONVERSE</span></span>
+          <span class="cores" aria-hidden="true"><i style="background:#1E1E1E"></i><i style="background:#F2EEE3"></i><i style="background:#C9A25E"></i></span>
+          <img src="img/produtos/u124.webp" width="670" height="900" alt="Par de tênis Converse Chuck 70 de cano alto preto" loading="lazy" style="--gire:0deg;--escala:0.98">
+          
+          <span class="pegar" aria-hidden="true"><svg class="ico"><use href="#i-plus"/></svg></span>
+        </button>
+        <div class="produto-info">
+          <h3 class="produto-nome">Converse Chuck 70 Cano Alto</h3>
+          <span class="produto-preco">R$ 499,90</span>
+          <span class="produto-cat">Unissex</span>
+          <span class="produto-parc">10x R$ 49,99</span>
+        </div>
+      </article>
+      <article class="produto" data-id="nb-x90-rosa" data-marca="newbalance" data-marca-nome="New Balance" data-nome="New Balance X-90 Rosa" data-preco="649.90" data-img="img/produtos/u35.webp" data-cat="Feminino" data-tamanhos="34|35|36|37|38|39" data-esgotados="">
+        <button class="produto-foto" type="button" data-abrir="nb-x90-rosa" aria-label="Ver New Balance X-90 Rosa e escolher o tamanho">
+          <span class="logo-marca"><svg aria-label="New Balance"><use href="#i-newbalance"/></svg></span>
+          <span class="cores" aria-hidden="true"><i style="background:#F2B8C6"></i><i style="background:#D9D9D9"></i><i style="background:#B42D4E"></i></span>
+          <img src="img/produtos/u35.webp" width="869" height="900" alt="Tênis New Balance X-90 rosa e cinza" loading="lazy" style="--gire:0deg;--escala:1.0">
+          <span class="etiqueta">Novo</span>
+          <span class="pegar" aria-hidden="true"><svg class="ico"><use href="#i-plus"/></svg></span>
+        </button>
+        <div class="produto-info">
+          <h3 class="produto-nome">New Balance X-90 Rosa</h3>
+          <span class="produto-preco">R$ 649,90</span>
+          <span class="produto-cat">Feminino</span>
+          <span class="produto-parc">10x R$ 64,99</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="secao wrap" id="estilos" aria-labelledby="role-titulo">
+    <div class="secao-topo centro">
+      <h2 class="h2" id="role-titulo">Pra cada tipo de rolê</h2>
+      <p class="lead">Do trabalho no Centro ao skate no fim de semana. Separamos por uso, pra você não perder tempo.</p>
+    </div>
+    <div class="mosaico">
+      <a class="tile tile-grande" href="#lancamentos">
+        <img src="img/cenas/u230.webp" width="1400" height="933" alt="Rapaz de camiseta branca e tênis sentado na calçada em frente a uma loja fechada" loading="lazy">
+        <span class="tile-texto"><span class="tile-nome">Dia a dia</span><span class="btn btn-light">Ver 38 pares<svg class="ico" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></span></span>
+      </a>
+      <a class="tile tile-largo" href="#lancamentos">
+        <img src="img/cenas/u274.webp" width="1400" height="786" alt="Skatista de tênis escuro em cima do skate no asfalto" loading="lazy">
+        <span class="tile-texto"><span class="tile-nome">Skate</span><span class="btn btn-light">Ver 14 pares<svg class="ico" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></span></span>
+      </a>
+      <a class="tile" href="#lancamentos">
+        <img src="img/cenas/u228.webp" width="1400" height="788" alt="Senhora caminhando na rua com tênis amarelo e preto" loading="lazy" style="object-position: 68% 50%">
+        <span class="tile-texto"><span class="tile-nome">Caminhada</span><span class="btn btn-light">Ver 21 pares<svg class="ico" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></span></span>
+      </a>
+      <a class="tile" href="#acessorios">
+        <img src="img/cenas/u227.webp" width="900" height="1599" alt="Moça de costas andando na rua com mochila preta" loading="lazy" style="object-position: 50% 40%">
+        <span class="tile-texto"><span class="tile-nome">Mochilas</span><span class="btn btn-light">Ver 9 peças<svg class="ico" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></span></span>
+      </a>
+    </div>
+  </section>
+
+  <section class="secao wrap" id="acessorios" aria-labelledby="acess-titulo">
+    <div class="secao-topo">
+      <div>
+        <h2 class="h2" id="acess-titulo">Pra fechar o visual</h2>
+        <p class="lead">Linha própria da Passada: boné, meia, mochila e bolsa, feitos pra durar mais que a moda da estação.</p>
+      </div>
+      <a class="btn btn-line" href="#acessorios">Ver todos os acessórios</a>
+    </div>
+    <div class="grade">
+      <article class="produto" data-id="bone-aba-curva" data-marca="passada" data-marca-nome="Passada" data-nome="Boné Aba Curva Amarelo" data-preco="129.90" data-img="img/produtos/u152.webp" data-cat="Unissex" data-tamanhos="Único" data-esgotados="">
+        <button class="produto-foto" type="button" data-abrir="bone-aba-curva" aria-label="Ver Boné Aba Curva Amarelo e escolher o tamanho">
+          <span class="logo-marca"><svg aria-label="Passada" style="width:18px"><use href="#i-passada"/></svg></span>
+          <span class="cores" aria-hidden="true"><i style="background:#F2B21B"></i><i style="background:#1E1E1E"></i><i style="background:#F2EEE3"></i></span>
+          <img src="img/produtos/u152.webp" width="792" height="900" alt="Boné amarelo de aba curva" loading="lazy" style="--gire:0deg;--escala:0.92">
+          <span class="etiqueta">Novo</span>
+          <span class="pegar" aria-hidden="true"><svg class="ico"><use href="#i-plus"/></svg></span>
+        </button>
+        <div class="produto-info">
+          <h3 class="produto-nome">Boné Aba Curva Amarelo</h3>
+          <span class="produto-preco">R$ 129,90</span>
+          <span class="produto-cat">Unissex</span>
+          <span class="produto-parc">10x R$ 12,99</span>
+        </div>
+      </article>
+      <article class="produto" data-id="kit-meias" data-marca="passada" data-marca-nome="Passada" data-nome="Kit 3 Meias Cano Médio" data-preco="59.90" data-img="img/produtos/u159.webp" data-cat="Unissex" data-tamanhos="34 a 38|39 a 43" data-esgotados="">
+        <button class="produto-foto" type="button" data-abrir="kit-meias" aria-label="Ver Kit 3 Meias Cano Médio e escolher o tamanho">
+          <span class="logo-marca"><svg aria-label="Passada" style="width:18px"><use href="#i-passada"/></svg></span>
+          <span class="cores" aria-hidden="true"><i style="background:#BDBAB3"></i><i style="background:#9B3FA8"></i><i style="background:#E7C42C"></i></span>
+          <img src="img/produtos/u159.webp" width="900" height="415" alt="Três meias de cano médio, cinza, roxa e amarela" loading="lazy" style="--gire:0deg;--escala:1.0">
+          
+          <span class="pegar" aria-hidden="true"><svg class="ico"><use href="#i-plus"/></svg></span>
+        </button>
+        <div class="produto-info">
+          <h3 class="produto-nome">Kit 3 Meias Cano Médio</h3>
+          <span class="produto-preco">R$ 59,90</span>
+          <span class="produto-cat">Unissex</span>
+          <span class="produto-parc">10x R$ 5,99</span>
+        </div>
+      </article>
+      <article class="produto" data-id="mochila-rolltop" data-marca="passada" data-marca-nome="Passada" data-nome="Mochila Rolltop Gelo" data-preco="289.90" data-img="img/produtos/u173.webp" data-cat="Unissex" data-tamanhos="Único" data-esgotados="">
+        <button class="produto-foto" type="button" data-abrir="mochila-rolltop" aria-label="Ver Mochila Rolltop Gelo e escolher o tamanho">
+          <span class="logo-marca"><svg aria-label="Passada" style="width:18px"><use href="#i-passada"/></svg></span>
+          <span class="cores" aria-hidden="true"><i style="background:#D8D8D2"></i><i style="background:#1E1E1E"></i></span>
+          <img src="img/produtos/u173.webp" width="900" height="596" alt="Mochila cor gelo com fecho de rolo e fivelas" loading="lazy" style="--gire:0deg;--escala:1.0">
+          
+          <span class="pegar" aria-hidden="true"><svg class="ico"><use href="#i-plus"/></svg></span>
+        </button>
+        <div class="produto-info">
+          <h3 class="produto-nome">Mochila Rolltop Gelo</h3>
+          <span class="produto-preco">R$ 289,90</span>
+          <span class="produto-cat">Unissex</span>
+          <span class="produto-parc">10x R$ 28,99</span>
+        </div>
+      </article>
+      <article class="produto" data-id="shoulder-bag" data-marca="passada" data-marca-nome="Passada" data-nome="Shoulder Bag de Couro Preta" data-preco="139.90" data-img="img/produtos/u190.webp" data-cat="Unissex" data-tamanhos="Único" data-esgotados="">
+        <button class="produto-foto" type="button" data-abrir="shoulder-bag" aria-label="Ver Shoulder Bag de Couro Preta e escolher o tamanho">
+          <span class="logo-marca"><svg aria-label="Passada" style="width:18px"><use href="#i-passada"/></svg></span>
+          <span class="cores" aria-hidden="true"><i style="background:#1A1A1A"></i><i style="background:#6B4A2E"></i></span>
+          <img src="img/produtos/u190.webp" width="848" height="900" alt="Bolsa transversal pequena de couro preto" loading="lazy" style="--gire:0deg;--escala:0.9">
+          
+          <span class="pegar" aria-hidden="true"><svg class="ico"><use href="#i-plus"/></svg></span>
+        </button>
+        <div class="produto-info">
+          <h3 class="produto-nome">Shoulder Bag de Couro Preta</h3>
+          <span class="produto-preco">R$ 139,90</span>
+          <span class="produto-cat">Unissex</span>
+          <span class="produto-parc">10x R$ 13,99</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="secao wrap" id="como-comprar" aria-labelledby="como-titulo">
+    <div class="secao-topo centro">
+      <h2 class="h2" id="como-titulo">Do site pro seu pé, sem cadastro</h2>
+      <p class="lead">Nada de criar conta ou decorar senha. O pedido cai direto no nosso WhatsApp e a gente confirma o número com você.</p>
+    </div>
+    <ol class="passos">
+      <li class="passo"><span class="passo-ico"><svg class="ico" aria-hidden="true"><use href="#i-handbag"/></svg></span><h3>Escolha o par e o número</h3><p>Pode pôr mais de um na sacola. Levando dois, o mais barato sai com 15% off.</p></li>
+      <li class="passo"><span class="passo-ico"><svg class="ico wa" aria-hidden="true"><use href="#i-whatsapp"/></svg></span><h3>O pedido chega no WhatsApp</h3><p>Já com modelo, número, entrega e forma de pagamento. Você só aperta enviar.</p></li>
+      <li class="passo"><span class="passo-ico"><svg class="ico" aria-hidden="true"><use href="#i-pix"/></svg></span><h3>Pague no Pix ou em até 10x</h3><p>A chave Pix ou o link do cartão vão na conversa, depois que a gente separa o par.</p></li>
+      <li class="passo"><span class="passo-ico"><svg class="ico" aria-hidden="true"><use href="#i-truck"/></svg></span><h3>Receba hoje ou retire na loja</h3><p>Pedido até 16h sai no mesmo dia em Campina Grande. Retirada na loja é grátis.</p></li>
+    </ol>
+  </section>
+
+  <section class="secao wrap" aria-labelledby="duvida-titulo">
+    <div class="chamada">
+      <img src="img/cenas/u218.webp" width="1400" height="933" alt="Pessoa de tênis branco parada numa estrada ao entardecer" loading="lazy">
+      <div class="chamada-texto">
+        <h2 class="h2" id="duvida-titulo">Na dúvida do número, chama a gente</h2>
+        <p>Diga o número e a marca do seu último tênis. A gente conhece a forma de cada modelo e fala se vale subir meio número.</p>
+        <a class="btn btn-light" href="https://wa.me/?text=Ol%C3%A1%2C%20Passada!%20Estou%20em%20d%C3%BAvida%20sobre%20o%20n%C3%BAmero." target="_blank" rel="noopener"><svg class="ico wa-ico" aria-hidden="true"><use href="#i-whatsapp"/></svg>Tirar dúvida no WhatsApp</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="rodape" id="loja">
+  <div class="wrap">
+    <div class="rodape-grade">
+      <div class="rodape-sobre">
+        <a class="marca-loja" href="#inicio"><svg aria-hidden="true"><use href="#i-passada-claro"/></svg>Passada</a>
+        <p>Tênis e streetwear no Centro de Campina Grande, perto do Calçadão. Todo par sai com nota fiscal.</p>
+        <div class="pagamentos" aria-label="Formas de pagamento">
+          <span><svg class="ico pix" aria-label="Pix"><use href="#i-pix"/></svg></span>
+          <span><svg class="ico" aria-label="Visa"><use href="#i-visa"/></svg></span>
+          <span><svg class="ico" aria-label="Mastercard"><use href="#i-mastercard"/></svg></span>
+        </div>
+        <div class="redes">
+          <a href="#inicio"><svg class="ico" aria-hidden="true"><use href="#i-instagram"/></svg>Instagram</a>
+          <a href="https://wa.me/?text=Ol%C3%A1%2C%20Passada!" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-whatsapp"/></svg>WhatsApp</a>
+        </div>
+      </div>
+      <div>
+        <h2>A loja</h2>
+        <ul>
+          <li>Centro, Campina Grande (PB)</li>
+          <li>Segunda a sexta, 9h às 19h</li>
+          <li>Sábado, 9h às 17h</li>
+          <li>Domingo e feriado, fechado</li>
+        </ul>
+      </div>
+      <div>
+        <h2>Comprar</h2>
+        <ul>
+          <li><a href="#lancamentos">Lançamentos</a></li>
+          <li><a href="#estilos">Por estilo</a></li>
+          <li><a href="#acessorios">Acessórios</a></li>
+          <li><a href="#como-comprar">Como comprar</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Ajuda</h2>
+        <ul>
+          <li>Troca em até 7 dias, com etiqueta</li>
+          <li>Entrega hoje em Campina Grande</li>
+          <li>R$&nbsp;12 de entrega, grátis acima de R$&nbsp;299</li>
+          <li><a href="https://wa.me/?text=Ol%C3%A1%2C%20Passada!%20Preciso%20de%20ajuda." target="_blank" rel="noopener">Falar com a loja</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="rodape-autor">
+      <p>Quer um site assim para o seu negócio?&nbsp;<a href="https://tarciodiniz.com/#contato">Peça um orçamento</a></p>
+      <p class="credito-autor"><a class="back-link" href="/#modelos"><svg class="ico" aria-hidden="true"><use href="#i-arrow-left"/></svg>Ver outros modelos</a><span>Site feito por <a href="https://tarciodiniz.com" rel="author">Tarcio Diniz</a>, desenvolvedor</span></p>
+    </div>
+    <p class="rodape-base">Passada é uma loja fictícia, criada como modelo de site por Tarcio Diniz. Marcas, produtos e preços servem só de exemplo. Fotos: Unsplash.</p>
+  </div>
+</footer>
+
+<dialog class="ficha folha" id="ficha" aria-labelledby="ficha-nome">
+  <span class="alca" aria-hidden="true"></span>
+  <button class="fechar" type="button" data-fechar aria-label="Fechar"><svg class="ico" aria-hidden="true"><use href="#i-x"/></svg></button>
+  <div class="ficha-grade">
+    <div class="ficha-foto" data-arrastar><img id="ficha-img" src="data:," alt=""></div>
+    <div class="ficha-corpo">
+      <div>
+        <div class="ficha-marca" id="ficha-marca"></div>
+        <h2 id="ficha-nome" tabindex="-1" autofocus></h2>
+      </div>
+      <div class="ficha-preco" id="ficha-preco"></div>
+      <div>
+        <p class="rotulo">Tamanho <span id="ficha-forma"></span></p>
+        <div class="tamanhos" id="ficha-tamanhos" role="group" aria-label="Escolha o tamanho"></div>
+      </div>
+      <p class="aviso-tamanho" id="ficha-aviso" role="status"></p>
+      <p class="ficha-nota"><svg class="ico" aria-hidden="true"><use href="#i-arrows-clockwise"/></svg>Não serviu? Troca em até 7 dias, na loja ou com o motoboy.</p>
+      <div class="ficha-acao"><button class="btn btn-ink" type="button" id="ficha-add"><svg class="ico" aria-hidden="true"><use href="#i-handbag"/></svg>Pôr na sacola</button></div>
+    </div>
+  </div>
+</dialog>
+
+<dialog class="sacola folha" id="sacola" aria-labelledby="sacola-titulo">
+  <div class="sacola-topo" data-arrastar>
+    <span class="alca" aria-hidden="true"></span>
+    <h2 id="sacola-titulo" tabindex="-1" autofocus>Sua sacola</h2>
+    <button class="fechar" type="button" data-fechar aria-label="Fechar sacola"><svg class="ico" aria-hidden="true"><use href="#i-x"/></svg></button>
+  </div>
+  <div class="sacola-meio">
+    <div class="sacola-vazia" id="sacola-vazia">
+      <svg class="ico" aria-hidden="true"><use href="#i-handbag"/></svg>
+      <p>A sacola está vazia. Escolha um par e o número.</p>
+    </div>
+    <ul class="itens" id="itens"></ul>
+    <form class="escolha" id="escolha" hidden>
+      <fieldset>
+        <legend>Como quer receber</legend>
+        <label class="opcao"><input type="radio" name="entrega" value="entrega" checked><span><b>Entrega hoje em Campina Grande</b><span>Pedido até 16h. R$&nbsp;12, grátis acima de R$&nbsp;299.</span></span></label>
+        <label class="opcao"><input type="radio" name="entrega" value="retirada"><span><b>Retirar na loja</b><span>No Centro, perto do Calçadão. Grátis.</span></span></label>
+        <label class="campo" id="campo-bairro">Seu bairro
+          <input type="text" name="bairro" autocomplete="address-level3" placeholder="Ex.: Catolé">
+        </label>
+      </fieldset>
+      <fieldset>
+        <legend>Como quer pagar</legend>
+        <label class="opcao"><input type="radio" name="pagamento" value="pix" checked><span><b>Pix</b><span>5% de desconto, se não usar o Leve 2.</span></span></label>
+        <label class="opcao"><input type="radio" name="pagamento" value="cartao"><span><b>Cartão em até 10x sem juros</b><span>O link de pagamento vai na conversa.</span></span></label>
+      </fieldset>
+    </form>
+  </div>
+  <div class="sacola-fim" id="sacola-fim" hidden>
+    <dl class="contas" id="contas"></dl>
+    <a class="btn btn-ink" id="enviar" href="https://wa.me/" target="_blank" rel="noopener"><svg class="ico wa-ico" aria-hidden="true"><use href="#i-whatsapp"/></svg>Mandar pedido no WhatsApp</a>
+    <small>O pedido abre pronto no WhatsApp. A loja confirma o número antes de cobrar.</small>
+  </div>
+</dialog>
+
+<dialog class="busca folha" id="busca" aria-labelledby="busca-titulo">
+  <div class="busca-topo" data-arrastar>
+    <span class="alca" aria-hidden="true"></span>
+    <h2 class="sr" id="busca-titulo">Buscar na loja</h2>
+    <label class="busca-campo"><svg class="ico" aria-hidden="true"><use href="#i-magnifying-glass"/></svg><span class="sr">O que você procura</span><input type="search" id="busca-termo" placeholder="Tênis, marca ou acessório" autocomplete="off" enterkeyhint="search" autofocus></label>
+    <button class="fechar" type="button" data-fechar aria-label="Fechar busca"><svg class="ico" aria-hidden="true"><use href="#i-x"/></svg></button>
+  </div>
+  <div class="busca-atalhos" id="busca-atalhos" aria-label="Sugestões">
+    <button type="button">Nike</button><button type="button">Adidas</button><button type="button">New Balance</button><button type="button">Puma</button><button type="button">Converse</button><button type="button">Boné</button><button type="button">Meia</button><button type="button">Mochila</button>
+  </div>
+  <p class="busca-conta" id="busca-conta" role="status"></p>
+  <ul class="busca-lista" id="busca-lista"></ul>
+  <p class="busca-vazio" id="busca-vazio" hidden>Nada com esse nome por aqui. Chama no WhatsApp que a gente procura no estoque.</p>
+</dialog>
+
+<nav class="abas" aria-label="Atalhos da loja">
+  <a class="aba" href="#inicio" data-aba="inicio" aria-current="page"><svg class="ico" aria-hidden="true"><use href="#i-house"/></svg><span>Início</span></a>
+  <a class="aba" href="#lancamentos" data-aba="vitrine"><svg class="ico" aria-hidden="true"><use href="#i-sneaker"/></svg><span>Vitrine</span></a>
+  <button class="aba" type="button" data-aba="busca" id="abrir-busca"><svg class="ico" aria-hidden="true"><use href="#i-magnifying-glass"/></svg><span>Buscar</span></button>
+  <button class="aba" type="button" data-aba="sacola" id="abrir-sacola-aba"><span class="aba-ico"><svg class="ico" aria-hidden="true"><use href="#i-handbag"/></svg><span class="contador" data-contador data-zero>0</span></span><span>Sacola</span></button>
+  <a class="aba aba-wa" href="https://wa.me/?text=Ol%C3%A1%2C%20Passada!" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-whatsapp"/></svg><span>WhatsApp</span></a>
+</nav>
+
+<div class="toast" id="toast" role="status" aria-live="polite"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span id="toast-texto"></span></div>
+
+<script src="/assets/vendor/gsap-3.15.0/gsap.min.js" defer></script>
+<script src="/assets/vendor/gsap-3.15.0/ScrollTrigger.min.js" defer></script>
+<script src="loja.js?v=ec7f4aeb" defer></script>
+</body>
+</html>

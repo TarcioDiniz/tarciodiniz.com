@@ -8,7 +8,7 @@ SITE_DIR="$(cd "$(dirname "$0")/.." && pwd)"
 BASE_URL="${BASE_URL:-http://127.0.0.1:8811}"
 CHROME="${CHROME:-/Applications/Google Chrome.app/Contents/MacOS/Google Chrome}"
 OUT_DIR="$SITE_DIR/assets/demos"
-MODELS=(cardapio bar cafe fisioterapia veterinaria pousada hotel barbearia planejados estetica-automotiva)
+MODELS=(cardapio bar cafe fisioterapia veterinaria pousada hotel barbearia planejados estetica-automotiva loja-de-tenis)
 WEBP_QUALITY=78
 SMALLER_WIDTHS=(480 680 800)
 
