@@ -580,7 +580,7 @@
           <div class="hero-foot">
             <p class="tonight"><span class="live-dot" aria-hidden="true"></span><b id="tonight-label">Esta semana:</b> <span id="tonight-text">quinta tem Forró de Quinta, sexta tem Sexta Brega e sábado a pista vai até as 5h.</span></p>
             <div class="hero-actions">
-              <a class="btn btn-led" id="hero-list" href="https://wa.me/5583991931035?text=Ol%C3%A1%2C%20Rebuli%C3%A7o!%20Quero%20p%C3%B4r%20nome%20na%20lista." target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-whatsapp"/></svg>Nome na lista pelo WhatsApp</a>
+              <a class="btn btn-led" id="hero-list" href="https://wa.me/5583991931035?text=Oi%2C%20Tarcio!%20Me%20interessei%20por%20esse%20site%2C%20o%20modelo%20do%20Rebuli%C3%A7o%20(bar).%0A%0AO%20site%20montou%20esta%20mensagem%3A%0AOl%C3%A1%2C%20Rebuli%C3%A7o!%20Quero%20p%C3%B4r%20nome%20na%20lista." target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-whatsapp"/></svg>Nome na lista pelo WhatsApp</a>
               <a class="btn btn-ghost" href="#reservar"><svg class="ico" aria-hidden="true"><use href="#i-crown"/></svg>Reservar camarote</a>
             </div>
           </div>
@@ -862,7 +862,7 @@
       <div class="wrap">
         <h2 id="cta-title">Bota o nome na lista e chega&nbsp;cedo</h2>
         <div class="cta-actions">
-          <a class="btn btn-ink" id="cta-list" href="https://wa.me/5583991931035?text=Ol%C3%A1%2C%20Rebuli%C3%A7o!%20Quero%20p%C3%B4r%20nome%20na%20lista." target="_blank" rel="noopener"><svg class="ico ico-wa" aria-hidden="true"><use href="#i-whatsapp"/></svg>Nome na lista pelo WhatsApp</a>
+          <a class="btn btn-ink" id="cta-list" href="https://wa.me/5583991931035?text=Oi%2C%20Tarcio!%20Me%20interessei%20por%20esse%20site%2C%20o%20modelo%20do%20Rebuli%C3%A7o%20(bar).%0A%0AO%20site%20montou%20esta%20mensagem%3A%0AOl%C3%A1%2C%20Rebuli%C3%A7o!%20Quero%20p%C3%B4r%20nome%20na%20lista." target="_blank" rel="noopener"><svg class="ico ico-wa" aria-hidden="true"><use href="#i-whatsapp"/></svg>Nome na lista pelo WhatsApp</a>
           <a class="btn btn-line" href="#reservar"><svg class="ico" aria-hidden="true"><use href="#i-crown"/></svg>Reservar camarote</a>
         </div>
       </div>
@@ -885,10 +885,12 @@
 <script src="/assets/vendor/gsap-3.15.0/ScrollTrigger.min.js"></script>
 <script src="/assets/vendor/gsap-3.15.0/SplitText.min.js"></script>
 <script>
+  // Demo messages open with a greeting to Tarcio, so he knows which model the visitor tried.
+  const DEMO_WA_INTRO = "Oi, Tarcio! Me interessei por esse site, o modelo do Rebuliço (bar).\n\nO site montou esta mensagem:\n";
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   const $ = (selector) => document.querySelector(selector);
   const icon = (name) => `<svg class="ico" aria-hidden="true"><use href="#i-${name}"/></svg>`;
-  const waLink = (text) => `https://wa.me/5583991931035?text=${encodeURIComponent(text)}`;
+  const waLink = (text) => `https://wa.me/5583991931035?text=${encodeURIComponent(DEMO_WA_INTRO + (text))}`;
   // One button pauses everything that moves on its own in the cover (video and LED ticker).
   const motionToggle = document.getElementById("motion-pause");
   const coverPaused = () => motionToggle.getAttribute("aria-pressed") === "true";

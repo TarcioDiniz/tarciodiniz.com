@@ -618,7 +618,7 @@
           <p class="lead">Blend de 90&nbsp;g prensado na hora e pão brioche que sai do nosso forno toda tarde. Monte o pedido no cardápio e ele chega pronto no WhatsApp.</p>
           <div class="hero-actions">
             <a class="btn btn-mustard" href="#cardapio">Montar pedido<svg class="ico" aria-hidden="true"><use href="#i-arrow-down"/></svg></a>
-            <a class="btn btn-glass" href="https://wa.me/5583991931035?text=Ol%C3%A1%2C%20Brasa!%20Quero%20fazer%20um%20pedido." target="_blank" rel="noopener"><svg class="ico ico-wa" aria-hidden="true"><use href="#i-whatsapp"/></svg>Pedir no WhatsApp</a>
+            <a class="btn btn-glass" href="https://wa.me/5583991931035?text=Oi%2C%20Tarcio!%20Me%20interessei%20por%20esse%20site%2C%20o%20modelo%20da%20Brasa%20Smash%20Burger%20(hamburgueria).%0A%0AO%20site%20montou%20esta%20mensagem%3A%0AOl%C3%A1%2C%20Brasa!%20Quero%20fazer%20um%20pedido." target="_blank" rel="noopener"><svg class="ico ico-wa" aria-hidden="true"><use href="#i-whatsapp"/></svg>Pedir no WhatsApp</a>
           </div>
         </div>
       </div>
@@ -945,6 +945,8 @@
 <script src="/assets/vendor/gsap-3.15.0/ScrollTrigger.min.js"></script>
 <script src="/assets/vendor/gsap-3.15.0/Flip.min.js"></script>
 <script>
+  // Demo messages open with a greeting to Tarcio, so he knows which model the visitor tried.
+  const DEMO_WA_INTRO = "Oi, Tarcio! Me interessei por esse site, o modelo da Brasa Smash Burger (hamburgueria).\n\nO site montou esta mensagem:\n";
   const currency = new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" });
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   const phoneLayout = window.matchMedia("(max-width: 899px)");
@@ -1013,7 +1015,7 @@
   }
 
   // The demo sends to Tarcio's WhatsApp, so a visitor who tests the order reaches him.
-  const sendOrder = () => window.open(`https://wa.me/5583991931035?text=${encodeURIComponent(whatsappMessage())}`, "_blank", "noopener");
+  const sendOrder = () => window.open(`https://wa.me/5583991931035?text=${encodeURIComponent(DEMO_WA_INTRO + (whatsappMessage()))}`, "_blank", "noopener");
 
   document.querySelectorAll(".item .add").forEach((button) => {
     button.addEventListener("click", () => {

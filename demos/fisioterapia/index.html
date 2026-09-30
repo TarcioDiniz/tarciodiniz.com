@@ -740,7 +740,7 @@
           </dl>
           <div class="panel-actions">
             <a class="btn" id="pain-cta" href="#agendar"><svg class="ico" aria-hidden="true"><use href="#i-calendar-check"/></svg><span>Agendar para o joelho</span></a>
-            <a class="link-arrow" id="pain-wa" href="https://wa.me/5583991931035?text=Oi!%20Sinto%20dor%20no%20joelho%20e%20queria%20tirar%20uma%20d%C3%BAvida%20antes%20de%20marcar." target="_blank" rel="noopener"><svg class="ico" aria-hidden="true" style="color:var(--wa)"><use href="#i-whatsapp"/></svg><span>Perguntar antes</span></a>
+            <a class="link-arrow" id="pain-wa" href="https://wa.me/5583991931035?text=Oi%2C%20Tarcio!%20Me%20interessei%20por%20esse%20site%2C%20o%20modelo%20da%20S%C3%A1lvia%20Fisioterapia.%0A%0AO%20site%20montou%20esta%20mensagem%3A%0AOi!%20Sinto%20dor%20no%20joelho%20e%20queria%20tirar%20uma%20d%C3%BAvida%20antes%20de%20marcar." target="_blank" rel="noopener"><svg class="ico" aria-hidden="true" style="color:var(--wa)"><use href="#i-whatsapp"/></svg><span>Perguntar antes</span></a>
           </div>
           <p class="pain-note">Isso não é diagnóstico. Serve para você chegar na avaliação sabendo o que perguntar.</p>
         </div>
@@ -1059,7 +1059,7 @@
             <div><dt>Quando</dt><dd id="t-when">Escolha o dia e o horário</dd></div>
             <div><dt>Nome</dt><dd id="t-name">Falta o seu nome</dd></div>
           </dl>
-          <a class="btn btn-tape" id="booking-send" href="https://wa.me/5583991931035?text=Oi!%20Quero%20agendar%20uma%20avalia%C3%A7%C3%A3o%20na%20S%C3%A1lvia." target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-whatsapp"/></svg>Enviar pelo WhatsApp</a>
+          <a class="btn btn-tape" id="booking-send" href="https://wa.me/5583991931035?text=Oi%2C%20Tarcio!%20Me%20interessei%20por%20esse%20site%2C%20o%20modelo%20da%20S%C3%A1lvia%20Fisioterapia.%0A%0AO%20site%20montou%20esta%20mensagem%3A%0AOi!%20Quero%20agendar%20uma%20avalia%C3%A7%C3%A3o%20na%20S%C3%A1lvia." target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-whatsapp"/></svg>Enviar pelo WhatsApp</a>
           <p class="ficha-hint" id="ficha-hint">Nada fica salvo aqui. Se precisar desmarcar, avise com 12 horas de antecedência e a gente remarca sem custo.</p>
         </aside>
       </div>
@@ -1128,7 +1128,7 @@
         <h2>A primeira consulta já é <span>uma hora inteira com você.</span></h2>
         <div class="foot-actions">
           <a class="btn btn-tape" href="#agendar"><svg class="ico" aria-hidden="true"><use href="#i-calendar-check"/></svg>Agendar avaliação</a>
-          <a class="btn btn-line" href="https://wa.me/5583991931035?text=Oi!%20Tenho%20uma%20d%C3%BAvida%20antes%20de%20marcar%20na%20S%C3%A1lvia." target="_blank" rel="noopener"><svg class="ico wa" aria-hidden="true"><use href="#i-whatsapp"/></svg>Tirar dúvida</a>
+          <a class="btn btn-line" href="https://wa.me/5583991931035?text=Oi%2C%20Tarcio!%20Me%20interessei%20por%20esse%20site%2C%20o%20modelo%20da%20S%C3%A1lvia%20Fisioterapia.%0A%0AO%20site%20montou%20esta%20mensagem%3A%0AOi!%20Tenho%20uma%20d%C3%BAvida%20antes%20de%20marcar%20na%20S%C3%A1lvia." target="_blank" rel="noopener"><svg class="ico wa" aria-hidden="true"><use href="#i-whatsapp"/></svg>Tirar dúvida</a>
         </div>
       </div>
       <p class="wordmark" id="wordmark"><span class="wordmark-tape tape" aria-hidden="true"></span>Sálvia<span>.</span></p>
@@ -1148,12 +1148,14 @@
 <script src="/assets/vendor/gsap-3.15.0/gsap.min.js"></script>
 <script src="/assets/vendor/gsap-3.15.0/ScrollTrigger.min.js"></script>
 <script>
+  // Demo messages open with a greeting to Tarcio, so he knows which model the visitor tried.
+  const DEMO_WA_INTRO = "Oi, Tarcio! Me interessei por esse site, o modelo da Sálvia Fisioterapia.\n\nO site montou esta mensagem:\n";
   const TIME_ZONE = "America/Recife";
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
   // The demo sends to Tarcio's WhatsApp, so a visitor who tests the order reaches him.
   function whatsappUrl(message) {
-    return `https://wa.me/5583991931035?text=${encodeURIComponent(message)}`;
+    return `https://wa.me/5583991931035?text=${encodeURIComponent(DEMO_WA_INTRO + (message))}`;
   }
 
   // The clinic's local clock, so "aberto agora" follows Campina Grande, not the visitor's time zone.

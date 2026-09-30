@@ -1,4 +1,6 @@
 // Passada, demo de loja: ficha do produto, sacola e pedido pelo WhatsApp.
+// Toda mensagem da demo abre com um oi para o Tarcio, para ele saber qual modelo a pessoa testou.
+const DEMO_WA_INTRO = "Oi, Tarcio! Me interessei por esse site, o modelo da Passada (loja de tênis).\n\nO site montou esta mensagem:\n";
 // Os dados vêm dos atributos data-* dos cartões, que já estão no HTML.
 (() => {
   "use strict";
@@ -275,7 +277,7 @@
     $("#campo-bairro").hidden = delivery !== "entrega";
     const t = totals();
     $("#contas").innerHTML = sumsTemplate(t);
-    $("#enviar").href = `https://wa.me/5583991931035?text=${encodeURIComponent(orderMessage(t))}`;
+    $("#enviar").href = `https://wa.me/5583991931035?text=${encodeURIComponent(DEMO_WA_INTRO + (orderMessage(t)))}`;
   }
 
   function changeQty(index, delta) {
