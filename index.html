@@ -380,22 +380,47 @@
   .section-title .display { font-size: clamp(72px, 13vw, 200px); }
   .section-title .count { font-family: var(--display); font-size: clamp(22px, 2.4vw, 32px); color: var(--accent); }
   .section-title p { max-width: 36ch; color: var(--on-dark-muted); margin: 12px 0 0; }
-  .model-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line-dark); }
-  .model { border-bottom: 1px solid var(--line-dark); }
-  .model a { display: grid; grid-template-columns: 70px 1.3fr 1fr auto; gap: 20px; align-items: center; padding-block: clamp(20px, 2.6vw, 30px); transition: color .25s ease; }
-  .model .num { font-family: var(--display); font-size: 22px; color: var(--on-dark-muted); }
-  .model .name { font-family: var(--display); font-size: clamp(36px, 5vw, 72px); text-transform: uppercase; line-height: .9; }
-  .model .what { color: var(--on-dark-muted); font-size: 15px; }
-  .model .go { width: 54px; height: 54px; border-radius: 50%; border: 1px solid var(--line-dark); display: grid; place-items: center; transition: background-color .25s ease, color .25s ease, border-color .25s ease; }
-  .model .thumb { display: none; }
-  .model a:hover .name, .model a:focus-visible .name { color: var(--accent); }
-  .model a:hover .go, .model a:focus-visible .go { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+  .phone { display: block; aspect-ratio: 360 / 779; border-radius: 30px; padding: 6px; background: #2b2825; box-shadow: 0 0 0 1px rgba(239, 235, 227, .12), 0 30px 60px -30px rgba(0, 0, 0, .7); }
+  .phone img { width: 100%; height: 100%; object-fit: cover; object-position: top; border-radius: 24px; background: #000; }
+  .fiction-note { margin: calc(clamp(32px, 5vw, 64px) * -0.5) 0 clamp(28px, 4vw, 48px); font-size: 15px; color: var(--on-dark-muted); display: flex; align-items: center; gap: 10px; }
+  .fiction-note::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); flex: none; }
+  .vb-layout { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 4fr); gap: clamp(32px, 4vw, 72px); align-items: start; }
+  .vb-list { list-style: none; margin: 0; padding: 0; }
+  .vb-label { font-size: 13px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); padding: 36px 0 12px; border-bottom: 1px solid var(--line-dark); }
+  .vb-label:first-child { padding-top: 0; }
+  .vb-row { border-bottom: 1px solid var(--line-dark); }
+  .vb-row a { display: grid; grid-template-columns: 56px 1fr auto; gap: 20px; align-items: center; padding-block: clamp(18px, 2vw, 26px); }
+  .vb-thumb { display: none; }
+  .vb-row .num { font-family: var(--display); font-size: 20px; color: var(--on-dark-muted); }
+  .vb-text { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+  .vb-ramo { font-size: 13px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; color: var(--on-dark-muted); display: flex; flex-wrap: wrap; gap: 4px 12px; }
+  .vb-ramo i { font-style: normal; color: var(--accent); }
+  .vb-row .name { font-family: var(--display); font-size: clamp(34px, 4.2vw, 64px); text-transform: uppercase; line-height: .9; transition: color .25s ease; }
+  .vb-what { display: none; color: var(--on-dark-muted); font-size: 15px; line-height: 1.45; }
+  .vb-row .go { width: 52px; height: 52px; border-radius: 50%; border: 1px solid var(--line-dark); display: grid; place-items: center; transition: background-color .25s ease, color .25s ease, border-color .25s ease; }
+  .vb-row.is-active .name { color: var(--accent); }
+  .vb-row.is-active .go { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+  .vb-stage { position: sticky; top: 100px; }
+  .vb-sticky { display: flex; justify-content: center; }
+  .vb-phone { width: min(280px, calc((100svh - 180px) * 360 / 779), 100%); position: relative; }
+  .vb-phone .vb-screen { position: absolute; inset: 0; opacity: 0; transition: opacity .35s ease; }
+  .vb-phone .vb-screen:first-child { position: relative; }
+  .vb-phone .vb-screen.is-on { opacity: 1; }
+  @media (max-width: 960px) {
+    .vb-layout { grid-template-columns: 1fr; }
+    .vb-stage { display: none; }
+    .vb-row a { grid-template-columns: 92px 1fr auto; gap: 16px; padding-block: 16px; }
+    .vb-row .num { display: none; }
+    .vb-thumb { display: block; width: 92px; height: 128px; border-radius: 12px; overflow: hidden; background: #000; box-shadow: 0 0 0 1px var(--line-dark); }
+    .vb-thumb img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+    .vb-row .name { font-size: clamp(28px, 8vw, 36px); }
+    .vb-what { display: block; font-size: 14px; }
+    .vb-row .go { width: 44px; height: 44px; }
+  }
   .models-note { margin-top: 20px; font-size: 15px; color: var(--on-dark-muted); }
   .inline-cta { margin-top: clamp(28px, 4vw, 44px); display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; }
   .steps-more { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-weight: 600; text-decoration: underline; text-underline-offset: 4px; }
   .steps-more:hover { color: var(--ink-2); }
-  .preview { position: fixed; left: 0; top: 0; width: 340px; aspect-ratio: 16 / 10; border-radius: 14px; overflow: hidden; pointer-events: none; z-index: 40; opacity: 0; visibility: hidden; box-shadow: 0 30px 60px -20px rgba(0,0,0,.6); }
-  .preview img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
 
   /* What you get */
   .gets { position: relative; z-index: 1; padding-block: clamp(80px, 11vw, 150px); }
@@ -543,12 +568,6 @@
     .why { margin-top: 48px; }
     .dock { display: flex; }
 
-    .model a { grid-template-columns: 1fr auto; row-gap: 12px; }
-    .model .num { display: none; }
-    .model .what { grid-column: 1 / -1; grid-row: 2; }
-    .model .thumb { display: block; grid-column: 1 / -1; grid-row: 3; border-radius: 12px; overflow: hidden; aspect-ratio: 16 / 10; }
-    .model .thumb img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
-    .preview { display: none; }
   }
   /* Short phones (iPhone SE size): drop the meta line so the promise and the button fit the first screen. */
   @media (max-width: 960px) and (max-height: 620px) { .hero-meta { display: none; } }
@@ -698,25 +717,106 @@
             <h2 class="display" id="modelos-title">Modelos</h2>
             <p>Abra no celular e mexa à vontade: monte um pedido, marque um horário, simule uma reserva. É assim que o seu pode funcionar.</p>
           </div>
-          <span class="count">(10)</span>
+          <span class="count">(11)</span>
         </div>
-        <ol class="model-list">
-          <li class="model"><a href="/demos/cardapio/" data-preview="/assets/demos/cardapio-800.webp"><span class="num">01</span><span class="name">Brasa Smash</span><span class="what">Hamburgueria. Cardápio que vira comanda e pedido no WhatsApp.</span><span class="go"><svg class="ico" aria-hidden="true"><use href="#i-arrow-up"/></svg></span><span class="thumb"><img src="/assets/demos/cardapio-800.webp" srcset="/assets/demos/cardapio-480.webp 480w, /assets/demos/cardapio-680.webp 680w, /assets/demos/cardapio-800.webp 800w, /assets/demos/cardapio.webp 1440w" sizes="92vw" alt="Tela do site de demonstração da hamburgueria Brasa Smash" loading="lazy" decoding="async" width="1440" height="900"></span></a></li>
-          <li class="model"><a href="/demos/bar/" data-preview="/assets/demos/bar-800.webp"><span class="num">02</span><span class="name">Rebuliço</span><span class="what">Bar e pista. Nome na lista, camarote e aniversário pelo WhatsApp.</span><span class="go"><svg class="ico" aria-hidden="true"><use href="#i-arrow-up"/></svg></span><span class="thumb"><img src="/assets/demos/bar-800.webp" srcset="/assets/demos/bar-480.webp 480w, /assets/demos/bar-680.webp 680w, /assets/demos/bar-800.webp 800w, /assets/demos/bar.webp 1440w" sizes="92vw" alt="Tela do site de demonstração do bar Rebuliço" loading="lazy" decoding="async" width="1440" height="900"></span></a></li>
-          <li class="model"><a href="/demos/cafe/" data-preview="/assets/demos/cafe-800.webp"><span class="num">03</span><span class="name">Caneca Azul</span><span class="what">Café de bairro. Cardápio que vira comanda e encomenda de bolo.</span><span class="go"><svg class="ico" aria-hidden="true"><use href="#i-arrow-up"/></svg></span><span class="thumb"><img src="/assets/demos/cafe-800.webp" srcset="/assets/demos/cafe-480.webp 480w, /assets/demos/cafe-680.webp 680w, /assets/demos/cafe-800.webp 800w, /assets/demos/cafe.webp 1440w" sizes="92vw" alt="Tela do site de demonstração do café Caneca Azul" loading="lazy" decoding="async" width="1440" height="900"></span></a></li>
-          <li class="model"><a href="/demos/fisioterapia/" data-preview="/assets/demos/fisioterapia-800.webp"><span class="num">04</span><span class="name">Sálvia Fisio</span><span class="what">Clínica de fisioterapia. Onde dói, o tratamento passo a passo e horário livre para agendar.</span><span class="go"><svg class="ico" aria-hidden="true"><use href="#i-arrow-up"/></svg></span><span class="thumb"><img src="/assets/demos/fisioterapia-800.webp" srcset="/assets/demos/fisioterapia-480.webp 480w, /assets/demos/fisioterapia-680.webp 680w, /assets/demos/fisioterapia-800.webp 800w, /assets/demos/fisioterapia.webp 1440w" sizes="92vw" alt="Tela do site de demonstração da clínica Sálvia Fisioterapia" loading="lazy" decoding="async" width="1440" height="900"></span></a></li>
-          <li class="model"><a href="/demos/veterinaria/" data-preview="/assets/demos/veterinaria-800.webp"><span class="num">05</span><span class="name">Vigília Vet</span><span class="what">Veterinária 24h. Cão ou gato muda a página, e a emergência fica a um toque.</span><span class="go"><svg class="ico" aria-hidden="true"><use href="#i-arrow-up"/></svg></span><span class="thumb"><img src="/assets/demos/veterinaria-800.webp" srcset="/assets/demos/veterinaria-480.webp 480w, /assets/demos/veterinaria-680.webp 680w, /assets/demos/veterinaria-800.webp 800w, /assets/demos/veterinaria.webp 1440w" sizes="92vw" alt="Tela do site de demonstração da Vigília Veterinária 24 horas" loading="lazy" decoding="async" width="1440" height="900"></span></a></li>
-          <li class="model"><a href="/demos/pousada/" data-preview="/assets/demos/pousada-800.webp"><span class="num">06</span><span class="name">Pousada Aroá</span><span class="what">Pousada. Quartos com galeria, datas livres no calendário e reserva.</span><span class="go"><svg class="ico" aria-hidden="true"><use href="#i-arrow-up"/></svg></span><span class="thumb"><img src="/assets/demos/pousada-800.webp" srcset="/assets/demos/pousada-480.webp 480w, /assets/demos/pousada-680.webp 680w, /assets/demos/pousada-800.webp 800w, /assets/demos/pousada.webp 1440w" sizes="92vw" alt="Tela do site de demonstração da Pousada Aroá" loading="lazy" decoding="async" width="1440" height="900"></span></a></li>
-          <li class="model"><a href="/demos/hotel/" data-preview="/assets/demos/hotel-800.webp"><span class="num">07</span><span class="name">Algodão Hotel</span><span class="what">Hotel executivo. Distância até o que você veio fazer e tarifa para empresa.</span><span class="go"><svg class="ico" aria-hidden="true"><use href="#i-arrow-up"/></svg></span><span class="thumb"><img src="/assets/demos/hotel-800.webp" srcset="/assets/demos/hotel-480.webp 480w, /assets/demos/hotel-680.webp 680w, /assets/demos/hotel-800.webp 800w, /assets/demos/hotel.webp 1440w" sizes="92vw" alt="Tela do site de demonstração do Algodão Hotel" loading="lazy" decoding="async" width="1440" height="900"></span></a></li>
-          <li class="model"><a href="/demos/barbearia/" data-preview="/assets/demos/barbearia-800.webp"><span class="num">08</span><span class="name">Sisal Barbearia</span><span class="what">Barbearia. Horários livres na tela e a altura do degradê no pedido.</span><span class="go"><svg class="ico" aria-hidden="true"><use href="#i-arrow-up"/></svg></span><span class="thumb"><img src="/assets/demos/barbearia-800.webp" srcset="/assets/demos/barbearia-480.webp 480w, /assets/demos/barbearia-680.webp 680w, /assets/demos/barbearia-800.webp 800w, /assets/demos/barbearia.webp 1440w" sizes="92vw" alt="Tela do site de demonstração da Sisal Barbearia" loading="lazy" decoding="async" width="1440" height="900"></span></a></li>
-          <li class="model"><a href="/demos/planejados/" data-preview="/assets/demos/planejados-800.webp"><span class="num">09</span><span class="name">Braúna</span><span class="what">Marcenaria de planejados. O cliente troca a cor do armário na foto e simula o orçamento.</span><span class="go"><svg class="ico" aria-hidden="true"><use href="#i-arrow-up"/></svg></span><span class="thumb"><img src="/assets/demos/planejados-800.webp" srcset="/assets/demos/planejados-480.webp 480w, /assets/demos/planejados-680.webp 680w, /assets/demos/planejados-800.webp 800w, /assets/demos/planejados.webp 1440w" sizes="92vw" alt="Tela do site de demonstração da marcenaria Braúna" loading="lazy" decoding="async" width="1440" height="900"></span></a></li>
-          <li class="model"><a href="/demos/estetica-automotiva/" data-preview="/assets/demos/estetica-automotiva-800.webp"><span class="num">10</span><span class="name">Carnaúba</span><span class="what">Estética automotiva. O cliente escolhe o carro e já vê o preço e a hora de buscar.</span><span class="go"><svg class="ico" aria-hidden="true"><use href="#i-arrow-up"/></svg></span><span class="thumb"><img src="/assets/demos/estetica-automotiva-800.webp" srcset="/assets/demos/estetica-automotiva-480.webp 480w, /assets/demos/estetica-automotiva-680.webp 680w, /assets/demos/estetica-automotiva-800.webp 800w, /assets/demos/estetica-automotiva.webp 1440w" sizes="92vw" alt="Tela do site de demonstração da estética automotiva Carnaúba" loading="lazy" decoding="async" width="1440" height="900"></span></a></li>
-          <li class="model"><a href="/demos/loja-de-tenis/" data-preview="/assets/demos/loja-de-tenis-800.webp"><span class="num">11</span><span class="name">Passada</span><span class="what">Loja de tênis. O cliente escolhe o número, monta a sacola e manda o pedido no WhatsApp.</span><span class="go"><svg class="ico" aria-hidden="true"><use href="#i-arrow-up"/></svg></span><span class="thumb"><img src="/assets/demos/loja-de-tenis-800.webp" srcset="/assets/demos/loja-de-tenis-480.webp 480w, /assets/demos/loja-de-tenis-680.webp 680w, /assets/demos/loja-de-tenis-800.webp 800w, /assets/demos/loja-de-tenis.webp 1440w" sizes="92vw" alt="Tela do site de demonstração da loja de tênis Passada" loading="lazy" decoding="async" width="1440" height="900"></span></a></li>
-        </ol>
-        <p class="models-note">As empresas dos modelos são fictícias, assim como os preços e as avaliações. Fotos do Unsplash e do Pexels, e as da Braúna e da Carnaúba geradas com IA; vídeos do Pexels e do Coverr.</p>
-        <div class="inline-cta"><a class="btn btn-accent" data-whatsapp="Oi, Tarcio! Vi os modelos no seu site e quero um site assim para o meu negócio." href="#contato"><svg class="ico ico-lg" aria-hidden="true"><use href="#i-whatsapp"/></svg>Quero um site assim</a></div>
+        <p class="fiction-note">Modelos de demonstração: as empresas, os preços e as avaliações são fictícios.</p>
+        <div class="vb-layout">
+          <div class="vb-main">
+            <ol class="vb-list">
+              <li class="vb-label" aria-hidden="true">Comer e beber</li>
+              <li class="vb-row" data-slug="cardapio"><a href="/demos/cardapio/">
+                <span class="vb-thumb"><img src="/assets/modelos-celular/cardapio-360.webp" srcset="/assets/modelos-celular/cardapio-360.webp 360w, /assets/modelos-celular/cardapio-540.webp 540w" sizes="92px" width="360" height="779" alt="Tela de celular do modelo Brasa Smash" loading="lazy" decoding="async"></span>
+                <span class="num">01</span>
+                <span class="vb-text"><span class="vb-ramo">Hamburgueria<i>Pedido no WhatsApp</i></span><span class="name">Brasa Smash</span><span class="vb-what">Cardápio que vira comanda e pedido no WhatsApp.</span></span>
+                <span class="go"><svg class="ico" aria-hidden="true"><use href="#i-arrow-up"/></svg></span>
+              </a></li>
+              <li class="vb-row" data-slug="bar"><a href="/demos/bar/">
+                <span class="vb-thumb"><img src="/assets/modelos-celular/bar-360.webp" srcset="/assets/modelos-celular/bar-360.webp 360w, /assets/modelos-celular/bar-540.webp 540w" sizes="92px" width="360" height="779" alt="Tela de celular do modelo Rebuliço" loading="lazy" decoding="async"></span>
+                <span class="num">02</span>
+                <span class="vb-text"><span class="vb-ramo">Bar e pista<i>Lista e camarote</i></span><span class="name">Rebuliço</span><span class="vb-what">Nome na lista, camarote e aniversário pelo WhatsApp.</span></span>
+                <span class="go"><svg class="ico" aria-hidden="true"><use href="#i-arrow-up"/></svg></span>
+              </a></li>
+              <li class="vb-row" data-slug="cafe"><a href="/demos/cafe/">
+                <span class="vb-thumb"><img src="/assets/modelos-celular/cafe-360.webp" srcset="/assets/modelos-celular/cafe-360.webp 360w, /assets/modelos-celular/cafe-540.webp 540w" sizes="92px" width="360" height="779" alt="Tela de celular do modelo Caneca Azul" loading="lazy" decoding="async"></span>
+                <span class="num">03</span>
+                <span class="vb-text"><span class="vb-ramo">Café de bairro<i>Comanda e encomenda</i></span><span class="name">Caneca Azul</span><span class="vb-what">Cardápio que vira comanda e encomenda de bolo.</span></span>
+                <span class="go"><svg class="ico" aria-hidden="true"><use href="#i-arrow-up"/></svg></span>
+              </a></li>
+              <li class="vb-label" aria-hidden="true">Saúde e cuidado</li>
+              <li class="vb-row" data-slug="fisioterapia"><a href="/demos/fisioterapia/">
+                <span class="vb-thumb"><img src="/assets/modelos-celular/fisioterapia-360.webp" srcset="/assets/modelos-celular/fisioterapia-360.webp 360w, /assets/modelos-celular/fisioterapia-540.webp 540w" sizes="92px" width="360" height="779" alt="Tela de celular do modelo Sálvia Fisio" loading="lazy" decoding="async"></span>
+                <span class="num">04</span>
+                <span class="vb-text"><span class="vb-ramo">Clínica de fisioterapia<i>Agendamento</i></span><span class="name">Sálvia Fisio</span><span class="vb-what">Onde dói, o tratamento passo a passo e horário livre para agendar.</span></span>
+                <span class="go"><svg class="ico" aria-hidden="true"><use href="#i-arrow-up"/></svg></span>
+              </a></li>
+              <li class="vb-row" data-slug="veterinaria"><a href="/demos/veterinaria/">
+                <span class="vb-thumb"><img src="/assets/modelos-celular/veterinaria-360.webp" srcset="/assets/modelos-celular/veterinaria-360.webp 360w, /assets/modelos-celular/veterinaria-540.webp 540w" sizes="92px" width="360" height="779" alt="Tela de celular do modelo Vigília Vet" loading="lazy" decoding="async"></span>
+                <span class="num">05</span>
+                <span class="vb-text"><span class="vb-ramo">Veterinária 24h<i>Emergência e agenda</i></span><span class="name">Vigília Vet</span><span class="vb-what">Cão ou gato muda a página, e a emergência fica a um toque.</span></span>
+                <span class="go"><svg class="ico" aria-hidden="true"><use href="#i-arrow-up"/></svg></span>
+              </a></li>
+              <li class="vb-label" aria-hidden="true">Hospedagem</li>
+              <li class="vb-row" data-slug="pousada"><a href="/demos/pousada/">
+                <span class="vb-thumb"><img src="/assets/modelos-celular/pousada-360.webp" srcset="/assets/modelos-celular/pousada-360.webp 360w, /assets/modelos-celular/pousada-540.webp 540w" sizes="92px" width="360" height="779" alt="Tela de celular do modelo Pousada Aroá" loading="lazy" decoding="async"></span>
+                <span class="num">06</span>
+                <span class="vb-text"><span class="vb-ramo">Pousada<i>Reserva</i></span><span class="name">Pousada Aroá</span><span class="vb-what">Quartos com galeria, datas livres no calendário e reserva.</span></span>
+                <span class="go"><svg class="ico" aria-hidden="true"><use href="#i-arrow-up"/></svg></span>
+              </a></li>
+              <li class="vb-row" data-slug="hotel"><a href="/demos/hotel/">
+                <span class="vb-thumb"><img src="/assets/modelos-celular/hotel-360.webp" srcset="/assets/modelos-celular/hotel-360.webp 360w, /assets/modelos-celular/hotel-540.webp 540w" sizes="92px" width="360" height="779" alt="Tela de celular do modelo Algodão Hotel" loading="lazy" decoding="async"></span>
+                <span class="num">07</span>
+                <span class="vb-text"><span class="vb-ramo">Hotel executivo<i>Tarifa para empresa</i></span><span class="name">Algodão Hotel</span><span class="vb-what">Distância até o que você veio fazer e tarifa para empresa.</span></span>
+                <span class="go"><svg class="ico" aria-hidden="true"><use href="#i-arrow-up"/></svg></span>
+              </a></li>
+              <li class="vb-label" aria-hidden="true">Beleza e serviços</li>
+              <li class="vb-row" data-slug="barbearia"><a href="/demos/barbearia/">
+                <span class="vb-thumb"><img src="/assets/modelos-celular/barbearia-360.webp" srcset="/assets/modelos-celular/barbearia-360.webp 360w, /assets/modelos-celular/barbearia-540.webp 540w" sizes="92px" width="360" height="779" alt="Tela de celular do modelo Sisal Barbearia" loading="lazy" decoding="async"></span>
+                <span class="num">08</span>
+                <span class="vb-text"><span class="vb-ramo">Barbearia<i>Agendamento</i></span><span class="name">Sisal Barbearia</span><span class="vb-what">Horários livres na tela e a altura do degradê no pedido.</span></span>
+                <span class="go"><svg class="ico" aria-hidden="true"><use href="#i-arrow-up"/></svg></span>
+              </a></li>
+              <li class="vb-row" data-slug="estetica-automotiva"><a href="/demos/estetica-automotiva/">
+                <span class="vb-thumb"><img src="/assets/modelos-celular/estetica-automotiva-360.webp" srcset="/assets/modelos-celular/estetica-automotiva-360.webp 360w, /assets/modelos-celular/estetica-automotiva-540.webp 540w" sizes="92px" width="360" height="779" alt="Tela de celular do modelo Carnaúba" loading="lazy" decoding="async"></span>
+                <span class="num">09</span>
+                <span class="vb-text"><span class="vb-ramo">Estética automotiva<i>Preço na hora</i></span><span class="name">Carnaúba</span><span class="vb-what">O cliente escolhe o carro e já vê o preço e a hora de buscar.</span></span>
+                <span class="go"><svg class="ico" aria-hidden="true"><use href="#i-arrow-up"/></svg></span>
+              </a></li>
+              <li class="vb-row" data-slug="planejados"><a href="/demos/planejados/">
+                <span class="vb-thumb"><img src="/assets/modelos-celular/planejados-360.webp" srcset="/assets/modelos-celular/planejados-360.webp 360w, /assets/modelos-celular/planejados-540.webp 540w" sizes="92px" width="360" height="779" alt="Tela de celular do modelo Braúna" loading="lazy" decoding="async"></span>
+                <span class="num">10</span>
+                <span class="vb-text"><span class="vb-ramo">Marcenaria de planejados<i>Simulação de orçamento</i></span><span class="name">Braúna</span><span class="vb-what">O cliente troca a cor do armário na foto e simula o orçamento.</span></span>
+                <span class="go"><svg class="ico" aria-hidden="true"><use href="#i-arrow-up"/></svg></span>
+              </a></li>
+              <li class="vb-label" aria-hidden="true">Loja</li>
+              <li class="vb-row" data-slug="loja-de-tenis"><a href="/demos/loja-de-tenis/">
+                <span class="vb-thumb"><img src="/assets/modelos-celular/loja-de-tenis-360.webp" srcset="/assets/modelos-celular/loja-de-tenis-360.webp 360w, /assets/modelos-celular/loja-de-tenis-540.webp 540w" sizes="92px" width="360" height="779" alt="Tela de celular do modelo Passada" loading="lazy" decoding="async"></span>
+                <span class="num">11</span>
+                <span class="vb-text"><span class="vb-ramo">Loja de tênis<i>Pedido no WhatsApp</i></span><span class="name">Passada</span><span class="vb-what">O cliente escolhe o número, monta a sacola e manda o pedido no WhatsApp.</span></span>
+                <span class="go"><svg class="ico" aria-hidden="true"><use href="#i-arrow-up"/></svg></span>
+              </a></li>
+            </ol>
+            <p class="models-note">Fotos do Unsplash e do Pexels, e as da Braúna e da Carnaúba geradas com IA; vídeos do Pexels e do Coverr.</p>
+            <div class="inline-cta"><a class="btn btn-accent" data-whatsapp="Oi, Tarcio! Vi os modelos no seu site e quero um site assim para o meu negócio." href="#contato"><svg class="ico ico-lg" aria-hidden="true"><use href="#i-whatsapp"/></svg>Quero um site assim</a></div>
+          </div>
+          <aside class="vb-stage" aria-hidden="true">
+            <div class="vb-sticky">
+              <div class="phone vb-phone">
+                <img data-slug="cardapio" class="vb-screen is-on" src="/assets/modelos-celular/cardapio-360.webp" srcset="/assets/modelos-celular/cardapio-360.webp 360w, /assets/modelos-celular/cardapio-540.webp 540w" sizes="280px" width="360" height="779" alt="Tela de celular do modelo Brasa Smash" loading="lazy" decoding="async">
+                <img data-slug="bar" class="vb-screen" src="/assets/modelos-celular/bar-360.webp" srcset="/assets/modelos-celular/bar-360.webp 360w, /assets/modelos-celular/bar-540.webp 540w" sizes="280px" width="360" height="779" alt="Tela de celular do modelo Rebuliço" loading="lazy" decoding="async">
+                <img data-slug="cafe" class="vb-screen" src="/assets/modelos-celular/cafe-360.webp" srcset="/assets/modelos-celular/cafe-360.webp 360w, /assets/modelos-celular/cafe-540.webp 540w" sizes="280px" width="360" height="779" alt="Tela de celular do modelo Caneca Azul" loading="lazy" decoding="async">
+                <img data-slug="fisioterapia" class="vb-screen" src="/assets/modelos-celular/fisioterapia-360.webp" srcset="/assets/modelos-celular/fisioterapia-360.webp 360w, /assets/modelos-celular/fisioterapia-540.webp 540w" sizes="280px" width="360" height="779" alt="Tela de celular do modelo Sálvia Fisio" loading="lazy" decoding="async">
+                <img data-slug="veterinaria" class="vb-screen" src="/assets/modelos-celular/veterinaria-360.webp" srcset="/assets/modelos-celular/veterinaria-360.webp 360w, /assets/modelos-celular/veterinaria-540.webp 540w" sizes="280px" width="360" height="779" alt="Tela de celular do modelo Vigília Vet" loading="lazy" decoding="async">
+                <img data-slug="pousada" class="vb-screen" src="/assets/modelos-celular/pousada-360.webp" srcset="/assets/modelos-celular/pousada-360.webp 360w, /assets/modelos-celular/pousada-540.webp 540w" sizes="280px" width="360" height="779" alt="Tela de celular do modelo Pousada Aroá" loading="lazy" decoding="async">
+                <img data-slug="hotel" class="vb-screen" src="/assets/modelos-celular/hotel-360.webp" srcset="/assets/modelos-celular/hotel-360.webp 360w, /assets/modelos-celular/hotel-540.webp 540w" sizes="280px" width="360" height="779" alt="Tela de celular do modelo Algodão Hotel" loading="lazy" decoding="async">
+                <img data-slug="barbearia" class="vb-screen" src="/assets/modelos-celular/barbearia-360.webp" srcset="/assets/modelos-celular/barbearia-360.webp 360w, /assets/modelos-celular/barbearia-540.webp 540w" sizes="280px" width="360" height="779" alt="Tela de celular do modelo Sisal Barbearia" loading="lazy" decoding="async">
+                <img data-slug="estetica-automotiva" class="vb-screen" src="/assets/modelos-celular/estetica-automotiva-360.webp" srcset="/assets/modelos-celular/estetica-automotiva-360.webp 360w, /assets/modelos-celular/estetica-automotiva-540.webp 540w" sizes="280px" width="360" height="779" alt="Tela de celular do modelo Carnaúba" loading="lazy" decoding="async">
+                <img data-slug="planejados" class="vb-screen" src="/assets/modelos-celular/planejados-360.webp" srcset="/assets/modelos-celular/planejados-360.webp 360w, /assets/modelos-celular/planejados-540.webp 540w" sizes="280px" width="360" height="779" alt="Tela de celular do modelo Braúna" loading="lazy" decoding="async">
+                <img data-slug="loja-de-tenis" class="vb-screen" src="/assets/modelos-celular/loja-de-tenis-360.webp" srcset="/assets/modelos-celular/loja-de-tenis-360.webp 360w, /assets/modelos-celular/loja-de-tenis-540.webp 540w" sizes="280px" width="360" height="779" alt="Tela de celular do modelo Passada" loading="lazy" decoding="async">
+              </div>
+            </div>
+          </aside>
+        </div>
       </div>
-      <div class="preview" aria-hidden="true"><img src="/assets/demos/cardapio-800.webp" alt="" loading="lazy" decoding="async"></div>
     </section>
 
     <section class="gets" aria-labelledby="gets-title">
@@ -914,6 +1014,33 @@
   new IntersectionObserver(([entry]) => { dockState.pastHero = !entry.isIntersecting; syncDock(); }).observe(document.querySelector(".hero-actions"));
   new IntersectionObserver(([entry]) => { dockState.atFinal = entry.isIntersecting; syncDock(); }).observe(document.querySelector(".final"));
 
+  // On a computer the phone beside the list shows the model in the middle of the screen, or the one under the pointer.
+  function phoneFollowsList() {
+    const rows = [...document.querySelectorAll(".vb-row")];
+    const screens = [...document.querySelectorAll(".vb-screen")];
+    const desktop = window.matchMedia("(min-width: 961px)");
+    let current = null;
+    const activate = (row) => {
+      if (row === current) return;
+      if (current) current.classList.remove("is-active");
+      row.classList.add("is-active");
+      current = row;
+      screens.forEach((screen) => screen.classList.toggle("is-on", screen.dataset.slug === row.dataset.slug));
+    };
+    // A thin band across the middle of the viewport: only the row crossing it counts as the one being read.
+    const middle = new IntersectionObserver((entries) => {
+      if (!desktop.matches) return;
+      entries.forEach((entry) => { if (entry.isIntersecting) activate(entry.target); });
+    }, { rootMargin: "-48% 0px -48% 0px" });
+    rows.forEach((row) => {
+      middle.observe(row);
+      row.addEventListener("pointerenter", () => { if (desktop.matches) activate(row); });
+      row.addEventListener("focusin", () => activate(row));
+    });
+    activate(rows[0]);
+  }
+  phoneFollowsList();
+
   // The header turns solid as soon as the page leaves the very top, so it never sits bare over the ticker or a light section.
   const header = document.getElementById("top");
   new IntersectionObserver(([entry]) => header.classList.toggle("is-solid", !entry.isIntersecting)).observe(document.getElementById("top-sentinel"));
@@ -987,7 +1114,7 @@
   }
 
   function enterLists() {
-    ScrollTrigger.batch(".model, .get", {
+    ScrollTrigger.batch(".vb-row, .get", {
       start: "top 90%",
       once: true,
       onEnter: (batch) => gsap.from(batch, { y: 40, autoAlpha: 0, duration: 0.8, ease: "power3.out", stagger: 0.07 }),
@@ -1036,7 +1163,7 @@
     window.addEventListener("pointermove", onMove);
 
     const grow = (event) => {
-      const isModel = event.currentTarget.closest(".model");
+      const isModel = event.currentTarget.closest(".vb-row");
       gsap.to(cursor, { scale: isModel ? 5.5 : 3, duration: 0.3, ease: "power3.out" });
       gsap.to(label, { opacity: isModel ? 1 : 0, duration: 0.2 });
     };
@@ -1045,7 +1172,7 @@
     targets.forEach((el) => { el.addEventListener("pointerenter", grow); el.addEventListener("pointerleave", shrink); });
 
     // Buttons lean toward the pointer a little, then settle back.
-    const magnets = document.querySelectorAll(".btn, .model .go, .top-cta");
+    const magnets = document.querySelectorAll(".btn, .vb-row .go, .top-cta");
     const pull = (event) => {
       const el = event.currentTarget;
       const box = el.getBoundingClientRect();
@@ -1058,33 +1185,6 @@
       window.removeEventListener("pointermove", onMove);
       targets.forEach((el) => { el.removeEventListener("pointerenter", grow); el.removeEventListener("pointerleave", shrink); });
       magnets.forEach((el) => { el.removeEventListener("pointermove", pull); el.removeEventListener("pointerleave", release); gsap.set(el, { x: 0, y: 0 }); });
-    };
-  }
-
-  function modelPreview() {
-    const preview = document.querySelector(".preview");
-    const previewImg = preview.querySelector("img");
-    const moveX = gsap.quickTo(preview, "x", { duration: 0.5, ease: "power3.out" });
-    const moveY = gsap.quickTo(preview, "y", { duration: 0.5, ease: "power3.out" });
-    const rotate = gsap.quickTo(preview, "rotate", { duration: 0.6, ease: "power3.out" });
-    const list = document.querySelector(".model-list");
-    let lastX = 0;
-    const onMove = (event) => { moveX(event.clientX + 28); moveY(event.clientY - 110); rotate(gsap.utils.clamp(-8, 8, (event.clientX - lastX) * 0.6)); lastX = event.clientX; };
-    // Scrolling fires show and hide a few ms apart; without overwrite the longer show finishes last and the preview never goes away.
-    const show = (event) => {
-      previewImg.src = event.currentTarget.dataset.preview;
-      gsap.to(preview, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "power2.out", overwrite: "auto" });
-    };
-    const hide = () => gsap.to(preview, { autoAlpha: 0, scale: 0.85, duration: 0.25, ease: "power2.in", overwrite: "auto" });
-    gsap.set(preview, { scale: 0.85 });
-    list.addEventListener("pointermove", onMove);
-    list.addEventListener("pointerleave", hide);
-    const links = list.querySelectorAll("a");
-    links.forEach((link) => link.addEventListener("pointerenter", show));
-    return () => {
-      list.removeEventListener("pointermove", onMove);
-      list.removeEventListener("pointerleave", hide);
-      links.forEach((link) => link.removeEventListener("pointerenter", show));
     };
   }
 
@@ -1105,11 +1205,7 @@
     });
 
     motion.add("(min-width: 961px) and (prefers-reduced-motion: no-preference)", () => sequenceSteps());
-    motion.add("(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)", () => {
-      const stopCursor = cursorAndMagnets();
-      const stopPreview = modelPreview();
-      return () => { stopCursor(); stopPreview(); };
-    });
+    motion.add("(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)", () => cursorAndMagnets());
 
     document.fonts.ready.then(() => ScrollTrigger.refresh());
   } else {
