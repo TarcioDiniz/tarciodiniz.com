@@ -398,8 +398,11 @@
   .vb-row .name { font-family: var(--display); font-size: clamp(34px, 4.2vw, 64px); text-transform: uppercase; line-height: .9; transition: color .25s ease; }
   .vb-what { display: none; color: var(--on-dark-muted); font-size: 15px; line-height: 1.45; }
   .vb-row .go { width: 52px; height: 52px; border-radius: 50%; border: 1px solid var(--line-dark); display: grid; place-items: center; transition: background-color .25s ease, color .25s ease, border-color .25s ease; }
-  .vb-row.is-active .name { color: var(--accent); }
-  .vb-row.is-active .go { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+  /* The highlight pairs a row with the phone beside the list, so it only exists where that phone does. */
+  @media (min-width: 961px) {
+    .vb-row.is-active .name { color: var(--accent); }
+    .vb-row.is-active .go { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+  }
   .vb-stage { position: sticky; top: 100px; }
   .vb-sticky { display: flex; justify-content: center; }
   .vb-phone { width: min(280px, calc((100svh - 180px) * 360 / 779), 100%); position: relative; }
