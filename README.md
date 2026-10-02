@@ -78,15 +78,25 @@ por `scripts/capturas.sh`, com o servidor local no ar.
 
 ## Testes
 
-Bateria de celular, dobra por dobra, em 6 tamanhos (320 a 430 px e celular deitado): texto na
-borda, palavra sozinha no fim de título, texto pequeno, toques colados, contraste, foto distorcida,
-ação principal fora da primeira tela, botão cortado pela dobra, vazios, fontes e barra fixa. Gera
+Bateria de celular, dobra por dobra, em dois motores: o Chrome, em 6 tamanhos (320 a 430 px e
+celular deitado), e o WebKit, que é o motor do Safari, com 4 perfis de iPhone (SE, 13, 16 Pro Max e
+13 deitado). Confere texto na borda, palavra sozinha no fim de título, texto pequeno, toques
+colados, contraste, foto distorcida, ação principal fora da primeira tela, botão cortado pela
+dobra, vazios, fontes, barra fixa e elemento fixo aparecendo pela metade na borda da tela. Gera
 uma folha de revisão com todas as dobras em `test-results/mobile/`.
+
+Nos tamanhos de 390 e 430 px, o Chrome simula os 34 px que o iPhone com Face ID reserva embaixo
+para a barra de início (`env(safe-area-inset-bottom)`). Sem isso ele usa 0 e o WebKit do Playwright
+também, e foi assim que um botão escondido pela metade chegou ao iPhone. O WebKit do Playwright não
+é o Safari (fica uma versão atrás e não tem os ajustes da Apple): pega o que é do motor, não
+substitui abrir no iPhone.
 
 ```sh
 npm install
-npm run mobile                      # todas as páginas
-npm run mobile -- /demos/pousada/   # uma página
+npx playwright-core install webkit   # uma vez, baixa o WebKit da versão do playwright-core
+npm run mobile                       # todas as páginas, nos dois motores
+npm run mobile -- /demos/pousada/    # uma página
+npm run mobile -- --engine webkit    # um motor só
 ```
 
 Os ícones de cada página saem de `scripts/icon-sprite.py` (Simple Icons e Phosphor, versões fixas).

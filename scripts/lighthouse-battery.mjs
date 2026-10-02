@@ -14,8 +14,8 @@ import * as chromeLauncher from "chrome-launcher";
 
 const CHROME = process.env.CHROME ?? "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
 
-const SITE_PAGES = ["/", "/sobre/", "/como-funciona/", "/site-no-google-e-nas-ias/", "/privacidade/"];
-const DEMO_PAGES = ["/demos/cardapio/", "/demos/bar/", "/demos/cafe/", "/demos/fisioterapia/", "/demos/veterinaria/", "/demos/pousada/", "/demos/hotel/", "/demos/barbearia/", "/demos/planejados/", "/demos/estetica-automotiva/", "/demos/loja-de-tenis/"];
+const SITE_PAGES = ["/", "/modelos/", "/sobre/", "/como-funciona/", "/site-no-google-e-nas-ias/", "/privacidade/"];
+const DEMO_PAGES = ["/demos/loja-de-tenis/", "/demos/moda-feminina/", "/demos/cosmeticos/", "/demos/cardapio/", "/demos/cafe/", "/demos/acai/", "/demos/fisioterapia/", "/demos/psicologa/", "/demos/personal/", "/demos/confeitaria/", "/demos/unhas/", "/demos/brecho/", "/demos/barbearia/", "/demos/salao/", "/demos/estetica-automotiva/", "/demos/planejados/", "/demos/energia-solar/", "/demos/reforma/", "/demos/fotografa/", "/demos/dj/", "/demos/maquiadora/", "/demos/congresso/", "/demos/conferencia/", "/demos/sao-joao/"];
 const A11Y_ONLY_PAGES = ["/404.html"];
 const DEFAULT_PAGES = [...SITE_PAGES, ...DEMO_PAGES, ...A11Y_ONLY_PAGES];
 const A11Y_ONLY = new Set(A11Y_ONLY_PAGES);

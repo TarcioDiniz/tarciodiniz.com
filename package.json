@@ -8,6 +8,6 @@
   },
   "devDependencies": {
     "lighthouse": "13.5.0",
-    "puppeteer-core": "24.22.0"
+    "playwright-core": "1.63.0"
   }
 }

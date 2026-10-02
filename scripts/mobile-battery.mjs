@@ -1,35 +1,66 @@
 // Mobile battery: checks the finish a client notices on a phone, fold by fold, and writes a
-// review sheet with every fold side by side. Usage (site served locally):
-//   npm run mobile                         all pages
+// review sheet with every fold side by side. Runs in Chrome and in WebKit (the Safari engine)
+// with iPhone profiles. Usage (site served locally):
+//   npm run mobile                         all pages, both engines
 //   npm run mobile -- /demos/pousada/      one page
-// Options: --base http://127.0.0.1:8811  --out test-results/mobile
+//   npm run mobile -- --engine webkit      one engine
+// Options: --base http://127.0.0.1:8811  --out test-results/mobile  --engine chrome|webkit
 // Exit code 1 when any check fails, so it can gate a publish.
 
 import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
-import puppeteer from "puppeteer-core";
+import { chromium, devices, webkit } from "playwright-core";
 
 const CHROME = process.env.CHROME ?? "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
-const DEFAULT_PAGES = ["/", "/sobre/", "/como-funciona/", "/site-no-google-e-nas-ias/", "/privacidade/", "/demos/cardapio/", "/demos/bar/", "/demos/cafe/", "/demos/fisioterapia/", "/demos/veterinaria/", "/demos/pousada/", "/demos/hotel/", "/demos/barbearia/", "/demos/planejados/", "/demos/estetica-automotiva/"];
-const PHONES = [
-  { name: "320x568", width: 320, height: 568 },
-  { name: "360x740", width: 360, height: 740 },
-  { name: "375x667", width: 375, height: 667 },
-  { name: "390x844", width: 390, height: 844 },
-  { name: "430x932", width: 430, height: 932 },
-  { name: "deitado-667x375", width: 667, height: 375 },
-];
+const DEFAULT_PAGES = ["/", "/modelos/", "/sobre/", "/como-funciona/", "/site-no-google-e-nas-ias/", "/privacidade/", "/demos/loja-de-tenis/", "/demos/moda-feminina/", "/demos/cosmeticos/", "/demos/cardapio/", "/demos/cafe/", "/demos/acai/", "/demos/fisioterapia/", "/demos/psicologa/", "/demos/personal/", "/demos/confeitaria/", "/demos/unhas/", "/demos/brecho/", "/demos/barbearia/", "/demos/salao/", "/demos/estetica-automotiva/", "/demos/planejados/", "/demos/energia-solar/", "/demos/reforma/", "/demos/fotografa/", "/demos/dj/", "/demos/maquiadora/", "/demos/congresso/", "/demos/conferencia/", "/demos/sao-joao/"];
+// Face ID iPhones keep this much under the page for the home indicator. Chrome reports 0 unless
+// told, and Playwright's WebKit never emulates it, which let a half-hidden button reach the iPhone.
+const HOME_INDICATOR_INSET = 34;
+const chromePhone = (name, width, height, safeBottom = 0) => ({
+  engine: "chrome", name, width, height, safeBottom,
+  context: { viewport: { width, height }, isMobile: true, hasTouch: true, deviceScaleFactor: 2 },
+});
+// WebKit is not Safari (no Apple patches, a version behind), but it catches what only the Safari engine does.
+const webkitPhone = (name, device) => ({
+  engine: "webkit", name, width: devices[device].viewport.width, height: devices[device].viewport.height, safeBottom: 0,
+  context: devices[device],
+});
+const PHONES = {
+  chrome: [
+    chromePhone("320x568", 320, 568),
+    chromePhone("360x740", 360, 740),
+    chromePhone("375x667", 375, 667),
+    chromePhone("390x844", 390, 844, HOME_INDICATOR_INSET),
+    chromePhone("430x932", 430, 932, HOME_INDICATOR_INSET),
+    chromePhone("deitado-667x375", 667, 375),
+  ],
+  webkit: [
+    webkitPhone("iphone-se", "iPhone SE (3rd gen)"),
+    webkitPhone("iphone-13", "iPhone 13"),
+    webkitPhone("iphone-16-pro-max", "iPhone 16 Pro Max"),
+    webkitPhone("iphone-13-deitado", "iPhone 13 landscape"),
+  ],
+};
+const LAUNCHERS = {
+  chrome: () => chromium.launch({ executablePath: CHROME }),
+  webkit: () => webkit.launch(),
+};
 const MAX_FOLDS = 40;
 const SETTLE_MS = 250;
+// Longer than the slowest fixed-bar transition on the site (.4s), so a bar caught mid-slide is not reported.
+const TRANSITION_MS = 700;
 
 function parseArgs(argv) {
-  const options = { base: "http://127.0.0.1:8811", out: "test-results/mobile", pages: [] };
+  const options = { base: "http://127.0.0.1:8811", out: "test-results/mobile", engines: Object.keys(PHONES), pages: [] };
   for (let i = 0; i < argv.length; i++) {
     if (argv[i] === "--base") options.base = argv[++i];
     else if (argv[i] === "--out") options.out = argv[++i];
+    else if (argv[i] === "--engine") options.engines = [argv[++i]];
     else options.pages.push(argv[i]);
   }
   if (!options.pages.length) options.pages = DEFAULT_PAGES;
+  const unknown = options.engines.filter((engine) => !PHONES[engine]);
+  if (unknown.length) throw new Error(`motor desconhecido: ${unknown.join(", ")} (use chrome ou webkit)`);
   return options;
 }
 
@@ -230,6 +261,33 @@ function bottomCoverInPage() {
   return [];
 }
 
+// Runs inside the page: a fixed bar or button showing only in part at the top or bottom edge,
+// like a hidden dock whose slide did not count the home indicator inset.
+function fixedEdgeInPage() {
+  const vh = window.innerHeight;
+  const shows = (cs) => cs.display !== "none" && cs.visibility !== "hidden" && Number(cs.opacity) > 0.05;
+  const insideFixed = (el) => { for (let p = el.parentElement; p && p !== document.body; p = p.parentElement) if (getComputedStyle(p).position === "fixed") return true; return false; };
+  const findings = [];
+  for (const el of document.querySelectorAll("body *")) {
+    const cs = getComputedStyle(el);
+    if (cs.position !== "fixed" || !shows(cs) || insideFixed(el)) continue;
+    const r = el.getBoundingClientRect();
+    if (!r.width || !r.height || r.height > vh / 2) continue;
+    const shown = Math.min(r.bottom, vh) - Math.max(r.top, 0);
+    if (shown < 1 || shown > r.height - 1) continue;
+    const label = (el.getAttribute("aria-label") || el.textContent || el.tagName).trim().replace(/\s+/g, " ").slice(0, 40);
+    findings.push({ check: "fixo-pela-metade", detail: `${Math.round(shown)} de ${Math.round(r.height)} px na borda da tela: "${label}"`, y: null });
+  }
+  return findings;
+}
+
+// A bar still sliding is fine; one that stays cut at the edge after the transition is the bug.
+async function fixedEdgeFindings(page) {
+  if (!(await page.evaluate(fixedEdgeInPage)).length) return [];
+  await wait(TRANSITION_MS);
+  return page.evaluate(fixedEdgeInPage);
+}
+
 async function scrollThrough(page) {
   await page.evaluate(async () => {
     for (let y = 0; y < document.documentElement.scrollHeight; y += Math.round(window.innerHeight * 0.7)) {
@@ -242,13 +300,16 @@ async function scrollThrough(page) {
 }
 
 async function auditPhone(browser, options, pagePath, phone, outDir) {
-  const page = await browser.newPage();
-  await page.setViewport({ width: phone.width, height: phone.height, isMobile: true, hasTouch: true, deviceScaleFactor: 2 });
-  await page.emulateMediaFeatures([{ name: "prefers-reduced-motion", value: "reduce" }]);
+  const context = await browser.newContext({ ...phone.context, reducedMotion: "reduce" });
+  const page = await context.newPage();
+  if (phone.safeBottom) {
+    const cdp = await context.newCDPSession(page);
+    await cdp.send("Emulation.setSafeAreaInsetsOverride", { insets: { bottom: phone.safeBottom, bottomMax: phone.safeBottom } });
+  }
   const errors = [];
   page.on("pageerror", (error) => errors.push(String(error).slice(0, 120)));
   page.on("response", (response) => { if (response.status() >= 400 && !response.url().includes("favicon")) errors.push(`${response.status()} ${response.url().slice(-50)}`); });
-  await page.goto(options.base + pagePath, { waitUntil: "networkidle0", timeout: 60000 });
+  await page.goto(options.base + pagePath, { waitUntil: "networkidle", timeout: 60000 });
   await page.evaluate(() => document.fonts.ready);
   await scrollThrough(page);
 
@@ -258,6 +319,7 @@ async function auditPhone(browser, options, pagePath, phone, outDir) {
   await page.evaluate(() => window.scrollTo(0, document.documentElement.scrollHeight));
   await wait(SETTLE_MS * 2);
   findings.push(...(await page.evaluate(bottomCoverInPage)));
+  const edgeFindings = await fixedEdgeFindings(page);
   for (const error of errors) findings.push({ check: "erro", detail: error, y: null });
 
   const folds = [];
@@ -265,18 +327,20 @@ async function auditPhone(browser, options, pagePath, phone, outDir) {
   for (let i = 0; i < count; i++) {
     await page.evaluate((y) => window.scrollTo(0, y), i * phone.height);
     await wait(SETTLE_MS);
-    const file = `${slug(pagePath)}-${phone.name}-${String(i + 1).padStart(2, "0")}.jpg`;
+    edgeFindings.push(...(await fixedEdgeFindings(page)));
+    const file = `${slug(pagePath)}-${phone.engine}-${phone.name}-${String(i + 1).padStart(2, "0")}.jpg`;
     await page.screenshot({ path: path.join(outDir, file), type: "jpeg", quality: 72 });
     folds.push(file);
   }
-  await page.close();
+  findings.push(...new Map(edgeFindings.map((finding) => [finding.detail, finding])).values());
+  await context.close();
   return { phone, findings, folds, height };
 }
 
 function sheetHtml(pagePath, results) {
   const rows = results.map(({ phone, findings, folds, height }) => `
     <section>
-      <h2>${phone.name} <small>${folds.length} dobras, ${height}px, ${findings.length ? `${findings.length} problema(s)` : "sem problemas"}</small></h2>
+      <h2>${phone.engine} ${phone.name} <small>${phone.width}x${phone.height}, ${folds.length} dobras, ${height}px, ${findings.length ? `${findings.length} problema(s)` : "sem problemas"}</small></h2>
       ${findings.length ? `<ul>${findings.map((f) => `<li><b>${f.check}</b> ${f.detail.replace(/</g, "&lt;")}${f.y !== null ? ` <i>(y ${f.y}, dobra ${Math.floor(f.y / phone.height) + 1})</i>` : ""}</li>`).join("")}</ul>` : ""}
       <div class="folds">${folds.map((file, i) => `<figure><img src="${file}" width="${phone.width}"><figcaption>${i + 1}</figcaption></figure>`).join("")}</div>
     </section>`).join("");
@@ -292,19 +356,19 @@ async function main() {
   const options = parseArgs(process.argv.slice(2));
   const outDir = path.resolve(options.out);
   await mkdir(outDir, { recursive: true });
-  const browser = await puppeteer.launch({ executablePath: CHROME, headless: "new" });
+  const browsers = Object.fromEntries(await Promise.all(options.engines.map(async (engine) => [engine, await LAUNCHERS[engine]()])));
   let failures = 0;
   for (const pagePath of options.pages) {
     const results = [];
-    for (const phone of PHONES) results.push(await auditPhone(browser, options, pagePath, phone, outDir));
+    for (const engine of options.engines) for (const phone of PHONES[engine]) results.push(await auditPhone(browsers[engine], options, pagePath, phone, outDir));
     const sheet = path.join(outDir, `${slug(pagePath)}.html`);
     await writeFile(sheet, sheetHtml(pagePath, results));
     const total = results.reduce((sum, r) => sum + r.findings.length, 0);
     failures += total;
     console.log(`\n${pagePath}  ${total ? `${total} problema(s)` : "ok"}  (folha: ${path.relative(process.cwd(), sheet)})`);
-    for (const { phone, findings } of results) for (const f of findings) console.log(`  ${phone.name.padEnd(16)} ${f.check.padEnd(16)} ${f.detail}`);
+    for (const { phone, findings } of results) for (const f of findings) console.log(`  ${`${phone.engine} ${phone.name}`.padEnd(26)} ${f.check.padEnd(16)} ${f.detail}`);
   }
-  await browser.close();
+  await Promise.all(Object.values(browsers).map((browser) => browser.close()));
   process.exit(failures ? 1 : 0);
 }
 
