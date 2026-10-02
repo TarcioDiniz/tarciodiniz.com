@@ -1,4 +1,4 @@
-// Conferência Raiz: abas da programação por dia, escolha de ingresso, quantidade, oficina, nome,
+// Conferência Lastro: abas da programação por dia, escolha de ingresso, quantidade, oficina, nome,
 // igreja e a mensagem pronta para o WhatsApp com o total. A cada 10 ingressos de inteira, um é
 // cortesia do líder do grupo. A barra fixa do celular aparece depois da capa e some quando a
 // inscrição está na tela. Os preços vêm dos atributos data-* dos ingressos, que já estão no HTML.

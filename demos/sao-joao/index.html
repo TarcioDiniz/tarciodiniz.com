@@ -15,9 +15,9 @@
   com o estilo cor forte. Camarote de São João fictício, em Campina Grande (PB). A ação principal é
   garantir o ingresso de uma noite: escolher a noite, o tipo (Pista ou Mesa) e a quantidade, pôr o nome
   e mandar tudo pronto pelo WhatsApp com o total. Sem contagem regressiva.
-  Fotos: Unsplash. Charlie Ellis (fogueira da capa), Jack (pista), Guilherme Bassani (bandeirinhas),
+  Fotos: Unsplash. Charlie Ellis (fogueira da capa), Renata Moraes (pista), Guilherme Bassani (bandeirinhas),
   Jack Cohen (fogueira em roda), Prasad SN (milho assado), Collins Lesulie (sanfoneiro de chapéu),
-  John Sherbourne (sanfona nas costas), Aaryan Kohli (sanfoneiro encostado), Karla Vidal (banda de pífano).
+  Karla Vidal (trio de triângulo e zabumba, banda de pífano), Aaryan Kohli (sanfoneiro encostado).
 -->
 <style>
 /* Núcleo dos modelos do tarciodiniz.com: o que toda variação usa (tokens, fonte, títulos, botões,
@@ -597,15 +597,16 @@ a, button { -webkit-tap-highlight-color: transparent; }
 .e-mapa-quadro .mapa-ref { padding: 3px 8px; border: 1px solid var(--line); border-radius: 6px; background: var(--card-2); color: var(--ink); font-size: 13px; font-weight: 600; box-shadow: none; }
 .e-mapa-quadro .mapa-rotulo::before, .e-mapa-quadro .mapa-ref::before { display: none; }
 
-/* Títulos pequenos em caixa alta condensada, sem o aperto de letra que cola as palavras */
-.e-leva-titulo, .e-lote h3, .e-resumo h3 { text-transform: uppercase; letter-spacing: 0; line-height: 1; }
-.e-leva-titulo { font-size: 1.7rem; }
-.e-lote h3, .e-resumo h3 { font-size: 1.6rem; }
+/* Títulos pequenos em caixa normal, como os da base (decisão dele de 01/10/2026) */
+.e-leva-titulo, .e-lote h3, .e-resumo h3 { letter-spacing: -0.02em; line-height: 1.1; }
+.e-leva-titulo { font-size: 1.5rem; }
+.e-lote h3, .e-resumo h3 { font-size: 1.4rem; }
 .e-sub { font-stretch: 100%; letter-spacing: 0; font-size: 1.05rem; }
 .e-pessoa h3, .e-leva-titulo, .e-lote h3 { text-wrap: balance; }
 
 /* Estilo "cor forte": uma cor saturada de marca usada com coragem, em blocos e faixas que alternam
-   com o fundo claro; preto para o texto e o rodapé; títulos condensados em caixa alta.
+   com o fundo claro; preto para o texto e o rodapé; títulos pretos e pesados, em caixa normal
+   (decisão dele de 01/10/2026: nada de maiúscula estreita, que lembrava os modelos antigos).
    Para açaí, loja jovem, esporte, infantil. Entra depois do tema do esqueleto, então ganha dele.
 
    Uma cor só por página. Para trocar a cor, mude só estes três tokens (o texto sobre a cor e a
@@ -615,7 +616,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
      verde    #12B76A  texto #121212 (7,0:1)   como texto #0B7A47 (5,5:1 no branco)
      violeta  #6D28D9  texto #FFFFFF (7,1:1)   como texto #6D28D9 (7,1:1 no branco)
      azul     #2A4BFF  texto #FFFFFF (5,9:1)   como texto #2A4BFF (5,9:1 no branco)
-   A fonte é a Archivo da base, na largura condensada (eixo de largura da própria fonte). */
+   A fonte é a Archivo da base, na largura normal e peso 800 nos títulos. */
 :root {
   --accent: #FF5A1F;
   --accent-ink: #121212;
@@ -630,24 +631,24 @@ a, button { -webkit-tap-highlight-color: transparent; }
   --line: #D8D5CC;
   --font: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
   --pix: currentColor;
-  --wide: 62%;
-  --estreita: 62%;
+  --wide: 100%;
+  --estreita: 100%;
   --shadow-product: drop-shadow(0 20px 14px rgba(18, 18, 18, 0.22));
 }
 
 ::selection { background: var(--accent); color: var(--accent-ink); }
 :focus-visible { outline-color: var(--accent-text); }
 
-/* Títulos: condensados, pretos, em caixa alta */
-.h1, .h2, .h3, .tile-nome, .c-h1, .c-h2, .l-h2 { font-weight: 900; text-transform: uppercase; letter-spacing: 0; line-height: .94; }
-.h1 { font-size: clamp(3rem, 13vw, 7.25rem); line-height: .95; }
-.h2 { font-size: clamp(2.4rem, 8vw, 4.75rem); }
-.h3 { font-size: clamp(1.6rem, 3vw, 2.1rem); }
-.tile-nome { font-size: clamp(1.7rem, 3vw, 2.4rem); }
-.c-h1 { font-size: clamp(2.9rem, 11vw, 4.8rem); line-height: .9; }
-.c-h2 { font-size: clamp(2.3rem, 7vw, 3.6rem); }
-.l-h2 { font-size: 1.7rem; }
-.marca { font-stretch: 75%; font-weight: 900; text-transform: uppercase; font-size: 24px; letter-spacing: 0; }
+/* Títulos: pretos e pesados, em caixa normal */
+.h1, .h2, .h3, .tile-nome, .c-h1, .c-h2, .l-h2 { font-weight: 800; text-transform: none; letter-spacing: -0.025em; line-height: 1.02; }
+.h1 { font-size: clamp(2.4rem, 9.5vw, 5.4rem); line-height: 1; }
+.h2 { font-size: clamp(2rem, 6.4vw, 3.6rem); }
+.h3 { font-size: clamp(1.35rem, 2.4vw, 1.75rem); }
+.tile-nome { font-size: clamp(1.5rem, 2.6vw, 2rem); }
+.c-h1 { font-size: clamp(2.3rem, 8.5vw, 3.6rem); line-height: 1; }
+.c-h2 { font-size: clamp(1.9rem, 5.6vw, 2.8rem); }
+.l-h2 { font-size: 1.5rem; }
+.marca { font-stretch: 100%; font-weight: 800; text-transform: none; font-size: 22px; letter-spacing: -0.02em; }
 .lead { font-size: clamp(1.05rem, 1.5vw, 1.2rem); }
 
 /* Faixas e blocos de cor: o texto sobre a cor usa --accent-ink, nunca --ink */
@@ -686,7 +687,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
 .capa-quadro::after { display: none; }
 .capa .capa-quadro > picture, .capa .capa-quadro > .capa-foto { position: relative; inset: auto; flex: 1 1 0; width: 100%; height: auto; min-height: 190px; }
 .capa-texto { color: var(--accent-ink); padding: 22px 20px 24px; }
-.capa-texto .h1 { max-width: 12ch; font-size: clamp(2.8rem, 13vw, 3.8rem); font-stretch: var(--wide); }
+.capa-texto .h1 { max-width: 14ch; font-size: clamp(2.3rem, 9.5vw, 3.2rem); font-stretch: var(--wide); }
 .capa-texto p { margin: 12px 0 18px; font-weight: 550; }
 .capa-botoes .btn-light { background: var(--ink); color: var(--surface); }
 @media (min-width: 900px) {
@@ -701,7 +702,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
 }
 
 /* Loja: números e ofertas dos destaques em condensado, e a chamada final em bloco de cor */
-.destaque .destaque-numero { font-stretch: var(--wide); text-transform: uppercase; font-size: clamp(3.4rem, 8vw, 5.2rem); line-height: .88; letter-spacing: 0; }
+.destaque .destaque-numero { font-stretch: var(--wide); text-transform: none; font-size: clamp(3.4rem, 8vw, 5.2rem); line-height: .88; letter-spacing: 0; }
 .destaque-numero span { font-stretch: 100%; text-transform: none; font-size: .3em; font-weight: 700; line-height: 1.25; letter-spacing: 0; }
 .chamada { min-height: 0; flex-direction: column; align-items: stretch; justify-content: flex-start; text-align: left; }
 .chamada::after { display: none; }
@@ -723,7 +724,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
 @media (orientation: landscape) and (max-height: 500px) { .v-capa .h1 { font-size: 2.4rem; max-width: 24ch; } }
 .v-rostos span { border-color: var(--accent); }
 .v-numeros, .v-numero:nth-child(odd), .v-numero:nth-child(-n+2), .v-numero { border-color: var(--ink); }
-.v-numero b { font-stretch: var(--wide); font-weight: 900; text-transform: uppercase; font-size: clamp(2.4rem, 8.5vw, 4.8rem); letter-spacing: 0; line-height: .9; }
+.v-numero b { font-stretch: var(--wide); font-weight: 800; text-transform: none; font-size: clamp(2.4rem, 8.5vw, 4.8rem); letter-spacing: 0; line-height: .9; }
 .v-credenciais .ico, .v-inclui .ico, .v-garantia .ico { color: var(--accent-text); }
 .v-etapa::before { background: var(--ink); color: var(--surface); }
 .v-etapa::after { background: color-mix(in srgb, var(--accent-ink) 45%, transparent); }
@@ -755,7 +756,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
 .l-capa { border-radius: var(--r-xl); padding: 10px 10px 22px; }
 .l-banner { border-radius: var(--r-lg); }
 .l-avatar { border-color: var(--accent); }
-.l-capa h1 { font-stretch: var(--wide); font-weight: 900; text-transform: uppercase; letter-spacing: 0; line-height: .92; font-size: clamp(2.6rem, 11vw, 3.4rem); padding-inline: 10px; }
+.l-capa h1 { font-stretch: var(--wide); font-weight: 800; text-transform: none; letter-spacing: -0.025em; line-height: 1; font-size: clamp(2.1rem, 8.5vw, 2.8rem); padding-inline: 10px; }
 .l-bio, .l-onde-linha { color: inherit; }
 .l-onde-linha { font-weight: 650; }
 .l-link-ico { background: var(--accent); color: var(--accent-ink); }
@@ -915,7 +916,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
       </div>
     </div>
     <div class="e-dentro">
-      <figure><div class="e-dentro-foto"><img src="img/cenas/pista.webp" width="1400" height="963" alt="Gente dançando junta numa pista, com o bar ao fundo" loading="lazy"></div><figcaption><b>Pista</b>Fica de frente para o palco, com o bar ao lado.</figcaption></figure>
+      <figure><div class="e-dentro-foto"><img src="img/cenas/pista.webp" width="1400" height="934" alt="Dançarinos de quadrilha de chapéu de couro e saia florida, de mãos dadas numa rua cheia de gente" loading="lazy"></div><figcaption><b>Pista</b>Fica de frente para o palco, com o bar ao lado.</figcaption></figure>
       <figure><div class="e-dentro-foto"><img src="img/cenas/fogueira-roda.webp" width="1400" height="933" alt="Fogueira acesa num terreno gramado à noite, com gente sentada em cadeiras em volta e tochas acesas" loading="lazy" style="object-position: 52% 60%"></div><figcaption><b>Fogueira</b>Acesa na noite de 23, com quentão passando pelas mesas.</figcaption></figure>
       <figure><div class="e-dentro-foto"><img src="img/cenas/bandeirinhas.webp" width="1400" height="934" alt="Cordões de bandeirinhas coloridas de papel, com árvores e céu azul ao fundo" loading="lazy" style="object-position: 35% 50%"></div><figcaption><b>Bandeirinhas</b>De papel de seda, de ponta a ponta do terreno.</figcaption></figure>
       <figure><div class="e-dentro-foto"><img src="img/cenas/milho-assado.webp" width="1400" height="934" alt="Espigas de milho assadas na brasa, lado a lado" loading="lazy"></div><figcaption><b>Milho</b>Assado na hora, perto da entrada do bar.</figcaption></figure>
@@ -996,8 +997,8 @@ a, button { -webkit-tap-highlight-color: transparent; }
       </div>
     </div>
     <div class="e-pessoas">
-      <article class="e-pessoa"><div class="e-pessoa-foto"><img src="img/pessoas/trio-facheiro.webp" width="960" height="1200" alt="Sanfoneiro de camisa branca, visto de costas, andando numa rua com a sanfona nas costas" loading="lazy"></div><h3>Trio Facheiro</h3><p>Sanfona, zabumba e triângulo, de Queimadas. Forró de raiz, sem teclado.</p><span class="e-quando">Sex 18, qua 23 e qui 24</span></article>
-      <article class="e-pessoa"><div class="e-pessoa-foto"><img src="img/pessoas/ze-palmeira.webp" width="960" height="1200" alt="Sanfoneiro de chapéu de palha cantando com a sanfona no peito" loading="lazy"></div><h3>Zé Palmeira</h3><p>Sanfoneiro e cantor, de Soledade. Repertório de Luiz Gonzaga e Jackson do Pandeiro.</p><span class="e-quando">Sáb 19, qua 23 e qui 24</span></article>
+      <article class="e-pessoa"><div class="e-pessoa-foto"><img src="img/pessoas/trio-facheiro.webp" width="800" height="1000" alt="Duas mulheres de vestido vermelho estampado e chapéu de couro, uma com o triângulo e outra com a zabumba" loading="lazy"></div><h3>Trio Facheiro</h3><p>Sanfona, zabumba e triângulo, de Queimadas. Forró de raiz, sem teclado.</p><span class="e-quando">Sex 18, qua 23 e qui 24</span></article>
+      <article class="e-pessoa"><div class="e-pessoa-foto"><img src="img/pessoas/ze-palmeira.webp" width="800" height="1000" alt="Sanfoneiro de chapéu de palha cantando com a sanfona no peito" loading="lazy"></div><h3>Zé Palmeira</h3><p>Sanfoneiro e cantor, de Soledade. Repertório de Luiz Gonzaga e Jackson do Pandeiro.</p><span class="e-quando">Sáb 19, qua 23 e qui 24</span></article>
       <article class="e-pessoa"><div class="e-pessoa-foto"><img src="img/pessoas/pifano-serra-redonda.webp" width="960" height="1200" alt="Músicos de bandana e chapéu tocando sanfona, zabumba e pífano numa rua de noite" loading="lazy"></div><h3>Banda de Pífano Serra Redonda</h3><p>Pífano, zabumba e caixa, de Serra Redonda. Abre a noite e anda pelo camarote.</p><span class="e-quando">Sex 18, qua 23 e qui 24</span></article>
       <article class="e-pessoa"><div class="e-pessoa-foto"><img src="img/pessoas/mestre-antonio.webp" width="800" height="1000" alt="Sanfoneiro de barba grisalha encostado numa parede, com a sanfona no colo" loading="lazy"></div><h3>Mestre Antônio do Fole</h3><p>Mais de 50 anos de sanfona. Toca no meio da pista, na roda de forró.</p><span class="e-quando">Toda noite, na roda de forró</span></article>
     </div>

@@ -12,8 +12,8 @@
 <!--
   Tigela Açaí: modelo de cardápio simples dos modelos do tarciodiniz.com (carreira/modelos/tigela),
   esqueleto cardapio com o estilo cor forte. Negócio fictício, preços e avaliações de exemplo.
-  Fotos do Unsplash (licença livre): Connor Gan (capa), Abdelrahman Sarayreh, Eiliv Aceron, Vicky Ng,
-  Jakob Owens, Alexis Chloe, Alexandra Tran, Dakota Corbin, Josephina Kolpachnikof, Fredrik Öhlander,
+  Fotos do Unsplash (licença livre): Julia Topp (capa), Abdelrahman Sarayreh, Eiliv Aceron, Vicky Ng,
+  Marianna Smiley, Alexis Chloe, Alexandra Tran, Dakota Corbin, Josephina Kolpachnikof, Fredrik Öhlander,
   Sebastian Coman Photography, carlos lugo, Miguel Javier, Bakd&amp;Raw by Karolin Baitinger,
   Sara Cervera e Fanny Gustafsson. Crédito de cada foto em fonte/fotos.tsv.
 -->
@@ -499,7 +499,8 @@ body:has(#barra[data-vazio]) { padding-bottom: calc(24px + env(safe-area-inset-b
 }
 
 /* Estilo "cor forte": uma cor saturada de marca usada com coragem, em blocos e faixas que alternam
-   com o fundo claro; preto para o texto e o rodapé; títulos condensados em caixa alta.
+   com o fundo claro; preto para o texto e o rodapé; títulos pretos e pesados, em caixa normal
+   (decisão dele de 01/10/2026: nada de maiúscula estreita, que lembrava os modelos antigos).
    Para açaí, loja jovem, esporte, infantil. Entra depois do tema do esqueleto, então ganha dele.
 
    Uma cor só por página. Para trocar a cor, mude só estes três tokens (o texto sobre a cor e a
@@ -509,7 +510,7 @@ body:has(#barra[data-vazio]) { padding-bottom: calc(24px + env(safe-area-inset-b
      verde    #12B76A  texto #121212 (7,0:1)   como texto #0B7A47 (5,5:1 no branco)
      violeta  #6D28D9  texto #FFFFFF (7,1:1)   como texto #6D28D9 (7,1:1 no branco)
      azul     #2A4BFF  texto #FFFFFF (5,9:1)   como texto #2A4BFF (5,9:1 no branco)
-   A fonte é a Archivo da base, na largura condensada (eixo de largura da própria fonte). */
+   A fonte é a Archivo da base, na largura normal e peso 800 nos títulos. */
 :root {
   --accent: #FF5A1F;
   --accent-ink: #121212;
@@ -524,24 +525,24 @@ body:has(#barra[data-vazio]) { padding-bottom: calc(24px + env(safe-area-inset-b
   --line: #D8D5CC;
   --font: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
   --pix: currentColor;
-  --wide: 62%;
-  --estreita: 62%;
+  --wide: 100%;
+  --estreita: 100%;
   --shadow-product: drop-shadow(0 20px 14px rgba(18, 18, 18, 0.22));
 }
 
 ::selection { background: var(--accent); color: var(--accent-ink); }
 :focus-visible { outline-color: var(--accent-text); }
 
-/* Títulos: condensados, pretos, em caixa alta */
-.h1, .h2, .h3, .tile-nome, .c-h1, .c-h2, .l-h2 { font-weight: 900; text-transform: uppercase; letter-spacing: 0; line-height: .94; }
-.h1 { font-size: clamp(3rem, 13vw, 7.25rem); line-height: .95; }
-.h2 { font-size: clamp(2.4rem, 8vw, 4.75rem); }
-.h3 { font-size: clamp(1.6rem, 3vw, 2.1rem); }
-.tile-nome { font-size: clamp(1.7rem, 3vw, 2.4rem); }
-.c-h1 { font-size: clamp(2.9rem, 11vw, 4.8rem); line-height: .9; }
-.c-h2 { font-size: clamp(2.3rem, 7vw, 3.6rem); }
-.l-h2 { font-size: 1.7rem; }
-.marca { font-stretch: 75%; font-weight: 900; text-transform: uppercase; font-size: 24px; letter-spacing: 0; }
+/* Títulos: pretos e pesados, em caixa normal */
+.h1, .h2, .h3, .tile-nome, .c-h1, .c-h2, .l-h2 { font-weight: 800; text-transform: none; letter-spacing: -0.025em; line-height: 1.02; }
+.h1 { font-size: clamp(2.4rem, 9.5vw, 5.4rem); line-height: 1; }
+.h2 { font-size: clamp(2rem, 6.4vw, 3.6rem); }
+.h3 { font-size: clamp(1.35rem, 2.4vw, 1.75rem); }
+.tile-nome { font-size: clamp(1.5rem, 2.6vw, 2rem); }
+.c-h1 { font-size: clamp(2.3rem, 8.5vw, 3.6rem); line-height: 1; }
+.c-h2 { font-size: clamp(1.9rem, 5.6vw, 2.8rem); }
+.l-h2 { font-size: 1.5rem; }
+.marca { font-stretch: 100%; font-weight: 800; text-transform: none; font-size: 22px; letter-spacing: -0.02em; }
 .lead { font-size: clamp(1.05rem, 1.5vw, 1.2rem); }
 
 /* Faixas e blocos de cor: o texto sobre a cor usa --accent-ink, nunca --ink */
@@ -580,7 +581,7 @@ body:has(#barra[data-vazio]) { padding-bottom: calc(24px + env(safe-area-inset-b
 .capa-quadro::after { display: none; }
 .capa .capa-quadro > picture, .capa .capa-quadro > .capa-foto { position: relative; inset: auto; flex: 1 1 0; width: 100%; height: auto; min-height: 190px; }
 .capa-texto { color: var(--accent-ink); padding: 22px 20px 24px; }
-.capa-texto .h1 { max-width: 12ch; font-size: clamp(2.8rem, 13vw, 3.8rem); font-stretch: var(--wide); }
+.capa-texto .h1 { max-width: 14ch; font-size: clamp(2.3rem, 9.5vw, 3.2rem); font-stretch: var(--wide); }
 .capa-texto p { margin: 12px 0 18px; font-weight: 550; }
 .capa-botoes .btn-light { background: var(--ink); color: var(--surface); }
 @media (min-width: 900px) {
@@ -595,7 +596,7 @@ body:has(#barra[data-vazio]) { padding-bottom: calc(24px + env(safe-area-inset-b
 }
 
 /* Loja: números e ofertas dos destaques em condensado, e a chamada final em bloco de cor */
-.destaque .destaque-numero { font-stretch: var(--wide); text-transform: uppercase; font-size: clamp(3.4rem, 8vw, 5.2rem); line-height: .88; letter-spacing: 0; }
+.destaque .destaque-numero { font-stretch: var(--wide); text-transform: none; font-size: clamp(3.4rem, 8vw, 5.2rem); line-height: .88; letter-spacing: 0; }
 .destaque-numero span { font-stretch: 100%; text-transform: none; font-size: .3em; font-weight: 700; line-height: 1.25; letter-spacing: 0; }
 .chamada { min-height: 0; flex-direction: column; align-items: stretch; justify-content: flex-start; text-align: left; }
 .chamada::after { display: none; }
@@ -617,7 +618,7 @@ body:has(#barra[data-vazio]) { padding-bottom: calc(24px + env(safe-area-inset-b
 @media (orientation: landscape) and (max-height: 500px) { .v-capa .h1 { font-size: 2.4rem; max-width: 24ch; } }
 .v-rostos span { border-color: var(--accent); }
 .v-numeros, .v-numero:nth-child(odd), .v-numero:nth-child(-n+2), .v-numero { border-color: var(--ink); }
-.v-numero b { font-stretch: var(--wide); font-weight: 900; text-transform: uppercase; font-size: clamp(2.4rem, 8.5vw, 4.8rem); letter-spacing: 0; line-height: .9; }
+.v-numero b { font-stretch: var(--wide); font-weight: 800; text-transform: none; font-size: clamp(2.4rem, 8.5vw, 4.8rem); letter-spacing: 0; line-height: .9; }
 .v-credenciais .ico, .v-inclui .ico, .v-garantia .ico { color: var(--accent-text); }
 .v-etapa::before { background: var(--ink); color: var(--surface); }
 .v-etapa::after { background: color-mix(in srgb, var(--accent-ink) 45%, transparent); }
@@ -649,7 +650,7 @@ body:has(#barra[data-vazio]) { padding-bottom: calc(24px + env(safe-area-inset-b
 .l-capa { border-radius: var(--r-xl); padding: 10px 10px 22px; }
 .l-banner { border-radius: var(--r-lg); }
 .l-avatar { border-color: var(--accent); }
-.l-capa h1 { font-stretch: var(--wide); font-weight: 900; text-transform: uppercase; letter-spacing: 0; line-height: .92; font-size: clamp(2.6rem, 11vw, 3.4rem); padding-inline: 10px; }
+.l-capa h1 { font-stretch: var(--wide); font-weight: 800; text-transform: none; letter-spacing: -0.025em; line-height: 1; font-size: clamp(2.1rem, 8.5vw, 2.8rem); padding-inline: 10px; }
 .l-bio, .l-onde-linha { color: inherit; }
 .l-onde-linha { font-weight: 650; }
 .l-link-ico { background: var(--accent); color: var(--accent-ink); }
@@ -712,7 +713,7 @@ body:has(#barra[data-vazio]) { padding-bottom: calc(24px + env(safe-area-inset-b
 <main id="inicio">
   <!-- 1. Capa compacta -->
   <section class="c-capa" aria-labelledby="loja-nome">
-    <div class="wrap" style="padding-inline: 0"><div class="c-banner"><img src="img/capa/capa.webp" srcset="img/capa/capa-900.webp 900w, img/capa/capa.webp 1600w" sizes="(min-width: 900px) 1200px, 100vw" width="1600" height="1067" alt="Tigela de açaí roxo com morango, mirtilo, flores comestíveis e rodela de laranja seca" fetchpriority="high"></div></div>
+    <div class="wrap" style="padding-inline: 0"><div class="c-banner"><img src="img/capa/capa.webp" srcset="img/capa/capa-900.webp 900w, img/capa/capa.webp 1600w" sizes="(min-width: 900px) 1200px, 100vw" width="1600" height="1143" alt="Tigela de açaí com granola, coco ralado, amora, mirtilo e framboesa sobre uma tábua de madeira" fetchpriority="high"></div></div>
     <div class="c-loja wrap">
       <span class="c-logo" aria-hidden="true">T</span>
       <div class="c-loja-cartao">
@@ -783,7 +784,7 @@ body:has(#barra[data-vazio]) { padding-bottom: calc(24px + env(safe-area-inset-b
     <div class="c-lista">
       <article class="c-item" data-id="tigela-300" data-nome="Tigela 300 ml" data-preco="16.00">
           <div class="c-item-texto"><h3>Tigela 300 ml</h3><p>Pequena, boa para um lanche. Dois acompanhamentos inclusos.</p><b class="c-preco">R$ 16,00</b></div>
-          <div class="c-item-foto"><img src="img/itens/tigela-300.webp" width="900" height="600" alt="Copo de açaí com banana, coco ralado e calda sobre folha de bananeira" loading="lazy"><button class="c-por" type="button" data-por="tigela-300" aria-label="Pôr Tigela 300 ml no pedido"><svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></button></div>
+          <div class="c-item-foto"><img src="img/itens/tigela-300.webp" width="900" height="1350" alt="Tigela vermelha de açaí com granola, morango fatiado, framboesa e mirtilo" loading="lazy"><button class="c-por" type="button" data-por="tigela-300" aria-label="Pôr Tigela 300 ml no pedido"><svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></button></div>
         </article>
         <article class="c-item" data-id="tigela-500" data-nome="Tigela 500 ml" data-preco="22.00">
           <div class="c-item-texto"><span class="c-tag">Mais pedida</span><h3>Tigela 500 ml</h3><p>A que mais sai. Três acompanhamentos inclusos.</p><b class="c-preco">R$ 22,00</b></div>

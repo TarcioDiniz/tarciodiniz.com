@@ -22,7 +22,7 @@ vestido com um estilo visual; o código de origem fica fora deste repositório.
 | [Bromélia Salão](https://tarciodiniz.com/demos/salao/) | Salão de beleza | Agenda | Corte, escova, coloração e unhas com horário marcado. |
 | [Carnaúba](https://tarciodiniz.com/demos/estetica-automotiva/) | Estética automotiva | Agenda | Lavagem detalhada, polimento e higienização com hora marcada e leva e traz. |
 | [Braúna](https://tarciodiniz.com/demos/planejados/) | Marcenaria de planejados | Orçamento | Móveis planejados com orçamento por ambiente e visita de medição. |
-| [Lume Solar](https://tarciodiniz.com/demos/energia-solar/) | Energia solar | Orçamento | Energia solar para casa e comércio, com estimativa de economia e visita técnica. |
+| [Catingueira Solar](https://tarciodiniz.com/demos/energia-solar/) | Energia solar | Orçamento | Energia solar para casa e comércio, com estimativa de economia e visita técnica. |
 | [Prumo Reformas](https://tarciodiniz.com/demos/reforma/) | Reforma e pintura | Orçamento | Reforma, pintura e acabamento com orçamento em 24 horas e prazo por escrito. |
 | [Sálvia Fisio](https://tarciodiniz.com/demos/fisioterapia/) | Fisioterapia | Página de vendas | Tratamento de dor com plano por escrito, do primeiro dia até a alta. |
 | [Renata Lins](https://tarciodiniz.com/demos/psicologa/) | Psicóloga | Página de vendas | Psicoterapia para adultos, presencial e online, com primeira conversa sem custo. |
@@ -35,7 +35,7 @@ vestido com um estilo visual; o código de origem fica fora deste repositório.
 | [DJ Ravi](https://tarciodiniz.com/demos/dj/) | DJ | Portfólio | Som e luz para casamento, formatura e festa, com pacotes e consulta de data. |
 | [Camarote Pé de Serra](https://tarciodiniz.com/demos/sao-joao/) | Camarote de São João | Evento | Camarote de São João com open bar, forró pé de serra e ingresso por noite. |
 | [Fórum Borborema](https://tarciodiniz.com/demos/congresso/) | Congresso de negócios | Evento | Dois dias de palestras e oficinas para pequenos empresários, com lotes de ingresso. |
-| [Conferência Raiz](https://tarciodiniz.com/demos/conferencia/) | Conferência de jovens | Evento | Conferência de jovens com louvor, palavra e oficinas, com inscrição por lote. |
+| [Conferência Lastro](https://tarciodiniz.com/demos/conferencia/) | Conferência de jovens | Evento | Conferência de jovens com louvor, palavra e oficinas, com inscrição por lote. |
 
 Quatro modelos mais antigos saíram da vitrine e continuam no ar pelo endereço: Rebuliço
 (`demos/bar/`), Vigília Veterinária (`demos/veterinaria/`), Pousada Aroá (`demos/pousada/`) e Algodão

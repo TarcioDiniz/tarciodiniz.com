@@ -12,8 +12,8 @@
 <!--
   Pulso Estúdio, modelo de demonstração do tarciodiniz.com. Esqueleto de página de vendas, estilo cor forte,
   amarelo como cor da marca. Negócio fictício de Campina Grande (PB); nenhuma pessoa, depoimento ou endereço é real.
-  Fotos, todas do Unsplash: Jonathan Borba (abdominal no sol e professora), Vitaly Gariev (salto na caixa e corda
-  na dupla), Ivan Pergasi (kettlebell de ferro), Tyler Raye (barra no ombro). Créditos completos em fonte/fotos.tsv.
+  Fotos, todas do Unsplash: Jonathan Borba (abdominal no sol, professora e agachamento no rack), Scott Webb (corda
+  naval), Ivan Pergasi (kettlebell de ferro), Tyler Raye (barra no ombro). Créditos completos em fonte/fotos.tsv.
 -->
 <style>
 /* Núcleo dos modelos do tarciodiniz.com: o que toda variação usa (tokens, fonte, títulos, botões,
@@ -521,7 +521,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
 .t-turma { display: grid; grid-template-columns: 86px 1fr auto; align-items: center; gap: 12px; width: 100%; min-height: 72px; padding: 10px 16px; text-align: left; border: 2px solid var(--line); border-radius: var(--r-md); background: var(--surface); color: var(--ink); cursor: pointer; transition: background-color .2s, border-color .2s; }
 .t-turma:hover { border-color: var(--ink); }
 .t-turma[aria-checked="true"] { background: var(--accent); border-color: var(--ink); color: var(--accent-ink); }
-.t-hora { font-stretch: var(--wide); font-weight: 900; text-transform: uppercase; font-size: 2.1rem; line-height: .9; letter-spacing: 0; }
+.t-hora { font-stretch: var(--wide); font-weight: 900; font-size: 2.1rem; line-height: .9; letter-spacing: 0; }
 .t-dias { font-weight: 700; font-size: 16px; line-height: 1.25; }
 .t-dias small { display: block; margin-top: 2px; font-weight: 500; font-size: 13.5px; color: var(--ink-2); }
 .t-turma[aria-checked="true"] .t-dias small { color: inherit; }
@@ -563,11 +563,10 @@ a, button { -webkit-tap-highlight-color: transparent; }
 .v-flutua b, .v-flutua small { display: block; text-wrap: balance; }
 /* A regra da inicial clara vinha depois da do depoimento escuro e deixava a letra quase invisível. */
 .v-depo.v-depo-grande .inicial { background: var(--dark-2); color: var(--on-dark); }
-/* Hora se escreve 18h30, com h minúsculo, mesmo no título em caixa alta do estilo. */
-.t-hora { text-transform: none; }
 
 /* Estilo "cor forte": uma cor saturada de marca usada com coragem, em blocos e faixas que alternam
-   com o fundo claro; preto para o texto e o rodapé; títulos condensados em caixa alta.
+   com o fundo claro; preto para o texto e o rodapé; títulos pretos e pesados, em caixa normal
+   (decisão dele de 01/10/2026: nada de maiúscula estreita, que lembrava os modelos antigos).
    Para açaí, loja jovem, esporte, infantil. Entra depois do tema do esqueleto, então ganha dele.
 
    Uma cor só por página. Para trocar a cor, mude só estes três tokens (o texto sobre a cor e a
@@ -577,7 +576,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
      verde    #12B76A  texto #121212 (7,0:1)   como texto #0B7A47 (5,5:1 no branco)
      violeta  #6D28D9  texto #FFFFFF (7,1:1)   como texto #6D28D9 (7,1:1 no branco)
      azul     #2A4BFF  texto #FFFFFF (5,9:1)   como texto #2A4BFF (5,9:1 no branco)
-   A fonte é a Archivo da base, na largura condensada (eixo de largura da própria fonte). */
+   A fonte é a Archivo da base, na largura normal e peso 800 nos títulos. */
 :root {
   --accent: #FF5A1F;
   --accent-ink: #121212;
@@ -592,24 +591,24 @@ a, button { -webkit-tap-highlight-color: transparent; }
   --line: #D8D5CC;
   --font: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
   --pix: currentColor;
-  --wide: 62%;
-  --estreita: 62%;
+  --wide: 100%;
+  --estreita: 100%;
   --shadow-product: drop-shadow(0 20px 14px rgba(18, 18, 18, 0.22));
 }
 
 ::selection { background: var(--accent); color: var(--accent-ink); }
 :focus-visible { outline-color: var(--accent-text); }
 
-/* Títulos: condensados, pretos, em caixa alta */
-.h1, .h2, .h3, .tile-nome, .c-h1, .c-h2, .l-h2 { font-weight: 900; text-transform: uppercase; letter-spacing: 0; line-height: .94; }
-.h1 { font-size: clamp(3rem, 13vw, 7.25rem); line-height: .95; }
-.h2 { font-size: clamp(2.4rem, 8vw, 4.75rem); }
-.h3 { font-size: clamp(1.6rem, 3vw, 2.1rem); }
-.tile-nome { font-size: clamp(1.7rem, 3vw, 2.4rem); }
-.c-h1 { font-size: clamp(2.9rem, 11vw, 4.8rem); line-height: .9; }
-.c-h2 { font-size: clamp(2.3rem, 7vw, 3.6rem); }
-.l-h2 { font-size: 1.7rem; }
-.marca { font-stretch: 75%; font-weight: 900; text-transform: uppercase; font-size: 24px; letter-spacing: 0; }
+/* Títulos: pretos e pesados, em caixa normal */
+.h1, .h2, .h3, .tile-nome, .c-h1, .c-h2, .l-h2 { font-weight: 800; text-transform: none; letter-spacing: -0.025em; line-height: 1.02; }
+.h1 { font-size: clamp(2.4rem, 9.5vw, 5.4rem); line-height: 1; }
+.h2 { font-size: clamp(2rem, 6.4vw, 3.6rem); }
+.h3 { font-size: clamp(1.35rem, 2.4vw, 1.75rem); }
+.tile-nome { font-size: clamp(1.5rem, 2.6vw, 2rem); }
+.c-h1 { font-size: clamp(2.3rem, 8.5vw, 3.6rem); line-height: 1; }
+.c-h2 { font-size: clamp(1.9rem, 5.6vw, 2.8rem); }
+.l-h2 { font-size: 1.5rem; }
+.marca { font-stretch: 100%; font-weight: 800; text-transform: none; font-size: 22px; letter-spacing: -0.02em; }
 .lead { font-size: clamp(1.05rem, 1.5vw, 1.2rem); }
 
 /* Faixas e blocos de cor: o texto sobre a cor usa --accent-ink, nunca --ink */
@@ -648,7 +647,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
 .capa-quadro::after { display: none; }
 .capa .capa-quadro > picture, .capa .capa-quadro > .capa-foto { position: relative; inset: auto; flex: 1 1 0; width: 100%; height: auto; min-height: 190px; }
 .capa-texto { color: var(--accent-ink); padding: 22px 20px 24px; }
-.capa-texto .h1 { max-width: 12ch; font-size: clamp(2.8rem, 13vw, 3.8rem); font-stretch: var(--wide); }
+.capa-texto .h1 { max-width: 14ch; font-size: clamp(2.3rem, 9.5vw, 3.2rem); font-stretch: var(--wide); }
 .capa-texto p { margin: 12px 0 18px; font-weight: 550; }
 .capa-botoes .btn-light { background: var(--ink); color: var(--surface); }
 @media (min-width: 900px) {
@@ -663,7 +662,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
 }
 
 /* Loja: números e ofertas dos destaques em condensado, e a chamada final em bloco de cor */
-.destaque .destaque-numero { font-stretch: var(--wide); text-transform: uppercase; font-size: clamp(3.4rem, 8vw, 5.2rem); line-height: .88; letter-spacing: 0; }
+.destaque .destaque-numero { font-stretch: var(--wide); text-transform: none; font-size: clamp(3.4rem, 8vw, 5.2rem); line-height: .88; letter-spacing: 0; }
 .destaque-numero span { font-stretch: 100%; text-transform: none; font-size: .3em; font-weight: 700; line-height: 1.25; letter-spacing: 0; }
 .chamada { min-height: 0; flex-direction: column; align-items: stretch; justify-content: flex-start; text-align: left; }
 .chamada::after { display: none; }
@@ -685,7 +684,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
 @media (orientation: landscape) and (max-height: 500px) { .v-capa .h1 { font-size: 2.4rem; max-width: 24ch; } }
 .v-rostos span { border-color: var(--accent); }
 .v-numeros, .v-numero:nth-child(odd), .v-numero:nth-child(-n+2), .v-numero { border-color: var(--ink); }
-.v-numero b { font-stretch: var(--wide); font-weight: 900; text-transform: uppercase; font-size: clamp(2.4rem, 8.5vw, 4.8rem); letter-spacing: 0; line-height: .9; }
+.v-numero b { font-stretch: var(--wide); font-weight: 800; text-transform: none; font-size: clamp(2.4rem, 8.5vw, 4.8rem); letter-spacing: 0; line-height: .9; }
 .v-credenciais .ico, .v-inclui .ico, .v-garantia .ico { color: var(--accent-text); }
 .v-etapa::before { background: var(--ink); color: var(--surface); }
 .v-etapa::after { background: color-mix(in srgb, var(--accent-ink) 45%, transparent); }
@@ -717,7 +716,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
 .l-capa { border-radius: var(--r-xl); padding: 10px 10px 22px; }
 .l-banner { border-radius: var(--r-lg); }
 .l-avatar { border-color: var(--accent); }
-.l-capa h1 { font-stretch: var(--wide); font-weight: 900; text-transform: uppercase; letter-spacing: 0; line-height: .92; font-size: clamp(2.6rem, 11vw, 3.4rem); padding-inline: 10px; }
+.l-capa h1 { font-stretch: var(--wide); font-weight: 800; text-transform: none; letter-spacing: -0.025em; line-height: 1; font-size: clamp(2.1rem, 8.5vw, 2.8rem); padding-inline: 10px; }
 .l-bio, .l-onde-linha { color: inherit; }
 .l-onde-linha { font-weight: 650; }
 .l-link-ico { background: var(--accent); color: var(--accent-ink); }
@@ -878,15 +877,15 @@ a, button { -webkit-tap-highlight-color: transparent; }
     </div>
     <div class="v-estudio">
       <figure class="v-estudio-item v-estudio-largo">
-        <img src="img/cenas/salto-na-caixa.webp" width="1400" height="788" alt="Aluna salta numa caixa de madeira enquanto o professor observa, numa sala com parede amarela" loading="lazy" style="object-position: 38% 50%">
-        <figcaption>Caixas de salto em três alturas</figcaption>
+        <img src="img/cenas/agachamento-no-rack.webp" width="1400" height="934" alt="Aluna faz agachamento afundo com a barra nos ombros, dentro do rack, com anilhas e halteres ao fundo" loading="lazy" style="object-position: 45% 40%">
+        <figcaption>Rack, barras e anilhas</figcaption>
       </figure>
       <figure class="v-estudio-item">
         <img src="img/cenas/kettlebell-de-ferro.webp" width="1400" height="2092" alt="Mãos seguram a alça de dois kettlebells de ferro no chão" loading="lazy">
         <figcaption>Kettlebells de 4 a 28 kg</figcaption>
       </figure>
       <figure class="v-estudio-item">
-        <img src="img/cenas/corda-na-dupla.webp" width="1400" height="788" alt="Aluna e professor trabalham com a corda naval, ele sorri" loading="lazy" style="object-position: 80% 50%">
+        <img src="img/cenas/corda-naval-na-sombra.webp" width="1400" height="934" alt="Aluna de regata preta balança a corda naval diante de uma parede de blocos brancos" loading="lazy" style="object-position: 28% 50%">
         <figcaption>Corda naval de 9 metros</figcaption>
       </figure>
     </div>

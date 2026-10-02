@@ -79,10 +79,10 @@ nelas não são reais e estão marcados como tal em cada página. A lista comple
 - [Renata Lins, psicóloga](https://tarciodiniz.com/demos/psicologa/): página de vendas. Psicoterapia para adultos, presencial e online, com primeira conversa sem custo.
 - [Pulso Estúdio, treino funcional e personal](https://tarciodiniz.com/demos/personal/): página de vendas. Treino funcional em turmas pequenas e personal, com aula experimental.
 - [Carnaúba, estética automotiva](https://tarciodiniz.com/demos/estetica-automotiva/): agenda. Lavagem detalhada, polimento e higienização com hora marcada e leva e traz.
-- [Lume Solar, energia solar](https://tarciodiniz.com/demos/energia-solar/): orçamento. Energia solar para casa e comércio, com estimativa de economia e visita técnica.
+- [Catingueira Solar, energia solar](https://tarciodiniz.com/demos/energia-solar/): orçamento. Energia solar para casa e comércio, com estimativa de economia e visita técnica.
 - [Prumo Reformas, reforma e pintura](https://tarciodiniz.com/demos/reforma/): orçamento. Reforma, pintura e acabamento com orçamento em 24 horas e prazo por escrito.
 - [Fórum Borborema, congresso de negócios](https://tarciodiniz.com/demos/congresso/): evento. Dois dias de palestras e oficinas para pequenos empresários, com lotes de ingresso.
-- [Conferência Raiz, conferência de jovens](https://tarciodiniz.com/demos/conferencia/): evento. Conferência de jovens com louvor, palavra e oficinas, com inscrição por lote.
+- [Conferência Lastro, conferência de jovens](https://tarciodiniz.com/demos/conferencia/): evento. Conferência de jovens com louvor, palavra e oficinas, com inscrição por lote.
 - [DJ Ravi, dj](https://tarciodiniz.com/demos/dj/): portfólio. Som e luz para casamento, formatura e festa, com pacotes e consulta de data.
 
 ## Perfis

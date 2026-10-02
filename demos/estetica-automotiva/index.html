@@ -9,7 +9,7 @@
 <meta name="theme-color" content="#F1F3EE">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" as="image" href="img/capa/capa-garagem-900.webp" imagesrcset="img/capa/capa-garagem-900.webp 900w, img/capa/capa-garagem.webp 1600w" imagesizes="(max-width: 899px) 100vw, 640px" fetchpriority="high">
+<link rel="preload" as="image" href="img/capa/capa-politriz-900.webp" imagesrcset="img/capa/capa-politriz-900.webp 900w, img/capa/capa-politriz.webp 1600w" imagesizes="(max-width: 899px) 100vw, 640px" fetchpriority="high">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" crossorigin media="print" onload="this.media='all'">
 <!--
   Carnaúba Estética Automotiva, modelo do tarciodiniz.com feito do esqueleto de agenda (carreira/modelos/esqueletos/agenda).
@@ -18,9 +18,9 @@
   ordem de porte), equipe (data-prof) e horário ([data-horario]) são lidos do HTML pelo modelo.js. Os horários
   ocupados são fictícios e se repetem igual a cada visita; num cliente real, busyBlocks() troca pelo que o dono mandar.
   ?agora=2026-10-02T10:30 simula a hora.
-  Fotos: Unsplash. Deniz Demirci (capa, polimento, Rivaldo), Nik (lavagem), Andres Leal (lavagem e higienização),
-  Luay Barani (higienização), Tristan Beischel (faróis), Zac Nielson (rodas), David Glessner (Wesley),
-  Brad Starkey (Edvan), Rolf (cera), Vitali Adutskevich (polimento), Ivan Kazlouskij (interior), Denin Lawley (farol),
+  Fotos: Unsplash. Fine Automotive Detailing (capa, Wesley), Deniz Demirci (polimento, Rivaldo, Edvan), Nik (lavagem),
+  Eugene Chystiakov (lavagem e higienização), Luay Barani (higienização, polimento), Tristan Beischel (faróis),
+  Zac Nielson (rodas), Rolf (cera), Vitali Adutskevich (polimento), Zhivko Minkov (interior), Ivett M (farol),
   GoGoNano (microfibra), Sindy Süßengut (pintura). Créditos completos em fonte/fotos.tsv.
 -->
 <style>
@@ -699,7 +699,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
       </div>
     </div>
     <div class="ag-capa-foto">
-      <img src="img/capa/capa-garagem.webp" srcset="img/capa/capa-garagem-900.webp 900w, img/capa/capa-garagem.webp 1600w" sizes="(max-width: 899px) 100vw, 640px" width="1600" height="1060" alt="Detalhista de camisa preta passando o produto na roda de um carro cinza, dentro da garagem" fetchpriority="high" style="object-position: 30% 50%">
+      <img src="img/capa/capa-politriz.webp" srcset="img/capa/capa-politriz-900.webp 900w, img/capa/capa-politriz.webp 1600w" sizes="(max-width: 899px) 100vw, 640px" width="1600" height="1067" alt="Detalhista de camisa preta agachado ao lado de um carro escuro, polindo a lateral com a politriz, numa garagem de concreto" fetchpriority="high" style="object-position: 60% 50%">
       <span class="ag-capa-selo"><svg class="ico" aria-hidden="true"><use href="#i-map-pin"/></svg>Catolé, Campina Grande</span>
     </div>
   </section>
@@ -752,7 +752,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
               <span class="ag-serv-lado"><b data-preco-lado>R$&nbsp;230</b><small>5h</small></span>
             </button>
             <button class="ag-serv" type="button" data-servico="polimento" data-nome="Polimento técnico" data-min="360" data-precos="380,420,480,540" data-tipo="pintura" aria-pressed="false">
-              <span class="ag-serv-foto" aria-hidden="true"><img src="img/itens/polimento-thumb.webp" width="240" height="360" alt="" loading="lazy"></span>
+              <span class="ag-serv-foto" aria-hidden="true"><img src="img/itens/polimento-thumb.webp" width="240" height="105" alt="" loading="lazy" style="object-position: 42% 50%"></span>
               <span class="ag-serv-texto"><b>Polimento técnico</b><small>Tira risco fino e marca de lavagem de posto</small></span>
               <span class="ag-serv-lado"><b data-preco-lado>R$&nbsp;380</b><small>6h</small></span>
             </button>
@@ -785,11 +785,11 @@ a, button { -webkit-tap-highlight-color: transparent; }
               <b>Rivaldo</b><small data-prof-livre="rivaldo">próximo: hoje</small>
             </button>
             <button class="ag-pro" type="button" data-escolhe-prof="wesley" aria-pressed="false">
-              <span class="ag-pro-foto" aria-hidden="true"><img src="img/pessoas/wesley-avatar.webp" width="200" height="134" alt="" style="object-position: 12% 30%"></span>
+              <span class="ag-pro-foto" aria-hidden="true"><img src="img/pessoas/wesley-avatar.webp" width="200" height="134" alt="" style="object-position: 52% 30%"></span>
               <b>Wesley</b><small data-prof-livre="wesley">próximo: hoje</small>
             </button>
             <button class="ag-pro" type="button" data-escolhe-prof="edvan" aria-pressed="false">
-              <span class="ag-pro-foto" aria-hidden="true"><img src="img/pessoas/edvan-avatar.webp" width="200" height="250" alt="" style="object-position: 70% 40%"></span>
+              <span class="ag-pro-foto" aria-hidden="true"><img src="img/pessoas/edvan-avatar.webp" width="200" height="154" alt="" style="object-position: 62% 30%"></span>
               <b>Edvan</b><small data-prof-livre="edvan">próximo: hoje</small>
             </button>
           </div>
@@ -880,7 +880,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
         <button class="btn btn-line btn-sm" type="button" data-agendar-com="rivaldo">Agendar com Rivaldo</button>
       </li>
       <li class="ag-pessoa" data-prof="wesley" data-nome="Wesley" data-servicos="lavagem combo higienizacao rodas">
-        <div class="ag-pessoa-foto"><img src="img/pessoas/wesley.webp" width="800" height="534" alt="Wesley sorrindo enquanto borrifa produto na lateral de um carro laranja" loading="lazy" style="object-position: 14% 30%"></div>
+        <div class="ag-pessoa-foto"><img src="img/pessoas/wesley.webp" width="800" height="534" alt="Wesley passando o pano de microfibra no banco de um carro, de dentro da porta aberta" loading="lazy" style="object-position: 55% 40%"></div>
         <div class="ag-pessoa-texto">
           <b>Wesley</b>
           <span>Lavagem e higienização. Pega carro de aplicativo e de família, e sabe onde mancha de suco se esconde.</span>
@@ -889,7 +889,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
         <button class="btn btn-line btn-sm" type="button" data-agendar-com="wesley">Agendar com Wesley</button>
       </li>
       <li class="ag-pessoa" data-prof="edvan" data-nome="Edvan" data-servicos="lavagem combo higienizacao rodas farois">
-        <div class="ag-pessoa-foto"><img src="img/pessoas/edvan.webp" width="800" height="1000" alt="Edvan secando um carro preto com pano de microfibra na frente de uma garagem de tijolo" loading="lazy" style="object-position: 70% 45%"></div>
+        <div class="ag-pessoa-foto"><img src="img/pessoas/edvan.webp" width="800" height="617" alt="Edvan de avental cinza, apoiado na porta de um carro escuro e olhando para a câmera" loading="lazy" style="object-position: 62% 30%"></div>
         <div class="ag-pessoa-texto">
           <b>Edvan</b>
           <span>Lavagem, rodas e faróis. Chega às 7h e abre a oficina.</span>
@@ -910,8 +910,8 @@ a, button { -webkit-tap-highlight-color: transparent; }
     </div>
     <ul class="ag-trabalhos">
       <li><figure><div class="cr-foto"><img src="img/cenas/polimento-capo-m.webp" width="720" height="480" alt="Politriz passando no capô escuro de um carro, com o brilho do farol no canto" loading="lazy" style="object-position: 50% 50%"></div><figcaption>Polimento técnico <span>Rivaldo</span></figcaption></figure></li>
-      <li><figure><div class="cr-foto"><img src="img/cenas/interno-couro-m.webp" width="720" height="1079" alt="Interior de um carro com bancos de couro marrom, limpo e hidratado" loading="lazy"></div><figcaption>Interior higienizado <span>Wesley</span></figcaption></figure></li>
-      <li><figure><div class="cr-foto"><img src="img/cenas/farol-verde-m.webp" width="720" height="480" alt="Farol de um carro verde com a lente transparente e brilhante" loading="lazy" style="object-position: 70% 50%"></div><figcaption>Farol restaurado <span>Rivaldo</span></figcaption></figure></li>
+      <li><figure><div class="cr-foto"><img src="img/cenas/interno-compacto-m.webp" width="720" height="480" alt="Painel, volante e tela de um carro compacto visto do banco de trás, limpo, com a luz da janela" loading="lazy" style="object-position: 60% 50%"></div><figcaption>Interior higienizado <span>Wesley</span></figcaption></figure></li>
+      <li><figure><div class="cr-foto"><img src="img/cenas/farol-fusca-m.webp" width="720" height="1083" alt="Farol redondo de um carro antigo preto, com a lente limpa, sobre calçamento de pedra" loading="lazy"></div><figcaption>Farol restaurado <span>Rivaldo</span></figcaption></figure></li>
       <li><figure><div class="cr-foto"><img src="img/cenas/secagem-microfibra-m.webp" width="720" height="1080" alt="Pano de microfibra cinza sobre a lanterna de um carro vermelho recém-lavado" loading="lazy" style="object-position: 50% 60%"></div><figcaption>Secagem à mão <span>Edvan</span></figcaption></figure></li>
       <li><figure><div class="cr-foto"><img src="img/cenas/classico-cobre-m.webp" width="720" height="1080" alt="Frente de um carro antigo cor de cobre, com a pintura polida e o cromado brilhando" loading="lazy" style="object-position: 40% 40%"></div><figcaption>Pintura de colecionador <span>Rivaldo</span></figcaption></figure></li>
     </ul>

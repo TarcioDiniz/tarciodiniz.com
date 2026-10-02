@@ -1,4 +1,4 @@
-// Lume Solar: o pedido em etapas (o que instalar, tamanho, bairro e prazo, nome), o resumo com a faixa de
+// Catingueira Solar: o pedido em etapas (o que instalar, tamanho, bairro e prazo, nome), o resumo com a faixa de
 // preço do sistema, a economia por mês e o retorno em anos, e a mensagem pronta no WhatsApp. Também troca
 // o cliente do antes e depois, move a barra do comparador e mostra o botão fixo do celular.
 // Tudo por serviço vem dos data-* no HTML (números de exemplo): preço por unidade (data-min e data-max),

@@ -11,9 +11,9 @@
 <link rel="preload" href="fonts/gilda-display-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/hanken-latin.woff2" as="font" type="font/woff2" crossorigin>
 <!--
-  Fotos (Unsplash): Elvis Bekmanis, Noémi Macavei-Katócz, Jakob Owens, Josh Batres, Soulseeker Creative
-  Photography, Victoria Priessnitz, Brandon Morgan, Jonathan Borba, Taisiia Stupak, Devon Divine,
-  Jessica Rockowitz, Gemali Martinez, Ugip, OurWhisky Foundation, Hamid Roshaan, Ryan Hoffman.
+  Fotos (Unsplash): Leonardo Miranda, Marissa Lewis, Jakob Owens, Josh Batres, Soulseeker Creative
+  Photography, Victoria Priessnitz, Brandon Morgan, Jonathan Borba, Gustavo Leighton, Devon Divine,
+  Jessica Rockowitz, Nando Martins, Ugip, OurWhisky Foundation, Hamid Roshaan, Ryan Hoffman.
 
   Esqueleto de portfólio dos modelos do tarciodiniz.com (carreira/modelos/esqueletos/portfolio).
   Para quem vende pelo trabalho que mostra: fotógrafo, DJ, maquiadora, tatuador, arquiteto, designer.
@@ -503,6 +503,8 @@ a, button { -webkit-tap-highlight-color: transparent; }
 
 /* Marina: a capa é um retrato em pé; no computador o recorte de 16:8 sobe para pegar os rostos */
 .p-capa-foto img { object-position: 50% 30%; }
+/* O rosto fica perto do topo da foto; sem isso o corte 4:5 do celular começa abaixo dos olhos */
+.p-sobre-foto > img { object-position: 50% 12%; }
 /* Botão principal na cor da marca; o estilo elegante deixa o botão escuro e só acende no hover */
 .btn.btn-ink { background: var(--accent); color: var(--accent-ink); }
 .btn.btn-ink:hover { background: var(--ink); }
@@ -816,7 +818,7 @@ body { font-size: 16px; line-height: 1.6; }
       </div>
     </div>
     <figure class="p-capa-foto">
-      <img src="img/capa/capa-veu-900.webp" srcset="img/capa/capa-veu-900.webp 900w, img/capa/capa-veu.webp 1600w" sizes="(min-width: 700px) 1280px, 100vw" width="1600" height="2254" alt="Casal de noivos se abraçando sob o véu em um campo de capim dourado" fetchpriority="high">
+      <img src="img/capa/capa-petalas-900.webp" srcset="img/capa/capa-petalas-900.webp 900w, img/capa/capa-petalas.webp 1600w" sizes="(min-width: 700px) 1280px, 100vw" width="1600" height="2400" alt="Noivos se beijando sob uma chuva de pétalas, com madrinhas de vestido azul e convidados ao redor" fetchpriority="high">
       <figcaption>Rebeca e Tiago, sítio em Lagoa Seca, 2026</figcaption>
     </figure>
   </section>
@@ -841,7 +843,7 @@ body { font-size: 16px; line-height: 1.6; }
       <button class="p-foto" type="button" data-cat="ensaio" data-legenda="Pré-casamento no Açude Velho" style="--r:.67"><img src="img/cenas/ensaio-casal-cais.webp" width="1400" height="2100" alt="Casal abraçado em um deque de madeira à beira do lago" loading="lazy"></button>
       <button class="p-foto" type="button" data-cat="eventos" data-legenda="Colação de grau, UFCG" style="--r:1.5"><img src="img/cenas/evento-formatura-capelo.webp" width="1400" height="934" alt="Formando lançando o capelo no ar contra o céu azul" loading="lazy"></button>
       <button class="p-foto" type="button" data-cat="casamento" data-legenda="Cerimônia no jardim, Lagoa Seca" style="--r:1.5"><img src="img/cenas/casamento-arco-flores.webp" width="1400" height="932" alt="Corredor de cerimônia com arco de flores brancas e cadeiras douradas" loading="lazy"></button>
-      <button class="p-foto" type="button" data-cat="ensaio" data-legenda="Ensaio gestante, luz de janela" style="--r:.71"><img src="img/cenas/ensaio-gestante-janela.webp" width="1400" height="1960" alt="Gestante de top branco com a mão na barriga, ao lado de uma janela" loading="lazy"></button>
+      <button class="p-foto" type="button" data-cat="ensaio" data-legenda="Ensaio gestante, tarde de sol" style="--r:.67"><img src="img/cenas/ensaio-gestante-flores.webp" width="1400" height="2100" alt="Gestante de coroa de flores e vestido rosa-claro, com as mãos na barriga, sorrindo para o céu" loading="lazy"></button>
       <button class="p-foto" type="button" data-cat="casamento" data-legenda="A noiva e os padrinhos" style="--r:.67"><img src="img/cenas/casamento-cerimonia-palmeira.webp" width="1400" height="2098" alt="Noiva de véu longo ao lado do noivo e dos padrinhos, com uma palmeira ao fundo" loading="lazy"></button>
       <button class="p-foto" type="button" data-cat="eventos" data-legenda="Brinde na virada da festa de formatura" style="--r:.75"><img src="img/cenas/evento-brinde.webp" width="1400" height="1867" alt="Taças levantadas em um brinde, com balões e confete ao fundo" loading="lazy"></button>
       <button class="p-foto" type="button" data-cat="ensaio" data-legenda="Ensaio de família, sítio em Puxinanã" style="--r:1.3"><img src="img/cenas/ensaio-familia-campo.webp" width="1400" height="1078" alt="Família caminhando de mãos dadas em um campo de capim verde" loading="lazy"></button>
@@ -849,7 +851,7 @@ body { font-size: 16px; line-height: 1.6; }
       <button class="p-foto" type="button" data-cat="ensaio" data-legenda="Ensaio gestante, fim de tarde" style="--r:.67"><img src="img/cenas/ensaio-gestante-campo.webp" width="1400" height="2098" alt="Gestante de cardigã vermelho em um campo dourado ao pôr do sol" loading="lazy"></button>
       <button class="p-foto" type="button" data-cat="casamento" data-legenda="Detalhe da renda do vestido" style="--r:1.5"><img src="img/cenas/casamento-renda.webp" width="1400" height="930" alt="Costas de um vestido de noiva com renda e botões de pérola" loading="lazy"></button>
       <button class="p-foto" type="button" data-cat="eventos" data-legenda="Velas do bolo de 15 anos" style="--r:.7"><img src="img/cenas/evento-velas.webp" width="1400" height="2000" alt="Close de velas acesas sobre um bolo, com a chama em foco" loading="lazy"></button>
-      <button class="p-foto" type="button" data-cat="ensaio" data-legenda="Ensaio de família, praia de Tambaú" style="--r:.67"><img src="img/cenas/ensaio-familia-praia.webp" width="1400" height="2100" alt="Pais e quatro filhos abraçados em pé na areia" loading="lazy"></button>
+      <button class="p-foto" type="button" data-cat="ensaio" data-legenda="Ensaio de família, sítio em Massaranduba" style="--r:.8"><img src="img/cenas/ensaio-familia-sitio.webp" width="1400" height="1750" alt="Pai, mãe e filha pequena sorrindo juntos ao ar livre, sob uma árvore" loading="lazy"></button>
       <button class="p-foto" type="button" data-cat="casamento" data-legenda="Saída dos noivos com estrelinhas" style="--r:1.5"><img src="img/cenas/casamento-faiscas.webp" width="1400" height="934" alt="Noivos beijando-se entre convidados que seguram estrelinhas acesas" loading="lazy"></button>
       <button class="p-foto" type="button" data-cat="eventos" data-legenda="Retrato de formanda, antes da colação" style="--r:.67"><img src="img/cenas/evento-formanda.webp" width="1400" height="2099" alt="Formanda sorrindo de beca azul-petróleo em um jardim" loading="lazy"></button>
     </div>
@@ -858,7 +860,7 @@ body { font-size: 16px; line-height: 1.6; }
   <!-- 3. Sobre -->
   <section class="secao wrap" id="sobre" aria-labelledby="sobre-titulo">
     <div class="p-sobre">
-      <div class="p-sobre-foto"><img src="img/pessoas/marina.webp" width="800" height="1200" alt="Marina segurando a câmera diante do rosto, de blusa branca, em um quarto com luzes ao fundo" loading="lazy"></div>
+      <div class="p-sobre-foto"><img src="img/pessoas/marina.webp" width="800" height="1200" alt="Marina de camiseta preta sorrindo enquanto ajusta uma câmera de médio formato em um estúdio claro" loading="lazy"></div>
       <div>
         <h2 class="h2" id="sobre-titulo">Quem fotografa</h2>
         <p class="lead">Comecei em 2016 fotografando o casamento de uma prima com a câmera emprestada do meu pai. Gosto da foto de quem está distraído: o noivo enxugando a testa, a avó ajeitando o véu da neta. No dia eu fico de longe, com lente de 85 mm, e só peço pose no retrato do casal, que dura uns vinte minutos.</p>
@@ -949,7 +951,7 @@ body { font-size: 16px; line-height: 1.6; }
         <figcaption><span class="inicial">R</span><span><b>Rebeca Arruda</b><small>Casamento, Lagoa Seca</small></span></figcaption>
       </figure>
       <figure class="p-depo">
-        <blockquote>Fiz o ensaio com 34 semanas e ela escolheu o horário da luz da janela de casa. Só achei curto: 1h30 passa rápido, e eu queria ter trocado de roupa mais uma vez.</blockquote>
+        <blockquote>Fiz o ensaio com 34 semanas e ela escolheu o horário da luz da tarde. Só achei curto: 1h30 passa rápido, e eu queria ter trocado de roupa mais uma vez.</blockquote>
         <figcaption><span class="inicial">C</span><span><b>Camila Albuquerque</b><small>Ensaio gestante</small></span></figcaption>
       </figure>
       <figure class="p-depo">

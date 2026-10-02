@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Conferência Raiz 2026 · Louvor, palavra e oficinas para jovens, em Campina Grande (demonstração)</title>
+<title>Conferência Lastro 2026 · Louvor, palavra e oficinas para jovens, em Campina Grande (demonstração)</title>
 <meta name="description" content="Conferência de jovens no Centro de Campina Grande, com louvor, palavra e oficinas. Ingresso por lote e inscrição pelo WhatsApp. Modelo de demonstração.">
 <meta name="robots" content="noindex">
 <meta name="theme-color" content="#0E0F14">
@@ -11,14 +11,14 @@
 <link rel="preload" href="fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" crossorigin media="print" onload="this.media='all'">
 <!--
-  Modelo "Conferência Raiz" (esqueleto de evento, estilo escuro), carreira/modelos/raiz.
+  Modelo "Conferência Lastro" (esqueleto de evento, estilo escuro), carreira/modelos/raiz.
   Evento fictício de jovens no Centro de Campina Grande. A ação principal é garantir o ingresso:
   tipo, quantidade, meia-entrada, oficina de sábado, nome e igreja, e o pedido vai pronto para o
   WhatsApp com o total. A cada 10 ingressos, um é cortesia do líder do grupo. Sem contagem regressiva.
-  Fotos (licença Unsplash, https://unsplash.com/license): Nathan Mullet (capa), Spencer Davis (palco),
-  Jack Sharp (oração), Kelly Sikkema (teclado), David Libeert (Thiago), Ismael Paramo (Ezequiel),
-  Omar Lopez (Raquel), Tim Mossholder (Isabela), Helena Lopes (Davi), Brian Kungu (Marina).
-  Os retratos de Raquel, Isabela, Davi e Marina são recortes de fotos de grupo.
+  Fotos (licença Unsplash, https://unsplash.com/license): Mic Narra (capa), Spencer Davis (palco),
+  Jack Sharp (oração), Kelly Sikkema (teclado), Elisa Kennemer (Thiago), Ismael Paramo (Ezequiel),
+  Rany Lops (Raquel), Priscilla Whendy (Isabela), Elizeu Dias (Davi), Brian Kungu (Marina).
+  Os retratos de Raquel, Isabela e Davi são recortes 4:5 de fotos de uma pessoa só.
   Mapa: OpenStreetMap, com Leaflet 1.9.4. Fontes: Archivo, SIL Open Font License. GSAP 3.15.0.
 -->
 <style>
@@ -559,7 +559,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
   .toast { bottom: calc(var(--barra-h) + 12px + env(safe-area-inset-bottom, 0px)); }
 }
 
-/* Conferência Raiz: o que o esqueleto não tinha */
+/* Conferência Lastro: o que o esqueleto não tinha */
 .r-mosaico { margin-top: 36px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
 .r-mosaico img { width: 100%; height: 100%; object-fit: cover; object-position: var(--foco, 50% 50%); border-radius: var(--r-lg); aspect-ratio: 1; background: var(--card); }
 .r-mosaico img:first-child { grid-column: 1 / -1; aspect-ratio: 16 / 9; }
@@ -683,7 +683,7 @@ dialog::backdrop { background: var(--scrim); }
 .l-principal .seta { color: var(--accent-ink); }
 .c-por.adicionado { background: var(--wa); }
 
-/* Tema da Conferência Raiz: tokens do :root. Preto azulado de palco com um destaque de argila.
+/* Tema da Conferência Lastro: tokens do :root. Preto azulado de palco com um destaque de argila.
    A estrutura vem de base/nucleo.css, de estilo.css e do estilo escuro. */
 :root {
   --bg: #0E0F14;
@@ -709,7 +709,7 @@ dialog::backdrop { background: var(--scrim); }
 
 </style>
 </head>
-<body data-evento="Conferência Raiz">
+<body data-evento="Conferência Lastro">
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <!-- Icons: brands from Simple Icons (CC0), interface from Phosphor (MIT). -->
   <symbol id="i-whatsapp" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></symbol>
@@ -760,7 +760,7 @@ dialog::backdrop { background: var(--scrim); }
 
 <header class="topo" id="topo">
   <div class="wrap">
-    <a class="marca" href="#inicio" aria-label="Conferência Raiz, início"><svg viewBox="0 0 32 32" class="e-logo" aria-hidden="true"><rect width="32" height="32" rx="9"/><path d="M16 6v10M16 16c-4 0-7 2-8 8M16 16c4 0 7 2 8 8M16 16v10"/></svg>Raiz</a>
+    <a class="marca" href="#inicio" aria-label="Conferência Lastro, início"><svg viewBox="0 0 32 32" class="e-logo" aria-hidden="true"><rect width="32" height="32" rx="9"/><path d="M16 6v20M11 11h10M8 19c1.5 4 4.5 7 8 7s6.5-3 8-7"/></svg>Lastro</a>
     <nav class="menu" aria-label="Seções">
       <a href="#sobre">A conferência</a>
       <a href="#programacao">Programação</a>
@@ -783,14 +783,14 @@ dialog::backdrop { background: var(--scrim); }
           <li><svg class="ico" aria-hidden="true"><use href="#i-calendar-blank"/></svg>Sex 20 e sáb 21 de novembro</li>
           <li><svg class="ico" aria-hidden="true"><use href="#i-map-pin"/></svg>Centro, Campina Grande (PB)</li>
         </ul>
-        <h1 class="h1" id="capa-titulo">Conferência Raiz 2026</h1>
+        <h1 class="h1" id="capa-titulo">Conferência Lastro 2026</h1>
         <p class="e-capa-lead">Louvor, palavra e oficinas para jovens de 15 a 29 anos. Vem com o grupo da sua igreja: a cada 10 ingressos, um é cortesia do líder.</p>
         <div class="e-capa-botoes">
           <a class="btn btn-light" href="#inscricao"><svg class="ico wa-ico" aria-hidden="true"><use href="#i-whatsapp"/></svg>Garantir pelo WhatsApp</a>
           <a class="btn btn-line-light" href="#programacao">Ver programação</a>
         </div>
       </div>
-      <div class="e-capa-foto"><img src="img/capa/plateia-900.webp" srcset="img/capa/plateia-900.webp 900w, img/capa/plateia.webp 1600w" sizes="(min-width: 900px) 42vw, 100vw" width="1600" height="1067" alt="Jovens de braços erguidos durante o louvor, numa sala escura com luz quente de palco" fetchpriority="high" style="--foco: 50% 40%"></div>
+      <div class="e-capa-foto"><img src="img/capa/louvor-900.webp" srcset="img/capa/louvor-900.webp 900w, img/capa/louvor.webp 1600w" sizes="(min-width: 900px) 42vw, 100vw" width="1600" height="1067" alt="Silhueta de mãos erguidas durante o louvor, contra a luz quente do palco" fetchpriority="high" style="--foco: 55% 50%"></div>
     </div>
   </section>
 
@@ -812,8 +812,8 @@ dialog::backdrop { background: var(--scrim); }
   <section class="secao wrap" id="sobre" aria-labelledby="sobre-titulo">
     <div class="e-sobre">
       <div>
-        <h2 class="h2" id="sobre-titulo">Uma sexta à noite e um sábado inteiro para a fé criar raiz</h2>
-        <p class="lead">A Raiz começou com jovens de igrejas do Centro e do Catolé que queriam um encontro maior que a reunião de sábado. Este é o terceiro ano. A sexta, dia 20, é feriado, então dá para ir sem faltar aula nem serviço.</p>
+        <h2 class="h2" id="sobre-titulo">Uma sexta à noite e um sábado inteiro para a fé ganhar lastro</h2>
+        <p class="lead">A Lastro começou com jovens de igrejas do Centro e do Catolé que queriam um encontro maior que a reunião de sábado. Este é o terceiro ano. A sexta, dia 20, é feriado, então dá para ir sem faltar aula nem serviço.</p>
         <h3 class="e-sub">Para quem é</h3>
         <ul class="e-quem">
           <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Jovens de 15 a 29 anos, de qualquer igreja ou convidados de amigos</li>
@@ -824,7 +824,7 @@ dialog::backdrop { background: var(--scrim); }
       <div class="e-leva">
         <h3 class="e-leva-titulo">O que você leva</h3>
         <ul>
-          <li><b>Louvor ao vivo, sexta e sábado</b><span>Banda Raiz Viva, com músicas que o povo canta junto.</span></li>
+          <li><b>Louvor ao vivo, sexta e sábado</b><span>Banda Pedra Viva, com músicas que o povo canta junto.</span></li>
           <li><b>Três palavras e um painel</b><span>No painel, as perguntas chegam anônimas pelo celular.</span></li>
           <li><b>Uma oficina à sua escolha</b><span>Sábado à tarde, em turmas de até 100 pessoas.</span></li>
           <li><b>Roda de oração em grupo pequeno</b><span>Sexta à noite, oito pessoas e um líder em cada roda.</span></li>
@@ -854,7 +854,7 @@ dialog::backdrop { background: var(--scrim); }
     <div class="e-painel" role="tabpanel" id="dia-sex" aria-labelledby="aba-sex">
       <ol class="e-prog">
         <li class="e-slot e-slot-pausa"><time datetime="18:00">18h</time><div><h3>Credenciamento</h3><p>Hall de entrada. Leve documento com foto.</p></div></li>
-        <li class="e-slot"><time datetime="19:00">19h</time><div><span class="e-tipo">Louvor</span><h3>Abertura com a banda Raiz Viva</h3><p>com Thiago Barreto · Auditório</p></div></li>
+        <li class="e-slot"><time datetime="19:00">19h</time><div><span class="e-tipo">Louvor</span><h3>Abertura com a banda Pedra Viva</h3><p>com Thiago Barreto · Auditório</p></div></li>
         <li class="e-slot"><time datetime="19:50">19h50</time><div><span class="e-tipo">Palavra</span><h3>De onde vem o que te sustenta</h3><p>com Pr. Ezequiel Lins · Auditório</p></div></li>
         <li class="e-slot"><time datetime="21:00">21h</time><div><span class="e-tipo">Oração</span><h3>Roda de oração em grupos de oito</h3><p>Um líder de igreja em cada roda · Auditório</p></div></li>
         <li class="e-slot e-slot-pausa"><time datetime="21:40">21h40</time><div><h3>Lanche e encerramento</h3><p>Cantina, no hall de entrada</p></div></li>
@@ -878,7 +878,7 @@ dialog::backdrop { background: var(--scrim); }
           </ul></div></li>
         <li class="e-slot e-slot-pausa"><time datetime="16:00">16h</time><div><h3>Intervalo</h3><p>Cantina, no hall de entrada</p></div></li>
         <li class="e-slot"><time datetime="16:30">16h30</time><div><span class="e-tipo">Palavra</span><h3>Chamado fora do púlpito: no trabalho, na faculdade e no interior</h3><p>com Marina Sales · Auditório</p></div></li>
-        <li class="e-slot"><time datetime="18:00">18h</time><div><span class="e-tipo">Louvor</span><h3>Noite de encerramento</h3><p>com Pr. Ezequiel Lins e a banda Raiz Viva · até 21h · Auditório</p></div></li>
+        <li class="e-slot"><time datetime="18:00">18h</time><div><span class="e-tipo">Louvor</span><h3>Noite de encerramento</h3><p>com Pr. Ezequiel Lins e a banda Pedra Viva · até 21h · Auditório</p></div></li>
       </ol>
     </div>
   </section>
@@ -892,11 +892,11 @@ dialog::backdrop { background: var(--scrim); }
       </div>
     </div>
     <div class="e-pessoas">
-      <article class="e-pessoa"><div class="e-pessoa-foto"><img src="img/pessoas/thiago.webp" width="800" height="534" alt="Músico de costas, de violão, com o braço erguido num palco de luz alaranjada" loading="lazy" style="--foco: 24% 50%"></div><h3>Thiago Barreto</h3><p>Músico, lidera a banda Raiz Viva há seis anos</p><span class="e-quando">Sex, 19h</span></article>
-      <article class="e-pessoa"><div class="e-pessoa-foto"><img src="img/pessoas/ezequiel.webp" width="800" height="534" alt="Homem de gorro, de mãos abertas, entre jovens num culto" loading="lazy" style="--foco: 43% 30%"></div><h3>Ezequiel Lins</h3><p>Pastor de jovens no Catolé, está na Raiz desde a primeira edição</p><span class="e-quando">Sex, 19h50</span></article>
-      <article class="e-pessoa"><div class="e-pessoa-foto"><img src="img/pessoas/raquel.webp" width="640" height="800" alt="Raquel Medeiros, de cabelo longo e casaco escuro, rindo ao ar livre" loading="lazy" style="--foco: 50% 30%"></div><h3>Raquel Medeiros</h3><p>Psicóloga, atende adolescentes e jovens adultos</p><span class="e-quando">Sáb, 9h</span></article>
-      <article class="e-pessoa"><div class="e-pessoa-foto"><img src="img/pessoas/isabela.webp" width="640" height="800" alt="Isabela Nunes, de regata azul-marinho, sorrindo com o mar ao fundo" loading="lazy" style="--foco: 50% 30%"></div><h3>Isabela Nunes</h3><p>Videomaker, edita culto e evento de igreja</p><span class="e-quando">Sáb, 14h</span></article>
-      <article class="e-pessoa"><div class="e-pessoa-foto"><img src="img/pessoas/davi.webp" width="640" height="800" alt="Davi Cavalcanti, de óculos e camisa clara, rindo de perfil contra o céu" loading="lazy" style="--foco: 50% 35%"></div><h3>Davi Cavalcanti</h3><p>Contador, ensina dinheiro a quem recebe o primeiro salário</p><span class="e-quando">Sáb, 14h</span></article>
+      <article class="e-pessoa"><div class="e-pessoa-foto"><img src="img/pessoas/thiago.webp" width="800" height="534" alt="Rapaz de cabelo ondulado tocando violão" loading="lazy" style="--foco: 40% 30%"></div><h3>Thiago Barreto</h3><p>Músico, lidera a banda Pedra Viva há seis anos</p><span class="e-quando">Sex, 19h</span></article>
+      <article class="e-pessoa"><div class="e-pessoa-foto"><img src="img/pessoas/ezequiel.webp" width="800" height="534" alt="Homem de gorro, de mãos abertas, entre jovens num culto" loading="lazy" style="--foco: 43% 30%"></div><h3>Ezequiel Lins</h3><p>Pastor de jovens no Catolé, está na Lastro desde a primeira edição</p><span class="e-quando">Sex, 19h50</span></article>
+      <article class="e-pessoa"><div class="e-pessoa-foto"><img src="img/pessoas/raquel.webp" width="640" height="800" alt="Raquel Medeiros, de cabelo longo e castanho, olhando para o lado" loading="lazy" style="--foco: 50% 30%"></div><h3>Raquel Medeiros</h3><p>Psicóloga, atende adolescentes e jovens adultos</p><span class="e-quando">Sáb, 9h</span></article>
+      <article class="e-pessoa"><div class="e-pessoa-foto"><img src="img/pessoas/isabela.webp" width="640" height="800" alt="Isabela Nunes, de cabelo cacheado e camisa jeans, ao ar livre" loading="lazy" style="--foco: 50% 30%"></div><h3>Isabela Nunes</h3><p>Videomaker, edita culto e evento de igreja</p><span class="e-quando">Sáb, 14h</span></article>
+      <article class="e-pessoa"><div class="e-pessoa-foto"><img src="img/pessoas/davi.webp" width="640" height="800" alt="Davi Cavalcanti, de barba curta e camiseta azul-marinho, sorrindo" loading="lazy" style="--foco: 50% 35%"></div><h3>Davi Cavalcanti</h3><p>Contador, ensina dinheiro a quem recebe o primeiro salário</p><span class="e-quando">Sáb, 14h</span></article>
       <article class="e-pessoa"><div class="e-pessoa-foto"><img src="img/pessoas/marina.webp" width="640" height="800" alt="Marina Sales, de cabelo cacheado vermelho e laço rosa, sorrindo" loading="lazy" style="--foco: 50% 30%"></div><h3>Marina Sales</h3><p>Missionária no Cariri paraibano há três anos</p><span class="e-quando">Sáb, 16h30</span></article>
     </div>
   </section>
@@ -1049,9 +1049,9 @@ dialog::backdrop { background: var(--scrim); }
 
   <!-- 10. Apoio -->
   <section class="secao wrap" aria-labelledby="apoio-titulo">
-    <h2 class="e-apoio-titulo" id="apoio-titulo">Quem faz a Raiz</h2>
+    <h2 class="e-apoio-titulo" id="apoio-titulo">Quem faz a Lastro</h2>
     <div class="e-apoio">
-      <div class="e-logos" aria-label="Realização"><span class="e-grupo">Realização</span><span class="e-logo-slot r-nome">Rede Jovem Raiz</span><span class="e-logo-slot r-nome">Igrejas do Centro e do Catolé</span></div>
+      <div class="e-logos" aria-label="Realização"><span class="e-grupo">Realização</span><span class="e-logo-slot r-nome">Rede Jovem Lastro</span><span class="e-logo-slot r-nome">Igrejas do Centro e do Catolé</span></div>
       <div class="e-logos" aria-label="Apoio"><span class="e-grupo">Apoio</span><span class="e-logo-slot r-nome">Papelaria Girassol</span><span class="e-logo-slot r-nome">Café da Esquina</span><span class="e-logo-slot r-nome">Gráfica Ponto Certo</span><span class="e-logo-slot r-nome">Rádio Serra FM</span></div>
     </div>
   </section>
@@ -1061,11 +1061,11 @@ dialog::backdrop { background: var(--scrim); }
   <div class="wrap">
     <div class="rodape-grade">
       <div class="rodape-sobre">
-        <a class="marca" href="#inicio">Conferência Raiz</a>
+        <a class="marca" href="#inicio">Conferência Lastro</a>
         <p>Conferência de jovens de Campina Grande, com louvor, palavra e oficinas. Uma realização fictícia, criada como modelo.</p>
         <div class="redes">
           <a href="#inicio"><svg class="ico" aria-hidden="true"><use href="#i-instagram"/></svg>Instagram</a>
-          <a href="https://wa.me/5583991931035?text=Oi%2C%20Tarcio%21%20Me%20interessei%20por%20esse%20site%2C%20o%20modelo%20da%20Confer%C3%AAncia%20Raiz.%0A%0AO%20site%20montou%20esta%20mensagem%3A%0AOl%C3%A1%21%20Tenho%20uma%20d%C3%BAvida%20sobre%20a%20Confer%C3%AAncia%20Raiz." target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-whatsapp"/></svg>WhatsApp</a>
+          <a href="https://wa.me/5583991931035?text=Oi%2C%20Tarcio%21%20Me%20interessei%20por%20esse%20site%2C%20o%20modelo%20da%20Confer%C3%AAncia%20Lastro.%0A%0AO%20site%20montou%20esta%20mensagem%3A%0AOl%C3%A1%21%20Tenho%20uma%20d%C3%BAvida%20sobre%20a%20Confer%C3%AAncia%20Lastro." target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-whatsapp"/></svg>WhatsApp</a>
         </div>
       </div>
       <div>
@@ -1097,7 +1097,7 @@ dialog::backdrop { background: var(--scrim); }
       <p>Quer um site assim para o seu evento?&nbsp;<a href="https://tarciodiniz.com/#contato">Peça um orçamento</a></p>
       <p class="credito-autor"><a class="back-link" href="/modelos/"><svg class="ico" aria-hidden="true"><use href="#i-arrow-left"/></svg>Ver outros modelos</a><span>Site feito por <a href="https://tarciodiniz.com" rel="author">Tarcio Diniz</a>, desenvolvedor</span></p>
     </div>
-    <p class="rodape-base">A Conferência Raiz é um evento fictício, criado como modelo de site por Tarcio Diniz. Nomes, preços e datas servem só de exemplo. Fotos: Unsplash. Mapa: OpenStreetMap.</p>
+    <p class="rodape-base">A Conferência Lastro é um evento fictício, criado como modelo de site por Tarcio Diniz. Nomes, preços e datas servem só de exemplo. Fotos: Unsplash. Mapa: OpenStreetMap.</p>
   </div>
 </footer>
 
@@ -1110,8 +1110,8 @@ dialog::backdrop { background: var(--scrim); }
 
 <script src="/assets/vendor/gsap-3.15.0/gsap.min.js" defer></script>
 <script src="/assets/vendor/gsap-3.15.0/ScrollTrigger.min.js" defer></script>
-<script>window.DEMO_WA = {"numero": "5583991931035", "intro": "Oi, Tarcio! Me interessei por esse site, o modelo da Conferência Raiz.\n\nO site montou esta mensagem:\n"};</script>
+<script>window.DEMO_WA = {"numero": "5583991931035", "intro": "Oi, Tarcio! Me interessei por esse site, o modelo da Conferência Lastro.\n\nO site montou esta mensagem:\n"};</script>
 <script src="base.js?v=ccb60058" defer></script>
-<script src="modelo.js?v=479e6e38" defer></script>
+<script src="modelo.js?v=4688a2b6" defer></script>
 </body>
 </html>

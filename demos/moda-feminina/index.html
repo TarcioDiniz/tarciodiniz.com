@@ -15,7 +15,7 @@
 <!--
   Juá, modelo de loja do tarciodiniz.com (carreira/modelos/jua). Empresa fictícia.
   Peças em fonte/itens.json, tamanhos e medidas no bloco JSON "fichas" desta página.
-  Fotos (Unsplash, autor de cada imagem em fonte/fotos.tsv): byhome work, Reistor, engin akyurt, Icons8 Team, tian dayong, COLVOO, Knight Duong, OurWhisky Foundation, K Studios, MADEINEGYPT.CA, tamaki kato, Wilhelm Gunkel, Zulfugar Karimov, Sincerely Media, Irene Kredenets, Pedro Miranda, Svitlana, hanen souhail, Eze Joseph, Apostolos Vamvouras, DCL 650, Priscilla Whendy, Tamara Bellis, Kateryna Hliznitsova, Caroline Badran, Nathan Dumlao, Roland Denes.
+  Fotos (Unsplash, autor de cada imagem em fonte/fotos.tsv): byhome work, Reistor, engin akyurt, tian dayong, COLVOO, K Studios, MADEINEGYPT.CA, Wilhelm Gunkel, Zulfugar Karimov, Sincerely Media, Irene Kredenets, Pedro Miranda, Svitlana, hanen souhail, Eze Joseph, Apostolos Vamvouras, Kateryna Hliznitsova, Caroline Badran, Nathan Dumlao, Roland Denes, FOTOGRAFIA EDITORIAL, Laura Chouette, SoyBreno, IMANA, Konstantin Shmatov, Roman Manshin, Lina Bob.
 -->
 <style>
 /* Núcleo dos modelos do tarciodiniz.com: o que toda variação usa (tokens, fonte, títulos, botões,
@@ -744,8 +744,8 @@ body { font-size: 16px; line-height: 1.6; }
 
 /* Fotos de gente em retrato: o rosto fica no terço de cima, então o corte parte do alto */
 .cartao-foto.cheia img { object-position: 50% 18%; }
-.cartao[data-id="bolsa-palha"] .cartao-foto img,
-.cartao[data-id="bolsa-cesta"] .cartao-foto img { object-position: 50% 50%; }
+.cartao[data-id="bolsa-palha"] .cartao-foto img { object-position: 50% 50%; }
+.cartao[data-id="bolsa-cesta"] .cartao-foto img { object-position: 50% 100%; }
 .cartao[data-id="chapeu-boater"] .cartao-foto img { object-position: 50% 30%; }
 .cartao[data-id="rasteira"] .cartao-foto img { object-position: 50% 62%; }
 .cartao[data-id="plataforma"] .cartao-foto img { object-position: 50% 60%; }
@@ -808,6 +808,10 @@ body { font-size: 16px; line-height: 1.6; }
 .passo { align-content: start; }
 /* Longo Ipê: o que vende é a barra de renda, então o corte desce até ela */
 .cartao[data-id="ipe"] .cartao-foto img { object-position: 50% 62%; }
+
+/* Cortes das fotos de cena: a pessoa fica na ponta direita da foto de domingo e o par de sandálias no lado esquerdo do atalho */
+.tile img[src*="uso-domingo"] { object-position: 88% 50%; }
+.atalho-foto img[src*="atalho-sandalias"] { object-position: 22% 50%; }
 
 /* Tema da Juá: um verde de folha seca no destaque (6,5:1 sobre branco). O resto vem do estilo elegante. */
 :root {
@@ -919,8 +923,8 @@ body { font-size: 16px; line-height: 1.6; }
   <section class="destaques wrap" aria-label="Destaques">
     <div class="destaques-lista">
       <article class="destaque destaque-item">
-        <img src="img/itens/cumaru.webp" width="900" height="1350" alt="Mulher de camisão de linho cinza segurando um buquê de capim seco" loading="lazy">
-        <p>Camisão Cumaru, cinza-chumbo, com dois bolsos. R$&nbsp;319,90 ou 6x de R$&nbsp;53,32.</p>
+        <img src="img/itens/cumaru.webp" width="900" height="1350" alt="Mulher de cabelo cacheado com blazer de linho marrom aberto sobre colete claro e calça de linho cru" loading="lazy">
+        <p>Blazer Cumaru, cor de café, com dois bolsos. R$&nbsp;319,90 ou 6x de R$&nbsp;53,32.</p>
         <div><button class="btn btn-ink btn-sm" type="button" data-abrir="cumaru">Escolher tamanho</button></div>
       </article>
       <article class="destaque destaque-foto">
@@ -945,7 +949,7 @@ body { font-size: 16px; line-height: 1.6; }
       <li><a class="atalho" href="#itens" data-filtrar="festa"><span class="atalho-foto"><img src="img/cenas/atalho-festa.webp" width="1400" height="2294" alt="" loading="lazy"></span><b>Festa</b><small>4 peças</small></a></li>
       <li><a class="atalho" href="#itens" data-filtrar="bolsas"><span class="atalho-foto"><img src="img/cenas/atalho-bolsas.webp" width="1400" height="2114" alt="" loading="lazy"></span><b>Bolsas</b><small>2 peças</small></a></li>
       <li><a class="atalho" href="#itens" data-filtrar="chapeus"><span class="atalho-foto"><img src="img/cenas/atalho-chapeus.webp" width="1400" height="2100" alt="" loading="lazy"></span><b>Chapéus</b><small>2 peças</small></a></li>
-      <li><a class="atalho" href="#itens" data-filtrar="sandalias"><span class="atalho-foto"><img src="img/cenas/atalho-sandalias.webp" width="1400" height="1750" alt="" loading="lazy"></span><b>Sandálias</b><small>2 peças</small></a></li>
+      <li><a class="atalho" href="#itens" data-filtrar="sandalias"><span class="atalho-foto"><img src="img/cenas/atalho-sandalias.webp" width="1400" height="929" alt="" loading="lazy"></span><b>Sandálias</b><small>2 peças</small></a></li>
     </ul>
   </section>
 
@@ -1005,16 +1009,16 @@ body { font-size: 16px; line-height: 1.6; }
           <span class="cartao-extra">ou 6x de R$ 39,98</span>
         </div>
       </article>
-      <article class="cartao" data-id="cumaru" data-grupo="linho" data-nome="Camisão Cumaru" data-preco="319.90" data-img="img/itens/cumaru.webp">
-        <button class="cartao-foto cheia" type="button" data-abrir="cumaru" aria-label="Ver Camisão Cumaru">
-          <img src="img/itens/cumaru.webp" width="900" height="1350" alt="Mulher de camisão de linho cinza segurando um buquê de capim seco" loading="lazy">
+      <article class="cartao" data-id="cumaru" data-grupo="linho" data-nome="Blazer Cumaru" data-preco="319.90" data-img="img/itens/cumaru.webp">
+        <button class="cartao-foto cheia" type="button" data-abrir="cumaru" aria-label="Ver Blazer Cumaru">
+          <img src="img/itens/cumaru.webp" width="900" height="1350" alt="Mulher de cabelo cacheado com blazer de linho marrom aberto sobre colete claro e calça de linho cru" loading="lazy">
           
           <span class="por" aria-hidden="true"><svg class="ico"><use href="#i-plus"/></svg></span>
         </button>
         <div class="cartao-info">
-          <h3 class="cartao-nome">Camisão Cumaru</h3>
+          <h3 class="cartao-nome">Blazer Cumaru</h3>
           <span class="cartao-preco">R$ 319,90</span>
-          <span class="cartao-det">Camisão cinza-chumbo, com bolsos</span>
+          <span class="cartao-det">Blazer de linho café, com bolsos</span>
           <span class="cartao-extra">ou 6x de R$ 53,32</span>
         </div>
       </article>
@@ -1059,27 +1063,27 @@ body { font-size: 16px; line-height: 1.6; }
       </article>
       <article class="cartao" data-id="noite" data-grupo="festa" data-nome="Longo Noite" data-preco="429.90" data-img="img/itens/noite.webp">
         <button class="cartao-foto cheia" type="button" data-abrir="noite" aria-label="Ver Longo Noite">
-          <img src="img/itens/noite.webp" width="900" height="1350" alt="Mulher de vestido longo preto de alça com fenda alta" loading="lazy">
+          <img src="img/itens/noite.webp" width="900" height="1350" alt="Mulher de costas, olhando por cima do ombro, com vestido longo vermelho de alça larga junto a um balcão de bar" loading="lazy">
           
           <span class="por" aria-hidden="true"><svg class="ico"><use href="#i-plus"/></svg></span>
         </button>
         <div class="cartao-info">
           <h3 class="cartao-nome">Longo Noite</h3>
           <span class="cartao-preco">R$ 429,90</span>
-          <span class="cartao-det">Longo preto, alça fina, fenda alta</span>
+          <span class="cartao-det">Longo vermelho, alça larga, costas abertas</span>
           <span class="cartao-extra">ou 6x de R$ 71,65</span>
         </div>
       </article>
       <article class="cartao" data-id="marinho" data-grupo="festa" data-nome="Midi Marinho" data-preco="389.90" data-img="img/itens/marinho.webp">
         <button class="cartao-foto cheia" type="button" data-abrir="marinho" aria-label="Ver Midi Marinho">
-          <img src="img/itens/marinho.webp" width="900" height="1198" alt="Mulher sorrindo com vestido de cetim azul-marinho com fenda" loading="lazy">
+          <img src="img/itens/marinho.webp" width="900" height="1256" alt="Mulher de vestido de cetim azul-marinho de manga longa, com uma fita azul diante do rosto" loading="lazy">
           
           <span class="por" aria-hidden="true"><svg class="ico"><use href="#i-plus"/></svg></span>
         </button>
         <div class="cartao-info">
           <h3 class="cartao-nome">Midi Marinho</h3>
           <span class="cartao-preco">R$ 389,90</span>
-          <span class="cartao-det">Cetim azul-marinho, fenda no joelho</span>
+          <span class="cartao-det">Cetim azul-marinho, manga longa</span>
           <span class="cartao-extra">ou 6x de R$ 64,98</span>
         </div>
       </article>
@@ -1109,16 +1113,16 @@ body { font-size: 16px; line-height: 1.6; }
           <span class="cartao-extra">ou 6x de R$ 24,98</span>
         </div>
       </article>
-      <article class="cartao" data-id="bolsa-cesta" data-grupo="bolsas" data-nome="Cesta Dourada" data-preco="179.90" data-img="img/itens/bolsa-cesta.webp">
-        <button class="cartao-foto cheia" type="button" data-abrir="bolsa-cesta" aria-label="Ver Cesta Dourada">
-          <img src="img/itens/bolsa-cesta.webp" width="900" height="507" alt="Bolsa de mão tecida em tom dourado com alças de couro" loading="lazy">
+      <article class="cartao" data-id="bolsa-cesta" data-grupo="bolsas" data-nome="Bolsa Meia-Lua" data-preco="179.90" data-img="img/itens/bolsa-cesta.webp">
+        <button class="cartao-foto cheia" type="button" data-abrir="bolsa-cesta" aria-label="Ver Bolsa Meia-Lua">
+          <img src="img/itens/bolsa-cesta.webp" width="900" height="1350" alt="Mulher de conjunto estampado em cinza e cru, com uma bolsa de palha meia-lua na mão" loading="lazy">
           
           <span class="por" aria-hidden="true"><svg class="ico"><use href="#i-plus"/></svg></span>
         </button>
         <div class="cartao-info">
-          <h3 class="cartao-nome">Cesta Dourada</h3>
+          <h3 class="cartao-nome">Bolsa Meia-Lua</h3>
           <span class="cartao-preco">R$ 179,90</span>
-          <span class="cartao-det">Trançada, alças de couro</span>
+          <span class="cartao-det">Palha trançada, alça curta</span>
           <span class="cartao-extra">ou 6x de R$ 29,98</span>
         </div>
       </article>
@@ -1184,8 +1188,8 @@ body { font-size: 16px; line-height: 1.6; }
       <p class="lead">As quatro ocasiões que mais trazem cliente aqui, com as peças de cada uma.</p>
     </div>
     <div class="mosaico">
-      <a class="tile tile-grande" href="#itens" data-filtrar="linho"><img src="img/cenas/uso-domingo.webp" width="1400" height="934" alt="Mulher de óculos escuros e vestido claro estampado sorrindo ao ar livre" loading="lazy"><span class="tile-texto"><span class="tile-nome">Almoço de domingo</span><span class="btn btn-light">Ver 6<svg class="ico" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></span></span></a>
-      <a class="tile tile-largo" href="#itens" data-filtrar="chapeus"><img src="img/cenas/uso-viagem.webp" width="1400" height="931" alt="Vestido branco estampado de flores ao vento, com o mar ao fundo" loading="lazy"><span class="tile-texto"><span class="tile-nome">Viagem e praia</span><span class="btn btn-light">Ver 2<svg class="ico" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></span></span></a>
+      <a class="tile tile-grande" href="#itens" data-filtrar="linho"><img src="img/cenas/uso-domingo.webp" width="1400" height="934" alt="Mulher de conjunto de linho bege sentada num pufe, ao lado de um vaso grande e folhas secas" loading="lazy"><span class="tile-texto"><span class="tile-nome">Almoço de domingo</span><span class="btn btn-light">Ver 6<svg class="ico" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></span></span></a>
+      <a class="tile tile-largo" href="#itens" data-filtrar="chapeus"><img src="img/cenas/uso-viagem.webp" width="1400" height="931" alt="Mulher de chapéu de palha e vestido claro, encostada numa parede de sol com janela verde" loading="lazy"><span class="tile-texto"><span class="tile-nome">Viagem e praia</span><span class="btn btn-light">Ver 2<svg class="ico" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></span></span></a>
       <a class="tile" href="#itens" data-filtrar="linho"><img src="img/cenas/uso-trabalho.webp" width="1400" height="2100" alt="Mulher de óculos escuros e conjunto de linho mostarda subindo uma escada de pedra" loading="lazy"><span class="tile-texto"><span class="tile-nome">Dia de trabalho</span><span class="btn btn-light">Ver 6<svg class="ico" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></span></span></a>
       <a class="tile" href="#itens" data-filtrar="festa"><img src="img/cenas/uso-reveillon.webp" width="1400" height="2098" alt="Mulher de vestido brilhante comemorando entre balões dourados" loading="lazy"><span class="tile-texto"><span class="tile-nome">Réveillon</span><span class="btn btn-light">Ver 4<svg class="ico" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></span></span></a>
     </div>
@@ -1410,7 +1414,7 @@ body { font-size: 16px; line-height: 1.6; }
    "P"
   ],
   "categoria": "Linho",
-  "descricao": "Linho lavado cinza-chumbo, bolsos fundos e botões de coco. Veste como vestido ou aberto sobre uma regata. 105 cm no M."
+  "descricao": "Linho lavado cor de café, solto, sem forro e com dois bolsos fundos. Veste aberto sobre regata ou camisa. 68 cm de comprimento no M."
  },
  "umbu": {
   "tipo": "camisa",
@@ -1467,7 +1471,7 @@ body { font-size: 16px; line-height: 1.6; }
   ],
   "esgotados": [],
   "categoria": "Festa",
-  "descricao": "Crepe com caimento pesado, alça fina regulável e fenda alta. A barra é ajustada sem custo em até 2 dias."
+  "descricao": "Crepe vermelho de caimento pesado, alça larga e costas abertas em V. A barra é ajustada sem custo em até 2 dias."
  },
  "marinho": {
   "tipo": "festa",
@@ -1483,7 +1487,7 @@ body { font-size: 16px; line-height: 1.6; }
    "36"
   ],
   "categoria": "Festa",
-  "descricao": "Cetim azul-marinho com elastano, forrado. Vai bem em casamento à tarde. A barra é ajustada sem custo."
+  "descricao": "Cetim azul-marinho com elastano, forrado, manga longa com punho de botão. Vai bem em casamento à tarde. A barra é ajustada sem custo."
  },
  "marsala": {
   "tipo": "festa",
@@ -1515,7 +1519,7 @@ body { font-size: 16px; line-height: 1.6; }
   ],
   "esgotados": [],
   "categoria": "Bolsas",
-  "descricao": "Trançado largo com duas alças de couro, para o dia inteiro. Cabe um caderno. 36 cm de largura."
+  "descricao": "Palha trançada em meia-lua, alça curta e fecho de botão, para o dia inteiro. Cabe celular, carteira e óculos. 26 cm de largura."
  },
  "chapeu-boater": {
   "tipo": "chapeu",

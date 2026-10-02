@@ -16,11 +16,11 @@
   dia e horário, e o resumo vai pronto para o WhatsApp. Serviços (data-servico), equipe (data-prof,
   data-folga) e horário de funcionamento ([data-horario]) são lidos do HTML pelo modelo.js. Os horários
   ocupados são fictícios e se repetem igual a cada visita. ?agora=2026-10-02T10:30 simula a hora.
-  Fotos (licença Unsplash, https://unsplash.com/license): Reza Ghaemi (capa), Nathon Oski (a casa e a
-  barba na tesoura), Agustin Fernandez (corte), Victor Sirbu (degradê e barba), Mr Shave (corte e barba),
-  Chris Knight (sobrancelha), César Badilla Miranda (pigmentação), Tommy van Kessel (infantil),
+  Fotos (licença Unsplash, https://unsplash.com/license): Reza Ghaemi (capa), Nathon Oski (a casa),
+  Agustin Fernandez (corte), Victor Sirbu (degradê e barba), Mr Shave (corte e barba),
+  Chris Knight (sobrancelha), César Badilla Miranda (pigmentação), John Rodriguez (infantil),
   Hannah Skelly (noivo), Ato Aikins (Damião), Obi (Rafa), Glib Albovsky (Léo), Amritpal Singh,
-  Michael DeMoya, Megan Bagshaw e Stephan Louis (trabalhos). Mapa: OpenStreetMap, com Leaflet 1.9.4.
+  Michael DeMoya, David Cano Soriano e William Argueta (trabalhos). Mapa: OpenStreetMap, com Leaflet 1.9.4.
   Fontes: Archivo, SIL Open Font License. GSAP 3.15.0 (licença padrão sem custo).
 -->
 <style>
@@ -819,7 +819,7 @@ dialog::backdrop { background: var(--scrim); }
               <span class="ag-serv-lado"><b>R$&nbsp;30</b><small>30 min</small></span>
             </button>
             <button class="ag-serv" type="button" data-servico="infantil" data-nome="Corte infantil" data-min="30" data-preco="35" data-tipo="cabelo" aria-pressed="false">
-              <span class="ag-serv-foto" aria-hidden="true"><img src="img/itens/s-infantil.webp" alt="" width="280" height="187" loading="lazy"></span>
+              <span class="ag-serv-foto" aria-hidden="true"><img src="img/itens/s-infantil.webp" alt="" width="280" height="420" loading="lazy" style="object-position: 40% 30%"></span>
               <span class="ag-serv-texto"><b>Corte infantil</b><small>Até 10 anos, com o Léo e um adulto junto</small></span>
               <span class="ag-serv-lado"><b>R$&nbsp;35</b><small>30 min</small></span>
             </button>
@@ -935,9 +935,9 @@ dialog::backdrop { background: var(--scrim); }
     <ul class="ag-trabalhos">
       <li><figure><img src="img/itens/t-degrade-risco.webp" alt="Nuca de cliente com degradê alto e um risco desenhado na lateral" width="640" height="854" loading="lazy"><figcaption>Degradê com risco <span>Rafa</span></figcaption></figure></li>
       <li><figure><img src="img/cenas/t-degrade-barba.webp" alt="Barbeiro passando a máquina na nuca de um cliente de barba, com degradê alto já marcado" width="1400" height="933" loading="lazy" style="object-position: 62% 50%"><figcaption>Degradê alto na máquina <span>Rafa</span></figcaption></figure></li>
-      <li><figure><img src="img/itens/t-barba-tesoura.webp" alt="Barbeiro aparando a barba de um cliente com tesoura, em preto e branco" width="640" height="964" loading="lazy"><figcaption>Barba na tesoura <span>Seu Damião</span></figcaption></figure></li>
-      <li><figure><img src="img/itens/t-degrade-baixo.webp" alt="Perfil de homem com degradê baixo, em preto e branco" width="640" height="960" loading="lazy"><figcaption>Degradê baixo na navalha <span>Rafa</span></figcaption></figure></li>
-      <li><figure><img src="img/itens/t-degrade-medio.webp" alt="Retrato de homem com degradê médio, topete na tesoura e barba aparada" width="640" height="960" loading="lazy"><figcaption>Topete na tesoura <span>Léo</span></figcaption></figure></li>
+      <li><figure><img src="img/itens/t-barba-tesoura.webp" alt="Barbeiro aparando a barba de um cliente na máquina, de capa vermelha" width="640" height="960" loading="lazy"><figcaption>Barba na máquina <span>Seu Damião</span></figcaption></figure></li>
+      <li><figure><img src="img/itens/t-degrade-baixo.webp" alt="Máquina acertando a lateral de um degradê baixo, de perto" width="640" height="427" loading="lazy" style="object-position: 72% 50%"><figcaption>Degradê baixo na máquina <span>Rafa</span></figcaption></figure></li>
+      <li><figure><img src="img/itens/t-degrade-medio.webp" alt="Barbeiro cortando o topete na tesoura e no pente, com degradê médio na lateral" width="640" height="960" loading="lazy"><figcaption>Topete na tesoura <span>Léo</span></figcaption></figure></li>
     </ul>
   </section>
 
