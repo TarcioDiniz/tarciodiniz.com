@@ -5,21 +5,41 @@ Site do Tarcio Diniz, desenvolvedor web em Campina Grande (PB), no ar em
 celular, preparados para o Google e com o WhatsApp a um toque.
 
 A página principal fala com o dono de negócio primeiro e traz, mais abaixo, a minha história e o
-que eu faço como desenvolvedor. Em `demos/` ficam dez modelos de empresas fictícias, cada um com
-uma função de verdade:
+que eu faço como desenvolvedor. Em `demos/` ficam 24 modelos de empresas fictícias, cada um com
+uma função de verdade, e a página [/modelos/](https://tarciodiniz.com/modelos/) junta todos, com
+busca e filtro por ramo e por tipo de site. Cada modelo é um esqueleto (o que o cliente faz no site)
+vestido com um estilo visual; o código de origem fica fora deste repositório.
 
-| modelo | o que mostra |
-|---|---|
-| [Brasa Smash](https://tarciodiniz.com/demos/cardapio/) | cardápio que vira comanda e pedido no WhatsApp, com vídeo na capa |
-| [Rebuliço](https://tarciodiniz.com/demos/bar/) | bar e pista: a noite de hoje na capa, nome na lista, camarote e aniversário pelo WhatsApp |
-| [Caneca Azul](https://tarciodiniz.com/demos/cafe/) | café de bairro: comanda, encomenda de bolo e vídeo na capa |
-| [Sálvia Fisioterapia](https://tarciodiniz.com/demos/fisioterapia/) | "Onde dói?", o tratamento passo a passo e agendamento com horários livres |
-| [Vigília Veterinária](https://tarciodiniz.com/demos/veterinaria/) | cão ou gato muda a página, emergência a um toque e agendamento |
-| [Pousada Aroá](https://tarciodiniz.com/demos/pousada/) | quartos com galeria, calendário de datas livres e pedido de reserva |
-| [Algodão Hotel](https://tarciodiniz.com/demos/hotel/) | distância até o que o hóspede veio fazer, tarifa do dia e convênio para empresa |
-| [Sisal Barbearia](https://tarciodiniz.com/demos/barbearia/) | horários livres na tela e a altura do degradê no pedido |
-| [Braúna Marcenaria](https://tarciodiniz.com/demos/planejados/) | planejados: acabamento trocado na foto, orçamento por ambiente e pedido de visita pelo WhatsApp |
-| [Carnaúba Estética Automotiva](https://tarciodiniz.com/demos/estetica-automotiva/) | estética automotiva: preço por porte e serviço, hora em que o carro fica pronto e pedido pelo WhatsApp |
+| modelo | ramo | tipo de site | o que mostra |
+|---|---|---|---|
+| [Passada](https://tarciodiniz.com/demos/loja-de-tenis/) | Loja de tênis | Loja | Tênis e streetwear com sacola e pedido no WhatsApp. |
+| [Juá](https://tarciodiniz.com/demos/moda-feminina/) | Moda feminina | Loja | Vestidos de linho, peças de festa e acessórios, com tamanho na ficha e pedido no WhatsApp. |
+| [Pitanga](https://tarciodiniz.com/demos/cosmeticos/) | Cosméticos e skincare | Loja | Skincare, maquiagem e perfumaria, com kit montado na sacola e entrega no mesmo dia. |
+| [Brasa Smash](https://tarciodiniz.com/demos/cardapio/) | Hamburgueria | Cardápio | Cardápio de smash burger que vira pedido no WhatsApp, com entrega por bairro. |
+| [Caneca Azul](https://tarciodiniz.com/demos/cafe/) | Café de bairro | Cardápio | Cuscuz, tapioca e café coado, com comanda no WhatsApp e bolo por encomenda. |
+| [Tigela Açaí](https://tarciodiniz.com/demos/acai/) | Açaí e sorvetes | Cardápio | Açaí montado do jeito do cliente, com adicionais e pedido no WhatsApp. |
+| [Sisal Barbearia](https://tarciodiniz.com/demos/barbearia/) | Barbearia | Agenda | Horário marcado com o barbeiro, sem fila, confirmado no WhatsApp. |
+| [Bromélia Salão](https://tarciodiniz.com/demos/salao/) | Salão de beleza | Agenda | Corte, escova, coloração e unhas com horário marcado. |
+| [Carnaúba](https://tarciodiniz.com/demos/estetica-automotiva/) | Estética automotiva | Agenda | Lavagem detalhada, polimento e higienização com hora marcada e leva e traz. |
+| [Braúna](https://tarciodiniz.com/demos/planejados/) | Marcenaria de planejados | Orçamento | Móveis planejados com orçamento por ambiente e visita de medição. |
+| [Lume Solar](https://tarciodiniz.com/demos/energia-solar/) | Energia solar | Orçamento | Energia solar para casa e comércio, com estimativa de economia e visita técnica. |
+| [Prumo Reformas](https://tarciodiniz.com/demos/reforma/) | Reforma e pintura | Orçamento | Reforma, pintura e acabamento com orçamento em 24 horas e prazo por escrito. |
+| [Sálvia Fisio](https://tarciodiniz.com/demos/fisioterapia/) | Fisioterapia | Página de vendas | Tratamento de dor com plano por escrito, do primeiro dia até a alta. |
+| [Renata Lins](https://tarciodiniz.com/demos/psicologa/) | Psicóloga | Página de vendas | Psicoterapia para adultos, presencial e online, com primeira conversa sem custo. |
+| [Pulso Estúdio](https://tarciodiniz.com/demos/personal/) | Treino funcional e personal | Página de vendas | Treino funcional em turmas pequenas e personal, com aula experimental. |
+| [Forno da Clara](https://tarciodiniz.com/demos/confeitaria/) | Bolos e doces por encomenda | Página de links | Página de links com cardápio de bolos, Pix do sinal e encomenda no WhatsApp. |
+| [Lia Nails](https://tarciodiniz.com/demos/unhas/) | Designer de unhas | Página de links | Página de links com tabela, horários e agendamento pelo WhatsApp. |
+| [Brechó Varal](https://tarciodiniz.com/demos/brecho/) | Brechó no Instagram | Página de links | Página de links com as peças da semana, regras de reserva e entrega. |
+| [Marina Duarte](https://tarciodiniz.com/demos/fotografa/) | Fotógrafa | Portfólio | Casamentos, ensaios e eventos, com pacotes e consulta de data. |
+| [Bruna Rocha](https://tarciodiniz.com/demos/maquiadora/) | Maquiadora | Portfólio | Maquiagem para noivas, formandas e festas, com pacotes e consulta de data. |
+| [DJ Ravi](https://tarciodiniz.com/demos/dj/) | DJ | Portfólio | Som e luz para casamento, formatura e festa, com pacotes e consulta de data. |
+| [Camarote Pé de Serra](https://tarciodiniz.com/demos/sao-joao/) | Camarote de São João | Evento | Camarote de São João com open bar, forró pé de serra e ingresso por noite. |
+| [Fórum Borborema](https://tarciodiniz.com/demos/congresso/) | Congresso de negócios | Evento | Dois dias de palestras e oficinas para pequenos empresários, com lotes de ingresso. |
+| [Conferência Raiz](https://tarciodiniz.com/demos/conferencia/) | Conferência de jovens | Evento | Conferência de jovens com louvor, palavra e oficinas, com inscrição por lote. |
+
+Quatro modelos mais antigos saíram da vitrine e continuam no ar pelo endereço: Rebuliço
+(`demos/bar/`), Vigília Veterinária (`demos/veterinaria/`), Pousada Aroá (`demos/pousada/`) e Algodão
+Hotel (`demos/hotel/`).
 
 ## Como é feito
 
@@ -98,17 +118,16 @@ arquivo `.txt` de nome hexadecimal na raiz).
 
 ## Créditos
 
-- Fontes do Google Fonts: Anton e Inter Tight no site; nos modelos, Anybody, Figtree e Martian Mono
-  (Brasa Smash), Doto, Handjet e Onest (Rebuliço), Coustard e Be Vietnam Pro (Caneca Azul), Gabarito
-  e Hanken Grotesk (Sálvia), Unbounded e Albert Sans (Vigília), Gloock e Work Sans (Aroá), Red Hat
-  Display, Text e Mono (Algodão), Sofia Sans Extra Condensed e Libre Franklin (Sisal), Archivo e
-  Source Serif 4 (Braúna) e Funnel Display e Rethink Sans (Carnaúba).
+- Fontes do Google Fonts: Anton e Inter Tight no site; nos modelos, Archivo, Schibsted Grotesk,
+  Nunito, Gilda Display e Hanken Grotesk, servidas pela própria página. Os quatro modelos antigos que
+  saíram da vitrine usam Doto, Handjet e Onest (Rebuliço), Unbounded e Albert Sans (Vigília), Gloock e
+  Work Sans (Aroá) e Red Hat Display, Text e Mono (Algodão).
 - Mapas: [Leaflet](https://leafletjs.com) com dados do [OpenStreetMap](https://www.openstreetmap.org/copyright).
 - Ícones: [Simple Icons](https://simpleicons.org) (CC0) para as marcas e
   [Phosphor](https://phosphoricons.com) (MIT) para a interface.
-- Fotos dos modelos: [Unsplash](https://unsplash.com) e [Pexels](https://www.pexels.com); vídeos das capas:
-  [Pexels](https://www.pexels.com) e [Coverr](https://coverr.co). O autor de cada foto e vídeo está num
-  comentário no topo do HTML do modelo. As fotos da Braúna e da Carnaúba foram geradas com
-  IA no [Higgsfield](https://higgsfield.ai). As fotos em `assets/img/` são minhas.
+- Fotos dos modelos: [Unsplash](https://unsplash.com) e [Pexels](https://www.pexels.com); vídeos das capas
+  dos modelos antigos: [Pexels](https://www.pexels.com) e [Coverr](https://coverr.co). O autor de cada foto e vídeo está num
+  comentário no topo do HTML do modelo. Nos modelos atuais, todas as fotos são reais, do
+  Unsplash. As fotos em `assets/img/` são minhas.
 
 As empresas, os preços e as avaliações dos modelos são fictícios.
