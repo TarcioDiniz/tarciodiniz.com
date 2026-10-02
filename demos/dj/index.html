@@ -1,0 +1,956 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>DJ Ravi · Som e luz para casamento, formatura e festa em Campina Grande (demonstração)</title>
+<meta name="description" content="DJ Ravi toca em casamento, formatura e festa em Campina Grande e região, com som e luz próprios, pacotes e consulta de data. Modelo de demonstração.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0F0F0E">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+<!--
+  Modelo DJ Ravi, feito a partir do esqueleto de portfólio dos modelos do tarciodiniz.com, no estilo escuro.
+  Negócio e pessoas fictícios; preços de exemplo. Ordem: capa, galeria com filtro e tela cheia, sobre,
+  pacotes, como funciona, depoimentos, consulta de data (formulário que vira mensagem de WhatsApp).
+  Fotos (Unsplash): Omar Lopez (capa), Wesley Tingey (pista de casamento e de festa), Sarah Noltner,
+  Jeppe Mønster, Kari Bjorn Photography, Leonardo Miranda, Ethan Gowans, Clay Banks, Jordon Conner,
+  Nicholas Green, Nereid Ndreu, A J., Shalom Ejiofor, Krys Amon, Clint Patterson, David von Diemar e
+  Alfonso Scarpa (retrato). Créditos completos em fonte/fotos.tsv.
+-->
+<style>
+/* Núcleo dos modelos do tarciodiniz.com: o que toda variação usa (tokens, fonte, títulos, botões,
+   aviso, cabeçalho, seções, filtro, rodapé, janelas que sobem de baixo, aviso curto).
+   Extraído da Passada em 01/10/2026. Regras em carreira/padrao-dos-modelos.md. */
+@font-face { font-family: 'Archivo'; font-style: normal; font-weight: 100 900; font-stretch: 62% 125%; font-display: swap; src: url(fonts/archivo-latin-ext.woff2) format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: 'Archivo'; font-style: normal; font-weight: 100 900; font-stretch: 62% 125%; font-display: swap; src: url(fonts/archivo-latin.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+
+:root {
+  --bg: #F4F3EF;
+  --surface: #FFFFFF;
+  --card: #ECEAE4;
+  --card-2: #E4E1D9;
+  --ink: #151515;
+  --ink-2: #55544F;
+  --ink-3: #66645E;
+  --line: #DCD9D1;
+  --accent: #C4461C;
+  --accent-ink: #FFFFFF;
+  --dark: #121212;
+  --dark-2: #1D1D1C;
+  --on-dark: #F4F3EF;
+  --on-dark-2: #B9B7B0;
+  --wa: #25D366;
+  --pix: #32BCAD;
+  /* Cores de apoio que os estilos podem trocar: texto escuro sobre fundo claro fixo (botão claro em cima
+     de foto), verde de desconto e Pix, e a estrela das avaliações. */
+  --on-light: #151515;
+  --ok: #13796F;
+  --estrela: #E3A008;
+  --scrim: rgba(12, 12, 12, 0.62);
+  --r-xl: 28px;
+  --r-lg: 22px;
+  --r-md: 16px;
+  --r-sm: 10px;
+  --pill: 999px;
+  --gutter: clamp(16px, 4vw, 40px);
+  --max: 1360px;
+  --section: clamp(64px, 9vw, 112px);
+  --font: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+  --wide: 116%;
+  --shadow-product: drop-shadow(0 18px 16px rgba(20, 18, 14, 0.18));
+  --ease: cubic-bezier(.2, .7, .2, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+html.travado { overflow: hidden; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; }
+button { font: inherit; color: inherit; cursor: pointer; }
+input, textarea, select { color: var(--ink); }
+/* Texto que só aparece a partir de 600 px (o resto da frase cabe no celular sem ele) */
+.so-largo { display: none; }
+@media (min-width: 600px) { .so-largo { display: inline; } }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+[tabindex="-1"]:focus { outline: none; }
+.ico { width: 1.25em; height: 1.25em; fill: currentColor; flex: none; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.wrap { width: 100%; max-width: var(--max); margin-inline: auto; padding-inline: var(--gutter); }
+
+/* Títulos */
+.h1, .h2, .h3 { font-stretch: var(--wide); font-weight: 800; letter-spacing: -0.025em; line-height: 1.02; margin: 0; text-wrap: balance; }
+.cartao-nome, .passo h3, .tile-nome, .destaque p, .lead { text-wrap: balance; }
+.h1 { font-size: clamp(2.35rem, 7.4vw, 5.4rem); }
+.h2 { font-size: clamp(1.9rem, 4.2vw, 3.1rem); }
+.h3 { font-size: clamp(1.2rem, 2vw, 1.45rem); letter-spacing: -0.015em; }
+.lead { color: var(--ink-2); font-size: clamp(1rem, 1.4vw, 1.125rem); max-width: 34em; margin: 14px 0 0; }
+
+/* Botões */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: .55em;
+  min-height: 48px; padding: 0 22px; border-radius: var(--pill); border: 1.5px solid transparent;
+  font-weight: 650; font-size: 15px; text-decoration: none; white-space: nowrap;
+  transition: transform .25s var(--ease), background-color .25s, color .25s, border-color .25s;
+}
+.btn:active { transform: scale(.97); }
+.btn-ink { background: var(--ink); color: var(--bg); }
+.btn-ink:hover { background: color-mix(in srgb, var(--ink) 86%, #000); }
+.btn-light { background: var(--surface); color: var(--ink); }
+.btn-light:hover { background: var(--bg); }
+.btn-line { border-color: var(--ink); color: var(--ink); background: transparent; }
+.btn-line:hover { background: var(--ink); color: var(--bg); }
+.btn-line-light { border-color: rgba(255,255,255,.8); color: #fff; background: transparent; }
+.btn-line-light:hover { background: #fff; color: var(--on-light); }
+.btn .wa-ico { color: var(--wa); }
+.btn-sm { min-height: 40px; padding: 0 16px; font-size: 14px; }
+
+/* Aviso de demonstração e faixa de garantias */
+.aviso { background: var(--dark); color: var(--on-dark-2); font-size: 12.5px; text-align: center; padding: 7px var(--gutter); }
+.aviso strong { color: var(--on-dark); font-weight: 650; }
+.garantias { border-bottom: 1px solid var(--line); font-size: 13px; font-weight: 550; }
+.garantias ul { list-style: none; margin: 0; padding: 9px var(--gutter); display: flex; gap: 28px; justify-content: center; overflow-x: auto; scrollbar-width: none; }
+.garantias ul::-webkit-scrollbar { display: none; }
+.garantias li { display: flex; align-items: center; gap: 8px; white-space: nowrap; }
+.garantias .ico { width: 16px; height: 16px; }
+.garantias .pix { color: var(--pix); }
+
+/* Cabeçalho */
+.topo { position: sticky; top: 0; z-index: 40; background: color-mix(in srgb, var(--bg) 94%, transparent); backdrop-filter: saturate(1.4) blur(8px); -webkit-backdrop-filter: saturate(1.4) blur(8px); border-bottom: 1px solid transparent; transition: border-color .3s; }
+.topo.rolou { border-bottom-color: var(--line); }
+.topo .wrap { display: flex; align-items: center; gap: 20px; min-height: 64px; }
+.marca { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 800; font-stretch: 120%; font-size: 21px; letter-spacing: -0.02em; }
+.marca svg { width: 30px; height: 30px; }
+.menu { display: none; gap: 28px; margin-inline: auto; }
+.menu a { text-decoration: none; font-size: 15px; font-weight: 550; color: var(--ink-2); padding: 6px 0; border-bottom: 2px solid transparent; transition: color .2s, border-color .2s; }
+.menu a:hover { color: var(--ink); border-bottom-color: var(--ink); }
+.acoes { display: flex; gap: 8px; margin-left: auto; }
+.icone-btn { position: relative; display: grid; place-items: center; width: 44px; height: 44px; border-radius: var(--pill); border: 0; background: transparent; text-decoration: none; }
+.icone-btn:hover { background: var(--card); }
+.icone-btn .ico { width: 22px; height: 22px; }
+.contador { position: absolute; top: 4px; right: 3px; min-width: 18px; height: 18px; padding: 0 5px; border-radius: 9px; background: var(--accent); color: var(--accent-ink); font-size: 11px; font-weight: 700; display: grid; place-items: center; line-height: 1; }
+.contador[data-zero] { display: none; }
+.menu-cel { display: none; gap: 8px; overflow-x: auto; scrollbar-width: none; padding: 0 var(--gutter) 12px; }
+.menu-cel::-webkit-scrollbar { display: none; }
+.menu-cel a { flex: none; text-decoration: none; font-size: 14px; font-weight: 600; padding: 8px 14px; border-radius: var(--pill); background: var(--card); }
+@media (min-width: 900px) {
+  .menu { display: flex; }
+  .menu-cel { display: none; }
+  .topo .wrap { min-height: 76px; }
+}
+
+/* Seções */
+.secao { padding-top: var(--section); }
+.secao-topo { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 18px 32px; margin-bottom: 28px; }
+.secao-topo.centro { flex-direction: column; align-items: center; text-align: center; }
+.secao-topo.centro .lead { margin-inline: auto; }
+
+/* Filtro */
+.filtro { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; margin-inline: calc(var(--gutter) * -1); padding-inline: var(--gutter); }
+.filtro::-webkit-scrollbar { display: none; }
+.filtro button { flex: none; min-height: 40px; padding: 0 16px; border-radius: var(--pill); border: 1.5px solid var(--line); background: transparent; font-size: 14px; font-weight: 600; transition: background-color .2s, border-color .2s, color .2s; }
+.filtro button:hover { border-color: var(--ink); }
+.filtro button[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--bg); }
+@media (min-width: 900px) { .filtro { margin-inline: 0; padding-inline: 0; } }
+
+/* Rodapé */
+.rodape { background: var(--dark); color: var(--on-dark-2); margin-top: var(--section); padding: 56px 0 calc(28px + env(safe-area-inset-bottom, 0px)); font-size: 15px; }
+.rodape .marca { color: var(--on-dark); }
+.rodape-grade { display: grid; gap: 32px; }
+.rodape h2 { color: var(--on-dark); font-size: 14px; font-weight: 700; margin: 0 0 12px; letter-spacing: .01em; }
+.rodape ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.rodape a { color: var(--on-dark-2); text-decoration: none; }
+.rodape a:hover { color: var(--on-dark); }
+.rodape-sobre p { margin: 14px 0 0; max-width: 26em; }
+.pagamentos { display: flex; gap: 10px; margin-top: 18px; }
+.pagamentos span { display: grid; place-items: center; width: 52px; height: 34px; border-radius: 8px; background: var(--dark-2); }
+.pagamentos .ico { width: 30px; height: 20px; color: var(--on-dark); }
+.pagamentos .pix { color: var(--pix); }
+.redes { display: flex; gap: 8px; margin-top: 16px; }
+.redes a { display: inline-flex; align-items: center; gap: 8px; border: 1px solid color-mix(in srgb, var(--on-dark) 22%, transparent); border-radius: var(--pill); padding: 8px 14px; font-size: 13.5px; }
+.rodape-autor { border-top: 1px solid color-mix(in srgb, var(--on-dark) 14%, transparent); margin-top: 40px; padding-top: 20px; display: grid; gap: 6px; color: var(--on-dark); }
+.rodape-autor p { margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 4px 20px; min-height: 44px; }
+.rodape-autor a { color: var(--on-dark); text-decoration: underline; text-underline-offset: 3px; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; }
+.rodape-autor .back-link { text-decoration: none; }
+.rodape-base { border-top: 1px solid color-mix(in srgb, var(--on-dark) 14%, transparent); margin-top: 16px; padding-top: 20px; font-size: 15px; color: var(--on-dark-2); }
+@media (min-width: 900px) {
+  .rodape-grade { grid-template-columns: 1.6fr 1fr 1fr 1fr; }
+}
+
+/* Ficha do item e painel do pedido (sacola, comanda ou agenda) */
+dialog { border: 0; padding: 0; color: var(--ink); background: var(--surface); max-width: none; max-height: none; }
+dialog::backdrop { background: rgba(12,12,12,.5); }
+.ficha { width: 100%; margin: auto 0 0; border-radius: var(--r-xl) var(--r-xl) 0 0; max-height: 92dvh; overflow: auto; overscroll-behavior: contain; }
+.ficha-grade { display: grid; grid-template-columns: minmax(0, 1fr); }
+.ficha-foto, .ficha-corpo { min-width: 0; }
+.ficha-foto { position: relative; background: var(--card); aspect-ratio: 4 / 3; display: grid; place-items: center; }
+.ficha-foto img { width: 74%; height: 76%; object-fit: contain; filter: var(--shadow-product); }
+.ficha-corpo { padding: 22px 20px calc(22px + env(safe-area-inset-bottom, 0px)); display: flex; flex-direction: column; gap: 14px; }
+.ficha-marca { font-size: 13px; font-weight: 650; color: var(--ink-3); text-transform: uppercase; letter-spacing: .06em; }
+.ficha h2 { font-stretch: var(--wide); font-weight: 800; font-size: 1.6rem; letter-spacing: -0.02em; line-height: 1.08; margin: 2px 0 0; }
+.ficha-preco { font-size: 1.35rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+.ficha-preco small { display: block; font-size: 14px; font-weight: 500; color: var(--ink-2); margin-top: 2px; }
+.ficha-preco .pix-linha { color: var(--ok); font-weight: 600; }
+.rotulo { font-size: 14px; font-weight: 650; margin: 0 0 8px; display: flex; justify-content: space-between; gap: 12px; }
+.rotulo span { font-weight: 500; color: var(--ink-3); }
+.botoes-grade { display: grid; grid-template-columns: repeat(auto-fill, minmax(62px, 1fr)); gap: 8px; }
+.botoes-grade button { min-height: 46px; border-radius: 12px; border: 1.5px solid var(--line); background: var(--surface); font-weight: 650; font-size: 15px; font-variant-numeric: tabular-nums; }
+.botoes-grade button:hover:not(:disabled) { border-color: var(--ink); }
+.botoes-grade button[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--bg); }
+.botoes-grade button:disabled { color: var(--ink-3); background: var(--bg); text-decoration: line-through; cursor: not-allowed; }
+.ficha-nota { font-size: 13.5px; color: var(--ink-2); margin: 0; display: flex; gap: 8px; align-items: flex-start; }
+.ficha-nota .ico { margin-top: 2px; }
+.ficha .btn { width: 100%; }
+.fechar { position: absolute; top: 12px; right: 12px; z-index: 2; width: 42px; height: 42px; border-radius: 50%; border: 0; background: var(--surface); display: grid; place-items: center; }
+.fechar .ico { width: 20px; height: 20px; }
+.aviso-escolha { color: var(--accent); font-size: 13.5px; font-weight: 600; margin: -6px 0 0; min-height: 1.2em; }
+@media (min-width: 900px) {
+  .ficha { width: min(920px, calc(100% - 48px)); margin: auto; border-radius: var(--r-xl); }
+  .ficha-grade { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); }
+  .ficha-foto { aspect-ratio: auto; min-height: 520px; }
+  .ficha-corpo { padding: 36px 32px 32px; justify-content: center; }
+}
+
+.pedido { width: 100%; height: 100dvh; margin: 0 0 0 auto; display: none; flex-direction: column; }
+.pedido[open] { display: flex; }
+.pedido-topo { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; border-bottom: 1px solid var(--line); }
+.pedido-topo h2 { margin: 0; font-size: 19px; font-weight: 800; font-stretch: var(--wide); letter-spacing: -0.02em; }
+.pedido-topo .fechar { position: static; background: var(--bg); }
+.pedido-meio { flex: 1; overflow: auto; overscroll-behavior: contain; padding: 8px 20px 20px; }
+.pedido-vazio { text-align: center; padding: 48px 12px; color: var(--ink-2); }
+.pedido-vazio .ico { width: 40px; height: 40px; margin: 0 auto 10px; color: var(--ink-3); }
+.itens { list-style: none; margin: 0; padding: 0; }
+.item { display: grid; grid-template-columns: 76px 1fr auto; gap: 12px; padding: 14px 0; border-bottom: 1px solid var(--line); align-items: center; }
+.item-foto { width: 76px; height: 76px; border-radius: 12px; background: var(--card); display: grid; place-items: center; }
+.item-foto img { width: 82%; height: 82%; object-fit: contain; }
+.item-nome { font-weight: 650; font-size: 14.5px; line-height: 1.3; margin: 0; }
+.item-det { font-size: 13px; color: var(--ink-3); margin: 2px 0 0; }
+.item-lado { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
+.item-preco { font-weight: 700; font-size: 14.5px; font-variant-numeric: tabular-nums; }
+.qtd { display: inline-flex; align-items: center; border: 1.5px solid var(--line); border-radius: var(--pill); }
+.qtd button { width: 44px; height: 44px; border: 0; background: transparent; display: grid; place-items: center; }
+.qtd .ico { width: 15px; height: 15px; }
+.qtd output { min-width: 18px; text-align: center; font-weight: 650; font-size: 14px; }
+.escolha { margin-top: 20px; }
+.escolha fieldset { border: 0; padding: 0; margin: 0 0 16px; }
+.escolha legend { font-size: 14px; font-weight: 700; margin-bottom: 8px; padding: 0; }
+.opcao { display: flex; gap: 12px; align-items: flex-start; border: 1.5px solid var(--line); border-radius: 14px; padding: 12px 14px; margin-bottom: 8px; cursor: pointer; font-size: 14.5px; }
+.opcao:has(input:checked) { border-color: var(--ink); background: var(--bg); }
+.opcao input { margin: 3px 0 0; accent-color: var(--ink); width: 18px; height: 18px; }
+.opcao b { display: block; font-weight: 650; }
+.opcao span { color: var(--ink-2); font-size: 13px; }
+.campo { display: grid; gap: 6px; font-size: 14px; font-weight: 600; margin-top: 4px; }
+.campo input { font: inherit; font-weight: 500; font-size: 16px; min-height: 46px; border: 1.5px solid var(--line); border-radius: 12px; padding: 0 14px; background: var(--surface); }
+.campo input:focus { outline: none; border-color: var(--ink); }
+.pedido-fim { border-top: 1px solid var(--line); padding: 14px 20px calc(16px + env(safe-area-inset-bottom, 0px)); background: var(--surface); }
+.contas { display: grid; gap: 4px; font-size: 14px; margin: 0 0 12px; }
+.contas div { display: flex; justify-content: space-between; gap: 12px; }
+.contas dt { color: var(--ink-2); }
+.contas dd { margin: 0; font-variant-numeric: tabular-nums; font-weight: 600; }
+.contas .desc dd { color: var(--ok); }
+.contas .total { font-size: 17px; margin-top: 6px; padding-top: 8px; border-top: 1px dashed var(--line); }
+.contas .total dt { color: var(--ink); font-weight: 700; }
+.contas .total dd { font-weight: 800; }
+.pedido-fim .btn { width: 100%; }
+.pedido-fim small { display: block; text-align: center; color: var(--ink-3); font-size: 12.5px; margin-top: 8px; }
+@media (min-width: 600px) {
+  .pedido { width: 440px; }
+}
+
+.toast { position: fixed; left: 50%; bottom: calc(20px + env(safe-area-inset-bottom, 0px)); transform: translate(-50%, calc(100% + 60px)); visibility: hidden; z-index: 60; background: var(--ink); color: var(--bg); border-radius: var(--pill); padding: 12px 18px; font-size: 14.5px; font-weight: 600; display: flex; align-items: center; gap: 10px; transition: transform .35s var(--ease), visibility 0s linear .35s; box-shadow: 0 10px 30px rgba(0,0,0,.2); }
+.toast.mostra { transform: translate(-50%, 0); visibility: visible; transition: transform .35s var(--ease), visibility 0s; }
+.toast .ico { color: var(--wa); }
+
+/* Celular: janelas que sobem de baixo e fecham arrastando */
+.alca { display: none; }
+a, button { -webkit-tap-highlight-color: transparent; }
+@keyframes subir { from { transform: translateY(100%); } }
+@keyframes esmaecer { from { opacity: 0; } }
+@media (max-width: 899px) {
+  :root { --topo-cel: 58px; }
+  .topo .wrap { min-height: var(--topo-cel); gap: 12px; }
+  [id] { scroll-margin-top: calc(var(--topo-cel) + 12px); }
+  .folha { width: 100%; max-width: 100%; margin: auto 0 0; border-radius: 24px 24px 0 0; transition: transform .28s var(--ease); }
+  .folha[open] { animation: subir .34s var(--ease); }
+  .folha[open]::backdrop { animation: esmaecer .34s ease; }
+  .alca { display: block; position: absolute; top: 8px; left: 50%; transform: translateX(-50%); z-index: 3; width: 42px; height: 5px; border-radius: 3px; background: color-mix(in srgb, var(--ink) 22%, transparent); }
+  .ficha { max-height: 94dvh; }
+  .ficha-foto { aspect-ratio: auto; height: clamp(190px, 52vw, 300px); }
+  .ficha-foto img { position: absolute; inset: 0; margin: auto; width: 72%; height: 80%; }
+  .ficha-corpo { padding-bottom: 0; }
+  .ficha-acao { position: sticky; bottom: 0; margin: 4px -20px 0; padding: 12px 20px calc(12px + env(safe-area-inset-bottom, 0px)); background: var(--surface); box-shadow: 0 -1px 0 var(--line); }
+  .pedido { height: 94dvh; }
+  .pedido-topo { position: relative; padding-top: 22px; }
+}
+
+@media (max-width: 359px) { .so-360 { display: none; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .folha[open], .folha[open]::backdrop { animation: none; }
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition-duration: .01ms !important; }
+}
+
+/* Lugar de foto ainda sem foto: só no esqueleto, nunca em modelo pronto */
+.foto-vazia { background: repeating-linear-gradient(135deg, var(--card) 0 14px, var(--card-2) 14px 28px); display: grid; place-items: center; color: var(--ink-3); font-size: 13px; font-weight: 600; }
+
+/* Esqueleto de portfólio: a galeria manda, a interface fica discreta.
+   Capa com a foto do melhor trabalho, galeria em colunas de alturas variadas com filtro e tela
+   cheia, sobre, pacotes, como funciona, depoimentos e o formulário que vira mensagem de WhatsApp.
+   Fonte Archivo em largura normal e peso 700: título sem esticar, para a foto aparecer mais. */
+:root {
+  --wide: 100%;
+  --gap-galeria: 10px;
+}
+[hidden] { display: none !important; }
+.so-largo { display: none; }
+@media (min-width: 600px) { .so-largo { display: inline; } }
+.h1, .h2, .h3 { font-weight: 700; letter-spacing: -0.035em; }
+.h2 { font-size: clamp(1.9rem, 4vw, 3rem); }
+
+/* Capa */
+.p-capa { padding-top: clamp(20px, 5vw, 56px); }
+.p-capa-texto { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; }
+.redes { flex-wrap: wrap; }
+.p-pilula { display: inline-flex; align-items: center; gap: 8px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--pill); padding: 6px 14px 6px 10px; font-size: 14px; font-weight: 550; color: var(--ink-2); }
+.p-pilula .ico { width: 18px; height: 18px; color: var(--accent); }
+.p-capa .h1 { font-size: clamp(2rem, 9.6vw, 5rem); line-height: 1; margin-top: 14px; white-space: nowrap; }
+.p-capa .lead { margin-top: 0; font-size: 1rem; }
+.p-botoes { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+.p-botoes .btn { flex: 1 1 auto; }
+.p-capa-foto { position: relative; margin: 22px 0 0; }
+.p-capa-foto .foto-vazia, .p-capa-foto img { display: grid; width: 100%; aspect-ratio: 4 / 5; border-radius: var(--r-xl); object-fit: cover; }
+.p-capa-foto figcaption { margin-top: 10px; font-size: 13.5px; color: var(--ink-3); }
+@media (min-width: 700px) {
+  .p-capa-texto { grid-template-columns: 1.3fr .7fr; align-items: end; gap: 32px 48px; }
+  .p-capa .lead { font-size: 1.125rem; }
+  .p-botoes { margin-top: 18px; }
+  .p-botoes .btn { flex: 0 0 auto; }
+  .p-capa-foto .foto-vazia, .p-capa-foto img { aspect-ratio: 16 / 8; }
+}
+/* Celular baixo ou deitado: título e botões sempre na primeira tela */
+@media (max-height: 640px) and (max-width: 599px) {
+  .p-pilula { display: none; }
+  .p-capa .h1 { margin-top: 0; }
+  .p-capa .lead { display: none; }
+  .p-capa-texto { gap: 0; }
+}
+@media (orientation: landscape) and (max-height: 500px) {
+  .p-pilula, .p-capa .lead { display: none; }
+  .p-capa { padding-top: 12px; }
+  .p-capa .h1 { margin-top: 0; font-size: 2.2rem; }
+  .p-capa-texto { gap: 10px; }
+  .p-botoes { margin-top: 0; }
+  .p-botoes .btn { flex: 0 0 auto; }
+}
+
+/* Galeria: colunas de alturas variadas; --r é a proporção de cada foto */
+.p-galeria { column-count: 2; column-gap: var(--gap-galeria); margin-top: 22px; }
+.p-foto { position: relative; display: block; width: 100%; padding: 0; margin: 0 0 var(--gap-galeria); border: 0; border-radius: var(--r-md); overflow: hidden; aspect-ratio: var(--r); break-inside: avoid; background: var(--card); cursor: zoom-in; }
+.p-galeria.em-grade { display: grid; position: relative; }
+.p-galeria.em-grade .p-foto { position: absolute; margin: 0; aspect-ratio: auto; }
+.p-foto .foto-vazia, .p-foto img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .5s var(--ease); }
+.p-foto::after { content: ""; position: absolute; inset: 0; background: var(--dark); opacity: 0; transition: opacity .25s; }
+.p-foto:hover::after { opacity: .16; }
+.p-foto:hover .foto-vazia, .p-foto:hover img { transform: scale(1.03); }
+.p-foto.entra { animation: surgir .45s var(--ease) both; }
+@keyframes surgir { from { opacity: 0; transform: translateY(14px); } }
+@media (min-width: 700px) {
+  :root { --gap-galeria: 14px; }
+  .p-galeria { column-count: 3; margin-top: 28px; }
+}
+
+/* Sobre */
+.p-sobre { display: grid; grid-template-columns: minmax(0, 1fr); gap: 28px; align-items: center; }
+.p-sobre-foto { position: relative; border-radius: var(--r-xl); overflow: hidden; aspect-ratio: 4 / 3; background: var(--card); }
+.p-sobre-foto > img, .p-sobre-foto > .foto-vazia { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.p-sobre .lead { max-width: none; }
+.p-numeros { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 0; margin: 26px 0 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.p-numeros div { padding: 16px 12px 16px 0; }
+.p-numeros dt { color: var(--ink-2); font-size: 14.5px; line-height: 1.3; }
+.p-numeros dd { margin: 6px 0 0; font-size: clamp(1.7rem, 3.4vw, 2.4rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.05; }
+.p-assina { margin-top: 22px; font-size: 15px; color: var(--ink-2); }
+.p-assina b { display: block; color: var(--ink); font-size: 16px; }
+@media (min-width: 900px) { .p-sobre { grid-template-columns: .85fr 1.15fr; gap: 72px; } }
+
+/* Pacotes */
+.p-pacotes { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; }
+.p-pacote { position: relative; display: flex; flex-direction: column; gap: 16px; background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--r-xl); padding: 26px 24px; }
+.p-pacote-top { border-color: var(--ink); }
+.p-selo { position: absolute; top: -13px; left: 24px; background: var(--accent); color: var(--accent-ink); border-radius: var(--pill); padding: 5px 12px; font-size: 12.5px; font-weight: 700; }
+.p-pacote h3 { margin: 0; font-size: 1.3rem; font-weight: 700; letter-spacing: -0.02em; }
+.p-desc { margin: -8px 0 0; color: var(--ink-2); font-size: 15px; }
+.p-preco { font-size: clamp(2.2rem, 4vw, 2.8rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+.p-preco small { display: block; margin-bottom: 6px; font-size: 14px; font-weight: 500; letter-spacing: 0; color: var(--ink-2); }
+.p-inclui { list-style: none; margin: 0; padding: 16px 0 0; border-top: 1px solid var(--line); display: grid; gap: 10px; font-size: 15px; }
+.p-inclui li { display: flex; gap: 10px; align-items: flex-start; }
+.p-inclui .ico { flex: none; width: 20px; height: 20px; color: var(--accent); margin-top: 1px; }
+.p-pacote .btn { width: 100%; margin-top: auto; }
+@media (min-width: 900px) {
+  .p-pacotes { grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: stretch; }
+}
+
+/* Como funciona */
+.p-passos { list-style: none; margin: 0; padding: 0; display: grid; counter-reset: passo; }
+.p-passo { position: relative; display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 4px 16px; padding-bottom: 28px; }
+.p-passo::before { counter-increment: passo; content: counter(passo); grid-row: 1 / 4; width: 44px; height: 44px; border-radius: 50%; background: var(--ink); color: var(--bg); display: grid; place-items: center; font-weight: 700; font-size: 16px; z-index: 1; }
+.p-passo::after { content: ""; position: absolute; left: 21px; top: 44px; bottom: 0; width: 2px; background: var(--line); }
+.p-passo:last-child::after { display: none; }
+.p-passo > * { grid-column: 2; }
+.p-passo h3 { margin: 10px 0 0; font-size: 17.5px; font-weight: 700; line-height: 1.3; }
+.p-passo p { margin: 0; color: var(--ink-2); font-size: 15px; }
+.p-passo small { justify-self: start; display: inline-block; margin-top: 8px; font-size: 13px; font-weight: 600; background: var(--card); border-radius: var(--pill); padding: 4px 10px; }
+@media (min-width: 900px) {
+  .p-passos { grid-template-columns: repeat(4, 1fr); gap: 24px; }
+  .p-passo { grid-template-columns: 1fr; padding-bottom: 0; }
+  .p-passo > * { grid-column: 1; }
+  .p-passo::before { grid-row: auto; }
+  .p-passo::after { left: 52px; right: -16px; top: 21px; bottom: auto; width: auto; height: 2px; }
+  .p-passo h3 { margin-top: 18px; }
+}
+
+/* Depoimentos */
+.p-depos { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; }
+.p-depo { margin: 0; background: var(--surface); border-radius: var(--r-lg); padding: 24px; display: flex; flex-direction: column; gap: 18px; }
+.p-depo blockquote { margin: 0; font-size: 16px; line-height: 1.55; }
+.p-depo figcaption { margin-top: auto; display: flex; align-items: center; gap: 10px; font-size: 14px; }
+.p-depo .inicial { width: 40px; height: 40px; border-radius: 50%; background: var(--card); display: grid; place-items: center; font-weight: 700; flex: none; }
+.p-depo figcaption b { display: block; font-weight: 650; }
+.p-depo figcaption small { color: var(--ink-3); }
+.p-depo-grande { background: var(--dark); color: var(--on-dark); }
+.p-depo-grande blockquote { font-size: clamp(1.25rem, 2.4vw, 1.7rem); line-height: 1.3; font-weight: 600; letter-spacing: -0.02em; }
+.p-depo-grande .inicial { background: var(--dark-2); color: var(--on-dark); }
+.p-depo-grande figcaption small { color: var(--on-dark-2); }
+@media (min-width: 900px) {
+  .p-depos { grid-template-columns: 1.4fr 1fr; grid-template-rows: auto auto; gap: 16px; }
+  .p-depo-grande { grid-row: span 2; padding: 40px; justify-content: space-between; }
+}
+
+/* Consulta de data */
+.p-consulta { display: grid; grid-template-columns: minmax(0, 1fr); gap: 28px; background: var(--dark); color: var(--on-dark); border-radius: var(--r-xl); padding: clamp(24px, 5vw, 64px); }
+.p-consulta-texto p { color: var(--on-dark-2); margin: 14px 0 0; font-size: 16.5px; max-width: 30em; }
+.p-consulta-texto ul { list-style: none; margin: 24px 0 0; padding: 0; display: grid; gap: 12px; font-size: 15px; }
+.p-consulta-texto li { display: flex; gap: 12px; align-items: center; }
+.p-consulta-texto .ico { flex: none; width: 22px; height: 22px; color: var(--on-dark); }
+.p-form { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; background: var(--surface); color: var(--ink); border-radius: var(--r-lg); padding: 22px 20px; }
+.p-form .campo { margin-top: 0; }
+.p-form .campo input, .p-form .campo select { font: inherit; font-weight: 500; font-size: 16px; min-height: 48px; border: 1.5px solid var(--line); border-radius: 12px; padding: 0 14px; background: var(--surface); color: var(--ink); width: 100%; }
+.p-form .campo select { appearance: none; -webkit-appearance: none; padding-right: 40px; background-image: linear-gradient(45deg, transparent 50%, var(--ink) 50%), linear-gradient(135deg, var(--ink) 50%, transparent 50%); background-position: calc(100% - 20px) 50%, calc(100% - 14px) 50%; background-size: 6px 6px; background-repeat: no-repeat; }
+.p-form .campo select:invalid { color: var(--ink-3); }
+.p-form .campo input:focus, .p-form .campo select:focus { outline: none; border-color: var(--ink); }
+.p-form [aria-invalid="true"] { border-color: var(--accent); }
+.p-erro { margin: 0; min-height: 0; color: var(--accent); font-size: 14.5px; font-weight: 600; }
+.p-erro:empty { display: none; }
+.p-previa { background: var(--bg); border-radius: var(--r-sm); padding: 12px 14px; font-size: 14.5px; }
+.p-previa b { display: block; font-size: 13.5px; color: var(--ink-2); margin-bottom: 4px; }
+.p-previa p { margin: 0; line-height: 1.45; overflow-wrap: anywhere; }
+.p-form .btn { width: 100%; }
+.p-nota { margin: 0; font-size: 14px; color: var(--ink-2); }
+@media (min-width: 900px) {
+  .p-consulta { grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+  .p-form { padding: 32px; }
+}
+
+/* Foto em tela cheia */
+.lb { width: 100%; height: 100dvh; margin: 0; background: var(--dark); color: var(--on-dark); display: none; flex-direction: column; overscroll-behavior: contain; }
+.lb[open] { display: flex; animation: esmaecer .25s ease; }
+.lb :focus-visible { outline-color: var(--on-dark); }
+.lb-topo, .lb-base { flex: none; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-inline: max(16px, env(safe-area-inset-left, 0px)) max(16px, env(safe-area-inset-right, 0px)); }
+.lb-topo { padding-top: calc(10px + env(safe-area-inset-top, 0px)); padding-bottom: 6px; }
+.lb-base { padding-top: 10px; padding-bottom: calc(14px + env(safe-area-inset-bottom, 0px)); }
+.lb-contador { font-size: 15px; font-weight: 600; font-variant-numeric: tabular-nums; color: var(--on-dark-2); }
+.lb-btn { flex: none; width: 48px; height: 48px; border-radius: 50%; border: 0; background: var(--dark-2); color: var(--on-dark); display: grid; place-items: center; transition: background-color .2s, transform .2s var(--ease); }
+.lb-btn:hover { background: color-mix(in srgb, var(--on-dark) 18%, var(--dark-2)); }
+.lb-btn:active { transform: scale(.94); }
+.lb-btn .ico { width: 22px; height: 22px; }
+.lb-palco { flex: 1; min-height: 0; display: grid; place-items: center; padding: 4px var(--gutter); container-type: size; touch-action: none; user-select: none; -webkit-user-select: none; }
+.lb-quadro { position: relative; margin: 0; width: min(100cqw, calc(100cqh * var(--r, 1))); aspect-ratio: var(--r, 1); border-radius: var(--r-sm); overflow: hidden; background: var(--dark-2); }
+.lb-quadro .foto-vazia, .lb-quadro img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; -webkit-user-drag: none; }
+.lb-quadro.troca { animation: esmaecer .3s ease; }
+.lb-legenda { margin: 0; flex: 1; text-align: center; font-size: 15px; line-height: 1.35; }
+.lb-legenda span { display: block; }
+.lb-legenda .lb-cat { color: var(--on-dark-2); font-size: 13.5px; }
+@media (orientation: landscape) and (max-height: 500px) {
+  .lb-btn { width: 44px; height: 44px; }
+  .lb-topo { padding-top: calc(6px + env(safe-area-inset-top, 0px)); padding-bottom: 2px; }
+  .lb-base { padding-top: 4px; padding-bottom: calc(8px + env(safe-area-inset-bottom, 0px)); }
+}
+
+/* Botão fixo do celular, depois da capa */
+.p-barra { display: none; }
+@media (max-width: 899px) {
+  .p-barra { position: fixed; left: 0; right: 0; bottom: 0; z-index: 45; display: flex; align-items: center; gap: 12px; padding: 10px var(--gutter) calc(10px + env(safe-area-inset-bottom, 0px)); background: color-mix(in srgb, var(--surface) 96%, transparent); backdrop-filter: saturate(1.4) blur(14px); -webkit-backdrop-filter: saturate(1.4) blur(14px); border-top: 1px solid var(--line); transform: translateY(110%); visibility: hidden; transition: transform .35s var(--ease), visibility 0s linear .35s; }
+  .p-barra.mostra { transform: none; visibility: visible; transition: transform .35s var(--ease), visibility 0s; }
+  .p-barra div { flex: 1; min-width: 0; font-size: 13px; color: var(--ink-2); line-height: 1.3; }
+  .p-barra b { display: block; color: var(--ink); font-size: 15.5px; }
+  .p-barra .btn { flex: none; min-height: 46px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .p-foto.entra, .lb[open], .lb-quadro.troca { animation: none; }
+}
+
+/* Passos alinhados pelo topo no computador: o passo de texto mais longo subia o título uns pixels */
+@media (min-width: 900px) {
+  .p-passo { align-content: start; }
+  .p-pacote .p-desc { min-height: 3em; }
+}
+
+/* Estilo escuro: fundo quase preto, superfícies um pouco mais claras, texto claro e uma cor de
+   destaque só (âmbar queimado, sem neon). Para barbearia, bar, estética automotiva, fotógrafo e
+   evento à noite. Entra depois do tema do esqueleto, então ganha dele. Os tokens fazem quase tudo;
+   as regras abaixo só cobrem o que a base escreve com cor fixa e some no escuro. */
+
+:root {
+  color-scheme: dark;
+  --bg: #0F0F0E;
+  --surface: #191917;
+  --card: #22221F;
+  --card-2: #2D2D29;
+  --ink: #F2F0EA;
+  --ink-2: #B8B5AC;
+  --ink-3: #A09D94;
+  --line: #34342F;
+  --accent: #D9A35B;
+  --accent-ink: #17120A;
+  --dark: #080807;
+  --dark-2: #1D1D1B;
+  --on-dark: #F2F0EA;
+  --on-dark-2: #B8B5AC;
+  --wa: #25D366;
+  --pix: #4CC9B8;
+  --scrim: rgba(0, 0, 0, 0.72);
+  --r-xl: 24px;
+  --r-lg: 18px;
+  --r-md: 14px;
+  --r-sm: 8px;
+  --star: var(--accent);
+  --sombra: 0 12px 30px rgba(0, 0, 0, 0.55);
+  --shadow-product: drop-shadow(0 18px 18px rgba(0, 0, 0, 0.55));
+}
+
+/* Campos: a base não define cor de texto nos campos, e o padrão do navegador é preto */
+input, textarea, select { color: var(--ink); }
+input::placeholder, textarea::placeholder { color: var(--ink-3); opacity: 1; }
+.campo input, .campo textarea, .c-busca input, .busca-campo input { color: var(--ink); caret-color: var(--accent); }
+.opcao input { accent-color: var(--accent); }
+dialog::backdrop { background: var(--scrim); }
+
+/* Botões: o principal leva a cor de destaque; o claro vira creme (é o que aparece em cima de foto) */
+.btn-ink { background: var(--accent); color: var(--accent-ink); }
+.btn-ink:hover { background: color-mix(in srgb, var(--accent) 86%, var(--ink)); }
+.btn-ink .wa-ico { color: currentColor; }
+.btn-light { background: var(--ink); color: var(--bg); }
+.btn-light:hover { background: color-mix(in srgb, var(--ink) 86%, var(--bg)); }
+.btn-line-light:hover { background: var(--ink); color: var(--bg); }
+
+/* Botão de contorno claro dentro de bloco âmbar: o branco da base some no âmbar */
+.e-capa-bloco .btn-line-light, .destaque-promo .btn-line-light, .v-bloco-cor .btn-line-light { border-color: currentColor; color: var(--accent-ink); }
+.e-capa-bloco .btn-line-light:hover, .destaque-promo .btn-line-light:hover, .v-bloco-cor .btn-line-light:hover { background: var(--accent-ink); color: var(--accent); }
+
+/* Peças que a base escreve em branco ou preto fixo */
+.alca { background: rgba(242, 240, 234, 0.3); }
+.capa-quadro { background: var(--dark-2); }
+.selo { background: var(--surface); color: var(--ink); }
+.toast { background: var(--card-2); color: var(--ink); outline: 1px solid var(--line); outline-offset: -1px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); }
+.botoes-grade button:disabled { color: var(--ink-3); }
+.ficha-preco .pix-linha, .contas .desc dd { color: var(--pix); }
+.passo-ico .wa, .aba-wa .ico, .l-redes .wa { color: var(--wa); }
+.ficha-acao { box-shadow: 0 -1px 0 var(--line); }
+
+/* Uma cor de destaque só: as estrelas deixam o amarelo e usam o âmbar */
+.estrelas, .nota-geral .ico, .v-prova .estrelas, .c-status .nota .ico { color: var(--accent); }
+.destaque-promo, .v-bloco-cor { background: var(--accent); color: var(--accent-ink); }
+
+/* Superfícies escuras (rodapé, faixa final, depoimento grande) ficam mais fundas que a página,
+   então ganham um fio para não sumir no fundo */
+.rodape { border-top: 1px solid var(--line); }
+.v-final, .v-bloco-escuro, .v-depo-grande { outline: 1px solid var(--line); outline-offset: -1px; }
+.v-bloco-escuro .v-bloco-ico, .v-depo-grande .inicial { background: var(--card); }
+
+/* Cartões claros da base ganham fio fino no lugar da sombra, que não aparece no preto */
+.passo, .avaliacao, .v-lista li, .v-bloco:not(.v-bloco-foto):not(.v-bloco-escuro):not(.v-bloco-cor),
+.v-depo:not(.v-depo-grande), .v-flutua, .c-bloco, .c-mini, .c-loja-cartao, .l-cartao, .l-link, .l-redes a {
+  outline: 1px solid var(--line); outline-offset: -1px;
+}
+.v-flutua, .c-loja-cartao { box-shadow: none; }
+.v-plano-top { border-color: var(--accent); box-shadow: none; }
+
+/* Barras e botão principal que a base pinta com --ink (creme no escuro) passam ao âmbar */
+.c-barra { background: var(--accent); color: var(--accent-ink); box-shadow: 0 14px 34px rgba(0, 0, 0, 0.55); }
+.c-barra-qtd { background: var(--dark); color: var(--accent); }
+.l-principal { background: var(--accent); color: var(--accent-ink); }
+.l-principal .ico { color: currentColor; }
+.l-principal small { color: color-mix(in srgb, var(--accent-ink) 82%, var(--accent)); }
+.l-principal .seta { color: var(--accent-ink); }
+.c-por.adicionado { background: var(--wa); }
+
+/* Tema do modelo: só tokens do :root. A estrutura vem de base/nucleo.css e de estilo.css.
+   Coral de DJ no lugar do âmbar do estilo escuro. Medido: 6,8:1 sobre --bg, 6,3:1 sobre --surface,
+   e 6,8:1 do texto --accent-ink sobre o coral. */
+:root {
+  --accent: #FF6B4A;
+  --accent-ink: #1A0A06;
+}
+
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <!-- Icons: brands from Simple Icons (CC0), interface from Phosphor (MIT). -->
+  <symbol id="i-whatsapp" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></symbol>
+  <symbol id="i-instagram" viewBox="0 0 24 24"><path d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/></symbol>
+  <symbol id="i-visa" viewBox="0 0 24 24"><path d="M9.112 8.262L5.97 15.758H3.92L2.374 9.775c-.094-.368-.175-.503-.461-.658C1.447 8.864.677 8.627 0 8.479l.046-.217h3.3a.904.904 0 01.894.764l.817 4.338 2.018-5.102zm8.033 5.049c.008-1.979-2.736-2.088-2.717-2.972.006-.269.262-.555.822-.628a3.66 3.66 0 011.913.336l.34-1.59a5.207 5.207 0 00-1.814-.333c-1.917 0-3.266 1.02-3.278 2.479-.012 1.079.963 1.68 1.698 2.04.756.367 1.01.603 1.006.931-.005.504-.602.725-1.16.734-.975.015-1.54-.263-1.992-.473l-.351 1.642c.453.208 1.289.39 2.156.398 2.037 0 3.37-1.006 3.377-2.564m5.061 2.447H24l-1.565-7.496h-1.656a.883.883 0 00-.826.55l-2.909 6.946h2.036l.405-1.12h2.488zm-2.163-2.656l1.02-2.815.588 2.815zm-8.16-4.84l-1.603 7.496H8.34l1.605-7.496z"/></symbol>
+  <symbol id="i-mastercard" viewBox="0 0 24 24"><path d="M11.343 18.031c.058.049.12.098.181.146-1.177.783-2.59 1.238-4.107 1.238C3.32 19.416 0 16.096 0 12c0-4.095 3.32-7.416 7.416-7.416 1.518 0 2.931.456 4.105 1.238-.06.051-.12.098-.165.15C9.6 7.489 8.595 9.688 8.595 12c0 2.311 1.001 4.51 2.748 6.031zm5.241-13.447c-1.52 0-2.931.456-4.105 1.238.06.051.12.098.165.15C14.4 7.489 15.405 9.688 15.405 12c0 2.31-1.001 4.507-2.748 6.031-.058.049-.12.098-.181.146 1.177.783 2.588 1.238 4.107 1.238C20.68 19.416 24 16.096 24 12c0-4.094-3.32-7.416-7.416-7.416zM12 6.174c-.096.075-.189.15-.28.231C10.156 7.764 9.169 9.765 9.169 12c0 2.236.987 4.236 2.551 5.595.09.08.185.158.28.232.096-.074.189-.152.28-.232 1.563-1.359 2.551-3.359 2.551-5.595 0-2.235-.987-4.236-2.551-5.595-.09-.08-.184-.156-.28-.231z"/></symbol>
+  <symbol id="i-pix" viewBox="0 0 24 24"><path d="M5.283 18.36a3.505 3.505 0 0 0 2.493-1.032l3.6-3.6a.684.684 0 0 1 .946 0l3.613 3.613a3.504 3.504 0 0 0 2.493 1.032h.71l-4.56 4.56a3.647 3.647 0 0 1-5.156 0L4.85 18.36ZM18.428 5.627a3.505 3.505 0 0 0-2.493 1.032l-3.613 3.614a.67.67 0 0 1-.946 0l-3.6-3.6A3.505 3.505 0 0 0 5.283 5.64h-.434l4.573-4.572a3.646 3.646 0 0 1 5.156 0l4.559 4.559ZM1.068 9.422 3.79 6.699h1.492a2.483 2.483 0 0 1 1.744.722l3.6 3.6a1.73 1.73 0 0 0 2.443 0l3.614-3.613a2.482 2.482 0 0 1 1.744-.723h1.767l2.737 2.737a3.646 3.646 0 0 1 0 5.156l-2.736 2.736h-1.768a2.482 2.482 0 0 1-1.744-.722l-3.613-3.613a1.77 1.77 0 0 0-2.444 0l-3.6 3.6a2.483 2.483 0 0 1-1.744.722H3.791l-2.723-2.723a3.646 3.646 0 0 1 0-5.156"/></symbol>
+  <symbol id="i-googlemaps" viewBox="0 0 24 24"><path d="M19.527 4.799c1.212 2.608.937 5.678-.405 8.173-1.101 2.047-2.744 3.74-4.098 5.614-.619.858-1.244 1.75-1.669 2.727-.141.325-.263.658-.383.992-.121.333-.224.673-.34 1.008-.109.314-.236.684-.627.687h-.007c-.466-.001-.579-.53-.695-.887-.284-.874-.581-1.713-1.019-2.525-.51-.944-1.145-1.817-1.79-2.671L19.527 4.799zM8.545 7.705l-3.959 4.707c.724 1.54 1.821 2.863 2.871 4.18.247.31.494.622.737.936l4.984-5.925-.029.01c-1.741.601-3.691-.291-4.392-1.987a3.377 3.377 0 0 1-.209-.716c-.063-.437-.077-.761-.004-1.198l.001-.007zM5.492 3.149l-.003.004c-1.947 2.466-2.281 5.88-1.117 8.77l4.785-5.689-.058-.05-3.607-3.035zM14.661.436l-3.838 4.563a.295.295 0 0 1 .027-.01c1.6-.551 3.403.15 4.22 1.626.176.319.323.683.377 1.045.068.446.085.773.012 1.22l-.003.016 3.836-4.561A8.382 8.382 0 0 0 14.67.439l-.009-.003zM9.466 5.868L14.162.285l-.047-.012A8.31 8.31 0 0 0 11.986 0a8.439 8.439 0 0 0-6.169 2.766l-.016.018 3.665 3.084z"/></symbol>
+  <symbol id="i-magnifying-glass" viewBox="0 0 256 256"><path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"/></symbol>
+  <symbol id="i-handbag" viewBox="0 0 256 256"><path d="M239.89,198.12l-14.26-120a16,16,0,0,0-16-14.12H176a48,48,0,0,0-96,0H46.33a16,16,0,0,0-16,14.12l-14.26,120A16,16,0,0,0,20,210.6a16.13,16.13,0,0,0,12,5.4H223.92A16.13,16.13,0,0,0,236,210.6,16,16,0,0,0,239.89,198.12ZM128,32a32,32,0,0,1,32,32H96A32,32,0,0,1,128,32ZM32,200,46.33,80H80v24a8,8,0,0,0,16,0V80h64v24a8,8,0,0,0,16,0V80h33.75l14.17,120Z"/></symbol>
+  <symbol id="i-arrow-right" viewBox="0 0 256 256"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></symbol>
+  <symbol id="i-arrow-left" viewBox="0 0 256 256"><path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"/></symbol>
+  <symbol id="i-arrow-up-right" viewBox="0 0 256 256"><path d="M200,64V168a8,8,0,0,1-16,0V83.31L69.66,197.66a8,8,0,0,1-11.32-11.32L172.69,72H88a8,8,0,0,1,0-16H192A8,8,0,0,1,200,64Z"/></symbol>
+  <symbol id="i-arrow-down" viewBox="0 0 256 256"><path d="M205.66,149.66l-72,72a8,8,0,0,1-11.32,0l-72-72a8,8,0,0,1,11.32-11.32L120,196.69V40a8,8,0,0,1,16,0V196.69l58.34-58.35a8,8,0,0,1,11.32,11.32Z"/></symbol>
+  <symbol id="i-x" viewBox="0 0 256 256"><path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"/></symbol>
+  <symbol id="i-minus" viewBox="0 0 256 256"><path d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128Z"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 256 256"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></symbol>
+  <symbol id="i-truck" viewBox="0 0 256 256"><path d="M255.42,117l-14-35A15.93,15.93,0,0,0,226.58,72H192V64a8,8,0,0,0-8-8H32A16,16,0,0,0,16,72V184a16,16,0,0,0,16,16H49a32,32,0,0,0,62,0h50a32,32,0,0,0,62,0h17a16,16,0,0,0,16-16V120A7.94,7.94,0,0,0,255.42,117ZM192,88h34.58l9.6,24H192ZM32,72H176v64H32ZM80,208a16,16,0,1,1,16-16A16,16,0,0,1,80,208Zm81-24H111a32,32,0,0,0-62,0H32V152H176v12.31A32.11,32.11,0,0,0,161,184Zm31,24a16,16,0,1,1,16-16A16,16,0,0,1,192,208Zm48-24H223a32.06,32.06,0,0,0-31-24V128h48Z"/></symbol>
+  <symbol id="i-check" viewBox="0 0 256 256"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></symbol>
+  <symbol id="i-map-pin" viewBox="0 0 256 256"><path d="M128,64a40,40,0,1,0,40,40A40,40,0,0,0,128,64Zm0,64a24,24,0,1,1,24-24A24,24,0,0,1,128,128Zm0-112a88.1,88.1,0,0,0-88,88c0,31.4,14.51,64.68,42,96.25a254.19,254.19,0,0,0,41.45,38.3,8,8,0,0,0,9.18,0A254.19,254.19,0,0,0,174,200.25c27.45-31.57,42-64.85,42-96.25A88.1,88.1,0,0,0,128,16Zm0,206c-16.53-13-72-60.75-72-118a72,72,0,0,1,144,0C200,161.23,144.53,209,128,222Z"/></symbol>
+  <symbol id="i-arrows-clockwise" viewBox="0 0 256 256"><path d="M224,48V96a8,8,0,0,1-8,8H168a8,8,0,0,1,0-16h28.69L182.06,73.37a79.56,79.56,0,0,0-56.13-23.43h-.45A79.52,79.52,0,0,0,69.59,72.71,8,8,0,0,1,58.41,61.27a96,96,0,0,1,135,.79L208,76.69V48a8,8,0,0,1,16,0ZM186.41,183.29a80,80,0,0,1-112.47-.66L59.31,168H88a8,8,0,0,0,0-16H40a8,8,0,0,0-8,8v48a8,8,0,0,0,16,0V179.31l14.63,14.63A95.43,95.43,0,0,0,130,222.06h.53a95.36,95.36,0,0,0,67.07-27.33,8,8,0,0,0-11.18-11.44Z"/></symbol>
+  <symbol id="i-receipt" viewBox="0 0 256 256"><path d="M72,104a8,8,0,0,1,8-8h96a8,8,0,0,1,0,16H80A8,8,0,0,1,72,104Zm8,40h96a8,8,0,0,0,0-16H80a8,8,0,0,0,0,16ZM232,56V208a8,8,0,0,1-11.58,7.15L192,200.94l-28.42,14.21a8,8,0,0,1-7.16,0L128,200.94,99.58,215.15a8,8,0,0,1-7.16,0L64,200.94,35.58,215.15A8,8,0,0,1,24,208V56A16,16,0,0,1,40,40H216A16,16,0,0,1,232,56Zm-16,0H40V195.06l20.42-10.22a8,8,0,0,1,7.16,0L96,199.06l28.42-14.22a8,8,0,0,1,7.16,0L160,199.06l28.42-14.22a8,8,0,0,1,7.16,0L216,195.06Z"/></symbol>
+  <symbol id="i-trash" viewBox="0 0 256 256"><path d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM96,40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96Zm96,168H64V64H192ZM112,104v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Z"/></symbol>
+  <symbol id="i-house" viewBox="0 0 256 256"><path d="M219.31,108.68l-80-80a16,16,0,0,0-22.62,0l-80,80A15.87,15.87,0,0,0,32,120v96a8,8,0,0,0,8,8h64a8,8,0,0,0,8-8V160h32v56a8,8,0,0,0,8,8h64a8,8,0,0,0,8-8V120A15.87,15.87,0,0,0,219.31,108.68ZM208,208H160V152a8,8,0,0,0-8-8H104a8,8,0,0,0-8,8v56H48V120l80-80,80,80Z"/></symbol>
+  <symbol id="i-calendar-blank" viewBox="0 0 256 256"><path d="M208,32H184V24a8,8,0,0,0-16,0v8H88V24a8,8,0,0,0-16,0v8H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM72,48v8a8,8,0,0,0,16,0V48h80v8a8,8,0,0,0,16,0V48h24V80H48V48ZM208,208H48V96H208V208Z"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm64-88a8,8,0,0,1-8,8H128a8,8,0,0,1-8-8V72a8,8,0,0,1,16,0v48h48A8,8,0,0,1,192,128Z"/></symbol>
+  <symbol id="i-storefront" viewBox="0 0 256 256"><path d="M232,96a7.89,7.89,0,0,0-.3-2.2L217.35,43.6A16.07,16.07,0,0,0,202,32H54A16.07,16.07,0,0,0,38.65,43.6L24.31,93.8A7.89,7.89,0,0,0,24,96h0v16a40,40,0,0,0,16,32v72a8,8,0,0,0,8,8H208a8,8,0,0,0,8-8V144a40,40,0,0,0,16-32V96ZM54,48H202l11.42,40H42.61Zm50,56h48v8a24,24,0,0,1-48,0Zm-16,0v8a24,24,0,0,1-35.12,21.26,7.88,7.88,0,0,0-1.82-1.06A24,24,0,0,1,40,112v-8ZM200,208H56V151.2a40.57,40.57,0,0,0,8,.8,40,40,0,0,0,32-16,40,40,0,0,0,64,0,40,40,0,0,0,32,16,40.57,40.57,0,0,0,8-.8Zm4.93-75.8a8.08,8.08,0,0,0-1.8,1.05A24,24,0,0,1,168,112v-8h48v8A24,24,0,0,1,204.93,132.2Z"/></symbol>
+  <symbol id="i-chat-circle" viewBox="0 0 256 256"><path d="M128,24A104,104,0,0,0,36.18,176.88L24.83,210.93a16,16,0,0,0,20.24,20.24l34.05-11.35A104,104,0,1,0,128,24Zm0,192a87.87,87.87,0,0,1-44.06-11.81,8,8,0,0,0-6.54-.67L40,216,52.47,178.6a8,8,0,0,0-.66-6.54A88,88,0,1,1,128,216Z"/></symbol>
+  <symbol id="i-list" viewBox="0 0 256 256"><path d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128ZM40,72H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16ZM216,184H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"/></symbol>
+  <symbol id="i-shield-check" viewBox="0 0 256 256"><path d="M208,40H48A16,16,0,0,0,32,56v56c0,52.72,25.52,84.67,46.93,102.19,23.06,18.86,46,25.26,47,25.53a8,8,0,0,0,4.2,0c1-.27,23.91-6.67,47-25.53C198.48,196.67,224,164.72,224,112V56A16,16,0,0,0,208,40Zm0,72c0,37.07-13.66,67.16-40.6,89.42A129.3,129.3,0,0,1,128,223.62a128.25,128.25,0,0,1-38.92-21.81C61.82,179.51,48,149.3,48,112l0-56,160,0ZM82.34,141.66a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32l-56,56a8,8,0,0,1-11.32,0Z"/></symbol>
+  <symbol id="i-credit-card" viewBox="0 0 256 256"><path d="M224,48H32A16,16,0,0,0,16,64V192a16,16,0,0,0,16,16H224a16,16,0,0,0,16-16V64A16,16,0,0,0,224,48Zm0,16V88H32V64Zm0,128H32V104H224v88Zm-16-24a8,8,0,0,1-8,8H168a8,8,0,0,1,0-16h32A8,8,0,0,1,208,168Zm-64,0a8,8,0,0,1-8,8H120a8,8,0,0,1,0-16h16A8,8,0,0,1,144,168Z"/></symbol>
+  <symbol id="i-user" viewBox="0 0 256 256"><path d="M230.92,212c-15.23-26.33-38.7-45.21-66.09-54.16a72,72,0,1,0-73.66,0C63.78,166.78,40.31,185.66,25.08,212a8,8,0,1,0,13.85,8c18.84-32.56,52.14-52,89.07-52s70.23,19.44,89.07,52a8,8,0,1,0,13.85-8ZM72,96a56,56,0,1,1,56,56A56.06,56.06,0,0,1,72,96Z"/></symbol>
+  <symbol id="i-image" viewBox="0 0 256 256"><path d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Zm0,16V158.75l-26.07-26.06a16,16,0,0,0-22.63,0l-20,20-44-44a16,16,0,0,0-22.62,0L40,149.37V56ZM40,172l52-52,80,80H40Zm176,28H194.63l-36-36,20-20L216,181.38V200ZM144,100a12,12,0,1,1,12,12A12,12,0,0,1,144,100Z"/></symbol>
+  <symbol id="i-info" viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm16-40a8,8,0,0,1-8,8,16,16,0,0,1-16-16V128a8,8,0,0,1,0-16,16,16,0,0,1,16,16v40A8,8,0,0,1,144,176ZM112,84a12,12,0,1,1,12,12A12,12,0,0,1,112,84Z"/></symbol>
+  <symbol id="i-star" viewBox="0 0 256 256"><path d="M234.29,114.85l-45,38.83L203,211.75a16.4,16.4,0,0,1-24.5,17.82L128,198.49,77.47,229.57A16.4,16.4,0,0,1,53,211.75l13.76-58.07-45-38.83A16.46,16.46,0,0,1,31.08,86l59-4.76,22.76-55.08a16.36,16.36,0,0,1,30.27,0l22.75,55.08,59,4.76a16.46,16.46,0,0,1,9.37,28.86Z"/></symbol>
+</svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <!-- Icons: brands from Simple Icons (CC0), interface from Phosphor (MIT). -->
+  <symbol id="i-caret-left" viewBox="0 0 256 256"><path d="M165.66,202.34a8,8,0,0,1-11.32,11.32l-80-80a8,8,0,0,1,0-11.32l80-80a8,8,0,0,1,11.32,11.32L91.31,128Z"/></symbol>
+  <symbol id="i-caret-right" viewBox="0 0 256 256"><path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"/></symbol>
+  <symbol id="i-calendar-check" viewBox="0 0 256 256"><path d="M208,32H184V24a8,8,0,0,0-16,0v8H88V24a8,8,0,0,0-16,0v8H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM72,48v8a8,8,0,0,0,16,0V48h80v8a8,8,0,0,0,16,0V48h24V80H48V48ZM208,208H48V96H208V208Zm-38.34-85.66a8,8,0,0,1,0,11.32l-48,48a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L116,164.69l42.34-42.35A8,8,0,0,1,169.66,122.34Z"/></symbol>
+  <symbol id="i-arrows-out" viewBox="0 0 256 256"><path d="M216,48V96a8,8,0,0,1-16,0V67.31l-42.34,42.35a8,8,0,0,1-11.32-11.32L188.69,56H160a8,8,0,0,1,0-16h48A8,8,0,0,1,216,48ZM98.34,146.34,56,188.69V160a8,8,0,0,0-16,0v48a8,8,0,0,0,8,8H96a8,8,0,0,0,0-16H67.31l42.35-42.34a8,8,0,0,0-11.32-11.32ZM208,152a8,8,0,0,0-8,8v28.69l-42.34-42.35a8,8,0,0,0-11.32,11.32L188.69,200H160a8,8,0,0,0,0,16h48a8,8,0,0,0,8-8V160A8,8,0,0,0,208,152ZM67.31,56H96a8,8,0,0,0,0-16H48a8,8,0,0,0-8,8V96a8,8,0,0,0,16,0V67.31l42.34,42.35a8,8,0,0,0,11.32-11.32Z"/></symbol>
+</svg>
+
+<div class="aviso"><strong>Demonstração.</strong> DJ fictício<span class="so-largo"> criado como modelo por Tarcio Diniz</span>, preços de exemplo.</div>
+
+<header class="topo" id="topo">
+  <div class="wrap">
+    <a class="marca" href="#inicio" aria-label="DJ Ravi, início">DJ Ravi</a>
+    <nav class="menu" aria-label="Seções">
+      <a href="#trabalhos">Festas</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#pacotes">Pacotes</a>
+      <a href="#como-funciona">Como funciona</a>
+    </nav>
+    <div class="acoes"><a class="btn btn-ink btn-sm" href="#consultar">Consultar data</a></div>
+  </div>
+</header>
+
+<main id="inicio">
+  <!-- 1. Capa: a foto do melhor trabalho -->
+  <section class="p-capa wrap" aria-labelledby="capa-titulo">
+    <div class="p-capa-texto">
+      <div>
+        <span class="p-pilula"><svg class="ico" aria-hidden="true"><use href="#i-calendar-blank"/></svg>Dezembro quase lotado</span>
+        <h1 class="h1" id="capa-titulo">DJ Ravi</h1>
+      </div>
+      <div class="p-capa-lado">
+        <p class="lead">Som e luz para casamento, formatura e festa em Campina Grande e região.</p>
+        <div class="p-botoes" id="capa-botoes">
+          <a class="btn btn-ink" href="#consultar">Consultar data</a>
+          <a class="btn btn-line" href="https://wa.me/5583991931035?text=Oi%2C%20Tarcio%21%20Me%20interessei%20por%20esse%20site%2C%20o%20modelo%20do%20DJ%20Ravi.%0A%0AO%20site%20montou%20esta%20mensagem%3A%0AOl%C3%A1%2C%20Ravi%21%20Vi%20seu%20portf%C3%B3lio%20e%20quero%20consultar%20uma%20data." target="_blank" rel="noopener"><svg class="ico wa-ico" aria-hidden="true"><use href="#i-whatsapp"/></svg>Chamar no WhatsApp</a>
+        </div>
+      </div>
+    </div>
+    <figure class="p-capa-foto">
+      <img src="img/capa/capa-casamento-entrada-900.webp" srcset="img/capa/capa-casamento-entrada-900.webp 900w, img/capa/capa-casamento-entrada.webp 1600w" sizes="(min-width: 1400px) 1360px, 100vw" width="1600" height="1067" alt="Noivos entrando na festa sob lâmpadas penduradas, cercados de convidados com bastões de luz" fetchpriority="high">
+      <figcaption>Casamento da Bianca e do Davi, sítio no Galante, 2026</figcaption>
+    </figure>
+  </section>
+
+  <!-- 2. Galeria: grade de alturas variadas, filtro por categoria, tela cheia -->
+  <section class="secao wrap" id="trabalhos" aria-labelledby="trab-titulo">
+    <div class="secao-topo">
+      <div>
+        <h2 class="h2" id="trab-titulo">Festas que toquei</h2>
+        <p class="lead">Escolha o tipo de festa e toque na foto para ver em tela cheia.</p>
+      </div>
+    </div>
+    <div class="filtro" role="group" aria-label="Filtrar por categoria" data-galeria-filtro>
+      <button type="button" data-cat="todos" aria-pressed="true">Todos</button>
+      <button type="button" data-cat="casamento" aria-pressed="false">Casamento</button>
+      <button type="button" data-cat="formatura" aria-pressed="false">Formatura</button>
+      <button type="button" data-cat="festa" aria-pressed="false">Festa</button>
+      <button type="button" data-cat="som" aria-pressed="false">Som e luz</button>
+    </div>
+    <p class="sr" id="galeria-status" role="status" aria-live="polite"></p>
+    <div class="p-galeria" id="galeria">
+      <button class="p-foto" type="button" data-cat="casamento" data-legenda="Primeira dança da Natália e do Jeferson, Lagoa Seca" style="--r:1.33"><img src="img/cenas/casamento-primeira-danca.webp" width="1400" height="934" alt="Noiva dançando em preto e branco sob holofotes" loading="lazy" decoding="async"></button>
+      <button class="p-foto" type="button" data-cat="festa" data-legenda="Aniversário de 30 anos, salão no Alto Branco" style="--r:1"><img src="img/cenas/festa-danca-ciano.webp" width="1400" height="1400" alt="Pista de dança em movimento sob luz azul e ciano" loading="lazy" decoding="async"></button>
+      <button class="p-foto" type="button" data-cat="formatura" data-legenda="Colação de grau de Fisioterapia, UEPB" style="--r:1.5"><img src="img/cenas/formatura-confete.webp" width="1400" height="934" alt="Formanda de beca verde soprando confete" loading="lazy" decoding="async"></button>
+      <button class="p-foto" type="button" data-cat="casamento" data-legenda="A noiva na pista depois do bolo" style="--r:0.67"><img src="img/cenas/casamento-noiva-braco-alto.webp" width="1400" height="2100" alt="Noiva de costas com o braço levantado na pista de um salão com lâmpadas penduradas" loading="lazy" decoding="async"></button>
+      <button class="p-foto" type="button" data-cat="som" data-legenda="Caixas no alto para a pista inteira ouvir igual" style="--r:1.25"><img src="img/cenas/luz-caixas-suspensas.webp" width="1400" height="936" alt="Caixa de som line array pendurada em treliça com luz azul" loading="lazy" decoding="async"></button>
+      <button class="p-foto" type="button" data-cat="festa" data-legenda="Festa de 18 anos, laser verde na pista" style="--r:1.5"><img src="img/cenas/festa-luz-verde.webp" width="1400" height="934" alt="Laser verde sobre a pista, com a plateia de braços levantados" loading="lazy" decoding="async"></button>
+      <button class="p-foto" type="button" data-cat="casamento" data-legenda="Saída dos noivos, cerimônia ao ar livre em Puxinanã" style="--r:1.5"><img src="img/cenas/casamento-dia-ar-livre.webp" width="1400" height="934" alt="Noivos dançando de dia ao ar livre, cercados por madrinhas de azul" loading="lazy" decoding="async"></button>
+      <button class="p-foto" type="button" data-cat="formatura" data-legenda="Colação de Engenharia Civil com o som da cerimônia, UFCG" style="--r:1.33"><img src="img/cenas/formatura-turma-azul.webp" width="1400" height="934" alt="Turma de formandos de beca azul sentada em um auditório" loading="lazy" decoding="async"></button>
+      <button class="p-foto" type="button" data-cat="festa" data-legenda="Espumante com vela de faísca na virada do réveillon" style="--r:0.67"><img src="img/cenas/festa-sparklers.webp" width="1400" height="2100" alt="Garrafas com velas de faísca erguidas por convidados em uma festa" loading="lazy" decoding="async"></button>
+      <button class="p-foto" type="button" data-cat="som" data-legenda="A cabine: controladora, notebook e fones" style="--r:1.5"><img src="img/cenas/luz-mixer.webp" width="1400" height="934" alt="Controladora de DJ iluminada em azul e verde, com notebook ao fundo" loading="lazy" decoding="async"></button>
+      <button class="p-foto" type="button" data-cat="casamento" data-legenda="Recepção da Aline e do Rodrigo, salão no Catolé" style="--r:1.2"><img src="img/cenas/casamento-noiva-sorrindo.webp" width="1400" height="934" alt="Noiva sorrindo em um salão de vidro, ao lado do noivo e de convidados" loading="lazy" decoding="async"></button>
+      <button class="p-foto" type="button" data-cat="formatura" data-legenda="Chuva de papel picado no fim do baile de Medicina" style="--r:0.71"><img src="img/cenas/formatura-comemoracao.webp" width="1400" height="1960" alt="Papel picado azul caindo sobre uma plateia de braços erguidos" loading="lazy" decoding="async"></button>
+      <button class="p-foto" type="button" data-cat="festa" data-legenda="Calourada, pista com 400 pessoas" style="--r:1.2"><img src="img/cenas/festa-multidao-sorrindo.webp" width="1400" height="934" alt="Jovens sorrindo e gritando em uma pista lotada" loading="lazy" decoding="async"></button>
+      <button class="p-foto" type="button" data-cat="casamento" data-legenda="Pista aberta depois do jantar" style="--r:1.5"><img src="img/cenas/casamento-pista.webp" width="1400" height="934" alt="Casal e convidados dançando em pista de madeira, com bastões de luz" loading="lazy" decoding="async"></button>
+      <button class="p-foto" type="button" data-cat="som" data-legenda="Refletores programados para a entrada dos noivos" style="--r:1.33"><img src="img/cenas/luz-refletores.webp" width="1400" height="934" alt="Refletores móveis roxos e laranja cruzando um palco escuro" loading="lazy" decoding="async"></button>
+      <button class="p-foto" type="button" data-cat="festa" data-legenda="Confraternização de fim de ano, escritório de contabilidade" style="--r:1.5"><img src="img/cenas/festa-grupo-pista.webp" width="1400" height="934" alt="Grupo de colegas de camisa social dançando e rindo" loading="lazy" decoding="async"></button>
+    </div>
+  </section>
+
+  <!-- 3. Sobre -->
+  <section class="secao wrap" id="sobre" aria-labelledby="sobre-titulo">
+    <div class="p-sobre">
+      <div class="p-sobre-foto"><img src="img/pessoas/dj-retrato-fumaca.webp" width="800" height="534" alt="Ravi de camiseta preta e fone branco no pescoço, mexendo na controladora no meio da fumaça" loading="lazy" decoding="async"></div>
+      <div>
+        <h2 class="h2" id="sobre-titulo">Quem toca</h2>
+        <p class="lead">Comecei aos 17 anos, tocando em festa de rua no Bodocongó com duas caixas emprestadas. Hoje o som e a luz são meus, e o Lucas, meu primo, cuida da iluminação. Antes de cada festa eu converso com você sobre o que sua família dança e o que não pode tocar de jeito nenhum.</p>
+        <dl class="p-numeros">
+          <div><dt>Tocando desde</dt><dd>2014</dd></div>
+          <div><dt>Casamentos e formaturas</dt><dd>280</dd></div>
+          <div><dt>Chego para montar</dt><dd>3h antes</dd></div>
+        </dl>
+        <p class="p-assina"><b>Ravi Cavalcanti</b>DJ e dono do equipamento, Campina Grande (PB). Atende até 120 km da cidade.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Pacotes -->
+  <section class="secao wrap" id="pacotes" aria-labelledby="pacotes-titulo">
+    <div class="secao-topo">
+      <div>
+        <h2 class="h2" id="pacotes-titulo">Pacotes</h2>
+        <p class="lead">Valores de partida para até 150 convidados em Campina Grande. Acima disso, ou fora da cidade, o orçamento muda.</p>
+      </div>
+    </div>
+    <div class="p-pacotes">
+      <article class="p-pacote">
+        <h3>Festa</h3>
+        <p class="p-desc">Aniversário, 15 anos e confraternização.</p>
+        <div class="p-preco"><small>a partir de</small>R$&nbsp;950</div>
+        <ul class="p-inclui">
+          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Até 5 horas de som e DJ</li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>2 caixas ativas e microfone sem fio</li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>4 refletores de LED na pista</li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Hora extra a R$ 150</li>
+        </ul>
+        <a class="btn btn-line p-escolher" href="#consultar" data-tipo="festa">Consultar data</a>
+      </article>
+      <article class="p-pacote p-pacote-top">
+        <span class="p-selo">Mais pedido</span>
+        <h3>Casamento</h3>
+        <p class="p-desc">Cerimônia, recepção e pista no mesmo dia.</p>
+        <div class="p-preco"><small>a partir de</small>R$&nbsp;3.200</div>
+        <ul class="p-inclui">
+          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Até 8 horas, da entrada ao último pedido</li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Microfone de lapela na cerimônia</li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>16 refletores e luz de pista</li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Conversa de 20 minutos sobre o repertório</li>
+        </ul>
+        <a class="btn btn-ink p-escolher" href="#consultar" data-tipo="casamento">Consultar data</a>
+      </article>
+      <article class="p-pacote">
+        <h3>Formatura</h3>
+        <p class="p-desc">Colação de grau e baile.</p>
+        <div class="p-preco"><small>a partir de</small>R$&nbsp;2.400</div>
+        <ul class="p-inclui">
+          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Até 6 horas, com som para 300 pessoas</li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Microfone para a mesa e para o mestre de cerimônias</li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>12 refletores e máquina de fumaça</li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Playlist montada com a comissão</li>
+        </ul>
+        <a class="btn btn-line p-escolher" href="#consultar" data-tipo="formatura">Consultar data</a>
+      </article>
+    </div>
+  </section>
+
+  <!-- 5. Como funciona -->
+  <section class="secao wrap" id="como-funciona" aria-labelledby="como-titulo">
+    <div class="secao-topo">
+      <div>
+        <h2 class="h2" id="como-titulo">Como funciona</h2>
+        <p class="lead">São quatro passos, e o repertório fica combinado antes do sinal.</p>
+      </div>
+    </div>
+    <ol class="p-passos">
+      <li class="p-passo"><h3>Consulta da data</h3><p>Você manda a data, o local e quantos convidados. Eu respondo no mesmo dia útil se a data está livre.</p><small>Sem custo</small></li>
+      <li class="p-passo"><h3>Conversa do repertório</h3><p>Vinte minutos por chamada ou por mensagem: o que não pode faltar, o que não pode tocar e a hora de cada momento.</p><small>20 minutos</small></li>
+      <li class="p-passo"><h3>Sinal</h3><p>R$&nbsp;500 de sinal por Pix reservam a data. O resto fica para até 7 dias antes da festa. Sem sinal eu não seguro data para ninguém.</p><small>Sinal de R$&nbsp;500</small></li>
+      <li class="p-passo"><h3>Dia da festa</h3><p>Chego 3 horas antes para montar e testar o som no salão. Se o local só libera a montagem mais tarde, a gente combina antes.</p><small>Montagem 3h antes</small></li>
+    </ol>
+  </section>
+
+  <!-- 6. Depoimentos -->
+  <section class="secao wrap" aria-labelledby="depo-titulo">
+    <div class="secao-topo">
+      <div>
+        <h2 class="h2" id="depo-titulo">Quem já contratou</h2>
+        <p class="lead">Depoimentos fictícios, escritos para esta demonstração.</p>
+      </div>
+    </div>
+    <div class="p-depos">
+      <figure class="p-depo p-depo-grande">
+        <blockquote>A pista não esvaziou nem na hora do bolo. Meu pai pediu forró de última hora e ele encaixou sem a gente perceber. Só achei a luz da cerimônia fraca no começo, mas ele trocou na hora.</blockquote>
+        <figcaption><span class="inicial">B</span><span><b>Bianca Ramalho</b><small>Casamento, Galante</small></span></figcaption>
+      </figure>
+      <figure class="p-depo">
+        <blockquote>Baile de Engenharia com 260 pessoas. O som aguentou o salão cheio e a comissão ficou com a playlist que cada turma pediu. Atrasou 15 minutos porque o salão só liberou a montagem às 17h.</blockquote>
+        <figcaption><span class="inicial">T</span><span><b>Thiago Lima</b><small>Formatura de Engenharia Civil, UFCG</small></span></figcaption>
+      </figure>
+      <figure class="p-depo">
+        <blockquote>Os 40 anos do meu marido, com 80 convidados num salão no Catolé. Ele não deixou ninguém pedir música ruim, e minha tia ficou reclamando a noite toda. O resto do povo dançou até o fim.</blockquote>
+        <figcaption><span class="inicial">P</span><span><b>Patrícia Souza</b><small>Aniversário, Catolé</small></span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- 7. Consulta de data: o formulário vira mensagem de WhatsApp -->
+  <section class="secao wrap" id="consultar" aria-labelledby="consulta-titulo">
+    <div class="p-consulta">
+      <div class="p-consulta-texto">
+        <h2 class="h2" id="consulta-titulo">Consultar data</h2>
+        <p>Conte o que você precisa. O formulário monta a mensagem e abre o WhatsApp para você enviar.</p>
+        <ul>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-clock"/></svg>Resposta no mesmo dia útil</li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-calendar-check"/></svg>Sábados de dezembro e janeiro lotam primeiro</li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-map-pin"/></svg>Campina Grande e até 120 km; mais longe, a gente combina o deslocamento</li>
+        </ul>
+      </div>
+      <form class="p-form" id="form-consulta" novalidate>
+        <label class="campo" for="f-tipo">Tipo de festa
+          <select id="f-tipo" name="tipo" required>
+            <option value="" selected disabled>Escolha uma opção</option>
+            <option value="casamento">Casamento</option>
+            <option value="formatura">Formatura</option>
+            <option value="festa">Festa</option>
+            <option value="outro">Outro</option>
+          </select>
+        </label>
+        <label class="campo" for="f-data">Data
+          <input id="f-data" name="data" type="date" required>
+        </label>
+        <label class="campo" for="f-cidade">Cidade da festa
+          <input id="f-cidade" name="cidade" type="text" autocomplete="address-level2" placeholder="Campina Grande" required>
+        </label>
+        <label class="campo" for="f-convidados">Quantos convidados
+          <select id="f-convidados" name="convidados" required>
+            <option value="" selected disabled>Escolha uma faixa</option>
+            <option value="ate-80">Até 80</option>
+            <option value="80-150">De 80 a 150</option>
+            <option value="150-300">De 150 a 300</option>
+            <option value="mais-300">Mais de 300</option>
+          </select>
+        </label>
+        <label class="campo" for="f-nome">Seu nome
+          <input id="f-nome" name="nome" type="text" autocomplete="name" placeholder="Como posso te chamar?" required>
+        </label>
+        <p class="p-erro" id="form-erro" role="alert"></p>
+        <div class="p-previa">
+          <b>Mensagem que vai para o WhatsApp</b>
+          <p id="form-previa">Preencha os cinco campos para ver a mensagem.</p>
+        </div>
+        <button class="btn btn-ink" type="submit"><svg class="ico wa-ico" aria-hidden="true"><use href="#i-whatsapp"/></svg>Consultar pelo WhatsApp</button>
+        <noscript><p class="p-nota">Sem JavaScript o formulário não funciona. <a href="https://wa.me/5583991931035?text=Oi%2C%20Tarcio%21%20Me%20interessei%20por%20esse%20site%2C%20o%20modelo%20do%20DJ%20Ravi.%0A%0AO%20site%20montou%20esta%20mensagem%3A%0AOl%C3%A1%21%20Quero%20consultar%20uma%20data.">Chame direto no WhatsApp.</a></p></noscript>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="rodape" id="onde">
+  <div class="wrap">
+    <div class="rodape-grade">
+      <div class="rodape-sobre">
+        <a class="marca" href="#inicio">DJ Ravi</a>
+        <p>Som e luz para casamento, formatura e festa em Campina Grande e região.</p>
+        <div class="redes">
+          <a href="#inicio"><svg class="ico" aria-hidden="true"><use href="#i-instagram"/></svg>@djravi.demo</a>
+          <a href="https://wa.me/5583991931035?text=Oi%2C%20Tarcio%21%20Me%20interessei%20por%20esse%20site%2C%20o%20modelo%20do%20DJ%20Ravi.%0A%0AO%20site%20montou%20esta%20mensagem%3A%0AOl%C3%A1%21" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-whatsapp"/></svg>WhatsApp</a>
+        </div>
+      </div>
+      <div>
+        <h2>Atendimento</h2>
+        <ul>
+          <li>Campina Grande (PB) e até 120 km</li>
+          <li>Mensagens: segunda a sexta, 9h às 19h</li>
+          <li>Sábado até 13h, domingo só data urgente</li>
+        </ul>
+      </div>
+      <div>
+        <h2>Pagamento</h2>
+        <ul>
+          <li>Pix</li>
+          <li>Cartão em até 6x</li>
+          <li>Sinal de R$&nbsp;500, o resto até 7 dias antes</li>
+        </ul>
+      </div>
+      <div>
+        <h2>Navegar</h2>
+        <ul>
+          <li><a href="#trabalhos">Festas</a></li>
+          <li><a href="#pacotes">Pacotes</a></li>
+          <li><a href="#consultar">Consultar data</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="rodape-autor">
+      <p>Quer um site assim para o seu negócio?&nbsp;<a href="https://tarciodiniz.com/#contato">Peça um orçamento</a></p>
+      <p class="credito-autor"><a class="back-link" href="/modelos/"><svg class="ico" aria-hidden="true"><use href="#i-arrow-left"/></svg>Ver outros modelos</a><span>Site feito por <a href="https://tarciodiniz.com" rel="author">Tarcio Diniz</a>, desenvolvedor</span></p>
+    </div>
+    <p class="rodape-base">DJ Ravi é um DJ fictício, criado como modelo de site por Tarcio Diniz. Preços e depoimentos servem só de exemplo. Fotos: Unsplash.</p>
+  </div>
+</footer>
+
+<!-- Botão fixo do celular, depois da capa -->
+<div class="p-barra" id="barra" aria-hidden="true">
+  <div><b>Dezembro quase lotado</b>Resposta no mesmo dia útil</div>
+  <a class="btn btn-ink" href="#consultar" tabindex="-1"><svg class="ico" aria-hidden="true"><use href="#i-calendar-check"/></svg>Consultar data</a>
+</div>
+
+<!-- Foto em tela cheia -->
+<dialog class="lb" id="lb" aria-label="Foto em tela cheia">
+  <div class="lb-topo">
+    <output class="lb-contador" id="lb-contador" aria-live="polite"></output>
+    <button class="lb-btn" type="button" data-fechar aria-label="Fechar foto"><svg class="ico" aria-hidden="true"><use href="#i-x"/></svg></button>
+  </div>
+  <div class="lb-palco" id="lb-palco">
+    <figure class="lb-quadro" id="lb-quadro"></figure>
+  </div>
+  <div class="lb-base">
+    <button class="lb-btn" type="button" id="lb-anterior" aria-label="Foto anterior"><svg class="ico" aria-hidden="true"><use href="#i-caret-left"/></svg></button>
+    <p class="lb-legenda" id="lb-legenda"></p>
+    <button class="lb-btn" type="button" id="lb-proxima" aria-label="Próxima foto"><svg class="ico" aria-hidden="true"><use href="#i-caret-right"/></svg></button>
+  </div>
+</dialog>
+
+<div class="toast" id="toast" role="status" aria-live="polite"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span id="toast-texto"></span></div>
+
+<script src="/assets/vendor/gsap-3.15.0/gsap.min.js" defer></script>
+<script src="/assets/vendor/gsap-3.15.0/ScrollTrigger.min.js" defer></script>
+<script>window.DEMO_WA = {"numero": "5583991931035", "intro": "Oi, Tarcio! Me interessei por esse site, o modelo do DJ Ravi.\n\nO site montou esta mensagem:\n"};</script>
+<script src="base.js?v=ccb60058" defer></script>
+<script src="modelo.js?v=806d76b8" defer></script>
+</body>
+</html>

@@ -47,6 +47,7 @@ pedido, como o cliente preferir. Página nova é orçada à parte, inclusive nos
 
 ## Páginas
 - [Início](https://tarciodiniz.com/): o que ele entrega, como funciona, modelos e dúvidas.
+- [Modelos](https://tarciodiniz.com/modelos/): os 24 modelos de site por ramo e por tipo de site, com busca e filtro.
 - [Sobre o Tarcio Diniz](https://tarciodiniz.com/sobre/): quem ele é, fatos em resumo, a história ano
   a ano, onde atende e como falar com ele.
 - [Site no Google e nas IAs](https://tarciodiniz.com/site-no-google-e-nas-ias/): o que um site faz para
@@ -57,18 +58,32 @@ pedido, como o cliente preferir. Página nova é orçada à parte, inclusive nos
 
 ## Modelos de demonstração
 Empresas fictícias, criadas para mostrar como o site de cada ramo pode funcionar. Preços e avaliações
-nelas não são reais e estão marcados como tal em cada página.
-- [Hamburgueria Brasa Smash](https://tarciodiniz.com/demos/cardapio/): cardápio que vira comanda e pedido no WhatsApp.
-- [Bar Rebuliço](https://tarciodiniz.com/demos/bar/): nome na lista, camarote e aniversário pelo WhatsApp.
-- [Café Caneca Azul](https://tarciodiniz.com/demos/cafe/): cardápio que vira comanda e encomenda de bolo.
-- [Sálvia Fisioterapia](https://tarciodiniz.com/demos/fisioterapia/): a pessoa mostra onde dói, entende o tratamento e agenda um horário livre.
-- [Vigília Veterinária 24 horas](https://tarciodiniz.com/demos/veterinaria/): emergência a um toque e agendamento de consulta, vacina e banho.
-- [Pousada Aroá](https://tarciodiniz.com/demos/pousada/): quartos com galeria, datas livres no calendário e pedido de reserva.
-- [Algodão Hotel](https://tarciodiniz.com/demos/hotel/): distância até hospitais e universidades, tarifa do dia e convênio para empresa.
-- [Sisal Barbearia](https://tarciodiniz.com/demos/barbearia/): horários livres na tela e agendamento pelo WhatsApp.
-- [Braúna, marcenaria de planejados](https://tarciodiniz.com/demos/planejados/): a cozinha muda de acabamento na foto e o orçamento sai por ambiente, com pedido de visita pelo WhatsApp.
-- [Carnaúba, estética automotiva](https://tarciodiniz.com/demos/estetica-automotiva/): o cliente escolhe o porte do carro e os serviços e vê o total e a hora em que fica pronto, com o pedido pelo WhatsApp.
-- [Passada, loja de tênis](https://tarciodiniz.com/demos/loja-de-tenis/): o cliente escolhe o número, monta a sacola com desconto e manda o pedido pronto no WhatsApp, sem cadastro.
+nelas não são reais e estão marcados como tal em cada página. A lista completa, com busca e filtro, está em
+[Modelos](https://tarciodiniz.com/modelos/).
+- [Passada, loja de tênis](https://tarciodiniz.com/demos/loja-de-tenis/): loja. Tênis e streetwear com sacola e pedido no WhatsApp.
+- [Brasa Smash, hamburgueria](https://tarciodiniz.com/demos/cardapio/): cardápio. Cardápio de smash burger que vira pedido no WhatsApp, com entrega por bairro.
+- [Sisal Barbearia, barbearia](https://tarciodiniz.com/demos/barbearia/): agenda. Horário marcado com o barbeiro, sem fila, confirmado no WhatsApp.
+- [Braúna, marcenaria de planejados](https://tarciodiniz.com/demos/planejados/): orçamento. Móveis planejados com orçamento por ambiente e visita de medição.
+- [Sálvia Fisio, fisioterapia](https://tarciodiniz.com/demos/fisioterapia/): página de vendas. Tratamento de dor com plano por escrito, do primeiro dia até a alta.
+- [Forno da Clara, bolos e doces por encomenda](https://tarciodiniz.com/demos/confeitaria/): página de links. Página de links com cardápio de bolos, Pix do sinal e encomenda no WhatsApp.
+- [Marina Duarte, fotógrafa](https://tarciodiniz.com/demos/fotografa/): portfólio. Casamentos, ensaios e eventos, com pacotes e consulta de data.
+- [Camarote Pé de Serra, camarote de são joão](https://tarciodiniz.com/demos/sao-joao/): evento. Camarote de São João com open bar, forró pé de serra e ingresso por noite.
+- [Lia Nails, designer de unhas](https://tarciodiniz.com/demos/unhas/): página de links. Página de links com tabela, horários e agendamento pelo WhatsApp.
+- [Bromélia Salão, salão de beleza](https://tarciodiniz.com/demos/salao/): agenda. Corte, escova, coloração e unhas com horário marcado.
+- [Bruna Rocha, maquiadora](https://tarciodiniz.com/demos/maquiadora/): portfólio. Maquiagem para noivas, formandas e festas, com pacotes e consulta de data.
+- [Caneca Azul, café de bairro](https://tarciodiniz.com/demos/cafe/): cardápio. Cuscuz, tapioca e café coado, com comanda no WhatsApp e bolo por encomenda.
+- [Tigela Açaí, açaí e sorvetes](https://tarciodiniz.com/demos/acai/): cardápio. Açaí montado do jeito do cliente, com adicionais e pedido no WhatsApp.
+- [Juá, moda feminina](https://tarciodiniz.com/demos/moda-feminina/): loja. Vestidos de linho, peças de festa e acessórios, com tamanho na ficha e pedido no WhatsApp.
+- [Pitanga, cosméticos e skincare](https://tarciodiniz.com/demos/cosmeticos/): loja. Skincare, maquiagem e perfumaria, com kit montado na sacola e entrega no mesmo dia.
+- [Brechó Varal, brechó no instagram](https://tarciodiniz.com/demos/brecho/): página de links. Página de links com as peças da semana, regras de reserva e entrega.
+- [Renata Lins, psicóloga](https://tarciodiniz.com/demos/psicologa/): página de vendas. Psicoterapia para adultos, presencial e online, com primeira conversa sem custo.
+- [Pulso Estúdio, treino funcional e personal](https://tarciodiniz.com/demos/personal/): página de vendas. Treino funcional em turmas pequenas e personal, com aula experimental.
+- [Carnaúba, estética automotiva](https://tarciodiniz.com/demos/estetica-automotiva/): agenda. Lavagem detalhada, polimento e higienização com hora marcada e leva e traz.
+- [Lume Solar, energia solar](https://tarciodiniz.com/demos/energia-solar/): orçamento. Energia solar para casa e comércio, com estimativa de economia e visita técnica.
+- [Prumo Reformas, reforma e pintura](https://tarciodiniz.com/demos/reforma/): orçamento. Reforma, pintura e acabamento com orçamento em 24 horas e prazo por escrito.
+- [Fórum Borborema, congresso de negócios](https://tarciodiniz.com/demos/congresso/): evento. Dois dias de palestras e oficinas para pequenos empresários, com lotes de ingresso.
+- [Conferência Raiz, conferência de jovens](https://tarciodiniz.com/demos/conferencia/): evento. Conferência de jovens com louvor, palavra e oficinas, com inscrição por lote.
+- [DJ Ravi, dj](https://tarciodiniz.com/demos/dj/): portfólio. Som e luz para casamento, formatura e festa, com pacotes e consulta de data.
 
 ## Perfis
 - [LinkedIn](https://www.linkedin.com/in/tarciodiniz)

@@ -1,0 +1,1238 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pitanga · Skincare, maquiagem e perfumaria no Catolé, em Campina Grande (demonstração)</title>
+<meta name="description" content="Skincare, maquiagem e perfumaria no Catolé, em Campina Grande. Monte o kit de rosto na sacola, peça até as 15h e receba no mesmo dia. Modelo de demonstração.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#FCF6EF">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/nunito-suave-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="img/capa/capa-900.webp" as="image" media="(max-width: 899px)">
+<link rel="preload" href="img/capa/capa.webp" as="image" media="(min-width: 900px)">
+<!--
+  Pitanga é uma loja fictícia, criada como modelo por Tarcio Diniz em 01/10/2026, a partir do esqueleto de loja.
+  Fotos do Unsplash (licença Unsplash, uso livre). Autores: @hellokaeme, @mahendra_10, @normals, @msbirgith,
+  @missswiss, @edznorton, @rosarafael, @scentspiracy, @siora18, @ana_azuria, @elchan, @pmvch, @shamblenstudios, @createandmakeup,
+  @ohleighann, @cheyennedoig, @kalpa_mahagamage, @jweiller, @sadswim, @natinati, @kalosskin, @gordova_photo,
+  @eladepure. A foto da capa foi espelhada na horizontal para a pessoa ficar do lado do texto.
+  Lista com o link de cada foto em fonte/fotos.tsv.
+-->
+<style>
+/* Núcleo dos modelos do tarciodiniz.com: o que toda variação usa (tokens, fonte, títulos, botões,
+   aviso, cabeçalho, seções, filtro, rodapé, janelas que sobem de baixo, aviso curto).
+   Extraído da Passada em 01/10/2026. Regras em carreira/padrao-dos-modelos.md. */
+@font-face { font-family: 'Archivo'; font-style: normal; font-weight: 100 900; font-stretch: 62% 125%; font-display: swap; src: url(fonts/archivo-latin-ext.woff2) format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: 'Archivo'; font-style: normal; font-weight: 100 900; font-stretch: 62% 125%; font-display: swap; src: url(fonts/archivo-latin.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+
+:root {
+  --bg: #F4F3EF;
+  --surface: #FFFFFF;
+  --card: #ECEAE4;
+  --card-2: #E4E1D9;
+  --ink: #151515;
+  --ink-2: #55544F;
+  --ink-3: #66645E;
+  --line: #DCD9D1;
+  --accent: #C4461C;
+  --accent-ink: #FFFFFF;
+  --dark: #121212;
+  --dark-2: #1D1D1C;
+  --on-dark: #F4F3EF;
+  --on-dark-2: #B9B7B0;
+  --wa: #25D366;
+  --pix: #32BCAD;
+  /* Cores de apoio que os estilos podem trocar: texto escuro sobre fundo claro fixo (botão claro em cima
+     de foto), verde de desconto e Pix, e a estrela das avaliações. */
+  --on-light: #151515;
+  --ok: #13796F;
+  --estrela: #E3A008;
+  --scrim: rgba(12, 12, 12, 0.62);
+  --r-xl: 28px;
+  --r-lg: 22px;
+  --r-md: 16px;
+  --r-sm: 10px;
+  --pill: 999px;
+  --gutter: clamp(16px, 4vw, 40px);
+  --max: 1360px;
+  --section: clamp(64px, 9vw, 112px);
+  --font: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+  --wide: 116%;
+  --shadow-product: drop-shadow(0 18px 16px rgba(20, 18, 14, 0.18));
+  --ease: cubic-bezier(.2, .7, .2, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+html.travado { overflow: hidden; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; }
+button { font: inherit; color: inherit; cursor: pointer; }
+input, textarea, select { color: var(--ink); }
+/* Texto que só aparece a partir de 600 px (o resto da frase cabe no celular sem ele) */
+.so-largo { display: none; }
+@media (min-width: 600px) { .so-largo { display: inline; } }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+[tabindex="-1"]:focus { outline: none; }
+.ico { width: 1.25em; height: 1.25em; fill: currentColor; flex: none; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.wrap { width: 100%; max-width: var(--max); margin-inline: auto; padding-inline: var(--gutter); }
+
+/* Títulos */
+.h1, .h2, .h3 { font-stretch: var(--wide); font-weight: 800; letter-spacing: -0.025em; line-height: 1.02; margin: 0; text-wrap: balance; }
+.cartao-nome, .passo h3, .tile-nome, .destaque p, .lead { text-wrap: balance; }
+.h1 { font-size: clamp(2.35rem, 7.4vw, 5.4rem); }
+.h2 { font-size: clamp(1.9rem, 4.2vw, 3.1rem); }
+.h3 { font-size: clamp(1.2rem, 2vw, 1.45rem); letter-spacing: -0.015em; }
+.lead { color: var(--ink-2); font-size: clamp(1rem, 1.4vw, 1.125rem); max-width: 34em; margin: 14px 0 0; }
+
+/* Botões */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: .55em;
+  min-height: 48px; padding: 0 22px; border-radius: var(--pill); border: 1.5px solid transparent;
+  font-weight: 650; font-size: 15px; text-decoration: none; white-space: nowrap;
+  transition: transform .25s var(--ease), background-color .25s, color .25s, border-color .25s;
+}
+.btn:active { transform: scale(.97); }
+.btn-ink { background: var(--ink); color: var(--bg); }
+.btn-ink:hover { background: color-mix(in srgb, var(--ink) 86%, #000); }
+.btn-light { background: var(--surface); color: var(--ink); }
+.btn-light:hover { background: var(--bg); }
+.btn-line { border-color: var(--ink); color: var(--ink); background: transparent; }
+.btn-line:hover { background: var(--ink); color: var(--bg); }
+.btn-line-light { border-color: rgba(255,255,255,.8); color: #fff; background: transparent; }
+.btn-line-light:hover { background: #fff; color: var(--on-light); }
+.btn .wa-ico { color: var(--wa); }
+.btn-sm { min-height: 40px; padding: 0 16px; font-size: 14px; }
+
+/* Aviso de demonstração e faixa de garantias */
+.aviso { background: var(--dark); color: var(--on-dark-2); font-size: 12.5px; text-align: center; padding: 7px var(--gutter); }
+.aviso strong { color: var(--on-dark); font-weight: 650; }
+.garantias { border-bottom: 1px solid var(--line); font-size: 13px; font-weight: 550; }
+.garantias ul { list-style: none; margin: 0; padding: 9px var(--gutter); display: flex; gap: 28px; justify-content: center; overflow-x: auto; scrollbar-width: none; }
+.garantias ul::-webkit-scrollbar { display: none; }
+.garantias li { display: flex; align-items: center; gap: 8px; white-space: nowrap; }
+.garantias .ico { width: 16px; height: 16px; }
+.garantias .pix { color: var(--pix); }
+
+/* Cabeçalho */
+.topo { position: sticky; top: 0; z-index: 40; background: color-mix(in srgb, var(--bg) 94%, transparent); backdrop-filter: saturate(1.4) blur(8px); -webkit-backdrop-filter: saturate(1.4) blur(8px); border-bottom: 1px solid transparent; transition: border-color .3s; }
+.topo.rolou { border-bottom-color: var(--line); }
+.topo .wrap { display: flex; align-items: center; gap: 20px; min-height: 64px; }
+.marca { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 800; font-stretch: 120%; font-size: 21px; letter-spacing: -0.02em; }
+.marca svg { width: 30px; height: 30px; }
+.menu { display: none; gap: 28px; margin-inline: auto; }
+.menu a { text-decoration: none; font-size: 15px; font-weight: 550; color: var(--ink-2); padding: 6px 0; border-bottom: 2px solid transparent; transition: color .2s, border-color .2s; }
+.menu a:hover { color: var(--ink); border-bottom-color: var(--ink); }
+.acoes { display: flex; gap: 8px; margin-left: auto; }
+.icone-btn { position: relative; display: grid; place-items: center; width: 44px; height: 44px; border-radius: var(--pill); border: 0; background: transparent; text-decoration: none; }
+.icone-btn:hover { background: var(--card); }
+.icone-btn .ico { width: 22px; height: 22px; }
+.contador { position: absolute; top: 4px; right: 3px; min-width: 18px; height: 18px; padding: 0 5px; border-radius: 9px; background: var(--accent); color: var(--accent-ink); font-size: 11px; font-weight: 700; display: grid; place-items: center; line-height: 1; }
+.contador[data-zero] { display: none; }
+.menu-cel { display: none; gap: 8px; overflow-x: auto; scrollbar-width: none; padding: 0 var(--gutter) 12px; }
+.menu-cel::-webkit-scrollbar { display: none; }
+.menu-cel a { flex: none; text-decoration: none; font-size: 14px; font-weight: 600; padding: 8px 14px; border-radius: var(--pill); background: var(--card); }
+@media (min-width: 900px) {
+  .menu { display: flex; }
+  .menu-cel { display: none; }
+  .topo .wrap { min-height: 76px; }
+}
+
+/* Seções */
+.secao { padding-top: var(--section); }
+.secao-topo { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 18px 32px; margin-bottom: 28px; }
+.secao-topo.centro { flex-direction: column; align-items: center; text-align: center; }
+.secao-topo.centro .lead { margin-inline: auto; }
+
+/* Filtro */
+.filtro { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; margin-inline: calc(var(--gutter) * -1); padding-inline: var(--gutter); }
+.filtro::-webkit-scrollbar { display: none; }
+.filtro button { flex: none; min-height: 40px; padding: 0 16px; border-radius: var(--pill); border: 1.5px solid var(--line); background: transparent; font-size: 14px; font-weight: 600; transition: background-color .2s, border-color .2s, color .2s; }
+.filtro button:hover { border-color: var(--ink); }
+.filtro button[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--bg); }
+@media (min-width: 900px) { .filtro { margin-inline: 0; padding-inline: 0; } }
+
+/* Rodapé */
+.rodape { background: var(--dark); color: var(--on-dark-2); margin-top: var(--section); padding: 56px 0 calc(28px + env(safe-area-inset-bottom, 0px)); font-size: 15px; }
+.rodape .marca { color: var(--on-dark); }
+.rodape-grade { display: grid; gap: 32px; }
+.rodape h2 { color: var(--on-dark); font-size: 14px; font-weight: 700; margin: 0 0 12px; letter-spacing: .01em; }
+.rodape ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.rodape a { color: var(--on-dark-2); text-decoration: none; }
+.rodape a:hover { color: var(--on-dark); }
+.rodape-sobre p { margin: 14px 0 0; max-width: 26em; }
+.pagamentos { display: flex; gap: 10px; margin-top: 18px; }
+.pagamentos span { display: grid; place-items: center; width: 52px; height: 34px; border-radius: 8px; background: var(--dark-2); }
+.pagamentos .ico { width: 30px; height: 20px; color: var(--on-dark); }
+.pagamentos .pix { color: var(--pix); }
+.redes { display: flex; gap: 8px; margin-top: 16px; }
+.redes a { display: inline-flex; align-items: center; gap: 8px; border: 1px solid color-mix(in srgb, var(--on-dark) 22%, transparent); border-radius: var(--pill); padding: 8px 14px; font-size: 13.5px; }
+.rodape-autor { border-top: 1px solid color-mix(in srgb, var(--on-dark) 14%, transparent); margin-top: 40px; padding-top: 20px; display: grid; gap: 6px; color: var(--on-dark); }
+.rodape-autor p { margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 4px 20px; min-height: 44px; }
+.rodape-autor a { color: var(--on-dark); text-decoration: underline; text-underline-offset: 3px; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; }
+.rodape-autor .back-link { text-decoration: none; }
+.rodape-base { border-top: 1px solid color-mix(in srgb, var(--on-dark) 14%, transparent); margin-top: 16px; padding-top: 20px; font-size: 15px; color: var(--on-dark-2); }
+@media (min-width: 900px) {
+  .rodape-grade { grid-template-columns: 1.6fr 1fr 1fr 1fr; }
+}
+
+/* Ficha do item e painel do pedido (sacola, comanda ou agenda) */
+dialog { border: 0; padding: 0; color: var(--ink); background: var(--surface); max-width: none; max-height: none; }
+dialog::backdrop { background: rgba(12,12,12,.5); }
+.ficha { width: 100%; margin: auto 0 0; border-radius: var(--r-xl) var(--r-xl) 0 0; max-height: 92dvh; overflow: auto; overscroll-behavior: contain; }
+.ficha-grade { display: grid; grid-template-columns: minmax(0, 1fr); }
+.ficha-foto, .ficha-corpo { min-width: 0; }
+.ficha-foto { position: relative; background: var(--card); aspect-ratio: 4 / 3; display: grid; place-items: center; }
+.ficha-foto img { width: 74%; height: 76%; object-fit: contain; filter: var(--shadow-product); }
+.ficha-corpo { padding: 22px 20px calc(22px + env(safe-area-inset-bottom, 0px)); display: flex; flex-direction: column; gap: 14px; }
+.ficha-marca { font-size: 13px; font-weight: 650; color: var(--ink-3); text-transform: uppercase; letter-spacing: .06em; }
+.ficha h2 { font-stretch: var(--wide); font-weight: 800; font-size: 1.6rem; letter-spacing: -0.02em; line-height: 1.08; margin: 2px 0 0; }
+.ficha-preco { font-size: 1.35rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+.ficha-preco small { display: block; font-size: 14px; font-weight: 500; color: var(--ink-2); margin-top: 2px; }
+.ficha-preco .pix-linha { color: var(--ok); font-weight: 600; }
+.rotulo { font-size: 14px; font-weight: 650; margin: 0 0 8px; display: flex; justify-content: space-between; gap: 12px; }
+.rotulo span { font-weight: 500; color: var(--ink-3); }
+.botoes-grade { display: grid; grid-template-columns: repeat(auto-fill, minmax(62px, 1fr)); gap: 8px; }
+.botoes-grade button { min-height: 46px; border-radius: 12px; border: 1.5px solid var(--line); background: var(--surface); font-weight: 650; font-size: 15px; font-variant-numeric: tabular-nums; }
+.botoes-grade button:hover:not(:disabled) { border-color: var(--ink); }
+.botoes-grade button[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--bg); }
+.botoes-grade button:disabled { color: var(--ink-3); background: var(--bg); text-decoration: line-through; cursor: not-allowed; }
+.ficha-nota { font-size: 13.5px; color: var(--ink-2); margin: 0; display: flex; gap: 8px; align-items: flex-start; }
+.ficha-nota .ico { margin-top: 2px; }
+.ficha .btn { width: 100%; }
+.fechar { position: absolute; top: 12px; right: 12px; z-index: 2; width: 42px; height: 42px; border-radius: 50%; border: 0; background: var(--surface); display: grid; place-items: center; }
+.fechar .ico { width: 20px; height: 20px; }
+.aviso-escolha { color: var(--accent); font-size: 13.5px; font-weight: 600; margin: -6px 0 0; min-height: 1.2em; }
+@media (min-width: 900px) {
+  .ficha { width: min(920px, calc(100% - 48px)); margin: auto; border-radius: var(--r-xl); }
+  .ficha-grade { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); }
+  .ficha-foto { aspect-ratio: auto; min-height: 520px; }
+  .ficha-corpo { padding: 36px 32px 32px; justify-content: center; }
+}
+
+.pedido { width: 100%; height: 100dvh; margin: 0 0 0 auto; display: none; flex-direction: column; }
+.pedido[open] { display: flex; }
+.pedido-topo { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; border-bottom: 1px solid var(--line); }
+.pedido-topo h2 { margin: 0; font-size: 19px; font-weight: 800; font-stretch: var(--wide); letter-spacing: -0.02em; }
+.pedido-topo .fechar { position: static; background: var(--bg); }
+.pedido-meio { flex: 1; overflow: auto; overscroll-behavior: contain; padding: 8px 20px 20px; }
+.pedido-vazio { text-align: center; padding: 48px 12px; color: var(--ink-2); }
+.pedido-vazio .ico { width: 40px; height: 40px; margin: 0 auto 10px; color: var(--ink-3); }
+.itens { list-style: none; margin: 0; padding: 0; }
+.item { display: grid; grid-template-columns: 76px 1fr auto; gap: 12px; padding: 14px 0; border-bottom: 1px solid var(--line); align-items: center; }
+.item-foto { width: 76px; height: 76px; border-radius: 12px; background: var(--card); display: grid; place-items: center; }
+.item-foto img { width: 82%; height: 82%; object-fit: contain; }
+.item-nome { font-weight: 650; font-size: 14.5px; line-height: 1.3; margin: 0; }
+.item-det { font-size: 13px; color: var(--ink-3); margin: 2px 0 0; }
+.item-lado { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
+.item-preco { font-weight: 700; font-size: 14.5px; font-variant-numeric: tabular-nums; }
+.qtd { display: inline-flex; align-items: center; border: 1.5px solid var(--line); border-radius: var(--pill); }
+.qtd button { width: 44px; height: 44px; border: 0; background: transparent; display: grid; place-items: center; }
+.qtd .ico { width: 15px; height: 15px; }
+.qtd output { min-width: 18px; text-align: center; font-weight: 650; font-size: 14px; }
+.escolha { margin-top: 20px; }
+.escolha fieldset { border: 0; padding: 0; margin: 0 0 16px; }
+.escolha legend { font-size: 14px; font-weight: 700; margin-bottom: 8px; padding: 0; }
+.opcao { display: flex; gap: 12px; align-items: flex-start; border: 1.5px solid var(--line); border-radius: 14px; padding: 12px 14px; margin-bottom: 8px; cursor: pointer; font-size: 14.5px; }
+.opcao:has(input:checked) { border-color: var(--ink); background: var(--bg); }
+.opcao input { margin: 3px 0 0; accent-color: var(--ink); width: 18px; height: 18px; }
+.opcao b { display: block; font-weight: 650; }
+.opcao span { color: var(--ink-2); font-size: 13px; }
+.campo { display: grid; gap: 6px; font-size: 14px; font-weight: 600; margin-top: 4px; }
+.campo input { font: inherit; font-weight: 500; font-size: 16px; min-height: 46px; border: 1.5px solid var(--line); border-radius: 12px; padding: 0 14px; background: var(--surface); }
+.campo input:focus { outline: none; border-color: var(--ink); }
+.pedido-fim { border-top: 1px solid var(--line); padding: 14px 20px calc(16px + env(safe-area-inset-bottom, 0px)); background: var(--surface); }
+.contas { display: grid; gap: 4px; font-size: 14px; margin: 0 0 12px; }
+.contas div { display: flex; justify-content: space-between; gap: 12px; }
+.contas dt { color: var(--ink-2); }
+.contas dd { margin: 0; font-variant-numeric: tabular-nums; font-weight: 600; }
+.contas .desc dd { color: var(--ok); }
+.contas .total { font-size: 17px; margin-top: 6px; padding-top: 8px; border-top: 1px dashed var(--line); }
+.contas .total dt { color: var(--ink); font-weight: 700; }
+.contas .total dd { font-weight: 800; }
+.pedido-fim .btn { width: 100%; }
+.pedido-fim small { display: block; text-align: center; color: var(--ink-3); font-size: 12.5px; margin-top: 8px; }
+@media (min-width: 600px) {
+  .pedido { width: 440px; }
+}
+
+.toast { position: fixed; left: 50%; bottom: calc(20px + env(safe-area-inset-bottom, 0px)); transform: translate(-50%, calc(100% + 60px)); visibility: hidden; z-index: 60; background: var(--ink); color: var(--bg); border-radius: var(--pill); padding: 12px 18px; font-size: 14.5px; font-weight: 600; display: flex; align-items: center; gap: 10px; transition: transform .35s var(--ease), visibility 0s linear .35s; box-shadow: 0 10px 30px rgba(0,0,0,.2); }
+.toast.mostra { transform: translate(-50%, 0); visibility: visible; transition: transform .35s var(--ease), visibility 0s; }
+.toast .ico { color: var(--wa); }
+
+/* Celular: janelas que sobem de baixo e fecham arrastando */
+.alca { display: none; }
+a, button { -webkit-tap-highlight-color: transparent; }
+@keyframes subir { from { transform: translateY(100%); } }
+@keyframes esmaecer { from { opacity: 0; } }
+@media (max-width: 899px) {
+  :root { --topo-cel: 58px; }
+  .topo .wrap { min-height: var(--topo-cel); gap: 12px; }
+  [id] { scroll-margin-top: calc(var(--topo-cel) + 12px); }
+  .folha { width: 100%; max-width: 100%; margin: auto 0 0; border-radius: 24px 24px 0 0; transition: transform .28s var(--ease); }
+  .folha[open] { animation: subir .34s var(--ease); }
+  .folha[open]::backdrop { animation: esmaecer .34s ease; }
+  .alca { display: block; position: absolute; top: 8px; left: 50%; transform: translateX(-50%); z-index: 3; width: 42px; height: 5px; border-radius: 3px; background: color-mix(in srgb, var(--ink) 22%, transparent); }
+  .ficha { max-height: 94dvh; }
+  .ficha-foto { aspect-ratio: auto; height: clamp(190px, 52vw, 300px); }
+  .ficha-foto img { position: absolute; inset: 0; margin: auto; width: 72%; height: 80%; }
+  .ficha-corpo { padding-bottom: 0; }
+  .ficha-acao { position: sticky; bottom: 0; margin: 4px -20px 0; padding: 12px 20px calc(12px + env(safe-area-inset-bottom, 0px)); background: var(--surface); box-shadow: 0 -1px 0 var(--line); }
+  .pedido { height: 94dvh; }
+  .pedido-topo { position: relative; padding-top: 22px; }
+}
+
+@media (max-width: 359px) { .so-360 { display: none; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .folha[open], .folha[open]::backdrop { animation: none; }
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition-duration: .01ms !important; }
+}
+
+/* Lugar de foto ainda sem foto: só no esqueleto, nunca em modelo pronto */
+.foto-vazia { background: repeating-linear-gradient(135deg, var(--card) 0 14px, var(--card-2) 14px 28px); display: grid; place-items: center; color: var(--ink-3); font-size: 13px; font-weight: 600; }
+
+/* Peças de loja (esqueletos/loja): capa em quadro, destaques, grade de cartões, mosaico, passos,
+   chamada, abas do celular, busca, atalhos e avaliações. Usa o núcleo. */
+/* Capa */
+.capa { padding-top: 8px; }
+.capa-quadro { position: relative; border-radius: var(--r-xl); overflow: hidden; background: #2B3542; min-height: clamp(400px, calc(100svh - 150px), 640px); display: flex; align-items: flex-end; }
+.capa-botoes .btn { min-height: 44px; padding: 0 18px; font-size: 14.5px; }
+@media (orientation: landscape) and (max-height: 500px) {
+  .capa-quadro { min-height: 0; }
+  .capa-selos { display: none; }
+  .capa-texto { padding-top: 22px; padding-bottom: 20px; }
+  .capa-texto p { display: none; }
+  .capa-botoes { margin-top: 16px; }
+  .capa-texto .h1 { font-size: 2.1rem; max-width: 20ch; }
+  .capa-texto p { margin: 10px 0 14px; }
+}
+.capa-quadro picture, .capa-quadro .capa-foto { position: absolute; inset: 0; width: 100%; height: 100%; }
+.capa-foto { object-fit: cover; object-position: 74% 50%; }
+.capa-quadro::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(12,12,12,0) 28%, rgba(12,12,12,.55) 58%, rgba(12,12,12,.86) 100%); pointer-events: none; }
+.capa-texto { position: relative; z-index: 1; color: #fff; padding: 28px 22px 26px; }
+.capa-texto .h1 { max-width: 14ch; }
+@media (max-width: 599px) { .capa-texto .h1 { font-size: clamp(2.05rem, 9.2vw, 2.6rem); font-stretch: 104%; } }
+@media (max-width: 399px) {
+  .capa-selos { display: none; }
+  .btn-wa-capa { width: 44px; padding: 0; }
+  .btn-wa-capa .rotulo-wa { display: none; }
+  .aviso { font-size: 12px; }
+}
+.capa-texto .h1 { text-wrap: balance; }
+.capa-texto p { color: rgba(255,255,255,.9); font-size: 16px; max-width: 30em; margin: 16px 0 22px; }
+.capa-botoes { display: flex; flex-wrap: wrap; gap: 10px; }
+.capa-selos { position: absolute; z-index: 1; top: 18px; left: 18px; right: 18px; display: flex; flex-wrap: wrap; gap: 8px; }
+.selo { display: inline-flex; align-items: center; gap: 7px; background: rgba(255,255,255,.94); color: var(--ink); border-radius: var(--pill); padding: 7px 12px; font-size: 12.5px; font-weight: 600; }
+.selo .ico { width: 16px; height: 16px; }
+@media (min-width: 900px) {
+  .capa-quadro { min-height: min(760px, calc(100vh - 150px)); align-items: center; }
+  .capa-foto { object-position: 60% 50%; }
+  .capa-quadro::after { background: linear-gradient(90deg, rgba(12,12,12,.74) 0%, rgba(12,12,12,.5) 36%, rgba(12,12,12,0) 62%); }
+  .capa-texto { padding: 64px clamp(40px, 5vw, 72px); max-width: 760px; }
+  .capa-texto .h1 { font-size: clamp(3rem, 5vw, 4.5rem); max-width: 13ch; }
+  .capa-texto p { font-size: 18px; }
+  .capa-botoes .btn { min-height: 48px; padding: 0 22px; font-size: 15px; }
+  .capa-selos { top: auto; bottom: 28px; left: auto; right: 28px; justify-content: flex-end; max-width: 420px; }
+}
+
+/* Cartões de destaque */
+.destaques { padding-top: 16px; }
+.destaques-lista { display: grid; grid-auto-flow: column; grid-auto-columns: 84%; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; padding-bottom: 4px; }
+.destaques-lista::-webkit-scrollbar { display: none; }
+.destaque { position: relative; scroll-snap-align: start; border-radius: var(--r-lg); overflow: hidden; min-height: 420px; display: flex; flex-direction: column; justify-content: flex-end; padding: 22px; }
+.destaque p { margin: 0 0 16px; font-size: 15.5px; font-weight: 550; line-height: 1.35; max-width: 22em; }
+.destaque-item { background: var(--card); }
+.destaque-item img { position: absolute; top: 12%; left: 50%; width: 88%; transform: translateX(-50%) rotate(-8deg); filter: var(--shadow-product); }
+.destaque-foto { color: #fff; background: var(--dark-2); }
+.destaque-foto img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.destaque-foto::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(12,12,12,.08) 15%, rgba(12,12,12,.86) 68%); }
+.destaque-foto > *:not(img) { position: relative; z-index: 1; }
+.destaque-promo { background: var(--accent); color: var(--accent-ink); justify-content: space-between; }
+.destaque .destaque-numero { font-stretch: 125%; font-weight: 900; font-size: clamp(3rem, 6vw, 4.2rem); line-height: .92; letter-spacing: -0.03em; margin: 8px 0 0; }
+.destaque-numero span { display: block; font-size: .5em; letter-spacing: -0.01em; margin-top: 10px; }
+.destaque .destaque-miudo { font-size: 15px; font-weight: 500; }
+@media (min-width: 900px) {
+  .destaques-lista { grid-auto-flow: row; grid-template-columns: repeat(3, 1fr); overflow: visible; gap: 16px; }
+  .destaque { min-height: 460px; padding: 26px; }
+}
+
+/* Grade de itens: produto, prato, serviço, quarto ou ambiente */
+.grade { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px 12px; }
+@media (min-width: 900px) { .grade { grid-template-columns: repeat(4, 1fr); gap: 36px 18px; } }
+.cartao { position: relative; display: flex; flex-direction: column; }
+.cartao[hidden] { display: none; }
+.cartao-foto { position: relative; aspect-ratio: 1 / 1.04; border-radius: var(--r-md); background: var(--card); overflow: hidden; border: 0; padding: 0; width: 100%; display: grid; place-items: center; transition: background-color .3s; }
+.cartao-foto:hover { background: var(--card-2); }
+.cartao-foto img { width: 80%; height: 72%; object-fit: contain; filter: var(--shadow-product); transform: rotate(var(--gire, 0deg)) scale(var(--escala, 1)); transition: transform .5s var(--ease); }
+.cartao-foto:hover img { transform: rotate(var(--gire, 0deg)) scale(calc(var(--escala, 1) * 1.05)); }
+.etiqueta { position: absolute; left: 12px; bottom: 12px; background: var(--surface); border-radius: var(--pill); padding: 4px 10px; font-size: 11.5px; font-weight: 650; }
+.etiqueta.quente { background: var(--accent); color: var(--accent-ink); }
+.por { position: absolute; right: 10px; bottom: 10px; width: 40px; height: 40px; border-radius: 50%; background: var(--ink); color: var(--bg); display: grid; place-items: center; }
+.por .ico { width: 19px; height: 19px; }
+.cartao-info { display: grid; grid-template-columns: 1fr auto; gap: 2px 10px; padding: 12px 2px 0; }
+.cartao-nome { font-weight: 650; font-size: 15px; line-height: 1.3; margin: 0; }
+.cartao-preco { font-weight: 700; font-size: 15px; font-variant-numeric: tabular-nums; text-align: right; }
+.cartao-det { color: var(--ink-3); font-size: 13px; }
+.cartao-extra { color: var(--ink-2); font-size: 13px; text-align: right; font-variant-numeric: tabular-nums; }
+@media (max-width: 599px) {
+  .cartao-info { grid-template-columns: 1fr; }
+  .cartao-preco, .cartao-extra { text-align: left; }
+}
+.mais { display: flex; justify-content: center; margin-top: 36px; }
+
+/* Mosaico de uso */
+.mosaico { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.tile { position: relative; border-radius: var(--r-lg); overflow: hidden; min-height: 230px; color: #fff; background: var(--dark-2); text-decoration: none; display: flex; align-items: flex-end; padding: 16px; }
+.tile img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .8s var(--ease); }
+.tile:hover img { transform: scale(1.04); }
+.tile::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(12,12,12,0) 45%, rgba(12,12,12,.72) 100%); }
+.tile-texto { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
+.tile-nome { font-stretch: var(--wide); font-weight: 800; font-size: clamp(1.25rem, 2.2vw, 1.75rem); letter-spacing: -0.02em; line-height: 1; }
+.tile .btn { min-height: 36px; padding: 0 14px; font-size: 13px; }
+.tile-grande { grid-column: 1 / -1; min-height: 360px; }
+@media (min-width: 900px) {
+  .mosaico { grid-template-columns: repeat(4, 1fr); grid-template-rows: 300px 300px; gap: 16px; }
+  .tile { padding: 22px; min-height: 0; }
+  .tile-grande { grid-column: 1 / 3; grid-row: 1 / 3; }
+  .tile-largo { grid-column: 3 / 5; }
+}
+
+/* Como funciona */
+.passos { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; counter-reset: passo; }
+.passo { background: var(--surface); border-radius: var(--r-lg); padding: 22px; display: grid; grid-template-columns: auto 1fr; gap: 4px 16px; align-items: start; }
+.passo-ico { grid-row: 1 / 3; width: 48px; height: 48px; border-radius: 14px; background: var(--card); display: grid; place-items: center; }
+.passo-ico .ico { width: 24px; height: 24px; }
+.passo-ico .wa { color: #1B9E4B; }
+.passo h3 { margin: 0; font-size: 16.5px; font-weight: 700; line-height: 1.3; }
+.passo p { margin: 0; color: var(--ink-2); font-size: 15px; }
+@media (min-width: 900px) {
+  .passos { grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .passo { grid-template-columns: 1fr; padding: 26px; gap: 10px; }
+  .passo-ico { grid-row: auto; margin-bottom: 18px; }
+}
+
+/* Chamada final */
+.chamada { position: relative; border-radius: var(--r-xl); overflow: hidden; color: #fff; background: var(--dark-2); min-height: 460px; display: flex; align-items: flex-end; }
+.chamada img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 60%; }
+.chamada::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(12,12,12,.2) 0%, rgba(12,12,12,.86) 100%); }
+.chamada-texto { position: relative; z-index: 1; padding: 28px 22px; max-width: 860px; }
+.chamada-texto .h2 { text-wrap: balance; }
+.chamada-texto p { color: rgba(255,255,255,.9); margin: 14px 0 22px; font-size: 16px; }
+@media (min-width: 900px) {
+  .chamada { min-height: 440px; align-items: center; justify-content: center; text-align: center; }
+  .chamada::after { background: rgba(12,12,12,.58); }
+  .chamada-texto { padding: 56px; }
+  .chamada-texto p { font-size: 18px; margin-inline: auto; max-width: 32em; }
+}
+
+/* Celular com cara de aplicativo: abas embaixo */
+.chip-topo { display: none; }
+.abas { display: none; }
+@media (max-width: 899px) {
+  :root { --abas: 64px; }
+  body { padding-bottom: calc(var(--abas) + env(safe-area-inset-bottom, 0px)); }
+  .acoes { display: none; }
+  .chip-topo { display: inline-flex; align-items: center; gap: 6px; margin-left: auto; padding: 7px 12px; border-radius: var(--pill); background: var(--card); font-size: 13px; font-weight: 600; text-decoration: none; white-space: nowrap; }
+  .chip-topo .ico { width: 16px; height: 16px; }
+  .capa-quadro { min-height: clamp(340px, calc(100svh - 134px - var(--abas) - env(safe-area-inset-bottom, 0px) - 12px), 620px); }
+  .filtro.gruda { position: sticky; top: var(--topo-cel); z-index: 30; background: var(--bg); padding-block: 10px; margin-bottom: 8px; box-shadow: 0 1px 0 var(--line); }
+  .secao-topo { margin-bottom: 18px; }
+  .abas { position: fixed; left: 0; right: 0; bottom: 0; z-index: 45; display: grid; grid-template-columns: repeat(5, 1fr); background: color-mix(in srgb, var(--surface) 94%, transparent); backdrop-filter: saturate(1.4) blur(14px); -webkit-backdrop-filter: saturate(1.4) blur(14px); border-top: 1px solid var(--line); padding: 4px 6px env(safe-area-inset-bottom, 0px); }
+  .aba { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; min-height: calc(var(--abas) - 8px); border: 0; background: transparent; text-decoration: none; color: var(--ink-3); font-size: 11.5px; font-weight: 600; border-radius: 14px; transition: color .2s, background-color .2s, transform .15s; }
+  .aba .ico { width: 25px; height: 25px; }
+  .aba[aria-current="page"] { color: var(--ink); }
+  .aba[aria-current="page"] .ico { transform: translateY(-1px); }
+  .aba:active { background: var(--card); transform: scale(.94); }
+  .aba-ico { position: relative; display: inline-grid; }
+  .aba .contador { top: -5px; right: -11px; }
+  .aba-wa .ico { color: #1B9E4B; }
+  .cartao-foto:active { background: var(--card-2); }
+  .cartao-foto:active img { transform: rotate(var(--gire, 0deg)) scale(calc(var(--escala, 1) * .95)); }
+  .btn:active, .tile:active, .destaque:active { transform: scale(.98); }
+  .toast { bottom: calc(var(--abas) + 12px + env(safe-area-inset-bottom, 0px)); }
+}
+
+/* Busca */
+.busca { width: min(640px, calc(100% - 48px)); margin: 10vh auto auto; border-radius: var(--r-xl); max-height: 80dvh; overflow: auto; overscroll-behavior: contain; padding-bottom: calc(16px + env(safe-area-inset-bottom, 0px)); }
+.busca-topo { position: sticky; top: 0; z-index: 2; display: flex; align-items: center; gap: 10px; padding: 18px 16px 12px; background: var(--surface); }
+.busca-topo .fechar { position: static; flex: none; background: var(--bg); }
+.busca-campo { flex: 1; display: flex; align-items: center; gap: 10px; min-height: 48px; padding: 0 14px; border-radius: 14px; background: var(--bg); border: 1.5px solid var(--line); }
+.busca-campo:focus-within { border-color: var(--ink); }
+.busca-campo .ico { color: var(--ink-3); }
+.busca-campo input { flex: 1; min-width: 0; border: 0; background: transparent; font: inherit; font-size: 16px; font-weight: 500; outline: none; }
+.busca-atalhos { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; padding: 0 16px 6px; }
+.busca-atalhos::-webkit-scrollbar { display: none; }
+.busca-atalhos button { flex: none; min-height: 38px; padding: 0 14px; border-radius: var(--pill); border: 1.5px solid var(--line); background: var(--surface); font-size: 14px; font-weight: 600; }
+.busca-conta { margin: 10px 16px 4px; font-size: 13px; color: var(--ink-3); min-height: 1.2em; }
+.busca-lista { list-style: none; margin: 0; padding: 0 16px; }
+.busca-lista button { width: 100%; display: grid; grid-template-columns: 64px 1fr auto; gap: 12px; align-items: center; text-align: left; border: 0; background: transparent; padding: 10px 0; border-bottom: 1px solid var(--line); }
+.busca-lista button:active { background: var(--bg); }
+.busca-lista .item-foto { width: 64px; height: 64px; }
+.busca-lista b { display: block; font-size: 15px; font-weight: 650; line-height: 1.3; }
+.busca-lista small { color: var(--ink-3); font-size: 13px; }
+.busca-lista .preco { font-weight: 700; font-size: 14.5px; font-variant-numeric: tabular-nums; }
+.busca-vazio { margin: 24px 16px; color: var(--ink-2); text-align: center; }
+@media (max-width: 899px) {
+  .busca { width: 100%; margin: auto 0 0; border-radius: 24px 24px 0 0; max-height: 88dvh; height: 88dvh; }
+  .busca-topo { padding-top: 24px; }
+}
+
+@media (orientation: landscape) and (max-height: 500px) {
+  .capa-quadro { min-height: 0; }
+  .garantias { display: none; }
+}
+
+/* Atalhos de categoria: fotos redondas depois dos destaques */
+.secao-atalhos { padding-top: 28px; }
+.atalhos { display: flex; gap: 14px; overflow-x: auto; scrollbar-width: none; scroll-snap-type: x mandatory; margin-inline: calc(var(--gutter) * -1); padding: 4px var(--gutter); list-style: none; margin-block: 0; }
+.atalhos::-webkit-scrollbar { display: none; }
+.atalho { flex: none; width: 92px; scroll-snap-align: start; text-align: center; text-decoration: none; display: grid; gap: 8px; justify-items: center; }
+.atalho-foto { width: 84px; height: 84px; border-radius: 50%; overflow: hidden; background: var(--card); display: grid; place-items: center; transition: transform .3s var(--ease); }
+.atalho-foto img { width: 100%; height: 100%; object-fit: cover; }
+.atalho:hover .atalho-foto { transform: scale(1.04); }
+.atalho b { font-size: 14px; font-weight: 650; line-height: 1.25; }
+.atalho small { display: block; color: var(--ink-3); font-size: 12.5px; font-weight: 500; }
+@media (min-width: 900px) {
+  .atalhos { justify-content: space-between; overflow: visible; margin-inline: 0; padding-inline: 0; }
+  .atalho { width: 128px; }
+  .atalho-foto { width: 120px; height: 120px; }
+}
+
+/* Avaliações em cartões */
+.avaliacoes { display: grid; grid-auto-flow: column; grid-auto-columns: 86%; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; margin-inline: calc(var(--gutter) * -1); padding-inline: var(--gutter); list-style: none; margin-block: 0; }
+.avaliacoes::-webkit-scrollbar { display: none; }
+.avaliacao { scroll-snap-align: start; background: var(--surface); border-radius: var(--r-lg); padding: 22px; display: flex; flex-direction: column; gap: 14px; }
+.estrelas { display: flex; gap: 2px; color: var(--estrela); }
+.estrelas .ico { width: 18px; height: 18px; }
+.avaliacao p { margin: 0; font-size: 15.5px; line-height: 1.5; }
+.avaliacao-autor { margin-top: auto; display: flex; align-items: center; gap: 10px; font-size: 14px; }
+.avaliacao-autor img, .avaliacao-autor .inicial { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; background: var(--card); display: grid; place-items: center; font-weight: 700; }
+.avaliacao-autor b { display: block; font-weight: 650; }
+.avaliacao-autor small { color: var(--ink-3); }
+.nota-geral { display: inline-flex; align-items: center; gap: 8px; font-weight: 650; }
+.nota-geral .ico { color: var(--estrela); }
+@media (min-width: 900px) {
+  .avaliacoes { grid-auto-flow: row; grid-template-columns: repeat(3, 1fr); overflow: visible; margin-inline: 0; padding-inline: 0; gap: 16px; }
+}
+
+/* Foto que ocupa o cartão inteiro (prato, serviço, ambiente), no lugar do produto recortado */
+.cartao-foto.cheia img { width: 100%; height: 100%; object-fit: cover; filter: none; transform: none; }
+.cartao-foto.cheia:hover img { transform: scale(1.04); }
+
+/* Estilo suave: tons claros e quentes, cantos bem redondos, quase nenhuma sombra, sensação de cuidado.
+   Para confeitaria, unhas, saúde, psicologia e estética. Entra depois do tema do esqueleto.
+   O pastel derruba o contraste, então a cor de ação é um rosa terroso escuro (5,8:1 com texto
+   branco) e os fundos pastel levam texto marrom escuro (mínimo de 5:1 em todo o texto).
+   Fonte: Nunito, arredondada e amigável, fora da lista de fontes automáticas de IA. */
+@font-face { font-family: 'Nunito'; font-style: normal; font-weight: 400 900; font-display: swap; src: url(fonts/nunito-suave-latin-ext.woff2) format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: 'Nunito'; font-style: normal; font-weight: 400 900; font-display: swap; src: url(fonts/nunito-suave-latin.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+
+:root {
+  --bg: #FCF6EF;
+  --surface: #FFFCF8;
+  --card: #F6E8DC;
+  --card-2: #EEDACB;
+  --ink: #3B2B27;
+  --ink-2: #6A5149;
+  --ink-3: #745A52;
+  --line: #E9D6C8;
+  --accent: #A9443F;
+  --accent-ink: #FFFFFF;
+  --accent-soft: #F8DAD1;
+  --dark: #F1DDD1;
+  --dark-2: #E8D0C2;
+  --on-dark: #3B2B27;
+  --on-dark-2: #664E46;
+  --pix: #1F8A7E;
+  --scrim: rgba(59, 43, 39, 0.42);
+  --r-xl: 40px;
+  --r-lg: 30px;
+  --r-md: 24px;
+  --r-sm: 16px;
+  --font: 'Nunito', 'Trebuchet MS', 'Helvetica Neue', Arial, sans-serif;
+  --wide: 100%;
+  --estreita: 100%;
+  --sob-foto: #5B4039;
+  --shadow-product: drop-shadow(0 8px 10px rgba(110, 70, 50, 0.1));
+}
+
+/* Títulos: peso médio, sem apertar as letras, que a Nunito já é redonda */
+.h1, .h2, .h3 { font-weight: 700; letter-spacing: -0.01em; line-height: 1.12; }
+.h1 { letter-spacing: -0.015em; }
+.c-h1, .c-h2, .l-capa h1, .ficha h2, .pedido-topo h2 { font-weight: 700; letter-spacing: -0.01em; }
+.v-numero b, .v-preco { font-weight: 700; letter-spacing: -0.01em; }
+.marca { font-weight: 800; letter-spacing: -0.01em; }
+.btn, .cartao-nome, .passo h3, .v-etapa h3, .v-plano h3, .v-bloco h3, .c-item h3 { font-weight: 700; }
+.tile-nome, .destaque .destaque-numero, .c-logo, .v-depo-grande p { font-weight: 700; letter-spacing: -0.01em; }
+
+/* Sem vidro fosco: a barra de cima e as de baixo ficam sólidas */
+.topo, .abas, .v-barra, .c-cats { backdrop-filter: none; -webkit-backdrop-filter: none; }
+.topo { background: var(--bg); }
+.abas, .v-barra { background: var(--surface); }
+.c-cats { background: var(--bg); }
+
+/* Quase sem sombra: o contorno fino faz o papel dela */
+.v-flutua, .c-loja-cartao, .v-plano-top, .c-barra, .toast { box-shadow: none; }
+.v-flutua, .c-loja-cartao { border: 1px solid var(--line); }
+.v-plano-top { border-color: var(--accent); }
+
+/* Botões: ação em rosa terroso, contorno suave, sempre pílula */
+.btn { border-width: 2px; }
+.btn-ink { background: var(--accent); color: var(--accent-ink); }
+.btn-ink:hover { background: color-mix(in srgb, var(--accent) 86%, var(--ink)); }
+.btn-light { background: var(--surface); color: var(--ink); }
+.btn-line { border-color: var(--accent); color: var(--accent); }
+.btn-line:hover { background: var(--accent); color: var(--accent-ink); }
+.btn-line-light { border-color: #fff; }
+.btn-line-light:hover { color: var(--accent); }
+.v-final .btn-light { background: var(--accent); color: var(--accent-ink); }
+.l-principal, .c-barra { background: var(--accent); color: var(--accent-ink); }
+.l-principal small { color: var(--accent-ink); opacity: .92; }
+.l-principal .seta { color: var(--accent-ink); }
+.l-principal .ico:not(.seta) { color: var(--accent-ink); }
+.por, .c-por { background: var(--accent); color: var(--accent-ink); }
+.c-por.adicionado { background: var(--ink); }
+.c-barra-qtd, .contador { background: var(--accent-soft); color: var(--ink); }
+.toast { background: var(--ink); color: var(--surface); }
+
+/* Estados marcados: pastel com texto escuro e contorno na cor de ação */
+.filtro button, .busca-atalhos button { border-color: var(--line); background: var(--surface); }
+.filtro button:hover { border-color: var(--accent); }
+.filtro button[aria-pressed="true"], .c-cats a[aria-current="true"], .botoes-grade button[aria-pressed="true"] { background: var(--accent-soft); border-color: var(--accent); color: var(--ink); }
+.botoes-grade button:hover:not(:disabled) { border-color: var(--accent); }
+.botoes-grade button:disabled { color: var(--ink-3); background: var(--bg); }
+.opcao:has(input:checked) { border-color: var(--accent); background: var(--accent-soft); }
+.opcao input { accent-color: var(--accent); }
+.campo input:focus, .campo textarea:focus, .busca-campo:focus-within, .c-busca label:focus-within { border-color: var(--accent); }
+.aba[aria-current="page"] { color: var(--accent); }
+.c-cats a { background: var(--card); }
+.menu a:hover { color: var(--ink); border-bottom-color: var(--accent); }
+.v-etapa::before { background: var(--accent-soft); color: var(--ink); border: 2px solid var(--accent); }
+.v-etapa::after { background: var(--card-2); }
+
+/* Etiquetas e blocos de cor viram pastel com texto escuro */
+.etiqueta.quente, .c-tag, .v-selo-plano { background: var(--accent-soft); color: var(--ink); border: 1px solid var(--accent); }
+.destaque-promo, .v-bloco-cor { background: var(--accent-soft); color: var(--ink); }
+.v-bloco-cor p { color: var(--ink-2); }
+.v-bloco-cor .v-bloco-ico { background: var(--surface); }
+.v-para i, .v-flutua-ico { background: var(--accent-soft); color: var(--accent); }
+.v-lista .ico { background: var(--accent-soft); color: var(--accent); }
+.etiqueta, .l-destaque-foto .etiqueta { border: 1px solid var(--line); }
+
+/* Cartões e fundos: cantos grandes, contorno fino no lugar da sombra */
+.passo, .avaliacao, .v-depo, .v-bloco, .v-lista li, .c-bloco, .l-cartao, .l-link, .c-mini, .v-plano { border: 1px solid var(--line); }
+.passo-ico, .v-bloco-ico, .l-link-ico { border-radius: 50%; }
+.item-foto, .busca-lista .item-foto, .item-foto img, .item-foto .foto-vazia { border-radius: var(--r-sm); }
+.opcao, .campo input, .campo textarea, .busca-campo, .c-busca label, .botoes-grade button, .c-infos li, .l-pix { border-radius: var(--r-sm); }
+.c-item-foto, .c-item-foto > img, .c-item-foto > .foto-vazia { border-radius: var(--r-md); }
+.c-logo { border-radius: 50%; background: var(--accent); color: var(--accent-ink); }
+.v-garantia { border: 1px solid var(--line); }
+.ficha { border-radius: var(--r-xl) var(--r-xl) 0 0; }
+@media (min-width: 900px) { .ficha { border-radius: var(--r-xl); } }
+.folha { border-radius: 32px 32px 0 0; }
+.alca { background: var(--card-2); }
+dialog::backdrop { background: var(--scrim); }
+
+/* Avisos e rodapé em tons claros: o escuro vira pêssego, com texto marrom */
+.aviso { background: var(--accent-soft); color: var(--ink); }
+.aviso strong { color: var(--ink); }
+.rodape { border-radius: var(--r-xl) var(--r-xl) 0 0; border-top: 1px solid var(--line); }
+.rodape a:hover { text-decoration: underline; }
+.rodape .redes a { border-color: var(--card-2); }
+.rodape-autor { border-top-color: var(--card-2); }
+.rodape-base { border-top-color: var(--card-2); color: var(--on-dark-2); }
+.pagamentos span { background: var(--surface); }
+.v-final, .v-depo-grande { border: 1px solid var(--line); }
+.v-final p { color: var(--on-dark-2); }
+.v-bloco-escuro { border-color: var(--line); }
+
+/* Por cima de foto o texto continua branco, então o escurecimento fica marrom quente */
+.capa-quadro, .destaque-foto, .tile, .chamada, .v-bloco-foto { background: var(--sob-foto); }
+.capa-quadro::after { background: linear-gradient(180deg, rgba(59,35,30,0) 28%, rgba(59,35,30,.55) 58%, rgba(59,35,30,.86) 100%); }
+.destaque-foto::after { background: linear-gradient(180deg, rgba(59,35,30,.08) 15%, rgba(59,35,30,.86) 68%); }
+.tile::after { background: linear-gradient(180deg, rgba(59,35,30,0) 45%, rgba(59,35,30,.74) 100%); }
+.chamada::after { background: linear-gradient(180deg, rgba(59,35,30,.2) 0%, rgba(59,35,30,.86) 100%); }
+.v-bloco-foto::after { background: linear-gradient(180deg, rgba(59,35,30,0) 40%, rgba(59,35,30,.82) 100%); }
+@media (min-width: 900px) {
+  .capa-quadro::after { background: linear-gradient(90deg, rgba(59,35,30,.76) 0%, rgba(59,35,30,.5) 36%, rgba(59,35,30,0) 62%); }
+  .chamada::after { background: rgba(59,35,30,.62); }
+}
+.estrelas, .nota-geral .ico, .v-prova .estrelas, .c-status .nota .ico { color: #C77D0A; }
+
+/* Peças da Pitanga que a base não tem: kit de rosto na sacola, ficha com foto cheia e campo de bairro.
+   Só tokens do :root, para o estilo e o tema vestirem. */
+
+/* As fotos dos produtos são cenas e enchem o quadro; a base espera produto recortado */
+.ficha-foto img { width: 100%; height: 100%; object-fit: cover; filter: none; position: absolute; inset: 0; margin: 0; }
+.item-foto { overflow: hidden; }
+.item-foto img { width: 100%; height: 100%; object-fit: cover; }
+.ficha-det { margin: 0; color: var(--ink-2); font-size: 15px; line-height: 1.5; }
+.botoes-grade { grid-template-columns: repeat(auto-fill, minmax(124px, 1fr)); }
+.botoes-grade button { padding: 0 10px; line-height: 1.2; }
+.rotulo b { font-weight: 700; }
+
+/* Campo de bairro */
+.campo select { font: inherit; font-weight: 500; font-size: 16px; min-height: 46px; border: 1.5px solid var(--line); border-radius: var(--r-sm); padding: 0 14px; background: var(--surface); color: var(--ink); }
+.campo select:focus { outline: none; border-color: var(--accent); }
+.campo[hidden] { display: none; }
+
+/* Kit de rosto: três passos que acendem quando o produto entra na sacola */
+.kit { margin: 14px 0 4px; padding: 16px; border-radius: var(--r-md); background: var(--accent-soft); color: var(--ink); }
+.kit h3 { margin: 0; font-size: 16px; line-height: 1.3; }
+.kit-aviso { margin: 4px 0 12px; font-size: 14px; color: var(--ink-2); }
+.kit-passos { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.kit-passo { display: grid; grid-template-columns: 36px 1fr auto; gap: 12px; align-items: center; padding: 8px 10px; border-radius: var(--r-sm); background: var(--surface); min-height: 60px; }
+.kit-ico { width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; background: var(--card); color: var(--ink-2); }
+.kit-ico .ico { width: 18px; height: 18px; }
+.kit-passo.feito .kit-ico { background: var(--accent); color: var(--accent-ink); }
+.kit-nome b { display: block; font-size: 14.5px; font-weight: 700; }
+.kit-nome small { display: block; color: var(--ink-3); font-size: 13px; line-height: 1.3; }
+.kit-ok { font-size: 13px; font-weight: 700; color: var(--ok); padding-right: 6px; }
+
+/* Faixa de garantias: centralizada quando cabe, rolável do início quando não cabe (o centro cortaria o primeiro item) */
+.garantias ul { justify-content: flex-start; }
+.garantias li:first-child { margin-left: auto; }
+.garantias li:last-child { margin-right: auto; }
+
+/* O foco vai para os controles de dentro; o contorno no painel inteiro só atrapalha */
+dialog:focus, dialog:focus-visible { outline: none; }
+.kit { margin-top: 18px; }
+
+/* A foto da chamada é uma estante cheia de frascos e texto pequeno; o escurecimento precisa ser mais forte para o texto branco ler */
+.chamada::after { background: linear-gradient(180deg, rgba(59, 35, 30, .62) 0%, rgba(59, 35, 30, .92) 100%); }
+@media (min-width: 900px) { .chamada::after { background: rgba(59, 35, 30, .78); } }
+
+/* No celular o bloco largo ocupa a linha toda; com quatro blocos, senão sobra um buraco ao lado do último */
+@media (max-width: 899px) { .tile-largo { grid-column: 1 / -1; } }
+
+/* Passos: a base deixa as linhas do cartão esticarem, e o título desce nos cartões de texto curto.
+   Contornado aqui; a correção certa é align-content: start no .passo de base/loja.css */
+.passo { align-content: start; }
+
+/* Destaque do batom: o recorte ficou quase quadrado depois de tirar a tampa, então ocupa menos largura para não encostar no texto */
+.destaque-item img { width: 66%; top: 8%; }
+
+/* Tema da Pitanga: o estilo suave traz o creme e o pêssego; aqui só entra a cor da marca, um vermelho de
+   pitanga madura puxado para o vinho. Texto branco sobre ele dá 7,2:1 e o texto escuro sobre o rosa claro
+   (--accent-soft) dá 10,3:1. */
+:root {
+  --accent: #A1294A;
+  --accent-ink: #FFFFFF;
+  --accent-soft: #F8DADF;
+}
+
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <!-- Icons: brands from Simple Icons (CC0), interface from Phosphor (MIT). -->
+  <symbol id="i-whatsapp" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></symbol>
+  <symbol id="i-instagram" viewBox="0 0 24 24"><path d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/></symbol>
+  <symbol id="i-visa" viewBox="0 0 24 24"><path d="M9.112 8.262L5.97 15.758H3.92L2.374 9.775c-.094-.368-.175-.503-.461-.658C1.447 8.864.677 8.627 0 8.479l.046-.217h3.3a.904.904 0 01.894.764l.817 4.338 2.018-5.102zm8.033 5.049c.008-1.979-2.736-2.088-2.717-2.972.006-.269.262-.555.822-.628a3.66 3.66 0 011.913.336l.34-1.59a5.207 5.207 0 00-1.814-.333c-1.917 0-3.266 1.02-3.278 2.479-.012 1.079.963 1.68 1.698 2.04.756.367 1.01.603 1.006.931-.005.504-.602.725-1.16.734-.975.015-1.54-.263-1.992-.473l-.351 1.642c.453.208 1.289.39 2.156.398 2.037 0 3.37-1.006 3.377-2.564m5.061 2.447H24l-1.565-7.496h-1.656a.883.883 0 00-.826.55l-2.909 6.946h2.036l.405-1.12h2.488zm-2.163-2.656l1.02-2.815.588 2.815zm-8.16-4.84l-1.603 7.496H8.34l1.605-7.496z"/></symbol>
+  <symbol id="i-mastercard" viewBox="0 0 24 24"><path d="M11.343 18.031c.058.049.12.098.181.146-1.177.783-2.59 1.238-4.107 1.238C3.32 19.416 0 16.096 0 12c0-4.095 3.32-7.416 7.416-7.416 1.518 0 2.931.456 4.105 1.238-.06.051-.12.098-.165.15C9.6 7.489 8.595 9.688 8.595 12c0 2.311 1.001 4.51 2.748 6.031zm5.241-13.447c-1.52 0-2.931.456-4.105 1.238.06.051.12.098.165.15C14.4 7.489 15.405 9.688 15.405 12c0 2.31-1.001 4.507-2.748 6.031-.058.049-.12.098-.181.146 1.177.783 2.588 1.238 4.107 1.238C20.68 19.416 24 16.096 24 12c0-4.094-3.32-7.416-7.416-7.416zM12 6.174c-.096.075-.189.15-.28.231C10.156 7.764 9.169 9.765 9.169 12c0 2.236.987 4.236 2.551 5.595.09.08.185.158.28.232.096-.074.189-.152.28-.232 1.563-1.359 2.551-3.359 2.551-5.595 0-2.235-.987-4.236-2.551-5.595-.09-.08-.184-.156-.28-.231z"/></symbol>
+  <symbol id="i-pix" viewBox="0 0 24 24"><path d="M5.283 18.36a3.505 3.505 0 0 0 2.493-1.032l3.6-3.6a.684.684 0 0 1 .946 0l3.613 3.613a3.504 3.504 0 0 0 2.493 1.032h.71l-4.56 4.56a3.647 3.647 0 0 1-5.156 0L4.85 18.36ZM18.428 5.627a3.505 3.505 0 0 0-2.493 1.032l-3.613 3.614a.67.67 0 0 1-.946 0l-3.6-3.6A3.505 3.505 0 0 0 5.283 5.64h-.434l4.573-4.572a3.646 3.646 0 0 1 5.156 0l4.559 4.559ZM1.068 9.422 3.79 6.699h1.492a2.483 2.483 0 0 1 1.744.722l3.6 3.6a1.73 1.73 0 0 0 2.443 0l3.614-3.613a2.482 2.482 0 0 1 1.744-.723h1.767l2.737 2.737a3.646 3.646 0 0 1 0 5.156l-2.736 2.736h-1.768a2.482 2.482 0 0 1-1.744-.722l-3.613-3.613a1.77 1.77 0 0 0-2.444 0l-3.6 3.6a2.483 2.483 0 0 1-1.744.722H3.791l-2.723-2.723a3.646 3.646 0 0 1 0-5.156"/></symbol>
+  <symbol id="i-googlemaps" viewBox="0 0 24 24"><path d="M19.527 4.799c1.212 2.608.937 5.678-.405 8.173-1.101 2.047-2.744 3.74-4.098 5.614-.619.858-1.244 1.75-1.669 2.727-.141.325-.263.658-.383.992-.121.333-.224.673-.34 1.008-.109.314-.236.684-.627.687h-.007c-.466-.001-.579-.53-.695-.887-.284-.874-.581-1.713-1.019-2.525-.51-.944-1.145-1.817-1.79-2.671L19.527 4.799zM8.545 7.705l-3.959 4.707c.724 1.54 1.821 2.863 2.871 4.18.247.31.494.622.737.936l4.984-5.925-.029.01c-1.741.601-3.691-.291-4.392-1.987a3.377 3.377 0 0 1-.209-.716c-.063-.437-.077-.761-.004-1.198l.001-.007zM5.492 3.149l-.003.004c-1.947 2.466-2.281 5.88-1.117 8.77l4.785-5.689-.058-.05-3.607-3.035zM14.661.436l-3.838 4.563a.295.295 0 0 1 .027-.01c1.6-.551 3.403.15 4.22 1.626.176.319.323.683.377 1.045.068.446.085.773.012 1.22l-.003.016 3.836-4.561A8.382 8.382 0 0 0 14.67.439l-.009-.003zM9.466 5.868L14.162.285l-.047-.012A8.31 8.31 0 0 0 11.986 0a8.439 8.439 0 0 0-6.169 2.766l-.016.018 3.665 3.084z"/></symbol>
+  <symbol id="i-magnifying-glass" viewBox="0 0 256 256"><path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"/></symbol>
+  <symbol id="i-handbag" viewBox="0 0 256 256"><path d="M239.89,198.12l-14.26-120a16,16,0,0,0-16-14.12H176a48,48,0,0,0-96,0H46.33a16,16,0,0,0-16,14.12l-14.26,120A16,16,0,0,0,20,210.6a16.13,16.13,0,0,0,12,5.4H223.92A16.13,16.13,0,0,0,236,210.6,16,16,0,0,0,239.89,198.12ZM128,32a32,32,0,0,1,32,32H96A32,32,0,0,1,128,32ZM32,200,46.33,80H80v24a8,8,0,0,0,16,0V80h64v24a8,8,0,0,0,16,0V80h33.75l14.17,120Z"/></symbol>
+  <symbol id="i-arrow-right" viewBox="0 0 256 256"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></symbol>
+  <symbol id="i-arrow-left" viewBox="0 0 256 256"><path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"/></symbol>
+  <symbol id="i-arrow-up-right" viewBox="0 0 256 256"><path d="M200,64V168a8,8,0,0,1-16,0V83.31L69.66,197.66a8,8,0,0,1-11.32-11.32L172.69,72H88a8,8,0,0,1,0-16H192A8,8,0,0,1,200,64Z"/></symbol>
+  <symbol id="i-arrow-down" viewBox="0 0 256 256"><path d="M205.66,149.66l-72,72a8,8,0,0,1-11.32,0l-72-72a8,8,0,0,1,11.32-11.32L120,196.69V40a8,8,0,0,1,16,0V196.69l58.34-58.35a8,8,0,0,1,11.32,11.32Z"/></symbol>
+  <symbol id="i-x" viewBox="0 0 256 256"><path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"/></symbol>
+  <symbol id="i-minus" viewBox="0 0 256 256"><path d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128Z"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 256 256"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></symbol>
+  <symbol id="i-truck" viewBox="0 0 256 256"><path d="M255.42,117l-14-35A15.93,15.93,0,0,0,226.58,72H192V64a8,8,0,0,0-8-8H32A16,16,0,0,0,16,72V184a16,16,0,0,0,16,16H49a32,32,0,0,0,62,0h50a32,32,0,0,0,62,0h17a16,16,0,0,0,16-16V120A7.94,7.94,0,0,0,255.42,117ZM192,88h34.58l9.6,24H192ZM32,72H176v64H32ZM80,208a16,16,0,1,1,16-16A16,16,0,0,1,80,208Zm81-24H111a32,32,0,0,0-62,0H32V152H176v12.31A32.11,32.11,0,0,0,161,184Zm31,24a16,16,0,1,1,16-16A16,16,0,0,1,192,208Zm48-24H223a32.06,32.06,0,0,0-31-24V128h48Z"/></symbol>
+  <symbol id="i-check" viewBox="0 0 256 256"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></symbol>
+  <symbol id="i-map-pin" viewBox="0 0 256 256"><path d="M128,64a40,40,0,1,0,40,40A40,40,0,0,0,128,64Zm0,64a24,24,0,1,1,24-24A24,24,0,0,1,128,128Zm0-112a88.1,88.1,0,0,0-88,88c0,31.4,14.51,64.68,42,96.25a254.19,254.19,0,0,0,41.45,38.3,8,8,0,0,0,9.18,0A254.19,254.19,0,0,0,174,200.25c27.45-31.57,42-64.85,42-96.25A88.1,88.1,0,0,0,128,16Zm0,206c-16.53-13-72-60.75-72-118a72,72,0,0,1,144,0C200,161.23,144.53,209,128,222Z"/></symbol>
+  <symbol id="i-arrows-clockwise" viewBox="0 0 256 256"><path d="M224,48V96a8,8,0,0,1-8,8H168a8,8,0,0,1,0-16h28.69L182.06,73.37a79.56,79.56,0,0,0-56.13-23.43h-.45A79.52,79.52,0,0,0,69.59,72.71,8,8,0,0,1,58.41,61.27a96,96,0,0,1,135,.79L208,76.69V48a8,8,0,0,1,16,0ZM186.41,183.29a80,80,0,0,1-112.47-.66L59.31,168H88a8,8,0,0,0,0-16H40a8,8,0,0,0-8,8v48a8,8,0,0,0,16,0V179.31l14.63,14.63A95.43,95.43,0,0,0,130,222.06h.53a95.36,95.36,0,0,0,67.07-27.33,8,8,0,0,0-11.18-11.44Z"/></symbol>
+  <symbol id="i-receipt" viewBox="0 0 256 256"><path d="M72,104a8,8,0,0,1,8-8h96a8,8,0,0,1,0,16H80A8,8,0,0,1,72,104Zm8,40h96a8,8,0,0,0,0-16H80a8,8,0,0,0,0,16ZM232,56V208a8,8,0,0,1-11.58,7.15L192,200.94l-28.42,14.21a8,8,0,0,1-7.16,0L128,200.94,99.58,215.15a8,8,0,0,1-7.16,0L64,200.94,35.58,215.15A8,8,0,0,1,24,208V56A16,16,0,0,1,40,40H216A16,16,0,0,1,232,56Zm-16,0H40V195.06l20.42-10.22a8,8,0,0,1,7.16,0L96,199.06l28.42-14.22a8,8,0,0,1,7.16,0L160,199.06l28.42-14.22a8,8,0,0,1,7.16,0L216,195.06Z"/></symbol>
+  <symbol id="i-trash" viewBox="0 0 256 256"><path d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM96,40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96Zm96,168H64V64H192ZM112,104v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Z"/></symbol>
+  <symbol id="i-house" viewBox="0 0 256 256"><path d="M219.31,108.68l-80-80a16,16,0,0,0-22.62,0l-80,80A15.87,15.87,0,0,0,32,120v96a8,8,0,0,0,8,8h64a8,8,0,0,0,8-8V160h32v56a8,8,0,0,0,8,8h64a8,8,0,0,0,8-8V120A15.87,15.87,0,0,0,219.31,108.68ZM208,208H160V152a8,8,0,0,0-8-8H104a8,8,0,0,0-8,8v56H48V120l80-80,80,80Z"/></symbol>
+  <symbol id="i-calendar-blank" viewBox="0 0 256 256"><path d="M208,32H184V24a8,8,0,0,0-16,0v8H88V24a8,8,0,0,0-16,0v8H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM72,48v8a8,8,0,0,0,16,0V48h80v8a8,8,0,0,0,16,0V48h24V80H48V48ZM208,208H48V96H208V208Z"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm64-88a8,8,0,0,1-8,8H128a8,8,0,0,1-8-8V72a8,8,0,0,1,16,0v48h48A8,8,0,0,1,192,128Z"/></symbol>
+  <symbol id="i-storefront" viewBox="0 0 256 256"><path d="M232,96a7.89,7.89,0,0,0-.3-2.2L217.35,43.6A16.07,16.07,0,0,0,202,32H54A16.07,16.07,0,0,0,38.65,43.6L24.31,93.8A7.89,7.89,0,0,0,24,96h0v16a40,40,0,0,0,16,32v72a8,8,0,0,0,8,8H208a8,8,0,0,0,8-8V144a40,40,0,0,0,16-32V96ZM54,48H202l11.42,40H42.61Zm50,56h48v8a24,24,0,0,1-48,0Zm-16,0v8a24,24,0,0,1-35.12,21.26,7.88,7.88,0,0,0-1.82-1.06A24,24,0,0,1,40,112v-8ZM200,208H56V151.2a40.57,40.57,0,0,0,8,.8,40,40,0,0,0,32-16,40,40,0,0,0,64,0,40,40,0,0,0,32,16,40.57,40.57,0,0,0,8-.8Zm4.93-75.8a8.08,8.08,0,0,0-1.8,1.05A24,24,0,0,1,168,112v-8h48v8A24,24,0,0,1,204.93,132.2Z"/></symbol>
+  <symbol id="i-chat-circle" viewBox="0 0 256 256"><path d="M128,24A104,104,0,0,0,36.18,176.88L24.83,210.93a16,16,0,0,0,20.24,20.24l34.05-11.35A104,104,0,1,0,128,24Zm0,192a87.87,87.87,0,0,1-44.06-11.81,8,8,0,0,0-6.54-.67L40,216,52.47,178.6a8,8,0,0,0-.66-6.54A88,88,0,1,1,128,216Z"/></symbol>
+  <symbol id="i-list" viewBox="0 0 256 256"><path d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128ZM40,72H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16ZM216,184H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"/></symbol>
+  <symbol id="i-shield-check" viewBox="0 0 256 256"><path d="M208,40H48A16,16,0,0,0,32,56v56c0,52.72,25.52,84.67,46.93,102.19,23.06,18.86,46,25.26,47,25.53a8,8,0,0,0,4.2,0c1-.27,23.91-6.67,47-25.53C198.48,196.67,224,164.72,224,112V56A16,16,0,0,0,208,40Zm0,72c0,37.07-13.66,67.16-40.6,89.42A129.3,129.3,0,0,1,128,223.62a128.25,128.25,0,0,1-38.92-21.81C61.82,179.51,48,149.3,48,112l0-56,160,0ZM82.34,141.66a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32l-56,56a8,8,0,0,1-11.32,0Z"/></symbol>
+  <symbol id="i-credit-card" viewBox="0 0 256 256"><path d="M224,48H32A16,16,0,0,0,16,64V192a16,16,0,0,0,16,16H224a16,16,0,0,0,16-16V64A16,16,0,0,0,224,48Zm0,16V88H32V64Zm0,128H32V104H224v88Zm-16-24a8,8,0,0,1-8,8H168a8,8,0,0,1,0-16h32A8,8,0,0,1,208,168Zm-64,0a8,8,0,0,1-8,8H120a8,8,0,0,1,0-16h16A8,8,0,0,1,144,168Z"/></symbol>
+  <symbol id="i-user" viewBox="0 0 256 256"><path d="M230.92,212c-15.23-26.33-38.7-45.21-66.09-54.16a72,72,0,1,0-73.66,0C63.78,166.78,40.31,185.66,25.08,212a8,8,0,1,0,13.85,8c18.84-32.56,52.14-52,89.07-52s70.23,19.44,89.07,52a8,8,0,1,0,13.85-8ZM72,96a56,56,0,1,1,56,56A56.06,56.06,0,0,1,72,96Z"/></symbol>
+  <symbol id="i-image" viewBox="0 0 256 256"><path d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Zm0,16V158.75l-26.07-26.06a16,16,0,0,0-22.63,0l-20,20-44-44a16,16,0,0,0-22.62,0L40,149.37V56ZM40,172l52-52,80,80H40Zm176,28H194.63l-36-36,20-20L216,181.38V200ZM144,100a12,12,0,1,1,12,12A12,12,0,0,1,144,100Z"/></symbol>
+  <symbol id="i-info" viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm16-40a8,8,0,0,1-8,8,16,16,0,0,1-16-16V128a8,8,0,0,1,0-16,16,16,0,0,1,16,16v40A8,8,0,0,1,144,176ZM112,84a12,12,0,1,1,12,12A12,12,0,0,1,112,84Z"/></symbol>
+  <symbol id="i-star" viewBox="0 0 256 256"><path d="M234.29,114.85l-45,38.83L203,211.75a16.4,16.4,0,0,1-24.5,17.82L128,198.49,77.47,229.57A16.4,16.4,0,0,1,53,211.75l13.76-58.07-45-38.83A16.46,16.46,0,0,1,31.08,86l59-4.76,22.76-55.08a16.36,16.36,0,0,1,30.27,0l22.75,55.08,59,4.76a16.46,16.46,0,0,1,9.37,28.86Z"/></symbol>
+</svg>
+
+<!-- 1. Aviso de demonstração e faixa de garantias -->
+<div class="aviso"><strong>Demonstração.</strong> Empresa fictícia<span class="so-largo"> criada como modelo por Tarcio Diniz</span>, preços de exemplo.</div>
+<div class="garantias">
+  <ul>
+    <li><svg class="ico" aria-hidden="true"><use href="#i-truck"/></svg>Pediu até 15h, chega hoje</li>
+    <li><svg class="ico" aria-hidden="true"><use href="#i-credit-card"/></svg>Cartão em até 3x sem juros</li>
+    <li><svg class="ico pix" aria-hidden="true"><use href="#i-pix"/></svg>5% de desconto no Pix</li>
+    <li><svg class="ico" aria-hidden="true"><use href="#i-shield-check"/></svg>Lacrado, troca em 7 dias</li>
+  </ul>
+</div>
+
+<!-- 2. Cabeçalho -->
+<header class="topo" id="topo">
+  <div class="wrap">
+    <a class="marca" href="#inicio" aria-label="Pitanga, início">Pitanga</a>
+    <a class="chip-topo" href="#onde"><svg class="ico" aria-hidden="true"><use href="#i-clock"/></svg><span data-status-loja>Horários no rodapé</span></a>
+    <nav class="menu" aria-label="Principal">
+      <a href="#itens">Produtos</a>
+      <a href="#uso">Por momento</a>
+      <a href="#como-funciona">Como funciona</a>
+      <a href="#avaliacoes">Avaliações</a>
+      <a href="#onde">Onde fica</a>
+    </nav>
+    <div class="acoes">
+      <a class="icone-btn" href="https://wa.me/5583991931035?text=Oi%2C%20Tarcio%21%20Me%20interessei%20por%20esse%20site%2C%20o%20modelo%20da%20Pitanga%20%28cosm%C3%A9ticos%29.%0A%0AO%20site%20montou%20esta%20mensagem%3A%0AOl%C3%A1%2C%20Pitanga%21" target="_blank" rel="noopener" aria-label="Chamar no WhatsApp"><svg class="ico" aria-hidden="true"><use href="#i-whatsapp"/></svg></a>
+      <button class="icone-btn" type="button" data-abrir-janela="pedido" aria-label="Abrir sacola"><svg class="ico" aria-hidden="true"><use href="#i-handbag"/></svg><span class="contador" data-contador data-zero>0</span></button>
+    </div>
+  </div>
+  <nav class="menu-cel" aria-label="Seções">
+    <a href="#itens">Produtos</a>
+    <a href="#uso">Por momento</a>
+    <a href="#como-funciona">Como funciona</a>
+    <a href="#avaliacoes">Avaliações</a>
+    <a href="#onde">Onde fica</a>
+  </nav>
+</header>
+
+<main id="inicio">
+  <!-- 3. Capa -->
+  <section class="capa wrap" aria-labelledby="capa-titulo">
+    <div class="capa-quadro">
+      <picture>
+        <source media="(min-width: 900px)" srcset="img/capa/capa.webp">
+        <img class="capa-foto" src="img/capa/capa-900.webp" width="900" height="600" alt="Mulher de roupão e toalha na cabeça, sorrindo e passando creme no rosto, com um pote de creme na mão e outra mulher de toalha ao lado" fetchpriority="high">
+      </picture>
+      <div class="capa-selos">
+        <span class="selo"><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg>4,7 no Google</span>
+        <span class="selo"><svg class="ico" aria-hidden="true"><use href="#i-map-pin"/></svg>Catolé, Campina Grande</span>
+      </div>
+      <div class="capa-texto">
+        <h1 class="h1" id="capa-titulo">Skincare e make com entrega hoje</h1>
+        <p><span class="so-largo">A Pitanga fica no Catolé. </span>Monte o kit de rosto na sacola, peça até as 15h e a moto leva ainda hoje.</p>
+        <div class="capa-botoes">
+          <a class="btn btn-light" href="#itens">Ver os produtos<svg class="ico" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+          <a class="btn btn-line-light btn-wa-capa" href="https://wa.me/5583991931035?text=Oi%2C%20Tarcio%21%20Me%20interessei%20por%20esse%20site%2C%20o%20modelo%20da%20Pitanga%20%28cosm%C3%A9ticos%29.%0A%0AO%20site%20montou%20esta%20mensagem%3A%0AOl%C3%A1%2C%20Pitanga%21%20Quero%20ajuda%20para%20escolher%20meus%20produtos." target="_blank" rel="noopener" aria-label="Chamar no WhatsApp"><svg class="ico" aria-hidden="true"><use href="#i-whatsapp"/></svg><span class="rotulo-wa"><span class="so-largo">Chamar no </span>WhatsApp</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Cartões de destaque -->
+  <section class="destaques wrap" aria-label="Destaques da semana">
+    <div class="destaques-lista">
+      <article class="destaque destaque-item">
+        <img src="img/itens/destaque-batom.webp" width="700" height="648" alt="Batom rosa claro aberto, de embalagem marrom" loading="lazy">
+        <p>Batom cremoso em seis cores, a R$&nbsp;39,90. A Goiaba é a que mais sai.</p>
+        <div><button class="btn btn-ink btn-sm" type="button" data-abrir="batom-cremoso">Escolher a cor</button></div>
+      </article>
+      <article class="destaque destaque-foto">
+        <img src="img/cenas/destaque-protetor.webp" width="900" height="1350" alt="Rosto de mulher de pele escura, de olhos fechados, com creme branco passado na bochecha" loading="lazy">
+        <p>O protetor FPS 50 voltou ao estoque. Textura leve e não deixa o rosto branco.</p>
+        <div><button class="btn btn-light btn-sm" type="button" data-abrir="protetor-solar">Ver o protetor</button></div>
+      </article>
+      <article class="destaque destaque-promo">
+        <p class="destaque-numero">10%<span>no kit de rosto completo</span></p>
+        <div>
+          <p class="destaque-miudo">Gel de limpeza, hidratante e protetor na mesma sacola. O desconto entra sozinho e não soma com o Pix.</p>
+          <button class="btn btn-light btn-sm" type="button" data-abrir-janela="pedido">Montar meu kit</button>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- 5. Atalhos de categoria -->
+  <section class="secao-atalhos wrap" aria-label="Categorias">
+    <ul class="atalhos">
+      <li><a class="atalho" href="#itens" data-filtro-atalho="rosto"><span class="atalho-foto"><img src="img/pessoas/atalho-rosto.webp" width="800" height="1000" alt="" loading="lazy"></span><b>Rosto</b><small>4 produtos</small></a></li>
+      <li><a class="atalho" href="#itens" data-filtro-atalho="maquiagem"><span class="atalho-foto"><img src="img/pessoas/atalho-maquiagem.webp" width="800" height="1200" alt="" loading="lazy"></span><b>Maquiagem</b><small>3 produtos</small></a></li>
+      <li><a class="atalho" href="#itens" data-filtro-atalho="perfumaria"><span class="atalho-foto"><img src="img/pessoas/atalho-perfumaria.webp" width="800" height="533" alt="" loading="lazy"></span><b>Perfumaria</b><small>2 produtos</small></a></li>
+      <li><a class="atalho" href="#itens" data-filtro-atalho="corpo"><span class="atalho-foto"><img src="img/pessoas/atalho-corpo.webp" width="800" height="1200" alt="" loading="lazy"></span><b>Corpo e presente</b><small>3 produtos</small></a></li>
+      <li><a class="atalho" href="#pedido" data-abrir-janela="pedido"><span class="atalho-foto"><img src="img/pessoas/atalho-kit.webp" width="800" height="1159" alt="" loading="lazy"></span><b>Kit de rosto</b><small>10% de desconto</small></a></li>
+    </ul>
+  </section>
+
+  <!-- 6. Grade de produtos -->
+  <section class="secao wrap" id="itens" data-secao-aba="itens" aria-labelledby="itens-titulo">
+    <div class="secao-topo">
+      <div>
+        <h2 class="h2" id="itens-titulo">Produtos</h2>
+        <p class="lead">O que está na prateleira hoje. A reposição chega toda quarta.</p>
+      </div>
+    </div>
+    <div class="filtro gruda" role="group" aria-label="Filtrar por tipo" data-filtra="grade-itens">
+      <button type="button" aria-pressed="true" data-filtro="todos">Todos</button>
+      <button type="button" aria-pressed="false" data-filtro="rosto">Rosto</button>
+      <button type="button" aria-pressed="false" data-filtro="maquiagem">Maquiagem</button>
+      <button type="button" aria-pressed="false" data-filtro="perfumaria">Perfumaria</button>
+      <button type="button" aria-pressed="false" data-filtro="corpo">Corpo e presente</button>
+    </div>
+    <div class="grade" id="grade-itens">
+      <article class="cartao" data-id="gel-limpeza" data-grupo="rosto" data-nome="Gel de limpeza facial" data-preco="42.90" data-img="img/itens/gel-limpeza.webp">
+        <button class="cartao-foto cheia" type="button" data-abrir="gel-limpeza" aria-label="Ver Gel de limpeza facial">
+          <img src="img/itens/gel-limpeza.webp" width="900" height="700" alt="Gotas de gel transparente e dourado sobre fundo cor de pêssego" loading="lazy">
+          <span class="etiqueta">Entra no kit</span>
+          <span class="por" aria-hidden="true"><svg class="ico"><use href="#i-plus"/></svg></span>
+        </button>
+        <div class="cartao-info">
+          <h3 class="cartao-nome">Gel de limpeza facial</h3>
+          <span class="cartao-preco">R$ 42,90</span>
+          <span class="cartao-det">150 ml, uma versão para cada pele</span>
+          <span class="cartao-extra">3x de R$ 14,30</span>
+        </div>
+      </article>
+      <article class="cartao" data-id="serum-vitamina-c" data-grupo="rosto" data-nome="Sérum de vitamina C" data-preco="89.90" data-img="img/itens/serum-vitamina-c.webp">
+        <button class="cartao-foto cheia" type="button" data-abrir="serum-vitamina-c" aria-label="Ver Sérum de vitamina C">
+          <img src="img/itens/serum-vitamina-c.webp" width="900" height="1334" alt="Frasco âmbar com conta-gotas e rótulo em branco sobre fundo laranja" loading="lazy">
+          <span class="etiqueta">Mais pedido</span>
+          <span class="por" aria-hidden="true"><svg class="ico"><use href="#i-plus"/></svg></span>
+        </button>
+        <div class="cartao-info">
+          <h3 class="cartao-nome">Sérum de vitamina C</h3>
+          <span class="cartao-preco">R$ 89,90</span>
+          <span class="cartao-det">30 ml, para usar de manhã</span>
+          <span class="cartao-extra">3x de R$ 29,97</span>
+        </div>
+      </article>
+      <article class="cartao" data-id="hidratante" data-grupo="rosto" data-nome="Hidratante facial leve" data-preco="64.90" data-img="img/itens/hidratante.webp">
+        <button class="cartao-foto cheia" type="button" data-abrir="hidratante" aria-label="Ver Hidratante facial leve">
+          <img src="img/itens/hidratante.webp" width="900" height="1265" alt="Frasco branco, conta-gotas preto e pote de creme sobre superfície branca" loading="lazy">
+          <span class="etiqueta">Entra no kit</span>
+          <span class="por" aria-hidden="true"><svg class="ico"><use href="#i-plus"/></svg></span>
+        </button>
+        <div class="cartao-info">
+          <h3 class="cartao-nome">Hidratante facial leve</h3>
+          <span class="cartao-preco">R$ 64,90</span>
+          <span class="cartao-det">50 g, toque seco</span>
+          <span class="cartao-extra">3x de R$ 21,63</span>
+        </div>
+      </article>
+      <article class="cartao" data-id="protetor-solar" data-grupo="rosto" data-nome="Protetor solar facial FPS 50" data-preco="54.90" data-img="img/itens/protetor-solar.webp">
+        <button class="cartao-foto cheia" type="button" data-abrir="protetor-solar" aria-label="Ver Protetor solar facial FPS 50">
+          <img src="img/itens/protetor-solar.webp" width="900" height="1125" alt="Tubo branco de creme sobre uma pasta branca espalhada" loading="lazy">
+          <span class="etiqueta">Entra no kit</span>
+          <span class="por" aria-hidden="true"><svg class="ico"><use href="#i-plus"/></svg></span>
+        </button>
+        <div class="cartao-info">
+          <h3 class="cartao-nome">Protetor solar facial FPS 50</h3>
+          <span class="cartao-preco">R$ 54,90</span>
+          <span class="cartao-det">50 g, não deixa o rosto branco</span>
+          <span class="cartao-extra">3x de R$ 18,30</span>
+        </div>
+      </article>
+      <article class="cartao" data-id="batom-cremoso" data-grupo="maquiagem" data-nome="Batom cremoso" data-preco="39.90" data-img="img/itens/batom-cremoso.webp">
+        <button class="cartao-foto cheia" type="button" data-abrir="batom-cremoso" aria-label="Ver Batom cremoso">
+          <img src="img/itens/batom-cremoso.webp" width="900" height="1260" alt="Quatro faixas de batom em tons de nude, coral e vermelho sobre fundo rosa claro" loading="lazy">
+          <span class="etiqueta">Novas cores</span>
+          <span class="por" aria-hidden="true"><svg class="ico"><use href="#i-plus"/></svg></span>
+        </button>
+        <div class="cartao-info">
+          <h3 class="cartao-nome">Batom cremoso</h3>
+          <span class="cartao-preco">R$ 39,90</span>
+          <span class="cartao-det">6 cores, acabamento acetinado</span>
+          
+        </div>
+      </article>
+      <article class="cartao" data-id="pinceis" data-grupo="maquiagem" data-nome="Kit de pincéis" data-preco="74.90" data-img="img/itens/pinceis.webp">
+        <button class="cartao-foto cheia" type="button" data-abrir="pinceis" aria-label="Ver Kit de pincéis">
+          <img src="img/itens/pinceis.webp" width="900" height="1200" alt="Pincéis de maquiagem de cabo preto abertos em leque sobre fundo branco" loading="lazy">
+          
+          <span class="por" aria-hidden="true"><svg class="ico"><use href="#i-plus"/></svg></span>
+        </button>
+        <div class="cartao-info">
+          <h3 class="cartao-nome">Kit de pincéis</h3>
+          <span class="cartao-preco">R$ 74,90</span>
+          <span class="cartao-det">10 peças, cerdas macias</span>
+          <span class="cartao-extra">3x de R$ 24,97</span>
+        </div>
+      </article>
+      <article class="cartao" data-id="po-solto" data-grupo="maquiagem" data-nome="Pó translúcido" data-preco="47.90" data-img="img/itens/po-solto.webp">
+        <button class="cartao-foto cheia" type="button" data-abrir="po-solto" aria-label="Ver Pó translúcido">
+          <img src="img/itens/po-solto.webp" width="900" height="648" alt="Potes de pó solto cor de pele com pincéis de cerda escura por cima" loading="lazy">
+          
+          <span class="por" aria-hidden="true"><svg class="ico"><use href="#i-plus"/></svg></span>
+        </button>
+        <div class="cartao-info">
+          <h3 class="cartao-nome">Pó translúcido</h3>
+          <span class="cartao-preco">R$ 47,90</span>
+          <span class="cartao-det">10 g, controla o brilho</span>
+          <span class="cartao-extra">3x de R$ 15,97</span>
+        </div>
+      </article>
+      <article class="cartao" data-id="perfume-amadeirado" data-grupo="perfumaria" data-nome="Perfume de cedro" data-preco="179.90" data-img="img/itens/perfume-transparente.webp">
+        <button class="cartao-foto cheia" type="button" data-abrir="perfume-amadeirado" aria-label="Ver Perfume de cedro">
+          <img src="img/itens/perfume-transparente.webp" width="900" height="900" alt="Frasco de perfume de vidro transparente com tampa preta sobre uma mesa de pedra clara" loading="lazy">
+          
+          <span class="por" aria-hidden="true"><svg class="ico"><use href="#i-plus"/></svg></span>
+        </button>
+        <div class="cartao-info">
+          <h3 class="cartao-nome">Perfume de cedro</h3>
+          <span class="cartao-preco">R$ 179,90</span>
+          <span class="cartao-det">50 ml, fixa o dia inteiro</span>
+          <span class="cartao-extra">3x de R$ 59,97</span>
+        </div>
+      </article>
+      <article class="cartao" data-id="perfume-floral" data-grupo="perfumaria" data-nome="Perfume de rosa" data-preco="149.90" data-img="img/itens/perfume-rosa.webp">
+        <button class="cartao-foto cheia" type="button" data-abrir="perfume-floral" aria-label="Ver Perfume de rosa">
+          <img src="img/itens/perfume-rosa.webp" width="900" height="600" alt="Frasco de perfume rosa de vidro facetado sobre um tecido claro" loading="lazy">
+          
+          <span class="por" aria-hidden="true"><svg class="ico"><use href="#i-plus"/></svg></span>
+        </button>
+        <div class="cartao-info">
+          <h3 class="cartao-nome">Perfume de rosa</h3>
+          <span class="cartao-preco">R$ 149,90</span>
+          <span class="cartao-det">30 ml, notas de rosa e pêssego</span>
+          <span class="cartao-extra">3x de R$ 49,97</span>
+        </div>
+      </article>
+      <article class="cartao" data-id="creme-maos" data-grupo="corpo" data-nome="Creme para as mãos" data-preco="24.90" data-img="img/itens/creme-maos.webp">
+        <button class="cartao-foto cheia" type="button" data-abrir="creme-maos" aria-label="Ver Creme para as mãos">
+          <img src="img/itens/creme-maos.webp" width="900" height="600" alt="Mão com esmalte vinho recebendo uma porção de creme branco" loading="lazy">
+          
+          <span class="por" aria-hidden="true"><svg class="ico"><use href="#i-plus"/></svg></span>
+        </button>
+        <div class="cartao-info">
+          <h3 class="cartao-nome">Creme para as mãos</h3>
+          <span class="cartao-preco">R$ 24,90</span>
+          <span class="cartao-det">60 g, absorve rápido</span>
+          
+        </div>
+      </article>
+      <article class="cartao" data-id="oleo-corporal" data-grupo="corpo" data-nome="Óleo de amêndoas" data-preco="46.90" data-img="img/itens/oleo-corporal.webp">
+        <button class="cartao-foto cheia" type="button" data-abrir="oleo-corporal" aria-label="Ver Óleo de amêndoas">
+          <img src="img/itens/oleo-corporal.webp" width="900" height="600" alt="Frasco âmbar de óleo com tampa preta deitado sobre um tecido de gaze clara" loading="lazy">
+          
+          <span class="por" aria-hidden="true"><svg class="ico"><use href="#i-plus"/></svg></span>
+        </button>
+        <div class="cartao-info">
+          <h3 class="cartao-nome">Óleo de amêndoas</h3>
+          <span class="cartao-preco">R$ 46,90</span>
+          <span class="cartao-det">100 ml, para depois do banho</span>
+          <span class="cartao-extra">3x de R$ 15,63</span>
+        </div>
+      </article>
+      <article class="cartao" data-id="caixa-presente" data-grupo="corpo" data-nome="Kit presente" data-preco="129.90" data-img="img/itens/caixa-presente.webp">
+        <button class="cartao-foto cheia" type="button" data-abrir="caixa-presente" aria-label="Ver Kit presente">
+          <img src="img/itens/caixa-presente.webp" width="900" height="900" alt="Pincéis rosa, batom, máscara de cílios, blush e um prendedor de cabelo sobre fundo pêssego" loading="lazy">
+          <span class="etiqueta">Presente</span>
+          <span class="por" aria-hidden="true"><svg class="ico"><use href="#i-plus"/></svg></span>
+        </button>
+        <div class="cartao-info">
+          <h3 class="cartao-nome">Kit presente</h3>
+          <span class="cartao-preco">R$ 129,90</span>
+          <span class="cartao-det">3 itens à sua escolha</span>
+          <span class="cartao-extra">Laço e cartão grátis</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- 7. Mosaico por momento -->
+  <section class="secao wrap" id="uso" aria-labelledby="uso-titulo">
+    <div class="secao-topo centro">
+      <h2 class="h2" id="uso-titulo">Para cada momento</h2>
+      <p class="lead">A prateleira separada pelo que você vai fazer no dia.</p>
+    </div>
+    <div class="mosaico">
+      <a class="tile tile-grande" href="#itens" data-filtro-atalho="rosto"><img src="img/cenas/mosaico-manha.webp" width="1400" height="1867" alt="Mulher de roupão e faixa no cabelo, de olhos fechados, passando um produto no rosto diante de um espelho redondo" loading="lazy"><span class="tile-texto"><span class="tile-nome">Pele de manhã</span><span class="btn btn-light">Ver 4<svg class="ico" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></span></span></a>
+      <a class="tile tile-largo" href="#itens" data-filtro-atalho="maquiagem"><img src="img/cenas/mosaico-festa.webp" width="1400" height="934" alt="Mulher de suéter segurando um batom vermelho diante do espelho" loading="lazy"><span class="tile-texto"><span class="tile-nome">Make para sair</span><span class="btn btn-light">Ver 3<svg class="ico" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></span></span></a>
+      <a class="tile" href="#itens" data-filtro-atalho="corpo"><img src="img/cenas/mosaico-corpo.webp" width="1400" height="2100" alt="Mãos de blusa branca espalhando creme uma na outra" loading="lazy"><span class="tile-texto"><span class="tile-nome">Mãos e corpo</span><span class="btn btn-light">Ver 3<svg class="ico" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></span></span></a>
+      <a class="tile" href="#itens" data-abrir="caixa-presente"><img src="img/cenas/mosaico-presente.webp" width="1400" height="934" alt="Frascos e tubos cor de cobre e branco, com tampas pretas, espalhados sobre fundo rosa" loading="lazy"><span class="tile-texto"><span class="tile-nome">Presente</span><span class="btn btn-light">Ver o kit<svg class="ico" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></span></span></a>
+    </div>
+  </section>
+
+  <!-- 8. Como funciona, até o WhatsApp -->
+  <section class="secao wrap" id="como-funciona" aria-labelledby="como-titulo">
+    <div class="secao-topo centro">
+      <h2 class="h2" id="como-titulo">Da sacola para o WhatsApp</h2>
+      <p class="lead">Você monta a sacola, a gente confere o estoque e combina o horário da moto.</p>
+    </div>
+    <ol class="passos">
+      <li class="passo"><span class="passo-ico"><svg class="ico" aria-hidden="true"><use href="#i-handbag"/></svg></span><h3>Monte a sacola</h3><p>Com gel, hidratante e protetor na mesma sacola, o kit de rosto ganha 10%.</p></li>
+      <li class="passo"><span class="passo-ico"><svg class="ico wa" aria-hidden="true"><use href="#i-whatsapp"/></svg></span><h3>O pedido vira mensagem</h3><p>A sacola escreve o pedido completo e abre no WhatsApp, sem cadastro.</p></li>
+      <li class="passo"><span class="passo-ico"><svg class="ico" aria-hidden="true"><use href="#i-pix"/></svg></span><h3>Pague do seu jeito</h3><p>Pix com 5% de desconto, ou link de cartão em até 3x sem juros.</p></li>
+      <li class="passo"><span class="passo-ico"><svg class="ico" aria-hidden="true"><use href="#i-truck"/></svg></span><h3>Receba hoje</h3><p>Pediu até as 15h, a moto chega entre 16h e 19h. Depois disso, vai no dia seguinte.</p></li>
+    </ol>
+  </section>
+
+  <!-- 9. Avaliações -->
+  <section class="secao wrap" id="avaliacoes" data-secao-aba="avaliacoes" aria-labelledby="aval-titulo">
+    <div class="secao-topo">
+      <div>
+        <h2 class="h2" id="aval-titulo">Quem já comprou</h2>
+        <p class="lead"><span class="nota-geral"><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg>4,7 no Google, 164 avaliações (exemplo)</span></p>
+      </div>
+    </div>
+    <ul class="avaliacoes">
+      <li class="avaliacao"><span class="estrelas" aria-label="5 estrelas"><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg></span><p>Montei o kit de rosto às onze da manhã e a moto chegou no Alto Branco às cinco e pouco. O protetor não deixou meu rosto branco, e olha que minha pele é escura.</p><span class="avaliacao-autor"><span class="inicial">F</span><span><b>Fernanda, avaliação fictícia</b><small>Alto Branco</small></span></span></li>
+      <li class="avaliacao"><span class="estrelas" aria-label="5 estrelas"><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg></span><p>Escolhi o kit presente para minha irmã direto pelo WhatsApp. Veio com laço e um cartão escrito à mão, sem cobrar nada a mais. Ela achou que eu tinha ido buscar em Recife.</p><span class="avaliacao-autor"><span class="inicial">J</span><span><b>Júlia, avaliação fictícia</b><small>Catolé</small></span></span></li>
+      <li class="avaliacao"><span class="estrelas" aria-label="4 estrelas"><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg></span><p>O sérum de vitamina C é bom e minha pele melhorou em duas semanas. Só queria que o de 15% voltasse mais rápido: ficou quase um mês esgotado.</p><span class="avaliacao-autor"><span class="inicial">R</span><span><b>Renata, avaliação fictícia</b><small>Prata</small></span></span></li>
+    </ul>
+  </section>
+
+  <!-- 10a. Chamada final -->
+  <section class="secao wrap" aria-labelledby="chamada-titulo">
+    <div class="chamada">
+      <img src="img/cenas/chamada.webp" width="1400" height="1400" alt="Prateleiras de madeira clara com frascos e tubos de cosméticos organizados em fileiras" loading="lazy">
+      <div class="chamada-texto">
+        <h2 class="h2" id="chamada-titulo">Sem saber qual tom escolher?</h2>
+        <p>Mande uma foto do rosto sem maquiagem, de dia, perto da janela. A Bianca, que atende no WhatsApp, indica a cor do protetor e do batom em até 30 minutos, de segunda a sábado.</p>
+        <a class="btn btn-light" href="https://wa.me/5583991931035?text=Oi%2C%20Tarcio%21%20Me%20interessei%20por%20esse%20site%2C%20o%20modelo%20da%20Pitanga%20%28cosm%C3%A9ticos%29.%0A%0AO%20site%20montou%20esta%20mensagem%3A%0AOl%C3%A1%2C%20Pitanga%21%20Quero%20ajuda%20para%20escolher%20o%20meu%20tom." target="_blank" rel="noopener"><svg class="ico wa-ico" aria-hidden="true"><use href="#i-whatsapp"/></svg>Falar com a Bianca</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- 10b. Rodapé -->
+<footer class="rodape" id="onde">
+  <div class="wrap">
+    <div class="rodape-grade">
+      <div class="rodape-sobre">
+        <a class="marca" href="#inicio">Pitanga</a>
+        <p>Cosméticos no Catolé, em Campina Grande. A moto entrega em toda a cidade, com frete de R$&nbsp;6 a R$&nbsp;14.</p>
+        <div class="pagamentos" aria-label="Formas de pagamento">
+          <span><svg class="ico pix" aria-label="Pix"><use href="#i-pix"/></svg></span>
+          <span><svg class="ico" aria-label="Visa"><use href="#i-visa"/></svg></span>
+          <span><svg class="ico" aria-label="Mastercard"><use href="#i-mastercard"/></svg></span>
+        </div>
+        <div class="redes">
+          <a href="#inicio"><svg class="ico" aria-hidden="true"><use href="#i-instagram"/></svg>Instagram</a>
+          <a href="https://wa.me/5583991931035?text=Oi%2C%20Tarcio%21%20Me%20interessei%20por%20esse%20site%2C%20o%20modelo%20da%20Pitanga%20%28cosm%C3%A9ticos%29.%0A%0AO%20site%20montou%20esta%20mensagem%3A%0AOl%C3%A1%2C%20Pitanga%21" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-whatsapp"/></svg>WhatsApp</a>
+        </div>
+      </div>
+      <div>
+        <h2>Onde fica</h2>
+        <ul>
+          <li>Catolé, Campina Grande (PB)</li>
+          <li>Endereço de exemplo, loja fictícia</li>
+          <li>Segunda a sexta, 9h às 19h, fecha das 12h às 13h30</li>
+          <li>Sábado, 9h às 14h</li>
+          <li>Domingo fechado</li>
+        </ul>
+      </div>
+      <div>
+        <h2>Navegar</h2>
+        <ul>
+          <li><a href="#itens">Produtos</a></li>
+          <li><a href="#uso">Por momento</a></li>
+          <li><a href="#como-funciona">Como funciona</a></li>
+          <li><a href="#avaliacoes">Avaliações</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Ajuda</h2>
+        <ul>
+          <li>Troca em 7 dias, com o produto lacrado</li>
+          <li>Entrega até 19h, de segunda a sábado</li>
+          <li>Frete grátis acima de R$&nbsp;120</li>
+          <li><a href="https://wa.me/5583991931035?text=Oi%2C%20Tarcio%21%20Me%20interessei%20por%20esse%20site%2C%20o%20modelo%20da%20Pitanga%20%28cosm%C3%A9ticos%29.%0A%0AO%20site%20montou%20esta%20mensagem%3A%0AOl%C3%A1%2C%20Pitanga%21" target="_blank" rel="noopener">Falar com a gente</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="rodape-autor">
+      <p>Quer um site assim para o seu negócio?&nbsp;<a href="https://tarciodiniz.com/#contato">Peça um orçamento</a></p>
+      <p class="credito-autor"><a class="back-link" href="/modelos/"><svg class="ico" aria-hidden="true"><use href="#i-arrow-left"/></svg>Ver outros modelos</a><span>Site feito por <a href="https://tarciodiniz.com" rel="author">Tarcio Diniz</a>, desenvolvedor</span></p>
+    </div>
+    <p class="rodape-base">Pitanga é uma empresa fictícia, criada como modelo de site por Tarcio Diniz. Preços, avaliações e a atendente são de exemplo. Fotos: Unsplash.</p>
+  </div>
+</footer>
+
+<!-- Ficha do produto -->
+<dialog class="ficha folha" id="ficha" aria-labelledby="ficha-nome">
+  <span class="alca" aria-hidden="true"></span>
+  <button class="fechar" type="button" data-fechar aria-label="Fechar"><svg class="ico" aria-hidden="true"><use href="#i-x"/></svg></button>
+  <div class="ficha-grade">
+    <div class="ficha-foto" data-arrastar><img id="ficha-img" src="data:," alt=""></div>
+    <div class="ficha-corpo">
+      <div>
+        <div class="ficha-marca" id="ficha-marca"></div>
+        <h2 id="ficha-nome" tabindex="-1" autofocus></h2>
+      </div>
+      <div class="ficha-preco" id="ficha-preco"></div>
+      <p class="ficha-det" id="ficha-det"></p>
+      <div id="ficha-opcao" hidden>
+        <p class="rotulo"><b id="ficha-rotulo"></b><span id="ficha-escolhida"></span></p>
+        <div class="botoes-grade" id="ficha-opcoes" role="group" aria-label="Escolha uma opção"></div>
+      </div>
+      <p class="aviso-escolha" id="ficha-aviso" role="status"></p>
+      <p class="ficha-nota"><svg class="ico" aria-hidden="true"><use href="#i-arrows-clockwise"/></svg>Lacrado e com nota fiscal. Troca em até 7 dias, se a embalagem estiver fechada.</p>
+      <div class="ficha-acao"><button class="btn btn-ink" type="button" id="ficha-add"><svg class="ico" aria-hidden="true"><use href="#i-handbag"/></svg>Pôr na sacola</button></div>
+    </div>
+  </div>
+</dialog>
+
+<!-- Sacola: kit de rosto, itens, entrega e pagamento -->
+<dialog class="pedido folha" id="pedido" data-aba-janela="pedido" aria-labelledby="pedido-titulo">
+  <div class="pedido-topo" data-arrastar>
+    <span class="alca" aria-hidden="true"></span>
+    <h2 id="pedido-titulo" tabindex="-1" autofocus>Sua sacola</h2>
+    <button class="fechar" type="button" data-fechar aria-label="Fechar sacola"><svg class="ico" aria-hidden="true"><use href="#i-x"/></svg></button>
+  </div>
+  <div class="pedido-meio">
+    <div class="pedido-vazio" id="pedido-vazio">
+      <svg class="ico" aria-hidden="true"><use href="#i-handbag"/></svg>
+      <p>A sacola está vazia. Escolha um produto ou monte o kit abaixo.</p>
+    </div>
+    <ul class="itens" id="itens-sacola"></ul>
+    <section class="kit" id="kit" aria-labelledby="kit-titulo">
+      <h3 id="kit-titulo">Kit de rosto, 10% de desconto</h3>
+      <p class="kit-aviso" id="kit-aviso" role="status"></p>
+      <ul class="kit-passos" id="kit-passos"></ul>
+    </section>
+    <form class="escolha" id="escolha" hidden>
+      <fieldset>
+        <legend>Como quer receber</legend>
+        <label class="opcao"><input type="radio" name="entrega" value="entrega" checked><span><b>Moto no seu bairro</b><span id="entrega-prazo">Pedido até 15h chega hoje.</span></span></label>
+        <label class="opcao"><input type="radio" name="entrega" value="retirada"><span><b>Retirar na loja, no Catolé</b><span>Pronto em 30 minutos. Grátis.</span></span></label>
+        <label class="campo" id="campo-bairro">Seu bairro
+          <select name="bairro" id="bairro"></select>
+        </label>
+      </fieldset>
+      <fieldset>
+        <legend>Como quer pagar</legend>
+        <label class="opcao"><input type="radio" name="pagamento" value="pix" checked><span><b>Pix</b><span>5% de desconto, se o kit de rosto não estiver na sacola.</span></span></label>
+        <label class="opcao"><input type="radio" name="pagamento" value="cartao"><span><b>Cartão em até 3x sem juros</b><span>O link de pagamento vai na conversa.</span></span></label>
+      </fieldset>
+    </form>
+  </div>
+  <div class="pedido-fim" id="pedido-fim" hidden>
+    <dl class="contas" id="contas"></dl>
+    <a class="btn btn-ink" id="enviar" href="https://wa.me/" target="_blank" rel="noopener"><svg class="ico wa-ico" aria-hidden="true"><use href="#i-whatsapp"/></svg>Mandar pedido no WhatsApp</a>
+    <small>O pedido abre pronto no WhatsApp. A loja confere o estoque antes de cobrar.</small>
+  </div>
+</dialog>
+
+<!-- Abas do celular: início, produtos, avaliações, sacola, WhatsApp -->
+<nav class="abas" aria-label="Atalhos da loja">
+  <a class="aba" href="#inicio" data-aba="inicio" aria-current="page"><svg class="ico" aria-hidden="true"><use href="#i-house"/></svg><span>Início</span></a>
+  <a class="aba" href="#itens" data-aba="itens"><svg class="ico" aria-hidden="true"><use href="#i-list"/></svg><span>Produtos</span></a>
+  <a class="aba" href="#avaliacoes" data-aba="avaliacoes"><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><span>Avaliações</span></a>
+  <button class="aba" type="button" data-aba="pedido" data-abrir-janela="pedido"><span class="aba-ico"><svg class="ico" aria-hidden="true"><use href="#i-handbag"/></svg><span class="contador" data-contador data-zero>0</span></span><span>Sacola</span></button>
+  <a class="aba aba-wa" href="https://wa.me/5583991931035?text=Oi%2C%20Tarcio%21%20Me%20interessei%20por%20esse%20site%2C%20o%20modelo%20da%20Pitanga%20%28cosm%C3%A9ticos%29.%0A%0AO%20site%20montou%20esta%20mensagem%3A%0AOl%C3%A1%2C%20Pitanga%21" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-whatsapp"/></svg><span>WhatsApp</span></a>
+</nav>
+
+<div class="toast" id="toast" role="status" aria-live="polite"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span id="toast-texto"></span></div>
+
+<script src="/assets/vendor/gsap-3.15.0/gsap.min.js" defer></script>
+<script src="/assets/vendor/gsap-3.15.0/ScrollTrigger.min.js" defer></script>
+<script>window.DEMO_WA = {"numero": "5583991931035", "intro": "Oi, Tarcio! Me interessei por esse site, o modelo da Pitanga (cosméticos).\n\nO site montou esta mensagem:\n"};</script>
+<script src="base.js?v=ccb60058" defer></script>
+<script src="modelo.js?v=776d5957" defer></script>
+</body>
+</html>

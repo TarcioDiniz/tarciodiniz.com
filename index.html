@@ -277,6 +277,8 @@
     --display: "Anton", "Anton fallback", "Anton fallback sans", sans-serif;
     --body: "Inter Tight", "Inter Tight fallback", system-ui, -apple-system, "Segoe UI", sans-serif;
     --gutter: clamp(16px, 4vw, 48px);
+    /* The phone screen of every model: 9 by 19.5, the shape of a recent iPhone. */
+    --screen-ratio: 9 / 19.5;
     --respiro: clamp(12px, 1.8vw, 28px);
     --max: 1320px;
     --radius: 999px;
@@ -378,19 +380,28 @@
   .fact span { color: var(--muted); font-size: 15px; }
 
   /* Models */
-  .models { position: relative; z-index: 1; background: var(--dark); color: var(--on-dark); padding-block: clamp(80px, 11vw, 150px); }
   .section-title { display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; margin-bottom: clamp(32px, 5vw, 64px); }
   .section-title .display { font-size: clamp(72px, 13vw, 200px); }
   .section-title .count { font-family: var(--display); font-size: clamp(22px, 2.4vw, 32px); color: var(--accent); }
   .section-title p { max-width: 36ch; color: var(--on-dark-muted); margin: 12px 0 0; }
-  .phone { display: block; aspect-ratio: 360 / 779; border-radius: 30px; padding: 6px; background: #2b2825; box-shadow: 0 0 0 1px rgba(239, 235, 227, .12), 0 30px 60px -30px rgba(0, 0, 0, .7); }
-  .phone img { width: 100%; height: 100%; object-fit: cover; object-position: top; border-radius: 24px; background: #000; }
-  .fiction-note { margin: calc(clamp(32px, 5vw, 64px) * -0.5) 0 clamp(28px, 4vw, 48px); font-size: 15px; color: var(--on-dark-muted); display: flex; align-items: center; gap: 10px; }
+  .inline-cta { margin-top: clamp(28px, 4vw, 44px); display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; }
+  .steps-more { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-weight: 600; text-decoration: underline; text-underline-offset: 4px; }
+  .steps-more:hover { color: var(--ink-2); }
+  .models { position: relative; z-index: 1; background: var(--dark); color: var(--on-dark); padding-block: clamp(80px, 11vw, 150px); }
+  .phone { display: block; aspect-ratio: var(--screen-ratio); border-radius: 30px; padding: 6px; background: var(--ink-2); box-shadow: 0 0 0 1px var(--line-dark), 0 30px 60px -30px rgba(0, 0, 0, .7); }
+  .phone img { width: 100%; height: 100%; object-fit: cover; object-position: top; border-radius: 24px; background: var(--dark); }
+  .fiction-note { margin: calc(clamp(32px, 5vw, 64px) * -0.5) 0 clamp(24px, 3vw, 36px); font-size: 15px; color: var(--on-dark-muted); display: flex; align-items: center; gap: 10px; }
   .fiction-note::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); flex: none; }
+  /* Shortcut by ramo: each one opens the full catalog already filtered. */
+  .vb-ramos { display: flex; align-items: center; gap: 12px 20px; margin-bottom: clamp(28px, 4vw, 48px); }
+  .vb-ramos-title { margin: 0; flex: none; font-size: 13px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--on-dark-muted); }
+  .vb-ramos ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .vb-ramos a { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 8px 16px; border-radius: var(--radius); border: 1px solid var(--line-dark); font-weight: 600; font-size: 15px; white-space: nowrap; transition: background-color .2s ease, color .2s ease, border-color .2s ease; }
+  .vb-ramos a span { font-weight: 500; font-size: 14px; color: var(--accent); }
+  .vb-ramos a:hover { background: var(--on-dark); color: var(--ink); border-color: var(--on-dark); }
+  .vb-ramos a:hover span { color: var(--accent-deep); }
   .vb-layout { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 4fr); gap: clamp(32px, 4vw, 72px); align-items: start; }
-  .vb-list { list-style: none; margin: 0; padding: 0; }
-  .vb-label { font-size: 13px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); padding: 36px 0 12px; border-bottom: 1px solid var(--line-dark); }
-  .vb-label:first-child { padding-top: 0; }
+  .vb-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line-dark); }
   .vb-row { border-bottom: 1px solid var(--line-dark); }
   .vb-row a { display: grid; grid-template-columns: 56px 1fr auto; gap: 20px; align-items: center; padding-block: clamp(18px, 2vw, 26px); }
   .vb-thumb { display: none; }
@@ -408,25 +419,32 @@
   }
   .vb-stage { position: sticky; top: 100px; }
   .vb-sticky { display: flex; justify-content: center; }
-  .vb-phone { width: min(280px, calc((100svh - 180px) * 360 / 779), 100%); position: relative; }
-  .vb-phone .vb-screen { position: absolute; inset: 0; opacity: 0; transition: opacity .35s ease; }
+  .vb-phone { width: min(280px, calc((100svh - 180px) * 9 / 19.5), 100%); position: relative; }
+  .vb-phone .vb-screen { display: block; position: absolute; inset: 0; width: 100%; height: 100%; overflow: hidden; border-radius: 24px; opacity: 0; transition: opacity .35s ease; }
   .vb-phone .vb-screen:first-child { position: relative; }
   .vb-phone .vb-screen.is-on { opacity: 1; }
+  .vb-shot { display: block; width: 100%; height: 100%; }
+  .vb-shot img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+  /* Placeholder until the screenshot exists: dark stripes and the model name. */
+  .models .is-empty { display: grid; place-items: center; padding: 8px; background: repeating-linear-gradient(135deg, var(--dark-2) 0 9px, var(--ink-2) 9px 18px); }
+  .models .is-empty span { max-width: 100%; padding: 5px 7px; border-radius: 6px; background: var(--dark); color: var(--on-dark); font-family: var(--display); font-size: 22px; line-height: 1.05; text-align: center; text-transform: uppercase; overflow-wrap: break-word; }
+  .vb-thumb .is-empty span { font-size: 13px; padding: 4px 5px; }
+  .models-note { margin-top: 20px; font-size: 15px; color: var(--on-dark-muted); }
   @media (max-width: 960px) {
     .vb-layout { grid-template-columns: 1fr; }
     .vb-stage { display: none; }
+    /* The ramo shortcuts become one sideways row; the cut chip at the edge says there is more. */
+    .vb-ramos { flex-direction: column; align-items: stretch; margin-inline: calc(var(--gutter) * -1); }
+    .vb-ramos-title { padding-inline: var(--gutter); }
+    .vb-ramos ul { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; padding-inline: var(--gutter); scroll-padding-inline: var(--gutter); }
+    .vb-ramos ul::-webkit-scrollbar { display: none; }
     .vb-row a { grid-template-columns: 92px 1fr auto; gap: 16px; padding-block: 16px; }
     .vb-row .num { display: none; }
-    .vb-thumb { display: block; width: 92px; height: 128px; border-radius: 12px; overflow: hidden; background: #000; box-shadow: 0 0 0 1px var(--line-dark); }
-    .vb-thumb img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+    .vb-thumb { display: block; width: 92px; height: 128px; border-radius: 12px; overflow: hidden; background: var(--dark-2); box-shadow: 0 0 0 1px var(--line-dark); }
     .vb-row .name { font-size: clamp(28px, 8vw, 36px); }
     .vb-what { display: block; font-size: 14px; }
     .vb-row .go { width: 44px; height: 44px; }
   }
-  .models-note { margin-top: 20px; font-size: 15px; color: var(--on-dark-muted); }
-  .inline-cta { margin-top: clamp(28px, 4vw, 44px); display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; }
-  .steps-more { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-weight: 600; text-decoration: underline; text-underline-offset: 4px; }
-  .steps-more:hover { color: var(--ink-2); }
 
   /* What you get */
   .gets { position: relative; z-index: 1; padding-block: clamp(80px, 11vw, 150px); }
@@ -721,103 +739,92 @@
         <div class="section-title">
           <div>
             <h2 class="display" id="modelos-title">Modelos</h2>
-            <p>Abra no celular e mexa à vontade: monte um pedido, marque um horário, simule uma reserva. É assim que o seu pode funcionar.</p>
+            <p>Abra no celular e mexa à vontade: monte um pedido, marque um horário, peça um orçamento. É assim que o seu pode funcionar.</p>
           </div>
-          <span class="count">(11)</span>
+          <span class="count">(24)</span>
         </div>
         <p class="fiction-note">Modelos de demonstração: as empresas, os preços e as avaliações são fictícios.</p>
+        <nav class="vb-ramos" aria-label="Modelos por ramo">
+          <p class="vb-ramos-title">Ache o do seu ramo</p>
+          <ul>
+            <li><a href="/modelos/?ramo=beleza">Beleza <span>4</span></a></li>
+            <li><a href="/modelos/?ramo=comida">Comida <span>4</span></a></li>
+            <li><a href="/modelos/?ramo=lojas">Lojas <span>4</span></a></li>
+            <li><a href="/modelos/?ramo=saude">Saúde <span>3</span></a></li>
+            <li><a href="/modelos/?ramo=casa">Casa, obra e carro <span>4</span></a></li>
+            <li><a href="/modelos/?ramo=eventos">Eventos <span>3</span></a></li>
+            <li><a href="/modelos/?ramo=criativos">Foto e música <span>2</span></a></li>
+          </ul>
+        </nav>
         <div class="vb-layout">
           <div class="vb-main">
             <ol class="vb-list">
-              <li class="vb-label" aria-hidden="true">Comer e beber</li>
-              <li class="vb-row" data-slug="cardapio"><a href="/demos/cardapio/">
-                <span class="vb-thumb"><img src="/assets/modelos-celular/cardapio-360.webp" srcset="/assets/modelos-celular/cardapio-360.webp 360w, /assets/modelos-celular/cardapio-540.webp 540w" sizes="92px" width="360" height="779" alt="Tela de celular do modelo Brasa Smash" loading="lazy" decoding="async"></span>
+              <li class="vb-row" data-slug="passada"><a href="/demos/loja-de-tenis/">
+                <span class="vb-thumb"><span class="vb-shot"><img src="/assets/modelos-celular/passada-360.webp" srcset="/assets/modelos-celular/passada-360.webp 360w, /assets/modelos-celular/passada-540.webp 540w" sizes="92px" width="360" height="780" alt="Tela de celular do modelo Passada" loading="lazy" decoding="async"></span></span>
                 <span class="num">01</span>
-                <span class="vb-text"><span class="vb-ramo">Hamburgueria<i>Pedido no WhatsApp</i></span><span class="name">Brasa Smash</span><span class="vb-what">Cardápio que vira comanda e pedido no WhatsApp.</span></span>
+                <span class="vb-text"><span class="vb-ramo">Loja de tênis<i>Loja</i></span><span class="name">Passada</span><span class="vb-what">Tênis e streetwear com sacola e pedido no WhatsApp.</span></span>
                 <span class="go"><svg class="ico" aria-hidden="true"><use href="#i-arrow-up"/></svg></span>
               </a></li>
-              <li class="vb-row" data-slug="bar"><a href="/demos/bar/">
-                <span class="vb-thumb"><img src="/assets/modelos-celular/bar-360.webp" srcset="/assets/modelos-celular/bar-360.webp 360w, /assets/modelos-celular/bar-540.webp 540w" sizes="92px" width="360" height="779" alt="Tela de celular do modelo Rebuliço" loading="lazy" decoding="async"></span>
+              <li class="vb-row" data-slug="brasa"><a href="/demos/cardapio/">
+                <span class="vb-thumb"><span class="vb-shot"><img src="/assets/modelos-celular/brasa-360.webp" srcset="/assets/modelos-celular/brasa-360.webp 360w, /assets/modelos-celular/brasa-540.webp 540w" sizes="92px" width="360" height="780" alt="Tela de celular do modelo Brasa Smash" loading="lazy" decoding="async"></span></span>
                 <span class="num">02</span>
-                <span class="vb-text"><span class="vb-ramo">Bar e pista<i>Lista e camarote</i></span><span class="name">Rebuliço</span><span class="vb-what">Nome na lista, camarote e aniversário pelo WhatsApp.</span></span>
+                <span class="vb-text"><span class="vb-ramo">Hamburgueria<i>Cardápio</i></span><span class="name">Brasa Smash</span><span class="vb-what">Cardápio de smash burger que vira pedido no WhatsApp, com entrega por bairro.</span></span>
                 <span class="go"><svg class="ico" aria-hidden="true"><use href="#i-arrow-up"/></svg></span>
               </a></li>
-              <li class="vb-row" data-slug="cafe"><a href="/demos/cafe/">
-                <span class="vb-thumb"><img src="/assets/modelos-celular/cafe-360.webp" srcset="/assets/modelos-celular/cafe-360.webp 360w, /assets/modelos-celular/cafe-540.webp 540w" sizes="92px" width="360" height="779" alt="Tela de celular do modelo Caneca Azul" loading="lazy" decoding="async"></span>
+              <li class="vb-row" data-slug="sisal"><a href="/demos/barbearia/">
+                <span class="vb-thumb"><span class="vb-shot"><img src="/assets/modelos-celular/sisal-360.webp" srcset="/assets/modelos-celular/sisal-360.webp 360w, /assets/modelos-celular/sisal-540.webp 540w" sizes="92px" width="360" height="780" alt="Tela de celular do modelo Sisal Barbearia" loading="lazy" decoding="async"></span></span>
                 <span class="num">03</span>
-                <span class="vb-text"><span class="vb-ramo">Café de bairro<i>Comanda e encomenda</i></span><span class="name">Caneca Azul</span><span class="vb-what">Cardápio que vira comanda e encomenda de bolo.</span></span>
+                <span class="vb-text"><span class="vb-ramo">Barbearia<i>Agenda</i></span><span class="name">Sisal Barbearia</span><span class="vb-what">Horário marcado com o barbeiro, sem fila, confirmado no WhatsApp.</span></span>
                 <span class="go"><svg class="ico" aria-hidden="true"><use href="#i-arrow-up"/></svg></span>
               </a></li>
-              <li class="vb-label" aria-hidden="true">Saúde e cuidado</li>
-              <li class="vb-row" data-slug="fisioterapia"><a href="/demos/fisioterapia/">
-                <span class="vb-thumb"><img src="/assets/modelos-celular/fisioterapia-360.webp" srcset="/assets/modelos-celular/fisioterapia-360.webp 360w, /assets/modelos-celular/fisioterapia-540.webp 540w" sizes="92px" width="360" height="779" alt="Tela de celular do modelo Sálvia Fisio" loading="lazy" decoding="async"></span>
+              <li class="vb-row" data-slug="brauna"><a href="/demos/planejados/">
+                <span class="vb-thumb"><span class="vb-shot"><img src="/assets/modelos-celular/brauna-360.webp" srcset="/assets/modelos-celular/brauna-360.webp 360w, /assets/modelos-celular/brauna-540.webp 540w" sizes="92px" width="360" height="780" alt="Tela de celular do modelo Braúna" loading="lazy" decoding="async"></span></span>
                 <span class="num">04</span>
-                <span class="vb-text"><span class="vb-ramo">Clínica de fisioterapia<i>Agendamento</i></span><span class="name">Sálvia Fisio</span><span class="vb-what">Onde dói, o tratamento passo a passo e horário livre para agendar.</span></span>
+                <span class="vb-text"><span class="vb-ramo">Marcenaria de planejados<i>Orçamento</i></span><span class="name">Braúna</span><span class="vb-what">Móveis planejados com orçamento por ambiente e visita de medição.</span></span>
                 <span class="go"><svg class="ico" aria-hidden="true"><use href="#i-arrow-up"/></svg></span>
               </a></li>
-              <li class="vb-row" data-slug="veterinaria"><a href="/demos/veterinaria/">
-                <span class="vb-thumb"><img src="/assets/modelos-celular/veterinaria-360.webp" srcset="/assets/modelos-celular/veterinaria-360.webp 360w, /assets/modelos-celular/veterinaria-540.webp 540w" sizes="92px" width="360" height="779" alt="Tela de celular do modelo Vigília Vet" loading="lazy" decoding="async"></span>
+              <li class="vb-row" data-slug="salvia"><a href="/demos/fisioterapia/">
+                <span class="vb-thumb"><span class="vb-shot"><img src="/assets/modelos-celular/salvia-360.webp" srcset="/assets/modelos-celular/salvia-360.webp 360w, /assets/modelos-celular/salvia-540.webp 540w" sizes="92px" width="360" height="780" alt="Tela de celular do modelo Sálvia Fisio" loading="lazy" decoding="async"></span></span>
                 <span class="num">05</span>
-                <span class="vb-text"><span class="vb-ramo">Veterinária 24h<i>Emergência e agenda</i></span><span class="name">Vigília Vet</span><span class="vb-what">Cão ou gato muda a página, e a emergência fica a um toque.</span></span>
+                <span class="vb-text"><span class="vb-ramo">Fisioterapia<i>Página de vendas</i></span><span class="name">Sálvia Fisio</span><span class="vb-what">Tratamento de dor com plano por escrito, do primeiro dia até a alta.</span></span>
                 <span class="go"><svg class="ico" aria-hidden="true"><use href="#i-arrow-up"/></svg></span>
               </a></li>
-              <li class="vb-label" aria-hidden="true">Hospedagem</li>
-              <li class="vb-row" data-slug="pousada"><a href="/demos/pousada/">
-                <span class="vb-thumb"><img src="/assets/modelos-celular/pousada-360.webp" srcset="/assets/modelos-celular/pousada-360.webp 360w, /assets/modelos-celular/pousada-540.webp 540w" sizes="92px" width="360" height="779" alt="Tela de celular do modelo Pousada Aroá" loading="lazy" decoding="async"></span>
+              <li class="vb-row" data-slug="forno-da-clara"><a href="/demos/confeitaria/">
+                <span class="vb-thumb"><span class="vb-shot"><img src="/assets/modelos-celular/forno-da-clara-360.webp" srcset="/assets/modelos-celular/forno-da-clara-360.webp 360w, /assets/modelos-celular/forno-da-clara-540.webp 540w" sizes="92px" width="360" height="780" alt="Tela de celular do modelo Forno da Clara" loading="lazy" decoding="async"></span></span>
                 <span class="num">06</span>
-                <span class="vb-text"><span class="vb-ramo">Pousada<i>Reserva</i></span><span class="name">Pousada Aroá</span><span class="vb-what">Quartos com galeria, datas livres no calendário e reserva.</span></span>
+                <span class="vb-text"><span class="vb-ramo">Bolos e doces por encomenda<i>Página de links</i></span><span class="name">Forno da Clara</span><span class="vb-what">Página de links com cardápio de bolos, Pix do sinal e encomenda no WhatsApp.</span></span>
                 <span class="go"><svg class="ico" aria-hidden="true"><use href="#i-arrow-up"/></svg></span>
               </a></li>
-              <li class="vb-row" data-slug="hotel"><a href="/demos/hotel/">
-                <span class="vb-thumb"><img src="/assets/modelos-celular/hotel-360.webp" srcset="/assets/modelos-celular/hotel-360.webp 360w, /assets/modelos-celular/hotel-540.webp 540w" sizes="92px" width="360" height="779" alt="Tela de celular do modelo Algodão Hotel" loading="lazy" decoding="async"></span>
+              <li class="vb-row" data-slug="marina-duarte"><a href="/demos/fotografa/">
+                <span class="vb-thumb"><span class="vb-shot"><img src="/assets/modelos-celular/marina-duarte-360.webp" srcset="/assets/modelos-celular/marina-duarte-360.webp 360w, /assets/modelos-celular/marina-duarte-540.webp 540w" sizes="92px" width="360" height="780" alt="Tela de celular do modelo Marina Duarte" loading="lazy" decoding="async"></span></span>
                 <span class="num">07</span>
-                <span class="vb-text"><span class="vb-ramo">Hotel executivo<i>Tarifa para empresa</i></span><span class="name">Algodão Hotel</span><span class="vb-what">Distância até o que você veio fazer e tarifa para empresa.</span></span>
+                <span class="vb-text"><span class="vb-ramo">Fotógrafa<i>Portfólio</i></span><span class="name">Marina Duarte</span><span class="vb-what">Casamentos, ensaios e eventos, com pacotes e consulta de data.</span></span>
                 <span class="go"><svg class="ico" aria-hidden="true"><use href="#i-arrow-up"/></svg></span>
               </a></li>
-              <li class="vb-label" aria-hidden="true">Beleza e serviços</li>
-              <li class="vb-row" data-slug="barbearia"><a href="/demos/barbearia/">
-                <span class="vb-thumb"><img src="/assets/modelos-celular/barbearia-360.webp" srcset="/assets/modelos-celular/barbearia-360.webp 360w, /assets/modelos-celular/barbearia-540.webp 540w" sizes="92px" width="360" height="779" alt="Tela de celular do modelo Sisal Barbearia" loading="lazy" decoding="async"></span>
+              <li class="vb-row" data-slug="pe-de-serra"><a href="/demos/sao-joao/">
+                <span class="vb-thumb"><span class="vb-shot"><img src="/assets/modelos-celular/pe-de-serra-360.webp" srcset="/assets/modelos-celular/pe-de-serra-360.webp 360w, /assets/modelos-celular/pe-de-serra-540.webp 540w" sizes="92px" width="360" height="780" alt="Tela de celular do modelo Camarote Pé de Serra" loading="lazy" decoding="async"></span></span>
                 <span class="num">08</span>
-                <span class="vb-text"><span class="vb-ramo">Barbearia<i>Agendamento</i></span><span class="name">Sisal Barbearia</span><span class="vb-what">Horários livres na tela e a altura do degradê no pedido.</span></span>
-                <span class="go"><svg class="ico" aria-hidden="true"><use href="#i-arrow-up"/></svg></span>
-              </a></li>
-              <li class="vb-row" data-slug="estetica-automotiva"><a href="/demos/estetica-automotiva/">
-                <span class="vb-thumb"><img src="/assets/modelos-celular/estetica-automotiva-360.webp" srcset="/assets/modelos-celular/estetica-automotiva-360.webp 360w, /assets/modelos-celular/estetica-automotiva-540.webp 540w" sizes="92px" width="360" height="779" alt="Tela de celular do modelo Carnaúba" loading="lazy" decoding="async"></span>
-                <span class="num">09</span>
-                <span class="vb-text"><span class="vb-ramo">Estética automotiva<i>Preço na hora</i></span><span class="name">Carnaúba</span><span class="vb-what">O cliente escolhe o carro e já vê o preço e a hora de buscar.</span></span>
-                <span class="go"><svg class="ico" aria-hidden="true"><use href="#i-arrow-up"/></svg></span>
-              </a></li>
-              <li class="vb-row" data-slug="planejados"><a href="/demos/planejados/">
-                <span class="vb-thumb"><img src="/assets/modelos-celular/planejados-360.webp" srcset="/assets/modelos-celular/planejados-360.webp 360w, /assets/modelos-celular/planejados-540.webp 540w" sizes="92px" width="360" height="779" alt="Tela de celular do modelo Braúna" loading="lazy" decoding="async"></span>
-                <span class="num">10</span>
-                <span class="vb-text"><span class="vb-ramo">Marcenaria de planejados<i>Simulação de orçamento</i></span><span class="name">Braúna</span><span class="vb-what">O cliente troca a cor do armário na foto e simula o orçamento.</span></span>
-                <span class="go"><svg class="ico" aria-hidden="true"><use href="#i-arrow-up"/></svg></span>
-              </a></li>
-              <li class="vb-label" aria-hidden="true">Loja</li>
-              <li class="vb-row" data-slug="loja-de-tenis"><a href="/demos/loja-de-tenis/">
-                <span class="vb-thumb"><img src="/assets/modelos-celular/loja-de-tenis-360.webp" srcset="/assets/modelos-celular/loja-de-tenis-360.webp 360w, /assets/modelos-celular/loja-de-tenis-540.webp 540w" sizes="92px" width="360" height="779" alt="Tela de celular do modelo Passada" loading="lazy" decoding="async"></span>
-                <span class="num">11</span>
-                <span class="vb-text"><span class="vb-ramo">Loja de tênis<i>Pedido no WhatsApp</i></span><span class="name">Passada</span><span class="vb-what">O cliente escolhe o número, monta a sacola e manda o pedido no WhatsApp.</span></span>
+                <span class="vb-text"><span class="vb-ramo">Camarote de São João<i>Evento</i></span><span class="name">Camarote Pé de Serra</span><span class="vb-what">Camarote de São João com open bar, forró pé de serra e ingresso por noite.</span></span>
                 <span class="go"><svg class="ico" aria-hidden="true"><use href="#i-arrow-up"/></svg></span>
               </a></li>
             </ol>
-            <p class="models-note">Fotos do Unsplash e do Pexels, e as da Braúna e da Carnaúba geradas com IA; vídeos do Pexels e do Coverr.</p>
-            <div class="inline-cta"><a class="btn btn-accent" data-whatsapp="Oi, Tarcio! Vi os modelos no seu site e quero um site assim para o meu negócio." href="#contato"><svg class="ico ico-lg" aria-hidden="true"><use href="#i-whatsapp"/></svg>Quero um site assim</a></div>
+            <p class="models-note">Um modelo de cada formato. Fotos dos modelos do Unsplash e do Pexels.</p>
+            <div class="inline-cta">
+              <a class="btn btn-accent" href="/modelos/">Ver os 24 modelos<svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              <a class="btn btn-line" data-whatsapp="Oi, Tarcio! Vi os modelos no seu site e quero um site assim para o meu negócio." href="#contato"><svg class="ico ico-lg" aria-hidden="true"><use href="#i-whatsapp"/></svg>Quero um site assim</a>
+            </div>
           </div>
           <aside class="vb-stage" aria-hidden="true">
             <div class="vb-sticky">
               <div class="phone vb-phone">
-                <img data-slug="cardapio" class="vb-screen is-on" src="/assets/modelos-celular/cardapio-360.webp" srcset="/assets/modelos-celular/cardapio-360.webp 360w, /assets/modelos-celular/cardapio-540.webp 540w" sizes="280px" width="360" height="779" alt="Tela de celular do modelo Brasa Smash" loading="lazy" decoding="async">
-                <img data-slug="bar" class="vb-screen" src="/assets/modelos-celular/bar-360.webp" srcset="/assets/modelos-celular/bar-360.webp 360w, /assets/modelos-celular/bar-540.webp 540w" sizes="280px" width="360" height="779" alt="Tela de celular do modelo Rebuliço" loading="lazy" decoding="async">
-                <img data-slug="cafe" class="vb-screen" src="/assets/modelos-celular/cafe-360.webp" srcset="/assets/modelos-celular/cafe-360.webp 360w, /assets/modelos-celular/cafe-540.webp 540w" sizes="280px" width="360" height="779" alt="Tela de celular do modelo Caneca Azul" loading="lazy" decoding="async">
-                <img data-slug="fisioterapia" class="vb-screen" src="/assets/modelos-celular/fisioterapia-360.webp" srcset="/assets/modelos-celular/fisioterapia-360.webp 360w, /assets/modelos-celular/fisioterapia-540.webp 540w" sizes="280px" width="360" height="779" alt="Tela de celular do modelo Sálvia Fisio" loading="lazy" decoding="async">
-                <img data-slug="veterinaria" class="vb-screen" src="/assets/modelos-celular/veterinaria-360.webp" srcset="/assets/modelos-celular/veterinaria-360.webp 360w, /assets/modelos-celular/veterinaria-540.webp 540w" sizes="280px" width="360" height="779" alt="Tela de celular do modelo Vigília Vet" loading="lazy" decoding="async">
-                <img data-slug="pousada" class="vb-screen" src="/assets/modelos-celular/pousada-360.webp" srcset="/assets/modelos-celular/pousada-360.webp 360w, /assets/modelos-celular/pousada-540.webp 540w" sizes="280px" width="360" height="779" alt="Tela de celular do modelo Pousada Aroá" loading="lazy" decoding="async">
-                <img data-slug="hotel" class="vb-screen" src="/assets/modelos-celular/hotel-360.webp" srcset="/assets/modelos-celular/hotel-360.webp 360w, /assets/modelos-celular/hotel-540.webp 540w" sizes="280px" width="360" height="779" alt="Tela de celular do modelo Algodão Hotel" loading="lazy" decoding="async">
-                <img data-slug="barbearia" class="vb-screen" src="/assets/modelos-celular/barbearia-360.webp" srcset="/assets/modelos-celular/barbearia-360.webp 360w, /assets/modelos-celular/barbearia-540.webp 540w" sizes="280px" width="360" height="779" alt="Tela de celular do modelo Sisal Barbearia" loading="lazy" decoding="async">
-                <img data-slug="estetica-automotiva" class="vb-screen" src="/assets/modelos-celular/estetica-automotiva-360.webp" srcset="/assets/modelos-celular/estetica-automotiva-360.webp 360w, /assets/modelos-celular/estetica-automotiva-540.webp 540w" sizes="280px" width="360" height="779" alt="Tela de celular do modelo Carnaúba" loading="lazy" decoding="async">
-                <img data-slug="planejados" class="vb-screen" src="/assets/modelos-celular/planejados-360.webp" srcset="/assets/modelos-celular/planejados-360.webp 360w, /assets/modelos-celular/planejados-540.webp 540w" sizes="280px" width="360" height="779" alt="Tela de celular do modelo Braúna" loading="lazy" decoding="async">
-                <img data-slug="loja-de-tenis" class="vb-screen" src="/assets/modelos-celular/loja-de-tenis-360.webp" srcset="/assets/modelos-celular/loja-de-tenis-360.webp 360w, /assets/modelos-celular/loja-de-tenis-540.webp 540w" sizes="280px" width="360" height="779" alt="Tela de celular do modelo Passada" loading="lazy" decoding="async">
+                <span data-slug="passada" class="vb-screen is-on"><img src="/assets/modelos-celular/passada-360.webp" srcset="/assets/modelos-celular/passada-360.webp 360w, /assets/modelos-celular/passada-540.webp 540w" sizes="280px" width="360" height="780" alt="Tela de celular do modelo Passada" loading="lazy" decoding="async"></span>
+                <span data-slug="brasa" class="vb-screen"><img src="/assets/modelos-celular/brasa-360.webp" srcset="/assets/modelos-celular/brasa-360.webp 360w, /assets/modelos-celular/brasa-540.webp 540w" sizes="280px" width="360" height="780" alt="Tela de celular do modelo Brasa Smash" loading="lazy" decoding="async"></span>
+                <span data-slug="sisal" class="vb-screen"><img src="/assets/modelos-celular/sisal-360.webp" srcset="/assets/modelos-celular/sisal-360.webp 360w, /assets/modelos-celular/sisal-540.webp 540w" sizes="280px" width="360" height="780" alt="Tela de celular do modelo Sisal Barbearia" loading="lazy" decoding="async"></span>
+                <span data-slug="brauna" class="vb-screen"><img src="/assets/modelos-celular/brauna-360.webp" srcset="/assets/modelos-celular/brauna-360.webp 360w, /assets/modelos-celular/brauna-540.webp 540w" sizes="280px" width="360" height="780" alt="Tela de celular do modelo Braúna" loading="lazy" decoding="async"></span>
+                <span data-slug="salvia" class="vb-screen"><img src="/assets/modelos-celular/salvia-360.webp" srcset="/assets/modelos-celular/salvia-360.webp 360w, /assets/modelos-celular/salvia-540.webp 540w" sizes="280px" width="360" height="780" alt="Tela de celular do modelo Sálvia Fisio" loading="lazy" decoding="async"></span>
+                <span data-slug="forno-da-clara" class="vb-screen"><img src="/assets/modelos-celular/forno-da-clara-360.webp" srcset="/assets/modelos-celular/forno-da-clara-360.webp 360w, /assets/modelos-celular/forno-da-clara-540.webp 540w" sizes="280px" width="360" height="780" alt="Tela de celular do modelo Forno da Clara" loading="lazy" decoding="async"></span>
+                <span data-slug="marina-duarte" class="vb-screen"><img src="/assets/modelos-celular/marina-duarte-360.webp" srcset="/assets/modelos-celular/marina-duarte-360.webp 360w, /assets/modelos-celular/marina-duarte-540.webp 540w" sizes="280px" width="360" height="780" alt="Tela de celular do modelo Marina Duarte" loading="lazy" decoding="async"></span>
+                <span data-slug="pe-de-serra" class="vb-screen"><img src="/assets/modelos-celular/pe-de-serra-360.webp" srcset="/assets/modelos-celular/pe-de-serra-360.webp 360w, /assets/modelos-celular/pe-de-serra-540.webp 540w" sizes="280px" width="360" height="780" alt="Tela de celular do modelo Camarote Pé de Serra" loading="lazy" decoding="async"></span>
               </div>
             </div>
           </aside>

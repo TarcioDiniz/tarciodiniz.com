@@ -1,0 +1,1134 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pulso Estúdio · Treino funcional em turma de seis, no Jardim Tavares (demonstração)</title>
+<meta name="description" content="Treino funcional em turmas de até seis alunos e personal no Jardim Tavares, em Campina Grande. Aula experimental sem custo. Modelo de demonstração.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#F6F5F1">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+<!--
+  Pulso Estúdio, modelo de demonstração do tarciodiniz.com. Esqueleto de página de vendas, estilo cor forte,
+  amarelo como cor da marca. Negócio fictício de Campina Grande (PB); nenhuma pessoa, depoimento ou endereço é real.
+  Fotos, todas do Unsplash: Jonathan Borba (abdominal no sol e professora), Vitaly Gariev (salto na caixa e corda
+  na dupla), Ivan Pergasi (kettlebell de ferro), Tyler Raye (barra no ombro). Créditos completos em fonte/fotos.tsv.
+-->
+<style>
+/* Núcleo dos modelos do tarciodiniz.com: o que toda variação usa (tokens, fonte, títulos, botões,
+   aviso, cabeçalho, seções, filtro, rodapé, janelas que sobem de baixo, aviso curto).
+   Extraído da Passada em 01/10/2026. Regras em carreira/padrao-dos-modelos.md. */
+@font-face { font-family: 'Archivo'; font-style: normal; font-weight: 100 900; font-stretch: 62% 125%; font-display: swap; src: url(fonts/archivo-latin-ext.woff2) format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: 'Archivo'; font-style: normal; font-weight: 100 900; font-stretch: 62% 125%; font-display: swap; src: url(fonts/archivo-latin.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+
+:root {
+  --bg: #F4F3EF;
+  --surface: #FFFFFF;
+  --card: #ECEAE4;
+  --card-2: #E4E1D9;
+  --ink: #151515;
+  --ink-2: #55544F;
+  --ink-3: #66645E;
+  --line: #DCD9D1;
+  --accent: #C4461C;
+  --accent-ink: #FFFFFF;
+  --dark: #121212;
+  --dark-2: #1D1D1C;
+  --on-dark: #F4F3EF;
+  --on-dark-2: #B9B7B0;
+  --wa: #25D366;
+  --pix: #32BCAD;
+  /* Cores de apoio que os estilos podem trocar: texto escuro sobre fundo claro fixo (botão claro em cima
+     de foto), verde de desconto e Pix, e a estrela das avaliações. */
+  --on-light: #151515;
+  --ok: #13796F;
+  --estrela: #E3A008;
+  --scrim: rgba(12, 12, 12, 0.62);
+  --r-xl: 28px;
+  --r-lg: 22px;
+  --r-md: 16px;
+  --r-sm: 10px;
+  --pill: 999px;
+  --gutter: clamp(16px, 4vw, 40px);
+  --max: 1360px;
+  --section: clamp(64px, 9vw, 112px);
+  --font: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+  --wide: 116%;
+  --shadow-product: drop-shadow(0 18px 16px rgba(20, 18, 14, 0.18));
+  --ease: cubic-bezier(.2, .7, .2, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+html.travado { overflow: hidden; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; }
+button { font: inherit; color: inherit; cursor: pointer; }
+input, textarea, select { color: var(--ink); }
+/* Texto que só aparece a partir de 600 px (o resto da frase cabe no celular sem ele) */
+.so-largo { display: none; }
+@media (min-width: 600px) { .so-largo { display: inline; } }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+[tabindex="-1"]:focus { outline: none; }
+.ico { width: 1.25em; height: 1.25em; fill: currentColor; flex: none; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.wrap { width: 100%; max-width: var(--max); margin-inline: auto; padding-inline: var(--gutter); }
+
+/* Títulos */
+.h1, .h2, .h3 { font-stretch: var(--wide); font-weight: 800; letter-spacing: -0.025em; line-height: 1.02; margin: 0; text-wrap: balance; }
+.cartao-nome, .passo h3, .tile-nome, .destaque p, .lead { text-wrap: balance; }
+.h1 { font-size: clamp(2.35rem, 7.4vw, 5.4rem); }
+.h2 { font-size: clamp(1.9rem, 4.2vw, 3.1rem); }
+.h3 { font-size: clamp(1.2rem, 2vw, 1.45rem); letter-spacing: -0.015em; }
+.lead { color: var(--ink-2); font-size: clamp(1rem, 1.4vw, 1.125rem); max-width: 34em; margin: 14px 0 0; }
+
+/* Botões */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: .55em;
+  min-height: 48px; padding: 0 22px; border-radius: var(--pill); border: 1.5px solid transparent;
+  font-weight: 650; font-size: 15px; text-decoration: none; white-space: nowrap;
+  transition: transform .25s var(--ease), background-color .25s, color .25s, border-color .25s;
+}
+.btn:active { transform: scale(.97); }
+.btn-ink { background: var(--ink); color: var(--bg); }
+.btn-ink:hover { background: color-mix(in srgb, var(--ink) 86%, #000); }
+.btn-light { background: var(--surface); color: var(--ink); }
+.btn-light:hover { background: var(--bg); }
+.btn-line { border-color: var(--ink); color: var(--ink); background: transparent; }
+.btn-line:hover { background: var(--ink); color: var(--bg); }
+.btn-line-light { border-color: rgba(255,255,255,.8); color: #fff; background: transparent; }
+.btn-line-light:hover { background: #fff; color: var(--on-light); }
+.btn .wa-ico { color: var(--wa); }
+.btn-sm { min-height: 40px; padding: 0 16px; font-size: 14px; }
+
+/* Aviso de demonstração e faixa de garantias */
+.aviso { background: var(--dark); color: var(--on-dark-2); font-size: 12.5px; text-align: center; padding: 7px var(--gutter); }
+.aviso strong { color: var(--on-dark); font-weight: 650; }
+.garantias { border-bottom: 1px solid var(--line); font-size: 13px; font-weight: 550; }
+.garantias ul { list-style: none; margin: 0; padding: 9px var(--gutter); display: flex; gap: 28px; justify-content: center; overflow-x: auto; scrollbar-width: none; }
+.garantias ul::-webkit-scrollbar { display: none; }
+.garantias li { display: flex; align-items: center; gap: 8px; white-space: nowrap; }
+.garantias .ico { width: 16px; height: 16px; }
+.garantias .pix { color: var(--pix); }
+
+/* Cabeçalho */
+.topo { position: sticky; top: 0; z-index: 40; background: color-mix(in srgb, var(--bg) 94%, transparent); backdrop-filter: saturate(1.4) blur(8px); -webkit-backdrop-filter: saturate(1.4) blur(8px); border-bottom: 1px solid transparent; transition: border-color .3s; }
+.topo.rolou { border-bottom-color: var(--line); }
+.topo .wrap { display: flex; align-items: center; gap: 20px; min-height: 64px; }
+.marca { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 800; font-stretch: 120%; font-size: 21px; letter-spacing: -0.02em; }
+.marca svg { width: 30px; height: 30px; }
+.menu { display: none; gap: 28px; margin-inline: auto; }
+.menu a { text-decoration: none; font-size: 15px; font-weight: 550; color: var(--ink-2); padding: 6px 0; border-bottom: 2px solid transparent; transition: color .2s, border-color .2s; }
+.menu a:hover { color: var(--ink); border-bottom-color: var(--ink); }
+.acoes { display: flex; gap: 8px; margin-left: auto; }
+.icone-btn { position: relative; display: grid; place-items: center; width: 44px; height: 44px; border-radius: var(--pill); border: 0; background: transparent; text-decoration: none; }
+.icone-btn:hover { background: var(--card); }
+.icone-btn .ico { width: 22px; height: 22px; }
+.contador { position: absolute; top: 4px; right: 3px; min-width: 18px; height: 18px; padding: 0 5px; border-radius: 9px; background: var(--accent); color: var(--accent-ink); font-size: 11px; font-weight: 700; display: grid; place-items: center; line-height: 1; }
+.contador[data-zero] { display: none; }
+.menu-cel { display: none; gap: 8px; overflow-x: auto; scrollbar-width: none; padding: 0 var(--gutter) 12px; }
+.menu-cel::-webkit-scrollbar { display: none; }
+.menu-cel a { flex: none; text-decoration: none; font-size: 14px; font-weight: 600; padding: 8px 14px; border-radius: var(--pill); background: var(--card); }
+@media (min-width: 900px) {
+  .menu { display: flex; }
+  .menu-cel { display: none; }
+  .topo .wrap { min-height: 76px; }
+}
+
+/* Seções */
+.secao { padding-top: var(--section); }
+.secao-topo { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 18px 32px; margin-bottom: 28px; }
+.secao-topo.centro { flex-direction: column; align-items: center; text-align: center; }
+.secao-topo.centro .lead { margin-inline: auto; }
+
+/* Filtro */
+.filtro { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; margin-inline: calc(var(--gutter) * -1); padding-inline: var(--gutter); }
+.filtro::-webkit-scrollbar { display: none; }
+.filtro button { flex: none; min-height: 40px; padding: 0 16px; border-radius: var(--pill); border: 1.5px solid var(--line); background: transparent; font-size: 14px; font-weight: 600; transition: background-color .2s, border-color .2s, color .2s; }
+.filtro button:hover { border-color: var(--ink); }
+.filtro button[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--bg); }
+@media (min-width: 900px) { .filtro { margin-inline: 0; padding-inline: 0; } }
+
+/* Rodapé */
+.rodape { background: var(--dark); color: var(--on-dark-2); margin-top: var(--section); padding: 56px 0 calc(28px + env(safe-area-inset-bottom, 0px)); font-size: 15px; }
+.rodape .marca { color: var(--on-dark); }
+.rodape-grade { display: grid; gap: 32px; }
+.rodape h2 { color: var(--on-dark); font-size: 14px; font-weight: 700; margin: 0 0 12px; letter-spacing: .01em; }
+.rodape ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.rodape a { color: var(--on-dark-2); text-decoration: none; }
+.rodape a:hover { color: var(--on-dark); }
+.rodape-sobre p { margin: 14px 0 0; max-width: 26em; }
+.pagamentos { display: flex; gap: 10px; margin-top: 18px; }
+.pagamentos span { display: grid; place-items: center; width: 52px; height: 34px; border-radius: 8px; background: var(--dark-2); }
+.pagamentos .ico { width: 30px; height: 20px; color: var(--on-dark); }
+.pagamentos .pix { color: var(--pix); }
+.redes { display: flex; gap: 8px; margin-top: 16px; }
+.redes a { display: inline-flex; align-items: center; gap: 8px; border: 1px solid color-mix(in srgb, var(--on-dark) 22%, transparent); border-radius: var(--pill); padding: 8px 14px; font-size: 13.5px; }
+.rodape-autor { border-top: 1px solid color-mix(in srgb, var(--on-dark) 14%, transparent); margin-top: 40px; padding-top: 20px; display: grid; gap: 6px; color: var(--on-dark); }
+.rodape-autor p { margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 4px 20px; min-height: 44px; }
+.rodape-autor a { color: var(--on-dark); text-decoration: underline; text-underline-offset: 3px; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; }
+.rodape-autor .back-link { text-decoration: none; }
+.rodape-base { border-top: 1px solid color-mix(in srgb, var(--on-dark) 14%, transparent); margin-top: 16px; padding-top: 20px; font-size: 15px; color: var(--on-dark-2); }
+@media (min-width: 900px) {
+  .rodape-grade { grid-template-columns: 1.6fr 1fr 1fr 1fr; }
+}
+
+/* Ficha do item e painel do pedido (sacola, comanda ou agenda) */
+dialog { border: 0; padding: 0; color: var(--ink); background: var(--surface); max-width: none; max-height: none; }
+dialog::backdrop { background: rgba(12,12,12,.5); }
+.ficha { width: 100%; margin: auto 0 0; border-radius: var(--r-xl) var(--r-xl) 0 0; max-height: 92dvh; overflow: auto; overscroll-behavior: contain; }
+.ficha-grade { display: grid; grid-template-columns: minmax(0, 1fr); }
+.ficha-foto, .ficha-corpo { min-width: 0; }
+.ficha-foto { position: relative; background: var(--card); aspect-ratio: 4 / 3; display: grid; place-items: center; }
+.ficha-foto img { width: 74%; height: 76%; object-fit: contain; filter: var(--shadow-product); }
+.ficha-corpo { padding: 22px 20px calc(22px + env(safe-area-inset-bottom, 0px)); display: flex; flex-direction: column; gap: 14px; }
+.ficha-marca { font-size: 13px; font-weight: 650; color: var(--ink-3); text-transform: uppercase; letter-spacing: .06em; }
+.ficha h2 { font-stretch: var(--wide); font-weight: 800; font-size: 1.6rem; letter-spacing: -0.02em; line-height: 1.08; margin: 2px 0 0; }
+.ficha-preco { font-size: 1.35rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+.ficha-preco small { display: block; font-size: 14px; font-weight: 500; color: var(--ink-2); margin-top: 2px; }
+.ficha-preco .pix-linha { color: var(--ok); font-weight: 600; }
+.rotulo { font-size: 14px; font-weight: 650; margin: 0 0 8px; display: flex; justify-content: space-between; gap: 12px; }
+.rotulo span { font-weight: 500; color: var(--ink-3); }
+.botoes-grade { display: grid; grid-template-columns: repeat(auto-fill, minmax(62px, 1fr)); gap: 8px; }
+.botoes-grade button { min-height: 46px; border-radius: 12px; border: 1.5px solid var(--line); background: var(--surface); font-weight: 650; font-size: 15px; font-variant-numeric: tabular-nums; }
+.botoes-grade button:hover:not(:disabled) { border-color: var(--ink); }
+.botoes-grade button[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--bg); }
+.botoes-grade button:disabled { color: var(--ink-3); background: var(--bg); text-decoration: line-through; cursor: not-allowed; }
+.ficha-nota { font-size: 13.5px; color: var(--ink-2); margin: 0; display: flex; gap: 8px; align-items: flex-start; }
+.ficha-nota .ico { margin-top: 2px; }
+.ficha .btn { width: 100%; }
+.fechar { position: absolute; top: 12px; right: 12px; z-index: 2; width: 42px; height: 42px; border-radius: 50%; border: 0; background: var(--surface); display: grid; place-items: center; }
+.fechar .ico { width: 20px; height: 20px; }
+.aviso-escolha { color: var(--accent); font-size: 13.5px; font-weight: 600; margin: -6px 0 0; min-height: 1.2em; }
+@media (min-width: 900px) {
+  .ficha { width: min(920px, calc(100% - 48px)); margin: auto; border-radius: var(--r-xl); }
+  .ficha-grade { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); }
+  .ficha-foto { aspect-ratio: auto; min-height: 520px; }
+  .ficha-corpo { padding: 36px 32px 32px; justify-content: center; }
+}
+
+.pedido { width: 100%; height: 100dvh; margin: 0 0 0 auto; display: none; flex-direction: column; }
+.pedido[open] { display: flex; }
+.pedido-topo { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; border-bottom: 1px solid var(--line); }
+.pedido-topo h2 { margin: 0; font-size: 19px; font-weight: 800; font-stretch: var(--wide); letter-spacing: -0.02em; }
+.pedido-topo .fechar { position: static; background: var(--bg); }
+.pedido-meio { flex: 1; overflow: auto; overscroll-behavior: contain; padding: 8px 20px 20px; }
+.pedido-vazio { text-align: center; padding: 48px 12px; color: var(--ink-2); }
+.pedido-vazio .ico { width: 40px; height: 40px; margin: 0 auto 10px; color: var(--ink-3); }
+.itens { list-style: none; margin: 0; padding: 0; }
+.item { display: grid; grid-template-columns: 76px 1fr auto; gap: 12px; padding: 14px 0; border-bottom: 1px solid var(--line); align-items: center; }
+.item-foto { width: 76px; height: 76px; border-radius: 12px; background: var(--card); display: grid; place-items: center; }
+.item-foto img { width: 82%; height: 82%; object-fit: contain; }
+.item-nome { font-weight: 650; font-size: 14.5px; line-height: 1.3; margin: 0; }
+.item-det { font-size: 13px; color: var(--ink-3); margin: 2px 0 0; }
+.item-lado { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
+.item-preco { font-weight: 700; font-size: 14.5px; font-variant-numeric: tabular-nums; }
+.qtd { display: inline-flex; align-items: center; border: 1.5px solid var(--line); border-radius: var(--pill); }
+.qtd button { width: 44px; height: 44px; border: 0; background: transparent; display: grid; place-items: center; }
+.qtd .ico { width: 15px; height: 15px; }
+.qtd output { min-width: 18px; text-align: center; font-weight: 650; font-size: 14px; }
+.escolha { margin-top: 20px; }
+.escolha fieldset { border: 0; padding: 0; margin: 0 0 16px; }
+.escolha legend { font-size: 14px; font-weight: 700; margin-bottom: 8px; padding: 0; }
+.opcao { display: flex; gap: 12px; align-items: flex-start; border: 1.5px solid var(--line); border-radius: 14px; padding: 12px 14px; margin-bottom: 8px; cursor: pointer; font-size: 14.5px; }
+.opcao:has(input:checked) { border-color: var(--ink); background: var(--bg); }
+.opcao input { margin: 3px 0 0; accent-color: var(--ink); width: 18px; height: 18px; }
+.opcao b { display: block; font-weight: 650; }
+.opcao span { color: var(--ink-2); font-size: 13px; }
+.campo { display: grid; gap: 6px; font-size: 14px; font-weight: 600; margin-top: 4px; }
+.campo input { font: inherit; font-weight: 500; font-size: 16px; min-height: 46px; border: 1.5px solid var(--line); border-radius: 12px; padding: 0 14px; background: var(--surface); }
+.campo input:focus { outline: none; border-color: var(--ink); }
+.pedido-fim { border-top: 1px solid var(--line); padding: 14px 20px calc(16px + env(safe-area-inset-bottom, 0px)); background: var(--surface); }
+.contas { display: grid; gap: 4px; font-size: 14px; margin: 0 0 12px; }
+.contas div { display: flex; justify-content: space-between; gap: 12px; }
+.contas dt { color: var(--ink-2); }
+.contas dd { margin: 0; font-variant-numeric: tabular-nums; font-weight: 600; }
+.contas .desc dd { color: var(--ok); }
+.contas .total { font-size: 17px; margin-top: 6px; padding-top: 8px; border-top: 1px dashed var(--line); }
+.contas .total dt { color: var(--ink); font-weight: 700; }
+.contas .total dd { font-weight: 800; }
+.pedido-fim .btn { width: 100%; }
+.pedido-fim small { display: block; text-align: center; color: var(--ink-3); font-size: 12.5px; margin-top: 8px; }
+@media (min-width: 600px) {
+  .pedido { width: 440px; }
+}
+
+.toast { position: fixed; left: 50%; bottom: calc(20px + env(safe-area-inset-bottom, 0px)); transform: translate(-50%, calc(100% + 60px)); visibility: hidden; z-index: 60; background: var(--ink); color: var(--bg); border-radius: var(--pill); padding: 12px 18px; font-size: 14.5px; font-weight: 600; display: flex; align-items: center; gap: 10px; transition: transform .35s var(--ease), visibility 0s linear .35s; box-shadow: 0 10px 30px rgba(0,0,0,.2); }
+.toast.mostra { transform: translate(-50%, 0); visibility: visible; transition: transform .35s var(--ease), visibility 0s; }
+.toast .ico { color: var(--wa); }
+
+/* Celular: janelas que sobem de baixo e fecham arrastando */
+.alca { display: none; }
+a, button { -webkit-tap-highlight-color: transparent; }
+@keyframes subir { from { transform: translateY(100%); } }
+@keyframes esmaecer { from { opacity: 0; } }
+@media (max-width: 899px) {
+  :root { --topo-cel: 58px; }
+  .topo .wrap { min-height: var(--topo-cel); gap: 12px; }
+  [id] { scroll-margin-top: calc(var(--topo-cel) + 12px); }
+  .folha { width: 100%; max-width: 100%; margin: auto 0 0; border-radius: 24px 24px 0 0; transition: transform .28s var(--ease); }
+  .folha[open] { animation: subir .34s var(--ease); }
+  .folha[open]::backdrop { animation: esmaecer .34s ease; }
+  .alca { display: block; position: absolute; top: 8px; left: 50%; transform: translateX(-50%); z-index: 3; width: 42px; height: 5px; border-radius: 3px; background: color-mix(in srgb, var(--ink) 22%, transparent); }
+  .ficha { max-height: 94dvh; }
+  .ficha-foto { aspect-ratio: auto; height: clamp(190px, 52vw, 300px); }
+  .ficha-foto img { position: absolute; inset: 0; margin: auto; width: 72%; height: 80%; }
+  .ficha-corpo { padding-bottom: 0; }
+  .ficha-acao { position: sticky; bottom: 0; margin: 4px -20px 0; padding: 12px 20px calc(12px + env(safe-area-inset-bottom, 0px)); background: var(--surface); box-shadow: 0 -1px 0 var(--line); }
+  .pedido { height: 94dvh; }
+  .pedido-topo { position: relative; padding-top: 22px; }
+}
+
+@media (max-width: 359px) { .so-360 { display: none; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .folha[open], .folha[open]::backdrop { animation: none; }
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition-duration: .01ms !important; }
+}
+
+/* Lugar de foto ainda sem foto: só no esqueleto, nunca em modelo pronto */
+.foto-vazia { background: repeating-linear-gradient(135deg, var(--card) 0 14px, var(--card-2) 14px 28px); display: grid; place-items: center; color: var(--ink-3); font-size: 13px; font-weight: 600; }
+
+/* Pulso Estúdio, página de vendas com a grade de turmas (#turmas) no lugar da agenda. Esqueleto de página de vendas: um serviço ou um profissional, uma oferta, um botão.
+   Capa editorial centralizada, números, para quem é, benefícios em blocos, etapas, quem faz,
+   depoimentos, oferta com preço e garantia, perguntas e barra de ação fixa no celular. */
+
+:root {
+  --wide: 100%;
+  --leitura: 40rem;
+}
+.h1, .h2, .h3 { letter-spacing: -0.035em; }
+.h1 { font-size: clamp(2.5rem, 7vw, 5.6rem); line-height: .98; }
+.h2 { font-size: clamp(2rem, 4.4vw, 3.4rem); }
+
+/* Cabeçalho curto: marca e um botão, sem menu */
+.topo-curto .wrap { justify-content: space-between; }
+.topo-curto .btn { min-height: 42px; padding: 0 18px; font-size: 14.5px; }
+
+/* Capa editorial */
+.v-capa { padding-top: clamp(32px, 6vw, 72px); text-align: center; }
+.v-para { display: inline-flex; align-items: center; gap: 8px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--pill); padding: 6px 14px 6px 8px; font-size: 14px; font-weight: 550; color: var(--ink-2); }
+.v-para i { width: 22px; height: 22px; border-radius: 50%; background: var(--accent); display: grid; place-items: center; color: var(--accent-ink); font-style: normal; }
+.v-para i .ico { width: 13px; height: 13px; }
+.v-capa .h1 { max-width: 15ch; margin: 22px auto 0; text-wrap: balance; }
+.v-capa .lead { margin: 20px auto 0; max-width: 34em; font-size: clamp(1.05rem, 1.6vw, 1.25rem); }
+.v-botoes { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 28px; }
+.v-prova { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 10px 14px; margin-top: 26px; font-size: 14.5px; color: var(--ink-2); }
+.v-rostos { display: flex; }
+.v-rostos span { width: 34px; height: 34px; border-radius: 50%; border: 2px solid var(--bg); margin-left: -8px; background: var(--card-2); display: grid; place-items: center; font-size: 12px; font-weight: 700; color: var(--ink); }
+.v-rostos span:first-child { margin-left: 0; }
+.v-prova .estrelas { display: inline-flex; gap: 1px; color: var(--estrela); vertical-align: -3px; }
+.v-prova .estrelas .ico { width: 16px; height: 16px; }
+.v-prova b { color: var(--ink); }
+.v-foto { position: relative; margin-top: clamp(36px, 6vw, 64px); border-radius: var(--r-xl); overflow: hidden; aspect-ratio: 4 / 3; background: var(--card); }
+.v-foto > img, .v-foto > .foto-vazia { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.v-flutua { position: absolute; left: 14px; right: 14px; bottom: 14px; display: flex; align-items: center; gap: 12px; background: var(--surface); border-radius: var(--r-md); padding: 12px 14px; text-align: left; box-shadow: 0 12px 30px rgba(20, 18, 14, .14); }
+.v-flutua-ico { flex: none; width: 42px; height: 42px; border-radius: 12px; background: var(--accent); color: var(--accent-ink); display: grid; place-items: center; }
+.v-flutua b { display: block; font-size: 15px; }
+.v-flutua small { color: var(--ink-2); font-size: 13.5px; }
+/* Celular pequeno: título, texto e os dois botões cabem na primeira tela */
+@media (max-width: 599px) {
+  .v-capa { padding-top: 18px; }
+  .v-capa .h1 { margin-top: 14px; font-size: clamp(2.1rem, 10.4vw, 2.75rem); }
+  .v-capa .lead { margin-top: 12px; font-size: 1rem; }
+  .v-botoes { margin-top: 18px; gap: 8px; }
+  .v-botoes .btn { min-height: 46px; }
+}
+@media (max-height: 600px) and (max-width: 599px) {
+  .v-para { display: none; }
+  .v-capa .lead { display: none; }
+}
+@media (orientation: landscape) and (max-height: 500px) {
+  .v-para, .v-capa .lead { display: none; }
+  .v-capa { padding-top: 12px; }
+  .v-capa .h1 { margin-top: 0; font-size: 2.2rem; max-width: 24ch; }
+  .v-botoes { margin-top: 14px; }
+}
+@media (min-width: 700px) {
+  .v-foto { aspect-ratio: 16 / 7; }
+  .v-flutua { left: auto; right: 24px; bottom: 24px; max-width: 340px; }
+}
+
+/* Números */
+.v-numeros { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; margin-top: clamp(40px, 6vw, 72px); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.v-numero { padding: 22px 6px; }
+.v-numero:nth-child(odd) { border-right: 1px solid var(--line); padding-right: 16px; }
+.v-numero:nth-child(even) { padding-left: 16px; }
+.v-numero:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+.v-numero b { display: block; font-size: clamp(1.7rem, 4vw, 3rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.05; }
+.v-numero span { display: block; margin-top: 8px; color: var(--ink-2); font-size: 14.5px; line-height: 1.4; }
+@media (min-width: 900px) {
+  .v-numeros { grid-template-columns: repeat(4, 1fr); }
+  .v-numero, .v-numero:nth-child(odd), .v-numero:nth-child(even) { padding: 28px 24px; border-right: 1px solid var(--line); border-bottom: 0; }
+  .v-numero:last-child { border-right: 0; }
+  .v-numero:first-child { padding-left: 0; }
+}
+
+/* Para quem é */
+.v-dor { display: grid; gap: 24px; }
+.v-dor .lead { margin-top: 14px; }
+.v-lista { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.v-lista li { display: flex; gap: 14px; align-items: flex-start; background: var(--surface); border-radius: var(--r-md); padding: 16px 18px; font-size: 16px; line-height: 1.45; }
+.v-lista .ico { flex: none; width: 24px; height: 24px; padding: 4px; border-radius: 50%; background: var(--accent); color: var(--accent-ink); margin-top: 1px; }
+@media (min-width: 900px) {
+  .v-dor { grid-template-columns: 1fr 1.15fr; gap: 64px; align-items: start; }
+  .v-dor > div:first-child { position: sticky; top: 110px; }
+}
+
+/* Benefícios em blocos */
+.v-blocos { display: grid; gap: 12px; }
+.v-bloco { position: relative; border-radius: var(--r-lg); background: var(--surface); padding: 24px; min-height: 220px; display: flex; flex-direction: column; justify-content: flex-end; gap: 8px; overflow: hidden; }
+.v-bloco h3 { text-wrap: balance; margin: 0; font-size: 1.3rem; font-weight: 750; letter-spacing: -0.02em; line-height: 1.15; }
+.v-bloco p { margin: 0; color: var(--ink-2); font-size: 15px; }
+.v-bloco-ico { position: absolute; top: 22px; left: 22px; width: 44px; height: 44px; border-radius: 12px; background: var(--card); display: grid; place-items: center; }
+.v-bloco-ico .ico { width: 22px; height: 22px; }
+.v-bloco-foto { color: #fff; min-height: 360px; background: var(--dark-2); }
+.v-bloco-foto > img, .v-bloco-foto > .foto-vazia { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.v-bloco-foto::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(12,12,12,0) 40%, rgba(12,12,12,.8) 100%); }
+.v-bloco-foto > *:not(img):not(.foto-vazia) { position: relative; z-index: 1; }
+.v-bloco-foto p { color: rgba(255,255,255,.88); }
+.v-bloco-escuro { background: var(--dark); color: var(--on-dark); }
+.v-bloco-escuro p { color: var(--on-dark-2); }
+.v-bloco-escuro .v-bloco-ico { background: var(--dark-2); }
+.v-bloco-cor { background: var(--accent); color: var(--accent-ink); }
+.v-bloco-cor p { color: var(--accent-ink); }
+.v-bloco-cor .v-bloco-ico { background: color-mix(in srgb, var(--accent-ink) 16%, transparent); }
+@media (min-width: 900px) {
+  .v-blocos { grid-template-columns: repeat(3, 1fr); grid-auto-rows: minmax(240px, auto); gap: 16px; }
+  .v-bloco-foto { grid-row: span 2; }
+  .v-bloco-largo { grid-column: span 2; }
+}
+
+/* Etapas */
+.v-etapas { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; counter-reset: etapa; }
+.v-etapa { position: relative; display: grid; grid-template-columns: 44px 1fr; gap: 4px 16px; padding-bottom: 28px; }
+.v-etapa::before { counter-increment: etapa; content: counter(etapa); grid-row: 1 / 3; width: 44px; height: 44px; border-radius: 50%; background: var(--ink); color: var(--bg); display: grid; place-items: center; font-weight: 750; font-size: 16px; z-index: 1; }
+.v-etapa::after { content: ""; position: absolute; left: 21px; top: 44px; bottom: 0; width: 2px; background: var(--line); }
+.v-etapa:last-child::after { display: none; }
+.v-etapa > * { grid-column: 2; }
+.v-etapa h3 { margin: 10px 0 0; font-size: 17.5px; font-weight: 700; line-height: 1.3; }
+.v-etapa p { margin: 0; color: var(--ink-2); font-size: 15px; }
+.v-etapa small { justify-self: start; display: inline-block; margin-top: 8px; font-size: 13px; font-weight: 600; color: var(--ink); background: var(--card); border-radius: var(--pill); padding: 4px 10px; }
+@media (min-width: 900px) {
+  .v-etapas { grid-template-columns: repeat(4, 1fr); gap: 24px; }
+  .v-etapa { grid-template-columns: 1fr; padding-bottom: 0; }
+  .v-etapa > * { grid-column: 1; }
+  .v-etapa::before { grid-row: auto; }
+  .v-etapa::after { left: 52px; right: -16px; top: 21px; bottom: auto; width: auto; height: 2px; }
+  .v-etapa h3 { margin-top: 18px; }
+}
+
+/* Quem faz */
+.v-sobre { display: grid; gap: 28px; align-items: center; }
+.v-sobre-foto { position: relative; border-radius: var(--r-xl); overflow: hidden; aspect-ratio: 4 / 5; background: var(--card); }
+.v-sobre-foto > img, .v-sobre-foto > .foto-vazia { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.v-sobre .lead { max-width: none; }
+.v-credenciais { list-style: none; margin: 22px 0 0; padding: 0; display: grid; gap: 10px; }
+.v-credenciais li { display: flex; gap: 12px; align-items: flex-start; font-size: 15.5px; }
+.v-credenciais .ico { flex: none; width: 22px; height: 22px; color: var(--accent); margin-top: 1px; }
+.v-assina { margin-top: 24px; padding-top: 18px; border-top: 1px solid var(--line); font-size: 15px; color: var(--ink-2); }
+.v-assina b { display: block; color: var(--ink); font-size: 16px; }
+@media (min-width: 900px) { .v-sobre { grid-template-columns: .9fr 1.1fr; gap: 64px; } }
+
+/* Depoimentos */
+.v-depos { display: grid; gap: 12px; }
+.v-depo { background: var(--surface); border-radius: var(--r-lg); padding: 24px; display: flex; flex-direction: column; gap: 18px; }
+.v-depo p { margin: 0; font-size: 16px; line-height: 1.55; }
+.v-depo-grande { background: var(--dark); color: var(--on-dark); }
+.v-depo-grande p { font-size: clamp(1.25rem, 2.4vw, 1.75rem); line-height: 1.3; font-weight: 600; letter-spacing: -0.02em; }
+.v-depo.v-depo-grande .avaliacao-autor small { color: var(--on-dark-2); }
+.v-depo-grande .inicial { background: var(--dark-2); color: var(--on-dark); }
+.v-depo .avaliacao-autor { margin-top: auto; display: flex; align-items: center; gap: 10px; font-size: 14px; }
+.v-depo .inicial { width: 40px; height: 40px; border-radius: 50%; background: var(--card); display: grid; place-items: center; font-weight: 700; flex: none; }
+.v-depo .avaliacao-autor b { display: block; font-weight: 650; }
+.v-depo .avaliacao-autor small { color: var(--ink-3); }
+@media (min-width: 900px) {
+  .v-depos { grid-template-columns: 1.4fr 1fr; grid-template-rows: auto auto; gap: 16px; }
+  .v-depo-grande { grid-row: span 2; padding: 40px; justify-content: space-between; }
+}
+
+/* Oferta */
+.v-planos { display: grid; gap: 14px; }
+.v-plano { position: relative; background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--r-xl); padding: 28px 24px; display: flex; flex-direction: column; gap: 18px; }
+.v-plano-top { border-color: var(--ink); box-shadow: 0 18px 40px rgba(20, 18, 14, .10); }
+.v-selo-plano { position: absolute; top: -13px; left: 24px; background: var(--accent); color: var(--accent-ink); border-radius: var(--pill); padding: 5px 12px; font-size: 12.5px; font-weight: 700; }
+.v-plano h3 { margin: 0; font-size: 1.25rem; font-weight: 750; letter-spacing: -0.02em; }
+.v-plano > p { margin: -10px 0 0; color: var(--ink-2); font-size: 15px; }
+.v-preco { font-size: clamp(2.4rem, 5vw, 3.2rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1; }
+.v-preco small { display: block; margin-top: 8px; font-size: 14.5px; font-weight: 500; letter-spacing: 0; color: var(--ink-2); }
+.v-inclui { list-style: none; margin: 0; padding: 18px 0 0; border-top: 1px solid var(--line); display: grid; gap: 10px; font-size: 15px; }
+.v-inclui li { display: flex; gap: 10px; align-items: flex-start; }
+.v-inclui .ico { flex: none; width: 20px; height: 20px; color: var(--accent); margin-top: 1px; }
+.v-plano .btn { width: 100%; margin-top: auto; }
+.v-garantia { display: flex; gap: 14px; align-items: center; margin-top: 18px; background: var(--card); border-radius: var(--r-lg); padding: 18px 20px; font-size: 15px; }
+.v-garantia .ico { flex: none; width: 30px; height: 30px; color: var(--accent); }
+.v-garantia b { display: block; }
+@media (min-width: 900px) {
+  .v-planos { grid-template-columns: 1fr 1fr; gap: 20px; max-width: 920px; margin-inline: auto; }
+  .v-garantia { max-width: 920px; margin-inline: auto; margin-top: 20px; }
+}
+
+/* Perguntas */
+.v-faq { max-width: 860px; margin-inline: auto; border-top: 1px solid var(--line); }
+.v-faq details { border-bottom: 1px solid var(--line); }
+.v-faq summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 64px; padding: 14px 0; font-size: 17px; font-weight: 650; }
+.v-faq summary::-webkit-details-marker { display: none; }
+.v-faq summary .ico { flex: none; width: 22px; height: 22px; transition: transform .25s var(--ease); }
+.v-faq details[open] summary .ico { transform: rotate(45deg); }
+.v-faq details p { margin: 0 0 20px; color: var(--ink-2); max-width: 44em; }
+
+/* Faixa final */
+.v-final { background: var(--dark); color: var(--on-dark); border-radius: var(--r-xl); padding: clamp(40px, 7vw, 88px) clamp(22px, 5vw, 64px); text-align: center; }
+.v-final .h2 { max-width: 16ch; margin-inline: auto; text-wrap: balance; }
+.v-final p { color: var(--on-dark-2); margin: 16px auto 28px; max-width: 32em; font-size: 17px; }
+
+/* Barra de ação fixa no celular, que aparece depois da capa */
+.v-barra { display: none; }
+@media (max-width: 899px) {
+  .v-barra { position: fixed; left: 0; right: 0; bottom: 0; z-index: 45; display: flex; align-items: center; gap: 12px; padding: 10px var(--gutter) calc(10px + env(safe-area-inset-bottom, 0px)); background: color-mix(in srgb, var(--surface) 96%, transparent); backdrop-filter: saturate(1.4) blur(14px); -webkit-backdrop-filter: saturate(1.4) blur(14px); border-top: 1px solid var(--line); transform: translateY(110%); transition: transform .35s var(--ease); }
+  .v-barra.mostra { transform: none; }
+  .v-barra div { flex: 1; min-width: 0; font-size: 13px; color: var(--ink-2); line-height: 1.3; }
+  .v-barra b { display: block; color: var(--ink); font-size: 15.5px; }
+  .v-barra .btn { flex: none; min-height: 46px; }
+}
+
+/* Dentro do estúdio: três fotos com legenda sobre o degradê */
+.v-estudio { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.v-estudio-item { position: relative; margin: 0; border-radius: var(--r-lg); overflow: hidden; aspect-ratio: 4 / 5; background: var(--dark-2); }
+.v-estudio-largo { grid-column: 1 / -1; aspect-ratio: 16 / 9; }
+.v-estudio-item img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.v-estudio-item::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(12,12,12,0) 55%, rgba(12,12,12,.78) 100%); }
+.v-estudio-item figcaption { position: absolute; z-index: 1; left: 16px; right: 16px; bottom: 14px; color: #fff; font-weight: 700; font-size: 15px; line-height: 1.25; }
+@media (min-width: 900px) {
+  .v-estudio { grid-template-columns: 1.7fr 1fr 1fr; gap: 16px; }
+  .v-estudio-item, .v-estudio-largo { grid-column: auto; aspect-ratio: auto; height: clamp(380px, 38vw, 520px); }
+}
+
+/* Turmas: lista de horários e o resumo que vira mensagem de WhatsApp */
+.t-painel { display: grid; gap: 20px; }
+.t-lista { display: grid; gap: 8px; }
+.t-turma { display: grid; grid-template-columns: 86px 1fr auto; align-items: center; gap: 12px; width: 100%; min-height: 72px; padding: 10px 16px; text-align: left; border: 2px solid var(--line); border-radius: var(--r-md); background: var(--surface); color: var(--ink); cursor: pointer; transition: background-color .2s, border-color .2s; }
+.t-turma:hover { border-color: var(--ink); }
+.t-turma[aria-checked="true"] { background: var(--accent); border-color: var(--ink); color: var(--accent-ink); }
+.t-hora { font-stretch: var(--wide); font-weight: 900; text-transform: uppercase; font-size: 2.1rem; line-height: .9; letter-spacing: 0; }
+.t-dias { font-weight: 700; font-size: 16px; line-height: 1.25; }
+.t-dias small { display: block; margin-top: 2px; font-weight: 500; font-size: 13.5px; color: var(--ink-2); }
+.t-turma[aria-checked="true"] .t-dias small { color: inherit; }
+.t-vagas { justify-self: end; border: 1.5px solid var(--line); border-radius: var(--pill); padding: 5px 12px; font-size: 13.5px; font-weight: 700; white-space: nowrap; background: var(--card); }
+.t-vagas.poucas { background: var(--accent); border-color: var(--ink); color: var(--accent-ink); }
+.t-turma[aria-checked="true"] .t-vagas { background: var(--ink); border-color: var(--ink); color: var(--surface); }
+.t-resumo { border: 2px solid var(--ink); border-radius: var(--r-xl); background: var(--surface); padding: 22px 20px; display: grid; gap: 14px; align-content: start; }
+.t-resumo h3 { margin: 0; font-size: 1.3rem; font-weight: 750; letter-spacing: -0.02em; }
+.t-escolhida { margin: 0; padding: 12px 14px; border-radius: var(--r-sm); background: var(--card); font-size: 15px; font-weight: 600; line-height: 1.4; }
+.t-objetivo { border: 0; margin: 0; padding: 0; min-width: 0; }
+.t-objetivo legend { padding: 0; margin-bottom: 8px; font-size: 14px; font-weight: 700; }
+.t-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.t-chip { display: block; position: relative; }
+.t-chip span { display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; border: 1.5px solid var(--line); border-radius: var(--pill); font-size: 14.5px; font-weight: 600; cursor: pointer; background: var(--surface); transition: background-color .2s, border-color .2s; }
+.t-chip input:checked + span { background: var(--accent); border-color: var(--ink); color: var(--accent-ink); }
+.t-chip input:focus-visible + span { outline: 3px solid var(--accent-text); outline-offset: 3px; }
+.t-resumo .campo input { background: var(--bg); }
+.t-resumo .btn { width: 100%; }
+.t-resumo .btn[aria-disabled="true"] { background: var(--card-2); color: var(--ink-2); }
+.t-aviso { margin: 0; min-height: 1.4em; font-size: 14px; font-weight: 600; color: var(--accent-text); }
+@media (min-width: 900px) {
+  .t-painel { grid-template-columns: 1.25fr 1fr; gap: 28px; align-items: start; }
+  .t-resumo { position: sticky; top: 100px; padding: 28px; }
+}
+@media (max-width: 380px) {
+  .t-turma { grid-template-columns: 70px 1fr; }
+  .t-vagas { grid-column: 2; justify-self: start; }
+  .t-hora { font-size: 1.8rem; }
+}
+
+/* Revisão de 01/10/2026, por cima do esqueleto vendas. Saiu o padding-bottom do body no celular: a barra
+   fixa some da faixa final para baixo, e a folga virava uma faixa vazia embaixo do rodapé. */
+/* O detalhe do preço em duas linhas herdava o line-height 1 do preço e ficava espremido. */
+.v-preco small { line-height: 1.4; }
+/* O ícone do bloco entra no fluxo: com texto longo no celular, o título subia por cima dele. */
+.v-bloco-ico { position: static; margin-bottom: auto; }
+/* Na grade de etapas do computador, a etapa de texto curto esticava as linhas e o título descia. */
+.v-etapa { align-content: start; }
+.v-flutua b, .v-flutua small { display: block; text-wrap: balance; }
+/* A regra da inicial clara vinha depois da do depoimento escuro e deixava a letra quase invisível. */
+.v-depo.v-depo-grande .inicial { background: var(--dark-2); color: var(--on-dark); }
+/* Hora se escreve 18h30, com h minúsculo, mesmo no título em caixa alta do estilo. */
+.t-hora { text-transform: none; }
+
+/* Estilo "cor forte": uma cor saturada de marca usada com coragem, em blocos e faixas que alternam
+   com o fundo claro; preto para o texto e o rodapé; títulos condensados em caixa alta.
+   Para açaí, loja jovem, esporte, infantil. Entra depois do tema do esqueleto, então ganha dele.
+
+   Uma cor só por página. Para trocar a cor, mude só estes três tokens (o texto sobre a cor e a
+   cor usada como texto em fundo claro andam juntos). Contrastes medidos em 01/10/2026:
+     laranja  #FF5A1F  texto #121212 (5,9:1)   como texto #B8390A (5,8:1 no branco)   padrão
+     rosa     #FF3D8B  texto #121212 (5,5:1)   como texto #BE1859 (6,2:1 no branco)
+     verde    #12B76A  texto #121212 (7,0:1)   como texto #0B7A47 (5,5:1 no branco)
+     violeta  #6D28D9  texto #FFFFFF (7,1:1)   como texto #6D28D9 (7,1:1 no branco)
+     azul     #2A4BFF  texto #FFFFFF (5,9:1)   como texto #2A4BFF (5,9:1 no branco)
+   A fonte é a Archivo da base, na largura condensada (eixo de largura da própria fonte). */
+:root {
+  --accent: #FF5A1F;
+  --accent-ink: #121212;
+  --accent-text: #B8390A;
+
+  --bg: #F6F5F1;
+  --card: #EAE8E1;
+  --card-2: #DFDCD3;
+  --ink: #121212;
+  --ink-2: #4A4944;
+  --ink-3: #5E5C56;
+  --line: #D8D5CC;
+  --font: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+  --pix: currentColor;
+  --wide: 62%;
+  --estreita: 62%;
+  --shadow-product: drop-shadow(0 20px 14px rgba(18, 18, 18, 0.22));
+}
+
+::selection { background: var(--accent); color: var(--accent-ink); }
+:focus-visible { outline-color: var(--accent-text); }
+
+/* Títulos: condensados, pretos, em caixa alta */
+.h1, .h2, .h3, .tile-nome, .c-h1, .c-h2, .l-h2 { font-weight: 900; text-transform: uppercase; letter-spacing: 0; line-height: .94; }
+.h1 { font-size: clamp(3rem, 13vw, 7.25rem); line-height: .95; }
+.h2 { font-size: clamp(2.4rem, 8vw, 4.75rem); }
+.h3 { font-size: clamp(1.6rem, 3vw, 2.1rem); }
+.tile-nome { font-size: clamp(1.7rem, 3vw, 2.4rem); }
+.c-h1 { font-size: clamp(2.9rem, 11vw, 4.8rem); line-height: .9; }
+.c-h2 { font-size: clamp(2.3rem, 7vw, 3.6rem); }
+.l-h2 { font-size: 1.7rem; }
+.marca { font-stretch: 75%; font-weight: 900; text-transform: uppercase; font-size: 24px; letter-spacing: 0; }
+.lead { font-size: clamp(1.05rem, 1.5vw, 1.2rem); }
+
+/* Faixas e blocos de cor: o texto sobre a cor usa --accent-ink, nunca --ink */
+.garantias, .capa-quadro, .destaque-promo, .chamada, #como-funciona, .v-capa, .v-final, .v-plano-top, .c-loja-cartao, #cat-destaques, #info, .l-capa, .l-destaque-texto, .v-barra { background: var(--accent); color: var(--accent-ink); }
+:where(.capa-quadro, .destaque-promo, .chamada, #como-funciona, .v-capa, .v-final, .v-plano-top, .c-loja-cartao, #cat-destaques, #info, .l-capa, .l-destaque-texto, .e-capa-bloco) :focus-visible { outline-color: var(--accent-ink); }
+:where(.capa-quadro, .destaque-promo, .chamada, #como-funciona, .v-capa, .v-final, .v-plano-top, .c-loja-cartao, #cat-destaques, #info, .l-capa, .l-destaque-texto, .e-capa-bloco) .btn-light { background: var(--ink); color: var(--surface); }
+:where(.capa-quadro, .destaque-promo, .chamada, #como-funciona, .v-capa, .v-final, .v-plano-top, .c-loja-cartao, #cat-destaques, #info, .l-capa, .l-destaque-texto, .e-capa-bloco) .btn-line,
+:where(.capa-quadro, .destaque-promo, .chamada, #como-funciona, .v-capa, .v-final, .v-plano-top, .c-loja-cartao, #cat-destaques, #info, .l-capa, .l-destaque-texto, .e-capa-bloco) .btn-line-light { border-color: currentColor; color: inherit; background: transparent; }
+:where(.capa-quadro, .destaque-promo, .chamada, #como-funciona, .v-capa, .v-final, .v-plano-top, .c-loja-cartao, #cat-destaques, #info, .l-capa, .l-destaque-texto, .e-capa-bloco) .btn-line:hover,
+:where(.capa-quadro, .destaque-promo, .chamada, #como-funciona, .v-capa, .v-final, .v-plano-top, .c-loja-cartao, #cat-destaques, #info, .l-capa, .l-destaque-texto, .e-capa-bloco) .btn-line-light:hover { background: var(--ink); border-color: var(--ink); color: var(--surface); }
+.lead, .capa-texto p, .chamada-texto p, .v-final p, .v-prova, .v-prova b { color: inherit; }
+
+/* Faixa de garantias no topo, em cor */
+.garantias { border-bottom: 0; }
+
+/* Faixa de cor que ocupa a largura toda: a seção continua na grade, só o fundo sai dela */
+#como-funciona, .v-capa, #cat-destaques, #info { box-shadow: 0 0 0 100vmax var(--accent); clip-path: inset(0 -100vmax); }
+#como-funciona { margin-top: var(--section); padding-bottom: var(--section); }
+#como-funciona .lead, #como-funciona p { color: inherit; }
+
+/* Cartões brancos que ficam dentro de uma faixa de cor voltam ao texto preto (com --accent-ink branco, herdariam branco) */
+.passo, .v-flutua, .v-para, .c-mini, .c-bloco { color: var(--ink); }
+
+/* Botões e peças pequenas */
+.contador, .chip-topo { background: var(--accent); color: var(--accent-ink); }
+.aba[aria-current="page"] { background: var(--accent); color: var(--accent-ink); }
+.filtro button[aria-pressed="true"] { background: var(--accent); border-color: var(--ink); color: var(--accent-ink); }
+.estrelas, .nota-geral .ico, .c-status .nota .ico, .v-prova .estrelas { color: inherit; }
+.aviso-escolha, .ficha-preco .pix-linha, .contas .desc dd { color: var(--accent-text); }
+.atalho-foto { border: 3px solid var(--bg); box-shadow: 0 0 0 3px var(--accent); }
+.tile .btn-light { background: var(--accent); color: var(--accent-ink); }
+.rodape { border-top: 8px solid var(--accent); }
+
+/* Loja: capa em bloco de cor, foto em cima (celular) ou ao lado (computador), texto na cor */
+.capa-quadro { flex-direction: column; align-items: stretch; }
+.capa-quadro::after { display: none; }
+.capa .capa-quadro > picture, .capa .capa-quadro > .capa-foto { position: relative; inset: auto; flex: 1 1 0; width: 100%; height: auto; min-height: 190px; }
+.capa-texto { color: var(--accent-ink); padding: 22px 20px 24px; }
+.capa-texto .h1 { max-width: 12ch; font-size: clamp(2.8rem, 13vw, 3.8rem); font-stretch: var(--wide); }
+.capa-texto p { margin: 12px 0 18px; font-weight: 550; }
+.capa-botoes .btn-light { background: var(--ink); color: var(--surface); }
+@media (min-width: 900px) {
+  .capa-quadro { flex-direction: row-reverse; align-items: stretch; }
+  .capa .capa-quadro > picture, .capa .capa-quadro > .capa-foto { flex: 1.15 1 0; min-height: 0; }
+  .capa-texto { flex: 1 1 0; align-self: center; padding: 56px clamp(32px, 5vw, 72px); max-width: none; }
+  .capa-texto .h1 { font-size: clamp(3.6rem, 6.2vw, 6.2rem); max-width: 10ch; }
+}
+@media (orientation: landscape) and (max-height: 500px) {
+  .capa .capa-quadro > picture, .capa .capa-quadro > .capa-foto { display: none; }
+  .capa-texto .h1 { font-size: 2.4rem; max-width: 20ch; }
+}
+
+/* Loja: números e ofertas dos destaques em condensado, e a chamada final em bloco de cor */
+.destaque .destaque-numero { font-stretch: var(--wide); text-transform: uppercase; font-size: clamp(3.4rem, 8vw, 5.2rem); line-height: .88; letter-spacing: 0; }
+.destaque-numero span { font-stretch: 100%; text-transform: none; font-size: .3em; font-weight: 700; line-height: 1.25; letter-spacing: 0; }
+.chamada { min-height: 0; flex-direction: column; align-items: stretch; justify-content: flex-start; text-align: left; }
+.chamada::after { display: none; }
+/* O lugar de foto leva estilo inline (position absolute); só !important vence isso */
+.chamada > img, .chamada > .foto-vazia { position: relative !important; inset: auto !important; width: 100% !important; height: clamp(190px, 46vw, 300px) !important; flex: none; }
+.chamada-texto { padding: 26px 22px 30px; max-width: none; }
+.chamada-texto p { margin: 12px 0 20px; }
+@media (min-width: 900px) {
+  .chamada { flex-direction: row-reverse; align-items: stretch; }
+  .chamada > img, .chamada > .foto-vazia { width: 46% !important; height: auto !important; min-height: 380px; }
+  .chamada-texto { flex: 1; align-self: center; padding: 56px clamp(32px, 5vw, 72px); }
+  .chamada-texto p { margin-inline: 0; max-width: 28em; }
+}
+
+/* Página de vendas */
+.v-capa { padding-bottom: clamp(28px, 5vw, 64px); }
+.v-capa .h1 { font-size: clamp(3rem, 14vw, 7.5rem); max-width: 11ch; }
+@media (min-width: 900px) { .v-capa .h1 { font-size: clamp(4.5rem, 7.5vw, 7rem); max-width: 15ch; } }
+@media (orientation: landscape) and (max-height: 500px) { .v-capa .h1 { font-size: 2.4rem; max-width: 24ch; } }
+.v-rostos span { border-color: var(--accent); }
+.v-numeros, .v-numero:nth-child(odd), .v-numero:nth-child(-n+2), .v-numero { border-color: var(--ink); }
+.v-numero b { font-stretch: var(--wide); font-weight: 900; text-transform: uppercase; font-size: clamp(2.4rem, 8.5vw, 4.8rem); letter-spacing: 0; line-height: .9; }
+.v-credenciais .ico, .v-inclui .ico, .v-garantia .ico { color: var(--accent-text); }
+.v-etapa::before { background: var(--ink); color: var(--surface); }
+.v-etapa::after { background: color-mix(in srgb, var(--accent-ink) 45%, transparent); }
+.v-etapa small { background: var(--surface); color: var(--ink); }
+.v-plano-top { border-color: var(--ink); box-shadow: none; }
+.v-plano-top > p, .v-plano-top .v-preco small { color: inherit; }
+.v-plano-top .v-inclui { border-top-color: color-mix(in srgb, var(--accent-ink) 45%, transparent); }
+.v-plano-top .v-inclui .ico { color: inherit; }
+.v-plano-top .v-selo-plano { background: var(--ink); color: var(--surface); }
+.v-preco { font-stretch: var(--wide); font-weight: 900; font-size: clamp(3rem, 6vw, 4.2rem); letter-spacing: 0; }
+.v-preco small { font-stretch: 100%; }
+.v-final .h2 { max-width: 12ch; }
+.v-barra { border-top: 2px solid var(--ink); backdrop-filter: none; -webkit-backdrop-filter: none; }
+.v-barra div, .v-barra b { color: inherit; }
+
+/* Cardápio: cabeçalho da loja em cor, categorias em barra branca, faixas de cor nos destaques e nas informações */
+.c-loja-cartao .c-tipo, .c-loja-cartao .c-status span, .c-loja-cartao .c-status .nota { color: inherit; }
+.c-loja-cartao .c-status i { background: var(--accent-ink); box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent-ink) 22%, transparent); }
+.c-loja-cartao .c-infos li { background: var(--surface); color: var(--ink); }
+.c-logo { border-color: var(--accent); }
+.c-cats { background: var(--surface); backdrop-filter: none; -webkit-backdrop-filter: none; border-bottom: 2px solid var(--ink); }
+.c-cats a[aria-current="true"] { background: var(--accent); color: var(--accent-ink); }
+#cat-destaques, #info { margin-top: 36px; padding-top: 36px; padding-bottom: 40px; }
+#cat-destaques .c-nota, #cat-destaques .c-conta, #info .c-nota { color: inherit; }
+.c-por.adicionado { background: var(--accent); color: var(--accent-ink); }
+.c-rodape { margin-top: 0; border-top: 0; }
+
+/* Página de links: capa em bloco de cor, ícones dos links e destaque na cor */
+.l-capa { border-radius: var(--r-xl); padding: 10px 10px 22px; }
+.l-banner { border-radius: var(--r-lg); }
+.l-avatar { border-color: var(--accent); }
+.l-capa h1 { font-stretch: var(--wide); font-weight: 900; text-transform: uppercase; letter-spacing: 0; line-height: .92; font-size: clamp(2.6rem, 11vw, 3.4rem); padding-inline: 10px; }
+.l-bio, .l-onde-linha { color: inherit; }
+.l-onde-linha { font-weight: 650; }
+.l-link-ico { background: var(--accent); color: var(--accent-ink); }
+.l-destaque-texto .l-destaque-desc { color: inherit; }
+.l-destaque-texto .btn-ink { background: var(--ink); color: var(--surface); }
+
+/* Fileiras que rolam para o lado: o primeiro cartão para na margem da página, não na borda da tela */
+.c-carrossel, .avaliacoes, .atalhos, .l-fotos, .destaques-lista { scroll-padding-inline: var(--gutter); }
+
+/* Tema do Pulso Estúdio: amarelo gema como cor da marca, texto preto sobre ele. Só tokens do :root; a estrutura
+   vem de base/nucleo.css, de estilo.css e do estilo cor forte. Contrastes medidos em 01/10/2026:
+   texto #121212 sobre #FFD60A = 13,3:1; a cor de texto #6B5200 sobre o fundo #F6F5F1 = 6,8:1 e sobre o cartão
+   #EAE8E1 = 6,1:1. Os outros modelos de cor forte usam violeta, azul e vermelho tijolo. */
+:root {
+  --accent: #FFD60A;
+  --accent-ink: #121212;
+  --accent-text: #6B5200;
+}
+
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <!-- Icons: brands from Simple Icons (CC0), interface from Phosphor (MIT). -->
+  <symbol id="i-whatsapp" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></symbol>
+  <symbol id="i-instagram" viewBox="0 0 24 24"><path d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/></symbol>
+  <symbol id="i-visa" viewBox="0 0 24 24"><path d="M9.112 8.262L5.97 15.758H3.92L2.374 9.775c-.094-.368-.175-.503-.461-.658C1.447 8.864.677 8.627 0 8.479l.046-.217h3.3a.904.904 0 01.894.764l.817 4.338 2.018-5.102zm8.033 5.049c.008-1.979-2.736-2.088-2.717-2.972.006-.269.262-.555.822-.628a3.66 3.66 0 011.913.336l.34-1.59a5.207 5.207 0 00-1.814-.333c-1.917 0-3.266 1.02-3.278 2.479-.012 1.079.963 1.68 1.698 2.04.756.367 1.01.603 1.006.931-.005.504-.602.725-1.16.734-.975.015-1.54-.263-1.992-.473l-.351 1.642c.453.208 1.289.39 2.156.398 2.037 0 3.37-1.006 3.377-2.564m5.061 2.447H24l-1.565-7.496h-1.656a.883.883 0 00-.826.55l-2.909 6.946h2.036l.405-1.12h2.488zm-2.163-2.656l1.02-2.815.588 2.815zm-8.16-4.84l-1.603 7.496H8.34l1.605-7.496z"/></symbol>
+  <symbol id="i-mastercard" viewBox="0 0 24 24"><path d="M11.343 18.031c.058.049.12.098.181.146-1.177.783-2.59 1.238-4.107 1.238C3.32 19.416 0 16.096 0 12c0-4.095 3.32-7.416 7.416-7.416 1.518 0 2.931.456 4.105 1.238-.06.051-.12.098-.165.15C9.6 7.489 8.595 9.688 8.595 12c0 2.311 1.001 4.51 2.748 6.031zm5.241-13.447c-1.52 0-2.931.456-4.105 1.238.06.051.12.098.165.15C14.4 7.489 15.405 9.688 15.405 12c0 2.31-1.001 4.507-2.748 6.031-.058.049-.12.098-.181.146 1.177.783 2.588 1.238 4.107 1.238C20.68 19.416 24 16.096 24 12c0-4.094-3.32-7.416-7.416-7.416zM12 6.174c-.096.075-.189.15-.28.231C10.156 7.764 9.169 9.765 9.169 12c0 2.236.987 4.236 2.551 5.595.09.08.185.158.28.232.096-.074.189-.152.28-.232 1.563-1.359 2.551-3.359 2.551-5.595 0-2.235-.987-4.236-2.551-5.595-.09-.08-.184-.156-.28-.231z"/></symbol>
+  <symbol id="i-pix" viewBox="0 0 24 24"><path d="M5.283 18.36a3.505 3.505 0 0 0 2.493-1.032l3.6-3.6a.684.684 0 0 1 .946 0l3.613 3.613a3.504 3.504 0 0 0 2.493 1.032h.71l-4.56 4.56a3.647 3.647 0 0 1-5.156 0L4.85 18.36ZM18.428 5.627a3.505 3.505 0 0 0-2.493 1.032l-3.613 3.614a.67.67 0 0 1-.946 0l-3.6-3.6A3.505 3.505 0 0 0 5.283 5.64h-.434l4.573-4.572a3.646 3.646 0 0 1 5.156 0l4.559 4.559ZM1.068 9.422 3.79 6.699h1.492a2.483 2.483 0 0 1 1.744.722l3.6 3.6a1.73 1.73 0 0 0 2.443 0l3.614-3.613a2.482 2.482 0 0 1 1.744-.723h1.767l2.737 2.737a3.646 3.646 0 0 1 0 5.156l-2.736 2.736h-1.768a2.482 2.482 0 0 1-1.744-.722l-3.613-3.613a1.77 1.77 0 0 0-2.444 0l-3.6 3.6a2.483 2.483 0 0 1-1.744.722H3.791l-2.723-2.723a3.646 3.646 0 0 1 0-5.156"/></symbol>
+  <symbol id="i-googlemaps" viewBox="0 0 24 24"><path d="M19.527 4.799c1.212 2.608.937 5.678-.405 8.173-1.101 2.047-2.744 3.74-4.098 5.614-.619.858-1.244 1.75-1.669 2.727-.141.325-.263.658-.383.992-.121.333-.224.673-.34 1.008-.109.314-.236.684-.627.687h-.007c-.466-.001-.579-.53-.695-.887-.284-.874-.581-1.713-1.019-2.525-.51-.944-1.145-1.817-1.79-2.671L19.527 4.799zM8.545 7.705l-3.959 4.707c.724 1.54 1.821 2.863 2.871 4.18.247.31.494.622.737.936l4.984-5.925-.029.01c-1.741.601-3.691-.291-4.392-1.987a3.377 3.377 0 0 1-.209-.716c-.063-.437-.077-.761-.004-1.198l.001-.007zM5.492 3.149l-.003.004c-1.947 2.466-2.281 5.88-1.117 8.77l4.785-5.689-.058-.05-3.607-3.035zM14.661.436l-3.838 4.563a.295.295 0 0 1 .027-.01c1.6-.551 3.403.15 4.22 1.626.176.319.323.683.377 1.045.068.446.085.773.012 1.22l-.003.016 3.836-4.561A8.382 8.382 0 0 0 14.67.439l-.009-.003zM9.466 5.868L14.162.285l-.047-.012A8.31 8.31 0 0 0 11.986 0a8.439 8.439 0 0 0-6.169 2.766l-.016.018 3.665 3.084z"/></symbol>
+  <symbol id="i-magnifying-glass" viewBox="0 0 256 256"><path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"/></symbol>
+  <symbol id="i-handbag" viewBox="0 0 256 256"><path d="M239.89,198.12l-14.26-120a16,16,0,0,0-16-14.12H176a48,48,0,0,0-96,0H46.33a16,16,0,0,0-16,14.12l-14.26,120A16,16,0,0,0,20,210.6a16.13,16.13,0,0,0,12,5.4H223.92A16.13,16.13,0,0,0,236,210.6,16,16,0,0,0,239.89,198.12ZM128,32a32,32,0,0,1,32,32H96A32,32,0,0,1,128,32ZM32,200,46.33,80H80v24a8,8,0,0,0,16,0V80h64v24a8,8,0,0,0,16,0V80h33.75l14.17,120Z"/></symbol>
+  <symbol id="i-arrow-right" viewBox="0 0 256 256"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></symbol>
+  <symbol id="i-arrow-left" viewBox="0 0 256 256"><path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"/></symbol>
+  <symbol id="i-arrow-up-right" viewBox="0 0 256 256"><path d="M200,64V168a8,8,0,0,1-16,0V83.31L69.66,197.66a8,8,0,0,1-11.32-11.32L172.69,72H88a8,8,0,0,1,0-16H192A8,8,0,0,1,200,64Z"/></symbol>
+  <symbol id="i-arrow-down" viewBox="0 0 256 256"><path d="M205.66,149.66l-72,72a8,8,0,0,1-11.32,0l-72-72a8,8,0,0,1,11.32-11.32L120,196.69V40a8,8,0,0,1,16,0V196.69l58.34-58.35a8,8,0,0,1,11.32,11.32Z"/></symbol>
+  <symbol id="i-x" viewBox="0 0 256 256"><path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"/></symbol>
+  <symbol id="i-minus" viewBox="0 0 256 256"><path d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128Z"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 256 256"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></symbol>
+  <symbol id="i-truck" viewBox="0 0 256 256"><path d="M255.42,117l-14-35A15.93,15.93,0,0,0,226.58,72H192V64a8,8,0,0,0-8-8H32A16,16,0,0,0,16,72V184a16,16,0,0,0,16,16H49a32,32,0,0,0,62,0h50a32,32,0,0,0,62,0h17a16,16,0,0,0,16-16V120A7.94,7.94,0,0,0,255.42,117ZM192,88h34.58l9.6,24H192ZM32,72H176v64H32ZM80,208a16,16,0,1,1,16-16A16,16,0,0,1,80,208Zm81-24H111a32,32,0,0,0-62,0H32V152H176v12.31A32.11,32.11,0,0,0,161,184Zm31,24a16,16,0,1,1,16-16A16,16,0,0,1,192,208Zm48-24H223a32.06,32.06,0,0,0-31-24V128h48Z"/></symbol>
+  <symbol id="i-check" viewBox="0 0 256 256"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></symbol>
+  <symbol id="i-map-pin" viewBox="0 0 256 256"><path d="M128,64a40,40,0,1,0,40,40A40,40,0,0,0,128,64Zm0,64a24,24,0,1,1,24-24A24,24,0,0,1,128,128Zm0-112a88.1,88.1,0,0,0-88,88c0,31.4,14.51,64.68,42,96.25a254.19,254.19,0,0,0,41.45,38.3,8,8,0,0,0,9.18,0A254.19,254.19,0,0,0,174,200.25c27.45-31.57,42-64.85,42-96.25A88.1,88.1,0,0,0,128,16Zm0,206c-16.53-13-72-60.75-72-118a72,72,0,0,1,144,0C200,161.23,144.53,209,128,222Z"/></symbol>
+  <symbol id="i-arrows-clockwise" viewBox="0 0 256 256"><path d="M224,48V96a8,8,0,0,1-8,8H168a8,8,0,0,1,0-16h28.69L182.06,73.37a79.56,79.56,0,0,0-56.13-23.43h-.45A79.52,79.52,0,0,0,69.59,72.71,8,8,0,0,1,58.41,61.27a96,96,0,0,1,135,.79L208,76.69V48a8,8,0,0,1,16,0ZM186.41,183.29a80,80,0,0,1-112.47-.66L59.31,168H88a8,8,0,0,0,0-16H40a8,8,0,0,0-8,8v48a8,8,0,0,0,16,0V179.31l14.63,14.63A95.43,95.43,0,0,0,130,222.06h.53a95.36,95.36,0,0,0,67.07-27.33,8,8,0,0,0-11.18-11.44Z"/></symbol>
+  <symbol id="i-receipt" viewBox="0 0 256 256"><path d="M72,104a8,8,0,0,1,8-8h96a8,8,0,0,1,0,16H80A8,8,0,0,1,72,104Zm8,40h96a8,8,0,0,0,0-16H80a8,8,0,0,0,0,16ZM232,56V208a8,8,0,0,1-11.58,7.15L192,200.94l-28.42,14.21a8,8,0,0,1-7.16,0L128,200.94,99.58,215.15a8,8,0,0,1-7.16,0L64,200.94,35.58,215.15A8,8,0,0,1,24,208V56A16,16,0,0,1,40,40H216A16,16,0,0,1,232,56Zm-16,0H40V195.06l20.42-10.22a8,8,0,0,1,7.16,0L96,199.06l28.42-14.22a8,8,0,0,1,7.16,0L160,199.06l28.42-14.22a8,8,0,0,1,7.16,0L216,195.06Z"/></symbol>
+  <symbol id="i-trash" viewBox="0 0 256 256"><path d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM96,40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96Zm96,168H64V64H192ZM112,104v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Z"/></symbol>
+  <symbol id="i-house" viewBox="0 0 256 256"><path d="M219.31,108.68l-80-80a16,16,0,0,0-22.62,0l-80,80A15.87,15.87,0,0,0,32,120v96a8,8,0,0,0,8,8h64a8,8,0,0,0,8-8V160h32v56a8,8,0,0,0,8,8h64a8,8,0,0,0,8-8V120A15.87,15.87,0,0,0,219.31,108.68ZM208,208H160V152a8,8,0,0,0-8-8H104a8,8,0,0,0-8,8v56H48V120l80-80,80,80Z"/></symbol>
+  <symbol id="i-calendar-blank" viewBox="0 0 256 256"><path d="M208,32H184V24a8,8,0,0,0-16,0v8H88V24a8,8,0,0,0-16,0v8H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM72,48v8a8,8,0,0,0,16,0V48h80v8a8,8,0,0,0,16,0V48h24V80H48V48ZM208,208H48V96H208V208Z"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm64-88a8,8,0,0,1-8,8H128a8,8,0,0,1-8-8V72a8,8,0,0,1,16,0v48h48A8,8,0,0,1,192,128Z"/></symbol>
+  <symbol id="i-storefront" viewBox="0 0 256 256"><path d="M232,96a7.89,7.89,0,0,0-.3-2.2L217.35,43.6A16.07,16.07,0,0,0,202,32H54A16.07,16.07,0,0,0,38.65,43.6L24.31,93.8A7.89,7.89,0,0,0,24,96h0v16a40,40,0,0,0,16,32v72a8,8,0,0,0,8,8H208a8,8,0,0,0,8-8V144a40,40,0,0,0,16-32V96ZM54,48H202l11.42,40H42.61Zm50,56h48v8a24,24,0,0,1-48,0Zm-16,0v8a24,24,0,0,1-35.12,21.26,7.88,7.88,0,0,0-1.82-1.06A24,24,0,0,1,40,112v-8ZM200,208H56V151.2a40.57,40.57,0,0,0,8,.8,40,40,0,0,0,32-16,40,40,0,0,0,64,0,40,40,0,0,0,32,16,40.57,40.57,0,0,0,8-.8Zm4.93-75.8a8.08,8.08,0,0,0-1.8,1.05A24,24,0,0,1,168,112v-8h48v8A24,24,0,0,1,204.93,132.2Z"/></symbol>
+  <symbol id="i-chat-circle" viewBox="0 0 256 256"><path d="M128,24A104,104,0,0,0,36.18,176.88L24.83,210.93a16,16,0,0,0,20.24,20.24l34.05-11.35A104,104,0,1,0,128,24Zm0,192a87.87,87.87,0,0,1-44.06-11.81,8,8,0,0,0-6.54-.67L40,216,52.47,178.6a8,8,0,0,0-.66-6.54A88,88,0,1,1,128,216Z"/></symbol>
+  <symbol id="i-list" viewBox="0 0 256 256"><path d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128ZM40,72H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16ZM216,184H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"/></symbol>
+  <symbol id="i-shield-check" viewBox="0 0 256 256"><path d="M208,40H48A16,16,0,0,0,32,56v56c0,52.72,25.52,84.67,46.93,102.19,23.06,18.86,46,25.26,47,25.53a8,8,0,0,0,4.2,0c1-.27,23.91-6.67,47-25.53C198.48,196.67,224,164.72,224,112V56A16,16,0,0,0,208,40Zm0,72c0,37.07-13.66,67.16-40.6,89.42A129.3,129.3,0,0,1,128,223.62a128.25,128.25,0,0,1-38.92-21.81C61.82,179.51,48,149.3,48,112l0-56,160,0ZM82.34,141.66a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32l-56,56a8,8,0,0,1-11.32,0Z"/></symbol>
+  <symbol id="i-credit-card" viewBox="0 0 256 256"><path d="M224,48H32A16,16,0,0,0,16,64V192a16,16,0,0,0,16,16H224a16,16,0,0,0,16-16V64A16,16,0,0,0,224,48Zm0,16V88H32V64Zm0,128H32V104H224v88Zm-16-24a8,8,0,0,1-8,8H168a8,8,0,0,1,0-16h32A8,8,0,0,1,208,168Zm-64,0a8,8,0,0,1-8,8H120a8,8,0,0,1,0-16h16A8,8,0,0,1,144,168Z"/></symbol>
+  <symbol id="i-user" viewBox="0 0 256 256"><path d="M230.92,212c-15.23-26.33-38.7-45.21-66.09-54.16a72,72,0,1,0-73.66,0C63.78,166.78,40.31,185.66,25.08,212a8,8,0,1,0,13.85,8c18.84-32.56,52.14-52,89.07-52s70.23,19.44,89.07,52a8,8,0,1,0,13.85-8ZM72,96a56,56,0,1,1,56,56A56.06,56.06,0,0,1,72,96Z"/></symbol>
+  <symbol id="i-image" viewBox="0 0 256 256"><path d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Zm0,16V158.75l-26.07-26.06a16,16,0,0,0-22.63,0l-20,20-44-44a16,16,0,0,0-22.62,0L40,149.37V56ZM40,172l52-52,80,80H40Zm176,28H194.63l-36-36,20-20L216,181.38V200ZM144,100a12,12,0,1,1,12,12A12,12,0,0,1,144,100Z"/></symbol>
+  <symbol id="i-info" viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm16-40a8,8,0,0,1-8,8,16,16,0,0,1-16-16V128a8,8,0,0,1,0-16,16,16,0,0,1,16,16v40A8,8,0,0,1,144,176ZM112,84a12,12,0,1,1,12,12A12,12,0,0,1,112,84Z"/></symbol>
+  <symbol id="i-star" viewBox="0 0 256 256"><path d="M234.29,114.85l-45,38.83L203,211.75a16.4,16.4,0,0,1-24.5,17.82L128,198.49,77.47,229.57A16.4,16.4,0,0,1,53,211.75l13.76-58.07-45-38.83A16.46,16.46,0,0,1,31.08,86l59-4.76,22.76-55.08a16.36,16.36,0,0,1,30.27,0l22.75,55.08,59,4.76a16.46,16.46,0,0,1,9.37,28.86Z"/></symbol>
+</svg>
+
+<div class="aviso"><strong>Demonstração.</strong> Estúdio fictício<span class="so-largo"> criado como modelo por Tarcio Diniz</span>, preços de exemplo.</div>
+
+<header class="topo topo-curto" id="topo">
+  <div class="wrap">
+    <a class="marca" href="#inicio" aria-label="Pulso Estúdio, início">Pulso Estúdio</a>
+    <a class="btn btn-ink" href="#turmas">Aula experimental</a>
+  </div>
+</header>
+
+<main id="inicio">
+  <!-- 1. Capa -->
+  <section class="v-capa wrap" aria-labelledby="capa-titulo">
+    <span class="v-para"><i><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg></i>Para quem quer professor por perto</span>
+    <h1 class="h1" id="capa-titulo">Treino funcional em turma de seis</h1>
+    <p class="lead">Aula de 50 minutos no Jardim Tavares, com a professora corrigindo o seu movimento do começo ao fim. Primeira aula sem custo e sem taxa de matrícula.</p>
+    <div class="v-botoes">
+      <a class="btn btn-ink" href="https://wa.me/5583991931035?text=Oi%2C%20Tarcio%21%20Me%20interessei%20por%20esse%20site%2C%20o%20modelo%20do%20Pulso%20Est%C3%BAdio%20%28treino%20funcional%29.%0A%0AO%20site%20montou%20esta%20mensagem%3A%0AOl%C3%A1%21%20Quero%20saber%20como%20funciona%20a%20aula%20experimental%20do%20Pulso." target="_blank" rel="noopener"><svg class="ico wa-ico" aria-hidden="true"><use href="#i-whatsapp"/></svg>Chamar no WhatsApp</a>
+      <a class="btn btn-line" href="#turmas">Ver os horários</a>
+    </div>
+    <div class="v-prova">
+      <span><b>210 alunos</b> desde 2023</span>
+      <span><span class="estrelas" aria-hidden="true"><svg class="ico"><use href="#i-star"/></svg><svg class="ico"><use href="#i-star"/></svg><svg class="ico"><use href="#i-star"/></svg><svg class="ico"><use href="#i-star"/></svg><svg class="ico"><use href="#i-star"/></svg></span> <b>4,8</b> no Google</span>
+    </div>
+    <div class="v-foto">
+      <img src="img/cenas/abdominal-no-sol.webp" width="1400" height="934" alt="Aluna de legging laranja faz abdominal num colchonete, com a luz da janela atrás" fetchpriority="high">
+      <div class="v-flutua">
+        <span class="v-flutua-ico"><svg class="ico" aria-hidden="true"><use href="#i-calendar-blank"/></svg></span>
+        <span><b id="proxima-titulo">Aula experimental sem custo</b><small id="proxima-detalhe">Turmas às 6h, 7h, 18h30 e 19h30</small></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Números -->
+  <section class="wrap" aria-label="Em números">
+    <div class="v-numeros">
+      <div class="v-numero"><b>6</b><span>alunos no máximo em cada turma</span></div>
+      <div class="v-numero"><b>50 min</b><span>de aula, com aquecimento e alongamento</span></div>
+      <div class="v-numero"><b>4,8</b><span>média de 112 avaliações no Google</span></div>
+      <div class="v-numero"><b>3 anos</b><span>de estúdio no Jardim Tavares</span></div>
+    </div>
+  </section>
+
+  <!-- 3. Para quem é -->
+  <section class="secao wrap" aria-labelledby="dor-titulo">
+    <div class="v-dor">
+      <div>
+        <h2 class="h2" id="dor-titulo">Quem treina aqui</h2>
+        <p class="lead">Quase todo aluno do Pulso chegou por um destes motivos.</p>
+      </div>
+      <ul class="v-lista">
+        <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Pagou seis meses de academia e foi dez vezes</li>
+        <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Treina em casa com vídeo e nunca sabe se o agachamento está certo</li>
+        <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Parou depois do segundo filho e quer voltar sem se machucar</li>
+        <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>O médico mandou se mexer, mas você não sabe por onde começar</li>
+        <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Tem vergonha de treinar perto de quem já sabe tudo</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 4. Benefícios em blocos -->
+  <section class="secao wrap" aria-labelledby="ganha-titulo">
+    <div class="secao-topo">
+      <div>
+        <h2 class="h2" id="ganha-titulo">Por que turma de seis</h2>
+        <p class="lead">Turma pequena serve para isso: ninguém passa despercebido.</p>
+      </div>
+    </div>
+    <div class="v-blocos">
+      <article class="v-bloco v-bloco-foto">
+        <img src="img/cenas/barra-no-ombro.webp" width="1400" height="2100" alt="Mão firme na barra apoiada no ombro de uma aluna, em luz baixa" loading="lazy">
+        <h3>Carga certa para o seu corpo</h3>
+        <p>Cada aluno anota o próprio peso na ficha, e a professora passa por todos a cada série.</p>
+      </article>
+      <article class="v-bloco">
+        <span class="v-bloco-ico"><svg class="ico" aria-hidden="true"><use href="#i-clock"/></svg></span>
+        <h3>Cabe na rotina</h3>
+        <p>Turmas às 6h e às 19h30. Dá para treinar antes do trabalho e chegar em casa para o jantar.</p>
+      </article>
+      <article class="v-bloco v-bloco-escuro">
+        <span class="v-bloco-ico"><svg class="ico" aria-hidden="true"><use href="#i-chat-circle"/></svg></span>
+        <h3>Dor? Troca na hora</h3>
+        <p>O joelho reclamou no avanço? O exercício muda na mesma série, sem esperar a aula seguinte.</p>
+      </article>
+      <article class="v-bloco v-bloco-cor v-bloco-largo">
+        <span class="v-bloco-ico"><svg class="ico" aria-hidden="true"><use href="#i-shield-check"/></svg></span>
+        <h3>Sem medo de começar</h3>
+        <p>A aula experimental não custa nada e começa com 15 minutos olhando como você se move. Matrícula também não tem.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- 5. O estúdio por dentro -->
+  <section class="secao wrap" aria-labelledby="estudio-titulo">
+    <div class="secao-topo">
+      <div>
+        <h2 class="h2" id="estudio-titulo">Nosso estúdio</h2>
+        <p class="lead">Sala de 60 m² com piso de borracha, ar-condicionado e ventiladores. Cabem seis alunos e a professora sem fila para o equipamento.</p>
+      </div>
+    </div>
+    <div class="v-estudio">
+      <figure class="v-estudio-item v-estudio-largo">
+        <img src="img/cenas/salto-na-caixa.webp" width="1400" height="788" alt="Aluna salta numa caixa de madeira enquanto o professor observa, numa sala com parede amarela" loading="lazy" style="object-position: 38% 50%">
+        <figcaption>Caixas de salto em três alturas</figcaption>
+      </figure>
+      <figure class="v-estudio-item">
+        <img src="img/cenas/kettlebell-de-ferro.webp" width="1400" height="2092" alt="Mãos seguram a alça de dois kettlebells de ferro no chão" loading="lazy">
+        <figcaption>Kettlebells de 4 a 28 kg</figcaption>
+      </figure>
+      <figure class="v-estudio-item">
+        <img src="img/cenas/corda-na-dupla.webp" width="1400" height="788" alt="Aluna e professor trabalham com a corda naval, ele sorri" loading="lazy" style="object-position: 80% 50%">
+        <figcaption>Corda naval de 9 metros</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- 6. Etapas -->
+  <section class="secao wrap" id="como-funciona" aria-labelledby="etapas-titulo">
+    <div class="secao-topo">
+      <div>
+        <h2 class="h2" id="etapas-titulo">Como funciona</h2>
+        <p class="lead">Da primeira aula à reavaliação, com a mesma professora e a mesma turma.</p>
+      </div>
+    </div>
+    <ol class="v-etapas">
+      <li class="v-etapa"><h3>Aula experimental</h3><p>Você escolhe a turma e chega 10 minutos antes. Primeiro vêm 15 minutos de agachar, empurrar e puxar para a professora ver como você se move.</p><small>50 min, sem custo</small></li>
+      <li class="v-etapa"><h3>Sua ficha</h3><p>Se gostar, a professora monta a sua ficha. Carga e variação de cada exercício ficam anotadas e ao alcance da mão.</p><small>Semana 1</small></li>
+      <li class="v-etapa"><h3>Rotina de turma</h3><p>Duas ou três aulas por semana, com os mesmos colegas. A carga sobe de quatro em quatro semanas.</p><small>Semanas 2 a 8</small></li>
+      <li class="v-etapa"><h3>Reavaliação</h3><p>Você repete os testes da primeira aula e vê o número na mão: agachamento, flexão e prancha, sem balança obrigatória.</p><small>A cada 8 semanas</small></li>
+    </ol>
+  </section>
+
+  <!-- 7. Turmas: a agenda desta página -->
+  <section class="secao wrap" id="turmas" aria-labelledby="turmas-titulo">
+    <div class="secao-topo">
+      <div>
+        <h2 class="h2" id="turmas-titulo">Escolha a sua turma</h2>
+        <p class="lead">Toque no horário que cabe na sua semana. A vaga da aula experimental fica guardada por 48 horas.</p>
+      </div>
+    </div>
+    <div class="t-painel">
+      <div class="t-lista" role="radiogroup" aria-labelledby="turmas-titulo">
+        <button class="t-turma" type="button" role="radio" aria-checked="false" data-dias="1,3,5" data-nome="Seg, Qua e Sex" data-hora="06:00" data-vagas="2">
+          <span class="t-hora">6h</span>
+          <span class="t-dias">Seg, Qua e Sex<small>Funcional, 50 min</small></span>
+          <span class="t-vagas poucas">2 vagas</span>
+        </button>
+        <button class="t-turma" type="button" role="radio" aria-checked="false" data-dias="1,3,5" data-nome="Seg, Qua e Sex" data-hora="07:00" data-vagas="0">
+          <span class="t-hora">7h</span>
+          <span class="t-dias">Seg, Qua e Sex<small>Funcional, 50 min</small></span>
+          <span class="t-vagas">Lotada</span>
+        </button>
+        <button class="t-turma" type="button" role="radio" aria-checked="false" data-dias="2,4" data-nome="Ter e Qui" data-hora="06:00" data-vagas="4">
+          <span class="t-hora">6h</span>
+          <span class="t-dias">Ter e Qui<small>Funcional, 50 min</small></span>
+          <span class="t-vagas">4 vagas</span>
+        </button>
+        <button class="t-turma" type="button" role="radio" aria-checked="false" data-dias="1,3,5" data-nome="Seg, Qua e Sex" data-hora="18:30" data-vagas="3">
+          <span class="t-hora">18h30</span>
+          <span class="t-dias">Seg, Qua e Sex<small>Funcional, 50 min</small></span>
+          <span class="t-vagas">3 vagas</span>
+        </button>
+        <button class="t-turma" type="button" role="radio" aria-checked="false" data-dias="2,4" data-nome="Ter e Qui" data-hora="18:30" data-vagas="2">
+          <span class="t-hora">18h30</span>
+          <span class="t-dias">Ter e Qui<small>Funcional, 50 min</small></span>
+          <span class="t-vagas poucas">2 vagas</span>
+        </button>
+        <button class="t-turma" type="button" role="radio" aria-checked="false" data-dias="1,3,5" data-nome="Seg, Qua e Sex" data-hora="19:30" data-vagas="1">
+          <span class="t-hora">19h30</span>
+          <span class="t-dias">Seg, Qua e Sex<small>Funcional, 50 min</small></span>
+          <span class="t-vagas poucas">1 vaga</span>
+        </button>
+        <button class="t-turma" type="button" role="radio" aria-checked="false" data-dias="6" data-nome="Sábado" data-hora="08:00" data-vagas="5">
+          <span class="t-hora">8h</span>
+          <span class="t-dias">Sábado<small>Turma aberta, 60 min</small></span>
+          <span class="t-vagas">5 vagas</span>
+        </button>
+      </div>
+      <form class="t-resumo" id="t-resumo" novalidate>
+        <h3>Sua aula experimental</h3>
+        <p class="t-escolhida" id="t-escolhida" aria-live="polite">Escolha uma turma na lista.</p>
+        <label class="campo">Seu nome, se quiser
+          <input id="t-nome" name="nome" type="text" autocomplete="given-name" maxlength="40">
+        </label>
+        <fieldset class="t-objetivo">
+          <legend>O que você quer agora</legend>
+          <div class="t-chips">
+            <label class="t-chip"><input class="sr" type="radio" name="objetivo" value="voltar a treinar"><span>Voltar a treinar</span></label>
+            <label class="t-chip"><input class="sr" type="radio" name="objetivo" value="ganhar força"><span>Ganhar força</span></label>
+            <label class="t-chip"><input class="sr" type="radio" name="objetivo" value="emagrecer"><span>Emagrecer</span></label>
+            <label class="t-chip"><input class="sr" type="radio" name="objetivo" value="cuidar das costas"><span>Cuidar das costas</span></label>
+          </div>
+        </fieldset>
+        <a class="btn btn-ink" id="t-enviar" href="#turmas" aria-disabled="true"><svg class="ico wa-ico" aria-hidden="true"><use href="#i-whatsapp"/></svg>Pedir pelo WhatsApp</a>
+        <p class="t-aviso" id="t-aviso" role="status"></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- 8. Quem faz -->
+  <section class="secao wrap" aria-labelledby="sobre-titulo">
+    <div class="v-sobre">
+      <div class="v-sobre-foto"><img src="img/pessoas/professora.webp" width="800" height="534" alt="Professora ajoelhada ao lado de um aluno corrige a posição dele numa flexão" loading="lazy" style="object-position: 30% 50%"></div>
+      <div>
+        <h2 class="h2" id="sobre-titulo">Quem dá a aula</h2>
+        <p class="lead">Sou a Camila. Dei aula sete anos em academia grande e saí porque não conseguia olhar o movimento de todo mundo. Abri o Pulso em 2023 com sala para seis e uma regra: ninguém sai da aula tendo treinado errado.</p>
+        <ul class="v-credenciais">
+          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Bacharel em Educação Física, CREF ativo (número fictício nesta demonstração)</li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Curso de treinamento funcional e de primeiros socorros, renovado todo ano</li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Alunos de 16 a 71 anos nas turmas atuais</li>
+        </ul>
+        <p class="v-assina"><b>Camila Torres</b>Educadora física, dona do Pulso, Campina Grande</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. Depoimentos -->
+  <section class="secao wrap" aria-labelledby="depo-titulo">
+    <div class="secao-topo">
+      <div>
+        <h2 class="h2" id="depo-titulo">Quem já passou por aqui</h2>
+        <p class="lead">Depoimentos fictícios, escritos para esta demonstração.</p>
+      </div>
+    </div>
+    <div class="v-depos">
+      <figure class="v-depo v-depo-grande" style="margin:0">
+        <p>Fiz academia por anos e nunca passei de dois meses. Aqui já são catorze meses sem faltar uma semana inteira. Ninguém fica perdido, e a Camila sabe o meu joelho de cor.</p>
+        <figcaption class="avaliacao-autor"><span class="inicial">L</span><span><b>Luciana A.</b><small>Contadora, Catolé</small></span></figcaption>
+      </figure>
+      <figure class="v-depo" style="margin:0">
+        <p>Cheguei achando que ia passar vergonha. Na primeira aula fui o mais fraco da turma e ninguém comentou, só ajustaram a minha carga.</p>
+        <figcaption class="avaliacao-autor"><span class="inicial">J</span><span><b>Jorge M.</b><small>Jardim Tavares</small></span></figcaption>
+      </figure>
+      <figure class="v-depo" style="margin:0">
+        <p>A turma das 19h30 enche rápido e esperei três semanas por vaga. Valeu a espera, mas queria mais um horário à noite.</p>
+        <figcaption class="avaliacao-autor"><span class="inicial">R</span><span><b>Renata P.</b><small>Alto Branco</small></span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- 10. Oferta -->
+  <section class="secao wrap" id="oferta" aria-labelledby="oferta-titulo">
+    <div class="secao-topo centro">
+      <h2 class="h2" id="oferta-titulo">Escolha como treinar</h2>
+      <p class="lead">Preço fechado, sem taxa de matrícula e sem fidelidade.</p>
+    </div>
+    <div class="v-planos">
+      <article class="v-plano">
+        <h3>Personal</h3>
+        <p>Só você e a professora, no horário que cabe.</p>
+        <div class="v-preco">R$&nbsp;110<small>por sessão de 50 min, no Pix ou no cartão</small></div>
+        <ul class="v-inclui">
+          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Treino montado do zero, com ficha</li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Horário entre 9h e 17h ou nas vagas da noite</li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Pacote de 8 sessões por R$&nbsp;800</li>
+        </ul>
+        <a class="btn btn-line" href="https://wa.me/5583991931035?text=Oi%2C%20Tarcio%21%20Me%20interessei%20por%20esse%20site%2C%20o%20modelo%20do%20Pulso%20Est%C3%BAdio%20%28treino%20funcional%29.%0A%0AO%20site%20montou%20esta%20mensagem%3A%0AOl%C3%A1%21%20Quero%20saber%20sobre%20o%20personal%20no%20Pulso." target="_blank" rel="noopener">Quero o personal</a>
+      </article>
+      <article class="v-plano v-plano-top">
+        <span class="v-selo-plano">Mais escolhido</span>
+        <h3>Turma funcional</h3>
+        <p>Seis alunos, uma professora e a mesma turma toda semana.</p>
+        <div class="v-preco">R$&nbsp;289<small>por mês, 3 aulas por semana. Com 2 aulas, R$&nbsp;229</small></div>
+        <ul class="v-inclui">
+          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Aula de 50 minutos, no máximo 6 alunos</li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Ficha com a sua carga anotada</li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Reavaliação a cada 8 semanas</li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Primeira aula de graça, sem matrícula</li>
+        </ul>
+        <a class="btn btn-ink" href="#turmas">Escolher minha turma</a>
+      </article>
+    </div>
+    <div class="v-garantia"><svg class="ico" aria-hidden="true"><use href="#i-shield-check"/></svg><span><b>Sete dias para desistir</b>Largou na primeira semana? Devolvo a mensalidade menos R$&nbsp;25 por aula que você fez. É só avisar no WhatsApp.</span></div>
+  </section>
+
+  <!-- 11. Perguntas -->
+  <section class="secao wrap" aria-labelledby="faq-titulo">
+    <div class="secao-topo centro">
+      <h2 class="h2" id="faq-titulo">Antes da primeira aula</h2>
+    </div>
+    <div class="v-faq">
+      <details><summary>Preciso estar em forma para começar?<svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Não. Mais da metade da turma começou sem treinar há anos. Cada um usa a própria carga, e a primeira aula serve para achar o seu ponto de partida.</p></details>
+      <details><summary>Quantas vezes por semana devo vir?<svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Duas aulas já mudam o corpo em oito semanas. Com três o resultado vem mais rápido. Vale sempre a mesma turma, nos mesmos dias.</p></details>
+      <details><summary>Tem aula online?<svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Não. Preciso ver o movimento de perto. Para quem viaja, mando uma ficha para fazer no hotel ou em casa, sem custo para aluno.</p></details>
+      <details><summary>Aceita app de academia ou plano?<svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Não aceito. O preço é fechado e a turma só tem seis vagas. Dou recibo, e muita empresa reembolsa com ele.</p></details>
+      <details><summary>Posso treinar com dor ou lesão?<svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Traga a liberação do médico para exercício. Sem ela eu não começo. Com ela, monto alternativas dentro do funcional.</p></details>
+      <details><summary>E se eu não gostar?<svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>A aula experimental é de graça. Se pagar a mensalidade e largar em 7 dias, devolvo o valor menos R$&nbsp;25 por aula feita.</p></details>
+    </div>
+  </section>
+
+  <!-- 12. Faixa final -->
+  <section class="secao wrap" aria-labelledby="final-titulo">
+    <div class="v-final">
+      <h2 class="h2" id="final-titulo">Venha fazer uma aula</h2>
+      <p>Escolha o horário, chegue 10 minutos antes e traga uma toalha. O resto o estúdio empresta.</p>
+      <a class="btn btn-light" href="#turmas">Escolher minha turma</a>
+    </div>
+  </section>
+</main>
+
+<footer class="rodape" id="onde">
+  <div class="wrap">
+    <div class="rodape-grade">
+      <div class="rodape-sobre">
+        <a class="marca" href="#inicio">Pulso Estúdio</a>
+        <p>Treino funcional em turma pequena e personal, no Jardim Tavares, em Campina Grande.</p>
+        <div class="redes">
+          <a href="#inicio"><svg class="ico" aria-hidden="true"><use href="#i-instagram"/></svg>Instagram</a>
+          <a href="https://wa.me/5583991931035?text=Oi%2C%20Tarcio%21%20Me%20interessei%20por%20esse%20site%2C%20o%20modelo%20do%20Pulso%20Est%C3%BAdio%20%28treino%20funcional%29.%0A%0AO%20site%20montou%20esta%20mensagem%3A%0AOl%C3%A1%21" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-whatsapp"/></svg>WhatsApp</a>
+        </div>
+      </div>
+      <div>
+        <h2>Atendimento</h2>
+        <ul>
+          <li>Rua das Acácias, 214, Jardim Tavares (endereço fictício)</li>
+          <li>Segunda a sexta, 5h30 às 21h</li>
+          <li>Sábado, 7h às 10h30. Domingo fechado</li>
+        </ul>
+      </div>
+      <div>
+        <h2>Pagamento</h2>
+        <ul>
+          <li>Pix</li>
+          <li>Cartão em até 3x sem juros</li>
+          <li>Recibo para reembolso</li>
+        </ul>
+      </div>
+      <div>
+        <h2>Navegar</h2>
+        <ul>
+          <li><a href="#turmas">Turmas e horários</a></li>
+          <li><a href="#como-funciona">Como funciona</a></li>
+          <li><a href="#oferta">Preços</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="rodape-autor">
+      <p>Quer um site assim para o seu negócio?&nbsp;<a href="https://tarciodiniz.com/#contato">Peça um orçamento</a></p>
+      <p class="credito-autor"><a class="back-link" href="/modelos/"><svg class="ico" aria-hidden="true"><use href="#i-arrow-left"/></svg>Ver outros modelos</a><span>Site feito por <a href="https://tarciodiniz.com" rel="author">Tarcio Diniz</a>, desenvolvedor</span></p>
+    </div>
+    <p class="rodape-base">Pulso Estúdio é um negócio fictício, criado como modelo de site por Tarcio Diniz. Endereço, preços, horários e depoimentos servem só de exemplo. Fotos: Unsplash.</p>
+  </div>
+</footer>
+
+<div class="v-barra" id="barra" aria-hidden="true">
+  <div><b>Aula experimental sem custo</b>Escolha o horário da turma</div>
+  <a class="btn btn-ink" href="#turmas" tabindex="-1">Ver turmas</a>
+</div>
+
+<script src="/assets/vendor/gsap-3.15.0/gsap.min.js" defer></script>
+<script src="/assets/vendor/gsap-3.15.0/ScrollTrigger.min.js" defer></script>
+<script>window.DEMO_WA = {"numero": "5583991931035", "intro": "Oi, Tarcio! Me interessei por esse site, o modelo do Pulso Estúdio (treino funcional).\n\nO site montou esta mensagem:\n"};</script>
+<script src="base.js?v=ccb60058" defer></script>
+<script src="modelo.js?v=aba56419" defer></script>
+</body>
+</html>
