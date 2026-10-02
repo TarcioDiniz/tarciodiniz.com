@@ -161,6 +161,7 @@
     --display: "Anton", "Anton fallback", "Anton fallback sans", sans-serif;
     --body: "Inter Tight", "Inter Tight fallback", system-ui, -apple-system, "Segoe UI", sans-serif;
     --gutter: clamp(16px, 4vw, 48px);
+    --respiro: clamp(12px, 1.8vw, 28px);
     --max: 1320px;
     --radius: 999px;
   }
@@ -186,8 +187,9 @@
   .frame { position: fixed; inset: 0 0 0 0; pointer-events: none; z-index: 0; }
   .frame .wrap { height: 100%; }
   .frame span { position: absolute; top: 0; bottom: 0; width: 1px; background: var(--line); }
-  .frame span:nth-child(1) { left: var(--gutter); }
-  .frame span:nth-child(2) { right: var(--gutter); }
+  /* The lines sit outside the content, never on it: a strip of air between the frame and every block. */
+  .frame span:nth-child(1) { left: calc(var(--gutter) - var(--respiro)); }
+  .frame span:nth-child(2) { right: calc(var(--gutter) - var(--respiro)); }
 
   .btn { display: inline-flex; align-items: center; gap: 12px; white-space: nowrap; padding: 16px 22px; border-radius: var(--radius); font-weight: 600; font-size: 16px; border: 1px solid transparent; transition: background-color .2s ease, color .2s ease, border-color .2s ease; }
   .btn-accent { background: var(--accent); color: var(--accent-ink); }
