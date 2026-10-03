@@ -15,7 +15,7 @@ import * as chromeLauncher from "chrome-launcher";
 const CHROME = process.env.CHROME ?? "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
 
 const SITE_PAGES = ["/", "/modelos/", "/sobre/", "/como-funciona/", "/site-no-google-e-nas-ias/", "/privacidade/"];
-const DEMO_PAGES = ["/demos/loja-de-tenis/", "/demos/moda-feminina/", "/demos/cosmeticos/", "/demos/cardapio/", "/demos/cafe/", "/demos/acai/", "/demos/fisioterapia/", "/demos/psicologa/", "/demos/personal/", "/demos/confeitaria/", "/demos/unhas/", "/demos/brecho/", "/demos/barbearia/", "/demos/salao/", "/demos/estetica-automotiva/", "/demos/planejados/", "/demos/energia-solar/", "/demos/reforma/", "/demos/fotografa/", "/demos/dj/", "/demos/maquiadora/", "/demos/congresso/", "/demos/conferencia/", "/demos/sao-joao/"];
+const DEMO_PAGES = ["/demos/loja-de-tenis/", "/demos/moda-feminina/", "/demos/cosmeticos/", "/demos/cardapio/", "/demos/cafe/", "/demos/acai/", "/demos/fisioterapia/", "/demos/psicologa/", "/demos/personal/", "/demos/confeitaria/", "/demos/unhas/", "/demos/brecho/", "/demos/barbearia/", "/demos/salao/", "/demos/estetica-automotiva/", "/demos/planejados/", "/demos/energia-solar/", "/demos/reforma/", "/demos/fotografa/", "/demos/dj/", "/demos/maquiadora/", "/demos/congresso/", "/demos/conferencia/", "/demos/sao-joao/", "/demos/assessoria-de-corrida/", "/demos/escola-de-danca/", "/demos/escola-de-ingles/", "/demos/pizzaria/", "/demos/sorveteria/", "/demos/salgados/"];
 const A11Y_ONLY_PAGES = ["/404.html"];
 const DEFAULT_PAGES = [...SITE_PAGES, ...DEMO_PAGES, ...A11Y_ONLY_PAGES];
 const A11Y_ONLY = new Set(A11Y_ONLY_PAGES);

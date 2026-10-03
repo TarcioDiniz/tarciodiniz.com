@@ -5,7 +5,7 @@ Site do Tarcio Diniz, desenvolvedor web em Campina Grande (PB), no ar em
 celular, preparados para o Google e com o WhatsApp a um toque.
 
 A página principal fala com o dono de negócio primeiro e traz, mais abaixo, a minha história e o
-que eu faço como desenvolvedor. Em `demos/` ficam 24 modelos de empresas fictícias, cada um com
+que eu faço como desenvolvedor. Em `demos/` ficam 30 modelos de empresas fictícias, cada um com
 uma função de verdade, e a página [/modelos/](https://tarciodiniz.com/modelos/) junta todos, com
 busca e filtro por ramo e por tipo de site. Cada modelo é um esqueleto (o que o cliente faz no site)
 vestido com um estilo visual; o código de origem fica fora deste repositório.
@@ -36,6 +36,12 @@ vestido com um estilo visual; o código de origem fica fora deste repositório.
 | [Camarote Pé de Serra](https://tarciodiniz.com/demos/sao-joao/) | Camarote de São João | Evento | Camarote de São João com open bar, forró pé de serra e ingresso por noite. |
 | [Fórum Borborema](https://tarciodiniz.com/demos/congresso/) | Congresso de negócios | Evento | Dois dias de palestras e oficinas para pequenos empresários, com lotes de ingresso. |
 | [Conferência Lastro](https://tarciodiniz.com/demos/conferencia/) | Conferência de jovens | Evento | Conferência de jovens com louvor, palavra e oficinas, com inscrição por lote. |
+| [Corre Campina](https://tarciodiniz.com/demos/assessoria-de-corrida/) | Assessoria de corrida | Clube e aulas | Planilha de treino e treino em grupo no Açude Velho, com aula experimental marcada pelo WhatsApp. |
+| [Baião Escola de Dança](https://tarciodiniz.com/demos/escola-de-danca/) | Escola de dança | Clube e aulas | Forró, ballet, jazz e dança de salão por turma e idade, com aula experimental pelo WhatsApp. |
+| [Ponte Idiomas](https://tarciodiniz.com/demos/escola-de-ingles/) | Escola de inglês | Clube e aulas | Inglês por nível e idade, turma pequena ou aula particular, com teste de nível e aula experimental. |
+| [Chaminé Pizzaria](https://tarciodiniz.com/demos/pizzaria/) | Pizzaria | Vitrine de produto | Pizza de forno a lenha, meia a meia e por fatia, com pedido pronto no WhatsApp. |
+| [Umbu Sorveteria](https://tarciodiniz.com/demos/sorveteria/) | Sorveteria e picolés | Vitrine de produto | Picolé e sorvete de fruta do Nordeste, por bola, pote e caixa para festa, com pedido no WhatsApp. |
+| [Cento Salgados](https://tarciodiniz.com/demos/salgados/) | Salgados para festa | Vitrine de produto | Coxinha, kibe e risole por cento para festa, com encomenda e data de retirada pelo WhatsApp. |
 
 Quatro modelos mais antigos saíram da vitrine e continuam no ar pelo endereço: Rebuliço
 (`demos/bar/`), Vigília Veterinária (`demos/veterinaria/`), Pousada Aroá (`demos/pousada/`) e Algodão

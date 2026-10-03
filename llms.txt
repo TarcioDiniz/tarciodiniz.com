@@ -47,7 +47,7 @@ pedido, como o cliente preferir. Página nova é orçada à parte, inclusive nos
 
 ## Páginas
 - [Início](https://tarciodiniz.com/): o que ele entrega, como funciona, modelos e dúvidas.
-- [Modelos](https://tarciodiniz.com/modelos/): os 24 modelos de site por ramo e por tipo de site, com busca e filtro.
+- [Modelos](https://tarciodiniz.com/modelos/): os 30 modelos de site por ramo e por tipo de site, com busca e filtro.
 - [Sobre o Tarcio Diniz](https://tarciodiniz.com/sobre/): quem ele é, fatos em resumo, a história ano
   a ano, onde atende e como falar com ele.
 - [Site no Google e nas IAs](https://tarciodiniz.com/site-no-google-e-nas-ias/): o que um site faz para
@@ -84,6 +84,12 @@ nelas não são reais e estão marcados como tal em cada página. A lista comple
 - [Fórum Borborema, congresso de negócios](https://tarciodiniz.com/demos/congresso/): evento. Dois dias de palestras e oficinas para pequenos empresários, com lotes de ingresso.
 - [Conferência Lastro, conferência de jovens](https://tarciodiniz.com/demos/conferencia/): evento. Conferência de jovens com louvor, palavra e oficinas, com inscrição por lote.
 - [DJ Ravi, dj](https://tarciodiniz.com/demos/dj/): portfólio. Som e luz para casamento, formatura e festa, com pacotes e consulta de data.
+- [Corre Campina, assessoria de corrida](https://tarciodiniz.com/demos/assessoria-de-corrida/): clube e aulas. Planilha de treino e treino em grupo no Açude Velho, com aula experimental marcada pelo WhatsApp.
+- [Baião Escola de Dança, escola de dança](https://tarciodiniz.com/demos/escola-de-danca/): clube e aulas. Forró, ballet, jazz e dança de salão por turma e idade, com aula experimental pelo WhatsApp.
+- [Ponte Idiomas, escola de inglês](https://tarciodiniz.com/demos/escola-de-ingles/): clube e aulas. Inglês por nível e idade, turma pequena ou aula particular, com teste de nível e aula experimental.
+- [Chaminé Pizzaria, pizzaria](https://tarciodiniz.com/demos/pizzaria/): vitrine de produto. Pizza de forno a lenha, meia a meia e por fatia, com pedido pronto no WhatsApp.
+- [Umbu Sorveteria, sorveteria e picolés](https://tarciodiniz.com/demos/sorveteria/): vitrine de produto. Picolé e sorvete de fruta do Nordeste, por bola, pote e caixa para festa, com pedido no WhatsApp.
+- [Cento Salgados, salgados para festa](https://tarciodiniz.com/demos/salgados/): vitrine de produto. Coxinha, kibe e risole por cento para festa, com encomenda e data de retirada pelo WhatsApp.
 
 ## Perfis
 - [LinkedIn](https://www.linkedin.com/in/tarciodiniz)
